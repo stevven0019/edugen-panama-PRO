@@ -1,0 +1,298 @@
+{
+  "grade": "Kindergarten (Foundational Learner - Pre A1.2)",
+  "cefrLevel": "Foundational Learner - Pre A1.2",
+  "scenarios": [
+    {
+      "scenarioNum": 1,
+      "scenarioName": "It's a School Day!",
+      "theme1": "Let's Listen!",
+      "theme2": "Stand Up!",
+      "communicativeCompetences": {
+        "linguistic": {
+          "grammaticalFeatures": [
+            "1. Imperatives (e.g., 'Stand up.')",
+            "2. Present simple (e.g., 'It is a school.')",
+            "3. WH-questions (e.g., 'What is it?')"
+          ],
+          "vocabulary": {
+            "nouns": ["child", "table", "morning", "book", "music", "window", "door"],
+            "verbs": ["listen", "stand up", "jump", "touch", "open"],
+            "adjectives": ["nice", "calm", "top", "bottom"],
+            "prepositions": ["near"],
+            "adverbs": ["away"]
+          },
+          "pronunciation": {
+            "sounds": "/s/ in 'school' and /l/ in 'listen'",
+            "phonemicAwareness": "Syllable stress in 'teacher' and 'student', initial sound: /b/ 'book' /l/ 'listen' /t/ 'touch'"
+          }
+        },
+        "pragmatic": {
+          "functions": [
+            "Following instructions: Respond to commands, like 'stand up' and 'listen'",
+            "Describing actions: Using basic words to give an instruction, like 'Please, sit.'",
+            "Responding questions: Answering WH-questions like 'What is it?' and 'Where is the pen?'"
+          ]
+        },
+        "sociolinguistic": {
+          "elements": [
+            "Politeness and formality: Use formal language when giving instructions, such as 'Please stand up.'"
+          ]
+        }
+      }
+    },
+    {
+      "scenarioNum": 2,
+      "scenarioName": "Our Routines",
+      "theme1": "First, I Sit Down.",
+      "theme2": "Pick It Up!",
+      "communicativeCompetences": {
+        "linguistic": {
+          "grammaticalFeatures": [
+            "1. Present simple (e.g., 'This is a pen.')",
+            "2. Sequencing words with numbers (e.g., 'Step 1, Step 2, Step 3')",
+            "3. Imperatives (e.g., 'Pick it up.')"
+          ],
+          "vocabulary": {
+            "nouns": ["bag", "pen", "paper", "notebook", "calendar", "alphabet", "door", "eraser"],
+            "verbs": ["sit", "play", "take", "put", "jump", "clap", "pick up", "draw"],
+            "adjectives": ["big", "small", "long", "short"],
+            "prepositions": ["on", "up", "down"],
+            "interjections": ["Please"]
+          },
+          "pronunciation": {
+            "sounds": "/p/ in 'pick' and /d/ in 'down'",
+            "phonemicAwareness": "Recognizing letter sounds (A, B, C, D, E)"
+          }
+        },
+        "pragmatic": {
+          "functions": [
+            "Describing daily routines: Use simple language to describe classroom routines with numbers.",
+            "Following instructions: Respond to routines with actions, such as 'pick up' by picking up materials after a lesson.",
+            "Describing daily routines: Describing routines with simple sequencing and understanding daily classroom activities."
+          ]
+        },
+        "sociolinguistic": {
+          "elements": [
+            "Routine interactions: Understanding and following daily routines in class, using polite expressions (e.g., 'Please pick up the paper.')."
+          ]
+        }
+      }
+    },
+    {
+      "scenarioNum": 3,
+      "scenarioName": "Hold Up Ten Fingers!",
+      "theme1": "I Can Count!",
+      "theme2": "All the Pencils!",
+      "communicativeCompetences": {
+        "linguistic": {
+          "grammaticalFeatures": [
+            "1. Quantity + nouns (e.g., 'ten fingers')",
+            "2. Wh-questions (e.g., 'What number is this?' 'How many fingers?')",
+            "3. Yes/No questions (e.g., 'Is this number five?')"
+          ],
+          "vocabulary": {
+            "nouns": ["numbers (1-10)", "hand", "finger", "block", "pencil", "book", "crayon", "marker", "glue", "ink", "juice"],
+            "verbs": ["count", "show", "point", "hold", "match"],
+            "adjectives": ["red", "yellow", "blue", "green", "orange", "purple", "tall", "small", "short", "big"]
+          },
+          "pronunciation": {
+            "sounds": "Initial /k/ in 'count' and /f/ in 'fingers'",
+            "phonemicAwareness": "Recognizing number sounds (1-10) and recognizing letter sounds (F, G, H, I, J)"
+          }
+        },
+        "pragmatic": {
+          "functions": [
+            "Counting aloud: Practice counting objects up to ten in response to teacher prompts.",
+            "Answering quantity questions: Respond to 'how many' questions with simple numbers (e.g., 'three pencils')"
+          ]
+        },
+        "sociolinguistic": {
+          "elements": [
+            "Encouraging turn-taking and active listening: Counting objects in small groups, respecting turn-taking and active listening."
+          ]
+        }
+      }
+    },
+    {
+      "scenarioNum": 4,
+      "scenarioName": "Where Is It?",
+      "theme1": "Where Is Your Book?",
+      "theme2": "Go to the Window.",
+      "communicativeCompetences": {
+        "linguistic": {
+          "grammaticalFeatures": [
+            "1. Prepositions (e.g., 'on the desks')",
+            "2. WH-Questions for Location (e.g., 'Where is the book?')",
+            "3. Plural nouns in simple responses (e.g., 'on the desk' or 'three books')"
+          ],
+          "vocabulary": {
+            "nouns": ["poster", "clip", "ruler", "glue", "marker", "folder", "card", "shelf", "chart", "pen", "chalk", "key", "notebook"],
+            "verbs": ["point", "hold", "pick", "put", "draw", "write", "show", "go"],
+            "adjectives": ["large", "small"],
+            "colors": ["yellow", "red", "blue", "orange", "green", "purple"],
+            "prepositions": ["on", "in", "under"]
+          },
+          "pronunciation": {
+            "sounds": "/w/ in 'where' and /b/ in 'book'",
+            "phonemicAwareness": "Recognizing letter sounds (K, L, M, N, O)"
+          }
+        },
+        "pragmatic": {
+          "functions": [
+            "Using location words: Respond with basic words to location-based questions, using prepositions (e.g., 'The book is on the desk.')",
+            "Following location commands: Move to designated areas in response to instructions (e.g., 'Go to the window.')"
+          ]
+        },
+        "sociolinguistic": {
+          "elements": [
+            "Polite request: Asking request politely about the location of items (e.g., 'Show me the blue crayon, please.').",
+            "Giving information about locations of objects: Responding with basic location phrases (e.g., 'It's on the desk.')."
+          ]
+        }
+      }
+    },
+    {
+      "scenarioNum": 5,
+      "scenarioName": "What's that Sound?",
+      "theme1": "The Cat Says 'Meow'.",
+      "theme2": "That's a Rooster!",
+      "communicativeCompetences": {
+        "linguistic": {
+          "grammaticalFeatures": [
+            "1. WH-questions (e.g., 'What sound is this?')",
+            "2. Present simple (e.g., 'The cat says meow.')",
+            "3. Exclamations (e.g., 'That's a rooster!')"
+          ],
+          "vocabulary": {
+            "nouns": ["cat", "dog", "rooster", "bird", "cow", "duck", "sheep", "horse", "fish", "pig"],
+            "verbs": ["say", "jump", "run", "fly", "swim"],
+            "adjectives": ["loud", "quiet", "big", "small"],
+            "animalSounds": ["bark", "meow", "quack", "woof"]
+          },
+          "pronunciation": {
+            "sounds": "/m/ in 'meow' and /r/ in 'rooster'",
+            "phonemicAwareness": "Recognizing letters of the alphabet in animal names (e.g., 'C' in 'cat', 'D' in 'dog') and introducing letters and sounds (P, Q, R)"
+          }
+        },
+        "pragmatic": {
+          "functions": [
+            "Mimicking sounds: Imitate animal or environmental sounds when prompted (e.g., 'meow' for a cat)",
+            "Recognizing sounds: Identify common animal sounds during listening activities (e.g., 'moo' for cow)"
+          ]
+        },
+        "sociolinguistic": {
+          "elements": [
+            "Describing animal sounds: Identifying and describing different animals, based on their sounds."
+          ]
+        }
+      }
+    },
+    {
+      "scenarioNum": 6,
+      "scenarioName": "Let's Dance!",
+      "theme1": "Move Around",
+      "theme2": "One Step In, Two Steps Out!",
+      "communicativeCompetences": {
+        "linguistic": {
+          "grammaticalFeatures": [
+            "1. Sequential commands with numbers (e.g., 'First, take one step to the side.' 'Next, take two steps to the side.')",
+            "2. Simple directive phrases (e.g., 'Move to the front.' 'Step to the side.')",
+            "3. Positional commands with prepositions (e.g., 'Stand next to the chair.' 'Jump over the line.')"
+          ],
+          "vocabulary": {
+            "nouns": ["numbers (one to ten)", "step", "dance", "foot", "circle", "line", "voice"],
+            "verbs": ["move", "dance", "step", "spin", "turn", "twirl", "shake", "hop", "put", "jump"],
+            "adjectives": ["fast", "slow", "big", "small"],
+            "prepositions": ["in", "out", "around", "up"]
+          },
+          "pronunciation": {
+            "sounds": "/t/ in 'two' and /d/ in 'dance'",
+            "phonemicAwareness": "Recognizing letters of the alphabet in familiar words (e.g., 'J' in 'jump') and introducing letters and sounds (S, T, U, V)"
+          }
+        },
+        "pragmatic": {
+          "functions": [
+            "Acting out dance commands: Follow simple movement instructions in dance, like 'step forward' and 'clap'",
+            "Reciting action rhymes: Participate in action rhymes or songs, such as 'Head, Shoulders, Knees, and Toes'"
+          ]
+        },
+        "sociolinguistic": {
+          "elements": [
+            "Group participation: Engaging in group movements and dances, using polite expressions such as 'after you' and 'go ahead'."
+          ]
+        }
+      }
+    },
+    {
+      "scenarioNum": 7,
+      "scenarioName": "I'm Happy.",
+      "theme1": "I'm Excited!",
+      "theme2": "How Are You?",
+      "communicativeCompetences": {
+        "linguistic": {
+          "grammaticalFeatures": [
+            "1. Simple sentences (e.g., 'I'm happy.')",
+            "2. WH-questions (e.g., 'How are you?')",
+            "3. I'm + adjective (e.g., 'I'm excited.')"
+          ],
+          "vocabulary": {
+            "nouns": ["feelings", "friend"],
+            "verbs": ["feel", "be (am)", "need", "want", "rest", "play", "smile", "frown", "hug", "help"],
+            "adjectives": ["happy", "sad", "tired", "hungry", "thirsty", "calm", "sleepy", "excited", "sick", "warm", "angry"],
+            "questionWords": ["how"]
+          },
+          "pronunciation": {
+            "sounds": "/h/ in 'happy' and /e/ in 'excited'",
+            "phonemicAwareness": "Recognizing letters of the alphabet in familiar words (e.g., 'E' in the word 'rest' or 'H' in the word 'happy') and introducing letters and sounds (W, X, Y, Z)"
+          }
+        },
+        "pragmatic": {
+          "functions": [
+            "Expressing feelings and needs: Express emotions and needs by saying, 'I'm happy.' or 'I'm tired.'",
+            "Responding to questions about feelings: Answering 'How are you?' with simple 'I'm...' statements (e.g., 'I'm excited.')"
+          ]
+        },
+        "sociolinguistic": {
+          "elements": [
+            "Discussing feelings: Talking about emotions and recognizing others' feelings."
+          ]
+        }
+      }
+    },
+    {
+      "scenarioNum": 8,
+      "scenarioName": "I Like School!",
+      "theme1": "I Like Games!",
+      "theme2": "I Like Math!",
+      "communicativeCompetences": {
+        "linguistic": {
+          "grammaticalFeatures": [
+            "1. Subject + verb (e.g., 'I like school.')",
+            "2. Present simple (e.g., 'I like games.')",
+            "3. Yes/No questions (e.g., 'Do you like it?' 'Yes')"
+          ],
+          "vocabulary": {
+            "nouns": ["teacher", "art", "playground", "science", "music", "math", "English"],
+            "verbs": ["enjoy", "choose", "create", "count", "build", "sing", "share", "look", "write", "color"],
+            "adjectives": ["interesting", "funny", "boring", "exciting", "happy", "sad", "favorite", "colorful"]
+          },
+          "pronunciation": {
+            "sounds": "/l/ in 'like' and /g/ in 'games'",
+            "phonemicAwareness": "Recognizing sounds of letters of the alphabet in the words 'math' and 'games'"
+          }
+        },
+        "pragmatic": {
+          "functions": [
+            "Expressing likes and dislikes: Use simple phrases like 'I like...' or 'I don't like...' to express preferences",
+            "Answering preference questions: Respond to 'Do you like it?' with 'yes' or 'no' and gestures (e.g., nodding)"
+          ]
+        },
+        "sociolinguistic": {
+          "elements": [
+            "Sharing preferences: Discussing what students like or dislike about school and activities."
+          ]
+        }
+      }
+    }
+  ]
+}

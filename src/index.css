@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Color Palette - Vibrant Indigo/Slate (Light Mode) */
+  --font-primary: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  
+  --bg-app: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(226, 232, 240, 0.8);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+  
+  --brand-primary: #3b82f6;
+  --brand-secondary: #8b5cf6;
+  --accent-success: #10b981;
+  --accent-pink: #ec4899;
+}
+
+.dark {
+  /* Color Palette - Cyberpunk Dark Slate */
+  --bg-app: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  
+  --glass-bg: rgba(15, 23, 42, 0.75);
+  --glass-border: rgba(51, 65, 85, 0.5);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  
+  --brand-primary: #60a5fa;
+  --brand-secondary: #a78bfa;
+  --accent-success: #34d399;
+  --accent-pink: #f472b6;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--bg-app);
+  color: var(--text-main);
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Active Skill Styles */
+.skill-badge {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-badge.active-aoa {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  transform: translateY(-1px);
+}
+
+.skill-badge.active-inter {
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+  transform: translateY(-1px);
+}
+
+.skill-badge.active-theme {
+  background: linear-gradient(135deg, #10b981, #047857);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Shimmer Loading Animations */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-bg {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.05) 25%, 
+    rgba(255, 255, 255, 0.12) 37%, 
+    rgba(255, 255, 255, 0.05) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.dark .shimmer-bg {
+  background: linear-gradient(90deg, 
+    rgba(15, 23, 42, 0.4) 25%, 
+    rgba(30, 41, 59, 0.7) 37%, 
+    rgba(15, 23, 42, 0.4) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* MEDUCA Table Rendering in App */
+.meduca-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: var(--glass-bg);
+  color: var(--text-main);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.meduca-table-container th {
+  background: rgba(30, 58, 138, 0.1);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--brand-primary);
+}
+
+.meduca-table-container td, 
+.meduca-table-container th {
+  border: 1px solid var(--glass-border) !important;
+  padding: 12px 14px;
+  vertical-align: top;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.meduca-table-container tr:nth-child(even) {
+  background: rgba(59, 130, 246, 0.03);
+}
+
+/* Custom Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

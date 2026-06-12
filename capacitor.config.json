@@ -1,0 +1,6 @@
+{
+  "appId": "pro.edugen.panama",
+  "appName": "EduGen Panama PRO",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

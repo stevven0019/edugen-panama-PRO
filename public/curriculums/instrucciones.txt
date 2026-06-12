@@ -1,0 +1,21 @@
+📁 CARPETA DE CURRÍCULOS OFICIALES
+
+Guarda en esta carpeta todos tus archivos json de currículo por grado para que la aplicación pueda localizarlos automáticamente al generar el Theme Planner.
+
+Nombres recomendados para vincular automáticamente con los grados de la interfaz:
+- English_Curriculum_PreK.json
+- English_Curriculum_Kindergarden.json
+- English_Curriculum_1.json
+- English_Curriculum_2.json
+- English_Curriculum_3.json
+- English_Curriculum_4.json
+- English_Curriculum_5.json
+- English_Curriculum_6.json
+- English_Curriculum_7.json
+- English_Curriculum_8.json
+- English_Curriculum_9.json
+- English_Curriculum_10.json
+- English_Curriculum_11.json
+- English_Curriculum_12.json
+
+Al seleccionar el grado correspondiente en la aplicación, el sistema cargará automáticamente el json de esta carpeta y buscará el escenario y tema específicos.
