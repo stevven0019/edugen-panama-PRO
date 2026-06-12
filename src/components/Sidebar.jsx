@@ -10,10 +10,11 @@ import {
   Moon, 
   LogOut,
   Sparkles,
-  School
+  School,
+  ShieldCheck
 } from 'lucide-react';
 
-export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, showPWAInstallBtn = false, onPWAInstall }) {
+export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, showPWAInstallBtn = false, onPWAInstall, isAdmin = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -54,6 +55,7 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
       if (itemId === 'aoa') return 'bg-blue-600 text-white dark:bg-blue-600 shadow-md shadow-blue-500/20';
       if (itemId === 'interdisciplinary') return 'bg-violet-600 text-white dark:bg-violet-600 shadow-md shadow-violet-500/20';
       if (itemId === 'theme-planner') return 'bg-emerald-600 text-white dark:bg-emerald-600 shadow-md shadow-emerald-500/20';
+      if (itemId === 'admin-payments') return 'bg-rose-600 text-white dark:bg-rose-600 shadow-md shadow-rose-500/20';
       return 'bg-indigo-600 text-white dark:bg-indigo-600 shadow-md shadow-indigo-500/20';
     }
     return 'text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/40 hover:text-slate-900 dark:hover:text-white';
@@ -132,6 +134,24 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
                 <span>{item.label}</span>
               </button>
             ))}
+
+            {isAdmin && (
+              <>
+                <span className="px-3 text-[10px] font-black text-rose-500 dark:text-rose-400 uppercase tracking-widest block mb-2 pt-4">
+                  ADMINISTRACIÓN
+                </span>
+                <button
+                  onClick={() => handleTabSelect('admin-payments')}
+                  className={`
+                    w-full flex items-center space-x-3.5 px-4 py-3 rounded-2xl font-semibold text-sm transition-all duration-200 active:scale-[0.98]
+                    ${getActiveStyles('admin-payments')}
+                  `}
+                >
+                  <ShieldCheck className="w-5 h-5" />
+                  <span>Aprobar Pagos</span>
+                </button>
+              </>
+            )}
 
             <span className="px-3 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest block mb-2 pt-4">
               RECURSOS Y SOPORTE

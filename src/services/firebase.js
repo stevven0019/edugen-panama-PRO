@@ -16,6 +16,23 @@ import {
   onSnapshot
 } from 'firebase/firestore';
 
+// ── Admin Config ──
+const ADMIN_EMAILS = [
+  'stevven0019@gmail.com',
+  'esteban.edugen@gmail.com',
+  'esteb@edugen.pro',
+  'esteban@edugen.pro'
+];
+
+export const isAdmin = (email) => {
+  if (!email) return false;
+  const lower = email.toLowerCase();
+  if (isDemoMode) {
+    return lower.includes('admin') || lower.endsWith('@edugen.pro') || lower === 'stevven0019@gmail.com';
+  }
+  return ADMIN_EMAILS.includes(lower);
+};
+
 // ── Check if Environment Credentials exist and are not boilerplate placeholders ──
 const isEnvConfigured = () => {
   const k = import.meta.env.VITE_FIREBASE_API_KEY;
@@ -136,6 +153,49 @@ const mockDb = {
   },
   setPremium(uid, value) {
     localStorage.setItem(`edugen_premium_${uid}`, value ? 'true' : 'false');
+  },
+  getPendingPayments() {
+    const list = localStorage.getItem('edugen_pending_payments');
+    return list ? JSON.parse(list) : [];
+  },
+  submitPendingPayment(uid, email, productType, tokenQuantity, amount, refId, screenshot) {
+    const payments = this.getPendingPayments();
+    const newPayment = {
+      id: 'mock_pay_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
+      uid,
+      email,
+      productType,
+      tokenQuantity,
+      amount,
+      refId,
+      screenshot,
+      status: 'pending',
+      createdAt: new Date().toISOString()
+    };
+    payments.push(newPayment);
+    localStorage.setItem('edugen_pending_payments', JSON.stringify(payments));
+    window.dispatchEvent(new Event('storage'));
+    return newPayment;
+  },
+  updatePaymentStatus(paymentId, status, targetUid, productType, tokenQuantity, amount) {
+    const payments = this.getPendingPayments();
+    const index = payments.findIndex(p => p.id === paymentId);
+    if (index >= 0) {
+      payments[index].status = status;
+      localStorage.setItem('edugen_pending_payments', JSON.stringify(payments));
+      
+      if (status === 'approved') {
+        if (productType === 'subscription') {
+          this.setPremium(targetUid, true);
+          const current = this.getCredits(targetUid);
+          this.setCredits(targetUid, current + 30);
+        } else {
+          const current = this.getCredits(targetUid);
+          this.setCredits(targetUid, current + tokenQuantity);
+        }
+      }
+      window.dispatchEvent(new Event('storage'));
+    }
   }
 };
 
@@ -412,6 +472,62 @@ export const databaseService = {
       } catch (err) {
         console.warn("Firestore deletePlanFromLibrary failed, falling back to local storage:", err);
         mockDb.deletePlan(uid, planId);
+      }
+    }
+  },
+
+  async submitPendingPayment(uid, email, productType, tokenQuantity, amount, refId, screenshot) {
+    if (isDemoMode) {
+      return mockDb.submitPendingPayment(uid, email, productType, tokenQuantity, amount, refId, screenshot);
+    } else {
+      const { collection, addDoc } = await import('firebase/firestore');
+      const paymentsCol = collection(realDb, 'artifacts', 'edugen-panama-aoa', 'pending_payments');
+      const docData = {
+        uid,
+        email,
+        productType,
+        tokenQuantity,
+        amount,
+        refId,
+        screenshot,
+        status: 'pending',
+        createdAt: new Date().toISOString()
+      };
+      return addDoc(paymentsCol, docData);
+    }
+  },
+
+  async getPendingPayments() {
+    if (isDemoMode) {
+      return mockDb.getPendingPayments();
+    } else {
+      const { collection, query, getDocs, orderBy } = await import('firebase/firestore');
+      const paymentsCol = collection(realDb, 'artifacts', 'edugen-panama-aoa', 'pending_payments');
+      const q = query(paymentsCol, orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+      const list = [];
+      snap.forEach(doc => {
+        list.push({ id: doc.id, ...doc.data() });
+      });
+      return list;
+    }
+  },
+
+  async updatePaymentStatus(paymentId, status, targetUid, productType, tokenQuantity, amount) {
+    if (isDemoMode) {
+      return mockDb.updatePaymentStatus(paymentId, status, targetUid, productType, tokenQuantity, amount);
+    } else {
+      const { doc, updateDoc } = await import('firebase/firestore');
+      const paymentRef = doc(realDb, 'artifacts', 'edugen-panama-aoa', 'pending_payments', paymentId);
+      await updateDoc(paymentRef, { status });
+
+      if (status === 'approved') {
+        if (productType === 'subscription') {
+          await this.togglePremium(targetUid, true);
+          await this.incrementCredits(targetUid, 30);
+        } else {
+          await this.incrementCredits(targetUid, tokenQuantity);
+        }
       }
     }
   }

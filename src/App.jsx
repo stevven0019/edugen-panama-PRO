@@ -8,7 +8,7 @@ import {
   LockKeyhole,
   X
 } from 'lucide-react';
-import { authService, databaseService, isDemoMode } from './services/firebase';
+import { authService, databaseService, isDemoMode, isAdmin } from './services/firebase';
 
 // Views
 import Sidebar from './components/Sidebar';
@@ -20,6 +20,7 @@ import Interdisciplinary from './pages/Interdisciplinary';
 import ThemePlanner from './pages/ThemePlanner';
 import Library from './pages/Library';
 import AdBanner from './components/AdBanner';
+import AdminPayments from './pages/AdminPayments';
 
 // EduGen Pro Billing & Ads components
 import BillingModal from './components/BillingModal';
@@ -441,6 +442,7 @@ export default function App() {
         onLogout={handleLogout} 
         showPWAInstallBtn={showPWAInstallBtn}
         onPWAInstall={handlePWAInstall}
+        isAdmin={isAdmin(user.email)}
       />
       
       {/* Content wrapper panel */}
@@ -498,6 +500,12 @@ export default function App() {
           )}
           {activeTab === 'library' && (
             <Library 
+              user={user} 
+              onTriggerAlert={triggerAlert} 
+            />
+          )}
+          {activeTab === 'admin-payments' && (
+            <AdminPayments 
               user={user} 
               onTriggerAlert={triggerAlert} 
             />
