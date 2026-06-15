@@ -977,6 +977,79 @@ async function simulateResponse(type, vars, media = null) {
     `;
   }
 
+  if (type === 'listeningscript') {
+    await new Promise(r => setTimeout(r, 1500));
+    const theme = vars.theme || 'Books and Adventure';
+    const scenery = vars.scenario || 'In the Library';
+    const grade = vars.grade || '5th Grade';
+
+    // Check if theme/scenario relates to market/food
+    const lowerTheme = theme.toLowerCase() + ' ' + scenery.toLowerCase();
+    if (lowerTheme.includes('market') || lowerTheme.includes('shop') || lowerTheme.includes('food') || lowerTheme.includes('fruit')) {
+      return JSON.stringify({
+        title: "At the Local Market",
+        characters: [
+          { name: "Lucas", role: "Customer", gender: "male" },
+          { name: "Doña María", role: "Seller", gender: "female" }
+        ],
+        setting: "At a vegetable stand in the market",
+        script: [
+          { speaker: "Lucas", text: "Good morning! Are these tomatoes fresh today?" },
+          { speaker: "Doña María", text: "Good morning! Yes, they arrived this morning from Chiriquí. They are very fresh." },
+          { speaker: "Lucas", text: "Excellent. How much is a pound of tomatoes?" },
+          { speaker: "Doña María", text: "They are one dollar and fifty cents a pound. And today we have a special on sweet bananas." },
+          { speaker: "Lucas", text: "Oh, I love sweet bananas. How much are they?" },
+          { speaker: "Doña María", text: "They are only fifty cents for a bunch of five." },
+          { speaker: "Lucas", text: "Perfect, I will take one pound of tomatoes and two bunches of bananas, please." },
+          { speaker: "Doña María", text: "Very well. Do you need anything else? We have fresh carrots and potatoes too." },
+          { speaker: "Lucas", text: "No, thank you. That is all I need for my recipe today." },
+          { speaker: "Doña María", text: "Alright. That will be two dollars and fifty cents in total." },
+          { speaker: "Lucas", text: "Here is a five-dollar bill." },
+          { speaker: "Doña María", text: "Thank you. And here is your change: two dollars and fifty cents, and your shopping bag." },
+          { speaker: "Lucas", text: "Thank you very much, Doña María! Have a nice day!" },
+          { speaker: "Doña María", text: "Thank you, Lucas! Enjoy your cooking!" }
+        ],
+        comprehensionQuestions: [
+          "Where does this conversation take place?",
+          "How much does a pound of tomatoes cost?",
+          "What fruits did Lucas purchase at the stand?",
+          "How much change did Lucas receive from the five-dollar bill?"
+        ]
+      });
+    }
+
+    // Default library script
+    return JSON.stringify({
+      title: "Finding My Next Adventure!",
+      characters: [
+        { name: "Sofia", role: "Student", gender: "female" },
+        { name: "Mr. Robles", role: "Librarian", gender: "male" }
+      ],
+      setting: scenery || "In the Library",
+      script: [
+        { speaker: "Sofia", text: "Good morning, Mr. Robles!" },
+        { speaker: "Mr. Robles", text: "Good morning, Sofia! How can I help you today?" },
+        { speaker: "Sofia", text: "I need to borrow some new books. I finished all my old ones!" },
+        { speaker: "Mr. Robles", text: "That's great to hear! Do you have a specific type of book in mind? Like fiction or non-fiction?" },
+        { speaker: "Sofia", text: "Hmm, I like adventure stories. And maybe something about space? I need a lot of books for the holidays!" },
+        { speaker: "Mr. Robles", text: "Okay! For adventure fiction, you can check the shelves over there, near the big window. We have many new books." },
+        { speaker: "Sofia", text: "Oh, perfect! I see a book about a treasure hunt. What about space books?" },
+        { speaker: "Mr. Robles", text: "For space, that would be non-fiction. Look on the shelves to your left, in the science section. There are many books about planets and stars." },
+        { speaker: "Sofia", text: "Thank you, Mr. Robles! Wow, there are so many books here. I'm excited to search for a good one." },
+        { speaker: "Mr. Robles", text: "Remember to be quiet in the reading room. And if you need help finding anything, just ask." },
+        { speaker: "Sofia", text: "I will! I want to borrow two adventure books and one about space. Do I need my library card?" },
+        { speaker: "Mr. Robles", text: "Yes, please bring them to the desk with your library card when you are ready to check them out. Enjoy your reading!" },
+        { speaker: "Sofia", text: "Thanks, Mr. Robles! This library is the best!" }
+      ],
+      comprehensionQuestions: [
+        "Where are Sofia and Mr. Robles?",
+        "Why does Sofia need new books?",
+        "What kind of books does Sofia decide to borrow?",
+        "What does Sofia need to check out the books at the desk?"
+      ]
+    });
+  }
+
   return '';
 }
 
@@ -1843,6 +1916,44 @@ DATA:
 - Target Skills: ${skillsStr}
 
 Produce the full HTML planner now. Use the curriculum data from the system prompt for Section 3.`
+    };
+  }
+
+  if (type === 'listeningscript') {
+    const grade = vars.grade || '5th Grade';
+    const scenery = vars.scenario || 'Planning a party';
+    const theme = vars.theme || 'Food and Drinks';
+    const skillsStr = vars.skills?.join(', ') || 'Listening';
+
+    return {
+      systemPrompt: `You are an expert EFL materials designer for MEDUCA Panama's Action-Oriented Approach (AOA).
+    Generate a COMPLETE, REALISTIC LISTENING SCRIPT (dialogue) between characters in English, suitable for Grade ${grade} students in Panama.
+    
+    The content must be returned strictly in the following JSON format (do NOT wrap it in markdown block like \`\`\`json, just return the raw JSON string):
+    {
+      "title": "Title of the Dialogue",
+      "characters": [
+        { "name": "Character Name 1", "role": "Role 1", "gender": "female/male" },
+        { "name": "Character Name 2", "role": "Role 2", "gender": "female/male" }
+      ],
+      "setting": "Setting description",
+      "script": [
+        { "speaker": "Character Name 1/2", "text": "Dialogue text in English..." }
+      ],
+      "comprehensionQuestions": [
+        "Comprehension Question 1",
+        "Comprehension Question 2",
+        "Comprehension Question 3",
+        "Comprehension Question 4"
+      ]
+    }
+
+    CRITICAL RULES:
+    1. The script must be set in the scenario: "${scenery}" and related to the theme: "${theme}".
+    2. The script must have between 10 and 15 turns of natural, engaging conversation between the characters.
+    3. The vocabulary and grammar should align with the grade level: "${grade}" (CEFR A1 to A2).
+    4. Return ONLY valid JSON. No preamble, no explanations, no markdown styling.`,
+      userMsg: `Generate a structured listening script for Theme: "${theme}", Scenario: "${scenery}", Grade: "${grade}".`
     };
   }
 

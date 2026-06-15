@@ -10,9 +10,67 @@ export default function EditorModal({ isOpen, plan, onClose, onSave }) {
   const [saved, setSaved] = useState(false);
   const editableRef = useRef(null);
 
+  const isJsonString = (str) => {
+    try {
+      JSON.parse(str);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+
+  const convertScriptJsonToHtml = (jsonStr) => {
+    try {
+      const parsed = JSON.parse(jsonStr);
+      return `
+<div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; color: #333; line-height: 1.6; padding: 20px; background: #fff;">
+  <div style="text-align: center; margin-bottom: 20px; border-bottom: 3px double #1a3a5c; padding-bottom: 10px;">
+    <h2 style="font-size: 14px; font-weight: bold; margin: 2px 0; color: #1a3a5c;">MINISTRY OF EDUCATION</h2>
+    <h3 style="font-size: 12px; font-weight: bold; margin: 2px 0; color: #1a3a5c;">EFL CLASSROOM LISTENING RESOURCE</h3>
+    <h3 style="font-size: 12px; font-weight: bold; margin: 2px 0;">🎧 LISTENING SCRIPT: ${parsed.title || 'Finding My Next Adventure!'}</h3>
+  </div>
+
+  <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 11px; border: 1px dashed #1a5276;">
+    <tr style="background: #d6eaf8;">
+      <td style="font-weight: bold; border: 1px solid #ccc; padding: 8px; width: 120px;">Setting:</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">${parsed.setting || 'In the Library'}</td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold; border: 1px solid #ccc; padding: 8px;">Characters:</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">
+        ${(parsed.characters || []).map(c => `<b>${c.name}</b> (${c.role})`).join(', ')}
+      </td>
+    </tr>
+  </table>
+
+  <div style="border: 2px dashed #1a5276; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; background: #fdfefe; font-size: 12px; margin-bottom: 25px;">
+    ${(parsed.script || []).map(turn => `
+      <p style="margin: 8px 0;"><b>${turn.speaker.toUpperCase()}:</b> "${turn.text}"</p>
+    `).join('')}
+  </div>
+
+  <div style="background-color:#1a3a5c; color:white; font-weight:bold; font-size:12px; padding:6px 10px; margin-bottom: 10px;">
+    COMPREHENSION QUESTIONS
+  </div>
+  <ol style="font-size: 12px; padding-left: 20px; margin-bottom: 20px;">
+    ${(parsed.comprehensionQuestions || []).map(q => `
+      <li style="margin-bottom: 8px;"><b>${q}</b><br/><span style="color:#666;">Answer: ____________________________________________________</span></li>
+    `).join('')}
+  </ol>
+</div>
+      `;
+    } catch (e) {
+      return `<div>Error: ${jsonStr}</div>`;
+    }
+  };
+
   useEffect(() => {
     setTitle(plan.title || '');
-    setContent(plan.content || '');
+    let displayContent = plan.content || '';
+    if (isJsonString(displayContent)) {
+      displayContent = convertScriptJsonToHtml(displayContent);
+    }
+    setContent(displayContent);
     setSaved(false);
     setCopied(false);
   }, [plan]);

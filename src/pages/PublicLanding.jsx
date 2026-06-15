@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   School, 
   ArrowRight, 
@@ -10,11 +10,107 @@ import {
   Award, 
   Globe, 
   CheckCircle,
-  MessageSquare
+  MessageSquare,
+  Send,
+  User,
+  MapPin,
+  BarChart3,
+  Plus
 } from 'lucide-react';
 import AdBanner from '../components/AdBanner';
+import { databaseService } from '../services/firebase';
 
 export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedArticleId }) {
+  const [comments, setComments] = useState([]);
+  const [loadingComments, setLoadingComments] = useState(true);
+  
+  // Comment form state
+  const [commName, setCommName] = useState('');
+  const [commSchool, setCommSchool] = useState('');
+  const [commRegion, setCommRegion] = useState('');
+  const [commText, setCommText] = useState('');
+  const [submittingComment, setSubmittingComment] = useState(false);
+
+  // Poll state
+  const [pollResults, setPollResults] = useState(null);
+  const [hasVoted, setHasVoted] = useState(false);
+  const [submittingVote, setSubmittingVote] = useState(false);
+
+  useEffect(() => {
+    // Load comments
+    databaseService.getPublicComments()
+      .then(data => {
+        setComments(data);
+        setLoadingComments(false);
+      })
+      .catch(err => {
+        console.error("Error loading comments:", err);
+        setLoadingComments(false);
+      });
+
+    // Load poll
+    databaseService.getSurveyResults()
+      .then(data => {
+        setPollResults(data);
+      })
+      .catch(err => {
+        console.error("Error loading survey results:", err);
+      });
+
+    // Check if user has already voted
+    const voted = localStorage.getItem('edugen_survey_voted');
+    if (voted === 'true') {
+      setHasVoted(true);
+    }
+  }, []);
+
+  const handleCommentSubmit = async (e) => {
+    e.preventDefault();
+    if (!commName || !commSchool || !commRegion || !commText) {
+      alert("Por favor completa todos los campos para enviar tu comentario.");
+      return;
+    }
+    setSubmittingComment(true);
+    try {
+      await databaseService.submitPublicComment(commName, commSchool, commRegion, commText);
+      // Reload comments
+      const updated = await databaseService.getPublicComments();
+      setComments(updated);
+      // Reset form
+      setCommName('');
+      setCommSchool('');
+      setCommRegion('');
+      setCommText('');
+      alert("¡Gracias por tu comentario! Se ha añadido al muro de la comunidad.");
+    } catch (err) {
+      console.error(err);
+      alert("Hubo un error al enviar tu comentario. Intenta de nuevo.");
+    } finally {
+      setSubmittingComment(false);
+    }
+  };
+
+  const handleVote = async (optionId) => {
+    if (hasVoted) return;
+    setSubmittingVote(true);
+    try {
+      const updated = await databaseService.submitSurveyVote(optionId);
+      setPollResults(updated);
+      setHasVoted(true);
+      localStorage.setItem('edugen_survey_voted', 'true');
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSubmittingVote(false);
+    }
+  };
+
+  const getPercentage = (optionCount) => {
+    if (!pollResults || !pollResults.total) return '0%';
+    const pct = ((optionCount / pollResults.total) * 100).toFixed(1);
+    return `${pct}%`;
+  };
+
   const features = [
     {
       title: 'Planificador AOA',
@@ -33,30 +129,6 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
       desc: 'Vincula la asignatura de inglés de forma orgánica con Ciencias Naturales, Estudios Sociales o Arte según las directrices oficiales.',
       icon: <Sparkles className="w-6 h-6 text-purple-500" />,
       badge: 'Aprendizaje Basado en Proyectos'
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: 'Profa. María González',
-      school: 'C.E.B.G. República de Panamá',
-      region: 'Panamá Centro',
-      quote: 'EduGen cambió completamente mi rutina semanal. Lo que antes me tomaba todo el fin de semana planificando formatos AOA, ahora lo estructuro en minutos. La alineación con los archivos oficiales es excelente.',
-      avatar: 'M'
-    },
-    {
-      name: 'Prof. Carlos Samudio',
-      school: 'Colegio Félix Olivares Contreras',
-      region: 'Chiriquí',
-      quote: 'El generador trimestral (Theme Planner) me permite alinear automáticamente los niveles CEFR que MEDUCA exige para mis grupos de media y premedia. Es una herramienta indispensable hoy en día.',
-      avatar: 'C'
-    },
-    {
-      name: 'Profa. Yamileth Samaniego',
-      school: 'Escuela Hipólito Pérez Tello',
-      region: 'Herrera',
-      quote: 'Los proyectos interdisciplinarios que genera vinculando inglés con Ciencias Naturales y Arte han sido un éxito total en mi escuela. Hacen que las clases cobren un sentido real para los estudiantes.',
-      avatar: 'Y'
     }
   ];
 
@@ -251,40 +323,394 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
         </div>
       </section>
 
-      {/* Panama Testimonials */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-12">
+      {/* SECCIÓN: GUÍA DE USO DE PLANIFICADORES */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-12 border-t border-slate-200/40 dark:border-slate-800/20">
         <div className="text-center space-y-3">
-          <h2 className="text-3xl font-extrabold font-display tracking-tight flex items-center justify-center gap-2">
-            <MessageSquare className="w-7 h-7 text-blue-600" />
-            Lo que dicen los docentes en Panamá
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/20 text-[10px] font-black uppercase tracking-widest">
+            <GraduationCap className="w-3.5 h-3.5" />
+            <span>Guía Práctica del Docente</span>
+          </div>
+          <h2 className="text-3xl font-extrabold font-display tracking-tight text-slate-850 dark:text-slate-100">
+            ¿Cómo usar nuestros Planificadores Inteligentes?
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Testimonios reales de maestros y profesores del sistema escolar oficial y particular que ya utilizan nuestra plataforma.
+            Estructura tus planes de forma sencilla siguiendo estos pasos diseñados para agilizar tu labor administrativa y pedagógica.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((test, index) => (
-            <div 
-              key={index}
-              className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-6"
-            >
-              <p className="text-xs text-slate-600 dark:text-slate-350 italic leading-relaxed">
-                "{test.quote}"
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Tarjeta: Lesson Planner AOA */}
+          <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-5 flex flex-col justify-between hover:border-blue-500/30 transition-all duration-300">
+            <div className="space-y-4">
+              <div className="bg-blue-500/10 text-blue-500 p-3.5 rounded-2xl w-max">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <h3 className="font-extrabold text-lg text-slate-850 dark:text-slate-100">
+                Lesson Planner AOA (Diario)
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Genera secuencias didácticas diarias para afianzar las 5 habilidades lingüísticas bajo el enfoque pedagógico AOA exigido por MEDUCA.
               </p>
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow-md">
-                  {test.avatar}
-                </div>
-                <div>
-                  <h4 className="font-extrabold text-xs text-slate-800 dark:text-slate-100 leading-tight">{test.name}</h4>
-                  <p className="text-[10px] text-slate-400 dark:text-slate-500 font-semibold mt-0.5 leading-snug">
-                    {test.school} ({test.region})
-                  </p>
-                </div>
+              <ul className="text-xs text-slate-600 dark:text-slate-350 space-y-2 border-t border-slate-200/50 dark:border-slate-800/40 pt-3">
+                <li className="flex items-start gap-1.5">
+                  <span className="bg-blue-500/10 text-blue-500 font-bold px-1.5 py-0.5 rounded text-[10px]">1</span>
+                  <span>Ten a mano las <strong>Competencias Comunicativas</strong>.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="bg-blue-500/10 text-blue-500 font-bold px-1.5 py-0.5 rounded text-[10px]">2</span>
+                  <span>Pégalas dentro del recuadro del formulario.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="bg-blue-500/10 text-blue-500 font-bold px-1.5 py-0.5 rounded text-[10px]">3</span>
+                  <span>Ingresa los datos personales del grupo y listo.</span>
+                </li>
+              </ul>
+              <div className="bg-indigo-500/5 dark:bg-indigo-500/10 border border-indigo-500/20 p-3.5 rounded-2xl text-[11px] text-slate-650 dark:text-slate-300">
+                💡 <strong>Extras:</strong> Genera automáticamente la secuencia de dictado <strong>Lesson Delivery</strong> y un área de <strong>Resources</strong> con actividades y rúbricas.
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Tarjeta: Theme Planner */}
+          <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-5 flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300">
+            <div className="space-y-4">
+              <div className="bg-emerald-500/10 text-emerald-500 p-3.5 rounded-2xl w-max">
+                <Layers className="w-6 h-6" />
+              </div>
+              <h3 className="font-extrabold text-lg text-slate-850 dark:text-slate-100">
+                Theme Planner (Trimestral)
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Diseña unidades completas organizando la dosificación y contenidos trimestrales oficiales de MEDUCA.
+              </p>
+              <ul className="text-xs text-slate-600 dark:text-slate-350 space-y-2 border-t border-slate-200/50 dark:border-slate-800/40 pt-3">
+                <li className="flex items-start gap-1.5">
+                  <span className="bg-emerald-500/10 text-emerald-500 font-bold px-1.5 py-0.5 rounded text-[10px]">1</span>
+                  <span>Selecciona el grado y trimestre correspondiente.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="bg-emerald-500/10 text-emerald-500 font-bold px-1.5 py-0.5 rounded text-[10px]">2</span>
+                  <span>Ingresa los datos necesarios para dosificar los contenidos.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="bg-emerald-500/10 text-emerald-500 font-bold px-1.5 py-0.5 rounded text-[10px]">Nota</span>
+                  <span>Por el momento, está disponible para <strong>Kinder, Primer Grado y Cuarto Grado</strong>.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Tarjeta: Proyecto Interdisciplinario */}
+          <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-5 flex flex-col justify-between hover:border-purple-500/30 transition-all duration-300">
+            <div className="space-y-4">
+              <div className="bg-purple-500/10 text-purple-500 p-3.5 rounded-2xl w-max">
+                <Sparkles className="w-6 h-6" />
+              </div>
+              <h3 className="font-extrabold text-lg text-slate-850 dark:text-slate-100">
+                Proyecto Interdisciplinario
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Vincula el inglés de forma transversal con otras asignaturas (Ciencias Naturales, Estudios Sociales, Arte).
+              </p>
+              <ul className="text-xs text-slate-600 dark:text-slate-350 space-y-2 border-t border-slate-200/50 dark:border-slate-800/40 pt-3">
+                <li className="flex items-start gap-1.5">
+                  <span className="bg-purple-500/10 text-purple-500 font-bold px-1.5 py-0.5 rounded text-[10px]">1</span>
+                  <span>Si no tienes un tema de proyecto, la IA te ayuda a <strong>generar una propuesta de tema</strong>.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="bg-purple-500/10 text-purple-500 font-bold px-1.5 py-0.5 rounded text-[10px]">2</span>
+                  <span>Con la información obtenida, el sistema autocompleta el formulario oficial.</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <span className="bg-purple-500/10 text-purple-500 font-bold px-1.5 py-0.5 rounded text-[10px]">3</span>
+                  <span>Descarga tu planeación interdisciplinaria terminada.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Highlight Box */}
+        <div className="glass-panel p-6 rounded-[2rem] bg-gradient-to-r from-blue-600/5 to-indigo-600/5 border border-blue-500/15 text-center max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="bg-blue-600/10 text-blue-500 p-3 rounded-full flex-shrink-0">
+            <CheckCircle className="w-6 h-6" />
+          </div>
+          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium leading-relaxed text-left">
+            <strong>¡Flexibilidad total para el docente!</strong> Todas las planificaciones generadas en el portal son <strong>100% editables y listas para imprimir</strong> de manera sencilla. Realiza ajustes, añade notas o adapta las rúbricas antes de exportar.
+          </p>
+        </div>
+      </section>
+
+      {/* SECCIÓN: COMUNIDAD Y ENCUESTA DE INTERÉS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-12 border-t border-slate-200/40 dark:border-slate-800/20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* LADO IZQUIERDO: Encuesta de Interés (5 columnas) */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="glass-panel p-6 sm:p-8 rounded-[2rem] bg-gradient-to-br from-blue-600/5 via-indigo-600/5 to-transparent border border-slate-250 dark:border-slate-800 shadow-xl space-y-6">
+              <div className="space-y-2.5">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 text-[9px] font-black uppercase tracking-wider">
+                  <BarChart3 className="w-3.5 h-3.5" />
+                  Encuesta de la Comunidad
+                </span>
+                <h3 className="font-extrabold text-xl text-slate-850 dark:text-slate-100 leading-tight">
+                  ¿Te interesaría adquirir una suscripción Premium en EduGen Panama PRO para planificar sin límites?
+                </h3>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                  Tu opinión nos ayuda a definir nuevas herramientas de planificación para los docentes de Panamá.
+                </p>
+              </div>
+
+              {/* Contenido de la Encuesta */}
+              {!hasVoted ? (
+                <div className="space-y-3">
+                  <button 
+                    onClick={() => handleVote('opt1')}
+                    disabled={submittingVote}
+                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 hover:border-blue-500/35 dark:hover:border-blue-500/20 active:scale-[0.99] transition text-xs font-bold text-slate-700 dark:text-slate-350 cursor-pointer flex justify-between items-center"
+                  >
+                    <span>Sí, definitivamente (Me ahorraría mucho tiempo)</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                  </button>
+                  <button 
+                    onClick={() => handleVote('opt2')}
+                    disabled={submittingVote}
+                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 hover:border-blue-500/35 dark:hover:border-blue-500/20 active:scale-[0.99] transition text-xs font-bold text-slate-700 dark:text-slate-350 cursor-pointer flex justify-between items-center"
+                  >
+                    <span>Sí, pero me gustaría ver más características</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                  </button>
+                  <button 
+                    onClick={() => handleVote('opt3')}
+                    disabled={submittingVote}
+                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 hover:border-blue-500/35 dark:hover:border-blue-500/20 active:scale-[0.99] transition text-xs font-bold text-slate-700 dark:text-slate-350 cursor-pointer flex justify-between items-center"
+                  >
+                    <span>Tal vez en el futuro</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                  </button>
+                  <button 
+                    onClick={() => handleVote('opt4')}
+                    disabled={submittingVote}
+                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 hover:border-blue-500/35 dark:hover:border-blue-500/20 active:scale-[0.99] transition text-xs font-bold text-slate-700 dark:text-slate-350 cursor-pointer flex justify-between items-center"
+                  >
+                    <span>No por el momento</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-4 animate-fade-in bg-white/40 dark:bg-slate-955/20 p-5 rounded-2xl border border-slate-200/60 dark:border-slate-850/40">
+                  <h4 className="text-xs font-black uppercase text-indigo-500 dark:text-indigo-400 tracking-wider">Resultados en tiempo real</h4>
+                  
+                  <div className="space-y-1.5 text-xs">
+                    <div className="flex justify-between font-bold text-slate-700 dark:text-slate-300">
+                      <span>Sí, definitivamente</span>
+                      <span className="text-indigo-500">{pollResults ? getPercentage(pollResults.opt1) : '45%'}</span>
+                    </div>
+                    <div className="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000"
+                        style={{ width: pollResults ? getPercentage(pollResults.opt1) : '45%' }}
+                      ></div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5 text-xs">
+                    <div className="flex justify-between font-bold text-slate-700 dark:text-slate-300">
+                      <span>Sí, pero con más características</span>
+                      <span className="text-indigo-500">{pollResults ? getPercentage(pollResults.opt2) : '28%'}</span>
+                    </div>
+                    <div className="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000"
+                        style={{ width: pollResults ? getPercentage(pollResults.opt2) : '28%' }}
+                      ></div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5 text-xs">
+                    <div className="flex justify-between font-bold text-slate-700 dark:text-slate-300">
+                      <span>Tal vez en el futuro</span>
+                      <span className="text-indigo-500">{pollResults ? getPercentage(pollResults.opt3) : '18%'}</span>
+                    </div>
+                    <div className="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000"
+                        style={{ width: pollResults ? getPercentage(pollResults.opt3) : '18%' }}
+                      ></div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5 text-xs">
+                    <div className="flex justify-between font-bold text-slate-700 dark:text-slate-300">
+                      <span>No por el momento</span>
+                      <span className="text-indigo-500">{pollResults ? getPercentage(pollResults.opt4) : '9%'}</span>
+                    </div>
+                    <div className="h-2 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000"
+                        style={{ width: pollResults ? getPercentage(pollResults.opt4) : '9%' }}
+                      ></div>
+                    </div>
+                  </div>
+
+                  <div className="text-[10px] text-slate-400 dark:text-slate-500 text-center pt-2 border-t border-slate-200/50 dark:border-slate-800/40 mt-3 font-semibold">
+                    Votos registrados: {pollResults?.total || 100} • ¡Gracias por votar!
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* LADO DERECHO: Comentarios interactivos (7 columnas) */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-extrabold tracking-tight text-slate-850 dark:text-slate-100 flex items-center gap-2">
+                <MessageSquare className="w-6 h-6 text-blue-600" />
+                Muro de Comentarios Docentes
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Comparte tu experiencia, deja sugerencias o escribe tus preguntas sobre la metodología AOA y el uso de los planificadores didácticos.
+              </p>
+            </div>
+
+            {/* Formulario de Comentarios */}
+            <form onSubmit={handleCommentSubmit} className="glass-panel p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 space-y-4">
+              <h4 className="text-xs font-black uppercase text-blue-600 dark:text-blue-400 tracking-wider flex items-center gap-1.5 font-display">
+                <Plus className="w-4 h-4" /> Dejar un comentario
+              </h4>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="space-y-1">
+                  <label className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase">Tu Nombre / Título</label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-2.5 w-3.5 h-3.5 text-slate-400" />
+                    <input 
+                      type="text" 
+                      required
+                      placeholder="Ej. Profa. Ana B."
+                      value={commName}
+                      onChange={(e) => setCommName(e.target.value)}
+                      className="w-full pl-8 pr-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-750 dark:text-slate-300 outline-none focus:ring-1 focus:ring-blue-500/30"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase">Escuela / C.E.B.G.</label>
+                  <div className="relative">
+                    <School className="absolute left-3 top-2.5 w-3.5 h-3.5 text-slate-400" />
+                    <input 
+                      type="text" 
+                      required
+                      placeholder="Ej. C.E.B.G. Bilingüe"
+                      value={commSchool}
+                      onChange={(e) => setCommSchool(e.target.value)}
+                      className="w-full pl-8 pr-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-750 dark:text-slate-300 outline-none focus:ring-1 focus:ring-blue-500/30"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase">Región Educativa</label>
+                  <div className="relative">
+                    <MapPin className="absolute left-3 top-2.5 w-3.5 h-3.5 text-slate-400" />
+                    <select
+                      required
+                      value={commRegion}
+                      onChange={(e) => setCommRegion(e.target.value)}
+                      className="w-full pl-8 pr-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-750 dark:text-slate-300 outline-none focus:ring-1 focus:ring-blue-500/30 appearance-none"
+                    >
+                      <option value="">Selecciona Región</option>
+                      <option value="Bocas del Toro">Bocas del Toro</option>
+                      <option value="Coclé">Coclé</option>
+                      <option value="Colón">Colón</option>
+                      <option value="Chiriquí">Chiriquí</option>
+                      <option value="Darién">Darién</option>
+                      <option value="Herrera">Herrera</option>
+                      <option value="Los Santos">Los Santos</option>
+                      <option value="Panamá Centro">Panamá Centro</option>
+                      <option value="Panamá Este">Panamá Este</option>
+                      <option value="Panamá Norte">Panamá Norte</option>
+                      <option value="Panamá Oeste">Panamá Oeste</option>
+                      <option value="San Miguelito">San Miguelito</option>
+                      <option value="Veraguas">Veraguas</option>
+                      <option value="Guna Yala">Guna Yala</option>
+                      <option value="Ngäbe-Buglé">Ngäbe-Buglé</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase">Comentario / Mensaje</label>
+                <textarea
+                  required
+                  rows="3"
+                  maxLength="400"
+                  placeholder="Escribe tu mensaje aquí (máx. 400 caracteres)..."
+                  value={commText}
+                  onChange={(e) => setCommText(e.target.value)}
+                  className="w-full px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-750 dark:text-slate-300 outline-none focus:ring-1 focus:ring-blue-500/30 resize-none"
+                ></textarea>
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  disabled={submittingComment}
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-xl text-xs active:scale-95 transition flex items-center gap-1.5 cursor-pointer shadow-md shadow-blue-500/10 disabled:opacity-60"
+                >
+                  {submittingComment ? (
+                    <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  ) : (
+                    <>
+                      <Send className="w-3.5 h-3.5" />
+                      <span>Enviar Comentario</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
+
+            {/* Listado de comentarios */}
+            <div className="space-y-3 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
+              {loadingComments ? (
+                <div className="text-center py-6 text-xs text-slate-400">
+                  <div className="w-6 h-6 border-2 border-slate-300 border-t-blue-500 rounded-full animate-spin mx-auto mb-2"></div>
+                  Cargando comentarios...
+                </div>
+              ) : comments.length === 0 ? (
+                <p className="text-center text-xs text-slate-450 italic py-6 bg-slate-50 dark:bg-slate-900/20 border border-dashed border-slate-200 dark:border-slate-800 rounded-2xl">
+                  Aún no hay comentarios. ¡Sé el primero en dejar uno!
+                </p>
+              ) : (
+                [...comments].reverse().map((comm) => (
+                  <div 
+                    key={comm.id}
+                    className="glass-panel p-4.5 rounded-2xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 hover:border-blue-500/15 dark:hover:border-blue-500/10 hover:scale-[1.005] transition-all duration-300 space-y-3 flex flex-col justify-between"
+                  >
+                    <p className="text-xs text-slate-600 dark:text-slate-300 italic leading-relaxed">
+                      "{comm.text}"
+                    </p>
+                    <div className="flex items-center gap-3 border-t border-slate-200/40 dark:border-slate-800/40 pt-2.5">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white font-bold flex items-center justify-center text-xs shadow-sm uppercase">
+                        {comm.name ? comm.name.charAt(0) : 'D'}
+                      </div>
+                      <div>
+                        <h4 className="font-extrabold text-[11px] text-slate-800 dark:text-slate-100 leading-tight">
+                          {comm.name}
+                        </h4>
+                        <p className="text-[9px] text-slate-450 dark:text-slate-500 font-semibold mt-0.5 leading-snug">
+                          {comm.school} • <span className="text-blue-550 dark:text-blue-400 font-bold">{comm.region}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+          
         </div>
       </section>
 

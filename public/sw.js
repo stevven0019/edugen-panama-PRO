@@ -1,4 +1,4 @@
-const CACHE_NAME = 'edugen-pro-v1';
+const CACHE_NAME = 'edugen-pro-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -78,7 +78,8 @@ self.addEventListener('fetch', event => {
             return cachedResponse;
           }
           // Special fallback for index.html SPA routing
-          if (event.request.headers.get('accept').includes('text/html')) {
+          const acceptHeader = event.request.headers.get('accept');
+          if (acceptHeader && acceptHeader.includes('text/html')) {
             return caches.match('/index.html');
           }
         });

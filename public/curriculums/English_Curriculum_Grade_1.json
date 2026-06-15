@@ -1,0 +1,1319 @@
+{
+  "grade": 1,
+  "cefr_level": "Pre A1.3",
+  "proficiency_label": "Foundational Learner",
+  "general_standards": {
+    "listening": "Can identify sounds of familiar words and basic phrases spoken slowly and clearly.",
+    "reading": "Can recognize familiar words in simple texts.",
+    "speaking": "Can use basic language and formulaic expressions to describe things and answer questions.",
+    "writing": "Can write about oneself using simple words.",
+    "mediation": "Can use mediation strategies such as gestures and body language to express basic ideas."
+  },
+  "scenarios": [
+    {
+      "scenario_number": 1,
+      "scenario_title": "All Week Long!",
+      "category": "Expressing Ourselves and Connecting with Others",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "Today Is Tuesday!"
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "It's the Weekend."
+        }
+      ],
+      "standards_and_learning_outcomes": {
+        "listening": {
+          "general_standard": "Can identify sounds of familiar words and basic phrases spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Recognize familiar words and basic phrases.",
+            "Interactive: Respond to simple conversations on familiar topics by using gestures or by pointing."
+          ],
+          "learning_outcomes": [
+            "Can recognize familiar words related to days of the week spoken slowly (e.g., \"Monday.\" \"Today is Monday.\" \"It's Monday.\").",
+            "Can respond to the basic days of the week and weekend by pointing at the word or position on a basic calendar.",
+            "Can recognize and respond to questions about the days of the week using basic phrases (e.g., \"Is today Tuesday?\" \"No, it is Saturday.\" \"It is the weekend.\")."
+          ]
+        },
+        "reading": {
+          "general_standard": "Can recognize familiar words in simple texts.",
+          "specific_standards": [
+            "Reading: Find familiar words in a text.",
+            "Reading: Identify one-step written directions with visual support.",
+            "Phonemic Awareness: Identify sounds of the letters of the alphabet when supported with a concrete item or picture representing that sound."
+          ],
+          "learning_outcomes": [
+            "Can find and point to familiar words in simple texts (e.g., \"Monday,\" \"Tuesday\").",
+            "Can identify and follow one-step written directions with visual support (e.g., following the instruction, \"Point to the word 'Monday'\" in the sentence \"Today is Monday,\" supported by a calendar picture).",
+            "Can identify the sounds of the letters of the alphabet in familiar vocabulary related to days of the week and daily routines when supported with a concrete item or picture representing that sound (e.g., identifying the sound /w/ in \"Wednesday\" supported with a picture)."
+          ]
+        },
+        "speaking": {
+          "general_standard": "Can use basic language and formulaic expressions to describe things and answer questions.",
+          "specific_standards": [
+            "Productive: Use basic words or phrases to identify time words.",
+            "Interactive: Exchange simple questions and answers about the current day."
+          ],
+          "learning_outcomes": [
+            "Can identify specific time-related words, such as days of the week and the weekend, in simple sentences (e.g., \"Saturday and Sunday are the weekends.\" \"Today is Tuesday.\").",
+            "Can exchange simple questions and answers about the current day, using basic time-related words (e.g., \"What day is it today?\" \"Today is Monday.\").",
+            "Can respond to questions about time using basic words and phrases to indicate days (e.g., \"What is tomorrow?\" \"Tomorrow is Wednesday.\" or \"It's the weekend.\")."
+          ]
+        },
+        "writing": {
+          "general_standard": "Can write about oneself using simple words.",
+          "specific_standards": [
+            "Productive: Write their own name and other very familiar words without assistance.",
+            "Interactive: Draw pictures related to a simple sentence they have written."
+          ],
+          "learning_outcomes": [
+            "Can write their name and days of the week without assistance (e.g., \"Yamileth\" and \"Tuesday\").",
+            "Can write simple greetings on cards (e.g., \"Happy Monday!\").",
+            "Can draw pictures for sentences they have written (e.g., a greeting card for the sentence \"Happy Monday!\")."
+          ]
+        },
+        "mediation": {
+          "general_standard": "Can use mediation strategies such as gestures and body language to express basic ideas.",
+          "specific_standards": [
+            "Text: Use pictures or objects to express ideas.",
+            "Concept: Use facial expressions and simple gestures to help explain feelings or needs."
+          ],
+          "learning_outcomes": [
+            "Can use simple drawings or pictures to communicate days of the week to peers (e.g., drawing a picture of a calendar showing the days of the week).",
+            "Can use gestures and facial expressions to express basic ideas about days of the week to others (e.g., pointing to a picture representing a specific day).",
+            "Can clarify misunderstandings about days of the week using body language (e.g., pointing to the correct day on a calendar)."
+          ]
+        }
+      },
+      "communicative_competences": {
+        "linguistic": {
+          "grammatical_features": [
+            "Noun + verb + noun (e.g., \"Today is Monday.\")",
+            "Present simple (e.g., \"It is the weekend.\")",
+            "WH-questions (e.g., \"What day is today?\")"
+          ],
+          "vocabulary": {
+            "nouns": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+              "weekend",
+              "day",
+              "week"
+            ],
+            "verbs": [
+              "be (am, is, are)"
+            ],
+            "adverbs_of_time": [
+              "today",
+              "tomorrow"
+            ],
+            "numbers": "1-20",
+            "adjectives": [
+              "relaxing",
+              "exciting",
+              "busy",
+              "quiet"
+            ],
+            "prepositions_of_time": [
+              "on",
+              "before",
+              "after"
+            ]
+          },
+          "pronunciation_and_phonemic_awareness": {
+            "pronunciation": "/w/ in \"weekend\" and /d/ in \"day\"",
+            "phonemic_awareness": "Recognizing sounds of letters of the alphabet in familiar words related to days of the week and routines"
+          }
+        },
+        "pragmatic": [
+          "Exchanging questions and answers about the current day using simple phrases like \"Today is Monday.\"",
+          "Using time-related vocabulary: Identifying words for days and weekends by using or pointing to them"
+        ],
+        "sociolinguistic": [
+          "Classroom schedules: Using polite expressions when talking about the days of the week and routines."
+        ]
+      },
+      "twenty_first_century_projects": [
+        {
+          "project_number": 1,
+          "title": "Days of the Week Calendar",
+          "overview": "Students create a visual calendar to reinforce their understanding of the days of the week. They mark and label each day, including weekdays and weekends, and illustrate common daily activities."
+        },
+        {
+          "project_number": 2,
+          "title": "Day of the Week Song",
+          "overview": "Students create and sing a song about the days of the week using simple sentences like \"Today is Monday.\""
+        },
+        {
+          "project_number": 3,
+          "title": "Daily Schedule Chart",
+          "overview": "Students create a chart outlining their activities each day of the week, labeling each activity with simple sentences like \"On Monday, I play.\""
+        }
+      ],
+      "skills_and_technology_integration": {
+        "skills": [
+          "Time Awareness: Recognizing days of the week.",
+          "Communication: Using days of the week to communicate calendar time."
+        ],
+        "technology": [
+          "Use an online calendar tool to fill in days and activities."
+        ]
+      }
+    },
+    {
+      "scenario_number": 2,
+      "scenario_title": "Nice Weather Today!",
+      "category": "Nature and Wellness",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "It's Sunny!"
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "It's Raining."
+        }
+      ],
+      "standards_and_learning_outcomes": {
+        "listening": {
+          "general_standard": "Can identify sounds of familiar words and basic phrases spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Follow very simple directions and instructions.",
+            "Interactive: Respond to simple conversations on familiar topics by using gestures or by pointing."
+          ],
+          "learning_outcomes": [
+            "Can follow basic instructions related to weather (e.g., \"Look outside, it's sunny.\").",
+            "Can recognize weather-related words like \"sunny\" or \"raining\" in conversations.",
+            "Can respond to questions about the weather (e.g., \"What is the weather today?\")."
+          ]
+        },
+        "reading": {
+          "general_standard": "Can recognize familiar words in simple texts.",
+          "specific_standards": [
+            "Reading: Identify one-step written directions with visual support.",
+            "Reading: Match simple words to corresponding pictures.",
+            "Phonemic Awareness: Identify sounds of the letters of the alphabet when supported with a concrete item or picture representing that sound."
+          ],
+          "learning_outcomes": [
+            "Can identify weather-related words in simple text instructions (e.g., matching \"sun\" to a picture of the sun).",
+            "Can match simple weather-related words to corresponding pictures (e.g., matching the word \"sunny\" to a picture of a sunny day).",
+            "Can identify sounds of the letters of the alphabet when supported with a concrete item or picture representing that sound in familiar words related to weather (e.g., identifying the sound of the letter /r/ in the word \"rainy\" when shown a picture of raindrops)."
+          ]
+        },
+        "speaking": {
+          "general_standard": "Can use basic language and formulaic expressions to describe things and answer questions.",
+          "specific_standards": [
+            "Productive: Use basic words or phrases to identify time words.",
+            "Interactive: Exchange simple questions and answers about the current day."
+          ],
+          "learning_outcomes": [
+            "Can count weather features up to 20, with help (e.g., \"Let's count the clouds! One, two, three.\").",
+            "Can answer simple questions about the weather, using one- or two-word responses (e.g., responding \"cold\" when asked, \"What is the weather today?\").",
+            "Can express simple feelings or reactions to weather using words and gestures (e.g., saying \"I'm hot.\" while fanning themselves or \"I'm cold.\" with a shivering gesture)."
+          ]
+        },
+        "writing": {
+          "general_standard": "Can write about oneself using simple words.",
+          "specific_standards": [
+            "Productive: Fill in a form with their name and age with adult help.",
+            "Interactive: Write simple phrases with errors on a drawing or postcard."
+          ],
+          "learning_outcomes": [
+            "Can write their name and simple phrases on a weather-related drawing (e.g., labeling a personal drawing of a sunny day with their name and a simple phrase describing the drawing).",
+            "Can write simple phrases related to the weather (e.g., \"It is sunny.\") with support.",
+            "Can label pictures of different weather conditions (e.g., drawing a cloud and writing \"cloudy\")."
+          ]
+        },
+        "mediation": {
+          "general_standard": "Can use mediation strategies such as gestures and body language to express basic ideas.",
+          "specific_standards": [
+            "Text: Draw a single picture that represents a simple story or event.",
+            "Communication: Use gestures to show how to play a very simple game."
+          ],
+          "learning_outcomes": [
+            "Can clarify or confirm understanding of weather by pointing to pictures or using simple words.",
+            "Can draw simple pictures representing the weather and label them with help.",
+            "Can use gestures or body language to describe weather (e.g., pretending to shiver when it's cold)."
+          ]
+        }
+      },
+      "communicative_competences": {
+        "linguistic": {
+          "grammatical_features": [
+            "Present continuous (e.g., \"It is raining.\")",
+            "Subject + verb + adjective (e.g., \"It is sunny.\")",
+            "WH-questions (e.g., \"What is the weather today?\")"
+          ],
+          "vocabulary": {
+            "nouns": [
+              "numbers 1-20",
+              "weather",
+              "sun",
+              "rain",
+              "clouds",
+              "wind",
+              "day",
+              "storm",
+              "snow"
+            ],
+            "verbs": [
+              "rain",
+              "shine",
+              "blow",
+              "fall",
+              "clear up"
+            ],
+            "adjectives": [
+              "sunny",
+              "rainy",
+              "cloudy",
+              "warm",
+              "cold",
+              "cool",
+              "clear",
+              "windy"
+            ]
+          },
+          "pronunciation_and_phonemic_awareness": {
+            "pronunciation": "/s/ in \"sunny\" and /r/ in \"raining\"",
+            "phonemic_awareness": "Initial sound of letter /w/ in the word \"weather\" and identification of sounds of letters of the alphabet in familiar vocabulary (e.g., /r/ in \"rainy\")"
+          }
+        },
+        "pragmatic": [
+          "Talking about weather: Describe simple weather conditions (e.g., \"It is sunny.\") and describe simple reactions to weather (e.g., \"I'm cold.\" or \"I'm hot.\")",
+          "Asking questions about weather: Ask basic questions, such as \"What is the weather today?\" to learn about daily conditions"
+        ],
+        "sociolinguistic": [
+          "Weather conversations: Engaging in simple weather-related conversations."
+        ]
+      },
+      "twenty_first_century_projects": [
+        {
+          "project_number": 1,
+          "title": "Weather Wheel",
+          "overview": "Children create a \"weather wheel\" with pictures of sunny, rainy, and windy weather and use it to describe the daily weather in class."
+        },
+        {
+          "project_number": 2,
+          "title": "Weather Journal",
+          "overview": "Students maintain a weather journal where they draw the day's weather and write sentences like \"It is sunny.\"."
+        },
+        {
+          "project_number": 3,
+          "title": "Weather Report Video",
+          "overview": "Students act as weather reporters and record short videos describing the weather using sentences like \"It is raining today.\"."
+        }
+      ],
+      "skills_and_technology_integration": {
+        "skills": [
+          "Critical Thinking: Observing and describing weather.",
+          "Communication: Using weather-related vocabulary."
+        ],
+        "technology": [
+          "Use an interactive weather app to learn about different types of weather."
+        ]
+      }
+    },
+    {
+      "scenario_number": 3,
+      "scenario_title": "Colors in Our World",
+      "category": "Family and Society",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "That's a Purple Flower."
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "It's an Orange Cat."
+        }
+      ],
+      "standards_and_learning_outcomes": {
+        "listening": {
+          "general_standard": "Can identify sounds of familiar words and basic phrases spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Identify the topic of a conversation that involves familiar subjects.",
+            "Interactive: Respond to simple conversations on familiar topics by using gestures or by pointing."
+          ],
+          "learning_outcomes": [
+            "Can show comprehension of age-appropriate numbers when paired with familiar objects (e.g., identifying \"three blue flowers\" by pointing to the correct group).",
+            "Can identify colors and objects when spoken about (e.g., \"blue bird\" or \"red flower\").",
+            "Can follow simple instructions related to colors and familiar objects by pointing or gesturing (e.g., \"Find the blue bird.\")."
+          ]
+        },
+        "reading": {
+          "general_standard": "Can recognize familiar words in simple texts.",
+          "specific_standards": [
+            "Reading: Identify pictures that show what happened in a simple story heard.",
+            "Reading: Identify simple words for very common symbols.",
+            "Phonemic Awareness: Identify sounds of the letters of the alphabet when supported with a concrete item or picture representing that sound."
+          ],
+          "learning_outcomes": [
+            "Can listen to a simple story and identify corresponding pictures that illustrate key events (e.g., recognizing the picture of a blue bird mentioned in the story).",
+            "Can identify simple words for very common symbols, matching them to images (e.g., linking \"flower\" with its picture).",
+            "Can identify the initial sounds of letters of the alphabet in common objects and things (e.g., /f/ in \"fish,\" /b/ in \"bird,\" and /k/ in \"cat\")."
+          ]
+        },
+        "speaking": {
+          "general_standard": "Can use basic language and formulaic expressions to describe things and answer questions.",
+          "specific_standards": [
+            "Productive: Name primary and secondary colors.",
+            "Interactive: Express likes or dislikes using simple words and pointing."
+          ],
+          "learning_outcomes": [
+            "Can describe objects using colors and simple sentences (e.g., \"That's a blue bird.\").",
+            "Can answer questions about colors and objects, using one or two-word responses (e.g., \"What color is it?\" \"Blue.\").",
+            "Can express likes and dislikes, using simple words and gestures (e.g., \"I like red.\")."
+          ]
+        },
+        "writing": {
+          "general_standard": "Can write about oneself using simple words.",
+          "specific_standards": [
+            "Productive: Write numbers up to 10 with guidance.",
+            "Interactive: Write one-word answers to simple questions."
+          ],
+          "learning_outcomes": [
+            "Can write numbers up to ten with teacher guidance to represent objects in drawings (e.g., drawing four flowers and writing \"4\").",
+            "Can respond to simple questions about objects or colors by writing one-word answers with teacher support (e.g., \"What color is this?\" Write \"blue.\").",
+            "Can use simple drawings to communicate about objects and add one-word descriptions (e.g., drawing a green leaf and writing \"leaf\")."
+          ]
+        },
+        "mediation": {
+          "general_standard": "Can use mediation strategies such as gestures and body language to express basic ideas.",
+          "specific_standards": [
+            "Text: Identify a few familiar words from a story by connecting them to prior knowledge.",
+            "Concept: Use a word and a gesture or drawing to describe a familiar object."
+          ],
+          "learning_outcomes": [
+            "Can use simple drawings to communicate about objects (e.g., drawing a blue bird).",
+            "Can use gestures or point to objects to clarify their responses when describing colors.",
+            "Can describe objects and concepts from a story by connecting prior knowledge with supportive strategies, such as using words and gestures (e.g., saying \"bird\" while flapping arms)."
+          ]
+        }
+      },
+      "communicative_competences": {
+        "linguistic": {
+          "grammatical_features": [
+            "Color + noun (e.g., \"blue bird\")",
+            "WH-questions (e.g., \"What color is it?\")",
+            "Present simple (e.g., \"It is an orange cat.\")"
+          ],
+          "vocabulary": {
+            "nouns": [
+              "bird",
+              "flower",
+              "cat",
+              "tree",
+              "house",
+              "leaf",
+              "sky"
+            ],
+            "verbs": [
+              "see",
+              "look",
+              "fly",
+              "sit",
+              "grow",
+              "count",
+              "be (is)",
+              "color",
+              "show"
+            ],
+            "adjectives": [
+              "blue",
+              "purple",
+              "orange",
+              "green",
+              "red",
+              "tall",
+              "small"
+            ],
+            "determiners_pronouns": [
+              "that",
+              "this"
+            ],
+            "quantifiers": [
+              "two",
+              "three",
+              "four",
+              "many"
+            ]
+          },
+          "pronunciation_and_phonemic_awareness": {
+            "pronunciation": "/l/ in \"blue\" and \"leaf\"",
+            "phonemic_awareness": "Identifying initial sounds of letters of the alphabet in common objects and things (e.g., /f/ in \"fish,\" /b/ in \"bird,\" /k/ in \"cat\")"
+          }
+        },
+        "pragmatic": [
+          "Recognizing colors and objects: Identify familiar objects by color (e.g., \"blue bird\" or \"red flower.\")",
+          "Describing with colors: Use simple color phrases in sentences (e.g., \"That is a red bird.\")",
+          "Counting and identifying colors of objects: Identify and count familiar objects while specifying their color (e.g., \"three blue birds\" or \"two red flowers\")"
+        ],
+        "sociolinguistic": [
+          "Observing surroundings: Describing objects using color and shape while considering their cultural or personal significance."
+        ]
+      },
+      "twenty_first_century_projects": [
+        {
+          "project_number": 1,
+          "title": "Color Nature Walk",
+          "overview": "Students go on a \"color nature walk\" around the school, observing and collecting colorful objects (e.g., blue flowers, green leaves), then create a color chart."
+        },
+        {
+          "project_number": 2,
+          "title": "Color Sorting Game",
+          "overview": "Students play a color sorting game matching colored objects (e.g., blue birds, red cars) to their corresponding colors on a chart."
+        },
+        {
+          "project_number": 3,
+          "title": "Color Collage",
+          "overview": "Students create a collage using colored paper or magazine cutouts, labeling objects with sentences like \"This is a blue bird.\""
+        }
+      ],
+      "skills_and_technology_integration": {
+        "skills": [
+          "Creativity: Identifying colors in nature.",
+          "Communication: Describing objects using colors."
+        ],
+        "technology": [
+          "Use a tablet to take photos of objects and create a digital color chart with the teacher's help."
+        ]
+      }
+    },
+    {
+      "scenario_number": 4,
+      "scenario_title": "My Family and I",
+      "category": "Family and Society",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "It's My Family!"
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "She Is My Mom!"
+        }
+      ],
+      "standards_and_learning_outcomes": {
+        "listening": {
+          "general_standard": "Can identify sounds of familiar words and basic phrases spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Show comprehension of basic expressions for greeting and leave-taking if supported by gestures.",
+            "Interactive: Answer simple questions about oneself, using gestures or formulaic expressions."
+          ],
+          "learning_outcomes": [
+            "Can listen for and understand words related to greetings, leave-takings, and family members (e.g., \"hello,\" \"goodbye,\" \"mom,\" \"dad\").",
+            "Can follow instructions about family-related activities (e.g., \"Find a picture of your family.\").",
+            "Can respond to questions about family members, using gestures or single words (e.g., \"Who is he?\" \"Dad\")."
+          ]
+        },
+        "reading": {
+          "general_standard": "Can recognize familiar words in simple texts.",
+          "specific_standards": [
+            "Reading: Recognize when written, without visual support, not only their own name but also the names of classmates or family members.",
+            "Reading: Point to simple words in the text that identify objects or characters in a picture book.",
+            "Phonemic Awareness: Identify sounds of the letters of the alphabet when supported with a concrete item or picture representing that sound."
+          ],
+          "learning_outcomes": [
+            "Can recognize family-related words, including own name, in written texts (e.g., \"mom,\" \"dad\").",
+            "Can match names of family members to pictures in books (e.g., matching the word \"father\" to a picture of a father in a family picture book).",
+            "Can identify sounds of the letters of the alphabet when supported with a concrete item or picture representing that sound (e.g., identifying the sound of the letter \"S\" in the word \"sister\" when shown a picture of a sister)."
+          ]
+        },
+        "speaking": {
+          "general_standard": "Can use basic language and formulaic expressions to describe things and answer questions.",
+          "specific_standards": [
+            "Productive: Locate objects and people using words.",
+            "Interactive: Respond nonverbally to simple yes/no questions by nodding or shaking head."
+          ],
+          "learning_outcomes": [
+            "Can identify family members, using simple sentences (e.g., \"She is my mom.\").",
+            "Can answer basic yes/no questions about family members, using nods, gestures, or simple words (e.g., \"Is she your mom?\").",
+            "Can participate in conversations about their family, using one-word responses (e.g., \"Who is she?\" \"Mom.\") or two-word responses (e.g., \"Who is she?\" \"My sister.\")."
+          ]
+        },
+        "writing": {
+          "general_standard": "Can write about oneself using simple words.",
+          "specific_standards": [
+            "Productive: Write their own name and other very familiar words without assistance.",
+            "Interactive: Draw pictures related to a simple sentence they have written."
+          ],
+          "learning_outcomes": [
+            "Can write other very familiar family-related words without assistance when labeling a family drawing (e.g., \"mom,\" \"dad\").",
+            "Can draw pictures related to simple sentences they have written about family members (e.g., drawing a picture of \"my mom\" to accompany the sentence, \"This is my mom.\").",
+            "Can write familiar family words on cards, without assistance."
+          ]
+        },
+        "mediation": {
+          "general_standard": "Can use mediation strategies such as gestures and body language to express basic ideas.",
+          "specific_standards": [
+            "Text: Use pictures or objects to express ideas.",
+            "Communication: Use gestures and demonstrations to help classmates perform a simple task."
+          ],
+          "learning_outcomes": [
+            "Can use pictures and gestures to describe their family to classmates (e.g., miming or displaying a drawing or picture of a family member).",
+            "Can clarify responses by pointing to family pictures or objects (e.g., pointing to a picture of their mother).",
+            "Can use simple gestures or facial expressions to show who they are talking about in their family (e.g., pointing to a family member's picture)."
+          ]
+        }
+      },
+      "communicative_competences": {
+        "linguistic": {
+          "grammatical_features": [
+            "Personal pronouns + verb (e.g., \"I am\" \"She is\")",
+            "Possessive adjectives (e.g., \"my mom\")",
+            "WH-questions (e.g., \"Who is she/he?\")"
+          ],
+          "vocabulary": {
+            "nouns": [
+              "family",
+              "mom",
+              "dad",
+              "brother",
+              "sister",
+              "aunt",
+              "uncle",
+              "cousin",
+              "grandmother",
+              "grandfather",
+              "pet",
+              "home"
+            ],
+            "verbs": [
+              "be (is, are)",
+              "love",
+              "live",
+              "play",
+              "visit",
+              "hug",
+              "help",
+              "talk",
+              "smile"
+            ],
+            "adjectives": [
+              "old",
+              "young",
+              "friendly",
+              "tall",
+              "short"
+            ],
+            "personal_pronouns": [
+              "she",
+              "he"
+            ],
+            "possessive_adjectives": [
+              "my",
+              "your",
+              "his",
+              "her"
+            ]
+          },
+          "pronunciation_and_phonemic_awareness": {
+            "pronunciation": "/m/ in \"mom\" and /d/ in \"dad\"",
+            "phonemic_awareness": "Matching letter sounds to words, such as /b/ in \"brother\" and /s/ in \"sister\""
+          }
+        },
+        "pragmatic": [
+          "Introducing family members: Use simple sentences to describe family (e.g., \"She is my mom.\")",
+          "Asking about family: Respond to basic questions about family members (e.g., \"Who is he?\" \"He is my brother.\")"
+        ],
+        "sociolinguistic": [
+          "Describing Family Roles: Using appropriate language to describe family members and their roles (e.g., \"This is my mother.\")."
+        ]
+      },
+      "twenty_first_century_projects": [
+        {
+          "project_number": 1,
+          "title": "Family Portrait",
+          "overview": "Students draw a family portrait, labeling each family member with sentences like \"This is my mom.\" and \"He is my brother.\""
+        },
+        {
+          "project_number": 2,
+          "title": "Family Member Interview",
+          "overview": "Students ask a family member simple questions like \"Who is she/he?\" and record their answers to share with the class."
+        },
+        {
+          "project_number": 3,
+          "title": "Digital Family Tree",
+          "overview": "Students create a family tree using a digital family tree maker or a slide presentation app, including simple sentences like \"This is my dad.\" and answers to questions such as \"Who is she?\" with \"She is my grandmother.\""
+        }
+      ],
+      "skills_and_technology_integration": {
+        "skills": [
+          "Emotional Awareness: Identifying family relationships and describing them using simple words.",
+          "Communication: Using personal pronouns and possessive adjectives to identify family members."
+        ],
+        "technology": [
+          "Create a digital family tree using a simple app with photos and names."
+        ]
+      }
+    },
+    {
+      "scenario_number": 5,
+      "scenario_title": "Colors of Things that Go",
+      "category": "Expressing Ourselves and Connecting with Others",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "That's a Blue Bus."
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "That's a Red Bike."
+        }
+      ],
+      "standards_and_learning_outcomes": {
+        "listening": {
+          "general_standard": "Can identify sounds of familiar words and basic phrases spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Catch the main idea of a short, simple story or announcement with visual support or illustrations.",
+            "Interactive: Identify objects in the immediate environment in response to simple questions."
+          ],
+          "learning_outcomes": [
+            "Can recognize colors and transportation-related words, such as \"car\" and \"bus,\" in simple announcements with visual aids (e.g., circling the picture of a \"red car\" when it is mentioned in a short visual announcement).",
+            "Can follow simple instructions related to transportation items as heard in simple stories (e.g., \"Find the green car.\").",
+            "Can respond to simple questions about transportation vehicles by pointing or naming them (e.g., \"What color is the car?\")."
+          ]
+        },
+        "reading": {
+          "general_standard": "Can recognize familiar words in simple texts.",
+          "specific_standards": [
+            "Reading: Sequence pictures to demonstrate comprehension of texts that include a clear beginning, middle, and end.",
+            "Reading: Show comprehension of the main action or event in a very simple storybook with pictures.",
+            "Phonemic Awareness: Identify sounds of the letters of the alphabet when supported with a concrete item or picture representing that sound."
+          ],
+          "learning_outcomes": [
+            "Can sequence pictures to show a clear beginning, middle, and end of the action in a simple story (e.g., \"Marta sees the red bus.\" \"The red bus stops.\" \"People exit the bus.\").",
+            "Can show comprehension of the main action or event in a simple storybook by pointing to pictures.",
+            "Can identify sounds of the letters of the alphabet when supported with a concrete item or picture representing that sound (e.g., identifying the sound /y/ in the word \"yellow\" when shown a picture of a yellow taxi)."
+          ]
+        },
+        "speaking": {
+          "general_standard": "Can use basic language and formulaic expressions to describe things and answer questions.",
+          "specific_standards": [
+            "Productive: Name common objects and people, including family members.",
+            "Interactive: Take part in very simple classroom games using one or two repeated lines."
+          ],
+          "learning_outcomes": [
+            "Can name transportation vehicles using color words (e.g., \"That's a green car.\").",
+            "Can answer simple questions about transportation and colors using one or two words (e.g., \"What color is the car?\").",
+            "Can participate in classroom activities involving transportation vocabulary (e.g., \"naming vehicles\")."
+          ]
+        },
+        "writing": {
+          "general_standard": "Can write about oneself using simple words.",
+          "specific_standards": [
+            "Productive: Fill in a form with their name and age with adult help.",
+            "Interactive: Write very simple sentences with assistance, even if errors are present."
+          ],
+          "learning_outcomes": [
+            "Can complete a simple form with teacher assistance, filling in details about transportation items (e.g., writing \"red\" for the color of a bus).",
+            "Can write simple words independently to label transportation items on drawings (e.g., \"bus,\" \"car\").",
+            "Can write very simple sentences with assistance, even if errors are present (e.g., \"This is a green car.\")."
+          ]
+        },
+        "mediation": {
+          "general_standard": "Can use mediation strategies such as gestures and body language to express basic ideas.",
+          "specific_standards": [
+            "Text: Draw a single picture that represents a simple story or event.",
+            "Communication: Lead a simple classroom activity like a lineup or cleanup using gestures and basic words."
+          ],
+          "learning_outcomes": [
+            "Can use gestures or drawings to describe transportation vehicles in the classroom (e.g., drawing a picture of a car or miming the act of driving a car to describe the word \"car\").",
+            "Can clarify responses by pointing to pictures of transportation vehicles when needed.",
+            "Can use basic words and body language to explain how transportation vehicles are used during classroom activities (e.g., pretending to drive by moving hands like holding a steering wheel)."
+          ]
+        }
+      },
+      "communicative_competences": {
+        "linguistic": {
+          "grammatical_features": [
+            "Color + noun (e.g., \"green car\")",
+            "WH-questions (e.g., \"What color is the car?\")",
+            "Present simple (e.g., \"It is a red bike.\")"
+          ],
+          "vocabulary": {
+            "nouns": [
+              "car",
+              "bus",
+              "bike",
+              "truck",
+              "train",
+              "taxi"
+            ],
+            "verbs": [
+              "drive",
+              "ride",
+              "see",
+              "go",
+              "stop",
+              "be (is)"
+            ],
+            "adjectives": [
+              "green",
+              "blue",
+              "red",
+              "yellow",
+              "purple",
+              "orange",
+              "small",
+              "big",
+              "old",
+              "new"
+            ],
+            "demonstratives": [
+              "this",
+              "that"
+            ],
+            "prepositions": [
+              "on"
+            ]
+          },
+          "pronunciation_and_phonemic_awareness": {
+            "pronunciation": "/k/ in \"car\" and /b/ in \"bus\"",
+            "phonemic_awareness": "Initial sound at the beginning of vehicle-related vocabulary (e.g., /k/ in \"car\") and identification of sounds of letters of the alphabet in familiar vocabulary (e.g., /y/ in \"yellow\")"
+          }
+        },
+        "pragmatic": [
+          "Describing objects: When describing colors in transportation, use phrases that describe vehicles, like \"It is a red bike.\" \"That is a green car.\" or \"It's a blue bus.\"",
+          "Answering questions about colors and objects: Respond with one-word answers or gestures for vehicles and colors (e.g., \"Point to the blue bus.\")"
+        ],
+        "sociolinguistic": [
+          "Norms of politeness for making requests: Using culturally appropriate norms of politeness in communication when describing transportation (e.g., \"Please, point to the blue car.\")."
+        ]
+      },
+      "twenty_first_century_projects": [
+        {
+          "project_number": 1,
+          "title": "Vehicle Color Matching",
+          "overview": "Students create a matching game by drawing and coloring different vehicles (e.g., green cars and red buses) and matching them to color labels."
+        },
+        {
+          "project_number": 2,
+          "title": "Vehicle Drawing Game",
+          "overview": "Students draw and color vehicles (cars, buses, bikes) and label them with sentences like \"This is a red bus.\"."
+        },
+        {
+          "project_number": 3,
+          "title": "Transportation Chart",
+          "overview": "Students create a transportation chart with columns for vehicles and colors, labeling each with sentences like \"That is a blue car.\"."
+        }
+      ],
+      "skills_and_technology_integration": {
+        "skills": [
+          "Creativity: Describing transportation items using descriptive words creatively.",
+          "Numeracy: Matching numbers with vehicles."
+        ],
+        "technology": [
+          "Use a tablet to play a color and vehicle matching game or design one digitally."
+        ]
+      }
+    },
+    {
+      "scenario_number": 6,
+      "scenario_title": "Shapes Around Us",
+      "category": "Expressing Ourselves and Connecting with Others",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "I See a Rectangle."
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "That Is a Circle."
+        }
+      ],
+      "standards_and_learning_outcomes": {
+        "listening": {
+          "general_standard": "Can identify sounds of familiar words and basic phrases spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Recognize simple classroom instructions spoken slowly and clearly.",
+            "Interactive: Respond to simple conversations on familiar topics by using gestures or by pointing."
+          ],
+          "learning_outcomes": [
+            "Can follow simple classroom instructions about shapes using gestures or actions (e.g., \"Point to the square.\" \"Find the triangle.\").",
+            "Can point to and name shapes during activities when prompted (e.g., \"What is this?\" Student points to a circle and says, \"circle\").",
+            "Can respond to very simple shape-related commands by pointing."
+          ]
+        },
+        "reading": {
+          "general_standard": "Can recognize familiar words in simple texts.",
+          "specific_standards": [
+            "Reading: Recognize familiar words in simple texts.",
+            "Reading: Match simple words to corresponding pictures.",
+            "Phonemic Awareness: Identify sounds of the letters of the alphabet when supported with a concrete item or picture representing that sound."
+          ],
+          "learning_outcomes": [
+            "Can point to pictures of shapes when prompted during reading activities (e.g., pointing to a picture of a triangle in a storybook when asked, \"What is this shape?\").",
+            "Can match simple shape-related words to pictures (e.g., \"square,\" \"circle\").",
+            "Can produce the sound of the alphabet letters when supported by a concrete item or picture representing the sound (e.g., /s/ in \"square\")."
+          ]
+        },
+        "speaking": {
+          "general_standard": "Can use basic language and formulaic expressions to describe things and answer questions.",
+          "specific_standards": [
+            "Productive: Name common classroom objects and familiar people.",
+            "Interactive: Engage with very simple classroom commands."
+          ],
+          "learning_outcomes": [
+            "Can identify and name common shapes and colors in daily classroom routines with teacher guidance (e.g., \"This is a circle.\" \"It is blue.\").",
+            "Can use simple greetings and farewells in a storytelling activity involving shapes and colors (e.g., \"Hello, red circle!\" \"Goodbye, blue square!\").",
+            "Can point to and name familiar classroom shapes and colors during activities with teacher prompts."
+          ]
+        },
+        "writing": {
+          "general_standard": "Can write about oneself using simple words.",
+          "specific_standards": [
+            "Productive: Write numbers up to ten with guidance.",
+            "Interactive: Write one-word answers to simple questions."
+          ],
+          "learning_outcomes": [
+            "Can write numbers and shape-related words with teacher guidance (e.g., counting the number of squares in a picture and writing the number and the shape's name below the picture).",
+            "Can label pictures of shapes with simple words like \"square\" or \"circle.\"",
+            "Can write simple one-word answers to questions about shapes with support (e.g., writing the word \"circle\" in response to the question, \"What shape is this?\")."
+          ]
+        },
+        "mediation": {
+          "general_standard": "Can use mediation strategies such as gestures and body language to express basic ideas.",
+          "specific_standards": [
+            "Communication: Use gestures and demonstrations to help classmates perform a simple task.",
+            "Concept: Use a word and a gesture or drawing to describe a familiar object."
+          ],
+          "learning_outcomes": [
+            "Can use gestures and simple words to describe shapes to classmates (e.g., using hands to represent the shape of a circle).",
+            "Can use a combination of drawings and words to clarify their responses about shapes (e.g., drawing the shape of a triangle and writing the word next to it).",
+            "Can describe shapes using body language and pointing during classroom activities (e.g., miming a square shape by using the arms to create straight lines)."
+          ]
+        }
+      },
+      "communicative_competences": {
+        "linguistic": {
+          "grammatical_features": [
+            "Shape + noun (e.g., \"a square table\")",
+            "WH-questions (e.g., \"What shape is it?\")",
+            "Present simple (e.g., \"That is a circle.\")"
+          ],
+          "vocabulary": {
+            "nouns": [
+              "square",
+              "rectangle",
+              "circle",
+              "triangle",
+              "oval",
+              "diamond",
+              "star"
+            ],
+            "personal_pronoun": [
+              "it"
+            ],
+            "verbs": [
+              "see",
+              "look",
+              "draw",
+              "find",
+              "be (is)"
+            ],
+            "adjectives": [
+              "round",
+              "square",
+              "tall",
+              "long",
+              "short",
+              "big",
+              "small"
+            ],
+            "demonstratives": [
+              "this",
+              "that"
+            ]
+          },
+          "pronunciation_and_phonemic_awareness": {
+            "pronunciation": "/s/ in \"square\" and /r/ in \"rectangle\"",
+            "phonemic_awareness": "Shape names, initial sounds in names of shapes (e.g., /s/ in \"square\")"
+          }
+        },
+        "pragmatic": [
+          "Identifying shapes: Recognize and name shapes like squares and circles during classroom activities",
+          "Describing shapes: Use simple phrases to talk about shapes (e.g., \"This is a rectangle.\")"
+        ],
+        "sociolinguistic": [
+          "Shape and color recognition: Describing characteristics of objects around using the names of shapes and colors (e.g., \"The sun is yellow.\")."
+        ]
+      },
+      "twenty_first_century_projects": [
+        {
+          "project_number": 1,
+          "title": "Shape Collage",
+          "overview": "Children cut out pictures of objects in different shapes (circles, squares, rectangles) and create a collage, labeling each shape with sentences like \"This is a circle.\""
+        },
+        {
+          "project_number": 2,
+          "title": "Shape Sorting Activity",
+          "overview": "Students sort shapes (e.g., squares, circles) into groups and describe each with simple sentences like \"This is a square.\""
+        },
+        {
+          "project_number": 3,
+          "title": "Digital Shape Game",
+          "overview": "Students play a digital shape recognition game, matching objects to their corresponding shapes and labeling them."
+        }
+      ],
+      "skills_and_technology_integration": {
+        "skills": [
+          "Shape Recognition: Identifying and labeling shapes.",
+          "Communication: Describing objects by shape."
+        ],
+        "technology": [
+          "Use a digital collage-making tool or an interactive shape recognition app."
+        ]
+      }
+    },
+    {
+      "scenario_number": 7,
+      "scenario_title": "Shapes on Our Plates",
+      "category": "Nature and Wellness",
+      "type": "Optional",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "It's a Square Cracker."
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "It's a Round Orange."
+        }
+      ],
+      "standards_and_learning_outcomes": {
+        "listening": {
+          "general_standard": "Can identify sounds of familiar words and basic phrases spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Recognize familiar words and basic phrases.",
+            "Interactive: Identify objects in the immediate environment in response to simple questions."
+          ],
+          "learning_outcomes": [
+            "Can recognize simple sentences about food shapes (e.g., \"Oranges are round.\").",
+            "Can follow basic instructions involving food shapes (e.g., \"Find the round apple.\").",
+            "Can respond to questions about food shapes using words or gestures (e.g., \"What shape is the cracker?\" \"A square.\")."
+          ]
+        },
+        "reading": {
+          "general_standard": "Can recognize familiar words in simple texts.",
+          "specific_standards": [
+            "Reading: Recognize familiar words in simple texts.",
+            "Reading: Identify simple words for very common symbols.",
+            "Phonemic Awareness: Identify sounds of the letters of the alphabet when supported with a concrete item or picture representing that sound."
+          ],
+          "learning_outcomes": [
+            "Can point to and name familiar food and shape-related words in simple texts (e.g., recognizing the word \"apple\" in the sentence, \"The apple is round.\").",
+            "Can identify simple words related to shapes (e.g., pointing to a cracker and saying \"square\").",
+            "Can recognize sounds of letters related to the names of food items when supported with visuals (e.g., identifying the /ɔ/ sound in \"orange\" along with the letter O, or the /b/ sound in \"banana\" when shown its crescent shape)."
+          ]
+        },
+        "speaking": {
+          "general_standard": "Can use basic language and formulaic expressions to describe things and answer questions.",
+          "specific_standards": [
+            "Productive: Name primary and secondary colors.",
+            "Interactive: Answer questions using simple words."
+          ],
+          "learning_outcomes": [
+            "Can identify and name primary and secondary colors when describing the color and shape of food items (e.g., \"This is a red apple.\" \"The brown cracker is square.\").",
+            "Can answer simple questions about both colors and shapes using one or two words (e.g., \"What shape is the orange?\" \"It's round.\").",
+            "Can use gestures to support responses about colors and shapes of food items (e.g., pointing to a round object when asked to find a shape)."
+          ]
+        },
+        "writing": {
+          "general_standard": "Can write about oneself using simple words.",
+          "specific_standards": [
+            "Productive: Label common items using a model to copy from.",
+            "Interactive: Write simple phrases with errors on a drawing or postcard."
+          ],
+          "learning_outcomes": [
+            "Can label food items in drawings with simple words (e.g., writing \"round\" under a picture of an orange).",
+            "Can write simple phrases with guidance, describing food shapes (e.g., \"This is a square cracker.\").",
+            "Can copy simple sentences about food shapes with teacher support (e.g., copying the word \"juice box\" under a picture of a juice box)."
+          ]
+        },
+        "mediation": {
+          "general_standard": "Can use mediation strategies such as gestures and body language to express basic ideas.",
+          "specific_standards": [
+            "Text: Use pictures or objects to express ideas.",
+            "Concept: Use facial expressions and simple gestures to help explain feelings or needs."
+          ],
+          "learning_outcomes": [
+            "Can use gestures or body language to describe food items (e.g., pretending to hold a round apple).",
+            "Can clarify responses using pictures or pointing to food-related visuals (e.g., showing the picture of a cracker to clarify its meaning).",
+            "Can use facial expressions and gestures to help describe food preferences and shapes (e.g., pretending to take a bite of an apple and using the hands to show that it is round)."
+          ]
+        }
+      },
+      "communicative_competences": {
+        "linguistic": {
+          "grammatical_features": [
+            "Adjective + noun (e.g., \"round apple\")",
+            "WH-questions (e.g., \"What shape is it?\")",
+            "Present simple (e.g., \"Oranges are round.\")"
+          ],
+          "vocabulary": {
+            "nouns": [
+              "pineapple",
+              "lemon",
+              "lime",
+              "mango",
+              "papaya",
+              "cracker",
+              "banana",
+              "food",
+              "juice box",
+              "snack",
+              "meal"
+            ],
+            "verbs": [
+              "eat",
+              "cut",
+              "hold",
+              "see",
+              "mix"
+            ],
+            "adjectives": [
+              "round",
+              "square",
+              "oval",
+              "big",
+              "small",
+              "healthy",
+              "tasty",
+              "orange",
+              "black",
+              "brown",
+              "white"
+            ],
+            "demonstratives": [
+              "this",
+              "that"
+            ]
+          },
+          "pronunciation_and_phonemic_awareness": {
+            "pronunciation": "/r/ in \"round\" and /k/ in \"cracker\"",
+            "phonemic_awareness": "Recognizing sounds of letters of the alphabet in names of shapes and foods (e.g., /æ/ in \"apple\")"
+          }
+        },
+        "pragmatic": [
+          "Identifying food shapes: Identifying and describing foods by shape (e.g., \"The cracker is square.\").",
+          "Asking about shapes in food: Engage in simple questions about food items (e.g., \"What shape is the apple?\")"
+        ],
+        "sociolinguistic": [
+          "Describing food: Using simple words to describe the colors and shapes of fruits and other foods, such as \"orange\" and \"cracker\"."
+        ]
+      },
+      "twenty_first_century_projects": [
+        {
+          "project_number": 1,
+          "title": "Food Shape Match",
+          "overview": "Students collect pictures of different foods and match them to their shapes (e.g., round oranges, square crackers), creating a poster or chart."
+        },
+        {
+          "project_number": 2,
+          "title": "Food Shape Sorting",
+          "overview": "Students sort different foods into shape categories (e.g., round, square) and label them with simple sentences like \"This is a round orange.\""
+        },
+        {
+          "project_number": 3,
+          "title": "Digital Food Shape Chart",
+          "overview": "Students create a digital food shape chart, labeling each food with sentences like \"The cracker is square.\""
+        }
+      ],
+      "skills_and_technology_integration": {
+        "skills": [
+          "Problem-Solving: Identifying shapes in everyday foods.",
+          "Communication: Describing food shapes."
+        ],
+        "technology": [
+          "Use an app to take pictures of foods and match them to shapes digitally."
+        ]
+      }
+    },
+    {
+      "scenario_number": 8,
+      "scenario_title": "It's Our Garden.",
+      "category": "Nature and Wellness",
+      "type": "Optional",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "The Pink Flowers!"
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "A Tall Tree!"
+        }
+      ],
+      "standards_and_learning_outcomes": {
+        "listening": {
+          "general_standard": "Can identify sounds of familiar words and basic phrases spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Catch the main idea of a short, simple story or announcement with visual support or illustrations.",
+            "Interactive: Respond to simple conversations on familiar topics by using gestures or by pointing."
+          ],
+          "learning_outcomes": [
+            "Can recognize nature-related words like \"tree,\" \"flowers,\" and \"bushes\" in simple conversations or stories (e.g., \"The tree is tall.\" \"The flowers are pink.\").",
+            "Can follow basic instructions related to outdoor environments in conversations (e.g., \"Look at the tall tree.\").",
+            "Can respond to questions about nature by pointing or using gestures (e.g., pointing to a tree in response to the question \"Do you see a tree?\")."
+          ]
+        },
+        "reading": {
+          "general_standard": "Can recognize familiar words in simple texts.",
+          "specific_standards": [
+            "Reading: Match simple words to corresponding pictures.",
+            "Reading: Identify simple words for very common symbols.",
+            "Phonemic Awareness: Identify sounds of the letters of the alphabet when supported with a concrete item or picture representing that sound."
+          ],
+          "learning_outcomes": [
+            "Can match nature-related words with primary or secondary colors to corresponding pictures (e.g., \"pink flowers,\" \"green tree,\" \"yellow leaves\").",
+            "Can recognize written words for nature symbols when supported by pictures (e.g., leaves, seeds).",
+            "Can recognize sounds of letters related to nature-related vocabulary when supported with visuals (e.g., identifying the /s/ sound in \"sun\" when shown a picture of the sun or the /t/ sound in \"tree\" when shown an image of a tree)."
+          ]
+        },
+        "speaking": {
+          "general_standard": "Can use basic language and formulaic expressions to describe things and answer questions.",
+          "specific_standards": [
+            "Productive: Name primary and secondary colors.",
+            "Interactive: Express likes or dislikes using simple words and pointing."
+          ],
+          "learning_outcomes": [
+            "Can identify and name colors of familiar nature objects (e.g., \"green trees,\" \"pink flowers,\" or \"yellow leaves\").",
+            "Can respond to simple questions about nature with words or gestures (e.g., \"What is this?\" Student points and says, \"tree.\").",
+            "Can express likes or dislikes about nature-related objects using simple words and pointing (e.g., \"I like trees\" while pointing to a tree)."
+          ]
+        },
+        "writing": {
+          "general_standard": "Can write about oneself using simple words.",
+          "specific_standards": [
+            "Productive: Write simple greetings on cards.",
+            "Interactive: Write very simple sentences with assistance, even if errors are present."
+          ],
+          "learning_outcomes": [
+            "Can write simple greetings or nature-related phrases on cards (e.g., \"Happy garden day!\").",
+            "Can write simple sentences about the garden or nature with teacher support (e.g., \"This is a tall tree\").",
+            "Can label pictures of plants or trees using simple words like \"flowers,\" \"trees,\" and \"leaves\"."
+          ]
+        },
+        "mediation": {
+          "general_standard": "Can use mediation strategies such as gestures and body language to express basic ideas.",
+          "specific_standards": [
+            "Communication: Use gestures and demonstrations to help classmates perform a simple task.",
+            "Concept: Use a word and a gesture or drawing to describe a familiar object."
+          ],
+          "learning_outcomes": [
+            "Can use gestures or body language to describe plants and trees to classmates (e.g., miming being a tree by stretching the arms upward or pretending to hold a bouquet of flowers).",
+            "Can clarify responses about nature by pointing to garden objects or drawing pictures (e.g., drawing a simple flower or a tree on the board).",
+            "Can use simple gestures or drawings to explain feelings about the garden (e.g., pointing to a tall tree in response to the question, \"What do you like most in the garden?\")."
+          ]
+        }
+      },
+      "communicative_competences": {
+        "linguistic": {
+          "grammatical_features": [
+            "Noun + verb + adjective (e.g., \"The flowers are pink.\")",
+            "WH-questions (e.g., \"What color is the flower?\")",
+            "Present simple (e.g., \"This is a tall tree.\")"
+          ],
+          "vocabulary": {
+            "nouns": [
+              "garden",
+              "tree",
+              "flower",
+              "plant",
+              "leaf",
+              "bush",
+              "seed",
+              "vine",
+              "soil",
+              "sun"
+            ],
+            "verbs": [
+              "grow",
+              "seed",
+              "plant",
+              "water",
+              "bloom",
+              "sprout",
+              "be (is/are/am)"
+            ],
+            "adjectives": [
+              "pink",
+              "green",
+              "tall",
+              "short",
+              "small",
+              "big",
+              "leafy",
+              "little"
+            ],
+            "question_word": [
+              "what"
+            ],
+            "demonstratives": [
+              "this",
+              "that"
+            ],
+            "possessive_pronouns": [
+              "my",
+              "your",
+              "his",
+              "her"
+            ]
+          },
+          "pronunciation_and_phonemic_awareness": {
+            "pronunciation": "/g/ in \"garden\" and /t/ in \"tree\"",
+            "phonemic_awareness": "Identification of sounds of letters of the alphabet in nature-related vocabulary (e.g., /s/ in \"sun\")"
+          }
+        },
+        "pragmatic": [
+          "Talking about nature: Describe plants and trees with singular and plural phrases (e.g., \"The tree is tall.\" \"The flowers are pink.\")",
+          "Asking questions in nature: Use basic questions like \"What color is the flower?\" to learn about plants"
+        ],
+        "sociolinguistic": [
+          "Respect for nature: Talking about plants and trees using respectful language (e.g., \"I like plants.\")."
+        ]
+      },
+      "twenty_first_century_projects": [
+        {
+          "project_number": 1,
+          "title": "Garden Nature Journal",
+          "overview": "Children explore the school garden, observe plants and trees, and record their findings in a nature journal, labeling each plant with simple sentences like \"This is a tall tree.\""
+        },
+        {
+          "project_number": 2,
+          "title": "Garden Scavenger Hunt",
+          "overview": "Students participate in a scavenger hunt in the school garden, finding objects like pink flowers and tall trees and labeling them with sentences."
+        },
+        {
+          "project_number": 3,
+          "title": "Digital Nature Photo Book",
+          "overview": "Students take photos of plants and trees in the school garden and create a digital photo book, labeling each plant with simple sentences like \"This is a pink flower.\""
+        }
+      ],
+      "skills_and_technology_integration": {
+        "skills": [
+          "Observation: Learning about plants and nature.",
+          "Communication: Describing the natural environment."
+        ],
+        "technology": [
+          "Use a nature journaling app to record findings and add digital photos."
+        ]
+      }
+    }
+  ]
+}

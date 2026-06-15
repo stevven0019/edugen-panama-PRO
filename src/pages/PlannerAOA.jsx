@@ -6,7 +6,11 @@ import {
   Download, 
   FileEdit, 
   AlertCircle, 
-  FileCheck 
+  FileCheck,
+  Play,
+  Pause,
+  Square,
+  Volume2
 } from 'lucide-react';
 import { generateCurriculumContent } from '../services/ai';
 import { databaseService } from '../services/firebase';
@@ -30,6 +34,372 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
   const [generatedHtml, setGeneratedHtml] = useState('');
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [currentPlanObject, setCurrentPlanObject] = useState(null);
+
+  // TTS State
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [activeLineIndex, setActiveLineIndex] = useState(-1);
+  const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  const [synthVoices, setSynthVoices] = useState([]);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      const loadVoices = () => {
+        setSynthVoices(window.speechSynthesis.getVoices());
+      };
+      loadVoices();
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    return () => {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
+  const isJsonString = (str) => {
+    try {
+      JSON.parse(str);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
+
+  const convertScriptJsonToHtml = (jsonStr) => {
+    try {
+      const parsed = JSON.parse(jsonStr);
+      return `
+<div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; color: #333; line-height: 1.6; padding: 20px; background: #fff;">
+  <div style="text-align: center; margin-bottom: 20px; border-bottom: 3px double #1a3a5c; padding-bottom: 10px;">
+    <h2 style="font-size: 14px; font-weight: bold; margin: 2px 0; color: #1a3a5c;">MINISTRY OF EDUCATION</h2>
+    <h3 style="font-size: 12px; font-weight: bold; margin: 2px 0; color: #1a3a5c;">EFL CLASSROOM LISTENING RESOURCE</h3>
+    <h3 style="font-size: 12px; font-weight: bold; margin: 2px 0;">🎧 LISTENING SCRIPT: ${parsed.title || 'Finding My Next Adventure!'}</h3>
+  </div>
+
+  <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 11px; border: 1px dashed #1a5276;">
+    <tr style="background: #d6eaf8;">
+      <td style="font-weight: bold; border: 1px solid #ccc; padding: 8px; width: 120px;">Setting:</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">${parsed.setting || 'In the Library'}</td>
+    </tr>
+    <tr>
+      <td style="font-weight: bold; border: 1px solid #ccc; padding: 8px;">Characters:</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">
+        ${(parsed.characters || []).map(c => `<b>${c.name}</b> (${c.role})`).join(', ')}
+      </td>
+    </tr>
+  </table>
+
+  <div style="border: 2px dashed #1a5276; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; background: #fdfefe; font-size: 12px; margin-bottom: 25px;">
+    ${(parsed.script || []).map(turn => `
+      <p style="margin: 8px 0;"><b>${turn.speaker.toUpperCase()}:</b> "${turn.text}"</p>
+    `).join('')}
+  </div>
+
+  <div style="background-color:#1a3a5c; color:white; font-weight:bold; font-size:12px; padding:6px 10px; margin-bottom: 10px;">
+    COMPREHENSION QUESTIONS
+  </div>
+  <ol style="font-size: 12px; padding-left: 20px; margin-bottom: 20px;">
+    ${(parsed.comprehensionQuestions || []).map(q => `
+      <li style="margin-bottom: 8px;"><b>${q}</b><br/><span style="color:#666;">Answer: ____________________________________________________</span></li>
+    `).join('')}
+  </ol>
+</div>
+      `;
+    } catch (e) {
+      return `<div>Error: ${jsonStr}</div>`;
+    }
+  };
+
+  const getVoiceForSpeaker = (speakerName, gender, voices) => {
+    const enVoices = voices.filter(v => v.lang.startsWith('en'));
+    if (enVoices.length === 0) return null;
+    
+    const lowerGender = (gender || 'female').toLowerCase();
+    const isMale = lowerGender === 'male' || speakerName.toLowerCase().includes('mr') || speakerName.toLowerCase().includes('carlos') || speakerName.toLowerCase().includes('lucas');
+    
+    if (isMale) {
+      const maleVoice = enVoices.find(v => 
+        v.name.toLowerCase().includes('david') || 
+        v.name.toLowerCase().includes('male') || 
+        v.name.toLowerCase().includes('daniel') || 
+        v.name.toLowerCase().includes('google uk english male')
+      );
+      if (maleVoice) return maleVoice;
+    } else {
+      const femaleVoice = enVoices.find(v => 
+        v.name.toLowerCase().includes('zira') || 
+        v.name.toLowerCase().includes('female') || 
+        v.name.toLowerCase().includes('samantha') || 
+        v.name.toLowerCase().includes('hazel') || 
+        v.name.toLowerCase().includes('google us english')
+      );
+      if (femaleVoice) return femaleVoice;
+    }
+    
+    const hash = speakerName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    return enVoices[hash % enVoices.length];
+  };
+
+  const currentTurnIndexRef = React.useRef(-1);
+  
+  const stopDialogue = () => {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+    }
+    setIsPlaying(false);
+    setIsPaused(false);
+    setActiveLineIndex(-1);
+    currentTurnIndexRef.current = -1;
+  };
+
+  const pauseDialogue = () => {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.pause();
+      setIsPaused(true);
+    }
+  };
+
+  const resumeDialogue = () => {
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+      window.speechSynthesis.resume();
+      setIsPaused(false);
+    }
+  };
+
+  const playLine = (script, index, characters) => {
+    if (index >= script.length) {
+      stopDialogue();
+      return;
+    }
+
+    if (typeof window === 'undefined' || !window.speechSynthesis) return;
+
+    window.speechSynthesis.cancel();
+
+    const turn = script[index];
+    const character = (characters || []).find(c => c.name.toLowerCase() === turn.speaker.toLowerCase()) || {};
+    
+    const utterance = new SpeechSynthesisUtterance(turn.text);
+    utterance.lang = 'en-US';
+    utterance.rate = playbackSpeed;
+    
+    const selectedVoice = getVoiceForSpeaker(turn.speaker, character.gender, synthVoices);
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+    }
+
+    currentTurnIndexRef.current = index;
+    setActiveLineIndex(index);
+    setIsPlaying(true);
+    setIsPaused(false);
+
+    utterance.onend = () => {
+      if (currentTurnIndexRef.current === index) {
+        playLine(script, index + 1, characters);
+      }
+    };
+
+    utterance.onerror = (e) => {
+      console.error("TTS error:", e);
+      stopDialogue();
+    };
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const playSingleLine = (script, index, characters) => {
+    if (typeof window === 'undefined' || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    
+    setIsPlaying(false);
+    setIsPaused(false);
+    currentTurnIndexRef.current = -1;
+    setActiveLineIndex(index);
+    
+    const turn = script[index];
+    const character = (characters || []).find(c => c.name.toLowerCase() === turn.speaker.toLowerCase()) || {};
+    const utterance = new SpeechSynthesisUtterance(turn.text);
+    utterance.lang = 'en-US';
+    utterance.rate = playbackSpeed;
+    
+    const selectedVoice = getVoiceForSpeaker(turn.speaker, character.gender, synthVoices);
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+    }
+    
+    utterance.onend = () => {
+      setActiveLineIndex(-1);
+    };
+    utterance.onerror = () => {
+      setActiveLineIndex(-1);
+    };
+    
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const renderListeningScriptPlayer = (jsonStr) => {
+    let data;
+    try {
+      data = JSON.parse(jsonStr);
+    } catch (e) {
+      return <div className="text-red-500 p-4">Error al parsear el JSON del Script.</div>;
+    }
+
+    const firstSpeaker = data.characters?.[0]?.name || '';
+
+    return (
+      <div className="space-y-6 font-sans">
+        {/* Header and Setting */}
+        <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <h4 className="text-base font-extrabold text-blue-600 dark:text-blue-400">
+              🎧 {data.title}
+            </h4>
+            <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400">
+              Script de Listening Activo
+            </span>
+          </div>
+          <p className="text-xs text-slate-500 dark:text-slate-400">
+            <strong>Escenario:</strong> {data.setting}
+          </p>
+          <div className="flex flex-wrap gap-2 pt-1">
+            {data.characters.map((c, i) => (
+              <span key={i} className="text-[10px] font-bold px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 text-slate-650 dark:text-slate-350">
+                {c.gender === 'male' ? '👨‍💼' : '👩‍💼'} {c.name} ({c.role})
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* TTS Player Control Panel */}
+        <div className="p-4 rounded-2xl bg-blue-50/50 dark:bg-blue-950/10 border border-blue-500/10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            {!isPlaying ? (
+              <button
+                onClick={() => playLine(data.script, 0, data.characters)}
+                className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-xs active:scale-95 cursor-pointer"
+              >
+                <Play className="w-4 h-4 fill-white" />
+                <span>Reproducir Todo</span>
+              </button>
+            ) : isPaused ? (
+              <button
+                onClick={resumeDialogue}
+                className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-xs active:scale-95 cursor-pointer"
+              >
+                <Play className="w-4 h-4 fill-white" />
+                <span>Reanudar</span>
+              </button>
+            ) : (
+              <button
+                onClick={pauseDialogue}
+                className="bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-xs active:scale-95 cursor-pointer"
+              >
+                <Pause className="w-4 h-4 fill-white" />
+                <span>Pausar</span>
+              </button>
+            )}
+
+            <button
+              onClick={stopDialogue}
+              disabled={!isPlaying}
+              className={`p-3 rounded-xl font-bold transition flex items-center justify-center gap-1.5 text-xs active:scale-95 cursor-pointer ${
+                isPlaying 
+                  ? 'bg-rose-600 hover:bg-rose-700 text-white' 
+                  : 'bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-650 cursor-not-allowed'
+              }`}
+            >
+              <Square className="w-4 h-4 fill-current" />
+              <span>Detener</span>
+            </button>
+          </div>
+
+          <div className="text-xs font-bold text-slate-600 dark:text-slate-350 flex items-center gap-1.5">
+            {activeLineIndex >= 0 && isPlaying && !isPaused ? (
+              <span className="flex items-center gap-1 text-blue-500 animate-pulse">
+                <Volume2 className="w-4.5 h-4.5" />
+                Leyendo a {data.script[activeLineIndex].speaker}...
+              </span>
+            ) : isPaused ? (
+              <span className="text-amber-500">Lectura en Pausa</span>
+            ) : (
+              <span className="text-slate-400">Audio Listo</span>
+            )}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase">Velocidad</span>
+            <input
+              type="range"
+              min="0.8"
+              max="1.3"
+              step="0.1"
+              value={playbackSpeed}
+              onChange={(e) => setPlaybackSpeed(parseFloat(e.target.value))}
+              className="w-24 accent-blue-600 cursor-pointer"
+            />
+            <span className="text-xs font-bold text-slate-600 dark:text-slate-300 w-8">{playbackSpeed}x</span>
+          </div>
+        </div>
+
+        {/* Script dialogue area */}
+        <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
+          {data.script.map((turn, index) => {
+            const isSofia = turn.speaker === firstSpeaker;
+            const isActive = activeLineIndex === index;
+            return (
+              <div
+                key={index}
+                className={`flex w-full ${isSofia ? 'justify-start' : 'justify-end'}`}
+              >
+                <div
+                  className={`max-w-[85%] rounded-2xl p-4 border transition-all duration-200 shadow-sm relative group flex items-start gap-3 ${
+                    isActive
+                      ? 'border-blue-500 bg-blue-500/10 dark:bg-blue-950/20 scale-[1.01]'
+                      : isSofia
+                      ? 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-100/40 dark:bg-slate-900/20'
+                  }`}
+                >
+                  <button
+                    onClick={() => playSingleLine(data.script, index, data.characters)}
+                    className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 transition hover:scale-105 active:scale-95 self-center cursor-pointer"
+                    title="Escuchar esta línea"
+                  >
+                    <Volume2 className="w-3.5 h-3.5" />
+                  </button>
+                  <div className="space-y-1">
+                    <span className={`text-[10px] font-black uppercase tracking-wider ${isSofia ? 'text-blue-600 dark:text-blue-400' : 'text-purple-600 dark:text-purple-400'}`}>
+                      {turn.speaker}
+                    </span>
+                    <p className="text-xs text-slate-800 dark:text-slate-200 italic leading-relaxed">
+                      "{turn.text}"
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Comprehension Questions */}
+        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
+          <h5 className="font-extrabold text-xs text-slate-800 dark:text-slate-100 uppercase tracking-widest border-b border-slate-100 dark:border-slate-850 pb-2">
+            📋 Preguntas de Comprensión (Para Clase)
+          </h5>
+          <ol className="list-decimal list-inside space-y-3.5 text-xs">
+            {data.comprehensionQuestions.map((q, i) => (
+              <li key={i} className="text-slate-700 dark:text-slate-350 leading-relaxed font-medium">
+                <span className="font-bold">{q}</span>
+                <div className="mt-1 h-7 border-b border-dashed border-slate-300 dark:border-slate-800 w-full"></div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    );
+  };
 
   const skills = [
     { id: 'Listening', label: 'LISTENING' },
@@ -72,6 +442,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
     }
 
     const proceedWithGeneration = async () => {
+      stopDialogue(); // Stop any active reading
       setLoading(true);
       setActiveGenType(type);
       setGeneratedHtml('');
@@ -98,7 +469,8 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
         const docTitles = {
           planner: `Planner AOA - ${theme} (L${lessonNum})`,
           delivery: `Lesson Delivery - ${theme} (L${lessonNum})`,
-          resources: `Recursos Impresibles - ${theme} (L${lessonNum})`
+          resources: `Recursos Impresibles - ${theme} (L${lessonNum})`,
+          listeningscript: `Script de Listening - ${theme} (L${lessonNum})`
         };
         
         const newPlan = {
@@ -145,12 +517,20 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(generatedHtml.replace(/<[^>]*>/g, ''));
+    let contentToCopy = generatedHtml;
+    if (activeGenType === 'listeningscript' && isJsonString(generatedHtml)) {
+      contentToCopy = convertScriptJsonToHtml(generatedHtml);
+    }
+    navigator.clipboard.writeText(contentToCopy.replace(/<[^>]*>/g, ''));
     onTriggerAlert("¡Contenido copiado al portapapeles en formato de texto plano!", "success");
   };
 
   const handleDownload = () => {
-    const blob = new Blob(['\ufeff', generatedHtml], { type: 'application/msword' });
+    let contentToDownload = generatedHtml;
+    if (activeGenType === 'listeningscript' && isJsonString(generatedHtml)) {
+      contentToDownload = convertScriptJsonToHtml(generatedHtml);
+    }
+    const blob = new Blob(['\ufeff', contentToDownload], { type: 'application/msword' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -287,6 +667,14 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
           >
             <Sparkles className="w-4 h-4" /> RECURSOS & RÚBRICA
           </button>
+
+          <button 
+            onClick={() => handleGenerate('listeningscript')} 
+            disabled={loading}
+            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-bold hover:scale-[1.01] active:scale-[0.99] transition shadow-lg shadow-indigo-500/10 flex items-center justify-center gap-2 text-xs"
+          >
+            <Volume2 className="w-4 h-4" /> 🎧 SCRIPT A AUDIO
+          </button>
         </div>
 
         {/* Sidebar Ad Banner */}
@@ -339,11 +727,15 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
             </div>
 
             {/* Generated HTML Output Render */}
-            <div className="overflow-x-auto flex-1 mb-6">
-              <div 
-                className="meduca-table-container leading-relaxed text-sm font-sans"
-                dangerouslySetInnerHTML={{ __html: generatedHtml }}
-              />
+            <div className="overflow-x-auto flex-1 mb-6 font-sans">
+              {activeGenType === 'listeningscript' && isJsonString(generatedHtml) ? (
+                renderListeningScriptPlayer(generatedHtml)
+              ) : (
+                <div 
+                  className="meduca-table-container leading-relaxed text-sm font-sans"
+                  dangerouslySetInnerHTML={{ __html: generatedHtml }}
+                />
+              )}
             </div>
           </div>
         ) : (

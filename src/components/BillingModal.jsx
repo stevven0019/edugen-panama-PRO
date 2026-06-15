@@ -19,7 +19,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
 
   const [activeTab, setActiveTab] = useState('subscription'); // 'subscription' | 'tokens'
   const [tokenQuantity, setTokenQuantity] = useState(10);
-  const [paymentMethod, setPaymentMethod] = useState('stripe'); // 'stripe' | 'paypal' | 'yappy'
+  const [paymentMethod, setPaymentMethod] = useState('yappy'); // 'yappy' is Bank Deposit / ACH for now
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -336,39 +336,31 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <button
                     type="button"
-                    onClick={() => setPaymentMethod('stripe')}
-                    className={`p-3.5 border rounded-2xl flex items-center justify-center gap-2 text-xs font-bold transition ${
-                      paymentMethod === 'stripe'
-                        ? 'border-blue-500 bg-blue-500/5 text-blue-600 dark:text-blue-400'
-                        : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-500'
-                    }`}
-                  >
-                    <CreditCard className="w-4 h-4" />
-                    Tarjeta / Stripe
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod('paypal')}
-                    className={`p-3.5 border rounded-2xl flex items-center justify-center gap-2 text-xs font-bold transition ${
-                      paymentMethod === 'paypal'
-                        ? 'border-amber-500 bg-amber-500/5 text-amber-600 dark:text-amber-400'
-                        : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-500'
-                    }`}
-                  >
-                    <DollarSign className="w-4 h-4" />
-                    PayPal
-                  </button>
-                  <button
-                    type="button"
                     onClick={() => setPaymentMethod('yappy')}
-                    className={`p-3.5 border rounded-2xl flex items-center justify-center gap-2 text-xs font-bold transition ${
+                    className={`p-3.5 border rounded-2xl flex items-center justify-center gap-2 text-xs font-bold transition flex-1 ${
                       paymentMethod === 'yappy'
                         ? 'border-emerald-500 bg-emerald-500/5 text-emerald-600 dark:text-emerald-400'
                         : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-500'
                     }`}
                   >
                     <Smartphone className="w-4 h-4" />
-                    Yappy / ACH
+                    Depósito Bancario / ACH
+                  </button>
+                  <button
+                    type="button"
+                    disabled
+                    className="p-3.5 border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-655 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold cursor-not-allowed select-none opacity-60"
+                  >
+                    <Smartphone className="w-4 h-4" />
+                    Yappy (Pronto)
+                  </button>
+                  <button
+                    type="button"
+                    disabled
+                    className="p-3.5 border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-655 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold cursor-not-allowed select-none opacity-60"
+                  >
+                    <DollarSign className="w-4 h-4" />
+                    PayPal (Pronto)
                   </button>
                 </div>
               </div>
@@ -446,13 +438,19 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                       <h5 className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
                         Datos de Transferencia
                       </h5>
-                      <div className="text-[11px] text-slate-650 dark:text-slate-350 space-y-1">
-                        <p><strong>Banco:</strong> Banco General (Ahorros)</p>
-                        <p><strong>Número de Cuenta:</strong> 03-72-01-123456-7</p>
-                        <p><strong>Nombre del Beneficiario:</strong> EduGen Panamá</p>
-                        <p><strong>Yappy:</strong> (+507) 6000-0000 (A nombre de EduGen)</p>
-                        <p className="text-[10px] text-slate-400 italic pt-1 border-t border-slate-200/40 dark:border-slate-800/40">
-                          *Puedes editar estos datos directamente en BillingModal.jsx
+                      <div className="text-[11px] text-slate-650 dark:text-slate-350 space-y-1.5">
+                        <div className="bg-slate-900/5 dark:bg-black/20 p-2.5 rounded-lg border border-slate-200/50 dark:border-slate-800/40">
+                          <p className="font-bold text-slate-800 dark:text-slate-200">1. Banco General (Ahorros)</p>
+                          <p><strong>No. de Cuenta:</strong> 0472960688080</p>
+                          <p><strong>A nombre de:</strong> Edugen pro</p>
+                        </div>
+                        <div className="bg-slate-900/5 dark:bg-black/20 p-2.5 rounded-lg border border-slate-200/50 dark:border-slate-800/40">
+                          <p className="font-bold text-slate-800 dark:text-slate-200">2. Banco BAC Credomatic (Ahorros)</p>
+                          <p><strong>No. de Cuenta:</strong> 116819616</p>
+                          <p><strong>A nombre de:</strong> edugen pro</p>
+                        </div>
+                        <p className="text-[9px] text-slate-400 italic pt-1 border-t border-slate-200/40 dark:border-slate-800/40">
+                          *Realiza tu transferencia o depósito y adjunta el comprobante abajo.
                         </p>
                       </div>
                     </div>

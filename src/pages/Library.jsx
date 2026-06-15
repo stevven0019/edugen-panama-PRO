@@ -65,6 +65,7 @@ export default function Library({ user, onTriggerAlert }) {
         if (selectedFilter === 'resources') return p.type === 'resources';
         if (selectedFilter === 'interdisciplinary') return p.type === 'interdisciplinary';
         if (selectedFilter === 'theme_planner') return p.type === 'theme_planner';
+        if (selectedFilter === 'listeningscript') return p.type === 'listeningscript';
         return true;
       });
     }
@@ -119,9 +120,10 @@ export default function Library({ user, onTriggerAlert }) {
     resources: { bg: 'bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20', label: 'Recursos Pack', icon: <Sparkles className="w-3.5 h-3.5" /> },
     interdisciplinary: { bg: 'bg-pink-500/10 text-pink-600 dark:text-pink-400 border-pink-500/20', label: 'Integrado', icon: <Sparkles className="w-3.5 h-3.5" /> },
     theme_planner: { bg: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20', label: 'Theme Planner', icon: <Layers className="w-3.5 h-3.5" /> },
+    listeningscript: { bg: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20', label: 'Script de Audio', icon: <Sparkles className="w-3.5 h-3.5" /> },
   };
 
-  const getPlanBadge = (type) => badges[type] || { bg: 'bg-slate-500/10 text-slate-600 border-slate-500/20', label: 'Plan', icon: <FileText className="w-3.5 h-3.5" /> };
+  const getPlanBadge = (type) => badges[type] || { bg: 'bg-slate-500/10 text-slate-600 border-slate-500/20', label: 'Plan', icon: <Sparkles className="w-3.5 h-3.5" /> };
 
   const filterTabs = [
     { id: 'all', label: 'Todos' },
@@ -130,6 +132,7 @@ export default function Library({ user, onTriggerAlert }) {
     { id: 'resources', label: 'Recursos Impresibles' },
     { id: 'interdisciplinary', label: 'Interdisciplinario' },
     { id: 'theme_planner', label: 'Theme Planners' },
+    { id: 'listeningscript', label: 'Scripts de Audio' },
   ];
 
   return (
