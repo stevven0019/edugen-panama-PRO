@@ -1054,15 +1054,8 @@ async function simulateResponse(type, vars, media = null) {
 }
 
 
-// ── Secure API Content generator ──
 export async function generateCurriculumContent(type, vars, media = null) {
-  const apiKey = getApiKey();
-
-  if (!apiKey) {
-    console.log(`Gemini API Key missing. Generating simulated response for ${type}...`);
-    return await simulateResponse(type, vars, media);
-  }
-
+  const clientApiKey = getApiKey();
   const { systemPrompt, userMsg } = getPromptTemplate(type, vars);
 
   try {
@@ -1076,20 +1069,36 @@ export async function generateCurriculumContent(type, vars, media = null) {
       });
     }
 
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: parts }],
-        systemInstruction: { parts: [{ text: systemPrompt }] }
-      })
-    });
+    const body = {
+      contents: [{ parts: parts }],
+      systemInstruction: { parts: [{ text: systemPrompt }] }
+    };
 
-    if (!response.ok) {
-      throw new Error(`API returned status ${response.status}`);
+    let data;
+    if (clientApiKey) {
+      // Desarrollo local: llamada directa con API key del cliente
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${clientApiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      if (!response.ok) {
+        throw new Error(`API returned status ${response.status}`);
+      }
+      data = await response.json();
+    } else {
+      // Producción en Vercel: llamada segura a través del proxy
+      const response = await fetch('/api/gemini', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      if (!response.ok) {
+        throw new Error(`Proxy returned status ${response.status}`);
+      }
+      data = await response.json();
     }
 
-    const data = await response.json();
     let text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
 
     // Cleanup markdown code blocks if the AI surrounded the HTML/JSON with it
@@ -1104,22 +1113,7 @@ export async function generateCurriculumContent(type, vars, media = null) {
 
 // ── Multimodal Screenshot/File Extractor (Gemini) ──
 export async function extractCurriculumFromMedia(base64Data, mimeType) {
-  const apiKey = getApiKey();
-
-  if (!apiKey) {
-    console.log("Gemini API Key missing. Simulating multimodal extraction...");
-    // Simulate latency
-    await new Promise(r => setTimeout(r, 2000));
-
-    // Return a smart set of simulated inputs based on a standard timetable
-    return {
-      theme: "Community Services & Neighborhoods",
-      scenario: "Interviewing a local firefighter or officer",
-      grade: "6th Grade",
-      weeks: 3,
-      weeklyHours: 5
-    };
-  }
+  const clientApiKey = getApiKey();
 
   const promptText = `Analyze this curriculum document or timetable image. Extract the following details as a clean JSON object (no markdown, no extra text):
 {
@@ -1132,34 +1126,50 @@ export async function extractCurriculumFromMedia(base64Data, mimeType) {
 If any field is missing or cannot be found, make a logical guess based on the context of the image. Ensure the grade is parsed to templates like '1st Grade', '6th Grade', '12th Grade' or similar.`;
 
   try {
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              { text: promptText },
-              {
-                inlineData: {
-                  mimeType: mimeType,
-                  data: base64Data
-                }
+    const body = {
+      contents: [
+        {
+          parts: [
+            { text: promptText },
+            {
+              inlineData: {
+                mimeType: mimeType,
+                data: base64Data
               }
-            ]
-          }
-        ],
-        generationConfig: {
-          responseMimeType: "application/json"
+            }
+          ]
         }
-      })
-    });
+      ],
+      generationConfig: {
+        responseMimeType: "application/json"
+      }
+    };
 
-    if (!response.ok) {
-      throw new Error(`API returned status ${response.status}`);
+    let data;
+    if (clientApiKey) {
+      // Desarrollo local: llamada directa
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${clientApiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      if (!response.ok) {
+        throw new Error(`API returned status ${response.status}`);
+      }
+      data = await response.json();
+    } else {
+      // Producción en Vercel: llamada segura a través del proxy
+      const response = await fetch('/api/gemini', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      if (!response.ok) {
+        throw new Error(`Proxy returned status ${response.status}`);
+      }
+      data = await response.json();
     }
 
-    const data = await response.json();
     let text = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
     text = text.replace(/```json|```/g, '').trim();
     return JSON.parse(text);
