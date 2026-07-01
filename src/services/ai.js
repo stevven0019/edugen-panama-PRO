@@ -1183,6 +1183,27 @@ function getPromptTemplate(type, vars) {
   const scenery = vars.scenario || 'Planning a party';
   const theme = vars.theme || 'Food and Drinks';
 
+  const getCefrFromGrade = (g) => {
+    if (!g) return 'A2';
+    const val = g.trim();
+    if (val === 'Pre-K') return 'Pre-A1.1';
+    if (val === 'Kinder') return 'Pre-A1.2';
+    if (val === '1st Grade') return 'Pre-A1.3';
+    if (val === '2nd Grade') return 'Pre-A1.4';
+    if (val === '3rd Grade') return 'A1.1';
+    if (val === '4th Grade') return 'A1.2';
+    if (val === '5th Grade') return 'A1.3';
+    if (val === '6th Grade') return 'A2.1';
+    if (val === '7th Grade') return 'A2.2';
+    if (val === '8th Grade') return 'A2.3';
+    if (val === '9th Grade') return 'A2.4';
+    if (val === '10th Grade') return 'B1.1';
+    if (val === '11th Grade') return 'B1.2';
+    if (val === '12th Grade') return 'B1.3';
+    return 'A2';
+  };
+  const cefr = vars.cefr || getCefrFromGrade(grade);
+
   if (type === 'planner' || type === 'lessonplanner') {
     return {
       systemPrompt: `You are an expert curriculum designer certified by MEDUCA (Ministerio de Educación de Panamá). CRITICAL: Llenar todo el formato en inglés (All generated content, fields, and activities must be written in English).
@@ -1193,8 +1214,9 @@ function getPromptTemplate(type, vars) {
     CONTEXT VARIABLES (USE THESE THROUGHOUT):
     ════════════════════════════════════════
     - Lesson Number   : ${lessonNum}
-    - Skills Focus    : ${skillsStr}
+    - Skills Focus    : ${skillsStr} (CRITICAL: Every stage, activity, and teacher action must strictly align with this Focus Skill)
     - Grade Level     : ${grade}
+    - CEFR Level      : ${cefr} (CRITICAL: All vocabulary, grammar complexity, and task demands must strictly target this CEFR level)
     - Scenario        : ${scenery}
     - Theme           : ${theme}
     - Lesson within Theme: This is Lesson ${lessonNum} of 5 in the theme sequence.
@@ -1277,7 +1299,9 @@ function getPromptTemplate(type, vars) {
     QUALITY STANDARDS:
     ════════════════════════════════════════
     - Language: Professional English throughout.
-    - Alignment: Every activity must connect to Skills Focus (${skillsStr}), Scenario (${scenery}), and Theme (${theme}).
+    - Alignment: Every activity must connect strictly to Skills Focus (${skillsStr}), Grade Level (${grade}), CEFR Level (${cefr}), Scenario (${scenery}), and Theme (${theme}).
+    - Strict Skill Focus: If Skills Focus is "Listening", all activities, materials, and checks must center on listening/auditory practice. If "Reading", they must center on reading/texts. If "Speaking", on speech production/interaction. If "Writing", on text composition. If "Mediation", on translation, summarizing, or explaining.
+    - CEFR Appropriateness: Grammar structure complexity and vocabulary must strictly respect the ${cefr} level.
     - Bloom's Taxonomy: Progression from lower-order (remember, understand) to higher-order (apply, create) thinking.
     - Differentiation: Include at least ONE suggestion per stage for supporting struggling learners (scaffolding) 
       and challenging advanced learners (extension task).
@@ -1301,8 +1325,9 @@ function getPromptTemplate(type, vars) {
     VARIABLES DE CONTEXTO:
     ════════════════════════════════════════
     - Lección N°      : ${lessonNum}
-    - Habilidades     : ${skillsStr}
+    - Habilidades     : ${skillsStr} (CRÍTICO: Todas las actividades y guiones deben enfocarse estrictamente en estas habilidades)
     - Grado           : ${grade}
+    - Nivel CEFR      : ${cefr} (CRÍTICO: Todo el vocabulario, la gramática y tareas deben respetar este nivel)
     - Escenario       : ${scenery}
     - Tema            : ${theme}
 
@@ -1423,7 +1448,9 @@ function getPromptTemplate(type, vars) {
     ESTÁNDARES DE CALIDAD:
     ════════════════════════════════════════
     - Idioma principal: ESPAÑOL, con ejemplos de lenguaje del aula en INGLÉS (entre comillas itálicas).
-    - Todo el contenido debe estar alineado a: Habilidades (${skillsStr}), Escenario (${scenery}), Tema (${theme}).
+    - Todo el contenido debe estar alineado estrictamente a: Habilidades (${skillsStr}), Grado (${grade}), nivel CEFR (${cefr}), Escenario (${scenery}), y Tema (${theme}).
+    - Foco de Habilidad Estricto: Si la habilidad de enfoque es "Listening", todas las instrucciones de entrega, dinámicas y guiones del docente deben centrarse en la comprensión auditiva. Si es "Reading", en lectura; si es "Speaking", en hablar; si es "Writing", en escribir; si es "Mediation", en mediar.
+    - Complejidad CEFR: Todo el vocabulario, las expresiones clave y las explicaciones gramaticales sugeridas deben respetar estrictamente el nivel de dificultad de ${cefr}.
     - Tono: Práctico, motivador, coloquial-profesional. Hablarle al docente directamente (tú/usted).
     - Evita el lenguaje académico excesivo. El maestro debe poder leer esto en clase y seguirlo.
     - Cada guión de diálogo debe ser realista y apropiado para estudiantes de Grado ${grade}.
@@ -1442,13 +1469,15 @@ function getPromptTemplate(type, vars) {
     ════════════════════════════════════════
     - Theme        : ${theme}
     - Scenario     : ${scenery}
-    - Skills Focus : ${skillsStr}
+    - Skills Focus : ${skillsStr} (CRITICAL: Customize all materials to directly practice this skill)
     - Grade        : ${grade}
+    - CEFR Level   : ${cefr} (CRITICAL: Vocabulary and grammatical complexity must strictly target this CEFR level)
     - Lesson #     : ${lessonNum}
 
     ════════════════════════════════════════
     CRITICAL RULES:
     ════════════════════════════════════════
+    ⚠️ Every resource in this pack must be strictly customized and aligned to the Focus Skills (${skillsStr}), Grade Level (${grade}), and CEFR Level (${cefr}). For instance, if Focus Skills is "Listening", the dialogue script, activities, and tasks must center on listening comprehension at the designated ${cefr} level.
     ⚠️ DO NOT describe or summarize resources. PRODUCE THEM IN FULL.
     ⚠️ Every text, dialogue, activity, and task must be 100% usable as printed material.
     ⚠️ Language level must match Grade ${grade} students in Panama.
@@ -1705,26 +1734,34 @@ function getPromptTemplate(type, vars) {
     const materiasStr = vars.materias?.join(', ') || 'Español, Ciencias Naturales, inglés';
     const trimestre = vars.trimestre || 'I Trimestre';
     const descripcion = vars.descripcion || '';
+    const temaGrade = vars.grade || '5to Grado';
     return {
       systemPrompt: `Eres un experto en diseño curricular del Ministerio de Educación de Panamá (MEDUCA), especializado en proyectos interdisciplinarios.
-Tu tarea es proponer UN TEMA GENERADOR creativo, relevante y contextualizado para un proyecto interdisciplinario .
+Tu tarea es proponer UN TEMA GENERADOR creativo, relevante y contextualizado para un proyecto interdisciplinario.
 
-El El tema debe:
+El tema debe:
 - Ser pertinente al contexto panameño (biodiversidad, cultura, historia, sostenibilidad, identidad nacional, etc.)
 - Conectar de manera natural y significativa las siguientes asignaturas: ${materiasStr}
-- Ser apropiado para estudiantes de ${grade}
+- Ser apropiado para estudiantes de ${temaGrade}
 - Estar alineado al ${trimestre} del año escolar
 - Partir de la siguiente descripción/interés del docente: "${descripcion}"
 - Ser inspirador y motivante para los estudiantes y no debe ser un nombre demasiado largo (max 15 palabras)
 
 Responde ÚNICAMENTE con un JSON en este formato exacto (sin markdown, sin explicaciones):
-{"tema": "El nombre completo del tema generador", "pregunta_esencial": "Una pregunta esencial que guíe el proyecto (¿Cómo podemos...?)", "justificacion": "2 oraciones explicando por qué este tema es relevante para los estudiantes panameños de ${grade}"}`,
-      userMsg: `Necesito un tema generador para un proyecto interdisciplinario. Descripción: "${vars.descripcion}". Grado: "${grade}". Asignaturas: "${materiasStr}". Trimestre: "${vars.trimestre}".`
+{"tema": "El nombre completo del tema generador", "pregunta_esencial": "Una pregunta esencial que guíe el proyecto (¿Cómo podemos...?)", "justificacion": "2 oraciones explicando por qué este tema es relevante para los estudiantes panameños de ${temaGrade}"}`,
+      userMsg: `Necesito un tema generador para un proyecto interdisciplinario. Descripción: "${descripcion}". Grado: "${temaGrade}". Asignaturas: "${materiasStr}". Trimestre: "${trimestre}".`
     };
   }
 
   if (type === 'inter_formato') {
     const materiasStr = vars.materias?.join(', ') || 'Español, Ciencias Naturales';
+    const interGrade = vars.grade || '5to Grado';
+    const interTrimestre = vars.trimestre || 'I Trimestre';
+    const interTema = vars.temaGenerado || '___';
+    const interEscuela = vars.escuela || '_______________';
+    const interDocente = vars.docente || '_______________';
+    const interRegion = vars.region || '_______________';
+    const interAnio = vars.anio || '2026';
     return {
       systemPrompt: `Eres un experto en diseño curricular del Ministerio de Educación de Panamá (MEDUCA).
 Debes generar el FORMATO OFICIAL COMPLETO de la "Guía para el desarrollo de proyectos de aprendizajes interdisciplinarios" del MINISTERIO DE EDUCACIÓN de Panamá, siguiendo exactamente la estructura y las directrices del instructivo oficial de la institución.
@@ -1744,7 +1781,7 @@ REGLA CRÍTICA: Responde ÚNICAMENTE con HTML. Sin markdown, sin texto previo, s
 <div style="text-align:center; margin-bottom:15px; font-family:Arial,sans-serif;">
   <p style="font-size:13px; font-weight:bold; margin:2px 0; color:#1a1a5e;">MINISTERIO DE EDUCACIÓN</p>
   <p style="font-size:12px; font-weight:bold; margin:2px 0; color:#1a1a5e;">Guía para el desarrollo de proyectos de aprendizajes interdisciplinarios</p>
-  <p style="font-size:12px; margin:2px 0; font-weight:bold;">Región escolar: \${vars.region || '_______________'}</p>
+  <p style="font-size:12px; margin:2px 0; font-weight:bold;">Región escolar: ${interRegion}</p>
 </div>
 
 ▸ TABLA 1 — DATOS DE IDENTIFICACIÓN
@@ -1890,7 +1927,7 @@ Fill ALL 6 sections of the Theme Planner:
 3. COMMUNICATIVE COMPETENCES — Copy the grammar, vocabulary, pragmatic & sociolinguistic elements ABOVE into the 3-column table, then add "project21stCentury" as the 4th column
 4. SPECIFIC OBJECTIVES — Generate SMART objectives for all 5 skills (Listening, Reading, Speaking, Writing, Mediation)
 5. MATERIALS & DIFFERENTIATION — List 8-10 materials and DLN strategies
-6. LEARNING SEQUENCE — Design 5 lessons (Listening, Reading, Speaking, Writing, Mediation focus)
+6. LEARNING SEQUENCE — Design 5 lessons (Listening, Reading, Speaking, Writing, Mediation focus). Ensure the activities, objectives, and resources for each lesson are strictly aligned with the specific focus skill of that lesson, the Grade Level (${grade}), and CEFR Level (${cefr}).
 
 ════════ HTML FORMATTING ════════
 - Header: MINISTRY OF EDUCATION / REGIONAL EDUCATION DIRECTORATE / SCHOOL / Theme Planner #
