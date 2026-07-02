@@ -165,6 +165,14 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
     }
     
     if (credits <= 0 && !isPremium) {
+      // Check 5-plan limit for free users
+      const existingPlans = await databaseService.getSavedPlans(user.uid);
+      if (existingPlans.length >= 5) {
+        window.dispatchEvent(new CustomEvent('show-billing-modal'));
+        onTriggerAlert("🎉 ¡Alcanzaste el límite de 5 planeaciones gratuitas! Consigue más tokens o activa PRO para seguir generando sin límites.", "info");
+        return;
+      }
+
       const watchAd = window.confirm("No tienes tokens de generación. ¿Deseas ver un anuncio patrocinado de 10 segundos para ganar 1 token gratis?");
       if (watchAd) {
         triggerRewardedAd(async () => {

@@ -423,7 +423,16 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
       return;
     }
 
-    if (credits <= 0 && !isPremium) {
+    // Check 5-plan limit for free users
+    if (!isPremium && credits <= 0) {
+      // First check if they have plans in library
+      const existingPlans = await databaseService.getSavedPlans(user.uid);
+      if (existingPlans.length >= 5) {
+        window.dispatchEvent(new CustomEvent('show-billing-modal'));
+        onTriggerAlert("🎉 ¡Alcanzaste el límite de 5 planeaciones gratuitas! Consigue más tokens o activa PRO para seguir generando sin límites.", "info");
+        return;
+      }
+
       const watchAd = window.confirm("No tienes tokens de generación. ¿Deseas ver un anuncio patrocinado de 10 segundos para ganar 1 token gratis?");
       if (watchAd) {
         triggerRewardedAd(async () => {
@@ -436,7 +445,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
       return;
     }
 
-    if (credits <= 0) {
+    if (credits <= 0 && !isPremium) {
       onTriggerAlert("Saldo de Tokens insuficiente. Por favor haz clic en 'Recargar' para obtener más tokens.", "error");
       return;
     }
@@ -526,6 +535,11 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
   };
 
   const handleDownload = () => {
+    if (!isPremium) {
+      window.dispatchEvent(new CustomEvent('show-billing-modal'));
+      onTriggerAlert("La descarga en Word está disponible solo para usuarios PRO. ¡Actualiza tu plan!", "info");
+      return;
+    }
     let contentToDownload = generatedHtml;
     if (activeGenType === 'listeningscript' && isJsonString(generatedHtml)) {
       contentToDownload = convertScriptJsonToHtml(generatedHtml);

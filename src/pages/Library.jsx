@@ -10,12 +10,13 @@ import {
   BookOpen,
   Sparkles,
   Layers,
-  ChevronRight
+  ChevronRight,
+  Lock
 } from 'lucide-react';
 import { databaseService } from '../services/firebase';
 import EditorModal from '../components/EditorModal';
 
-export default function Library({ user, onTriggerAlert }) {
+export default function Library({ user, onTriggerAlert, isPremium = false }) {
   const [plans, setPlans] = useState([]);
   const [filteredPlans, setFilteredPlans] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -89,6 +90,11 @@ export default function Library({ user, onTriggerAlert }) {
 
   const handleDownload = (plan, e) => {
     e.stopPropagation();
+    if (!isPremium) {
+      window.dispatchEvent(new CustomEvent('show-billing-modal'));
+      onTriggerAlert("La descarga en Word está disponible solo para usuarios PRO. ¡Activa tu plan!", "info");
+      return;
+    }
     const blob = new Blob(['\ufeff', plan.content], { type: 'application/msword' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -254,10 +260,14 @@ export default function Library({ user, onTriggerAlert }) {
                   <div className="flex items-center gap-1.5">
                     <button 
                       onClick={(e) => handleDownload(plan, e)}
-                      className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-400 hover:text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/20 transition"
-                      title="Exportar a Word"
+                      className={`p-1.5 rounded-lg border transition ${
+                        isPremium
+                          ? 'border-slate-200 dark:border-slate-800 text-slate-400 hover:text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-950/20'
+                          : 'border-amber-200 dark:border-amber-900/40 text-amber-400 hover:text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-950/20'
+                      }`}
+                      title={isPremium ? "Exportar a Word" : "Solo PRO: Exportar a Word"}
                     >
-                      <Download className="w-3.5 h-3.5" />
+                      {isPremium ? <Download className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5" />}
                     </button>
                     <div className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 group-hover:bg-blue-500 group-hover:text-white dark:group-hover:bg-blue-600 transition">
                       <ChevronRight className="w-3.5 h-3.5" />

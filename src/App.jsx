@@ -501,7 +501,8 @@ export default function App() {
           {activeTab === 'library' && (
             <Library 
               user={user} 
-              onTriggerAlert={triggerAlert} 
+              onTriggerAlert={triggerAlert}
+              isPremium={isPremium}
             />
           )}
           {activeTab === 'admin-payments' && (

@@ -251,6 +251,18 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
 
             <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
               
+              {/* SUPER OFERTA urgency banner */}
+              <div className="bg-gradient-to-r from-rose-600 to-pink-600 rounded-2xl p-3.5 flex items-center gap-3 shadow-lg shadow-rose-500/20 animate-pulse">
+                <span className="text-2xl flex-shrink-0">🔥</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-white font-black text-[10px] uppercase tracking-widest">SUPER OFERTA LIMITADA</p>
+                  <p className="text-white/90 text-[11px] font-semibold leading-tight mt-0.5">
+                    Plan PRO <strong>$19.99</strong> &mdash; Oferta válida hasta el <strong>10 de diciembre</strong> únicamente
+                  </p>
+                </div>
+                <span className="bg-white/20 text-white text-[9px] font-black px-2 py-1 rounded-xl flex-shrink-0">⏰ EXPIRA PRONTO</span>
+              </div>
+
               {/* Active Tab Panel details */}
               {activeTab === 'subscription' ? (
                 /* Plan Details Card */
