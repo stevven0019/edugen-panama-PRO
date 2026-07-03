@@ -286,6 +286,9 @@ export default function Library({ user, onTriggerAlert, isPremium = false }) {
         plan={selectedPlan}
         onClose={() => setIsEditorOpen(false)}
         onSave={handleSavePlan}
+        isPremium={isPremium}
+        isLibrary={true}
+        onTriggerAlert={onTriggerAlert}
       />
 
     </div>

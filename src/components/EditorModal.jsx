@@ -1,7 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { X, Copy, Download, Save, Check, FileEdit } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { X, Copy, Download, Save, Check, FileEdit, Lock } from 'lucide-react';
 
-export default function EditorModal({ isOpen, plan, onClose, onSave }) {
+export default function EditorModal({ 
+  isOpen, 
+  plan, 
+  onClose, 
+  onSave, 
+  isPremium = false, 
+  isLibrary = false, 
+  downloadsLeft = 3, 
+  onDecrementDownloads, 
+  onTriggerAlert 
+}) {
   if (!isOpen || !plan) return null;
 
   const [title, setTitle] = useState(plan.title || '');
@@ -90,6 +100,27 @@ export default function EditorModal({ isOpen, plan, onClose, onSave }) {
   };
 
   const handleDownload = () => {
+    if (!isPremium) {
+      if (isLibrary) {
+        window.dispatchEvent(new CustomEvent('show-billing-modal'));
+        if (onTriggerAlert) {
+          onTriggerAlert("La descarga en Word desde la biblioteca está disponible solo para usuarios PRO. ¡Activa tu plan!", "info");
+        }
+        return;
+      } else {
+        if (downloadsLeft <= 0) {
+          window.dispatchEvent(new CustomEvent('show-billing-modal'));
+          if (onTriggerAlert) {
+            onTriggerAlert("Has agotado tus descargas gratuitas. La descarga ilimitada en Word está disponible solo para usuarios PRO.", "info");
+          }
+          return;
+        }
+        if (onDecrementDownloads) {
+          onDecrementDownloads();
+        }
+      }
+    }
+
     const rawContent = editableRef.current ? editableRef.current.innerHTML : content;
     const blob = new Blob(['\ufeff', rawContent], { type: 'application/msword' });
     const url = URL.createObjectURL(blob);
@@ -170,10 +201,27 @@ export default function EditorModal({ isOpen, plan, onClose, onSave }) {
           
           <button 
             onClick={handleDownload}
-            className="flex-1 md:flex-none border border-slate-300 dark:border-slate-700 hover:bg-slate-200/50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition"
+            className={`flex-1 md:flex-none border px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition ${
+              !isPremium && (isLibrary || downloadsLeft <= 0)
+                ? 'border-amber-200 dark:border-amber-900/40 text-amber-500 hover:text-amber-600 dark:text-amber-400 bg-amber-500/5 hover:bg-amber-500/10'
+                : 'border-slate-300 dark:border-slate-700 hover:bg-slate-200/50 dark:hover:bg-slate-800/60 text-slate-700 dark:text-slate-300'
+            }`}
           >
-            <Download className="w-4 h-4 text-indigo-500" />
-            <span>Exportar a Word</span>
+            {!isPremium && (isLibrary || downloadsLeft <= 0) ? (
+              <>
+                <Lock className="w-4 h-4 text-amber-500" />
+                <span>Solo PRO: Exportar a Word</span>
+              </>
+            ) : (
+              <>
+                <Download className="w-4 h-4 text-indigo-500" />
+                <span>
+                  {isPremium 
+                    ? 'Exportar a Word' 
+                    : `Exportar a Word (${downloadsLeft} gratis)`}
+                </span>
+              </>
+            )}
           </button>
           
           <button 

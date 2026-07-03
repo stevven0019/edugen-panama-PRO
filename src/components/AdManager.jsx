@@ -149,7 +149,7 @@ export function InterstitialAd({ isOpen, onClose, onAdFinished }) {
             }}
             className="text-amber-500 hover:text-amber-400 font-black tracking-wide cursor-pointer transition uppercase text-[10px]"
           >
-            Pásate a PRO por $19.99 →
+            Pásate a PRO por $19.99/año →
           </button>
         </div>
       </div>

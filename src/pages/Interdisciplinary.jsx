@@ -9,7 +9,8 @@ import {
   Download, 
   FileEdit,
   Lightbulb,
-  FileCheck
+  FileCheck,
+  Lock
 } from 'lucide-react';
 import { generateCurriculumContent } from '../services/ai';
 import { databaseService } from '../services/firebase';
@@ -17,7 +18,7 @@ import SkeletonLoader from '../components/SkeletonLoader';
 import EditorModal from '../components/EditorModal';
 import AdBanner from '../components/AdBanner';
 
-export default function Interdisciplinary({ user, credits, onTriggerAlert, isPremium = false, triggerInterstitialAd, triggerRewardedAd }) {
+export default function Interdisciplinary({ user, credits, onTriggerAlert, isPremium = false, downloadsLeft = 3, triggerInterstitialAd, triggerRewardedAd }) {
   const [descripcion, setDescripcion] = useState('');
   const [grade, setGrade] = useState('5to Grado');
   const [trimestre, setTrimestre] = useState('I Trimestre');
@@ -232,6 +233,15 @@ export default function Interdisciplinary({ user, credits, onTriggerAlert, isPre
   };
 
   const handleDownload = () => {
+    if (!isPremium) {
+      if (downloadsLeft <= 0) {
+        window.dispatchEvent(new CustomEvent('show-billing-modal'));
+        onTriggerAlert("Has agotado tus descargas gratuitas. La descarga ilimitada en Word está disponible solo para usuarios PRO. ¡Actualiza tu plan!", "info");
+        return;
+      }
+      databaseService.decrementDownloads(user.uid);
+      onTriggerAlert(`Descarga iniciada. Te quedan ${downloadsLeft - 1} descargas gratuitas de tus generaciones.`, "success");
+    }
     const blob = new Blob(['\ufeff', generatedHtml], { type: 'application/msword' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -425,9 +435,24 @@ export default function Interdisciplinary({ user, credits, onTriggerAlert, isPre
                 </button>
                 <button 
                   onClick={handleDownload} 
-                  className="bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/20 dark:hover:bg-violet-900/20 text-violet-600 dark:text-violet-400 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border border-violet-500/20"
+                  className={`px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border ${
+                    !isPremium && downloadsLeft <= 0
+                      ? 'border-amber-250 dark:border-amber-900/40 text-amber-500 hover:text-amber-600 dark:text-amber-400 bg-amber-500/5 hover:bg-amber-500/10'
+                      : 'bg-violet-50 hover:bg-violet-100 dark:bg-violet-950/20 dark:hover:bg-violet-900/20 text-violet-600 dark:text-violet-400 border-violet-500/20'
+                  }`}
                 >
-                  <Download className="w-4 h-4" /> EXPORTAR .DOC
+                  {!isPremium && downloadsLeft <= 0 ? (
+                    <>
+                      <Lock className="w-4 h-4 text-amber-500" /> SOLO PRO: EXPORTAR .DOC
+                    </>
+                  ) : (
+                    <>
+                      <Download className="w-4 h-4" /> 
+                      {isPremium 
+                        ? 'EXPORTAR .DOC' 
+                        : `EXPORTAR .DOC (${downloadsLeft} gratis)`}
+                    </>
+                  )}
                 </button>
               </div>
             </div>
@@ -491,6 +516,11 @@ export default function Interdisciplinary({ user, credits, onTriggerAlert, isPre
         plan={currentPlanObject}
         onClose={() => setIsEditorOpen(false)}
         onSave={handleSaveEditedPlan}
+        isPremium={isPremium}
+        isLibrary={false}
+        downloadsLeft={downloadsLeft}
+        onDecrementDownloads={() => databaseService.decrementDownloads(user.uid)}
+        onTriggerAlert={onTriggerAlert}
       />
       
     </div>

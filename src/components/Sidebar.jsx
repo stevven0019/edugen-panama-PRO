@@ -206,7 +206,7 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
                 <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-snug">
                   Genera sin interrupciones y obtén acceso total.
                 </p>
-                <span className="text-[9px] font-bold text-amber-500 hover:underline block mt-2">Hazte PRO por $19.99 →</span>
+                <span className="text-[9px] font-bold text-amber-500 hover:underline block mt-2">Hazte PRO por $19.99/año →</span>
               </div>
             </div>
           </div>

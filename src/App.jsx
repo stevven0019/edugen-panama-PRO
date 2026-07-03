@@ -36,6 +36,7 @@ export default function App() {
   const [authLoading, setAuthLoading] = useState(true);
   const [credits, setCredits] = useState(0);
   const [isPremium, setIsPremium] = useState(false);
+  const [downloadsLeft, setDownloadsLeft] = useState(3);
   
   // App navigation state
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -147,6 +148,7 @@ export default function App() {
     const unsubscribe = databaseService.syncUserCredits(user.uid, (data) => {
       setCredits(data.credits);
       setIsPremium(data.isPremium);
+      setDownloadsLeft(data.downloadsLeft !== undefined ? data.downloadsLeft : 3);
     });
     return () => unsubscribe();
   }, [user]);
@@ -474,6 +476,7 @@ export default function App() {
               credits={credits} 
               onTriggerAlert={triggerAlert} 
               isPremium={isPremium}
+              downloadsLeft={downloadsLeft}
               triggerInterstitialAd={triggerInterstitialAd}
               triggerRewardedAd={triggerRewardedAd}
             />
@@ -484,6 +487,7 @@ export default function App() {
               credits={credits} 
               onTriggerAlert={triggerAlert} 
               isPremium={isPremium}
+              downloadsLeft={downloadsLeft}
               triggerInterstitialAd={triggerInterstitialAd}
               triggerRewardedAd={triggerRewardedAd}
             />
@@ -494,6 +498,7 @@ export default function App() {
               credits={credits} 
               onTriggerAlert={triggerAlert} 
               isPremium={isPremium}
+              downloadsLeft={downloadsLeft}
               triggerInterstitialAd={triggerInterstitialAd}
               triggerRewardedAd={triggerRewardedAd}
             />

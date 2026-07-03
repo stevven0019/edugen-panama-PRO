@@ -178,7 +178,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                 {paymentMethod === 'yappy'
                   ? "Hemos recibido tu comprobante de Yappy/Transferencia. Un administrador validará la transacción y activará tus tokens/suscripción en los próximos minutos."
                   : (activeTab === 'subscription' 
-                    ? "Tu cuenta ahora es PRO PREMIUM. Hemos eliminado los anuncios y acreditado 30 tokens en tu cuenta."
+                    ? "Tu cuenta ahora es PRO PREMIUM. Hemos eliminado los anuncios y acreditado 30 tokens iniciales en tu cuenta. ¡Paga solo por lo que necesitas!"
                     : `Se han acreditado ${tokenQuantity} tokens a tu balance para realizar planeaciones sin interrupciones.`
                   )
                 }
@@ -189,7 +189,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
               <div className="flex justify-between font-bold text-slate-600 dark:text-slate-400">
                 <span>Producto:</span>
                 <span className="text-slate-800 dark:text-slate-200">
-                  {activeTab === 'subscription' ? 'Plan Trimestral Pro' : `${tokenQuantity} Tokens`}
+                  {activeTab === 'subscription' ? 'Plan Anual Pro' : `${tokenQuantity} Tokens`}
                 </span>
               </div>
               <div className="flex justify-between font-bold text-slate-600 dark:text-slate-400">
@@ -234,7 +234,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                 }`}
               >
                 <Sparkles className="w-4 h-4 text-amber-500" />
-                Plan Trimestral Pro
+                Plan Anual Pro
               </button>
               <button 
                 onClick={() => setActiveTab('tokens')}
@@ -255,9 +255,9 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
               <div className="bg-gradient-to-r from-rose-600 to-pink-600 rounded-2xl p-3.5 flex items-center gap-3 shadow-lg shadow-rose-500/20 animate-pulse">
                 <span className="text-2xl flex-shrink-0">🔥</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-white font-black text-[10px] uppercase tracking-widest">SUPER OFERTA LIMITADA</p>
+                  <p className="text-white font-black text-[10px] uppercase tracking-widest">SUPER OFERTA LIMITADA - PAGO ÚNICO ANUAL</p>
                   <p className="text-white/90 text-[11px] font-semibold leading-tight mt-0.5">
-                    Plan PRO <strong>$19.99</strong> &mdash; Oferta válida hasta el <strong>10 de diciembre</strong> únicamente
+                    Plan PRO <strong>$19.99/año</strong> &mdash; 30 tokens incluidos. ¡Adquiere más solo si los necesitas!
                   </p>
                 </div>
                 <span className="bg-white/20 text-white text-[9px] font-black px-2 py-1 rounded-xl flex-shrink-0">⏰ EXPIRA PRONTO</span>
@@ -274,15 +274,15 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                   <div className="flex justify-between items-baseline">
                     <div>
                       <h4 className="text-sm font-extrabold text-slate-850 dark:text-slate-200">
-                        Suscripción PRO Trimestral
+                        Acceso PRO Anual (Pago Único)
                       </h4>
-                      <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Renovación trimestral automática, cancela cuando quieras.</p>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Un solo pago al año. Recibe 30 tokens y compra adicionales si los necesitas.</p>
                     </div>
                     <div className="text-right">
                       <span className="text-xs text-slate-400 dark:text-slate-500 line-through font-semibold">$24.99</span>
                       <div className="text-xl font-black text-amber-500 dark:text-amber-400 flex items-center gap-0.5">
                         <span>$19.99</span>
-                        <span className="text-[10px] text-slate-400 font-medium">/trim.</span>
+                        <span className="text-[10px] text-slate-400 font-medium">/año</span>
                       </div>
                     </div>
                   </div>
@@ -294,7 +294,11 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                     </li>
                     <li className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
-                      <span><strong>30 Tokens PRO</strong> incluidos para planificaciones.</span>
+                      <span><strong>30 Tokens PRO</strong> incluidos inicialmente para planificar.</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span><strong>Filosofía de pago flexible</strong>: compra más tokens individualmente solo si los necesitas.</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
@@ -368,12 +372,17 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                   </button>
                   <button
                     type="button"
-                    disabled
-                    className="p-3.5 border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-655 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold cursor-not-allowed select-none opacity-60"
+                    onClick={() => setPaymentMethod('stripe')}
+                    className={`p-3.5 border rounded-2xl flex items-center justify-center gap-2 text-xs font-bold transition flex-1 ${
+                      paymentMethod === 'stripe'
+                        ? 'border-blue-500 bg-blue-500/5 text-blue-600 dark:text-blue-400'
+                        : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-500'
+                    }`}
                   >
-                    <DollarSign className="w-4 h-4" />
-                    PayPal (Pronto)
+                    <CreditCard className="w-4 h-4" />
+                    Tarjeta / Stripe
                   </button>
+
                 </div>
               </div>
 

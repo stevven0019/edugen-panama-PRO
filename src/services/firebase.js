@@ -102,6 +102,9 @@ const mockAuth = {
     if (!localStorage.getItem(`edugen_credits_${user.uid}`)) {
       localStorage.setItem(`edugen_credits_${user.uid}`, '2');
     }
+    if (!localStorage.getItem(`edugen_downloads_${user.uid}`)) {
+      localStorage.setItem(`edugen_downloads_${user.uid}`, '3');
+    }
     this.authStateListeners.forEach(cb => cb(user));
     return user;
   },
@@ -127,6 +130,17 @@ const mockDb = {
   },
   setCredits(uid, value) {
     localStorage.setItem(`edugen_credits_${uid}`, value.toString());
+  },
+  getDownloads(uid) {
+    const downloads = localStorage.getItem(`edugen_downloads_${uid}`);
+    if (downloads === null) {
+      localStorage.setItem(`edugen_downloads_${uid}`, '3');
+      return 3;
+    }
+    return parseInt(downloads, 10);
+  },
+  setDownloads(uid, value) {
+    localStorage.setItem(`edugen_downloads_${uid}`, value.toString());
   },
   getPlans(uid) {
     const plans = localStorage.getItem(`edugen_plans_${uid}`);
@@ -268,14 +282,15 @@ export const authService = {
 };
 
 export const databaseService = {
-  // Syncs profile snapshot (credits & premium)
+  // Syncs profile snapshot (credits, premium, downloads)
   syncUserCredits(uid, callback) {
     if (isDemoMode) {
       // Simulate real-time stream
       const trigger = () => {
         const c = mockDb.getCredits(uid);
         const p = mockDb.getPremium(uid);
-        callback({ credits: c, isPremium: p });
+        const d = mockDb.getDownloads(uid);
+        callback({ credits: c, isPremium: p, downloadsLeft: d });
       };
       trigger();
       window.addEventListener('storage', trigger);
@@ -286,9 +301,11 @@ export const databaseService = {
       const localTrigger = () => {
         const val = localStorage.getItem(`edugen_credits_${uid}`);
         const pVal = localStorage.getItem(`edugen_premium_${uid}`);
+        const dVal = localStorage.getItem(`edugen_downloads_${uid}`);
         callback({
           credits: val !== null ? parseInt(val, 10) : 2,
-          isPremium: pVal === 'true'
+          isPremium: pVal === 'true',
+          downloadsLeft: dVal !== null ? parseInt(dVal, 10) : 3
         });
       };
       window.addEventListener('storage', localTrigger);
@@ -300,24 +317,26 @@ export const databaseService = {
             const data = snap.data();
             const currentCredits = data.generationsLeft !== undefined ? data.generationsLeft : 2;
             const isPremium = data.isPremium !== undefined ? data.isPremium : false;
+            const downloadsLeft = data.downloadsLeft !== undefined ? data.downloadsLeft : 3;
 
             // Sync with local storage
             localStorage.setItem(`edugen_credits_${uid}`, currentCredits.toString());
             localStorage.setItem(`edugen_premium_${uid}`, isPremium ? 'true' : 'false');
+            localStorage.setItem(`edugen_downloads_${uid}`, downloadsLeft.toString());
 
             if (currentCredits === undefined && !data.initializedFreeCredits) {
               setDoc(userRef, { generationsLeft: 2, initializedFreeCredits: true }, { merge: true })
-                .then(() => callback({ credits: 2, isPremium }))
+                .then(() => callback({ credits: 2, isPremium, downloadsLeft }))
                 .catch(err => {
                   console.error("Failed to set initial free credits:", err);
-                  callback({ credits: 2, isPremium });
+                  callback({ credits: 2, isPremium, downloadsLeft });
                 });
             } else {
-              callback({ credits: currentCredits, isPremium });
+              callback({ credits: currentCredits, isPremium, downloadsLeft });
             }
           } else {
-            setDoc(userRef, { email: realAuth.currentUser?.email || 'anon', generationsLeft: 2, isPremium: false, initializedFreeCredits: true })
-              .then(() => callback({ credits: 2, isPremium: false }))
+            setDoc(userRef, { email: realAuth.currentUser?.email || 'anon', generationsLeft: 2, isPremium: false, downloadsLeft: 3, initializedFreeCredits: true })
+              .then(() => callback({ credits: 2, isPremium: false, downloadsLeft: 3 }))
               .catch((err) => {
                 console.error("Failed to initialize user document in Firestore:", err);
                 if (localStorage.getItem(`edugen_credits_${uid}`) === null) {
@@ -325,6 +344,9 @@ export const databaseService = {
                 }
                 if (localStorage.getItem(`edugen_premium_${uid}`) === null) {
                   localStorage.setItem(`edugen_premium_${uid}`, 'false');
+                }
+                if (localStorage.getItem(`edugen_downloads_${uid}`) === null) {
+                  localStorage.setItem(`edugen_downloads_${uid}`, '3');
                 }
                 localTrigger();
               });
@@ -337,6 +359,9 @@ export const databaseService = {
           if (localStorage.getItem(`edugen_premium_${uid}`) === null) {
             localStorage.setItem(`edugen_premium_${uid}`, 'false');
           }
+          if (localStorage.getItem(`edugen_downloads_${uid}`) === null) {
+            localStorage.setItem(`edugen_downloads_${uid}`, '3');
+          }
           localTrigger();
         });
       } catch (err) {
@@ -346,6 +371,9 @@ export const databaseService = {
         }
         if (localStorage.getItem(`edugen_premium_${uid}`) === null) {
           localStorage.setItem(`edugen_premium_${uid}`, 'false');
+        }
+        if (localStorage.getItem(`edugen_downloads_${uid}`) === null) {
+          localStorage.setItem(`edugen_downloads_${uid}`, '3');
         }
         localTrigger();
       }
@@ -393,6 +421,29 @@ export const databaseService = {
         const current = parseInt(localStorage.getItem(`edugen_credits_${uid}`) || '2', 10);
         if (current > 0) {
           localStorage.setItem(`edugen_credits_${uid}`, (current - 1).toString());
+        }
+        window.dispatchEvent(new Event('storage'));
+      }
+    }
+  },
+
+  // Decrement user downloads
+  async decrementDownloads(uid) {
+    if (isDemoMode) {
+      const current = mockDb.getDownloads(uid);
+      if (current > 0) {
+        mockDb.setDownloads(uid, current - 1);
+        window.dispatchEvent(new Event('storage'));
+      }
+    } else {
+      const userRef = doc(realDb, 'artifacts', 'edugen-panama-aoa', 'users', uid, 'profile', 'data');
+      try {
+        await updateDoc(userRef, { downloadsLeft: increment(-1) });
+      } catch (err) {
+        console.warn("Firestore decrementDownloads failed, falling back to local storage:", err);
+        const current = parseInt(localStorage.getItem(`edugen_downloads_${uid}`) || '3', 10);
+        if (current > 0) {
+          localStorage.setItem(`edugen_downloads_${uid}`, (current - 1).toString());
         }
         window.dispatchEvent(new Event('storage'));
       }

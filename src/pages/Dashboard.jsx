@@ -171,8 +171,9 @@ export default function Dashboard({ user, credits, setActiveTab, isPremium = fal
               <div className="space-y-1">
                 <h4 className="text-sm font-extrabold text-slate-850 dark:text-slate-100 uppercase tracking-tight">¡Activa EduGen Pro hoy mismo!</h4>
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-normal max-w-xl">
-                  Elimina por completo la publicidad, obtén prioridad máxima en servidores y un paquete inicial de 30 tokens Pro. ¡Descuento especial por solo $19.99/trimestre!
+                  Elimina por completo la publicidad, obtén prioridad máxima en servidores y un paquete inicial de 30 tokens Pro por solo $19.99 (pago único anual). Si necesitas más tokens, adquiérelos de forma individual. ¡Paga solo por lo que necesitas!
                 </p>
+
               </div>
             </div>
             <button className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-5 py-3 rounded-2xl text-xs tracking-wide shadow-md active:scale-95 transition-all w-full sm:w-auto flex-shrink-0 uppercase">

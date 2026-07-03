@@ -1232,6 +1232,21 @@ function getPromptTemplate(type, vars) {
     - Lesson within Theme: This is Lesson ${lessonNum} of 5 in the theme sequence.
 
     ════════════════════════════════════════
+    5-LESSON SEQUENCE & PROGRESSION COHESION (CRITICAL):
+    ════════════════════════════════════════
+    EduGen plans follow a strict sequential unit flow of 5 lessons. You must design this plan as a logical step in this sequence:
+    * Lesson 1: Listening & Vocab Intro. Focus: Introducing 10 new vocabulary words, pronunciation modeling, concept checking.
+    * Lesson 2: Reading Comprehension. Focus: Reading a text using the same 10 vocabulary words to understand context.
+    * Lesson 3: Speaking & Interaction. Focus: Actively speaking and interacting in pairs using the 10 vocabulary words.
+    * Lesson 4: Writing Composition. Focus: Constructing sentences and writing paragraphs using the 10 vocabulary words.
+    * Lesson 5: Mediation & Integration. Focus: Consolidating and summarizing information, carrying out a final mission.
+    
+    If generating Lesson ${lessonNum}, you must assume previous lessons have established the prior stages, and maintain strict vocabulary consistency. Keep the target vocabulary (such as 10 new words) present and sequential across all lesson stages (Warm-up, Presentation, Practice, Production).
+    
+    CEFR & GRADE ADAPTATION:
+    You must strictly adapt the vocabulary choice, sentence structure complexity, and instructions to the Grade Level: "${grade}" and CEFR Level: "${cefr}". For example, A1.1 or A1.2 must use short, simple sentences, basic present tense, and high visual support, whereas B1.1 can include past/future tenses, compound sentences, and independent tasks.
+
+    ════════════════════════════════════════
     OUTPUT STRUCTURE — FOLLOW THIS EXACTLY:
     ════════════════════════════════════════
 
@@ -1340,6 +1355,21 @@ function getPromptTemplate(type, vars) {
     - Nivel CEFR      : ${cefr} (CRÍTICO: Todo el vocabulario, la gramática y tareas deben respetar este nivel)
     - Escenario       : ${scenery}
     - Tema            : ${theme}
+
+    ════════════════════════════════════════
+    SECUENCIA DE 5 LECCIONES Y COHESIÓN DE VOCABULARIO (CRÍTICO):
+    ════════════════════════════════════════
+    Las lecciones de EduGen siguen una secuencia de unidad estricta de 5 lecciones. Adapta esta guía al número de lección correspondiente:
+    * Lección 1: Escucha e Introducción al Vocabulario (e.g. 10 palabras objetivo).
+    * Lección 2: Comprensión Lectora (usando el mismo vocabulario de la Lección 1).
+    * Lección 3: Habla e Interacción Oral (usando el mismo vocabulario).
+    * Lección 4: Composición Escrita (usando el mismo vocabulario).
+    * Lección 5: Mediación y Consolidación (misión final y resumen).
+    
+    Asegúrate de mantener y utilizar de forma constante el vocabulario clave a lo largo de las actividades y diálogos sugeridos para mantener la cohesión de la secuencia sin dañar la fluidez pedagógica.
+    
+    ADAPTACIÓN DE GRADO Y CEFR:
+    Alinea estrictamente el vocabulario, la complejidad de las estructuras de diálogo sugeridas y las instrucciones al Grado: "${grade}" y Nivel CEFR: "${cefr}". Por ejemplo, para A1 la gramática debe centrarse en presente simple y respuestas cortas, mientras que para B1 se pueden proponer diálogos más extensos con tiempos compuestos.
 
     ════════════════════════════════════════
     PROPÓSITO DE ESTE DOCUMENTO:
@@ -1483,6 +1513,21 @@ function getPromptTemplate(type, vars) {
     - Grade        : ${grade}
     - CEFR Level   : ${cefr} (CRITICAL: Vocabulary and grammatical complexity must strictly target this CEFR level)
     - Lesson #     : ${lessonNum}
+
+    ════════════════════════════════════════
+    5-LESSON SEQUENCE & PROGRESSION COHESION (CRITICAL):
+    ════════════════════════════════════════
+    EduGen plans follow a strict sequential unit flow of 5 lessons. You must design this printable resource pack as a logical step in this sequence:
+    * Lesson 1: Listening & Vocab Intro. Focus: Introducing 10 new vocabulary words, pronunciation modeling, concept checking.
+    * Lesson 2: Reading Comprehension. Focus: Reading a text using the same 10 vocabulary words to understand context.
+    * Lesson 3: Speaking & Interaction. Focus: Actively speaking and interacting in pairs using the 10 vocabulary words.
+    * Lesson 4: Writing Composition. Focus: Constructing sentences and writing paragraphs using the 10 vocabulary words.
+    * Lesson 5: Mediation & Integration. Focus: Consolidating and summarizing information, carrying out a final mission.
+    
+    If generating resources for Lesson ${lessonNum}, you must align all worksheets and tasks with that exact spot in the sequence. For example, if this is Lesson 2 (Reading Focus), provide reading worksheets that use the target vocabulary (such as 10 new words) introduced in Lesson 1. Keep the target vocabulary consistent and carried over sequentially across all activities.
+    
+    CEFR & GRADE ADAPTATION:
+    You must strictly adapt the vocabulary choice, sentence structure complexity, and instructions to the Grade Level: "${grade}" and CEFR Level: "${cefr}". For example, A1.1 or A1.2 must use short, simple sentences, basic present tense, and high visual support, whereas B1.1 can include past/future tenses, compound sentences, and independent tasks.
 
     ════════════════════════════════════════
     CRITICAL RULES:
