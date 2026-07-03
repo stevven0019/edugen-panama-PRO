@@ -1331,6 +1331,12 @@ function getPromptTemplate(type, vars) {
     - Differentiation: Include at least ONE suggestion per stage for supporting struggling learners (scaffolding) 
       and challenging advanced learners (extension task).
     - Time awareness: Suggest realistic time allocations per stage (total ~45–60 min for a standard MEDUCA class).
+    - Formatting & Justification (CRITICAL for clean exports):
+      * Never output large blocks of concatenated text inside table cells.
+      * Always use paragraph tags with text-align: justify; (e.g. <p style="text-align: justify; margin: 4px 0 8px 0;">) to separate distinct ideas, headers, or activities.
+      * Ensure each segment (such as Communicative Skill, Language Content, Procedure, Warm-up, Modeling, Clarification, Differentiation) starts in a new paragraph block.
+      * Bold labels explicitly (e.g. <b>Communicative Skill:</b>, <b>Language Content:</b>, <b>Procedure:</b>).
+      * Use bulleted lists (<ul> and <li style="margin-bottom: 4px; text-align: justify;">) for detailing step-by-step procedures and differentiation tasks to ensure they are visually ordered and formatted.
     - Use HTML tables with style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;"
     - Use color #1a5276 for all headings and stage titles.
     - Tone: Practical, encouraging, and teacher-friendly.`,
@@ -1768,19 +1774,25 @@ function getPromptTemplate(type, vars) {
     (columns: Subject | Connection to ${theme} | Suggested activity)
 
     ════════════════════════════════════════
-    FINAL FORMATTING RULES:
+    FINAL FORMATTING RULES (WHITE PAGE / BLACK TEXT / GRAY CHARTS):
     ════════════════════════════════════════
-    - Use color #1a5276 for all section headers.
-    - Each resource must start with a colored header band:
-      <div style="background:#1a5276; color:white; padding:12px 20px; 
+    - CRITICAL: Wrap the entire generated resource HTML output inside a single container div with a white background and black text:
+      <div style="background-color: #ffffff; color: #000000; padding: 24px; font-family: Arial, sans-serif; line-height: 1.6;">
+    - All generated text inside this container must be black (use inline style 'color: #000000 !important;' for all paragraphs, table cells, titles, and list items to ensure high readability and contrast).
+    - Each resource must start with a neutral, professional dark gray header band:
+      <div style="background:#475569; color:#ffffff; padding:12px 20px; 
                   border-radius:6px; margin:30px 0 15px 0; font-size:16px; font-weight:bold;">
         📘 RESOURCE [N°] — [TITLE]
       </div>
-    - All tables must have hover-ready alternating row colors (#ffffff / #d6eaf8).
+    - All tables/charts must have a clean gray/neutral style (high contrast):
+      * Table headers (th): background-color: #cbd5e1; color: #0f172a; font-weight: bold; border: 1px solid #94a3b8;
+      * Table cells (td): color: #000000 !important; border: 1px solid #cbd5e1; background-color: #ffffff;
+      * Alternating row background colors: #ffffff and #f1f5f9 (light gray).
     - Add a printable footer on each resource: 
-      "MEDUCA Panama | Grade ${grade} | Theme: ${theme} | Lesson ${lessonNum}"
+      <div style="font-size:10px; color:#475569; margin-top:10px; text-align:center;">MEDUCA Panama | Grade ${grade} | Theme: ${theme} | Lesson ${lessonNum}</div>
     - Tone: Student-friendly for activities, Professional for rubrics.
-    - PRODUCE ALL CONTENT IN FULL — no placeholders, no "[add here]", no ellipses.`,
+    - PRODUCE ALL CONTENT IN FULL — no placeholders, no "[add here]", no ellipses.
+    - CRITICAL: Remember to close the container div at the very end: </div>`,
       userMsg: `Generate the complete printable Resource Pack. Theme: "${theme}", Scenario: "${scenery}", Grade: "${grade}", Lesson: ${lessonNum}, Focus Skills: "${skillsStr}".`
     };
   }
