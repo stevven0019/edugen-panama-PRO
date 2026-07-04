@@ -135,6 +135,9 @@ export default function App() {
 
   // ── Listen for Authentication changes ──
   useEffect(() => {
+    // Record visitor session
+    databaseService.recordVisit();
+
     const unsubscribe = authService.onAuthStateChange((currentUser) => {
       setUser(currentUser);
       setAuthLoading(false);

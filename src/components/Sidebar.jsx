@@ -148,7 +148,7 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
                   `}
                 >
                   <ShieldCheck className="w-5 h-5" />
-                  <span>Aprobar Pagos</span>
+                  <span>Administración</span>
                 </button>
               </>
             )}
