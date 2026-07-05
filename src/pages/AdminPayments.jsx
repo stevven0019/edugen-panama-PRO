@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   ShieldCheck, 
   Check, 
@@ -30,8 +30,10 @@ export default function AdminPayments({ user, onTriggerAlert }) {
   const [searchEmail, setSearchEmail] = useState('');
   const [userRoleFilter, setUserRoleFilter] = useState('all'); // 'all' | 'pro' | 'free' | 'trial-empty'
 
-  const fetchData = async () => {
-    setLoading(true);
+  const isInitialMount = useRef(true);
+
+  const fetchData = async (showSpinner = true) => {
+    if (showSpinner) setLoading(true);
     try {
       const paymentsData = await databaseService.getPendingPayments();
       setPayments(paymentsData);
@@ -45,13 +47,18 @@ export default function AdminPayments({ user, onTriggerAlert }) {
       console.error(err);
       onTriggerAlert("Error al cargar los datos de administración.", "error");
     } finally {
-      setLoading(false);
+      if (showSpinner) setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (isInitialMount.current) {
+      fetchData(true);
+      isInitialMount.current = false;
+    } else {
+      fetchData(false);
+    }
+  }, [activeFilter]);
 
   const handleAction = async (paymentId, status, targetUid, productType, tokenQuantity, amount) => {
     setActionLoadingId(paymentId + '_' + status);
@@ -64,7 +71,7 @@ export default function AdminPayments({ user, onTriggerAlert }) {
         status === 'approved' ? "success" : "info"
       );
       // Reload list
-      await fetchData();
+      await fetchData(false);
     } catch (err) {
       console.error(err);
       onTriggerAlert("Error al procesar la acción de pago.", "error");
@@ -74,7 +81,8 @@ export default function AdminPayments({ user, onTriggerAlert }) {
   };
 
   const handleModifyCredits = async (targetUid, currentCredits, amount) => {
-    const newValue = Math.max(0, currentCredits + amount);
+    const currentNum = typeof currentCredits === 'number' ? currentCredits : Number(currentCredits) || 0;
+    const newValue = Math.max(0, currentNum + amount);
     setActionLoadingId(targetUid + '_credits');
     try {
       await databaseService.setCredits(targetUid, newValue);
@@ -131,7 +139,7 @@ export default function AdminPayments({ user, onTriggerAlert }) {
 
   // Stats derivation
   const proCount = users.filter(u => u.isPremium).length;
-  const activeTrialCount = users.filter(u => !u.isPremium && u.credits > 0 && u.credits <= 3).length;
+  const activeTrialCount = users.filter(u => !u.isPremium && u.credits > 0).length;
   const completedTrialCount = users.filter(u => !u.isPremium && u.credits === 0).length;
 
   const getStatusBadge = (status) => {

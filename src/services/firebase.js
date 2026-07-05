@@ -841,7 +841,7 @@ export const databaseService = {
         const { doc, getDoc } = await import('firebase/firestore');
         const statsRef = doc(realDb, 'artifacts', 'edugen-panama-aoa', 'stats', 'global');
         const snap = await getDoc(statsRef);
-        return snap.exists() ? snap.data() : { visits: 0 };
+        return snap.exists() ? { visits: snap.data().visits || 0 } : { visits: 0 };
       } catch (err) {
         console.warn("Firestore getGlobalStats failed:", err);
         return { visits: 0 };
@@ -882,9 +882,9 @@ export const databaseService = {
           list.push({ 
             uid, 
             email: data.email || 'anon',
-            credits: data.generationsLeft !== undefined ? data.generationsLeft : 3,
+            credits: data.generationsLeft !== undefined ? Number(data.generationsLeft) : 3,
             isPremium: data.isPremium || false,
-            downloadsLeft: data.downloadsLeft !== undefined ? data.downloadsLeft : 3,
+            downloadsLeft: data.downloadsLeft !== undefined ? Number(data.downloadsLeft) : 3,
             createdAt: data.createdAt || 'N/A'
           });
         });
