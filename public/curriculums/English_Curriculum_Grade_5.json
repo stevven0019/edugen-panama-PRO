@@ -1,0 +1,936 @@
+{
+  "scenarios": [
+    {
+      "scenario_number": 1,
+      "title": "Following Instructions at School",
+      "themes": [
+        "First, I Cut the Paper.",
+        "Let's Make a Poster!"
+      ],
+      "domain": "Expressing Ourselves and Connecting with Others",
+      "level": "Beginner A1.3",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can show comprehension of general information, specific information and instructions in short oral texts about daily events if spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Follow clear instructions in learning activities.",
+            "Interactive: Execute multi-step directions in learning activities."
+          ],
+          "learning_outcomes": [
+            "Can follow clear instructions in learning activities to complete a task (e.g., \"First, cut the paper, then glue it on the flowchart.\").",
+            "Can follow and respond to multi-step directions in-class activities (e.g., \"You need to fold the paper before you cut it.\").",
+            "Can respond appropriately to oral instructions (e.g., \"Let's put away our books.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can extract general and specific information in simple texts on everyday familiar topics with or without visual support.",
+          "specific_standards": [
+            "Reading: Show comprehension of written instructions for classroom activities.",
+            "Reading: Demonstrate comprehension of basic descriptions in texts.",
+            "Phonemic Awareness: Decode English graphemes and phonemes using knowledge of word parts, syllabification, and phonemic awareness."
+          ],
+          "learning_outcomes": [
+            "Can show comprehension of written instructions for classroom activities by following them step-by-step (e.g., \"I can cut and fold the paper.\").",
+            "Can demonstrate comprehension of basic descriptions in texts by summarizing key details from reading materials (e.g., \"The flowchart is colorful.\").",
+            "Can recognize and divide compound and multi-syllabic words into syllables (e.g., \"cardboard\" into \"card-board\" and \"instructional\" into \"in-struc-tion-al\")."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can exchange personal information, descriptions of basic things, simple questions and answers, and simple directions.",
+          "specific_standards": [
+            "Productive: Talk about simple rules and laws.",
+            "Interactive: Answer questions about their daily routine."
+          ],
+          "learning_outcomes": [
+            "Can describe basic classroom rules related to school projects (e.g., \"We must clean up after making the poster.\" \"You have to wash your hands after using paint.\" \"We should put away the scissors and glue when we're done.\").",
+            "Can answer and ask follow-up questions to classmates about steps in a class project as part of their routine (e.g., \"What do I do after cutting the paper?\" \"Glue it on the poster.\" \"Where do I put the markers after using them?\" \"In the supply box.\").",
+            "Can explain safety rules at school when using classroom materials (e.g., \"You should use scissors carefully.\" \"Always walk, don't run when carrying sharp objects.\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can create short, organized texts on familiar topics, incorporating revisions and feedback to improve clarity.",
+          "specific_standards": [
+            "Productive: Write thank-you cards.",
+            "Interactive: Respond to written questions about a class reading assignment."
+          ],
+          "learning_outcomes": [
+            "Can write a simple thank-you card to a classmate or teacher for helping with a class project (e.g., \"Thank you for helping me cut the paper for the poster.\").",
+            "Can answer simple written questions about steps in a class project (e.g., \"What did you cut?\" \"I cut the paper for the poster.\" \"What did you use to glue the pictures?\" \"I used glue.\").",
+            "Can write short answers about following instructions in class (e.g., \"Where do we have to put the poster?\" \"On the wall in the classroom.\" \"What did you do after cutting the paper?\" \"I glued it on the poster.\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can utilize simplified language, visual aids, and step-by-step explanations to help peers engage with tasks and information.",
+          "specific_standards": [
+            "Text: Contextualize simple school announcements according to local needs.",
+            "Text: Simplify textbook content for peers."
+          ],
+          "learning_outcomes": [
+            "Can contextualize school announcements using gestures or visuals to highlight key details (e.g., pointing to Friday on a calendar and saying, \"The poster event is on Friday.\" or showing a pair of scissors and saying, \"We will make the poster tomorrow.\").",
+            "Can simplify textbook content with basic words and visuals (e.g., pointing to a picture and saying, \"This book is about instructions.\").",
+            "Can simplify classroom instructions or textbook content for peers using simple words and visuals (e.g., showing a picture of scissors and paper and saying, \"Cut the paper like this.\" or pointing to a step-by-step poster and saying, \"First, cut the paper. Then, glue it on the poster.\")."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Plural of the imperatives (e.g., \"Let's make a poster.\")",
+          "Sequencing words (e.g., \"first, next\")",
+          "Future tense (e.g., \"I will make a mask.\" \"I am going to make a mask.\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "paper, scissors, glue, pencil, poster, classroom, teacher, project, mask, art, decoration, card, crayon, paint, cardboard, fabric, string, bead, flowchart",
+            "verbs": "cut, fold, paste, draw, create, share, decorate, measure, write",
+            "adjectives": "big, small, colorful, new, fun, sharp",
+            "prepositions": "on, in, under"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /p/ in \"poster\" and /s/ in \"scissors\". Phonemic awareness: Recognition of compound words and syllable division (e.g., \"classroom, class-room, two-syllables\")",
+          "pragmatic_competences": "Asking for clarification: \"What do I need to do next?\" Communicating future intentions: \"I will make a hat!\"",
+          "sociolinguistic_competences": "Collaborating: Using imperatives and \"let's\" for group activities."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Instruction Giving: Using imperatives and sequencing words. Collaboration: Describing tasks in groups using collaborative language.",
+          "technology_integration": "Use video recording and editing tools for instructional videos and digital tools for flowchart creation."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Classroom How-To Guide",
+            "overview": "Students create a step-by-step written guide for a classroom task (e.g., organizing supplies, setting up for an activity), using imperatives and sequencing words like \"first, next, and then\"."
+          },
+          {
+            "name": "Project 2: Instructional Video",
+            "overview": "Students record a video demonstrating a classroom routine, such as cleaning up or preparing for a project, using imperatives and collaborative language like \"let's\" and \"we\"."
+          },
+          {
+            "name": "Project 3: Task Flowchart",
+            "overview": "Students design a flowchart outlining steps in completing a task (e.g., art project or science experiment) with sequencing words and imperatives."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 2,
+      "title": "Taking Care of Our Class",
+      "themes": [
+        "We Are Sweeping the Floors.",
+        "Let's Arrange the Chairs."
+      ],
+      "domain": "Family and Society",
+      "level": "Beginner A1.3",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can show comprehension of general information, specific information and instructions in short oral texts about daily events if spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Identify specific information in announcements or recordings.",
+            "Interactive: Ask for repetition and clarification in a conversation about known topics."
+          ],
+          "learning_outcomes": [
+            "Can identify specific information in announcements about classroom tasks (e.g., \"Team One sweeps the floor, and Team Two arranges the desks.\").",
+            "Can ask for repetition and clarification in conversations about classroom tasks (e.g., \"Can you repeat which team cleans the board?\" \"Can you say that again? Who arranges the desks?\").",
+            "Can identify specific details in recordings about classroom cleaning activities (e.g., \"We sweep the floor.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can extract general and specific information in simple texts on everyday familiar topics with or without visual support.",
+          "specific_standards": [
+            "Reading: Extract specific information from short informational texts.",
+            "Reading: Demonstrate comprehension of basic descriptions in texts.",
+            "Phonemic Awareness: Decode English graphemes and phonemes using knowledge of word parts, syllabification, and phonemic awareness."
+          ],
+          "learning_outcomes": [
+            "Can extract specific information from short informational texts about classroom chores (e.g., \"We sweep the floor.\").",
+            "Can demonstrate comprehension of basic text descriptions by discussing what each chore means (e.g., \"Sweep means clean the floor with a broom.\").",
+            "Can decode English graphemes and phonemes using knowledge of compound words and syllable division (e.g., recognizing \"whiteboard\" as \"white-board\" with two syllables)."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can exchange personal information, descriptions of basic things, simple questions and answers, and simple directions.",
+          "specific_standards": [
+            "Productive: Give simple directions within the school.",
+            "Interactive: Participate in short conversations about familiar topics."
+          ],
+          "learning_outcomes": [
+            "Can give simple directions to find places in the school (e.g., \"The cleaning area is next to the bathroom.\").",
+            "Can participate in short conversations about familiar tasks (e.g., \"What are you doing?\" \"I am arranging the desks.\").",
+            "Can ask and answer questions about their favorite activities (e.g., \"Can you help me clean the classroom, please?\" \"Yes, I can clean up the board.\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can create short, organized texts on familiar topics, incorporating revisions and feedback to improve clarity.",
+          "specific_standards": [
+            "Productive: Create short descriptions of favorite characters from books.",
+            "Interactive: Draft questions for guest speakers, including imaginary \"guests\" or \"characters\" of relevance."
+          ],
+          "learning_outcomes": [
+            "Can describe a character involved in classroom tasks (e.g., \"My favorite character is Super Tidy. He always helps organize the desks and sweep the floor.\").",
+            "Can write simple questions for guest speakers (e.g., \"How can we keep our classroom clean?\").",
+            "Can share their character description with the class (e.g., \"Super Tidy likes to clean. He likes to sweep the floor and arrange the desks.\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can utilize simplified language, visual aids, and step-by-step explanations to help peers engage with tasks and information.",
+          "specific_standards": [
+            "Text: Explain simple written instructions to peers.",
+            "Communication: Facilitate discussions on classroom topics among peers."
+          ],
+          "learning_outcomes": [
+            "Can explain written instructions with simple steps and gestures (e.g., \"Please, wipe down the desks.\" and mimics wiping down the desks).",
+            "Can facilitate discussions by asking classmates questions, encouraging answers, and using gestures like nodding to prompt responses (e.g., \"How can you help keep the classroom clean?\").",
+            "Can summarize classroom responsibilities for peers, using basic words and gestures (e.g., \"We put away our supplies.\" and points to a labeled supply bin)."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Present continuous (e.g., \"We are sweeping.\")",
+          "Imperatives (e.g., \"Sweep.\" \"Let's sweep.\")",
+          "Modal \"can\" in affirmative and interrogative form (e.g., \"I can sweep the floor.\" \"Can you help me wipe down the desks?\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "whiteboard, window, door, trash can, dustpan, mop, sponge, bucket, cloth, cleaner, cleaning supplies",
+            "verbs": "sweep, wipe, arrange, organize, tidy, put away, clean up",
+            "adjectives": "tidy, clean, organized, easy, messy, neat, dirty, busy, lazy",
+            "adverbs": "quickly, carefully, quietly"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /r/ in \"arrange\" and /s/ in \"supply\". Phonemic awareness: Recognition of compound words and syllable division (e.g., \"whiteboard, white-board, two syllables\")",
+          "pragmatic_competences": "Offering help: \"Can I help you sweep?\" Giving instructions: \"Please arrange the chairs.\"",
+          "sociolinguistic_competences": "Collaborating in class: Using \"please\" to maintain politeness in interactions when giving instructions, fostering inclusion and solidarity. (e.g., \"Let's clean the classroom.\" \"Sweep the floor, please.\")"
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Responsibility: Assigning and describing cleaning tasks using imperatives. Communication: Using collaborative language and present continuous tense to describe cleaning actions.",
+          "technology_integration": "Use digital design tools for posters and charts."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Classroom Clean-Up Plan",
+            "overview": "Students develop a written plan outlining roles and responsibilities for keeping the classroom clean, using imperatives and present continuous tense (e.g., \"We are sweeping the floors.\")."
+          },
+          {
+            "name": "Project 2: Cleaning Instruction Poster",
+            "overview": "Students design posters with illustrated instructions for cleaning tasks, using imperatives and collaborative language (e.g., \"Let's arrange the chairs.\")."
+          },
+          {
+            "name": "Project 3: Classroom Responsibility Chart",
+            "overview": "Students create a responsibility chart on paper or digitally, assigning weekly tasks to classmates, using present continuous and imperatives."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 3,
+      "title": "The Local Farm Stand",
+      "themes": [
+        "I Need Two Papayas, Please.",
+        "How Much Are the Bananas?"
+      ],
+      "domain": "Expressing Ourselves and Connecting with Others",
+      "level": "Beginner A1.3",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can show comprehension of general information, specific information and instructions in short oral texts about daily events if spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Identify specific information in announcements or recordings.",
+            "Interactive: Engage in simple discussions on lessons or current events."
+          ],
+          "learning_outcomes": [
+            "Can identify specific items and their prices from announcements in the market (e.g., \"Two papayas for three dollars.\" \"This papaya costs two dollars.\").",
+            "Can engage in simple discussions about items bought at the market (e.g., \"I buy bananas.\").",
+            "Can respond to questions about prices and quantities in role-play scenarios (e.g., \"How much is the banana?\" \"It is six bananas for one dollar.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can extract general and specific information in simple texts on everyday familiar topics with or without visual support.",
+          "specific_standards": [
+            "Reading: Comprehend short narratives about familiar experiences.",
+            "Reading: Extract specific information from texts on familiar topics.",
+            "Phonemic Awareness: Decode English graphemes and phonemes using knowledge of word parts, syllabification, and phonemic awareness."
+          ],
+          "learning_outcomes": [
+            "Can comprehend short narratives about familiar experiences at a farm stand (e.g., \"I go to the market and see some fruit.\").",
+            "Can extract specific information from texts about farm products (e.g., \"Papayas are on sale.\").",
+            "Can decode English graphemes and phonemes, using knowledge of syllable segmentation (e.g., segmenting \"banana\" into \"ba-na-na\" with three syllables)."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can exchange personal information, descriptions of basic things, simple questions and answers, and simple directions.",
+          "specific_standards": [
+            "Productive: Talk about people or things using simple language.",
+            "Interactive: Role-play simple social interactions."
+          ],
+          "learning_outcomes": [
+            "Can talk about buying and selling things in familiar places (e.g., \"Do you have any apples? I want to buy two.\" \"Yes, I have some.\").",
+            "Can role-play simple social interactions using polite language (e.g., \"Can I have two mangos, please?\").",
+            "Can ask questions about prices during role-play (e.g., \"How much is this apple?\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can create short, organized texts on familiar topics, incorporating revisions and feedback to improve clarity.",
+          "specific_standards": [
+            "Productive: Create basic informational leaflets for the event.",
+            "Interactive: Write simple group summaries of chapters read in class."
+          ],
+          "learning_outcomes": [
+            "Can create an informational leaflet describing farm stand items and prices for customers (e.g., \"We have apples for one dollar and bananas for two dollars.\").",
+            "Can write a simple summary of a story (e.g., \"The story is about a farm stand. They sell fruits.\").",
+            "Can tell classmates about the farm stand (e.g., \"Come to our farm stand for fruit!\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can utilize simplified language, visual aids, and step-by-step explanations to help peers engage with tasks and information.",
+          "specific_standards": [
+            "Communication: Assist peers in following multi-step school procedures.",
+            "Concept: Explain the steps to solve a problem using practical examples."
+          ],
+          "learning_outcomes": [
+            "Can assist peers in following multi-step school procedures by acting out steps (e.g., mimes \"Next, pay for your fruit.\").",
+            "Can guide peers through solving simple problems by modeling steps, using clarifying questions, and providing feedback (e.g., \"First, choose fruit.\" and points to a fruit picture, then asks, \"Which fruit do you want?\" and provides feedback, \"That's a great choice. What's next?\").",
+            "Can summarize instructions for peers, using visuals or simple keywords (e.g., points to each item on a checklist and says, \"Step one, step two…\")."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Polite requests (e.g., \"Can you help me, please?\")",
+          "WH-questions (e.g., \"How much is...?\")",
+          "\"Some\" and \"any\" with countable/non-countable nouns (e.g., \"Do you have any apples?\" \"I would like some water.\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "mango, pineapple, guava, tomato, pepper, lettuce, papaya, banana, fruit, farm, egg, cheese, bread, vegetable, milk, sugar, salt, water, market, cashier, price",
+            "verbs": "need, buy, sell, cost, ask, choose, want, give, get",
+            "adjectives": "cheap, fresh, ripe, delicious, healthy, a lot, a few, some, many",
+            "questions": "how much, how many"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /p/ in \"papaya\" and /b/ in \"banana\". Phonemic awareness: Segmenting words in syllables (e.g., \"banana\" to \" ba-na-na\" has three syllables).",
+          "pragmatic_competences": "Asking about prices: \"How much is this?\" Asking about availability: \"Do you have any...?\" Describing availability: \"We have some...\" \"I don't have any...\"",
+          "sociolinguistic_competences": "Discussing prices: Using polite expressions and transactional language at a farm stand (e.g., \"How much is this basket of apples, please?\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Communication: Asking and answering questions about prices and quantities. Critical thinking and collaboration: Describing food and produce in role-play scenarios.",
+          "technology_integration": "Use apps or digital tools to create shopping lists and price lists."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Farm Stand Role-Play",
+            "overview": "Students participate in a role-play simulating a farm stand transaction, using polite requests and WH-questions (e.g., \"How much is the pineapple?\" \"I need two papayas, please.\")."
+          },
+          {
+            "name": "Project 2: Farm Stand Price List",
+            "overview": "Students create a price list for a simulated farm stand, using quantities and the present simple tense for items and prices."
+          },
+          {
+            "name": "Project 3: Digital Shopping List",
+            "overview": "Students develop a simple shopping list with pictures, using a digital tool or sketching the app on paper. They practice quantifiers and polite requests to complete the list."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 4,
+      "title": "Helping Around the House",
+      "themes": [
+        "I Wash the Dishes Everyday.",
+        "We All Do Chores."
+      ],
+      "domain": "Family and Society",
+      "level": "Beginner A1.3",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can show comprehension of general information, specific information and instructions in short oral texts about daily events if spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Demonstrate comprehension of the main points of extended discussions on familiar topics.",
+            "Interactive: Engage in role-plays based on familiar social situations."
+          ],
+          "learning_outcomes": [
+            "Can demonstrate comprehension of the main points of extended discussions about household chores (e.g., \"What do you do at home?\" \"I wash the dishes every day.\").",
+            "Can engage in role-plays based on familiar social situations involving household responsibilities (e.g., \"I clean my room on Saturdays.\").",
+            "Can summarize key points about daily chores from discussions (e.g., \"Everyone has chores at home.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can extract general and specific information in simple texts on everyday familiar topics with or without visual support.",
+          "specific_standards": [
+            "Reading: Identify main ideas on familiar topics in simple paragraphs.",
+            "Reading: Illustrate main ideas from readings.",
+            "Phonemic Awareness: Decode English graphemes and phonemes using knowledge of word parts, syllabification, and phonemic awareness."
+          ],
+          "learning_outcomes": [
+            "Can identify the main ideas in simple paragraphs about household chores (e.g., \"Everyone helps with chores.\").",
+            "Can illustrate main ideas from readings about helping at home, through drawings or discussions (e.g., \"I help wash the dishes.\").",
+            "Can identify open and closed syllables in simple words (e.g., \"do\" as an open syllable and \"cook\" as a closed syllable)."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can exchange personal information, descriptions of basic things, simple questions and answers, and simple directions.",
+          "specific_standards": [
+            "Productive: Describe favorite hobbies or activities briefly.",
+            "Interactive: Exchange information about hobbies with peers."
+          ],
+          "learning_outcomes": [
+            "Can describe a favorite household chore or activity using simple sentences (e.g., \"I like cooking with my mom.\" \"My favorite chore is watering the plants.\").",
+            "Can have a simple discussion by asking and answering questions about chores and activities they do at home (e.g., \"Do you help clean the house?\" \"Yes, I clean my room.\" \"What chore do you like?\" \"I like doing the dishes.\").",
+            "Can explain how they do simple chores at home using basic sentences (e.g., \"I sweep and mop the floor every day.\" \"I wash the dishes and then dry them.\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can create short, organized texts on familiar topics, incorporating revisions and feedback to improve clarity.",
+          "specific_standards": [
+            "Productive: Develop short poems or rhymes.",
+            "Interactive: Summarize feedback from peer reviews."
+          ],
+          "learning_outcomes": [
+            "Can write a short poem or rhyme about household chores using simple vocabulary and repetition (e.g., \"I sweep the floor, I wash the plate, I clean the room, I can't be late!\").",
+            "Can write a simple summary of peer feedback on a classmate's poem or rhyme about chores (e.g., \"Maria's rhyme was fun. She used good words and talked about cleaning the house.\").",
+            "Can organize peer feedback into simple categories (e.g., what they liked, \"Good job: used rhyming words.\" and what can be improved, \"Needs work: add more lines about chores.\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can utilize simplified language, visual aids, and step-by-step explanations to help peers engage with tasks and information.",
+          "specific_standards": [
+            "Text: Simplify textbook content for peers.",
+            "Concept: Use visual aids to explain basic concepts."
+          ],
+          "learning_outcomes": [
+            "Can simplify content on chores for their peers, using simple words and pictures (e.g., \"Cleaning is making things tidy.\" while showing a tidy room image).",
+            "Can use visual aids to explain household chores (e.g., points to a clean room picture for \"cleaning\").",
+            "Can help classmates understand chores, using gestures (e.g., mimes sweeping for \"We sweep.\")."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Present simple (e.g., \"I wash.\" \"He washes.\" \"I don't like to wash the dishes.\")",
+          "WH-questions ( e.g., \"What do you do at home?\" \"How often do you clean?\")",
+          "Frequency adverbs (e.g., every day)"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "dishes, house, chores, broom, floor, kitchen, family, task, table, plant, laundry, sheets, clothes, bathroom, bedroom, living room, porch",
+            "verbs": "wash, clean, sweep, cook, help, organize, dust, fold, feed, mop, tidy up, throw, wipe, hang, change, make, water",
+            "adjectives": "daily, tidy, organized, messy, important",
+            "adverbs": "every day, often, usually"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /w/ in \"wash\" and /s/ in \"sweep\". Phonemic awareness: Recognition of closed and open syllables (e.g., closed syllable: \"cook\" and open syllable: \"do\")",
+          "pragmatic_competences": "Asking about chores: \"What do you do at home?\" Sharing experiences: \"I help my mom.\"",
+          "sociolinguistic_competences": "Discussing routines: Describing daily tasks and house chores according to context."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Responsibility: Describing household chores. Communication: Explaining personal routines and chores in written and spoken forms.",
+          "technology_integration": "Use digital scheduling tools and apps to create a list of house chores for each family member."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Chore Scheduling App",
+            "overview": "Students create a digital schedule or use a paper scheduler for household chores. They describe daily routines, using the present simple tense (e.g., \"I wash the dishes every day.\"), and frequency adverbs like \"always\" and \"sometimes\"."
+          },
+          {
+            "name": "Project 2: Family Chore Poster",
+            "overview": "Students design a chore poster showing who is responsible for different household tasks. They use the present simple tense and vocabulary for chores (e.g., \"wash,\" \"clean,\" and \"sweep\")."
+          },
+          {
+            "name": "Project 3: Chore Mural",
+            "overview": "Students each create a picture for a large classroom mural that shows various chores being completed."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 5,
+      "title": "Time for Exercise",
+      "themes": [
+        "I Like Walking in the Afternoon.",
+        "We Can Swim."
+      ],
+      "domain": "Nature and Wellness",
+      "level": "Beginner A1.3",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can show comprehension of general information, specific information and instructions in short oral texts about daily events if spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Comprehend the gist of short stories and news items.",
+            "Interactive: Engage in simple discussions on lessons or current events."
+          ],
+          "learning_outcomes": [
+            "Can comprehend the gist of short stories about exercise (e.g., \"The story is about a group of friends who play sports.\").",
+            "Can participate in simple discussions about different types of exercises (e.g., \"What exercises do you like?\" \"I like to swim.\").",
+            "Can summarize the gist of news items related to health (e.g., \"This news is about being healthy.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can extract general and specific information in simple texts on everyday familiar topics with or without visual support.",
+          "specific_standards": [
+            "Reading: Respond to texts with personal reflections.",
+            "Reading: Participate in group discussions based on reading assignments.",
+            "Phonemic Awareness: Decode English graphemes and phonemes using knowledge of word parts, syllabification, and phonemic awareness."
+          ],
+          "learning_outcomes": [
+            "Can respond to texts about exercise, with personal reflections (e.g., \"I think exercising is fun.\").",
+            "Can participate in group discussions about exercise, based on reading assignments (e.g., \"What are some simple exercises we can do?\" \"We can jump rope, ride a bike, or run.\").",
+            "Can decode English graphemes and phonemes by segmenting words into parts, identifying syllables, and applying phonemic awareness (e.g., decoding \"wellness\" as \"well-ness\" and \"exciting\" as \"ex-cit-ing\")."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can exchange personal information, descriptions of basic things, simple questions and answers, and simple directions.",
+          "specific_standards": [
+            "Productive: Talk about people or things using simple language.",
+            "Interactive: Discuss homework assignments with peers."
+          ],
+          "learning_outcomes": [
+            "Can talk about people, using simple descriptions (e.g., \"My friend can swim.\").",
+            "Can discuss homework assignments with peers by offering or requesting help and following up with clarifying questions (e.g., \"I need help with my physical education homework.\" \"I can help you with the instructions.\" \"What part do you need help with?\").",
+            "Can ask classmates about their homework (e.g., \"What is the homework for our physical education class?\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can create short, organized texts on familiar topics, incorporating revisions and feedback to improve clarity.",
+          "specific_standards": [
+            "Productive: Compose messages to invite peers to a performance, event, or activity.",
+            "Interactive: Exchange messages, letters, or texts with classmates or peers."
+          ],
+          "learning_outcomes": [
+            "Can compose an invitation to a sports event (e.g., \"Come to our sports day!\").",
+            "Can exchange details in a message (e.g., \"The sports day is on Friday at 10 a.m.\").",
+            "Can exchange simple messages about activities and events (e.g., \"Let's take a walk!\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can utilize simplified language, visual aids, and step-by-step explanations to help peers engage with tasks and information.",
+          "specific_standards": [
+            "Communication: Facilitate discussions on classroom topics among peers.",
+            "Concept: Connect historical events discussed in class to real-life examples."
+          ],
+          "learning_outcomes": [
+            "Can lead discussions about classroom topics by asking open-ended questions and prompting peers to elaborate (e.g., \"What sports do you like and why?\" and gestures to encourage more extended responses).",
+            "Can link historical events to current events with simple examples (e.g., points to an old picture of a sportsman or sportswoman and says, \"He could run very fast; we can too.\").",
+            "Can summarize class discussions, using gestures and visuals (e.g., points to a ball and says, \"We all like baseball.\")."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Modal verbs (e.g., can, cannot)",
+          "Present simple questions and affirmative sentences (e.g., \"Do you like sports?\" \"Yes, I do. I ride my bike every day.\")",
+          "WH-question + answer + subject + verb + ing (e.g., \"What type of exercise do you like?\" \"I like swimming.\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "walk, exercise, afternoon, gym, sport, activity, friend, football, swimming, running, hiking, dancing, cycling, horseback riding",
+            "verbs": "go, swim, walk, play, run, jump, throw, catch, kick, hit, dance, climb, hike",
+            "adjectives": "healthy, active, fit, fun, exciting",
+            "adverbs": "every day, always, sometimes"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /k/ in \"can\" and /s/ in \"swim\". Phonemic awareness: Segmenting multisyllabic words ( e.g., \"wellness\" as \"well-ness\" and \"exciting\" as \"ex-cit-ing\")",
+          "pragmatic_competences": "Asking about preferences: \"Do you like to swim?\" Expressing preferences: \"I like swimming.\"",
+          "sociolinguistic_competences": "Encouraging others: Suggesting group activities to encourage and support peers (e.g., \"Let's run together!\" \"You can do it!\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Fitness and Health: Describing physical abilities and routines, using modals. Communication: Sharing exercise routines and plans, using the present simple tense.",
+          "technology_integration": "Use digital tools for virtual exercise tracking and designing posters."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Fitness Routine Guide",
+            "overview": "Students write a fitness routine guide, using modal verbs like \"can\" and \"cannot\" to describe abilities and routines for sports or exercises."
+          },
+          {
+            "name": "Project 2: Exercise Plan Poster",
+            "overview": "Students design posters showing different physical activities and sports (e.g., using present simple tense and modals like \"can\" to describe what they can do to stay active.)."
+          },
+          {
+            "name": "Project 3: Virtual Exercise Challenge",
+            "overview": "Students participate in a virtual exercise challenge by selecting an exercise challenge video or creating their own, recording their activities, and using the present simple and modals to describe their exercises (e.g., \"I can swim.\" \"I walk every morning.\")."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 6,
+      "title": "Recycling for Our World",
+      "themes": [
+        "We Recycle Plastic Bottles Every Day.",
+        "Composting Is Easy."
+      ],
+      "domain": "Nature and Wellness",
+      "level": "Beginner A1.3",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can show comprehension of general information, specific information and instructions in short oral texts about daily events if spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Demonstrate comprehension of the main points of extended discussions on familiar topics.",
+            "Interactive: Ask for repetition and clarification in a conversation about known topics."
+          ],
+          "learning_outcomes": [
+            "Can demonstrate comprehension of the main points of extended discussions about recycling (e.g., \"What can we recycle?\" \"We can recycle plastic.\").",
+            "Can ask for repetition, seek clarification, and confirm understanding in conversations about recycling instructions (e.g., \"Could you please repeat that?\" \"Did you say paper and plastic bottles should go in different bins?\").",
+            "Can summarize discussions about environmental actions (e.g., \"We recycle to help the planet.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can extract general and specific information in simple texts on everyday familiar topics with or without visual support.",
+          "specific_standards": [
+            "Reading: Comprehend short narratives about familiar experiences.",
+            "Reading: Identify themes in simple stories.",
+            "Phonemic Awareness: Decode English graphemes and phonemes using knowledge of word parts, syllabification, and phonemic awareness."
+          ],
+          "learning_outcomes": [
+            "Can comprehend short narratives about recycling by connecting them with personal experiences (e.g., \"I recycle bottles like in the story.\").",
+            "Can identify themes in simple recycling-related stories and provide examples or connections from the story (e.g., \"The story is about saving the Earth because the characters recycle bottles and plant trees.\").",
+            "Can segment and decode multisyllabic words into syllables (e.g., dividing \"environment\" into \"en-vi-ron-ment\")."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can exchange personal information, descriptions of basic things, simple questions and answers, and simple directions.",
+          "specific_standards": [
+            "Productive: Give a simple report based on a chart.",
+            "Interactive: Exchange information about places."
+          ],
+          "learning_outcomes": [
+            "Can give a simple report based on a chart using clear statements (e.g., \"This chart shows how many students are recycling in this class.\").",
+            "Can exchange information about local places (e.g., \"In my community, there is a recycling center.\").",
+            "Can ask questions about shared information (e.g., \"How many people in this school recycle at home?\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can create short, organized texts on familiar topics, incorporating revisions and feedback to improve clarity.",
+          "specific_standards": [
+            "Productive: Write short reports on classroom experiments or projects.",
+            "Interactive: Write phrases or sentences for a group story or project with support or guidance."
+          ],
+          "learning_outcomes": [
+            "Can write a simple report on a project to describe the activity and its purpose (e.g., \"Our poster is about recycling plastic bottles.\" \"We explain how to recycle paper and bottles.\").",
+            "Can write sentences about recycling as part of a group experiment or project (e.g., \"We recycle paper.\").",
+            "Can describe what they learned (e.g., \"Recycling helps the Earth.\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can utilize simplified language, visual aids, and step-by-step explanations to help peers engage with tasks and information.",
+          "specific_standards": [
+            "Communication: Assist peers in following multi-step school procedures.",
+            "Concept: Explain the steps to solve a problem using practical examples."
+          ],
+          "learning_outcomes": [
+            "Can assist peers with recycling procedures by pointing to visuals (e.g., points to the recycling bin and says, \"This is for paper.\").",
+            "Can explain steps for solving recycling problems by using practical examples, gestures, and peer collaboration (e.g., \"First, sort your trash.\" and ask, \"Can you sort the paper?\").",
+            "Can simplify steps for recycling using keywords and visuals (e.g., points to each bin and says, \"Paper here, plastic here\")."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Present simple (e.g., \"We recycle.\")",
+          "Modal verbs can/could (e.g., \"Could you clarify that please?\" \"We can recycle paper in the school.\")",
+          "There is/there are (e.g., \"There is a recycling center in the community.\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "plastic, bottles, compost, recycling, trash, environment, waste, program, food scraps, bin, bag, recycling center",
+            "verbs": "recycle, compost, save, reduce, help, protect, reuse, pollute, conserve, save, sort, classify",
+            "adjectives": "easy, green, sustainable, vital, clean, organic, non-organic",
+            "adverbs": "often, usually",
+            "question_words": "what, how, where"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /r/ in \"recycle\" and /s/ in \"sustainability\". Phonemic awareness: Segmenting multisyllabic words related to sustainability (e.g., \"sustainability\" and \"environment\")",
+          "pragmatic_competences": "Asking questions about recycling: \"What can we recycle?\" Giving reasons: \"We recycle to help the planet.\"",
+          "sociolinguistic_competences": "Discussing environmental actions: discussing taking care of the environment (e.g., \"We can recycle more.\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Environmental Responsibility: Describing recycling habits and instructions using modals. Communication: Explaining sustainability actions in writing and video formats.",
+          "technology_integration": "Use video editing tools for campaigns and digital tools for chart creation."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Recycling Station Poster",
+            "overview": "Students design posters explaining how to use a classroom recycling station, using the present simple tense and modal verbs like \"can\" (e.g., \"You can recycle plastic bottles here.\")."
+          },
+          {
+            "name": "Project 2: Recycling Data Chart",
+            "overview": "Students collect data on the classroom's recycling habits and create a chart to present the findings, using frequency adverbs like \"always\" and \"every week\"."
+          },
+          {
+            "name": "Project 3: Recycling Campaign Video",
+            "overview": "Students create a video campaign encouraging recycling at school. They use the present simple tense and modal verbs to describe actions for sustainability (e.g., \"We can recycle paper.\")."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 7,
+      "title": "Conservation Morning, Noon, and Night!",
+      "themes": [
+        "Let's Get Cool in the Shade.",
+        "Turn Off the Lights, Please."
+      ],
+      "domain": "Being Local and Global Citizens",
+      "level": "Beginner A1.3",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can show comprehension of general information, specific information and instructions in short oral texts about daily events if spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Comprehend the gist of short stories and news items.",
+            "Interactive: Contribute actively to group projects and discussions."
+          ],
+          "learning_outcomes": [
+            "Can comprehend the main idea from short announcements about conserving energy (e.g., \"Turn off the lights and conserve energy.\").",
+            "Can actively follow and contribute to a group project on community energy conservation (e.g., \"We can reduce energy consumption.\").",
+            "Can follow oral instructions to save energy (e.g., \"Use natural light.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can extract general and specific information in simple texts on everyday familiar topics with or without visual support.",
+          "specific_standards": [
+            "Reading: Respond to texts with personal reflections.",
+            "Reading: Participate in group discussions based on reading assignments.",
+            "Phonemic Awareness: Decode English graphemes and phonemes using knowledge of word parts, syllabification, and phonemic awareness."
+          ],
+          "learning_outcomes": [
+            "Can respond to texts about conservation, with personal reflections (e.g., \"I think saving water is important.\").",
+            "Can participate in group discussions about conservation topics (e.g., \"We can recycle more and turn off electronics when not in use.\").",
+            "Can recognize and decode simple prefixes and suffixes in words (e.g., identifying \"-re\" in \"recycle\" and \"-er\" in \"safer\")."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can exchange personal information, descriptions of basic things, simple questions and answers, and simple directions.",
+          "specific_standards": [
+            "Productive: Describe preferences and experiences.",
+            "Interactive: Express likes and dislikes in group discussions."
+          ],
+          "learning_outcomes": [
+            "Can describe preferences, using simple language (e.g., \"I prefer saving energy wherever possible because it is beneficial and better for the environment.\").",
+            "Can express experiences during group discussions (e.g., \"Saving energy is the best choice for the planet.\").",
+            "Can ask others about their likes and dislikes (e.g., \"What do you think is the easiest way to save energy at home?\" \"Which do you prefer: switching off lights when not in use or using natural light?\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can create short, organized texts on familiar topics, incorporating revisions and feedback to improve clarity.",
+          "specific_standards": [
+            "Productive: Write instructions for playing a simple classroom game.",
+            "Interactive: Write instructions for peers about how to improve their writing products."
+          ],
+          "learning_outcomes": [
+            "Can write simple instructions for a game (e.g., \"First, create energy-saving ideas. Then, act them out and ask peers to guess them.\").",
+            "Can write instructions to help peers improve their writing by explaining steps clearly (e.g., \"Step 1: Add more details about conservation.\" \"Step 2: Use adjectives like 'helpful' or 'important' to make your ideas clearer.\" \"Step 3: Check for capital letters and punctuation.\").",
+            "Can give step-by-step instructions (e.g., \"Use natural sunlight to dry the clothes and use energy-efficient light bulbs.\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can utilize simplified language, visual aids, and step-by-step explanations to help peers engage with tasks and information.",
+          "specific_standards": [
+            "Communication: Assist peers in following multi-step school procedures.",
+            "Communication: Relay key points from the teacher's lectures to absent students."
+          ],
+          "learning_outcomes": [
+            "Can assist classmates in following conservation steps with visuals (e.g., shows a picture of a light switch and says, \"Turn off the lights.\").",
+            "Can relay key points about conservation, using basic words and gestures (e.g., \"We save water.\" and mimes turning off a faucet).",
+            "Can summarize conservation actions for peers, using simple words and visuals (e.g., pointing to a tree picture and saying, \"Save trees, don't waste paper.\")."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Imperatives (e.g., \"Turn off the lights when not in use.\" \"Let's save energy.\")",
+          "Comparatives (e.g., \"easier than\")",
+          "Superlatives (e.g., \"the most important\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "shade, light, morning, night, water, energy, environment, time, electricity, solar power, bulbs, faucet",
+            "verbs": "recycle, turn off, save, conserve, help, reduce, waste, switch",
+            "adjectives": "cool, easy, meaningful, bright, safe",
+            "comparatives": "easier, safer",
+            "superlative": "most"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /sh/ in \"shade\" and /t/ in \"turn off\". Phonemic awareness: Introducing simple prefixes and suffixes (e.g., -re \"recycle\" -er -\"safer\")",
+          "pragmatic_competences": "Giving and following suggested actions: \"Use natural light when possible.\" \"Turn off appliances when they are not needed.\" Expressing preferences: \"I prefer saving energy wherever possible because it is beneficial and better for the environment.\"",
+          "sociolinguistic_competences": "Comparing actions: Using comparatives and superlatives to discuss conservation."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Environmental Awareness: Describing conservation actions, using present continuous and comparatives. Communication: Explaining energy-saving techniques, using comparatives and superlatives.",
+          "technology_integration": "Use digital tracking tools and apps to log energy-saving activities."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Daily Conservation Log",
+            "overview": "Students keep a daily log of their conservation activities, writing their actions in the imperative form (e.g., \"Turn off the lights to save energy.\")."
+          },
+          {
+            "name": "Project 2: Conservation vs. Recycling Poster",
+            "overview": "Students create a poster comparing different conservation actions and their benefits, using comparatives and superlatives (e.g., \"Saving water is easier than recycling.\")."
+          },
+          {
+            "name": "Project 3: Energy Saving Challenge",
+            "overview": "Students participate in an energy-saving challenge by tracking their energy conservation efforts over a week and using comparatives to describe results (e.g., \"Turning off the lights is more effective than...\")."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 8,
+      "title": "Planning Meals for My Family",
+      "themes": [
+        "Fruits and Vegetables Are Good for You.",
+        "Panama Has Delicious Food!"
+      ],
+      "domain": "Family and Society",
+      "level": "Beginner A1.3",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can show comprehension of general information, specific information and instructions in short oral texts about daily events if spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Follow narratives involving familiar contexts.",
+            "Interactive: Respond to questions on familiar and routine matters."
+          ],
+          "learning_outcomes": [
+            "Can follow narratives related to types of food (e.g., \"Vegetables and grains are healthy.\").",
+            "Can respond to questions about healthy eating (e.g., \"What types of food are good for you?\" \"Fruits and vegetables are good choices.\").",
+            "Can summarize information about meal planning shared in class (e.g., \"Use a chart or a Venn diagram to present the main ideas shared in class.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can extract general and specific information in simple texts on everyday familiar topics with or without visual support.",
+          "specific_standards": [
+            "Reading: Respond to texts with personal reflections.",
+            "Reading: Create simple questions based on reading materials.",
+            "Phonemic Awareness: Decode English graphemes and phonemes using knowledge of word parts, syllabification, and phonemic awareness."
+          ],
+          "learning_outcomes": [
+            "Can respond to texts about meal planning, with personal reflections (e.g., \"I like cooking with my family.\").",
+            "Can create simple questions and infer answers from reading materials, using context (e.g., \"What ingredients do we need for a healthy meal?\" \"We need some rice and vegetables.\").",
+            "Can decode English graphemes and phonemes by recognizing and applying simple prefixes and suffixes to form new words (e.g., \"-un\" in \"uncountable\" and \"-ing\" in \"cooking\")."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can exchange personal information, descriptions of basic things, simple questions and answers, and simple directions.",
+          "specific_standards": [
+            "Productive: Describe a family or school event they are looking forward to.",
+            "Interactive: Exchange ideas about planning an event."
+          ],
+          "learning_outcomes": [
+            "Can describe a family event they are looking forward to (e.g., \"I am happy to cook a healthy meal for my mom's birthday. I can prepare a salad, some rice, and meat.\").",
+            "Can exchange ideas about planning an event by collaborating with peers and making decisions together (e.g., \"Let's plan a healthy meal for her birthday. What should we include?\" \"We can add rice and beans.\").",
+            "Can ask questions about details for planning (e.g., \"What type of healthy Panamanian food can we use in our recipe?\" \"We need some rice and some beans.\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can create short, organized texts on familiar topics, incorporating revisions and feedback to improve clarity.",
+          "specific_standards": [
+            "Productive: Write short personal narratives about weekend activities.",
+            "Interactive: Edit simple written work from peers for grammar and spelling collaboratively."
+          ],
+          "learning_outcomes": [
+            "Can write a short story about their weekend (e.g., \"This weekend we have a special Panamanian meal with healthy food.\" \"I want to cook.\").",
+            "Can check a peer's work and give feedback (e.g., \"Not aet, e-a-t, eat.\").",
+            "Can share their weekend plans with the class (e.g., \"This weekend, I am...\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can utilize simplified language, visual aids, and step-by-step explanations to help peers engage with tasks and information.",
+          "specific_standards": [
+            "Concept: Use visual aids to explain basic concepts.",
+            "Concept: Connect historical events discussed in class to real-life examples."
+          ],
+          "learning_outcomes": [
+            "Can use visual aids to explain basic concepts about food (e.g., points to vegetables and says, \"healthy food\").",
+            "Can connect food topics to historical examples using simple language (e.g., \"People ate rice then and now too.\" while pointing to a rice picture).",
+            "Can facilitate a discussion on meal planning with peers by asking questions (e.g., \"What should we eat?\" and pointing to food options)."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Present simple (e.g., \"Fruits and vegetables are delicious and healthy.\")",
+          "Modal verbs (e.g., \"can\")",
+          "Countable/uncountable nouns (e.g., \"some rice\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "breakfast, lunch, dinner, snack, rice, beans, bread, water, juice, mangos, watermelon, tomatoes, lettuce, fruits, vegetables, meal, bowl, cup, fork, knife, spoon",
+            "verbs": "cook, boil, bake, fry, steam, cut, slice, eat, enjoy",
+            "adjectives": "tasty, salty, sour, sweet, healthy, fresh",
+            "adverbs": "often, sometimes",
+            "sequencing_adverbs": "first, next",
+            "quantifiers": "some, many"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /v/ in \"vegetables\" and /f/ in \"fruit\". Phonemic Awareness: Introducing simple prefixes and suffixes ( -un \"uncountable\" -ing \"cooking\")",
+          "pragmatic_competences": "Asking about food preferences: \"What do you like to eat?\" Sharing meal ideas: \"We can cook pasta.\"",
+          "sociolinguistic_competences": "Describing food preferences and quantities: Using countable/uncountable nouns to talk about meals (e.g., \"I want to eat some bread.\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Health and Nutrition: Describing food and meal preparation, using countable/uncountable nouns. Communication: Writing and explaining recipes and meal plans.",
+          "technology_integration": "Use digital tools for recipe book creation and poster design."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Healthy Meal Plan",
+            "overview": "Students create a meal plan for their family, using countable and uncountable nouns with quantifiers (e.g., \"a few apples\" or \"some rice\") and modal verbs to describe preparation (e.g., \"We can cook beans.\")."
+          },
+          {
+            "name": "Project 2: Digital Recipe Book",
+            "overview": "Students collaborate to create a digital recipe book featuring healthy meals. They describe the ingredients and steps using the present simple tense."
+          },
+          {
+            "name": "Project 3: Nutrition Poster",
+            "overview": "Students design a nutrition poster highlighting the benefits of different foods, using quantifiers and the present simple tense (e.g., \"Fruits and vegetables are good for you.\")."
+          }
+        ]
+      }
+    }
+  ]
+}

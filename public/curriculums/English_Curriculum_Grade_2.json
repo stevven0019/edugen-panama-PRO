@@ -1,0 +1,940 @@
+{
+  "scenarios": [
+    {
+      "scenario_number": 1,
+      "title": "School Days",
+      "themes": [
+        "Yesterday Was Wednesday.",
+        "Today Is Friday!"
+      ],
+      "domain": "Expressing Ourselves and Connecting with Others",
+      "level": "Foundational Learner - Pre A1.4",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can demonstrate comprehension of sounds, familiar words, basic phrases, instructions, and the gist of conversations when spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Follow the main plot of simple stories told with visual support.",
+            "Interactive: Respond in a predictable pattern to simple questions about familiar things."
+          ],
+          "learning_outcomes": [
+            "Can follow with visual support the main plot of simple stories about the days of the week (e.g., \"On Monday, I get ready for school.\").",
+            "Can listen and respond in a predictable pattern to simple questions about days of the week, including future references (e.g., \"Today is Monday. What day is tomorrow?\" \"Tomorrow is Tuesday.\").",
+            "Can follow the main plot of simple stories told with visual support by identifying familiar routines associated with specific days (e.g., \"On Fridays, we go to the library.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can get the gist of familiar words in simple texts when they are supported with pictures.",
+          "specific_standards": [
+            "Reading: Show comprehension of simple sentences.",
+            "Reading: Follow written instructions with visual aids.",
+            "Phonemic Awareness: Recognize all the letters of the alphabet in isolation and the correspondence between letter and sound at the beginning of words."
+          ],
+          "learning_outcomes": [
+            "Can show comprehension of the days of the week in simple texts by matching sentences with visual aids (e.g., matching \"Yesterday was Wednesday.\" to a visual that highlights the previous day).",
+            "Can identify and respond to key words about days in simple texts using visual support (e.g., pointing to \"Tomorrow is Friday.\" in a schedule).",
+            "Can recognize all the letters of the alphabet and connect each letter to its initial sound in familiar words (e.g., identifying the letter F and its /f/ sound in \"Friday\" when shown a weekly calendar)."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can use basic language and formulaic expressions to ask and respond to questions.",
+          "specific_standards": [
+            "Productive: Identify independently common actions seen in daily routines.",
+            "Interactive: Participate in simple formulaic question-and-answer exchanges on familiar subjects."
+          ],
+          "learning_outcomes": [
+            "Can identify common actions using simple phrases (e.g., \"I write,\" \"I read,\" and \"I listen.\").",
+            "Can participate in simple question-and-answer exchanges about days of the week (e.g., \"What day is it today?\" \"Today is Tuesday.\" \"What day is tomorrow?\" \"Tomorrow is Wednesday.\").",
+            "Can describe common actions in daily routines in simple exchanges. (e.g., \"We clean up on Monday.\" \"We sing on Tuesday.\" \"I read on Wednesday.\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can compose simple sentences to express simple thoughts and ideas.",
+          "specific_standards": [
+            "Productive: Write simple thank-you notes or greetings in cards using one-sentence picture cards.",
+            "Interactive: Contribute a word to a class story or sentence, with help."
+          ],
+          "learning_outcomes": [
+            "Can write simple thank-you notes or greetings using one-sentence picture cards (e.g., \"Thank you!\" or \"Hello, happy Sunday!\").",
+            "Can create one-word captions of items for a class book (e.g., \"pencil\" or \"book\").",
+            "Can write brief captions to describe drawings of days of the week with activities (e.g., \"Monday. I need my book and pencil.\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can combine basic mediation strategies, such as asking for clarification, repetition of key ideas, and use of gestures and visuals to support mutual understanding.",
+          "specific_standards": [
+            "Text: Summarize short stories using drawings or pictures.",
+            "Communication: Explain simple written instructions to peers, using English or Spanish."
+          ],
+          "learning_outcomes": [
+            "Can summarize short stories using drawings or pictures (e.g., draws a sun and says \"Sunday\" to show the story's setting).",
+            "Can explain simple written instructions to peers, using gestures (e.g., points to the calendar to show, \"Today is Monday.\").",
+            "Can clarify simple instructions, using basic gestures (e.g., gives thumbs up to indicate \"yes\")."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Past simple with the verb \"be\" (e.g., \"Yesterday was...\")",
+          "Present simple (e.g., \"Today is...\")",
+          "WH-questions (e.g., \"What is it?\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, calendar, schedule, activity, week, school, friend, math, science, English",
+            "verbs": "be (was, is), start, end, learn, read, write, say, listen, share, talk, draw, like, have",
+            "adjectives": "sunny, rainy, cloudy",
+            "personal_pronoun": "it",
+            "preposition_of_time": "on",
+            "demonstratives": "this, that, these",
+            "time_markers": "yesterday, today, tomorrow, morning, afternoon, evening"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /w/ in \"Wednesday\" and /f/ in \"Friday\". Phonemic awareness: Recognizing correspondence between letter and sound at the beginning of familiar words (e.g., letter F and letter sound /f/ in \"Friday\")",
+          "pragmatic_competences": "Answering questions about days: \"Yesterday was Wednesday.\" Expressing preferences: \"I like Friday. Art is on Friday!\" Discourse marker: and (e.g., \"Yesterday was Wednesday and I went outside!\")",
+          "sociolinguistic_competences": "Talking about schedules: Communicating about daily classroom activities and schedules using appropriate language and turn-taking (e.g., \"Today is Monday.\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Time Awareness: Understanding past, present, and future. Communication: Discussing time with simple sentences.",
+          "technology_integration": "Use a simple calendar app to track days and events."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Time Travel Calendar",
+            "overview": "Students draw a \"Time Travel\" calendar on paper, note the days \"yesterday,\" \"today,\" and \"tomorrow,\" and draw an activity for each day."
+          },
+          {
+            "name": "Project 2: Weekly Story Journal",
+            "overview": "Students write short journal entries about the weather in their diaries (e.g., \"It is rainy today.\" \"It was sunny yesterday.\" \"It was cloudy on Tuesday.\")."
+          },
+          {
+            "name": "Project 3: Digital Time Diary",
+            "overview": "Students learn to create a digital diary by using a simple calendar app or filling in calendar areas on a digital diary worksheet to track activities and events for yesterday and today."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 2,
+      "title": "School Life Adventures",
+      "themes": [
+        "That's a Big Book!",
+        "That's a Small, Brown Bag."
+      ],
+      "domain": "Expressing Ourselves and Connecting with Others",
+      "level": "Foundational Learner - Pre A1.4",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can demonstrate comprehension of sounds, familiar words, basic phrases, instructions, and the gist of conversations when spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Follow the main plot of simple stories told with visual support.",
+            "Interactive: Demonstrate comprehension of a variety of classroom commands."
+          ],
+          "learning_outcomes": [
+            "Can follow the main idea of a simple story and identify familiar vocabulary when visuals are provided (e.g., a story about a small red pencil and a big blue book going to school, with students identifying them as the teacher points to the corresponding pictures while asking, \"What size is the pencil?\").",
+            "Can understand and respond appropriately to basic classroom commands (e.g., \"Please sit down.\" or \"Open your book.\").",
+            "Can participate in brief exchanges using simple, familiar classroom phrases (e.g., responding to \"What color is the bag?\" with \"It's brown.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can get the gist of familiar words in simple texts when they are supported with pictures.",
+          "specific_standards": [
+            "Reading: Identify key words and phrases in texts.",
+            "Reading: Follow written instructions with visual aids.",
+            "Phonemic Awareness: Identify a spoken word's initial and final phoneme if these words have been previously encountered and are attached to a picture."
+          ],
+          "learning_outcomes": [
+            "Can identify keywords and phrases in simple texts related to classroom objects (e.g., recognizing \"desk,\" \"book,\" and \"pen\" in the sentence, \"The pen is on the desk next to the book.\").",
+            "Can follow written instructions to identify classroom objects (e.g., \"Circle the picture of the pencil.\").",
+            "Can identify the initial and final phonemes of common classroom objects and make the correspondence between letters and their sounds at the beginning and end of words with visual support (e.g., identifying the initial letter and sound /p/ and the final letter and sound /l/ in \"pencil\" when shown a picture of a pencil)."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can use basic language and formulaic expressions to ask and respond to questions.",
+          "specific_standards": [
+            "Productive: Contribute to storytelling sessions with simple sentences based on visual prompts.",
+            "Interactive: Use greetings and farewells appropriately in conversations with peers."
+          ],
+          "learning_outcomes": [
+            "Can contribute simple sentences to storytelling sessions using visual prompts (e.g., \"The book is big.\" when shown a picture of a large book).",
+            "Can use appropriate greetings and farewells in brief peer interactions (e.g., \"How are you?\" \"Bye,\" and \"See you tomorrow.\").",
+            "Can ask and respond in a predictable pattern to questions about familiar objects (e.g., responding to \"What color is the bag?\" with \"It's brown.\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can compose simple sentences to express simple thoughts and ideas.",
+          "specific_standards": [
+            "Productive: Write simple thank-you notes or greetings in cards using one-sentence picture cards.",
+            "Interactive: Contribute a word to a class story or sentence, with help."
+          ],
+          "learning_outcomes": [
+            "Can write simple, polite thank-you notes or greetings using familiar classroom vocabulary and adjectives (e.g., \"Hello, friend! Thank you for the red pencil.\").",
+            "Can contribute words to a simple story describing classroom objects (e.g., \"red,\" \"green,\" and \"pencil\").",
+            "Can describe classroom objects in photos or drawings using adjectives and the present simple tense (e.g., \"This is a big, blue book.\" or \"The bag is small and brown.\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can combine basic mediation strategies, such as asking for clarification, repetition of key ideas, and use of gestures and visuals to support mutual understanding.",
+          "specific_standards": [
+            "Text: Use visual information in texts to convey meaning.",
+            "Communication: Relay simple information received verbally using English or Spanish."
+          ],
+          "learning_outcomes": [
+            "Can use visual information in texts to convey meaning by pointing to images that match the story (e.g., points to a picture of a lost book to indicate, \"The story is about a book.\").",
+            "Can relay simple information received verbally by repeating short words or using gestures (e.g., hears \"Sit down.\" and points to a chair).",
+            "Can point to classroom objects to help peers understand the vocabulary (e.g., points to \"pencil\" when asked)."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Adjectives (e.g., \"Point to the blue book.\")",
+          "Present simple (e.g., \"That's a book.\")",
+          "WH-questions (e.g., \"What size is the book?\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "book, bag, pencil, desk, chair, eraser, ruler, board, marker, crayon, paper, shelf, folder, backpack, notebook, window, door, chalk, scissors, poster, table, bin, please, thank you",
+            "verbs": "see, look, find, lost, draw, write, read, point, stack",
+            "adjectives": "brown, red, blue, yellow, green, black, white, round, flat, big, small, long, short, tall, square, rectangular, oval, diamond",
+            "pronoun": "it",
+            "demonstratives": "this, that, these",
+            "prepositions": "on, in, under, next to, by",
+            "numbers": "one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /b/ in \"book\" and /s/ in \"small\". Phonemic awareness: Identification of initial sounds and letters in common classroom objects (e.g., /p/ in \"pencil\")",
+          "pragmatic_competences": "Describing objects with detail: \"This is a small bag.\" \"That's a big, blue book.\" Responding to questions: \"What color is the book?\" \"It’s blue.\" Discourse marker: and",
+          "sociolinguistic_competences": "Employing polite expressions: Describing classroom objects (e.g., \"Can you please pass me the blue pencil?\" or \"Thank you for the book.\"). Employing polite expressions in greetings and farewells: (e.g., \"How are you?\" \"See you tomorrow\")"
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Collaboration: Describing classroom objects through collaborative teamwork. Communication: Describing objects using adjectives to facilitate communication of ideas.",
+          "technology_integration": "Use a cellphone or tablet camera to take pictures and label classroom objects digitally."
+        },
+        "projects": [
+          {
+            "name": "Project 1: My Classroom Object Hunt",
+            "overview": "Students go on a classroom object hunt, labeling objects with descriptive words like \"big,\" \"small,\" or colors, and create a mini-poster."
+          },
+          {
+            "name": "Project 2: Classroom Object Bingo",
+            "overview": "Students play a game of bingo. The teacher describes classroom objects (e.g., \"small brown bag\"), and students mark the correct object on their bingo cards."
+          },
+          {
+            "name": "Project 3: Digital Object Hunt",
+            "overview": "Students use cell phones or tablets to take pictures of classroom objects, label them with adjectives, and create a digital poster."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 3,
+      "title": "All About the Weather",
+      "themes": [
+        "A Perfect Day!",
+        "Dress for the Weather."
+      ],
+      "domain": "Nature and Wellness",
+      "level": "Foundational Learner - Pre A1.4",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can demonstrate comprehension of sounds, familiar words, basic phrases, instructions, and the gist of conversations when spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Comprehend simple descriptions of people, places, and things around them.",
+            "Interactive: Participate in call-and-response activities, responding appropriately to cues in songs or stories."
+          ],
+          "learning_outcomes": [
+            "Can comprehend essential weather-related words (e.g., \"rainy\" or \"sunny\").",
+            "Can follow simple descriptions of people in different weather conditions (e.g., \"It's sunny. He is hot!\").",
+            "Can participate in call-and-response songs, stories, and chants with appropriate cues (e.g., \"How's the weather?\" \"It is rainy!\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can get the gist of familiar words in simple texts when they are supported with pictures.",
+          "specific_standards": [
+            "Reading: Identify simple story elements (e.g., characters, setting).",
+            "Reading: Find specific information in a text (e.g., names, quantities, dates).",
+            "Phonemic Awareness: Identify a spoken word's initial and final phoneme if these words have been previously encountered and are attached to a picture."
+          ],
+          "learning_outcomes": [
+            "Can identify simple story elements, such as characters or settings, in short texts about the weather (e.g., recognizing \"the boy\" and \"the rainy day\" in a story).",
+            "Can find specific weather-related information in a text (e.g., locating \"rain\" or \"sunny\" when looking for weather descriptions or identifying the number of items, such as \"two umbrellas\").",
+            "Can identify the initial and final phonemes of spoken weather-related words and make the correspondence between letters and their sounds at the beginning and end of words with visual support (e.g., identifying the /w/ and /i/ sounds in \"windy\" when shown an image of wind)."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can use basic language and formulaic expressions to ask and respond to questions.",
+          "specific_standards": [
+            "Productive: Count up to 50 out loud with help.",
+            "Interactive: Describe simple pictures or objects during classroom discussions."
+          ],
+          "learning_outcomes": [
+            "Can count weather-related items up to 50 with assistance (e.g., counting \"clouds\" or \"raindrops\" in a picture).",
+            "Can describe simple weather-related pictures or objects during classroom discussions (e.g., \"This is a rainy day.\" \"The umbrella is red.\").",
+            "Can respond to peer questions about weather and objects using simple phrases (e.g., \"What is this?\" \"It's an umbrella.\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can compose simple sentences to express simple thoughts and ideas.",
+          "specific_standards": [
+            "Productive: Fill in blanks in sentences using a word bank related to a familiar context.",
+            "Interactive: Write simple words supported with drawings to peers."
+          ],
+          "learning_outcomes": [
+            "Can fill in blanks in sentences about the weather using a word bank (e.g., selecting \"rainy\" or \"sunny\" to complete \"Today is a ___ day.\").",
+            "Can write simple, weather-related words supported with drawings to communicate ideas (e.g., drawing a rain storm and writes, \"rainy\").",
+            "Can express simple weather-related ideas with guidance (e.g., \"I like rainy weather.\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can combine basic mediation strategies, such as asking for clarification, repetition of key ideas, and use of gestures and visuals to support mutual understanding.",
+          "specific_standards": [
+            "Text: Use visual information in texts to convey meaning.",
+            "Communication: Describe everyday objects using visual support."
+          ],
+          "learning_outcomes": [
+            "Can use visual information in texts by pointing to related images during stories (e.g., points to clouds when discussing \"It's cloudy.\").",
+            "Can describe everyday objects using visual support (e.g., points to the sun in a weather chart and says \"sunny\").",
+            "Can participate in weather chants by pointing to visuals (e.g., points to an umbrella during a \"rainy day\" song)."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Adjectives + nouns (e.g., \"rainy day\")",
+          "Present simple (e.g., \"I like sunny days.\")",
+          "WH-questions (e.g., \"What is the weather like?\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "sun, rain, raindrop, coat, hat, day, cloud, wind, storm, umbrella, boots, scarf, puddle, rainbow, season, weather, jacket, sky, temperature, forecast",
+            "verbs": "wear, like, play, run, jump, look, feel, change, shine, fall, blow, check, prepare, watch, enjoy",
+            "adjectives": "sunny, rainy, warm, cold, cloudy, windy, bright, clear, wet, dry, chilly, hot, cool, foggy, mild, freezing",
+            "time_markers": "today, tomorrow, yesterday, morning, afternoon, evening, night, now, later, soon",
+            "prepositions_of_place": "inside, outside"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /s/ in \"sunny\" and /r/ in \"rainy\". Phonemic awareness: Initial letter and sound of /w/ and final letter and sound /i/ in the word \"windy\"",
+          "pragmatic_competences": "Describing the weather and activities: \"It's a sunny day, and I play outside.\" Responding to questions: \"What's the weather like?\" \"It's rainy. I need my umbrella.\" Discourse marker: and",
+          "sociolinguistic_competences": "Expressing preferences: Talking about preferences related to weather and clothing (e.g., \"I like sunny days.\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Weather Observation: Recording weather conditions. Communication: Expressing weather preferences.",
+          "technology_integration": "Use a weather app to record weather changes and track patterns."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Weather Journal",
+            "overview": "Children create a weather journal, drawing daily weather conditions (e.g., sunny, rainy) and describing their favorite weather."
+          },
+          {
+            "name": "Project 2: Weather Forecast Video",
+            "overview": "Students act as weather reporters, recording short videos describing the day's weather and their favorite weather using phrases like \"I like sunny days.\" Optionally, students can draw a comic strip of a weather report to report the news."
+          },
+          {
+            "name": "Project 3: Digital Weather Tracking",
+            "overview": "Students use a weather app to track daily weather conditions and create a digital weather report. Optionally, students can cut our weather information from newspapers and paste it to make a weather tracking collage or create a chart to track the weather with a pencil and paper."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 4,
+      "title": "All About My Body",
+      "themes": [
+        "Head to Toes!",
+        "Hats and Shoes!"
+      ],
+      "domain": "Family and Society",
+      "level": "Foundational Learner - Pre A1.4",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can demonstrate comprehension of sounds, familiar words, basic phrases, instructions, and the gist of conversations when spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Follow two-step spoken instructions related to classroom activities.",
+            "Interactive: Respond in a predictable pattern to simple questions about familiar things."
+          ],
+          "learning_outcomes": [
+            "Can follow two-step instructions related to body movements (e.g., \"Raise your hand and wave.\" or \"Touch your nose and clap your hands.\").",
+            "Can listen and respond to predictable patterns presented in rhymes, songs, and chants (e.g., \"Put your left foot in, take your left foot out.\").",
+            "Can follow and answer questions about body parts using gestures or short answers (e.g., \"Where is your hat?\" \"On my head.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can get the gist of familiar words in simple texts when they are supported with pictures.",
+          "specific_standards": [
+            "Reading: Identify keywords and phrases in texts.",
+            "Reading: Identify simple story elements (e.g., characters, setting).",
+            "Phonemic Awareness: Identify a spoken word's initial and final phoneme if these words have been previously encountered and are attached to a picture."
+          ],
+          "learning_outcomes": [
+            "Can locate and identify keywords related to body parts and clothing within sentences (e.g., identifying \"head\" and \"hat\" in a description).",
+            "Can recognize simple story elements, such as characters and setting, in texts about body parts and clothing (e.g., identifying \"the boy\" and \"his hat\" in a story).",
+            "Can identify the initial and final sounds with letter correspondence in body parts and clothing-related vocabulary (e.g., the /h/ and /d/ sounds and letters in \"hand\" or the /t/ and /z/ sounds in \"toes\" when shown images of a hand or toes)."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can use basic language and formulaic expressions to ask and respond to questions.",
+          "specific_standards": [
+            "Productive: Locate people, objects, and things around them.",
+            "Interactive: Respond to simple verbal commands in classroom settings."
+          ],
+          "learning_outcomes": [
+            "Can locate and identify people, objects, and things around them by describing body parts or clothing (e.g., \"the boy with the blue hat\" or \"the red shoes\").",
+            "Can follow and respond to simple commands in a game, calling out familiar body parts (e.g., \"Touch your head!\").",
+            "Can ask and respond to questions about familiar body parts and clothing using descriptive language (e.g., The teacher asks, \"What is on your feet?\" and the student responds, \"These are shoes.\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can compose simple sentences to express simple thoughts and ideas.",
+          "specific_standards": [
+            "Productive: Write simple responses to texts.",
+            "Interactive: Write simple words supported with drawings to peers."
+          ],
+          "learning_outcomes": [
+            "Can write simple sentence responses to questions about body parts and clothing (e.g., What do you wear on your head? \"I wear a hat.\").",
+            "Can write simple words about body parts supported with drawings to communicate ideas (e.g., drawing a hand and writing \"hand\" to label it).",
+            "Can write, with support, simple phrases or sentences about personal experiences with body parts or clothing (e.g., \"I wear my raincoat on rainy days.\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can combine basic mediation strategies, such as asking for clarification, repetition of key ideas, and use of gestures and visuals to support mutual understanding.",
+          "specific_standards": [
+            "Text: Interpret simple phrases from a text.",
+            "Communication: Describe everyday objects using visual support."
+          ],
+          "learning_outcomes": [
+            "Can interpret simple phrases from a text by pointing to related visuals (e.g., points to \"head\" when hearing \"Touch your head.\").",
+            "Can describe everyday objects using visual support (e.g., when asked, \"What do you wear on rainy days?\" the student responds, \"I wear my red raincoat.\" When shown a picture and asked, \"What's this?\" the student responds, \"It's my red raincoat.\").",
+            "Can use simple gestures to clarify descriptions for peers (e.g., points to \"hand\" and says \"hand\")."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Imperative + noun (e.g., \"Put on your hat.\")",
+          "WH-questions (e.g., \"Where is your hat?\")",
+          "Present simple (e.g., \"This is my head.\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "head, toes, hand, foot, arm, leg, knee, elbow, shoulder, finger, thumb, neck, back, face, eye, nose, mouth, ear, hair, hat, shoes, coat, jacket, shirt, undershirt, pants, socks, boots, belt",
+            "verbs": "wear, put on, take off, touch, raise, bend, point, stretch, lift",
+            "adjectives": "clean, dirty, warm, cold, comfortable, uncomfortable, thick, thin, light, heavy",
+            "demonstratives": "this, that, these, those",
+            "possessive_adjectives": "my, your, his, her",
+            "prepositions": "on, in, under, next to"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /h/ in \"hat\" and /t/ in \"toes\". Phonemic awareness: Identification of initial sounds with letter correspondence in body parts and clothing-related vocabulary (e.g., /h/ \"hand\")",
+          "pragmatic_competences": "Identifying body parts and clothing: \"This is my hand.\" \"The hat is on my head.\" Following directions: \"Put on your hat.\" \"Raise your hand.\"",
+          "sociolinguistic_competences": "Personal awareness: Describing and identifying body parts and clothing (e.g., \"This is my hand.\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Body Awareness: Identifying body parts and clothes. Communication: Describing body parts and clothes using simple sentences.",
+          "technology_integration": "Use an online matching game platform to create a digital version of the game."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Body & Clothes Matching Game",
+            "overview": "Students create a matching game with cards showing body parts and clothes (e.g., \"head\" with \"hat\") and play the game in groups."
+          },
+          {
+            "name": "Project 2: Body Part Puppet Show",
+            "overview": "Students create a storybook about puppets and the type of clothes they want them to wear, using descriptive sentences like \"The teddy bear wears a hat on his head.\". Then, they exhibited the puppets and describe them in a puppet show."
+          },
+          {
+            "name": "Project 3: Digital Body Quiz",
+            "overview": "Students create an interactive body part quiz using a simple online quiz-making tool."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 5,
+      "title": "Exploring My Community",
+      "themes": [
+        "It's the Park!",
+        "It's the Market!"
+      ],
+      "domain": "Family and Society",
+      "level": "Foundational Learner - Pre A1.4",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can demonstrate comprehension of sounds, familiar words, basic phrases, instructions, and the gist of conversations when spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Comprehend simple descriptions of people, places, and things around them.",
+            "Interactive: Answer simple questions about a story they have just listened to."
+          ],
+          "learning_outcomes": [
+            "Can demonstrate understanding of basic descriptions of people, places, and things around them (e.g., pointing to the park when listening \"The park is next to the school.\").",
+            "Can answer simple questions about familiar stories just heard (e.g., \"Where is the boy in the story?\" \"At the market.\").",
+            "Can identify simple characteristics of people and places in basic oral conversations or descriptions (e.g., \"It's a big park.\" \"Maria is tall and Jorge is short.\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can get the gist of familiar words in simple texts when they are supported with pictures.",
+          "specific_standards": [
+            "Reading: Identify keywords and phrases in texts.",
+            "Reading: Identify simple story elements (e.g., characters, setting).",
+            "Phonemic Awareness: Identify a spoken word's initial and final phoneme if these words have been previously encountered and are attached to a picture."
+          ],
+          "learning_outcomes": [
+            "Can identify keywords and phrases related to community places in simple texts (e.g., \"park\" or \"market\").",
+            "Can identify simple story elements in community-related texts by locating characters and settings (e.g., recognizing \"the girl\" at \"the library\").",
+            "Can identify the initial and final phoneme of community-related words and their corresponding letters when supported by a picture (e.g., identifying the /ʈʃ/ sound at the beginning and /tʃ/ sound at the end of \"church\" with the letters \"CH\" and \"CH\" when shown a picture of a church)."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can use basic language and formulaic expressions to ask and respond to questions.",
+          "specific_standards": [
+            "Productive: Introduce themselves or family members using basic personal information.",
+            "Interactive: Take part in role-plays that mimic familiar everyday interactions."
+          ],
+          "learning_outcomes": [
+            "Can introduce themselves and family members while sharing personal information about community places (e.g., \"I'm Ana, and this is the park where I play.\" or \"My dad works at the library.\").",
+            "Can take part in role-plays that mimic familiar everyday interactions about community places (e.g., \"Where is the park?\" \"It's next to the library.\").",
+            "Can participate in role plays about common activities with family members (e.g., Mom says, \"Let's take a walk.\" The child says, \"Yes, let's go!\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can compose simple sentences to express simple thoughts and ideas.",
+          "specific_standards": [
+            "Productive: Write simple phrases or sentences about personal experiences and familiar items with support and guidance.",
+            "Interactive: Contribute a word to a class story or sentence, with help."
+          ],
+          "learning_outcomes": [
+            "Can write simple sentences about visiting community places with support (e.g., \"I go to the market with my mom.\").",
+            "Can contribute a word or phrase to a class project about community places with support (e.g., adding \"park\" to a class story about the neighborhood).",
+            "Can write basic words or simple sentences about community places (e.g., \"park,\" school,\" and \"library\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can combine basic mediation strategies, such as asking for clarification, repetition of key ideas, and use of gestures and visuals to support mutual understanding.",
+          "specific_standards": [
+            "Text: Connect ideas from a text with personal experiences.",
+            "Concept: Show a connection between class concepts and personal experiences."
+          ],
+          "learning_outcomes": [
+            "Can connect ideas from a text with personal experiences by pointing to images (e.g., points to a market picture and says, \"I go there on the weekend.\").",
+            "Can show a connection between class concepts and personal experiences by drawing familiar places (e.g., draw a park to show \"my favorite place\").",
+            "Can relate new vocabulary to familiar places by pointing and naming (e.g., points to \"school\" and says \"I go to school.\")."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "WH-questions (e.g., \"Where is it?\")",
+          "Present simple (e.g., \"It's the market.\")",
+          "Adjectives + nouns (e.g., big park)"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "park, market, school, library, church, store, office, home, playground, gym, restroom, street, building, bus, bench, road, garden, map",
+            "verbs": "go, walk, visit, play, run, see, meet, find, stop, look, rest",
+            "adjectives": "big, small, busy, quiet, open, closed, tall, short, safe, familiar, friendly, clean",
+            "prepositions": "in, on, in front of, between, next to, near"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /p/ in \"park\" and /m/ in \"market\". Phonemic awareness: Identification of initial and final sounds with letter correspondence in community-related words (e.g., ch, /ʈʃ/ in \"church\")",
+          "pragmatic_competences": "Describing places and activities: \"The park is big. I play there.\" Answering questions: \"Where is the library?\" \"Next to the market.\"",
+          "sociolinguistic_competences": "Polite expressions to ask for location: Describing places in the local community respectfully (e.g., \"Excuse me, where is the library?\" \"Thank you for showing me the way to the park.\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Spatial Awareness: Understanding locations in the community. Communication: Describing community places.",
+          "technology_integration": "Use an online map tool to create and label a simple community map."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Community Map",
+            "overview": "Students create a community map labeling important places like \"the park\" or \"the market\" and drawing routes to explore them."
+          },
+          {
+            "name": "Project 2: Community Place Scavenger Hunt",
+            "overview": "Students participate in a scavenger hunt around the classroom, identifying places in the community and matching them to descriptions (e.g., \"It's the market.\")."
+          },
+          {
+            "name": "Project 3: Digital Community Tour",
+            "overview": "Students create a digital tour of their community with photos on a cell phone or by using pictures found or taken by the teacher, describing places with sentences like \"This is the park.\""
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 6,
+      "title": "Discovering Nature’s Wonders",
+      "themes": [
+        "It's the Rainforest.",
+        "It's a Slow, Furry Sloth!"
+      ],
+      "domain": "Nature and Wellness",
+      "level": "Foundational Learner - Pre A1.4",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can demonstrate comprehension of sounds, familiar words, basic phrases, instructions, and the gist of conversations when spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Identify familiar vocabulary from daily life used in context.",
+            "Interactive: Engage in short exchanges using phrases learned from classroom discussions."
+          ],
+          "learning_outcomes": [
+            "Can identify and respond accurately to familiar vocabulary from daily life when used in discussions (e.g., \"What animal is slow?\" \"The sloth.\").",
+            "Can engage with familiar phrases about animals and nature (e.g., \"Where does the sloth live?\" \"It lives in the rainforest.\").",
+            "Can demonstrate comprehension of numbers or quantities associated with familiar topics when spoken slowly and clearly (e.g., \"three fish\" or \"five trees\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can get the gist of familiar words in simple texts when they are supported with pictures.",
+          "specific_standards": [
+            "Reading: Show comprehension of simple sentences.",
+            "Reading: Follow written instructions with visual aids.",
+            "Phonemic Awareness: Recognize all the letters of the alphabet in isolation and the correspondence between letter and sound at the beginning of words."
+          ],
+          "learning_outcomes": [
+            "Can show comprehension of simple sentences by identifying key details (e.g., \"The sloth is slow.\").",
+            "Can follow written instructions by matching written descriptions with the corresponding pictures (e.g., a description of the rainforest and its picture).",
+            "Can identify the initial and final phonemes of spoken words related to nature and make the correspondence between letters and their sounds at the beginning of words with visual support (e.g., J /dʒ/ \"jungle\" supported with a picture)."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can use basic language and formulaic expressions to ask and respond to questions.",
+          "specific_standards": [
+            "Productive: Contribute to storytelling sessions with simple sentences based on visual prompts.",
+            "Interactive: Relay short messages from one person to another in a group setting."
+          ],
+          "learning_outcomes": [
+            "Can contribute simple sentences to a story from a visual prompt (e.g., \"The monkey sleeps in the tree.\").",
+            "Can relay short messages or instructions about animals and their habitats to classmates in group activities (e.g., \"The sloth is slow.\").",
+            "Can use basic language to exchange information about nature activities, using gestures if needed (e.g., \"The cat climbs the tree.\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can compose simple sentences to express simple thoughts and ideas.",
+          "specific_standards": [
+            "Productive: Make a list of items.",
+            "Interactive: Write words or phrases as responses to classroom polls or questions."
+          ],
+          "learning_outcomes": [
+            "Can make a list of items related to nature or animals (e.g., \"tree, bird, rock\").",
+            "Can write words or phrases as responses to classroom polls, questions, or cues about animals or nature (e.g., Cue: \"slow animal.\" Response: \"sloth.\" Cue: \"colorful bird.\" Response: \"parrot.\" Poll: \"Which animal do you like?\" Response: \"monkey.\").",
+            "Can write simple phrases or sentences about animals or their environments with guidance (e.g., \"The sloth lives in trees.\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can combine basic mediation strategies, such as asking for clarification, repetition of key ideas, and use of gestures and visuals to support mutual understanding.",
+          "specific_standards": [
+            "Text: Summarize short stories using drawings or pictures.",
+            "Communication: Relay simple information received verbally using English or Spanish."
+          ],
+          "learning_outcomes": [
+            "Can summarize short stories using drawings or pictures (e.g., draw a slow sloth to show the story's main idea).",
+            "Can relay simple information received verbally by pointing to images (e.g., points to \"furry animal\" on a picture of a sloth).",
+            "Can describe new vocabulary in a story using drawing and pictures (e.g., describing the rainforest showing a picture)."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Adjectives + nouns (e.g., slow sloth)",
+          "WH-questions (e.g., \"What animal is it?\")",
+          "Present simple (e.g., \"It's the rainforest.\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "rainforest, jungle, sloth, toucan, monkey, parrot, frog, snake, jaguar, leaf, river, waterfall, vines, nest, branch, hole, forest",
+            "verbs": "live, grow, climb, swing, hide, sleep, rest, fly, dig, eat",
+            "adjectives": "slow, furry, colorful, noisy, quiet, wild, tall, leafy, jumpy",
+            "demonstratives": "this, that"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /s/ in \"sloth\" and /r/ in \"rainforest\". Phonemic awareness: Identification of initial sounds with letter correspondence in nature-related words (e.g., J /dʒ/ \"jungle\")",
+          "pragmatic_competences": "Describing animals with traits: \"The sloth is slow and furry.\" Talking about preferences: \"I like sloths. They are quiet.\"",
+          "sociolinguistic_competences": "Respect for nature: Talking about the rainforest and animals using respectful language (e.g., \"The sloth is quiet.\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Critical Thinking: Learning about animals and the rainforest. Communication: Describing animals with adjectives.",
+          "technology_integration": "Use a tablet to research animals and create digital profiles with pictures."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Rainforest Animal Profiles",
+            "overview": "Children review research simplified for learners by the teacher to understand different rainforest animals (e.g., sloth, bird). With that information, students will create a profile for each animal (e.g., sloth, bird) with descriptions and images."
+          },
+          {
+            "name": "Project 2: Nature Storybook",
+            "overview": "Students create a storybook about animals they find in the rainforest, using descriptive sentences like \"The sloth is slow and furry.\""
+          },
+          {
+            "name": "Project 3: Digital Animal Cards",
+            "overview": "Students use a digital tool, with assistance from the teacher, to create animal flashcards; they label the animals and describe them with adjectives like \"big jaguar\" or \"slow sloth\"."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 7,
+      "title": "Fun Outdoors!",
+      "themes": [
+        "I Love to Run!",
+        "I Like to Swim."
+      ],
+      "domain": "Nature and Wellness",
+      "level": "Foundational Learner - Pre A1.4",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can demonstrate comprehension of sounds, familiar words, basic phrases, instructions, and the gist of conversations when spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Follow two-step spoken instructions related to classroom activities.",
+            "Interactive: Retell a simple instruction or message accurately to another peer."
+          ],
+          "learning_outcomes": [
+            "Can follow two-step instructions related to classroom outdoor activities (e.g., \"Run to the corner and pick up the ball.\").",
+            "Can listen to simple instructions and retell them to a peer (e.g., \"Pass the ball and jump three times.\").",
+            "Can get the gist of a 2-line conversation (e.g., \"Do you want to play soccer, Maria?\" \"Yes, I love soccer\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can get the gist of familiar words in simple texts when they are supported with pictures.",
+          "specific_standards": [
+            "Reading: Show comprehension of simple sentences.",
+            "Reading: Create a title or caption for a paragraph or image.",
+            "Phonemic Awareness: Identify a spoken word's initial and final phoneme if these words have been previously encountered and are attached to a picture."
+          ],
+          "learning_outcomes": [
+            "Can show comprehension of words about outdoor activities in simple texts. (e.g., \"She likes soccer.\").",
+            "Can create captions for pictures about outdoor games (e.g., \"He runs fast.\").",
+            "Can recognize the initial and final sounds and letters of familiar spoken words by matching pictures to the correct sound and letter (e.g., identifying the initial /g/ sound and letter in \"game\" and the final /m/ sound when shown a picture of a game)."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can use basic language and formulaic expressions to ask and respond to questions.",
+          "specific_standards": [
+            "Productive: Express basic needs and feelings using simple phrases.",
+            "Interactive: Interact in a predictable pattern with simple questions and answers about familiar things using simple phrases."
+          ],
+          "learning_outcomes": [
+            "Can describe personal preferences and feelings for activities using simple sentences (e.g., \"I love to swim.\").",
+            "Can ask and answer predictable questions about preferences (e.g., \"Do you like to ride bikes?\" \"Yes, I like it.\").",
+            "Can express basic needs to peers using simple phrases related to outdoor activities (e.g., \"You need to run.\" or \"You need to jump.\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can compose simple sentences to express simple thoughts and ideas.",
+          "specific_standards": [
+            "Productive: Write simple responses to texts.",
+            "Interactive: Write simple messages to peers using words, drawings, and short phrases."
+          ],
+          "learning_outcomes": [
+            "Can respond to short texts by writing simple sentences (e.g., \"I like this story about running.\").",
+            "Can write simple messages to peers using words, drawings, and short phrases about outdoor activities (e.g., drawing a soccer ball and writing \"Let's play!\").",
+            "Can express simple reactions to texts using words or phrases (e.g., \"Fun story!\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can combine basic mediation strategies, such as asking for clarification, repetition of key ideas, and use of gestures and visuals to support mutual understanding.",
+          "specific_standards": [
+            "Text: Summarize short stories using drawings or pictures.",
+            "Concept: Show a connection between class concepts and personal experiences."
+          ],
+          "learning_outcomes": [
+            "Can summarize short stories using simple drawings (e.g., draw a sunny scene and a swimmer).",
+            "Can show a connection between class concepts and personal experiences by drawing or gesturing (e.g., drawing themselves running and saying, \"I run fast.\").",
+            "Can connect familiar actions to new words (e.g., saying \"I play.\" and drawing a ball)."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Subject + verb + adverb to describe actions (e.g., \"I run fast.\" \"I swim slowly.\")",
+          "Present simple (e.g., \"I love to run.\")",
+          "WH-questions (e.g., \"Why do you like to swim?\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "friend, team, park, playground, activity, race, game, sport, ball, bike, bat, goal, soccer, baseball, basketball",
+            "verbs": "run, jump, swim, play, race, climb, rest, like, love, watch, pass, win, lose, enjoy",
+            "adjectives": "fast, slow, happy, fun, big, small, little, good, bad, nice",
+            "adverbs": "quickly, slowly, high, low, fast"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /r/ in \"run\" and /s/ in \"swim\". Phonemic awareness: Identification of initial and final sounds with letter correspondence in action-related words (e.g., G /g/ \"game\")",
+          "pragmatic_competences": "Expressing preferences for activities: \"I like to run. It's fun.\" Asking questions about others' preferences: \"Do you like to play outside?\"",
+          "sociolinguistic_competences": "Expressing preferences: Using appropriate language to express preferences about outdoor activities (e.g., \"I love to play soccer.\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Physical Activity Awareness: Describing outdoor sports. Communication: Expressing personal preferences.",
+          "technology_integration": "Use a fitness app to track outdoor activities and create a journal entry for each."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Outdoor Sports Journal",
+            "overview": "Students create a journal to record outdoor activities they enjoy (e.g., \"swimming\" or \"running\"), using action verbs to describe their experiences."
+          },
+          {
+            "name": "Project 2: Digital Sports Day",
+            "overview": "Students create a short video or draw a comic strip panel about their favorite outdoor activity (e.g., swimming or running), and describe it using sentences like \"I love to run.\"."
+          },
+          {
+            "name": "Project 3: Fitness Tracking App",
+            "overview": "Students use a fitness tracking app to monitor their outdoor activities and describe their progress in simple sentences. They can also create a fitness tracking chart on paper."
+          }
+        ]
+      }
+    },
+    {
+      "scenario_number": 8,
+      "title": "It's Festival Season.",
+      "themes": [
+        "Look at the Fireworks!",
+        "Food I Eat During a Celebration"
+      ],
+      "domain": "Family and Society",
+      "level": "Foundational Learner - Pre A1.4",
+      "standards_and_learning_outcomes": [
+        {
+          "skill": "Listening",
+          "general_standard": "Can demonstrate comprehension of sounds, familiar words, basic phrases, instructions, and the gist of conversations when spoken slowly and clearly.",
+          "specific_standards": [
+            "Receptive: Identify numbers and quantities when heard slowly and clearly.",
+            "Interactive: Follow directions in a game as instructed."
+          ],
+          "learning_outcomes": [
+            "Can identify numbers and quantities when heard in festival contexts (e.g., \"three cups of shaved ice\").",
+            "Can follow directions to perform a simple game (e.g., \"Toss the ball!\").",
+            "Can recognize and repeat numbers related to festival items (e.g., \"two balloons\")."
+          ]
+        },
+        {
+          "skill": "Reading",
+          "general_standard": "Can get the gist of familiar words in simple texts when they are supported with pictures.",
+          "specific_standards": [
+            "Reading: Create a title or caption for a paragraph or image.",
+            "Reading: Show comprehension of simple texts.",
+            "Phonemic Awareness: Recognize all the letters of the alphabet in isolation and the correspondence between letter and sound at the beginning of words."
+          ],
+          "learning_outcomes": [
+            "Can create a title or caption for a drawing or image related to festival foods or activities (e.g., writing \"Delicious Food at the Festival\" for a picture of festival foods).",
+            "Can show comprehension of short, simple sentences about festivals and celebrations (e.g., \"Look at the fireworks.\").",
+            "Can recognize the initial letter and its corresponding sound in festival-related words (e.g., identifying the letter \"P\" and its /p/ sound in \"party\")."
+          ]
+        },
+        {
+          "skill": "Speaking",
+          "general_standard": "Can use basic language and formulaic expressions to ask and respond to questions.",
+          "specific_standards": [
+            "Productive: Express basic needs and feelings using simple phrases.",
+            "Interactive: Interact in a predictable pattern with simple questions and answer about familiar things using simple phrases."
+          ],
+          "learning_outcomes": [
+            "Can describe basic needs and preferences related to festival activities using simple sentences (e.g., \"I don't like loud drums.\").",
+            "Can ask and respond to predictable questions about festival foods and activities (e.g., \"What do you eat at the festival?\").",
+            "Can describe familiar activities using short, simple phrases (e.g., \"I dance!\")."
+          ]
+        },
+        {
+          "skill": "Writing",
+          "general_standard": "Can compose simple sentences to express simple thoughts and ideas.",
+          "specific_standards": [
+            "Productive: Write a word or phrase to a group story or project with support or guidance.",
+            "Interactive: Write simple messages to peers using words, drawings, and short phrases."
+          ],
+          "learning_outcomes": [
+            "Can write a word or phrase to respond to a poll or questions about festivals (e.g., \"Let's have a poll. Do you like festivals? Write yes or no.\").",
+            "Can write short messages about festival foods and activities collaboratively (e.g., \"I eat cotton candy at the festival.\").",
+            "Can add a word or phrase to a group story with guidance (e.g., \"The ______ are loud.\" \"What is loud?\")."
+          ]
+        },
+        {
+          "skill": "Mediation",
+          "general_standard": "Can combine basic mediation strategies, such as asking for clarification, repetition of key ideas, and use of gestures and visuals to support mutual understanding.",
+          "specific_standards": [
+            "Text: Use visual information in texts to convey meaning.",
+            "Communication: Explain simple written instructions to peers, using English or Spanish."
+          ],
+          "learning_outcomes": [
+            "Can use visual information to clarify responses about everyday objects (e.g., points to cotton candy for \"festival food\").",
+            "Can explain simple written instructions to peers by pointing to pictures (e.g., points to a festival picture and says \"festival\").",
+            "Can describe festival traditions using gestures (e.g., clapping hands for \"drums\")."
+          ]
+        }
+      ],
+      "communicative_competences": {
+        "grammatical_features": [
+          "Subject + verb + adjective for descriptive sentences (e.g., \"It is fun!\")",
+          "Present simple (e.g., \"I like the meal.\")",
+          "WH-questions (e.g., \"What do you like?\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "festival, celebration, party, fireworks, meal, shaved ice, cotton candy, corn on the cob, music, dance, balloons, drums, tradition",
+            "verbs": "like, love, eat, watch, celebrate, dance, sing, play, toss, point, clap",
+            "adjectives": "fun, happy, loud, bright, colorful, big, special, exciting"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /f/ in \"fireworks\" and /m/ in \"meal\". Phonemic awareness: Identification of initial sounds with letter correspondence in festival-related words (e.g., P /p/ \"party\")",
+          "pragmatic_competences": "Describing favorite festival parts: \"I like the fireworks. They are bright.\" Asking and answering about festival foods: \"What do you like to eat?\" \"I like cotton candy.\"",
+          "sociolinguistic_competences": "Cultural awareness: Talking about and showing respect for different festivals (e.g., \"I like Fiestas Patrias and I like Halloween.\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Cultural Awareness: Learning about festival celebrations. Communication: Describing festival experiences.",
+          "technology_integration": "Use a digital poster-making tool to design and present their festival celebration poster."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Festival Celebration Poster",
+            "overview": "Students create a poster describing their favorite festival activities, including food and fun, using simple sentences and illustrations."
+          },
+          {
+            "name": "Project 2: Festival Storybook",
+            "overview": "Students create a storybook about their favorite festival, describing activities and food using general phrases like \"I like the fireworks.\" or \"I love the food.\"."
+          },
+          {
+            "name": "Project 3: Festival Photo Story",
+            "overview": "The teacher collects photos of local festivals and prints for students. In groups, students organize the images into a story collage they can present and describe to others."
+          }
+        ]
+      }
+    }
+  ]
+}

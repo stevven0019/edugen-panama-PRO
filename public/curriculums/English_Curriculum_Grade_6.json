@@ -1,0 +1,424 @@
+{
+  "grade": 6,
+  "proficiency_level": "A2.1",
+  "learner_type": "Elementary",
+  "scenarios": [
+    {
+      "scenario_number": 1,
+      "scenario_title": "Our Community News",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "What's Happening Around Us?",
+          "communicative_competences": ["Listening", "Reading", "Speaking", "Writing"],
+          "modes": ["Interpretive", "Presentational"],
+          "standards": [
+            "Listen to and understand short news reports or announcements about community events.",
+            "Read simple texts about local news and identify key information.",
+            "Describe recent events in the community using simple past tense.",
+            "Write short news-style sentences about things happening in the local area."
+          ],
+          "sample_tasks": [
+            "Listen to a short community news report and identify the main event.",
+            "Read a flyer about a local event and answer comprehension questions.",
+            "Create a short oral news report about something that happened at school."
+          ]
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "Our Community Reporters",
+          "communicative_competences": ["Listening", "Speaking", "Writing"],
+          "modes": ["Interpretive", "Presentational", "Interactive"],
+          "standards": [
+            "Ask and answer questions about community events using WH-questions.",
+            "Interview a classmate about a local topic and report the information.",
+            "Write a short paragraph summarizing a community event or issue."
+          ],
+          "sample_tasks": [
+            "Conduct a simple interview with a partner about a school or community event.",
+            "Write a short paragraph reporting on a local event using who, what, where, when.",
+            "Present a short community news report to the class."
+          ]
+        }
+      ],
+      "twenty_first_century_project": {
+        "title": "Community News Broadcast",
+        "description": "Students create a short video or audio news broadcast reporting on a recent event in their school or community. They write a script, practice delivery, and present it as a news segment.",
+        "skills": ["Communication", "Creativity", "Critical Thinking", "Collaboration"]
+      },
+      "vocabulary_focus": [
+        "community", "event", "report", "announce", "recently", "local", "interview", "headline", "broadcast"
+      ],
+      "grammar_focus": [
+        "Simple past tense (regular and irregular verbs)",
+        "WH-questions (Who, What, Where, When, Why)",
+        "Sequence words (first, then, next, finally)"
+      ]
+    },
+    {
+      "scenario_number": 2,
+      "scenario_title": "Keeping Our Communities Clean",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "Our Environment Matters",
+          "communicative_competences": ["Listening", "Reading", "Speaking"],
+          "modes": ["Interpretive", "Interactive"],
+          "standards": [
+            "Listen to and understand short texts about environmental problems in communities.",
+            "Identify and describe environmental problems in the local community.",
+            "Use vocabulary related to pollution, waste, and recycling in context."
+          ],
+          "sample_tasks": [
+            "Watch a short video about community cleanliness and identify the main problems mentioned.",
+            "Read a poster about keeping the community clean and discuss it with a partner.",
+            "Talk about what environmental problems exist in your community."
+          ]
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "We Can Make a Difference",
+          "communicative_competences": ["Speaking", "Writing", "Reading"],
+          "modes": ["Presentational", "Interpretive"],
+          "standards": [
+            "Give suggestions and recommendations for keeping communities clean.",
+            "Write a short persuasive text encouraging others to care for the environment.",
+            "Read and discuss community guidelines or rules about environmental responsibility."
+          ],
+          "sample_tasks": [
+            "Create a poster or flyer encouraging classmates to recycle or reduce waste.",
+            "Write 5–6 sentences with suggestions for keeping your neighborhood clean.",
+            "Present a short plan for a community clean-up activity to the class."
+          ]
+        }
+      ],
+      "twenty_first_century_project": {
+        "title": "Clean Community Campaign",
+        "description": "Students design a community awareness campaign about environmental cleanliness. They create posters, slogans, or short social media-style posts encouraging people to keep their community clean.",
+        "skills": ["Communication", "Citizenship", "Creativity", "Critical Thinking"]
+      },
+      "vocabulary_focus": [
+        "pollution", "recycle", "waste", "garbage", "clean up", "environment", "responsibility", "reduce", "reuse", "neighborhood"
+      ],
+      "grammar_focus": [
+        "Modal verbs for suggestions (should, can, must)",
+        "Imperative sentences for instructions and recommendations",
+        "Connectors (because, so, also, however)"
+      ]
+    },
+    {
+      "scenario_number": 3,
+      "scenario_title": "In the Library",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "Books and Reading",
+          "communicative_competences": ["Listening", "Reading", "Speaking"],
+          "modes": ["Interpretive", "Interactive"],
+          "standards": [
+            "Identify and describe different types of books and library materials.",
+            "Listen to and understand a short text read aloud about books or authors.",
+            "Ask for and give information about books, genres, and library services."
+          ],
+          "sample_tasks": [
+            "Listen to a short description of a book and identify the genre.",
+            "Browse a list of book titles and categorize them by genre.",
+            "Ask a partner about their favorite book using guided questions."
+          ]
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "Exploring Information",
+          "communicative_competences": ["Reading", "Writing", "Speaking"],
+          "modes": ["Interpretive", "Presentational"],
+          "standards": [
+            "Read short informational texts and identify the main idea and supporting details.",
+            "Take simple notes from a reading and use them to summarize the text.",
+            "Present a brief summary or book recommendation to the class."
+          ],
+          "sample_tasks": [
+            "Read a short article or book excerpt and complete a graphic organizer.",
+            "Write a short book recommendation paragraph.",
+            "Give a 1-minute oral presentation recommending a book to classmates."
+          ]
+        }
+      ],
+      "twenty_first_century_project": {
+        "title": "Our Class Library Guide",
+        "description": "Students create a mini guide to their classroom or school library. They write short descriptions of recommended books, organized by genre, and present their guide to younger students.",
+        "skills": ["Communication", "Information Literacy", "Collaboration", "Creativity"]
+      },
+      "vocabulary_focus": [
+        "genre", "fiction", "non-fiction", "author", "illustrator", "chapter", "summary", "recommend", "borrow", "catalog"
+      ],
+      "grammar_focus": [
+        "Present simple for general facts and descriptions",
+        "Comparative adjectives (more interesting, better, longer)",
+        "Relative clauses – basic (that, which, who)"
+      ]
+    },
+    {
+      "scenario_number": 4,
+      "scenario_title": "Our Classroom News",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "What Did We Learn This Week?",
+          "communicative_competences": ["Listening", "Speaking", "Writing"],
+          "modes": ["Interactive", "Presentational"],
+          "standards": [
+            "Talk about past classroom activities and learning experiences.",
+            "Use simple past tense to describe what happened during the school week.",
+            "Listen to classmates' descriptions of activities and ask follow-up questions."
+          ],
+          "sample_tasks": [
+            "Share with a partner what you did or learned in class this week.",
+            "Write 4–5 sentences describing a recent classroom activity.",
+            "Listen to a classmate describe a school project and ask one question."
+          ]
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "Our Class in the Spotlight",
+          "communicative_competences": ["Writing", "Speaking", "Reading"],
+          "modes": ["Presentational", "Interpretive"],
+          "standards": [
+            "Write a short classroom newsletter or blog entry about recent class events.",
+            "Read a short class news text and identify key details.",
+            "Present classroom news to an audience using appropriate language and structure."
+          ],
+          "sample_tasks": [
+            "Write a short class news article about a project, event, or activity.",
+            "Read a sample classroom newsletter and identify who, what, when, and where.",
+            "Present a classroom news segment to the class or in a video."
+          ]
+        }
+      ],
+      "twenty_first_century_project": {
+        "title": "Classroom Newsletter",
+        "description": "Students collaborate to produce a classroom newsletter. Each student or group contributes a section: a featured story, a photo caption, an interview, or a short opinion piece.",
+        "skills": ["Collaboration", "Communication", "Creativity", "Digital Literacy"]
+      },
+      "vocabulary_focus": [
+        "newsletter", "article", "headline", "caption", "event", "achievement", "classmate", "activity", "project", "spotlight"
+      ],
+      "grammar_focus": [
+        "Simple past tense (regular and irregular verbs)",
+        "Past time expressions (last week, yesterday, on Monday)",
+        "Connectors for sequence (first, then, after that, finally)"
+      ]
+    },
+    {
+      "scenario_number": 5,
+      "scenario_title": "Our Amazing Community",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "People Who Help Us",
+          "communicative_competences": ["Listening", "Reading", "Speaking"],
+          "modes": ["Interpretive", "Interactive"],
+          "standards": [
+            "Identify and describe community helpers and their roles.",
+            "Listen to and understand short descriptions of community professions.",
+            "Ask and answer questions about what different community workers do."
+          ],
+          "sample_tasks": [
+            "Match community helpers to their roles and workplaces.",
+            "Listen to a short interview with a community worker and note key details.",
+            "Talk with a partner about a community helper you admire and explain why."
+          ]
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "Special Places in My Community",
+          "communicative_competences": ["Reading", "Writing", "Speaking"],
+          "modes": ["Interpretive", "Presentational"],
+          "standards": [
+            "Describe places in the community and their purpose using appropriate vocabulary.",
+            "Write a short descriptive paragraph about a special place in the community.",
+            "Present information about an important place in the community to the class."
+          ],
+          "sample_tasks": [
+            "Read a short description of a community place and identify its features.",
+            "Write a short paragraph describing a favorite or important place in your community.",
+            "Give a short presentation about a special community place using photos or drawings."
+          ]
+        }
+      ],
+      "twenty_first_century_project": {
+        "title": "Community Showcase",
+        "description": "Students create a digital or visual presentation showcasing the people and places that make their community amazing. Each student or group focuses on one community helper or place and presents it to the class.",
+        "skills": ["Communication", "Creativity", "Civic Engagement", "Digital Literacy"]
+      },
+      "vocabulary_focus": [
+        "community", "helper", "firefighter", "doctor", "teacher", "market", "park", "library", "hospital", "important"
+      ],
+      "grammar_focus": [
+        "Present simple for habitual actions and roles",
+        "Prepositions of place (in, at, near, next to, across from)",
+        "Descriptive adjectives for places and people"
+      ]
+    },
+    {
+      "scenario_number": 6,
+      "scenario_title": "An Environmental Project",
+      "type": "Fundamental",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "Nature Around Us",
+          "communicative_competences": ["Listening", "Reading", "Speaking"],
+          "modes": ["Interpretive", "Interactive"],
+          "standards": [
+            "Identify and describe natural elements and ecosystems in the local environment.",
+            "Listen to and understand short texts about nature and the environment.",
+            "Talk about plants, animals, and natural features found in the community."
+          ],
+          "sample_tasks": [
+            "Listen to a short nature documentary clip and identify animals or plants mentioned.",
+            "Read a short informational text about a local ecosystem and answer questions.",
+            "Describe a natural place you know using vocabulary about nature."
+          ]
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "Protecting Our Planet",
+          "communicative_competences": ["Writing", "Speaking", "Reading"],
+          "modes": ["Presentational", "Interpretive"],
+          "standards": [
+            "Write about actions people can take to protect the environment.",
+            "Present a simple environmental project idea to the class.",
+            "Read and respond to informational texts about environmental conservation."
+          ],
+          "sample_tasks": [
+            "Design a simple environmental project (e.g., a school garden, tree planting) and describe it in writing.",
+            "Present your environmental project idea using a poster or short oral presentation.",
+            "Read a short article about an environmental initiative and share key ideas with the class."
+          ]
+        }
+      ],
+      "twenty_first_century_project": {
+        "title": "Green School Initiative",
+        "description": "Students develop a proposal for an environmental project that could be implemented in their school or community. They present their idea including a problem, solution, and expected impact.",
+        "skills": ["Critical Thinking", "Creativity", "Collaboration", "Environmental Stewardship"]
+      },
+      "vocabulary_focus": [
+        "ecosystem", "conservation", "deforestation", "biodiversity", "recycle", "sustainable", "species", "habitat", "pollution", "protect"
+      ],
+      "grammar_focus": [
+        "Modal verbs for obligation and possibility (must, should, can, could)",
+        "Conditional sentences – type 1 (If we recycle, we will reduce waste.)",
+        "Cause and effect connectors (because, as a result, therefore)"
+      ]
+    },
+    {
+      "scenario_number": 7,
+      "scenario_title": "Our Weather Report",
+      "type": "Optional",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "Weather in My World",
+          "communicative_competences": ["Listening", "Reading", "Speaking"],
+          "modes": ["Interpretive", "Interactive"],
+          "standards": [
+            "Understand and describe current and forecast weather conditions.",
+            "Listen to a weather report and extract key information.",
+            "Talk about weather patterns and how they affect daily life."
+          ],
+          "sample_tasks": [
+            "Watch or listen to a weather forecast and complete a weather map activity.",
+            "Read a short weather report and answer comprehension questions.",
+            "Describe today's weather and predict what the weather will be like tomorrow."
+          ]
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "Weather Reporters",
+          "communicative_competences": ["Speaking", "Writing"],
+          "modes": ["Presentational", "Interactive"],
+          "standards": [
+            "Present a weather forecast for a city or region using appropriate language.",
+            "Write a short weather report including current conditions and a forecast.",
+            "Use weather-related vocabulary and future tenses to communicate predictions."
+          ],
+          "sample_tasks": [
+            "Create and present a weather forecast for your city or a chosen location.",
+            "Write a short weather report for a school bulletin board or class blog.",
+            "Role-play as a TV weather reporter presenting a 2-day forecast."
+          ]
+        }
+      ],
+      "twenty_first_century_project": {
+        "title": "Local Weather Broadcast",
+        "description": "Students create and film their own weather broadcast segment. They research local weather data, write a script, and present their forecast as a short video or live class presentation.",
+        "skills": ["Communication", "Creativity", "Digital Literacy", "Critical Thinking"]
+      },
+      "vocabulary_focus": [
+        "forecast", "temperature", "humidity", "cloudy", "sunny", "rainy", "windy", "storm", "celsius", "degrees"
+      ],
+      "grammar_focus": [
+        "Future tense with 'will' and 'going to' for predictions",
+        "Present continuous for current conditions (It is raining.)",
+        "Comparative and superlative adjectives (hotter, the coldest)"
+      ]
+    },
+    {
+      "scenario_number": 8,
+      "scenario_title": "The Talents Around Us",
+      "type": "Optional",
+      "themes": [
+        {
+          "theme_number": 1,
+          "theme_title": "Discovering Talents",
+          "communicative_competences": ["Listening", "Speaking", "Reading"],
+          "modes": ["Interpretive", "Interactive"],
+          "standards": [
+            "Identify and talk about personal talents, skills, and hobbies.",
+            "Listen to short interviews or descriptions of people's talents and note key details.",
+            "Read short texts about talented individuals and respond to comprehension questions."
+          ],
+          "sample_tasks": [
+            "Listen to a short audio clip of someone describing their talent and take notes.",
+            "Read a short biography of a talented person and identify their main skills.",
+            "Share your own talent with a partner using guided vocabulary."
+          ]
+        },
+        {
+          "theme_number": 2,
+          "theme_title": "Celebrating Our Skills",
+          "communicative_competences": ["Writing", "Speaking"],
+          "modes": ["Presentational", "Interactive"],
+          "standards": [
+            "Write a short profile about a talented person from the community or school.",
+            "Present information about someone's talents to an audience.",
+            "Ask and answer questions about skills and interests in an interview format."
+          ],
+          "sample_tasks": [
+            "Write a short talent profile about a classmate, family member, or community member.",
+            "Present your talent profile to the class with visual support.",
+            "Conduct a short interview with a partner about their talents and present the findings."
+          ]
+        }
+      ],
+      "twenty_first_century_project": {
+        "title": "Talent Showcase",
+        "description": "Students organize a class talent showcase. Each student creates a short profile (written or digital) of a talented person—real or fictional—and presents it. The class then votes on categories like 'Most Creative', 'Most Inspiring', etc.",
+        "skills": ["Communication", "Collaboration", "Creativity", "Social Skills"]
+      },
+      "vocabulary_focus": [
+        "talent", "skill", "hobby", "passionate", "creative", "perform", "practice", "achieve", "inspire", "admire"
+      ],
+      "grammar_focus": [
+        "Present perfect for achievements (He has won, She has performed)",
+        "Gerunds as subjects and objects (Swimming is her talent, He enjoys painting)",
+        "Adverbs of frequency and manner (always, often, skillfully, creatively)"
+      ]
+    }
+  ]
+}
