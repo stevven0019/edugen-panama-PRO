@@ -33,6 +33,22 @@ export const isAdmin = (email) => {
   return ADMIN_EMAILS.includes(lower);
 };
 
+export const triggerWelcomeEmail = (email) => {
+  if (!email || email === 'anon') return;
+  fetch('/api/send-welcome-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log("Welcome email status:", data);
+    })
+    .catch(err => {
+      console.error("Failed to send welcome email:", err);
+    });
+};
+
 // ── Check if Environment Credentials exist and are not boilerplate placeholders ──
 const isEnvConfigured = () => {
   const k = import.meta.env.VITE_FIREBASE_API_KEY;
@@ -119,6 +135,7 @@ const mockAuth = {
         createdAt: new Date().toISOString()
       });
       localStorage.setItem(mockUsersKey, JSON.stringify(mockUsers));
+      triggerWelcomeEmail(user.email);
     }
 
     this.authStateListeners.forEach(cb => cb(user));
@@ -283,6 +300,7 @@ export const authService = {
           createdAt: new Date().toISOString()
         });
         localStorage.setItem(mockUsersKey, JSON.stringify(mockUsers));
+        triggerWelcomeEmail(user.email);
       }
 
       mockAuth.authStateListeners.forEach(cb => cb(user));
@@ -315,6 +333,7 @@ export const authService = {
           createdAt: new Date().toISOString()
         });
         localStorage.setItem(mockUsersKey, JSON.stringify(mockUsers));
+        triggerWelcomeEmail(user.email);
       }
 
       mockAuth.authStateListeners.forEach(cb => cb(user));
@@ -381,15 +400,19 @@ export const databaseService = {
               callback({ credits: currentCredits, isPremium, downloadsLeft });
             }
           } else {
+            const newUserEmail = realAuth.currentUser?.email;
             setDoc(userRef, { 
-              email: realAuth.currentUser?.email || 'anon', 
+              email: newUserEmail || 'anon', 
               generationsLeft: 3, 
               isPremium: false, 
               downloadsLeft: 3, 
               initializedFreeCredits: true,
               createdAt: new Date().toISOString()
             })
-              .then(() => callback({ credits: 3, isPremium: false, downloadsLeft: 3 }))
+              .then(() => {
+                triggerWelcomeEmail(newUserEmail);
+                callback({ credits: 3, isPremium: false, downloadsLeft: 3 });
+              })
               .catch((err) => {
                 console.error("Failed to initialize user document in Firestore:", err);
                 if (localStorage.getItem(`edugen_credits_${uid}`) === null) {
@@ -843,8 +866,8 @@ export const databaseService = {
         const snap = await getDoc(statsRef);
         return snap.exists() ? { visits: snap.data().visits || 0 } : { visits: 0 };
       } catch (err) {
-        console.warn("Firestore getGlobalStats failed:", err);
-        return { visits: 0 };
+        console.error("Firestore getGlobalStats failed:", err);
+        throw err;
       }
     }
   },
@@ -890,8 +913,8 @@ export const databaseService = {
         });
         return list;
       } catch (err) {
-        console.warn("Firestore getAllUsers failed:", err);
-        return [];
+        console.error("Firestore getAllUsers failed:", err);
+        throw err;
       }
     }
   }

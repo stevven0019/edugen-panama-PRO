@@ -45,7 +45,7 @@ export default function AdminPayments({ user, onTriggerAlert }) {
       setUsers(usersData);
     } catch (err) {
       console.error(err);
-      onTriggerAlert("Error al cargar los datos de administración.", "error");
+      onTriggerAlert("Error al cargar datos de administración: " + err.message, "error");
     } finally {
       if (showSpinner) setLoading(false);
     }
