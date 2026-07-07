@@ -49,6 +49,22 @@ export const triggerWelcomeEmail = (email) => {
     });
 };
 
+export const triggerAdminNotification = (eventType, details) => {
+  fetch('/api/send-admin-notification', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ eventType, details })
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log("Admin notification sent status:", data);
+    })
+    .catch(err => {
+      console.error("Failed to send admin notification:", err);
+    });
+};
+
+
 // ── Check if Environment Credentials exist and are not boilerplate placeholders ──
 const isEnvConfigured = () => {
   const k = import.meta.env.VITE_FIREBASE_API_KEY;
@@ -136,6 +152,7 @@ const mockAuth = {
       });
       localStorage.setItem(mockUsersKey, JSON.stringify(mockUsers));
       triggerWelcomeEmail(user.email);
+      triggerAdminNotification('registration', { email: user.email, provider: 'Email/Password (Simulation)', mode: 'Simulation Mode' });
     }
 
     this.authStateListeners.forEach(cb => cb(user));
@@ -222,6 +239,18 @@ const mockDb = {
     payments.push(newPayment);
     localStorage.setItem('edugen_pending_payments', JSON.stringify(payments));
     window.dispatchEvent(new Event('storage'));
+    
+    triggerAdminNotification('payment_submitted', {
+      paymentId: newPayment.id,
+      email,
+      productType,
+      tokenQuantity,
+      amount,
+      refId,
+      screenshot,
+      mode: 'Simulation Mode'
+    });
+
     return newPayment;
   },
   updatePaymentStatus(paymentId, status, targetUid, productType, tokenQuantity, amount) {
@@ -301,6 +330,7 @@ export const authService = {
         });
         localStorage.setItem(mockUsersKey, JSON.stringify(mockUsers));
         triggerWelcomeEmail(user.email);
+        triggerAdminNotification('registration', { email: user.email, provider: 'Google (Simulation)', mode: 'Simulation Mode' });
       }
 
       mockAuth.authStateListeners.forEach(cb => cb(user));
@@ -334,6 +364,7 @@ export const authService = {
         });
         localStorage.setItem(mockUsersKey, JSON.stringify(mockUsers));
         triggerWelcomeEmail(user.email);
+        triggerAdminNotification('registration', { email: user.email, provider: 'Facebook (Simulation)', mode: 'Simulation Mode' });
       }
 
       mockAuth.authStateListeners.forEach(cb => cb(user));
@@ -411,6 +442,7 @@ export const databaseService = {
             })
               .then(() => {
                 triggerWelcomeEmail(newUserEmail);
+                triggerAdminNotification('registration', { email: newUserEmail || 'anon', provider: 'Real Mode (Firestore)', mode: 'Real Mode' });
                 callback({ credits: 3, isPremium: false, downloadsLeft: 3 });
               })
               .catch((err) => {
@@ -563,7 +595,20 @@ export const databaseService = {
 
   async savePlanToLibrary(uid, plan) {
     if (isDemoMode) {
+      const plans = mockDb.getPlans(uid);
+      const isNew = !plans.some(p => p.id === plan.id);
       mockDb.savePlan(uid, plan);
+      if (isNew) {
+        const userEmail = JSON.parse(localStorage.getItem('edugen_demo_user') || '{}').email || 'anon';
+        triggerAdminNotification('plan_generation', {
+          email: userEmail,
+          planId: plan.id,
+          title: plan.title,
+          type: plan.type,
+          grade: plan.grade,
+          mode: 'Simulation Mode'
+        });
+      }
     } else {
       const userRef = doc(realDb, 'artifacts', 'edugen-panama-aoa', 'users', uid, 'library', 'plans');
       try {
@@ -571,6 +616,7 @@ export const databaseService = {
         let currentItems = snap.exists() ? snap.data().items || [] : [];
         
         const index = currentItems.findIndex(i => i.id === plan.id);
+        const isNew = index < 0;
         if (index >= 0) {
           currentItems[index] = plan;
         } else {
@@ -578,9 +624,34 @@ export const databaseService = {
         }
         
         await setDoc(userRef, { items: currentItems }, { merge: true });
+
+        if (isNew) {
+          const userEmail = realAuth?.currentUser?.email || 'anon';
+          triggerAdminNotification('plan_generation', {
+            email: userEmail,
+            planId: plan.id,
+            title: plan.title,
+            type: plan.type,
+            grade: plan.grade,
+            mode: 'Real Mode'
+          });
+        }
       } catch (err) {
         console.warn("Firestore savePlanToLibrary failed, falling back to local storage:", err);
+        const plans = mockDb.getPlans(uid);
+        const isNew = !plans.some(p => p.id === plan.id);
         mockDb.savePlan(uid, plan);
+        if (isNew) {
+          const userEmail = realAuth?.currentUser?.email || 'anon';
+          triggerAdminNotification('plan_generation', {
+            email: userEmail,
+            planId: plan.id,
+            title: plan.title,
+            type: plan.type,
+            grade: plan.grade,
+            mode: 'Real Mode (LocalStorage Fallback)'
+          });
+        }
       }
     }
   },
@@ -620,7 +691,20 @@ export const databaseService = {
         status: 'pending',
         createdAt: new Date().toISOString()
       };
-      return addDoc(paymentsCol, docData);
+      const docRef = await addDoc(paymentsCol, docData);
+
+      triggerAdminNotification('payment_submitted', {
+        paymentId: docRef.id,
+        email,
+        productType,
+        tokenQuantity,
+        amount,
+        refId,
+        screenshot,
+        mode: 'Real Mode'
+      });
+
+      return docRef;
     }
   },
 
@@ -674,17 +758,39 @@ export const databaseService = {
       current.push(newComment);
       localStorage.setItem(key, JSON.stringify(current));
       window.dispatchEvent(new Event('storage'));
+
+      triggerAdminNotification('comment_submitted', {
+        commentId: newComment.id,
+        name,
+        school,
+        region,
+        text,
+        mode: 'Simulation Mode'
+      });
+
       return newComment;
     } else {
       const { collection, addDoc } = await import('firebase/firestore');
       const commentsCol = collection(realDb, 'artifacts', 'edugen-panama-aoa', 'comments');
-      return addDoc(commentsCol, {
+      const docData = {
         name,
         school,
         region,
         text,
         createdAt: new Date().toISOString()
+      };
+      const docRef = await addDoc(commentsCol, docData);
+
+      triggerAdminNotification('comment_submitted', {
+        commentId: docRef.id,
+        name,
+        school,
+        region,
+        text,
+        mode: 'Real Mode'
       });
+
+      return docRef;
     }
   },
 
