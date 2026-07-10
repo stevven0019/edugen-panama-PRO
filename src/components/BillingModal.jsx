@@ -19,7 +19,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
 
   const [activeTab, setActiveTab] = useState('subscription'); // 'subscription' | 'tokens'
   const [tokenQuantity, setTokenQuantity] = useState(10);
-  const [paymentMethod, setPaymentMethod] = useState('stripe'); // 'stripe' (Credit Card) is the default now
+  const [paymentMethod, setPaymentMethod] = useState('yappy'); // 'yappy' is Bank Deposit / ACH for now
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -385,15 +385,11 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                   </button>
                   <button
                     type="button"
-                    onClick={() => setPaymentMethod('stripe')}
-                    className={`p-3.5 border rounded-2xl flex items-center justify-center gap-2 text-xs font-bold transition flex-1 ${
-                      paymentMethod === 'stripe'
-                        ? 'border-blue-500 bg-blue-500/5 text-blue-600 dark:text-blue-400'
-                        : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-500'
-                    }`}
+                    disabled
+                    className="p-3.5 border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-655 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold cursor-not-allowed select-none opacity-60"
                   >
                     <CreditCard className="w-4 h-4" />
-                    Tarjeta de Crédito / Débito (Stripe)
+                    Tarjeta de Crédito (Pronto)
                   </button>
 
                 </div>
