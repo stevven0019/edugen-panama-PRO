@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   X, 
   CreditCard, 
@@ -12,6 +12,12 @@ import {
   Upload,
   Send
 } from 'lucide-react';
+
+const PaypalIcon = (props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M7.076 21.337H9.27l1.43-9.102H8.433l-.408 2.6H6.14l-1.026 6.502h1.962zm5.727-14.737c0 3.393-2.129 4.887-4.835 4.887H5.56l-1.285 8.163h2.193l1.196-7.6h1.272c2.09 0 3.652-.77 4.148-3.08.318-1.476.012-2.37-.872-2.37zm2.463 3.618c0 3.393-2.128 4.887-4.835 4.887h-1.68l-1.285 8.163H9.86l1.197-7.6h1.543c2.088 0 3.652-.77 4.148-3.08.318-1.476.012-2.37-.872-2.37z" />
+  </svg>
+);
 import { databaseService } from '../services/firebase';
 
 export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) {
@@ -33,6 +39,121 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
   const [yappyRef, setYappyRef] = useState('');
   const [yappyImage, setYappyImage] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
+
+  // PayPal States
+  const [paypalLoaded, setPaypalLoaded] = useState(false);
+  const [paypalError, setPaypalError] = useState(null);
+  const [paypalButtonRendered, setPaypalButtonRendered] = useState(false);
+
+  // Load PayPal SDK dynamically
+  useEffect(() => {
+    if (paymentMethod !== 'paypal') {
+      setPaypalButtonRendered(false);
+      return;
+    }
+
+    const clientId = import.meta.env.VITE_PAYPAL_CLIENT_ID || 'sb';
+    const scriptId = 'paypal-sdk-script';
+    let script = document.getElementById(scriptId);
+
+    const initializePaypalButtons = () => {
+      if (!window.paypal) {
+        setPaypalError('PayPal SDK not loaded');
+        return;
+      }
+      setPaypalLoaded(true);
+
+      const container = document.getElementById('paypal-button-container');
+      if (container && container.children.length === 0) {
+        window.paypal.Buttons({
+          style: {
+            layout: 'vertical',
+            color: 'gold',
+            shape: 'rect',
+            label: 'paypal'
+          },
+          createOrder: (data, actions) => {
+            const price = calculatePrice();
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    currency_code: 'USD',
+                    value: price
+                  },
+                  description: activeTab === 'subscription' ? 'EduGen PRO - Plan Anual' : `${tokenQuantity} Tokens didácticos`
+                }
+              ]
+            });
+          },
+          onApprove: async (data, actions) => {
+            setLoading(true);
+            try {
+              const details = await actions.order.capture();
+              const amount = calculatePrice();
+              const refId = details.id || `PP-${Date.now().toString().slice(-6)}`;
+              
+              await databaseService.submitPendingPayment(
+                user.uid,
+                user.email,
+                activeTab,
+                activeTab === 'subscription' ? 30 : tokenQuantity,
+                parseFloat(amount),
+                refId,
+                null,
+                'approved'
+              );
+
+              if (activeTab === 'subscription') {
+                await databaseService.togglePremium(user.uid, true);
+                await databaseService.incrementCredits(user.uid, 30);
+                onTriggerAlert("¡Pago procesado con éxito! Has sido actualizado a PRO PREMIUM.", "success");
+              } else {
+                await databaseService.incrementCredits(user.uid, tokenQuantity);
+                onTriggerAlert(`¡Pago procesado con éxito! Se añadieron ${tokenQuantity} tokens a tu saldo.`, "success");
+              }
+              setSuccess(true);
+            } catch (err) {
+              console.error(err);
+              onTriggerAlert("Error al capturar el pago con PayPal.", "error");
+            } finally {
+              setLoading(false);
+            }
+          },
+          onError: (err) => {
+            console.error(err);
+            onTriggerAlert("Hubo un error con la pasarela de PayPal.", "error");
+          }
+        }).render('#paypal-button-container');
+        setPaypalButtonRendered(true);
+      }
+    };
+
+    if (!script) {
+      script = document.createElement('script');
+      script.id = scriptId;
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD`;
+      script.async = true;
+      script.onload = () => {
+        initializePaypalButtons();
+      };
+      script.onerror = () => {
+        setPaypalError('Error loading PayPal SDK');
+      };
+      document.body.appendChild(script);
+    } else {
+      if (window.paypal) {
+        const timer = setTimeout(() => {
+          initializePaypalButtons();
+        }, 100);
+        return () => clearTimeout(timer);
+      } else {
+        script.onload = () => {
+          initializePaypalButtons();
+        };
+      }
+    }
+  }, [paymentMethod, activeTab, tokenQuantity]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -362,18 +483,30 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                 <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest block">
                   Método de Pago Seguro
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={() => setPaymentMethod('yappy')}
-                    className={`p-3.5 border rounded-2xl flex items-center justify-center gap-2 text-xs font-bold transition flex-1 ${
+                    className={`p-3.5 border rounded-2xl flex items-center justify-center gap-2 text-xs font-bold transition ${
                       paymentMethod === 'yappy'
                         ? 'border-emerald-500 bg-emerald-500/5 text-emerald-600 dark:text-emerald-400'
                         : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-500'
                     }`}
                   >
                     <Smartphone className="w-4 h-4" />
-                    Depósito Bancario / ACH
+                    <span>Depósito / ACH</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPaymentMethod('paypal')}
+                    className={`p-3.5 border rounded-2xl flex items-center justify-center gap-2 text-xs font-bold transition ${
+                      paymentMethod === 'paypal'
+                        ? 'border-amber-500 bg-amber-500/5 text-amber-600 dark:text-amber-400'
+                        : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-500'
+                    }`}
+                  >
+                    <PaypalIcon className="w-4 h-4 text-blue-600" />
+                    <span>Pagar con PayPal</span>
                   </button>
                   <button
                     type="button"
@@ -381,7 +514,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                     className="p-3.5 border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-655 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold cursor-not-allowed select-none opacity-60"
                   >
                     <Smartphone className="w-4 h-4" />
-                    Yappy (Pronto)
+                    <span>Yappy App (Pronto)</span>
                   </button>
                   <button
                     type="button"
@@ -389,9 +522,8 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                     className="p-3.5 border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-655 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold cursor-not-allowed select-none opacity-60"
                   >
                     <CreditCard className="w-4 h-4" />
-                    Tarjeta de Crédito (Pronto)
+                    <span>Tarjeta de Crédito (Pronto)</span>
                   </button>
-
                 </div>
               </div>
 
@@ -452,12 +584,26 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                   </div>
                 )}
 
-                {paymentMethod === 'paypal' && (
-                  /* PayPal Fast Button */
-                  <div className="p-4 border border-dashed border-amber-300 dark:border-amber-800 rounded-2xl bg-amber-500/5 text-center space-y-2">
-                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-normal">
-                      Paga de forma rápida y segura vinculando tu saldo de PayPal o cuentas bancarias asociadas.
+                 {paymentMethod === 'paypal' && (
+                  /* PayPal Button Container */
+                  <div className="space-y-4 p-4 border border-slate-200 dark:border-slate-800 rounded-2xl bg-slate-50/50 dark:bg-slate-950/20">
+                    <p className="text-xs text-slate-550 dark:text-slate-400 text-center leading-normal mb-3">
+                      Paga de forma rápida y segura vinculando tu saldo de PayPal o tarjetas asociadas.
                     </p>
+                    
+                    <div id="paypal-button-container" className="w-full relative z-10 min-h-[150px] flex items-center justify-center">
+                      {!paypalLoaded && !paypalError && (
+                        <div className="flex items-center gap-2 text-xs text-slate-550 dark:text-slate-400">
+                          <Loader2 className="w-4 h-4 animate-spin text-blue-500" />
+                          <span>Cargando pasarela de PayPal...</span>
+                        </div>
+                      )}
+                      {paypalError && (
+                        <div className="text-xs text-rose-500 text-center py-4">
+                          Hubo un error al cargar PayPal. Revisa tu conexión.
+                        </div>
+                      )}
+                    </div>
                   </div>
                 )}
 
@@ -534,39 +680,48 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                 )}
 
                 {/* Submit button details */}
-                <div className="space-y-3 pt-2">
-                  <button
-                    type="submit"
-                    disabled={loading || uploadingImage}
-                    className={`w-full text-white font-bold py-3.5 px-4 rounded-2xl shadow-lg transition flex items-center justify-center gap-2 text-xs cursor-pointer ${
-                      paymentMethod === 'stripe'
-                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-blue-500/10'
-                        : paymentMethod === 'yappy'
-                        ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-emerald-500/10'
-                        : 'bg-yellow-500 hover:bg-yellow-600 text-slate-950 font-black shadow-yellow-500/10 border border-yellow-600/10'
-                    }`}
-                  >
-                    {loading ? (
-                      <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Procesando solicitud...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4" />
-                        <span>
-                          {paymentMethod === 'stripe' ? 'Pagar Seguro con Stripe' : paymentMethod === 'yappy' ? 'Enviar Comprobante de Pago' : 'Pagar Rápido con PayPal'} 
-                          &nbsp;(${calculatePrice()} USD)
-                        </span>
-                      </>
-                    )}
-                  </button>
+                {paymentMethod !== 'paypal' && (
+                  <div className="space-y-3 pt-2">
+                    <button
+                      type="submit"
+                      disabled={loading || uploadingImage}
+                      className={`w-full text-white font-bold py-3.5 px-4 rounded-2xl shadow-lg transition flex items-center justify-center gap-2 text-xs cursor-pointer ${
+                        paymentMethod === 'stripe'
+                          ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-blue-500/10'
+                          : paymentMethod === 'yappy'
+                          ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-emerald-500/10'
+                          : 'bg-yellow-500 hover:bg-yellow-600 text-slate-950 font-black shadow-yellow-500/10 border border-yellow-600/10'
+                      }`}
+                    >
+                      {loading ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Procesando solicitud...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" />
+                          <span>
+                            {paymentMethod === 'stripe' ? 'Pagar Seguro con Stripe' : paymentMethod === 'yappy' ? 'Enviar Comprobante de Pago' : 'Pagar Rápido con PayPal'} 
+                            &nbsp;(${calculatePrice()} USD)
+                          </span>
+                        </>
+                      )}
+                    </button>
 
-                  <div className="flex items-center justify-center gap-1.5 text-[9px] text-slate-400 font-semibold uppercase tracking-wider">
+                    <div className="flex items-center justify-center gap-1.5 text-[9px] text-slate-400 font-semibold uppercase tracking-wider">
+                      <Lock className="w-3 h-3 text-slate-450" />
+                      <span>Conexión cifrada SSL de 256 bits</span>
+                    </div>
+                  </div>
+                )}
+
+                {paymentMethod === 'paypal' && (
+                  <div className="flex items-center justify-center gap-1.5 text-[9px] text-slate-400 font-semibold uppercase tracking-wider pt-2">
                     <Lock className="w-3 h-3 text-slate-450" />
                     <span>Conexión cifrada SSL de 256 bits</span>
                   </div>
-                </div>
+                )}
               </form>
             </div>
           </div>
