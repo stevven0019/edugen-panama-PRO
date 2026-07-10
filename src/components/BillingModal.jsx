@@ -475,6 +475,12 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                       <span>Max: 50</span>
                     </div>
                   </div>
+
+                  {/* Total to pay highlighted row */}
+                  <div className="flex justify-between items-center pt-3 border-t border-blue-500/10 text-xs font-bold">
+                    <span className="text-slate-650 dark:text-slate-450">Total a pagar:</span>
+                    <span className="text-emerald-500 text-sm font-black">${(tokenQuantity * 0.99).toFixed(2)} USD</span>
+                  </div>
                 </div>
               )}
 
