@@ -19,7 +19,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
 
   const [activeTab, setActiveTab] = useState('subscription'); // 'subscription' | 'tokens'
   const [tokenQuantity, setTokenQuantity] = useState(10);
-  const [paymentMethod, setPaymentMethod] = useState('yappy'); // 'yappy' is Bank Deposit / ACH for now
+  const [paymentMethod, setPaymentMethod] = useState('stripe'); // 'stripe' (Credit Card) is the default now
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -117,6 +117,19 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
         );
         onTriggerAlert("¡Comprobante enviado con éxito! Un administrador validará tu pago pronto.", "success");
       } else {
+        const amount = calculatePrice();
+        const refId = `STRIPE-${Date.now().toString().slice(-6)}`;
+        await databaseService.submitPendingPayment(
+          user.uid,
+          user.email,
+          activeTab,
+          activeTab === 'subscription' ? 30 : tokenQuantity,
+          parseFloat(amount),
+          refId,
+          null,
+          'approved'
+        );
+
         if (activeTab === 'subscription') {
           // Trimestral Pro Subscription
           await databaseService.togglePremium(user.uid, true);
@@ -380,7 +393,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                     }`}
                   >
                     <CreditCard className="w-4 h-4" />
-                    Tarjeta / Stripe
+                    Tarjeta de Crédito / Débito (Stripe)
                   </button>
 
                 </div>

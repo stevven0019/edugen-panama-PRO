@@ -222,7 +222,7 @@ const mockDb = {
     const list = localStorage.getItem('edugen_pending_payments');
     return list ? JSON.parse(list) : [];
   },
-  submitPendingPayment(uid, email, productType, tokenQuantity, amount, refId, screenshot) {
+  submitPendingPayment(uid, email, productType, tokenQuantity, amount, refId, screenshot, status = 'pending') {
     const payments = this.getPendingPayments();
     const newPayment = {
       id: 'mock_pay_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
@@ -233,7 +233,7 @@ const mockDb = {
       amount,
       refId,
       screenshot,
-      status: 'pending',
+      status,
       createdAt: new Date().toISOString()
     };
     payments.push(newPayment);
@@ -674,9 +674,9 @@ export const databaseService = {
     }
   },
 
-  async submitPendingPayment(uid, email, productType, tokenQuantity, amount, refId, screenshot) {
+  async submitPendingPayment(uid, email, productType, tokenQuantity, amount, refId, screenshot, status = 'pending') {
     if (isDemoMode) {
-      return mockDb.submitPendingPayment(uid, email, productType, tokenQuantity, amount, refId, screenshot);
+      return mockDb.submitPendingPayment(uid, email, productType, tokenQuantity, amount, refId, screenshot, status);
     } else {
       const { collection, addDoc } = await import('firebase/firestore');
       const paymentsCol = collection(realDb, 'artifacts', 'edugen-panama-aoa', 'pending_payments');
@@ -688,7 +688,7 @@ export const databaseService = {
         amount,
         refId,
         screenshot,
-        status: 'pending',
+        status,
         createdAt: new Date().toISOString()
       };
       const docRef = await addDoc(paymentsCol, docData);
