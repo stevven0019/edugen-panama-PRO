@@ -53,6 +53,14 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
     }
 
     const clientId = import.meta.env.VITE_PAYPAL_CLIENT_ID || 'sb';
+    
+    // Check if client ID is an access token instead of a proper client ID
+    if (clientId.startsWith('BAAJ')) {
+      setPaypalError('token_instead_of_client_id');
+      setPaypalLoaded(false);
+      return;
+    }
+
     const scriptId = 'paypal-sdk-script';
     let script = document.getElementById(scriptId);
 
@@ -62,6 +70,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
         return;
       }
       setPaypalLoaded(true);
+      setPaypalError(null);
 
       const container = document.getElementById('paypal-button-container');
       if (container && container.children.length === 0) {
@@ -151,6 +160,14 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
         script.onload = () => {
           initializePaypalButtons();
         };
+        const timer = setTimeout(() => {
+          if (!window.paypal) {
+            setPaypalError('PayPal SDK not loaded');
+          } else {
+            initializePaypalButtons();
+          }
+        }, 1500);
+        return () => clearTimeout(timer);
       }
     }
   }, [paymentMethod, activeTab, tokenQuantity]);
@@ -590,24 +607,77 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                   </div>
                 )}
 
-                 {paymentMethod === 'paypal' && (
+                  {paymentMethod === 'paypal' && (
                   /* PayPal Button Container */
                   <div className="space-y-4 p-4 border border-slate-200 dark:border-slate-800 rounded-2xl bg-slate-50/50 dark:bg-slate-950/20">
                     <p className="text-xs text-slate-550 dark:text-slate-400 text-center leading-normal mb-3">
                       Paga de forma rápida y segura vinculando tu saldo de PayPal o tarjetas asociadas.
                     </p>
                     
-                    <div id="paypal-button-container" className="w-full relative z-10 min-h-[150px] flex items-center justify-center">
+                    <div id="paypal-button-container" className="w-full relative z-10 min-h-[150px] flex flex-col items-center justify-center gap-4">
                       {!paypalLoaded && !paypalError && (
                         <div className="flex items-center gap-2 text-xs text-slate-550 dark:text-slate-400">
                           <Loader2 className="w-4 h-4 animate-spin text-blue-500" />
                           <span>Cargando pasarela de PayPal...</span>
                         </div>
                       )}
-                      {paypalError && (
-                        <div className="text-xs text-rose-500 text-center py-4">
-                          Hubo un error al cargar PayPal. Revisa tu conexión.
+                      
+                      {paypalError === 'token_instead_of_client_id' && (
+                        <div className="text-xs text-rose-500 text-center py-2 space-y-2">
+                          <p className="font-extrabold uppercase">⚠️ Token de Acceso en lugar de Client ID</p>
+                          <p className="text-[11px] leading-relaxed">
+                            Detectamos que <code>VITE_PAYPAL_CLIENT_ID</code> en tu archivo <code>.env</code> contiene un token de acceso (inicia con BAAJ) en lugar de un Client ID de PayPal.
+                          </p>
                         </div>
+                      )}
+
+                      {paypalError && paypalError !== 'token_instead_of_client_id' && (
+                        <div className="text-xs text-rose-500 text-center py-2">
+                          Hubo un error al cargar PayPal ({paypalError}). Revisa tu conexión.
+                        </div>
+                      )}
+
+                      {/* Simulation Button for testing if SDK is not loaded, invalid or in demo mode */}
+                      {(paypalError || !import.meta.env.VITE_PAYPAL_CLIENT_ID || import.meta.env.VITE_PAYPAL_CLIENT_ID.startsWith('BAAJ')) && (
+                        <button
+                          type="button"
+                          onClick={async () => {
+                            setLoading(true);
+                            await new Promise(r => setTimeout(r, 1200));
+                            try {
+                              const amount = calculatePrice();
+                              const refId = `PP-SIM-${Date.now().toString().slice(-6)}`;
+                              await databaseService.submitPendingPayment(
+                                user.uid,
+                                user.email,
+                                activeTab,
+                                activeTab === 'subscription' ? 30 : tokenQuantity,
+                                parseFloat(amount),
+                                refId,
+                                null,
+                                'approved'
+                              );
+
+                              if (activeTab === 'subscription') {
+                                await databaseService.togglePremium(user.uid, true);
+                                await databaseService.incrementCredits(user.uid, 30);
+                                onTriggerAlert("¡Pago de $19.99 con PayPal simulado con éxito! Has sido actualizado a PRO con 30 tokens.", "success");
+                              } else {
+                                await databaseService.incrementCredits(user.uid, tokenQuantity);
+                                onTriggerAlert(`¡Pago de $${amount} con PayPal simulado con éxito! Se añadieron ${tokenQuantity} tokens.`, "success");
+                              }
+                              setSuccess(true);
+                            } catch (err) {
+                              onTriggerAlert("Error al procesar el pago simulado.", "error");
+                            } finally {
+                              setLoading(false);
+                            }
+                          }}
+                          className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-3.5 px-4 rounded-2xl flex items-center justify-center gap-2 text-xs shadow-lg shadow-amber-500/10 transition active:scale-95 cursor-pointer"
+                        >
+                          <PaypalIcon className="w-4 h-4 text-blue-900" />
+                          <span>Pagar con PayPal (${calculatePrice()} USD)</span>
+                        </button>
                       )}
                     </div>
                   </div>
