@@ -20,6 +20,24 @@ export default function Dashboard({ user, credits, setActiveTab, isPremium = fal
   const [plansCount, setPlansCount] = useState(0);
   const [recentPlans, setRecentPlans] = useState([]);
   const [selectedInfographic, setSelectedInfographic] = useState(null);
+  const [showPromoPopup, setShowPromoPopup] = useState(false);
+
+  useEffect(() => {
+    if (!isPremium) {
+      const shown = sessionStorage.getItem('edugen_promo_shown');
+      if (!shown) {
+        const timer = setTimeout(() => {
+          setShowPromoPopup(true);
+        }, 1200);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [isPremium]);
+
+  const handleClosePromo = () => {
+    setShowPromoPopup(false);
+    sessionStorage.setItem('edugen_promo_shown', 'true');
+  };
 
   const infographics = [
     {
@@ -450,6 +468,90 @@ export default function Dashboard({ user, credits, setActiveTab, isPremium = fal
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Premium Launch Offer Promo Popup Modal */}
+      {showPromoPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 animate-fade-in">
+          <div className="w-full max-w-md bg-gradient-to-br from-slate-900 to-slate-950 border border-amber-500/30 rounded-3xl p-6.5 text-center shadow-2xl relative animate-scale-up">
+            
+            {/* Close Button */}
+            <button 
+              onClick={handleClosePromo}
+              className="absolute top-4.5 right-4.5 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white p-2 rounded-full transition active:scale-95 z-20 cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            {/* Glowing Icon */}
+            <div className="mx-auto bg-amber-500/10 text-amber-400 border border-amber-500/20 w-16 h-16 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/5 mb-5 animate-pulse">
+              <Sparkles className="w-8 h-8" />
+            </div>
+
+            {/* Title / Badge */}
+            <span className="bg-amber-500 text-slate-950 font-black text-[9px] uppercase tracking-widest px-3 py-1 rounded-full shadow-md">
+              OFERTA DE LANZAMIENTO
+            </span>
+            <h3 className="text-xl md:text-2xl font-black text-white mt-4 tracking-tight">
+              ¡Pásate a EduGen PRO hoy!
+            </h3>
+            <p className="text-xs text-slate-400 leading-relaxed mt-2.5">
+              Optimiza tu labor docente sin interrupciones ni publicidad. Accede hoy mismo con nuestra oferta de descuento exclusiva.
+            </p>
+
+            {/* Price section */}
+            <div className="my-6 bg-slate-900/50 border border-slate-850 p-4.5 rounded-2xl flex items-center justify-between">
+              <div className="text-left">
+                <p className="text-[9px] text-slate-500 font-bold uppercase">Suscripción Anual</p>
+                <p className="text-xs text-slate-400 line-through font-semibold mt-0.5">$24.99 USD</p>
+              </div>
+              <div className="text-right">
+                <span className="text-[9px] bg-rose-500/10 text-rose-400 border border-rose-500/20 font-black px-2 py-0.5 rounded-lg uppercase tracking-wider block w-fit ml-auto">
+                  Ahorra 20%
+                </span>
+                <p className="text-2xl font-black text-amber-400 font-display mt-0.5">
+                  $19.99 <span className="text-[10px] text-slate-400 font-medium">USD</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Features summary */}
+            <ul className="text-left text-xs text-slate-350 space-y-2.5 mb-6">
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold flex-shrink-0 mt-0.5">✓</span>
+                <span><strong>Cero publicidad</strong> molesta en toda la aplicación.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold flex-shrink-0 mt-0.5">✓</span>
+                <span><strong>30 Tokens de Generación</strong> incluidos de inmediato.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold flex-shrink-0 mt-0.5">✓</span>
+                <span>Prioridad máxima en servidores de planeación con IA.</span>
+              </li>
+            </ul>
+
+            {/* Action buttons */}
+            <div className="space-y-3">
+              <button 
+                onClick={() => {
+                  handleClosePromo();
+                  window.dispatchEvent(new CustomEvent('show-billing-modal'));
+                }}
+                className="w-full bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-slate-950 font-black py-4 rounded-2xl shadow-lg shadow-amber-500/10 active:scale-98 transition text-xs tracking-wider uppercase cursor-pointer"
+              >
+                Aprovechar Oferta PRO
+              </button>
+              <button 
+                onClick={handleClosePromo}
+                className="w-full text-slate-500 hover:text-slate-400 font-bold py-1 text-xs cursor-pointer active:scale-98 transition"
+              >
+                Continuar con la versión gratuita
+              </button>
+            </div>
+
           </div>
         </div>
       )}
