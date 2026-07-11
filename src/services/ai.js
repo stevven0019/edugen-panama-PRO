@@ -1755,7 +1755,75 @@ function getPromptTemplate(type, vars) {
 
     ─────────────────────────────────────────
     🔗 RESOURCE 7 — DIGITAL RESOURCES & EXTENSION ACTIVITIES
-    ─────────────────────  if (type === 'inter_formato') {
+    ─────────────────────────────────────────
+    Title: "Digital Tools & Extension Activities – ${theme}"
+
+    Part 1 — Recommended Websites:
+    HTML table with 5 resources:
+    (columns: # | Website/Tool | URL | What it offers | How to use it in this lesson)
+    All sites must be free, safe for students, and relevant to "${theme}".
+
+    Part 2 — QR Activity Ideas:
+    A simple table suggesting 3 ways to use QR codes in this lesson 
+    (columns: QR Code Content | How students use it | AOA Stage)
+
+    Part 3 — Fast Finisher / Extension Tasks:
+    HTML table with 3 extra activities for students who finish early:
+    (columns: Activity | Instructions | Skills practiced)
+    Activities must be independent and require no teacher support.
+
+    Part 4 — Cross-Curricular Connections:
+    HTML table connecting "${theme}" to 3 other school subjects:
+    (columns: Subject | Connection to ${theme} | Suggested activity)
+
+    ════════════════════════════════════════
+    FINAL FORMATTING RULES (WHITE PAGE / BLACK TEXT / GRAY CHARTS):
+    ════════════════════════════════════════
+    - CRITICAL: Wrap the entire generated resource HTML output inside a single container div with a white background and black text:
+      <div style="background-color: #ffffff; color: #000000; padding: 24px; font-family: Arial, sans-serif; line-height: 1.6;">
+    - All generated text inside this container must be black (use inline style 'color: #000000 !important;' for all paragraphs, table cells, titles, and list items to ensure high readability and contrast).
+    - Each resource must start with a neutral, professional dark gray header band:
+      <div style="background:#475569; color:#ffffff; padding:12px 20px; 
+                  border-radius:6px; margin:30px 0 15px 0; font-size:16px; font-weight:bold;">
+        📘 RESOURCE [N°] — [TITLE]
+      </div>
+    - All tables/charts must have a clean gray/neutral style (high contrast):
+      * Table headers (th): background-color: #cbd5e1; color: #0f172a; font-weight: bold; border: 1px solid #94a3b8;
+      * Table cells (td): color: #000000 !important; border: 1px solid #cbd5e1; background-color: #ffffff;
+      * Alternating row background colors: #ffffff and #f1f5f9 (light gray).
+    - Add a printable footer on each resource: 
+      <div style="font-size:10px; color:#475569; margin-top:10px; text-align:center;">MEDUCA Panama | Grade ${grade} | Theme: ${theme} | Lesson ${lessonNum}</div>
+    - Tone: Student-friendly for activities, Professional for rubrics.
+    - PRODUCE ALL CONTENT IN FULL — no placeholders, no "[add here]", no ellipses.
+    - CRITICAL: Remember to close the container div at the very end: </div>`,
+      userMsg: `Generate the complete printable Resource Pack. Theme: "${theme}", Scenario: "${scenery}", Grade: "${grade}", Lesson: ${lessonNum}, Focus Skills: "${skillsStr}".`
+    };
+  }
+
+  if (type === 'inter_tema') {
+    const materiasStr = vars.materias?.join(', ') || 'Español, Ciencias Naturales, inglés';
+    const trimestre = vars.trimestre || 'I Trimestre';
+    const descripcion = vars.descripcion || '';
+    const temaGrade = vars.grade || '5to Grado';
+    return {
+      systemPrompt: `Eres un experto en diseño curricular del Ministerio de Educación de Panamá (MEDUCA), especializado en proyectos interdisciplinarios.
+Tu tarea es proponer UN TEMA GENERADOR creativo, relevante y contextualizado para un proyecto interdisciplinario.
+
+El tema debe:
+- Ser pertinente al contexto panameño (biodiversidad, cultura, historia, sostenibilidad, identidad nacional, etc.)
+- Conectar de manera natural y significativa las siguientes asignaturas: ${materiasStr}
+- Ser apropiado para estudiantes de ${temaGrade}
+- Estar alineado al ${trimestre} del año escolar
+- Partir de la siguiente descripción/interés del docente: "${descripcion}"
+- Ser inspirador y motivante para los estudiantes y no debe ser un nombre demasiado largo (max 15 palabras)
+
+Responde ÚNICAMENTE con un JSON en este formato exacto (sin markdown, sin explicaciones):
+{"tema": "El nombre completo del tema generador", "pregunta_esencial": "Una pregunta esencial que guíe el proyecto (¿Cómo podemos...?)", "justificacion": "2 oraciones explicando por qué este tema es relevante para los estudiantes panameños de ${temaGrade}"}`,
+      userMsg: `Necesito un tema generador para un proyecto interdisciplinario. Descripción: "${descripcion}". Grado: "${temaGrade}". Asignaturas: "${materiasStr}". Trimestre: "${trimestre}".`
+    };
+  }
+
+  if (type === 'inter_formato') {
     const materiasStr = vars.materias?.join(', ') || 'Español, Ciencias Naturales';
     const interGrade = vars.grade || '5to Grado';
     const interTrimestre = vars.trimestre || 'I Trimestre';
