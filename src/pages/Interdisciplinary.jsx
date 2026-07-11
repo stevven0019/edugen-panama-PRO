@@ -171,6 +171,8 @@ export default function Interdisciplinary({ user, credits, onTriggerAlert, isPre
 
       const vars = {
         temaGenerado: suggestedThemeObject.tema,
+        preguntaEsencial: suggestedThemeObject.pregunta_esencial,
+        justificacion: suggestedThemeObject.justificacion,
         grade,
         trimestre,
         materias: selectedMaterias,

@@ -28,6 +28,8 @@ async function simulateResponse(type, vars, media = null) {
     const Region = vars.region || 'Panamá Centro';
     const Anio = vars.anio || '2026';
     const Trimestre = vars.trimestre || 'I Trimestre';
+    const justificacion = vars.justificacion || `Este proyecto surge como respuesta a la necesidad de fortalecer el pensamiento crtico y la concienciacin ecolgica en los estudiantes de ${grade}. Mediante la integracin de asignaturas como ${materiasStr}, los alumnos abordarǭn desafos del mundo real especficos de nuestra comunidad panamea durante el ${Trimestre}. Esto les permitirǭ desarrollar competencias clave del siglo XXI y valorar su rol en el desarrollo sostenible local.`;
+    const preguntaEsencial = vars.preguntaEsencial || '';
 
     return `
 <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; color: #333; line-height: 1.5; padding: 20px; background: #fff; border-radius: 8px;">
@@ -49,9 +51,10 @@ async function simulateResponse(type, vars, media = null) {
       <td colspan="3" style="border: 1px solid #333; padding: 6px; font-weight: bold; color: #1a1a5e; font-size: 12px;">"${tema}"</td>
     </tr>
     <tr>
-      <td style="font-weight: bold; background: #f0f0f0; border: 1px solid #333; padding: 6px;">Justificación:</td>
+      <td style="font-weight: bold; background: #f0f0f0; border: 1px solid #333; padding: 6px;">Justificaci&oacute;n:</td>
       <td colspan="3" style="border: 1px solid #333; padding: 6px; text-align: justify;">
-        Este proyecto surge como respuesta a la necesidad de fortalecer el pensamiento crítico y la concienciación ecológica en los estudiantes de ${grade}. Mediante la integración de asignaturas como ${materiasStr}, los alumnos abordarán desafíos del mundo real específicos de nuestra comunidad panameña durante el ${Trimestre}. Esto les permitirá desarrollar competencias clave del siglo XXI y valorar su rol en el desarrollo sostenible local.
+        ${justificacion}
+        ${preguntaEsencial ? `<br><br><b>Pregunta Esencial:</b> ${preguntaEsencial}` : ''}
       </td>
     </tr>
     <tr>
@@ -1752,7 +1755,7 @@ function getPromptTemplate(type, vars) {
 
     ─────────────────────────────────────────
     🔗 RESOURCE 7 — DIGITAL RESOURCES & EXTENSION ACTIVITIES
-    ─────────────────────�  if (type === 'inter_formato') {
+    ─────────────────────  if (type === 'inter_formato') {
     const materiasStr = vars.materias?.join(', ') || 'Español, Ciencias Naturales';
     const interGrade = vars.grade || '5to Grado';
     const interTrimestre = vars.trimestre || 'I Trimestre';
@@ -1761,6 +1764,8 @@ function getPromptTemplate(type, vars) {
     const interDocente = vars.docente || '_______________';
     const interRegion = vars.region || '_______________';
     const interAnio = vars.anio || '2026';
+    const interJustificacion = vars.justificacion || '___';
+    const interPregunta = vars.preguntaEsencial || '___';
     return {
       systemPrompt: `Eres un experto en diseño curricular del Ministerio de Educación de Panamá (MEDUCA).
 Debes generar el FORMATO OFICIAL COMPLETO de la "Guía para el desarrollo de proyectos de aprendizajes interdisciplinarios" del MINISTERIO DE EDUCACIÓN de Panamá, siguiendo exactamente la estructura y las directrices del instructivo oficial de la institución.
@@ -1787,7 +1792,7 @@ REGLA CRÍTICA: Responde ÚNICAMENTE con HTML. Sin markdown, sin texto previo, s
 Genera una tabla con la siguiente información:
 - Centro educativo: ${interEscuela} | Docentes: ${interDocente}
 - Título del proyecto: (Debe ser un título atractivo, breve y claro que motive a los estudiantes, basado en "${interTema}" para ${interGrade})
-- Justificación: (Explicación breve de 3-4 oraciones indicando los motivos y la importancia del proyecto para estudiantes de ${interGrade} en Panamá)
+- Justificaci&oacute;n: (Usa la siguiente justificaci&oacute;n que se gener&oacute; previamente: "${interJustificacion}". Puedes pulirla u optimizarla levemente para que encaje con el formato, pero debe mantener exactamente la misma idea y contexto, y al final de la justificaci&oacute;n, agrega en negrita la Pregunta Esencial: "Pregunta Esencial: ${interPregunta}")
 - Duración: (Tiempo estimado en semanas, ej: "4 Semanas")
 - Grado(s): ${interGrade} | Trimestre: ${interTrimestre}
 - Asignaturas / Red: (Lista numerada de todas las asignaturas participantes: ${materiasStr}, y finaliza con una fila o mención de "Otras" asignaturas de vinculación si aplica)
@@ -1842,57 +1847,7 @@ REGLAS CRÍTICAS DE CALIDAD:
 - No dejes ningún campo en blanco, con marcadores de posición como "[completar]" ni uses puntos supposiciones ("..."). Genera todo el contenido pedagógico en su totalidad.
 - Asegúrate de que el contenido sea plenamente panameño y adaptado al nivel de ${interGrade}.
 - Respeta estrictamente el formato HTML de inicio a fin.`,
-      userMsg: `Genera el FORMATO OFICIAL MEDUCA completo para el proyecto interdisciplinario. Tema: "${interTema}". Grado: ${interGrade}. Asignaturas: ${materiasStr}. Trimestre: ${interTrimestre}. Escuela: ${interEscuela}. Docente: ${interDocente}. Región: ${interRegion}. Año: ${interAnio}.`
-    };
-  } con el desarrollo del proyecto, que integre de forma natural las asignaturas: \${materiasStr} en torno a "\${vars.temaGenerado || '_______________'}" para \${grade})
-
-▸ TABLA 3 — ELEMENTOS DEL CURRÍCULO (TABLA COMPARATIVA)
-Crea una tabla con las columnas: [Elementos del currículo] | [Columna por cada asignatura en \${materiasStr}]
-Las filas de elementos deben ser:
-1. **Competencia(s):** Selecciona y lista explícitamente de entre las 9 competencias oficiales de MEDUCA aquellas que correspondan para cada asignatura:
-   *(1) Comunicativa, (2) Razonamiento lógico-matemático, (3) Conocimiento e interacción con el mundo físico, (4) Tratamiento de la información y competencia digital, (5) Social y ciudadana, (6) Cultural y artística, (7) Aprender a aprender, (8) Autonomía e iniciativa personal, (9) Socioemocional y Emprendimiento.*
-2. **Objetivo(s) de aprendizaje(s):** Extrae de forma realista del programa oficial de estudios de MEDUCA para \${grade} los objetivos correspondientes al tema.
-3. **Indicador(es) de logro:** Extrae de forma realista del programa oficial para \${grade} los indicadores correspondientes.
-4. **Tema(s) / Contenido(s):** Extrae de forma realista los contenidos conceptuales, procedimentales y actitudinales aplicables.
-5. **Herramientas tecnológicas de apoyo:** Recursos digitales y herramientas colaborativas específicas (ej. Padlet, Canva, GeoGebra, Kahoot) que apoyen el desarrollo del proyecto en cada asignatura.
-
-▸ TABLA 4 — FASES DEL PROYECTO
-Crea una tabla con las columnas: [Fases del proyecto] [Actividades (Breve descripción)] [Semana 1] [Semana 2] [Semana 3] [Semana 4 / n]
-Las filas de fases deben detallar lo siguiente (describe brevemente 1-2 actividades por fase en la columna de descripción):
-1. **Planificación:** Determinar el plan de actividades a realizar, sensibilización, conformación de equipos.
-2. **Ejecución:** Desarrollo de tareas, investigación de campo y producción de entregables/producto del proyecto.
-3. **Monitoreo y evaluación:** Progreso y ajustes necesarios del proyecto durante el desarrollo.
-4. **Cierre:** Demostración pública de lo aprendido por parte de los estudiantes (ej: feria científica, panel de exposición, mural).
-Marca con una "X" las semanas correspondientes a cada actividad en las columnas semanales.
-
-▸ TABLA 5 — CRONOGRAMA DE ACTIVIDADES
-Crea una tabla detallada con las columnas: [Actividades (Solamente coloque el nombre de la actividad)] [Mes: ___ (S-1 | S-2 | S-3 | S-4)] [Mes: ___ (S-1 | S-2 | S-3 | S-4)]
-Mínimo 6 actividades del proyecto listadas de forma consecutiva (ej: 1. Presentación, 2. Investigación de campo, 3. Diseño del prototipo, 4. Redacción del informe, 5. Montaje, 6. Exposición pública).
-Coloca una "X" en la columna de la semana en la que se planifica ejecutar cada actividad.
-
-▸ TABLA 6 — INSTRUMENTOS DE EVALUACIÓN Y CRITERIOS
-Header: "Instrumentos de evaluación y criterios" (Azul oscuro con letras blancas)
-Body: (Lista detallada de los instrumentos de evaluación, ej. rúbrica de proyecto, lista de cotejo para el trabajo colaborativo, y define los criterios de evaluación de desempeño basados en los indicadores de logro descritos).
-
-▸ TABLA 7 — REFERENCIAS BIBLIOGRÁFICAS
-Header: "Referencias bibliográficas"
-Body: (Lista de 4-5 fuentes reales y actualizadas en formato APA, incluyendo programas oficiales de MEDUCA y fuentes de investigación específicas del tema).
-
-▸ TABLA 8 — OBSERVACIONES
-Header: "Observaciones"
-Body: (2-3 señalamientos pedagógicos relevantes que aborden fortalezas, debilidades o sugerencias de adecuaciones durante las fases de planificación, ejecución y evaluación).
-
-▸ SECCIÓN DE FIRMAS (PIE DE PÁGINA)
-Crea una estructura de tres columnas con la siguiente distribución para firmas oficiales:
-- Docentes responsables: Nombre: \${vars.docente || '_______________'} | Firma: ______________________
-- Coordinadores: Nombre: ______________________ | Firma: ______________________
-- Director (a)/subdirector (a): Nombre: ______________________ | Firma: ______________________
-
-REGLAS CRÍTICAS DE CALIDAD:
-- No dejes ningún campo en blanco, con marcadores de posición como "[completar]" ni uses puntos supposiciones ("..."). Genera todo el contenido pedagógico en su totalidad.
-- Asegúrate de que el contenido sea plenamente panameño y adaptado al nivel de \${grade}.
-- Respeta estrictamente el formato HTML de inicio a fin.`,
-      userMsg: `Genera el FORMATO OFICIAL MEDUCA completo para el proyecto interdisciplinario. Tema: "\${vars.temaGenerado || '_______________'}". Grado: \${grade}. Asignaturas: \${materiasStr}. Trimestre: \${vars.trimestre || 'I Trimestre'}. Escuela: \${vars.escuela || '_______________'}. Docente: \${vars.docente || '_______________'}. Región: \${vars.region || '_______________'}. Año: \${vars.anio || '2026'}.`
+      userMsg: `Genera el FORMATO OFICIAL MEDUCA completo para el proyecto interdisciplinario. Tema: "${interTema}". Justificación previa: "${interJustificacion}". Pregunta esencial: "${interPregunta}". Grado: ${interGrade}. Asignaturas: ${materiasStr}. Trimestre: ${interTrimestre}. Escuela: ${interEscuela}. Docente: ${interDocente}. Regi&oacute;n: ${interRegion}. A&ntilde;o: ${interAnio}.`
     };
   }
 
