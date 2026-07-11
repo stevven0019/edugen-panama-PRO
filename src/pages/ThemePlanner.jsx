@@ -213,11 +213,85 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
           }
           
           const curriculumJson = await response.json();
-          scenarioData = curriculumJson.scenarios?.find(s => s.scenarioNum === parseInt(scenarioNum, 10));
+          const rawScenario = curriculumJson.scenarios?.find(s => {
+            const num = s.scenarioNum || s.scenario_number || s.id;
+            return parseInt(num, 10) === parseInt(scenarioNum, 10);
+          });
           
-          if (!scenarioData) {
+          if (!rawScenario) {
             throw new Error(`No se encontró el escenario ${scenarioNum} en el currículo de grado.`);
           }
+
+          // Build a normalized object to support all property schema variations
+          const normalizedScenario = {
+            ...rawScenario,
+            scenarioNum: rawScenario.scenarioNum || rawScenario.scenario_number || rawScenario.id || parseInt(scenarioNum, 10),
+            scenarioName: rawScenario.scenarioName || rawScenario.scenario_title || rawScenario.title || '',
+          };
+
+          // Extract theme1 and theme2
+          if (rawScenario.theme1) {
+            normalizedScenario.theme1 = rawScenario.theme1;
+            normalizedScenario.theme2 = rawScenario.theme2 || rawScenario.theme1;
+          } else if (Array.isArray(rawScenario.themes)) {
+            if (rawScenario.themes.length > 0) {
+              const firstThemeObj = rawScenario.themes[0];
+              const secondThemeObj = rawScenario.themes[1] || firstThemeObj;
+              
+              normalizedScenario.theme1 = typeof firstThemeObj === 'string' 
+                ? firstThemeObj 
+                : (firstThemeObj.theme_title || firstThemeObj.title || '');
+                
+              normalizedScenario.theme2 = typeof secondThemeObj === 'string' 
+                ? secondThemeObj 
+                : (secondThemeObj.theme_title || secondThemeObj.title || '');
+            } else {
+              normalizedScenario.theme1 = '';
+              normalizedScenario.theme2 = '';
+            }
+          } else {
+            normalizedScenario.theme1 = '';
+            normalizedScenario.theme2 = '';
+          }
+
+          // Normalize grammar
+          const rawGrammar = rawScenario.grammar || 
+                             rawScenario.communicativeCompetences?.linguistic?.grammaticalFeatures ||
+                             rawScenario.communicative_competences?.linguistic?.grammatical_features ||
+                             rawScenario.communicative_competences?.grammatical_features || [];
+          normalizedScenario.grammar = Array.isArray(rawGrammar) ? rawGrammar : [rawGrammar];
+
+          // Normalize vocabulary
+          const rawVocab = rawScenario.vocabulary || 
+                           rawScenario.communicativeCompetences?.linguistic?.vocabulary ||
+                           rawScenario.communicative_competences?.linguistic?.vocabulary ||
+                           rawScenario.communicative_competences?.vocabulary || {};
+          normalizedScenario.vocabulary = rawVocab;
+
+          // Normalize pragmatic
+          const rawPragmatic = rawScenario.pragmatic ||
+                               rawScenario.communicativeCompetences?.pragmatic?.functions ||
+                               rawScenario.communicative_competences?.pragmatic?.functions ||
+                               (rawVocab && rawVocab.pragmatic_competences) || [];
+          normalizedScenario.pragmatic = Array.isArray(rawPragmatic) ? rawPragmatic : [rawPragmatic];
+
+          // Normalize sociolinguistic
+          const rawSocio = rawScenario.sociolinguistic ||
+                           rawScenario.communicativeCompetences?.sociolinguistic?.elements ||
+                           rawScenario.communicative_competences?.sociolinguistic?.elements ||
+                           (rawVocab && rawVocab.sociolinguistic_competences) || [];
+          normalizedScenario.sociolinguistic = Array.isArray(rawSocio) ? rawSocio : [rawSocio];
+
+          // Normalize project
+          const rawProject = rawScenario.project21stCentury ||
+                             rawScenario.communicativeCompetences?.linguistic?.project21stCentury ||
+                             rawScenario.twenty_first_century_project ||
+                             rawScenario.century_21_project_ideas || '';
+          normalizedScenario.project21stCentury = typeof rawProject === 'object' 
+            ? (rawProject.title || rawProject.name || JSON.stringify(rawProject)) 
+            : rawProject;
+
+          scenarioData = normalizedScenario;
 
           if (!finalScenario) {
             finalScenario = scenarioData.scenarioName;
@@ -571,7 +645,7 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
               <label className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase block">Nombre del Escenario</label>
               <input
                 type="text"
-                placeholder={sourceType === 'preloaded' ? "Opcional (Ej: At the market - extraído de PDF)" : "Scenario Name (Ej: At the market)"}
+                placeholder={sourceType === 'preloaded' ? "Opcional (Ej: At the market - extraído del currículo JSON)" : "Scenario Name (Ej: At the market)"}
                 value={scenario}
                 onChange={(e) => setScenario(e.target.value)}
                 className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs outline-none bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-emerald-500/20"
@@ -581,7 +655,7 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
               <label className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase block">Tema / Unidad</label>
               <input
                 type="text"
-                placeholder={sourceType === 'preloaded' ? "Opcional (Ej: Healthy Eating - extraído de PDF)" : "Theme / Topic (Ej: Healthy Eating Habits)"}
+                placeholder={sourceType === 'preloaded' ? "Opcional (Ej: Healthy Eating - extraído del currículo JSON)" : "Theme / Topic (Ej: Healthy Eating Habits)"}
                 value={theme}
                 onChange={(e) => setTheme(e.target.value)}
                 className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs outline-none bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-emerald-500/20"
@@ -589,7 +663,7 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
             </div>
             {sourceType === 'preloaded' && (
               <p className="text-[9px] text-emerald-600 dark:text-emerald-400 italic leading-snug mt-1">
-                💡 Al usar PDF pre-cargado, si dejas vacío el Nombre y Tema, la IA los extraerá automáticamente buscando el escenario en el documento.
+                💡 Al usar el currículo pre-cargado (.json), si dejas vacío el Nombre y Tema, el sistema los extraerá automáticamente buscando el escenario en el archivo.
               </p>
             )}
           </div>

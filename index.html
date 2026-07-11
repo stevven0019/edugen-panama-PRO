@@ -18,35 +18,6 @@
     
     <!-- Premium Google Fonts are loaded in src/index.css via @import -->
     
-    <!-- Google AdSense & AMP Auto Ads Integration -->
-    <script>
-      (function() {
-        const adClient = "%VITE_ADSENSE_CLIENT%";
-        if (adClient && adClient !== "%" + "VITE_ADSENSE_CLIENT%" && adClient !== "ca-pub-XXXXXXXXXXXXXXX" && adClient.trim() !== "") {
-          // 1. Standard Auto Ads
-          const script = document.createElement('script');
-          script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + adClient;
-          script.async = true;
-          script.crossOrigin = "anonymous";
-          document.head.appendChild(script);
-
-          // 2. AMP Auto Ads
-          const ampScript = document.createElement('script');
-          ampScript.src = "https://cdn.ampproject.org/v0/amp-ad-0.1.js";
-          ampScript.async = true;
-          ampScript.setAttribute("custom-element", "amp-ad");
-          document.head.appendChild(ampScript);
-
-          // Append <amp-auto-ads> to body after load
-          window.addEventListener('DOMContentLoaded', function() {
-            const ampAutoAds = document.createElement('amp-auto-ads');
-            ampAutoAds.setAttribute('type', 'adsense');
-            ampAutoAds.setAttribute('data-ad-client', adClient);
-            document.body.appendChild(ampAutoAds);
-          });
-        }
-      })();
-    </script>
   </head>
   <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200">
     <div id="root"></div>

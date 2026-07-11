@@ -1,0 +1,702 @@
+{
+  "grade": "Pre-Kinder",
+  "proficiency_level": "Pre A1.1 Foundational Learner",
+  "scenarios": [
+    {
+      "id": 1,
+      "title": "Meeting My Friends",
+      "themes": [
+        "Meeting My Friends",
+        "Saying Please and Thank You"
+      ],
+      "listening": {
+        "general_standard": "Can recognize basic sounds, words, and phrases with gestures, visual cues, or short utterances.",
+        "specific_standard": "Receptive: Recognize that people are speaking in English. Interactive: Respond to basic greetings.",
+        "learning_outcomes": [
+          "Can recognize their name when called in English and polite words like \"please\" and \"thank you\" (e.g., turning their head, making eye contact, or saying \"Yes\" when their name is called; smiling or pausing when hearing \"thank you\").",
+          "Can respond to greetings and polite words in English, such as \"hello,\" \"goodbye,\" \"please,\" and \"thank you\" (e.g., saying \"hello\" when greeted, saying \"thank you\" when given something, or using \"please\" when prompted).",
+          "Can follow basic instructions paired with gestures, such as \"say hello\" and \"wave\" (e.g., waving when asked)."
+        ]
+      },
+      "reading": {
+        "general_standard": "Can show understanding of the general meanings of stories when they are heard and supported with pictures.",
+        "specific_standard": "Reading: Identify characters in a picture book. Phonemic Awareness: Identify environmental sounds and speech sounds.",
+        "learning_outcomes": [
+          "Can recognize and name main characters in a story about meeting friends and being polite when prompted by the teacher (e.g., when the teacher asks, \"Who is this?\" the student says the character's name or points while attempting to say the name).",
+          "Can select the correct picture of a character who says \"please\" or \"thank you\" in a familiar story when hearing the character's name (e.g., when the teacher says \"Show me Lizzie,\" the student picks the correct picture from multiple options).",
+          "Can identify the source of an environmental or speech sound related to classroom routines or stories when supported with pictures (e.g., pointing to a picture of a friend saying \"hello\" or a classroom bell after hearing the sound)."
+        ]
+      },
+      "speaking": {
+        "general_standard": "Can name things in simple exchanges.",
+        "specific_standard": "Productive: Use simple words and gestures to communicate. Interactive: Respond to basic greetings.",
+        "learning_outcomes": [
+          "Can use simple words and gestures for greetings, like using a wave to say \"hello\" or \"goodbye\" (e.g., saying \"hello\" when meeting a friend).",
+          "Can introduce oneself using \"My name is [name].\" (e.g., when asked to introduce themselves).",
+          "Can respond to basic greetings and polite expressions in simple exchanges, such as \"hello,\" \"hi,\" and \"thank you\" (e.g., responding with \"hi\" when greeted or saying \"thank you\" when given something)."
+        ]
+      },
+      "writing": {
+        "general_standard": "Can communicate simple ideas through drawings and symbols.",
+        "specific_standard": "Productive: Scribble to communicate a message. Interactive: Draw a symbol or image as a response to something.",
+        "learning_outcomes": [
+          "Can scribble to represent an idea (e.g., scribbling to show friends saying \"hi\" to each other).",
+          "Can draw an image to express a response to their peers (e.g., saying \"hello\" while showing their drawing).",
+          "Can draw a simple picture representing themselves or a friend using greetings or polite expressions (e.g., drawing themselves saying \"hello\" to a new friend; drawing one child saying \"please\" and another saying \"thank you\" while sharing toys)."
+        ]
+      },
+      "mediation": {
+        "general_standard": "Can use basic strategies to clarify meanings, such as drawings and body language.",
+        "specific_standard": "Text: Mimic simple actions shown in picture books.",
+        "learning_outcomes": [
+          "Can mimic body language to convey polite expressions from picture books (e.g., nodding and smiling to say \"thank you\").",
+          "Can act out simple greetings shown in picture books (e.g., waving or saying \"hello\" to show meeting a new friend).",
+          "Can role-play basic greeting exchanges from picture books (e.g., greeting classmates with \"hello\")."
+        ]
+      },
+      "linguistic_competences": [
+        "Subject + Verb (e.g., \"I am [name].\")",
+        "WH-questions (e.g., \"What is your name?\")",
+        "Yes/No Questions (e.g., \"Are you Mariana?\")"
+      ],
+      "recommended_vocabulary": {
+        "nouns": "friend, teacher, name, class",
+        "verbs": "say, is, play, wave, meet",
+        "adjectives": "nice, happy",
+        "adverb": "please",
+        "interjections": "hello, goodbye, thank you"
+      },
+      "pronunciation": "Syllable stress in \"friends\" and \"goodbye\"",
+      "phonemic_awareness": "Initial /f/ in \"friend,\" /g/ in \"goodbye,\" and environmental sounds (e.g., voices saying \"hello\", raindrops falling, dogs barking)",
+      "pragmatic_competences": "Using polite expressions: Saying \"please\" and \"thank you\" when interacting with others",
+      "sociolinguistic_competences": "Politeness in greetings: Saying \"hello,\" \"goodbye,\" \"please,\" \"thank you.\"",
+      "projects": [
+        {
+          "title": "Friendship Storybook",
+          "overview": "Create a simple storybook with pictures that students can use to point to and describe new friends."
+        },
+        {
+          "title": "Role-play Greetings",
+          "overview": "Practice greetings and polite phrases through role-play activities."
+        },
+        {
+          "title": "Name Tag Art",
+          "overview": "Design and decorate name tags for each student, practicing introductions."
+        }
+      ],
+      "skills": "Collaboration: Work together on storybooks and name tags. Communication: Practice greetings and polite phrases.",
+      "technology_integration": "Use digital or electronic storybooks to look at pictures."
+    },
+    {
+      "id": 2,
+      "title": "Colors in My Classroom",
+      "themes": [
+        "Colors in My Classroom"
+      ],
+      "listening": {
+        "general_standard": "Can recognize basic sounds, words, and phrases with gestures, visual cues, or short utterances.",
+        "specific_standard": "Receptive: Follow very simple classroom instructions after observing a model. Interactive: Engage in acting out and response activities as a way of interaction.",
+        "learning_outcomes": [
+          "Can follow simple classroom instructions like \"sit\" and \"stand\" (e.g., sitting when hearing the command \"sit\").",
+          "Can point to objects when named (e.g., pointing to the object or picture of a chair when hearing the word \"chair\").",
+          "Can act out and respond to familiar vocabulary used in daily routines (e.g., \"find a pencil\")."
+        ]
+      },
+      "reading": {
+        "general_standard": "Can show understanding of the general meanings of stories when they are heard and supported with pictures.",
+        "specific_standard": "Reading: Participate in choral reading of familiar short stories with support and guidance from the teacher. Phonemic Awareness: Identify environmental sounds and speech sounds.",
+        "learning_outcomes": [
+          "Can identify pictures of classroom objects in a story when read aloud (e.g., hear the word \"pencil\" in the story and can point to \"pencil\").",
+          "Can point to characters and objects during choral reading (e.g., pointing to a red backpack when the word \"backpack\" is read; pointing to a green crayon during a story about classroom materials).",
+          "Can match familiar environmental sounds and speech sounds to pictures with support (e.g., pointing to a picture of a bell after hearing the bell ring, or matching the /b/ sound to a picture of a \"book\")."
+        ]
+      },
+      "speaking": {
+        "general_standard": "Can name things in simple exchanges.",
+        "specific_standard": "Productive: Name primary colors. Interactive: Participate in a conversation with one or two simple interactions.",
+        "learning_outcomes": [
+          "Can identify and name primary colors in classroom objects like \"books\" and \"pencils\" (e.g., \"What color is this?\" \"Red\").",
+          "Can participate in a simple \"yes\" or \"no\" interaction (e.g., \"Is this a pencil?\" \"Yes\").",
+          "Can answer questions about classroom items using a color and a noun (e.g., saying \"blue chair\" when shown a picture)."
+        ]
+      },
+      "writing": {
+        "general_standard": "Can communicate simple ideas through drawings and symbols.",
+        "specific_standard": "Productive: Trace simple shapes and letters. Interactive: Draw a symbol or image as a response to something.",
+        "learning_outcomes": [
+          "Can trace basic shapes and lines to begin representing classroom objects or ideas (e.g., tracing a circle to represent a ball or lines to form a window).",
+          "Can draw simple symbols to respond to classroom prompts or questions (e.g., drawing a circle when the teacher asks for a ball; drawing a rectangle when asked to show a book).",
+          "Can create simple drawings of familiar classroom objects (e.g., draw a book, a chair, or a pencil)."
+        ]
+      },
+      "mediation": {
+        "general_standard": "Can use basic strategies to clarify meanings, such as drawings and body language.",
+        "specific_standard": "Communication: Express feelings and basic needs using words and body language.",
+        "learning_outcomes": [
+          "Can use drawings or gestures to help classmates understand classroom items or colors (e.g., pointing to a red crayon or drawing a chair when asked what they need).",
+          "Can express a basic classroom need using body language or words (e.g., pointing to a pencil when they need one or saying \"book\" while reaching for it).",
+          "Can show understanding of color-related instructions through gestures or drawings (e.g., picking up the correct color when asked \"Find something blue,\" or coloring a square red when shown a red object)."
+        ]
+      },
+      "linguistic_competences": [
+        "Yes/No questions (e.g., \"Is this your pencil?\")",
+        "Prepositions (e.g., \"The book is on the table.\")",
+        "WH-questions (e.g., \"What color is it?\")"
+      ],
+      "recommended_vocabulary": {
+        "nouns": "pencil, book, chair, desk, crayon, board, table, bag, desk",
+        "verbs": "sit, stand, read, write, count, find",
+        "adjectives": "red, blue, yellow, tall, short",
+        "prepositions": "on, under, in, next to"
+      },
+      "pronunciation": "/p/ in \"pencil,\" /b/ in \"book\"",
+      "phonemic_awareness": "Initial sounds: /t/ in \"chair\" and /f/ in \"short\". Environmental sounds: school bell, chairs moving, voices greeting, and drawers opening.",
+      "pragmatic_competences": [
+        "Identifying classroom objects and colors: Responding to \"What is this?\" by naming familiar items (e.g., \"pencil\") and \"What color is this?\" by naming familiar colors (e.g., \"red\")",
+        "Following directions: Pointing to or retrieving items based on instructions (e.g., \"Pick up the book.\")"
+      ],
+      "sociolinguistic_competences": "Politeness: Expressing and showing gratitude by saying \"thank you\" after receiving a snack or sharing toys.",
+      "projects": [
+        {
+          "title": "Color and Label My Classroom",
+          "overview": "Create a colorful classroom poster labeling objects."
+        },
+        {
+          "title": "Classroom Object Scavenger Hunt",
+          "overview": "Look for specific classroom items, name them, and label each one with support."
+        },
+        {
+          "title": "Digital Classroom Tour",
+          "overview": "Create a virtual tour by taking photos of classroom objects."
+        }
+      ],
+      "skills": "Communication: Describe classroom objects. Creativity: Design posters or tours.",
+      "technology_integration": "Use digital cameras or drawing tools to create classroom posters and tours."
+    },
+    {
+      "id": 3,
+      "title": "My Family",
+      "themes": [
+        "This Is Me!",
+        "My Family"
+      ],
+      "listening": {
+        "general_standard": "Can recognize basic sounds, words, and phrases with gestures, visual cues, or short utterances.",
+        "specific_standard": "Receptive: Recognize that people are speaking in English. Interactive: Respond to cues in simple rhymes and songs.",
+        "learning_outcomes": [
+          "Can identify family-related words like \"mom,\" \"dad,\" or \"me\" when spoken (e.g., listening to and repeating family names, along with body movements while singing).",
+          "Can listen to and join in rhymes and songs about family (e.g., repeating and acting out words related to family members, such as \"mother\" and \"father,\" while singing the rhymes).",
+          "Can identify names of family members when spoken (e.g., pointing to the father's picture when they hear the word \"father\")."
+        ]
+      },
+      "reading": {
+        "general_standard": "Can show understanding of the general meanings of stories when they are heard and supported with pictures.",
+        "specific_standard": "Reading: Identify characters in a picture book. Phonemic Awareness: Identify environmental sounds and speech sounds.",
+        "learning_outcomes": [
+          "Can point to family members in a picture book (e.g., pointing to the picture of the father as the teacher reads a book to the class).",
+          "Can match images of family members with words (e.g., matching the word \"mom\" or \"dad\" with their corresponding picture).",
+          "Can identify the initial speech sound in familiar spoken words, supported by pictures (e.g., pointing to the picture of \"mom\" when hearing the /m/ sound or \"sister\" when hearing the /s/ sound)."
+        ]
+      },
+      "speaking": {
+        "general_standard": "Can name things in simple exchanges.",
+        "specific_standard": "Productive: Name elements of pictures. Interactive: Answer basic questions about familiar stories using simple words and gestures.",
+        "learning_outcomes": [
+          "Can name family members like \"mom,\" \"dad,\" or \"brother\" when asked supported with pictures.",
+          "Can answer questions about family photos (e.g., \"Who is this?\").",
+          "Can respond to questions using simple words and gestures (e.g., pointing to \"dad\" in a photo when asked \"Who is tall?\")."
+        ]
+      },
+      "writing": {
+        "general_standard": "Can communicate simple ideas through drawings and symbols.",
+        "specific_standard": "Productive: Trace simple shapes and letters. Interactive: Draw a symbol or image as a response to something.",
+        "learning_outcomes": [
+          "Can trace basic shapes and letters (e.g., \"M\" for me).",
+          "Can draw simple pictures of family members collaboratively (e.g., drawing a stick figure to represent \"mom\").",
+          "Can scribble with purpose to represent family-related ideas (e.g., writing simple lines and labeling the scribbles with the word \"mom\")."
+        ]
+      },
+      "mediation": {
+        "general_standard": "Can use basic strategies to clarify meanings, such as drawings and body language.",
+        "specific_standard": "Text: Mimic simple actions shown in picture books.",
+        "learning_outcomes": [
+          "Can act out family roles from picture books or stories (e.g., pretending to be \"dad\").",
+          "Can use gestures to describe family members (e.g., showing \"tall,\" \"short,\" \"sad,\" or \"happy\").",
+          "Can use mimicking with drawings to represent family members for peers (e.g., drawing a picture of the mother and showing it to peers while saying the word \"mother\")."
+        ]
+      },
+      "linguistic_competences": [
+        "Pronouns (e.g., \"I, you, he, she, it\")",
+        "WH-questions (e.g., \"Who is it?\")",
+        "Possessive adjectives (e.g., \"This is my mom.\")"
+      ],
+      "recommended_vocabulary": {
+        "nouns": "mom, dad, brother, sister, baby, family, house, dog, cat",
+        "verbs": "live, love, play, go, see",
+        "adjectives": "happy, sad, young, new, old",
+        "possessive_adjectives": "my, your, his, her"
+      },
+      "pronunciation": "/p/ in \"play\" and /b/ in \"brother\"",
+      "phonemic_awareness": "Identification of the initial sounds in words such as /m/ in \"mom\" and /s/ in \"sister\"",
+      "pragmatic_competences": [
+        "Naming family members: Using \"mom,\" \"dad,\" or \"sister\" in response to \"Who is this?\" questions",
+        "Describing relationships: Responding to \"Who is in your family?\" by naming family members"
+      ],
+      "sociolinguistic_competences": "Respecting family roles: Using respectful terms when referring to family members (e.g., \"Mom and Dad\").",
+      "projects": [
+        {
+          "title": "My Family Tree",
+          "overview": "Create a family tree with drawings, pictures, and names of family members."
+        },
+        {
+          "title": "Family Role Play",
+          "overview": "Act out different family members and their roles."
+        },
+        {
+          "title": "Family Drawing Gallery",
+          "overview": "Draw and label pictures of family members to display in class."
+        }
+      ],
+      "skills": "Communication: Talk about family members. Creativity: Draw family members.",
+      "technology_integration": "Use family tree apps or create a digital version with the teacher's help."
+    },
+    {
+      "id": 4,
+      "title": "Fruits and Vegetables",
+      "themes": [
+        "I Love Fruit!",
+        "I Eat Vegetables!"
+      ],
+      "listening": {
+        "general_standard": "Can recognize basic sounds, words, and phrases with gestures, visual cues, or short utterances.",
+        "specific_standard": "Receptive: Follow very simple classroom instructions after observing a model. Interactive: Engage in acting out and response activities as a way of interaction.",
+        "learning_outcomes": [
+          "Can follow simple commands like \"show me an apple\" by pointing to a picture or object.",
+          "Can recognize words for fruits and vegetables when spoken (e.g., pointing to an apple when hearing \"apple\").",
+          "Can show comprehension of food words by acting out (e.g., pretending to eat a banana when asked)."
+        ]
+      },
+      "reading": {
+        "general_standard": "Can show understanding of the general meanings of stories when they are heard and supported with pictures.",
+        "specific_standard": "Reading: Identify characters in a picture book. Phonemic Awareness: Identify environmental sounds and speech sounds.",
+        "learning_outcomes": [
+          "Can recognize and point to pictures of fruits and vegetables in a picture book when named.",
+          "Can match pictures of fruits with their names when read aloud.",
+          "Can identify initial sounds of fruit and vegetable words (e.g., /æ/ for apple)."
+        ]
+      },
+      "speaking": {
+        "general_standard": "Can name things in simple exchanges.",
+        "specific_standard": "Productive: Name elements of pictures. Interactive: Answer basic questions about familiar stories using simple words and gestures.",
+        "learning_outcomes": [
+          "Can name familiar fruits and vegetables when shown pictures.",
+          "Can answer simple questions like \"What fruit do you like?\" with words or gestures.",
+          "Can express preferences by saying \"I like bananas\" or \"I don't like oranges\" with support."
+        ]
+      },
+      "writing": {
+        "general_standard": "Can communicate simple ideas through drawings and symbols.",
+        "specific_standard": "Productive: Trace simple shapes and letters. Interactive: Draw a symbol or image as a response to something.",
+        "learning_outcomes": [
+          "Can trace simple shapes to represent fruits (e.g., circles for apples, ovals for bananas).",
+          "Can draw a simple picture of a favorite fruit or vegetable.",
+          "Can create a simple collage of fruits and vegetables using cutouts."
+        ]
+      },
+      "mediation": {
+        "general_standard": "Can use basic strategies to clarify meanings, such as drawings and body language.",
+        "specific_standard": "Text: Mimic simple actions shown in picture books.",
+        "learning_outcomes": [
+          "Can mimic the action of eating or tasting different foods.",
+          "Can show reactions to foods using facial expressions (e.g., happy for fruits, making a face for sour lemons).",
+          "Can use gestures to indicate food preferences (e.g., thumbs up for \"like,\" thumbs down for \"don't like\")."
+        ]
+      },
+      "linguistic_competences": [
+        "Subject + Verb (e.g., \"I like bananas.\")",
+        "WH-questions (e.g., \"What is this?\")",
+        "Adjectives (e.g., \"red apples\")"
+      ],
+      "recommended_vocabulary": {
+        "nouns": "apple, banana, orange, papaya, carrot, grape, potato, tomato, lemon, fruit, vegetable",
+        "verbs": "eat, like, love, smell, taste",
+        "adjectives": "red, yellow, orange, sweet, sour, yummy, hungry"
+      },
+      "pronunciation": "Initial /æ/ in \"apple\" and /b/ in \"banana\"",
+      "phonemic_awareness": "Final /t/ in \"fruit\" and \"carrot\"",
+      "pragmatic_competences": [
+        "Expressing preferences: Answering \"Do you like...?\" with \"Yes\" or \"No\" when discussing food items",
+        "Identifying food items: Responding to the question \"What is this?\" with the correct name (e.g., \"apple\")"
+      ],
+      "sociolinguistic_competences": "Politeness in sharing: Saying \"please\" and \"thank you\" when sharing food.",
+      "projects": [
+        {
+          "title": "Favorite Fruits & Vegetables Collage",
+          "overview": "Create a collage of favorite fruits and vegetables."
+        },
+        {
+          "title": "Food Sorting Game",
+          "overview": "Sort fruits and vegetables by color or taste."
+        },
+        {
+          "title": "Food Tasting Video",
+          "overview": "Record a simple video tasting fruits and saying their names."
+        }
+      ],
+      "skills": "Communication: Talk about food preferences. Problem-Solving: Classify food by color or size.",
+      "technology_integration": "Create videos or use a tablet to sort food digitally."
+    },
+    {
+      "id": 5,
+      "title": "Numbers",
+      "themes": [
+        "Let's Count to Five!",
+        "How Many?"
+      ],
+      "listening": {
+        "general_standard": "Can recognize basic sounds, words, and phrases with gestures, visual cues, or short utterances.",
+        "specific_standard": "Receptive: Follow very simple classroom instructions after observing a model. Interactive: Engage in acting out and response activities as a way of interaction.",
+        "learning_outcomes": [
+          "Can follow simple commands involving numbers (e.g., \"Show me one block,\" \"Clap two times\").",
+          "Can recognize number words 1-5 when spoken.",
+          "Can show comprehension of quantities by holding up the correct number of fingers when asked."
+        ]
+      },
+      "reading": {
+        "general_standard": "Can show understanding of the general meanings of stories when they are heard and supported with pictures.",
+        "specific_standard": "Reading: Participate in choral reading of familiar short stories with support and guidance from the teacher. Phonemic Awareness: Identify environmental sounds and speech sounds.",
+        "learning_outcomes": [
+          "Can recognize numerals 1-5 in picture books.",
+          "Can count objects in illustrations when prompted.",
+          "Can match quantities to numerals (e.g., matching 3 apples to the number 3)."
+        ]
+      },
+      "speaking": {
+        "general_standard": "Can name things in simple exchanges.",
+        "specific_standard": "Productive: Count to five with support. Interactive: Answer basic questions about familiar stories using simple words and gestures.",
+        "learning_outcomes": [
+          "Can say number words 1-5 with support.",
+          "Can count objects up to 5.",
+          "Can answer \"How many?\" questions using numbers and gestures."
+        ]
+      },
+      "writing": {
+        "general_standard": "Can communicate simple ideas through drawings and symbols.",
+        "specific_standard": "Productive: Trace simple shapes and letters. Interactive: Draw a symbol or image as a response to something.",
+        "learning_outcomes": [
+          "Can trace numerals 1-5 with support.",
+          "Can draw circles or marks to represent quantities.",
+          "Can match drawings of objects to numerals."
+        ]
+      },
+      "mediation": {
+        "general_standard": "Can use basic strategies to clarify meanings, such as drawings and body language.",
+        "specific_standard": "Concept: Use gestures and simple drawings to support understanding.",
+        "learning_outcomes": [
+          "Can use fingers to show quantities during counting.",
+          "Can point to objects when counting.",
+          "Can use drawings to represent numbers."
+        ]
+      },
+      "linguistic_competences": [
+        "Counting quantities (e.g., \"How many apples?\")",
+        "Simple phrases (e.g., \"two apples\")",
+        "Imperatives (e.g., \"Pick up two toys.\")"
+      ],
+      "recommended_vocabulary": {
+        "nouns": "number, ball, car, toy, TV",
+        "verbs": "count, find, see, play, read, pick up, show",
+        "adjectives": "big, small, red, blue, green",
+        "numbers": "one, two, three, four, five"
+      },
+      "pronunciation": "Initial sound /n/ in \"number\" and /b/ in \"ball\"",
+      "phonemic_awareness": "Final sound /s/ in \"books\" and /z/ in \"toys\"",
+      "pragmatic_competences": [
+        "Counting objects: Using fingers to count to five in response to questions",
+        "Confirming quantity: Answering \"How many?\" with simple numbers (e.g., \"two pencils\")"
+      ],
+      "sociolinguistic_competences": "Counting in social settings: Counting objects during playtime with peers.",
+      "projects": [
+        {
+          "title": "Count & Match Game",
+          "overview": "Create a matching game to pair objects with numbers from one to five."
+        },
+        {
+          "title": "Counting Objects Collage",
+          "overview": "Draw and label objects to match a number."
+        },
+        {
+          "title": "Digital Counting App",
+          "overview": "Use a digital counting app to practice numbers and matching quantities."
+        }
+      ],
+      "skills": "Numeracy: Count objects and match numbers. Problem-Solving: Solve counting challenges.",
+      "technology_integration": "Use counting apps or create a digital version of the matching game."
+    },
+    {
+      "id": 6,
+      "title": "The Alphabet",
+      "themes": [
+        "The A-B-Cs",
+        "Apple, Banana, Coconut"
+      ],
+      "listening": {
+        "general_standard": "Can recognize basic sounds, words, and phrases with gestures, visual cues, or short utterances.",
+        "specific_standard": "Receptive: Recognize that people are speaking in English. Interactive: Respond to cues in simple rhymes and songs.",
+        "learning_outcomes": [
+          "Can recognize letter names A, B, C when sung or spoken.",
+          "Can respond to alphabet songs with gestures or actions.",
+          "Can identify pictures of objects that start with A, B, or C sounds."
+        ]
+      },
+      "reading": {
+        "general_standard": "Can show understanding of the general meanings of stories when they are heard and supported with pictures.",
+        "specific_standard": "Reading: Identify characters in a picture book. Phonemic Awareness: Identify environmental sounds and speech sounds.",
+        "learning_outcomes": [
+          "Can recognize letters A, B, C in print.",
+          "Can point to the correct letter when named (e.g., \"Show me the letter A.\").",
+          "Can match pictures with beginning letter sounds (e.g., apple with A)."
+        ]
+      },
+      "speaking": {
+        "general_standard": "Can name things in simple exchanges.",
+        "specific_standard": "Productive: Name elements of pictures. Interactive: Answer basic questions about familiar stories using simple words and gestures.",
+        "learning_outcomes": [
+          "Can say the names of letters A, B, C with support.",
+          "Can say the sound each letter makes with support.",
+          "Can name objects that start with A, B, or C (e.g., \"A is for apple\")."
+        ]
+      },
+      "writing": {
+        "general_standard": "Can communicate simple ideas through drawings and symbols.",
+        "specific_standard": "Productive: Trace simple shapes and letters. Interactive: Draw a symbol or image as a response to something.",
+        "learning_outcomes": [
+          "Can trace letters A, B, C with support.",
+          "Can draw a simple picture of an object that starts with A, B, or C.",
+          "Can create an alphabet collage with pictures of objects for each letter."
+        ]
+      },
+      "mediation": {
+        "general_standard": "Can use basic strategies to clarify meanings, such as drawings and body language.",
+        "specific_standard": "Concept: Use gestures and simple drawings to support understanding.",
+        "learning_outcomes": [
+          "Can use gestures to represent letters (e.g., tracing A in the air).",
+          "Can show understanding of letter sounds through actions (e.g., acting like an ant for A).",
+          "Can draw pictures to represent letter sounds."
+        ]
+      },
+      "linguistic_competences": [
+        "Letters & words (e.g., \"A is for apple.\")",
+        "Present simple (e.g., \"This is a banana.\")",
+        "WH-Questions (e.g., \"What is this?\")"
+      ],
+      "recommended_vocabulary": {
+        "nouns": "coconut, ant, bee, cat, ball, bag, car, bird, cow, chicken, boat, apple",
+        "verbs": "eat, see, find, like, play, be (is, are)",
+        "adjectives": "colors, numbers (1-5)",
+        "questions": "what"
+      },
+      "pronunciation": "Initial sounds /æ/ in \"apple,\" /b/ in \"banana,\" /k/ in \"coconut\"",
+      "phonemic_awareness": "Recognizing letter sounds (A, B, C)",
+      "pragmatic_competences": [
+        "Identifying letters: Responding to \"What letter is this?\" by naming letters (e.g., \"A\")",
+        "Naming familiar items: Saying \"A is for apple\" or \"B is for ball\" when asked about letters"
+      ],
+      "sociolinguistic_competences": "Recognizing the alphabet: Understanding letters as the building blocks of words.",
+      "projects": [
+        {
+          "title": "Alphabet Letter Hunt",
+          "overview": "Find objects around the classroom that start with letters A, B, and C."
+        },
+        {
+          "title": "Letter Collage",
+          "overview": "Create an alphabet collage by cutting and pasting letters from magazines."
+        },
+        {
+          "title": "Digital Alphabet Book",
+          "overview": "Create an online alphabet book using photos of objects."
+        }
+      ],
+      "skills": "Literacy: Recognize letters and sounds. Creativity: Design a collage or digital book.",
+      "technology_integration": "Use a tablet to take photos of objects that start with letters A, B, and C."
+    },
+    {
+      "id": 7,
+      "title": "My Classroom",
+      "themes": [
+        "My Teacher!",
+        "Time for Recess!"
+      ],
+      "listening": {
+        "general_standard": "Can recognize basic sounds, words, and phrases with gestures, visual cues, or short utterances.",
+        "specific_standard": "Receptive: Follow very simple classroom instructions after observing a model. Interactive: Engage in acting out and response activities as a way of interaction.",
+        "learning_outcomes": [
+          "Can recognize words for classroom people and objects when spoken.",
+          "Can follow simple instructions like \"sit down,\" \"stand up,\" \"line up.\"",
+          "Can respond to questions about classroom items (e.g., \"Where is the book?\") by pointing."
+        ]
+      },
+      "reading": {
+        "general_standard": "Can show understanding of the general meanings of stories when they are heard and supported with pictures.",
+        "specific_standard": "Reading: Identify characters in a picture book. Phonemic Awareness: Identify environmental sounds and speech sounds.",
+        "learning_outcomes": [
+          "Can identify people and objects in classroom stories (e.g., pointing to the teacher in a picture).",
+          "Can match pictures of classroom people and objects with words.",
+          "Can identify sounds associated with classroom items (e.g., bell, chair scrape)."
+        ]
+      },
+      "speaking": {
+        "general_standard": "Can name things in simple exchanges.",
+        "specific_standard": "Productive: Name elements of pictures. Interactive: Participate in a conversation with one or two simple interactions.",
+        "learning_outcomes": [
+          "Can name classroom people and objects (e.g., \"teacher,\" \"book,\" \"chair\").",
+          "Can say simple phrases like \"This is my teacher.\"",
+          "Can greet classroom people (e.g., \"Hello teacher\" or \"Hi friend\")."
+        ]
+      },
+      "writing": {
+        "general_standard": "Can communicate simple ideas through drawings and symbols.",
+        "specific_standard": "Productive: Scribble to communicate a message. Interactive: Draw a symbol or image as a response to something.",
+        "learning_outcomes": [
+          "Can scribble to represent a person or object in the classroom.",
+          "Can draw a simple picture of the teacher, a classmate, or a toy.",
+          "Can draw a symbol for a classroom object (e.g., book, chair, desk)."
+        ]
+      },
+      "mediation": {
+        "general_standard": "Can use basic strategies to clarify meanings, such as drawings and body language.",
+        "specific_standard": "Communication: Express feelings and basic needs using words and body language.",
+        "learning_outcomes": [
+          "Can express needs using words and gestures (e.g., pointing to water bottle and saying \"water\").",
+          "Can show feelings about classroom activities through facial expressions.",
+          "Can use body language to communicate understanding (e.g., nodding yes)."
+        ]
+      },
+      "linguistic_competences": [
+        "Subject + verb (e.g., \"This is my teacher.\")",
+        "WH-Questions (e.g., \"What is this?\")",
+        "Prepositions (e.g., \"The book is on the table.\")"
+      ],
+      "recommended_vocabulary": {
+        "nouns": "classroom, teacher, classmate, principal, toy",
+        "verbs": "sit, stand, read, write, learn, ask, play, meet, answer",
+        "adjectives": "big, small, clean, new",
+        "demonstrative_adjectives": "this, these",
+        "prepositions": "in, on, under",
+        "questions": "what, where",
+        "interjections": "hi, hello"
+      },
+      "pronunciation": "Initial sound /n/ \"new\" /s/ \"sit\"",
+      "phonemic_awareness": "Initial sound /r/ in \"read\" /n/ final in \"learn\"",
+      "pragmatic_competences": [
+        "Identifying people: Answering \"Who is this?\" by saying \"This is my teacher.\" or \"This is my friend.\"",
+        "Describing Objects and Locations: Responding to \"What is this?\" with \"This is a chair.\" or \"This is a desk.\" \"Where is the book?\" \"It's on the desk.\""
+      ],
+      "sociolinguistic_competences": "Classroom interactions: Socially appropriate greetings, such as addressing the principal versus a friend.",
+      "projects": [
+        {
+          "title": "Introducing People in my Classroom",
+          "overview": "Create a video introducing different people on their school."
+        },
+        {
+          "title": "Classroom, Faces, and Things Poster",
+          "overview": "Design a poster of people and things in the classroom."
+        },
+        {
+          "title": "Classroom Comic Journal",
+          "overview": "Create a three-panel comic book story about people and things in the classroom."
+        }
+      ],
+      "skills": "Collaboration: Work in pairs to plan the video. Communication: Use simple words or sentences to describe things and people in the classroom.",
+      "technology_integration": "Take photos to describe parts of the classroom."
+    },
+    {
+      "id": 8,
+      "title": "Plants and Animals",
+      "themes": [
+        "It's a Plant.",
+        "It's an Animal."
+      ],
+      "listening": {
+        "general_standard": "Can recognize basic sounds, words, and phrases with gestures, visual cues, or short utterances.",
+        "specific_standard": "Receptive: Recognize that people are speaking in English. Interactive: Engage in acting out and response activities as a way of interaction.",
+        "learning_outcomes": [
+          "Can recognize words for common plants and animals (e.g., \"tree,\" \"flower,\" \"dog,\" \"cat\") when spoken.",
+          "Can point to pictures of plants and animals when named.",
+          "Can respond to simple questions like \"Where is the bird?\" by pointing."
+        ]
+      },
+      "reading": {
+        "general_standard": "Can show understanding of the general meanings of stories when they are heard and supported with pictures.",
+        "specific_standard": "Reading: Identify characters in a picture book. Phonemic Awareness: Identify environmental sounds and speech sounds.",
+        "learning_outcomes": [
+          "Can identify plants and animals in picture books.",
+          "Can point to the correct plant or animal when named.",
+          "Can recognize initial sounds of plant and animal words."
+        ]
+      },
+      "speaking": {
+        "general_standard": "Can name things in simple exchanges.",
+        "specific_standard": "Productive: Name elements of pictures. Interactive: Participate in a conversation with one or two simple interactions.",
+        "learning_outcomes": [
+          "Can name common plants and animals with support (e.g., saying \"tree\" when shown a picture).",
+          "Can say simple phrases like \"It is a bird.\"",
+          "Can answer simple yes/no questions about plants and animals (e.g., \"Is this a cat?\" \"Yes\")."
+        ]
+      },
+      "writing": {
+        "general_standard": "Can communicate simple ideas through drawings and symbols.",
+        "specific_standard": "Productive: Scribble to communicate a message. Interactive: Draw a symbol or image as a response to something.",
+        "learning_outcomes": [
+          "Can draw a simple plant or animal.",
+          "Can scribble to represent a plant or animal.",
+          "Can draw a picture of a favorite plant or animal."
+        ]
+      },
+      "mediation": {
+        "general_standard": "Can use basic strategies to clarify meanings, such as drawings and body language.",
+        "specific_standard": "Concept: Use gestures and simple drawings to support understanding.",
+        "learning_outcomes": [
+          "Can use gestures to describe plants and animals (e.g., flapping arms like a bird, growing like a plant).",
+          "Can draw pictures to help others understand what plant or animal they mean.",
+          "Can use body language to show characteristics (e.g., tall for a tree, big for an elephant)."
+        ]
+      },
+      "linguistic_competences": [
+        "Subject + verb (e.g., \"This is a tree.\")",
+        "WH-questions (e.g., \"What is it?\")",
+        "Present simple (e.g., \"It is a bird.\")"
+      ],
+      "recommended_vocabulary": {
+        "nouns": "tree, plant, flower, fish, dog, cat, animal, insect, bird",
+        "verbs": "fly, swim, grow, eat, live, be (is, are)",
+        "adjectives": "tall, small, green, big, little, beautiful",
+        "questions": "what, where",
+        "pronoun": "it"
+      },
+      "pronunciation": "/t/ in \"tall\" and /f/ in \"fish\"",
+      "phonemic_awareness": "Initial sounds in /k/ in \"cat\" and /b/ in \"bird\"",
+      "pragmatic_competences": [
+        "Naming animals and plants: Responding to \"What is this?\" by naming familiar animals or plants (e.g., \"This is a bird.\")",
+        "Describing features: Using simple descriptors like \"green\" for trees or \"big\" for animals"
+      ],
+      "sociolinguistic_competences": "Respect for nature: Learning about plants and animals found in Panama and showing respect for them.",
+      "projects": [
+        {
+          "title": "Panama's Animal Safari",
+          "overview": "Create a \"safari\" by identifying and naming local animals and plants."
+        },
+        {
+          "title": "Nature Drawing",
+          "overview": "Draw and label pictures of Panama's animals and plants."
+        },
+        {
+          "title": "Photo Nature Guide",
+          "overview": "Describe photos of plants and animals in Panama."
+        }
+      ],
+      "skills": "Critical Thinking: Identify and name plants and animals. Communication: Trace simple sentences.",
+      "technology_integration": "Take photos of local plants/animals with assistance."
+    }
+  ]
+}
