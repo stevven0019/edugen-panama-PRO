@@ -20,10 +20,17 @@ const PaypalIcon = (props) => (
 );
 import { databaseService } from '../services/firebase';
 
-export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) {
+export default function BillingModal({ isOpen, onClose, user, onTriggerAlert, initialTab = 'subscription' }) {
   if (!isOpen) return null;
 
-  const [activeTab, setActiveTab] = useState('subscription'); // 'subscription' | 'tokens'
+  const [activeTab, setActiveTab] = useState(initialTab);
+
+  useEffect(() => {
+    if (isOpen && initialTab) {
+      setActiveTab(initialTab);
+    }
+  }, [isOpen, initialTab]);
+
   const [tokenQuantity, setTokenQuantity] = useState(10);
   const [paymentMethod, setPaymentMethod] = useState('yappy'); // 'yappy' is Bank Deposit / ACH for now
   const [loading, setLoading] = useState(false);
@@ -90,7 +97,9 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                     currency_code: 'USD',
                     value: price
                   },
-                  description: activeTab === 'subscription' ? 'EduGen PRO - Plan Anual' : `${tokenQuantity} Tokens didácticos`
+                  description: activeTab === 'subscription' 
+                    ? 'EduGen PRO - Plan Anual' 
+                    : (activeTab === 'flash' ? 'Oferta Flash - 10 Tokens' : `${tokenQuantity} Tokens didácticos`)
                 }
               ]
             });
@@ -106,7 +115,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                 user.uid,
                 user.email,
                 activeTab,
-                activeTab === 'subscription' ? 30 : tokenQuantity,
+                activeTab === 'subscription' ? 30 : (activeTab === 'flash' ? 10 : tokenQuantity),
                 parseFloat(amount),
                 refId,
                 null,
@@ -117,6 +126,9 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                 await databaseService.togglePremium(user.uid, true);
                 await databaseService.incrementCredits(user.uid, 30);
                 onTriggerAlert("¡Pago procesado con éxito! Has sido actualizado a PRO PREMIUM.", "success");
+              } else if (activeTab === 'flash') {
+                await databaseService.incrementCredits(user.uid, 10);
+                onTriggerAlert(`¡Pago procesado con éxito! Se añadieron 10 tokens de Oferta Flash a tu saldo.`, "success");
               } else {
                 await databaseService.incrementCredits(user.uid, tokenQuantity);
                 onTriggerAlert(`¡Pago procesado con éxito! Se añadieron ${tokenQuantity} tokens a tu saldo.`, "success");
@@ -248,7 +260,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
           user.uid,
           user.email,
           activeTab,
-          activeTab === 'subscription' ? 30 : tokenQuantity,
+          activeTab === 'subscription' ? 30 : (activeTab === 'flash' ? 10 : tokenQuantity),
           parseFloat(amount),
           yappyRef,
           yappyImage
@@ -261,7 +273,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
           user.uid,
           user.email,
           activeTab,
-          activeTab === 'subscription' ? 30 : tokenQuantity,
+          activeTab === 'subscription' ? 30 : (activeTab === 'flash' ? 10 : tokenQuantity),
           parseFloat(amount),
           refId,
           null,
@@ -273,6 +285,9 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
           await databaseService.togglePremium(user.uid, true);
           await databaseService.incrementCredits(user.uid, 30); // Add 30 standard credits
           onTriggerAlert("¡Pago procesado con éxito! Has sido actualizado a PRO PREMIUM.", "success");
+        } else if (activeTab === 'flash') {
+          await databaseService.incrementCredits(user.uid, 10);
+          onTriggerAlert(`¡Pago procesado con éxito! Se añadieron 10 tokens de Oferta Flash a tu saldo.`, "success");
         } else {
           // Buy individual tokens
           await databaseService.incrementCredits(user.uid, tokenQuantity);
@@ -296,6 +311,9 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
   const calculatePrice = () => {
     if (activeTab === 'subscription') {
       return "19.99"; // Promo price (Regular 24.99)
+    }
+    if (activeTab === 'flash') {
+      return "6.99"; // Flash offer price
     }
     return (tokenQuantity * 0.99).toFixed(2);
   };
@@ -330,7 +348,10 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                   ? "Hemos recibido tu comprobante de Yappy/Transferencia. Un administrador validará la transacción y activará tus tokens/suscripción en los próximos minutos."
                   : (activeTab === 'subscription' 
                     ? "Tu cuenta ahora es PRO PREMIUM. Hemos eliminado los anuncios y acreditado 30 tokens iniciales en tu cuenta. ¡Paga solo por lo que necesitas!"
-                    : `Se han acreditado ${tokenQuantity} tokens a tu balance para realizar planeaciones sin interrupciones.`
+                    : (activeTab === 'flash'
+                      ? "Se han acreditado 10 tokens especiales de Oferta Flash a tu balance para tus planeaciones didácticas."
+                      : `Se han acreditado ${tokenQuantity} tokens a tu balance para realizar planeaciones sin interrupciones.`
+                    )
                   )
                 }
               </p>
@@ -340,7 +361,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
               <div className="flex justify-between font-bold text-slate-600 dark:text-slate-400">
                 <span>Producto:</span>
                 <span className="text-slate-800 dark:text-slate-200">
-                  {activeTab === 'subscription' ? 'Plan Anual Pro' : `${tokenQuantity} Tokens`}
+                  {activeTab === 'subscription' ? 'Plan Anual Pro' : (activeTab === 'flash' ? '10 Tokens (Oferta Flash ⚡)' : `${tokenQuantity} Tokens`)}
                 </span>
               </div>
               <div className="flex justify-between font-bold text-slate-600 dark:text-slate-400">
@@ -386,6 +407,17 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
               >
                 <Sparkles className="w-4 h-4 text-amber-500" />
                 Plan Anual Pro
+              </button>
+              <button 
+                onClick={() => setActiveTab('flash')}
+                className={`flex-1 py-4 text-xs font-bold transition flex items-center justify-center gap-2 border-b-2 ${
+                  activeTab === 'flash' 
+                    ? 'border-rose-500 text-rose-600 dark:text-rose-400 font-extrabold bg-rose-500/5' 
+                    : 'border-transparent text-slate-400 hover:text-slate-600 dark:hover:text-slate-350'
+                }`}
+              >
+                <span className="animate-bounce">⚡</span>
+                Oferta Flash
               </button>
               <button 
                 onClick={() => setActiveTab('tokens')}
@@ -454,6 +486,44 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert }) 
                     <li className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
                       <span>Prioridad máxima en servidores de IA.</span>
+                    </li>
+                  </ul>
+                </div>
+              ) : activeTab === 'flash' ? (
+                /* Oferta Flash Details Card */
+                <div className="bg-gradient-to-br from-rose-500/10 via-pink-500/5 to-transparent border border-rose-500/20 rounded-2xl p-5 space-y-4 relative overflow-hidden">
+                  <span className="absolute top-3 right-3 bg-rose-600 text-white font-black text-[8px] uppercase tracking-widest px-2.5 py-0.5 rounded-full shadow-md animate-pulse">
+                    ⚡ 30% Descuento
+                  </span>
+                  
+                  <div className="flex justify-between items-baseline">
+                    <div>
+                      <h4 className="text-sm font-extrabold text-slate-850 dark:text-slate-200">
+                        Oferta Flash: 10 Tokens PRO
+                      </h4>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">¡Ahorra en tus planeaciones semanales! Solo por tiempo limitado.</p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-xs text-slate-400 dark:text-slate-500 line-through font-semibold">$9.90</span>
+                      <div className="text-xl font-black text-rose-500 dark:text-rose-450 flex items-center gap-0.5">
+                        <span>$6.99</span>
+                        <span className="text-[10px] text-slate-400 font-medium">/10 tokens</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-2 border-t border-slate-200 dark:border-slate-800 pt-3">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span><strong>10 Tokens didácticos</strong> listos para usar de inmediato.</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span>Paga solo $0.69 por cada planeación de lesson planner.</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span>Acceso preferente y velocidad máxima en IA.</span>
                     </li>
                   </ul>
                 </div>

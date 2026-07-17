@@ -59,10 +59,16 @@ export default function App() {
 
   // EduGen Pro Billing & Ads States
   const [billingOpen, setBillingOpen] = useState(false);
+  const [billingTab, setBillingTab] = useState('subscription');
   const [interstitialOpen, setInterstitialOpen] = useState(false);
   const [rewardedOpen, setRewardedOpen] = useState(false);
   const [onInterstitialFinished, setOnInterstitialFinished] = useState(() => () => {});
   const [onRewardedFinished, setOnRewardedFinished] = useState(() => () => {});
+
+  // Tutorial & Flash Offer States
+  const [showTutorialToast, setShowTutorialToast] = useState(false);
+  const [showFlashOfferToast, setShowFlashOfferToast] = useState(false);
+  const [showVideoModal, setShowVideoModal] = useState(false);
 
   // PWA Install Prompt State
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -71,11 +77,50 @@ export default function App() {
   // Simulated Push Notification State
   const [pushNotification, setPushNotification] = useState(null);
 
+  // Trigger tutorial and flash offer toasts after login/dashboard lands
+  useEffect(() => {
+    if (user) {
+      const tutorialTimer = setTimeout(() => {
+        if (!sessionStorage.getItem('dismissed_tutorial_toast')) {
+          setShowTutorialToast(true);
+        }
+      }, 3000);
+
+      const flashTimer = setTimeout(() => {
+        if (!isPremium && !sessionStorage.getItem('dismissed_flash_toast')) {
+          setShowFlashOfferToast(true);
+        }
+      }, 6000);
+
+      return () => {
+        clearTimeout(tutorialTimer);
+        clearTimeout(flashTimer);
+      };
+    } else {
+      setShowTutorialToast(false);
+      setShowFlashOfferToast(false);
+    }
+  }, [user, isPremium]);
+
   // Listen to billing modal trigger events globally
   useEffect(() => {
-    const openBilling = () => setBillingOpen(true);
+    const openBilling = (e) => {
+      if (e.detail && e.detail.tab) {
+        setBillingTab(e.detail.tab);
+      } else {
+        setBillingTab('subscription');
+      }
+      setBillingOpen(true);
+    };
     window.addEventListener('show-billing-modal', openBilling);
     return () => window.removeEventListener('show-billing-modal', openBilling);
+  }, []);
+
+  // Listen to video tutorial trigger events globally
+  useEffect(() => {
+    const openVideo = () => setShowVideoModal(true);
+    window.addEventListener('show-tutorial-video', openVideo);
+    return () => window.removeEventListener('show-tutorial-video', openVideo);
   }, []);
 
   // Listen to PWA beforeinstallprompt
@@ -554,7 +599,107 @@ export default function App() {
         onClose={() => setBillingOpen(false)}
         user={user}
         onTriggerAlert={triggerAlert}
+        initialTab={billingTab}
       />
+
+      {/* Video Tutorial Modal Overlay */}
+      {showVideoModal && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-md p-4 animate-fade-in"
+          onClick={() => setShowVideoModal(false)}
+        >
+          <div 
+            className="w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl relative animate-scale-up"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setShowVideoModal(false)}
+              className="absolute top-4 right-4 bg-slate-800/80 hover:bg-slate-700 text-white p-2.5 rounded-full transition active:scale-95 z-20 cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="p-4 bg-slate-900 border-b border-slate-800 text-white">
+              <h3 className="font-extrabold text-sm flex items-center gap-2">
+                <School className="w-5 h-5 text-blue-500" />
+                Video Tutorial: Cómo crear tus Lesson Planners
+              </h3>
+            </div>
+            <div className="aspect-video bg-black flex items-center justify-center">
+              <video 
+                src="/tutoriales/crea lesson planner.mp4" 
+                controls 
+                autoPlay 
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tutorial Toast Notification */}
+      {showTutorialToast && (
+        <div className="fixed bottom-24 right-4 z-50 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-4 rounded-3xl shadow-2xl border border-blue-500/20 flex items-start gap-4 max-w-sm animate-fade-in-up">
+          <div className="bg-white/15 p-2.5 rounded-2xl flex-shrink-0 text-white animate-pulse">
+            <School className="w-5 h-5" />
+          </div>
+          <div className="flex-1 min-w-0 space-y-1">
+            <h4 className="text-[11px] font-black uppercase tracking-widest text-blue-100">Tutorial Disponible</h4>
+            <p className="text-xs font-bold leading-snug">Crea tus lesson planners en minutos con este video.</p>
+            <button 
+              onClick={() => {
+                setShowVideoModal(true);
+                setShowTutorialToast(false);
+                sessionStorage.setItem('dismissed_tutorial_toast', 'true');
+              }}
+              className="mt-1 bg-white text-blue-600 font-extrabold text-[10px] px-3 py-1.5 rounded-xl hover:bg-blue-50 transition active:scale-95 cursor-pointer"
+            >
+              Ver Video Tutorial
+            </button>
+          </div>
+          <button 
+            onClick={() => {
+              setShowTutorialToast(false);
+              sessionStorage.setItem('dismissed_tutorial_toast', 'true');
+            }}
+            className="text-white/70 hover:text-white active:scale-95 transition cursor-pointer"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
+      {/* Flash Offer Toast Notification */}
+      {showFlashOfferToast && (
+        <div className="fixed bottom-4 right-4 z-50 bg-gradient-to-r from-rose-600 to-pink-650 text-white px-5 py-4 rounded-3xl shadow-2xl border border-rose-500/20 flex items-start gap-4 max-w-sm animate-fade-in-up">
+          <div className="bg-white/15 p-2.5 rounded-2xl flex-shrink-0 text-white animate-bounce">
+            <span>⚡</span>
+          </div>
+          <div className="flex-1 min-w-0 space-y-1">
+            <h4 className="text-[11px] font-black uppercase tracking-widest text-rose-100">¡Oferta Flash Imprescindible!</h4>
+            <p className="text-xs font-bold leading-snug">Llevate 10 tokens por solo $6.99. ¡Ahorra casi un 30%!</p>
+            <button 
+              onClick={() => {
+                setBillingTab('flash');
+                setBillingOpen(true);
+                setShowFlashOfferToast(false);
+                sessionStorage.setItem('dismissed_flash_toast', 'true');
+              }}
+              className="mt-1 bg-white text-rose-600 font-extrabold text-[10px] px-3 py-1.5 rounded-xl hover:bg-rose-50 transition active:scale-95 cursor-pointer"
+            >
+              Obtener Oferta
+            </button>
+          </div>
+          <button 
+            onClick={() => {
+              setShowFlashOfferToast(false);
+              sessionStorage.setItem('dismissed_flash_toast', 'true');
+            }}
+            className="text-white/70 hover:text-white active:scale-95 transition cursor-pointer"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
 
       {/* Simulated Google AdMob Interstitial Ad */}
       <InterstitialAd 

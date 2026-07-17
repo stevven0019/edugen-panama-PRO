@@ -173,6 +173,30 @@ export default function Dashboard({ user, credits, setActiveTab, isPremium = fal
         <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-blue-500/5 blur-3xl pointer-events-none"></div>
       </div>
 
+      {/* Video Tutorial Banner */}
+      <div 
+        onClick={() => window.dispatchEvent(new CustomEvent('show-tutorial-video'))}
+        className="relative glass-panel p-6 rounded-3xl bg-gradient-to-r from-blue-500/10 via-indigo-500/5 to-transparent border border-blue-500/20 cursor-pointer hover:border-blue-500/40 transition overflow-hidden group shadow-lg"
+      >
+        <div className="absolute -right-10 -top-10 w-36 h-36 bg-blue-500/5 rounded-full blur-2xl group-hover:scale-125 transition-all"></div>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10 text-center sm:text-left">
+          <div className="flex items-center gap-4.5 flex-col sm:flex-row">
+            <div className="bg-blue-500/10 p-3.5 rounded-2xl text-blue-500 animate-pulse">
+              <BookOpen className="w-6 h-6" />
+            </div>
+            <div className="space-y-1">
+              <h4 className="text-sm font-extrabold text-slate-850 dark:text-slate-100 uppercase tracking-tight">¿Nuevo en EduGen? ¡Aprende con nuestro Video Tutorial!</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-normal max-w-xl">
+                Descubre cómo funciona el sistema de creación de Lesson Planners en solo unos minutos. Te mostraremos paso a paso cómo alinear tus clases con el currículo oficial MEDUCA AOA.
+              </p>
+            </div>
+          </div>
+          <button className="bg-blue-500 hover:bg-blue-600 text-white font-black px-5 py-3 rounded-2xl text-xs tracking-wide shadow-md active:scale-95 transition-all w-full sm:w-auto flex-shrink-0 uppercase cursor-pointer">
+            Ver Tutorial 🎬
+          </button>
+        </div>
+      </div>
+
       {/* Upgrade Callout Banner */}
       {!isPremium && (
         <div 
