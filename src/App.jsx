@@ -626,7 +626,7 @@ export default function App() {
             </div>
             <div className="aspect-video bg-black flex items-center justify-center">
               <video 
-                src="/tutoriales/crea lesson planner.mp4" 
+                src="https://firebasestorage.googleapis.com/v0/b/edugen-pro-f310f.firebasestorage.app/o/crea%20lesson%20planner.mp4?alt=media&token=64676fec-3a40-4e96-af21-211b7e720a16" 
                 controls 
                 autoPlay 
                 className="w-full h-full object-contain"
