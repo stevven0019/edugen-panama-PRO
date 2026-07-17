@@ -591,11 +591,15 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert, in
                   </button>
                   <button
                     type="button"
-                    disabled
-                    className="p-3.5 border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-655 rounded-2xl flex items-center justify-center gap-2 text-xs font-bold cursor-not-allowed select-none opacity-60"
+                    onClick={() => setPaymentMethod('paypal')}
+                    className={`p-3.5 border rounded-2xl flex items-center justify-center gap-2 text-xs font-bold transition ${
+                      paymentMethod === 'paypal'
+                        ? 'border-amber-500 bg-amber-500/5 text-amber-600 dark:text-amber-400'
+                        : 'border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 text-slate-500'
+                    }`}
                   >
-                    <PaypalIcon className="w-4 h-4 text-slate-400" />
-                    <span>PayPal (Inactivo)</span>
+                    <PaypalIcon className="w-4 h-4 text-blue-600" />
+                    <span>Pagar con PayPal</span>
                   </button>
                   <button
                     type="button"
