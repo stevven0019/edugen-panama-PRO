@@ -1195,6 +1195,7 @@ function getPromptTemplate(type, vars) {
   const grade = vars.grade || '5th Grade';
   const scenery = vars.scenario || 'Planning a party';
   const theme = vars.theme || 'Food and Drinks';
+  const project21st = vars.project21st || '';
 
   const getCefrFromGrade = (g) => {
     if (!g) return 'A2';
@@ -1233,6 +1234,7 @@ function getPromptTemplate(type, vars) {
     - Scenario        : ${scenery}
     - Theme           : ${theme}
     - Lesson within Theme: This is Lesson ${lessonNum} of 5 in the theme sequence.
+    ${project21st ? `- 21st Century Skills Project Focus: ${project21st} (CRITICAL: Since this is Lesson 5 / Mediation, all activities—especially Stage 4 Performance and Stage 5 Assessment—must center on the development, translation, explanation, or presentation of this specific project, integrating it with the linguistic competences.)` : ''}
 
     ════════════════════════════════════════
     5-LESSON SEQUENCE & PROGRESSION COHESION (CRITICAL):
@@ -1343,7 +1345,7 @@ function getPromptTemplate(type, vars) {
     - Use HTML tables with style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;"
     - Use color #1a5276 for all headings and stage titles.
     - Tone: Practical, encouraging, and teacher-friendly.`,
-      userMsg: `Generate the complete official AOA Lesson Planner. Theme: "${theme}", Grade: "${grade}", Scenario: "${scenery}", Objective: "${vars.objective}", Outcome: "${vars.outcome}".`
+      userMsg: `Generate the complete official AOA Lesson Planner. Theme: "${theme}", Grade: "${grade}", Scenario: "${scenery}", Objective: "${vars.objective}", Outcome: "${vars.outcome}".${project21st ? ` 21st Century Skills Project: "${project21st}".` : ''}`
     };
   }
 
@@ -1364,6 +1366,7 @@ function getPromptTemplate(type, vars) {
     - Nivel CEFR      : ${cefr} (CRÍTICO: Todo el vocabulario, la gramática y tareas deben respetar este nivel)
     - Escenario       : ${scenery}
     - Tema            : ${theme}
+    ${project21st ? `- Proyecto 21st Century Skills: ${project21st} (CRÍTICO: En esta Lección 5 de Mediación, las guías, guiones de maestro/estudiante y dinámicas deben centrarse en ayudar a los estudiantes a desarrollar y presentar este proyecto, integrando la mediación y las competencias lingüísticas)` : ''}
 
     ════════════════════════════════════════
     SECUENCIA DE 5 LECCIONES Y COHESIÓN DE VOCABULARIO (CRÍTICO):
@@ -1504,7 +1507,7 @@ function getPromptTemplate(type, vars) {
     - Evita el lenguaje académico excesivo. El maestro debe poder leer esto en clase y seguirlo.
     - Cada guión de diálogo debe ser realista y apropiado para estudiantes de Grado ${grade}.
     - Progresión de Bloom: Etapas 1–2 (Recordar/Comprender) → Etapas 3–4 (Aplicar/Analizar) → Etapas 5–6 (Evaluar/Crear).`,
-      userMsg: `Genera la guía detallada de Lesson Delivery (ESP). Tema: "${theme}", Grado: "${grade}", Escenario: "${scenery}", Habilidades: "${skillsStr}".`
+      userMsg: `Genera la guía detallada de Lesson Delivery (ESP). Tema: "${theme}", Grado: "${grade}", Escenario: "${scenery}", Habilidades: "${skillsStr}".${project21st ? ` Proyecto 21st Century Skills: "${project21st}".` : ''}`
     };
   }
 
@@ -1522,6 +1525,7 @@ function getPromptTemplate(type, vars) {
     - Grade        : ${grade}
     - CEFR Level   : ${cefr} (CRITICAL: Vocabulary and grammatical complexity must strictly target this CEFR level)
     - Lesson #     : ${lessonNum}
+    ${project21st ? `- 21st Century Skills Project: ${project21st} (CRITICAL: In this Lesson 5 / Mediation, customize the worksheets, rubrics, and activities to specifically align with the development and presentation of this project, integrating linguistic competences and mediation)` : ''}
 
     ════════════════════════════════════════
     5-LESSON SEQUENCE & PROGRESSION COHESION (CRITICAL):
@@ -1698,6 +1702,7 @@ function getPromptTemplate(type, vars) {
                 background:linear-gradient(135deg, #eaf4fb, #fdfefe;">
       <h2 style="color:#1a5276;">🎭 YOUR MISSION</h2>
       <p><b>Scenario:</b> ${scenery}</p>
+      ${project21st ? `<p><b>21st Century Skills Project:</b> ${project21st}</p>` : ''}
       <p><b>Your role:</b> [Define student's role in the task]</p>
       <p><b>Your task:</b> [Clear description of what they must produce — 
          presentation / dialogue / written piece / video script / poster, etc.]</p>
@@ -1796,7 +1801,7 @@ function getPromptTemplate(type, vars) {
     - Tone: Student-friendly for activities, Professional for rubrics.
     - PRODUCE ALL CONTENT IN FULL — no placeholders, no "[add here]", no ellipses.
     - CRITICAL: Remember to close the container div at the very end: </div>`,
-      userMsg: `Generate the complete printable Resource Pack. Theme: "${theme}", Scenario: "${scenery}", Grade: "${grade}", Lesson: ${lessonNum}, Focus Skills: "${skillsStr}".`
+      userMsg: `Generate the complete printable Resource Pack. Theme: "${theme}", Scenario: "${scenery}", Grade: "${grade}", Lesson: ${lessonNum}, Focus Skills: "${skillsStr}".${project21st ? ` 21st Century Skills Project: "${project21st}".` : ''}`
     };
   }
 

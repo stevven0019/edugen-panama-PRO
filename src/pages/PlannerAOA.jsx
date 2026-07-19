@@ -28,6 +28,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
   const [communicativeComp, setCommunicativeComp] = useState('');
   const [specificObjective, setSpecificObjective] = useState('');
   const [learningOutcome, setLearningOutcome] = useState('');
+  const [project21st, setProject21st] = useState('');
 
   // Generation Output states
   const [loading, setLoading] = useState(false);
@@ -465,7 +466,8 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
         theme,
         objective: specificObjective,
         outcome: learningOutcome,
-        communicativeComp
+        communicativeComp,
+        project21st
       };
 
       try {
@@ -639,6 +641,23 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
               onChange={(e) => setCommunicativeComp(e.target.value)}
               className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 text-xs bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 italic"
             />
+            {lessonNum === 5 && (
+              <div className="space-y-1.5 pt-1 animate-fade-in">
+                <label className="text-[10px] font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-wider block">
+                  Proyecto 21st Century Skills *
+                </label>
+                <textarea 
+                  rows="2.5" 
+                  placeholder="Inserta el proyecto del escenario (Ej: Crear un póster de reciclaje, una presentación sobre hábitos saludables, etc.)" 
+                  value={project21st}
+                  onChange={(e) => setProject21st(e.target.value)}
+                  className="w-full border border-blue-200 dark:border-blue-800 rounded-xl px-3 py-2.5 text-xs bg-blue-50/10 dark:bg-blue-950/10 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 italic"
+                />
+                <span className="text-[9px] text-slate-450 dark:text-slate-500 block leading-normal">
+                  Proporciona contexto al sistema para que estructure la lección de mediación en torno a este proyecto.
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Objectives */}
