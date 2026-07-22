@@ -30,6 +30,7 @@ import { InterstitialAd, RewardedAd } from './components/AdManager';
 import PublicLanding from './pages/PublicLanding';
 import Blog from './pages/Blog';
 import LegalPages from './pages/LegalPages';
+import AcademicLibrary from './pages/AcademicLibrary';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -316,6 +317,13 @@ export default function App() {
           />
         )}
 
+        {publicTab === 'academic-library' && (
+          <AcademicLibrary 
+            setPublicTab={setPublicTab} 
+            onLoginClick={() => setShowAuthModal(true)} 
+          />
+        )}
+
         {(publicTab === 'privacy' || publicTab === 'terms' || publicTab === 'about') && (
           <LegalPages 
             defaultTab={publicTab} 
@@ -562,6 +570,13 @@ export default function App() {
             <AdminPayments 
               user={user} 
               onTriggerAlert={triggerAlert} 
+            />
+          )}
+          {activeTab === 'academic-library' && (
+            <AcademicLibrary 
+              setPublicTab={(tab) => setActiveTab(tab)} 
+              onLoginClick={() => {}} 
+              isEmbedded={true}
             />
           )}
           {activeTab === 'blog' && (

@@ -48,6 +48,7 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
     { id: 'interdisciplinary', label: 'Proy. Interdisciplinario', icon: <Sparkles className="w-5 h-5" /> },
     { id: 'theme-planner', label: 'Theme Planner', icon: <Layers className="w-5 h-5" /> },
     { id: 'library', label: 'Mi Biblioteca', icon: <FolderOpen className="w-5 h-5" /> },
+    { id: 'academic-library', label: 'Biblioteca Académica', icon: <School className="w-5 h-5" /> },
   ];
 
   const getActiveStyles = (itemId) => {

@@ -149,6 +149,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
 
           <div className="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
             <button onClick={() => setPublicTab('landing')} className="hover:text-blue-600 dark:hover:text-blue-400 transition">Inicio</button>
+            <button onClick={() => setPublicTab('academic-library')} className="hover:text-blue-600 dark:hover:text-blue-400 transition">Biblioteca Académica</button>
             <button onClick={() => setPublicTab('blog')} className="hover:text-blue-600 dark:hover:text-blue-400 transition">Blog Educativo</button>
             <button onClick={() => setPublicTab('about')} className="hover:text-blue-600 dark:hover:text-blue-400 transition">Quiénes Somos / Contacto</button>
           </div>
@@ -177,7 +178,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
         </h1>
 
         <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          Diseña secuencias didácticas basadas en el Enfoque Orientado a la Acción (AOA), alinea automáticamente los niveles de referencia CEFR y crea proyectos interdisciplinarios oficiales en minutos.
+          Diseña secuencias didácticas basadas en el Enfoque Orientado a la Acción (AOA), alinea automáticamente los niveles de referencia CEFR y descarga la documentación oficial MEDUCA (Pre-K a 12º).
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -187,6 +188,12 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
           >
             <span>Comenzar Gratis</span>
             <ArrowRight className="w-4 h-4" />
+          </button>
+          <button 
+            onClick={() => setPublicTab('academic-library')}
+            className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3.5 rounded-2xl text-xs font-bold tracking-wide shadow-lg shadow-emerald-500/20 active:scale-98 transition flex items-center justify-center gap-2"
+          >
+            <span>📚 Biblioteca Académica (Pre-K a 12º)</span>
           </button>
           <button 
             onClick={() => setPublicTab('blog')}
