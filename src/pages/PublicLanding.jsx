@@ -15,7 +15,8 @@ import {
   User,
   MapPin,
   BarChart3,
-  Plus
+  Plus,
+  HelpCircle
 } from 'lucide-react';
 import AdBanner from '../components/AdBanner';
 import { databaseService } from '../services/firebase';
@@ -718,6 +719,66 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
             </div>
           </div>
           
+        </div>
+      </section>
+
+      {/* SECCIÓN: PREGUNTAS FRECUENTES (FAQ) - CUMPLIMIENTO ADSENSE Y GUÍA DOCENTE */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-12 border-t border-slate-200/40 dark:border-slate-800/20">
+        <div className="text-center space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/20 text-[10px] font-black uppercase tracking-widest">
+            <HelpCircle className="w-3.5 h-3.5" />
+            <span>Preguntas Frecuentes de la Comunidad</span>
+          </div>
+          <h2 className="text-3xl font-extrabold font-display tracking-tight text-slate-850 dark:text-slate-100">
+            Resuelve tus dudas sobre la Planificación AOA y MEDUCA
+          </h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
+            Información transparente sobre los estándares del currículo panameño, uso de la plataforma y políticas de privacidad.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          
+          <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-3">
+            <h3 className="font-extrabold text-sm text-slate-850 dark:text-slate-100 flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-blue-500" />
+              ¿Qué es el Enfoque Orientado a la Acción (AOA)?
+            </h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed text-justify">
+              Es la metodología oficial adoptada por MEDUCA para la enseñanza del inglés en Panamá. Conceptualiza al estudiante como un agente social que usa el idioma para resolver tareas reales (misiones), integrando listening, speaking, reading, writing y mediation sin enfocarse en memorización gramatical pasiva.
+            </p>
+          </div>
+
+          <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-3">
+            <h3 className="font-extrabold text-sm text-slate-850 dark:text-slate-100 flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-emerald-500" />
+              ¿Los documentos de la Biblioteca Académica son oficiales?
+            </h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed text-justify">
+              Sí. Los programas curriculares de Pre-K a 12º grado en formato PDF provienen de la dosificación oficial de MEDUCA y están alojados para consulta y descarga gratuita de todos los educadores de Panamá.
+            </p>
+          </div>
+
+          <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-3">
+            <h3 className="font-extrabold text-sm text-slate-850 dark:text-slate-100 flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-violet-500" />
+              ¿Cómo se alinean los grados escolares con el MCER?
+            </h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed text-justify">
+              Pre-K a 2° corresponden a Pre-A1; 3° a 5° corresponden a A1; 6° a 9° (Premedia) corresponden a A2; y 10° a 12° (Media) corresponden al nivel B1. La plataforma adapta los descriptores de desempeño Can-Do automáticamente según el grado seleccionado.
+            </p>
+          </div>
+
+          <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-3">
+            <h3 className="font-extrabold text-sm text-slate-850 dark:text-slate-100 flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-amber-500" />
+              ¿Cómo se financia y se muestran los anuncios?
+            </h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed text-justify">
+              EduGen ofrece un plan de cortesía para docentes financiado mediante anuncios de red (Google AdSense) exhibidos de forma ética únicamente en las secciones públicas de lectura estática (Landing Page y Blog Educativo), respetando la experiencia del usuario y protegiendo el área de herramientas.
+            </p>
+          </div>
+
         </div>
       </section>
 
