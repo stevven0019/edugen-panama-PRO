@@ -13,22 +13,25 @@ import {
   HardDrive,
   ExternalLink,
   Sparkles,
-  School
+  School,
+  Award,
+  Rocket,
+  Bookmark
 } from 'lucide-react';
 import { academicResources, academicCategories, academicGrades } from '../data/academicResources';
 import AdBanner from '../components/AdBanner';
 
 export default function AcademicLibrary({ setPublicTab, onLoginClick, isEmbedded = false }) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
+  const [selectedCategory, setSelectedCategory] = useState('Todos los Recursos');
   const [selectedGrade, setSelectedGrade] = useState('Todos los Grados');
 
   const filteredResources = academicResources.filter(res => {
-    const matchesCategory = selectedCategory === 'Todos' || res.category === selectedCategory;
+    const matchesCategory = selectedCategory === 'Todos los Recursos' || res.category === selectedCategory;
     const matchesGrade = selectedGrade === 'Todos los Grados' || res.grade === selectedGrade || res.grade === 'Todos los Grados';
     const matchesSearch = res.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           res.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          res.category.toLowerCase().includes(searchTerm.toLowerCase());
+                          res.grade.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesGrade && matchesSearch;
   });
 
@@ -75,15 +78,41 @@ export default function AcademicLibrary({ setPublicTab, onLoginClick, isEmbedded
         {/* Title Header */}
         <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/20 text-[9px] font-black uppercase tracking-widest">
-            <GraduationCap className="w-3.5 h-3.5" />
-            <span>Documentación Oficial MEDUCA y Recursos Curriculares</span>
+            <Award className="w-3.5 h-3.5" />
+            <span>Documentación Oficial MEDUCA y Recursos Curriculares 2026</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold font-display tracking-tight leading-tight">
-            Biblioteca Académica de Educación (Pre-K a 12º)
+            Biblioteca Curricular Oficial de Inglés (Pre-K a 12º)
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Accede y descarga gratis los programas curriculares oficiales de MEDUCA, manuales pedagógicos AOA, matrices de dosificación y guías de evaluación del MCER en formato PDF.
+            Descarga los programas oficiales de estudio por grado alineados a las competencias MEDUCA y los niveles internacionales del MCER.
           </p>
+        </div>
+
+        {/* Direct Google Drive Folder Banner */}
+        <div className="glass-panel p-6 rounded-3xl bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden my-4 group">
+          <div className="absolute -right-16 -bottom-16 w-56 h-56 bg-white/10 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
+          <div className="space-y-2 relative z-10">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white border border-white/30 text-[9px] font-black uppercase tracking-widest">
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>CARPETA GOOGLE DRIVE MEDUCA 2026</span>
+            </div>
+            <h3 className="text-xl font-extrabold font-display leading-tight">
+              Carpeta Completa de Programas Curriculares (Pre-K a 12º)
+            </h3>
+            <p className="text-xs text-white/85 max-w-2xl leading-relaxed">
+              Explora todos los expedientes, programas de estudio y guías didácticas oficiales guardados en la carpeta central de Google Drive.
+            </p>
+          </div>
+          <a
+            href="https://drive.google.com/drive/folders/1I3YDntCZsQN1cV1CTXQ-m-9LZycANtAx?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white hover:bg-slate-100 text-blue-950 font-black px-6 py-3.5 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all flex-shrink-0 relative z-10 cursor-pointer"
+          >
+            <span>Abrir Carpeta en Google Drive</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
         </div>
 
         {/* Search and Filters Bar */}
@@ -94,7 +123,7 @@ export default function AcademicLibrary({ setPublicTab, onLoginClick, isEmbedded
             <Search className="absolute left-4 top-3.5 w-4 h-4 text-slate-400" />
             <input 
               type="text" 
-              placeholder="Buscar documentos por nombre, palabras clave o grado (ej. Pre-Kinder, 5° Grado, AOA...)"
+              placeholder="Buscar programas por grado (ej. 6° Grado, Pre-Kinder, A2.1, CEFR...)"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-11 pr-4 py-3 rounded-2xl glass-input outline-none text-xs"
@@ -139,87 +168,77 @@ export default function AcademicLibrary({ setPublicTab, onLoginClick, isEmbedded
           </div>
         </div>
 
-        {/* Direct Google Drive Folder Banner */}
-        <div className="glass-panel p-6 rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-700 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden my-4 group">
-          <div className="absolute -right-16 -bottom-16 w-48 h-48 bg-white/10 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
-          <div className="space-y-2 relative z-10">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white border border-white/30 text-[9px] font-black uppercase tracking-widest">
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>Carpeta Oficial de Documentos 2026</span>
-            </div>
-            <h3 className="text-xl font-extrabold font-display leading-tight">
-              Acceso Directo a la Carpeta de Google Drive (Pre-K a 12º)
-            </h3>
-            <p className="text-xs text-white/85 max-w-2xl leading-relaxed">
-              Explora y descarga la colección completa de expedientes, dosificaciones trimestrales y programas didácticos oficiales directamente en Google Drive.
-            </p>
-          </div>
-          <a
-            href="https://drive.google.com/drive/folders/1I3YDntCZsQN1cV1CTXQ-m-9LZycANtAx?usp=drive_link"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white hover:bg-slate-100 text-emerald-950 font-black px-6 py-3.5 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all flex-shrink-0 relative z-10 cursor-pointer"
-          >
-            <span>Abrir Carpeta en Google Drive</span>
-            <ExternalLink className="w-4 h-4" />
-          </a>
-        </div>
-
-        {/* Resources Grid */}
+        {/* Resources Grid of Visual Covers */}
         {filteredResources.length === 0 ? (
           <div className="glass-panel p-12 rounded-3xl text-center border border-dashed border-slate-300 dark:border-slate-800 space-y-2">
             <BookOpen className="w-8 h-8 text-slate-400 mx-auto" />
-            <h4 className="font-bold text-sm text-slate-700 dark:text-slate-300">No se encontraron documentos</h4>
-            <p className="text-xs text-slate-500">Intenta ajustando los filtros de grado o los términos de búsqueda.</p>
+            <h4 className="font-bold text-sm text-slate-700 dark:text-slate-300">No se encontraron programas</h4>
+            <p className="text-xs text-slate-500">Intenta cambiando el filtro de grado o la palabra clave.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredResources.map((res) => (
               <div 
                 key={res.id}
-                className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 hover:border-blue-500/30 hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-5"
+                className="glass-panel overflow-hidden group hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
               >
-                {/* Header */}
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-[8px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
-                      {res.category}
+                {/* Visual Cover Header (Designed like Official Curriculum Books) */}
+                <div className={`relative p-6 bg-gradient-to-br ${res.coverStyle || 'from-blue-600 to-indigo-800'} text-white flex flex-col justify-between min-h-[220px] overflow-hidden`}>
+                  {/* Decorative Background Shapes */}
+                  <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none group-hover:scale-150 transition-transform duration-500"></div>
+                  <div className="absolute top-2 right-2 opacity-15 pointer-events-none">
+                    <School className="w-28 h-28" />
+                  </div>
+
+                  {/* Badges Top */}
+                  <div className="relative z-10 flex items-center justify-between gap-2">
+                    <span className="bg-white/20 backdrop-blur-sm text-white border border-white/30 text-[8px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                      <Bookmark className="w-3 h-3 text-amber-300" /> MEDUCA OFICIAL
                     </span>
-                    <span className="text-[8px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                    <span className="bg-amber-400 text-slate-950 text-[9px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-md">
+                      {res.levelCEFR || 'MCER'}
+                    </span>
+                  </div>
+
+                  {/* Title & Grade in Book Cover Style */}
+                  <div className="relative z-10 space-y-1 my-4">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-blue-200 block">
                       {res.grade}
                     </span>
+                    <h3 className="font-extrabold font-display text-xl sm:text-2xl leading-tight tracking-tight drop-shadow-sm">
+                      English Curriculum
+                    </h3>
+                    <p className="text-[11px] text-white/90 font-bold tracking-wide">
+                      Based on Competency Standards
+                    </p>
                   </div>
 
-                  <h3 className="font-extrabold text-base text-slate-850 dark:text-slate-100 leading-tight">
-                    {res.title}
-                  </h3>
-
-                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                    {res.description}
-                  </p>
+                  {/* Bottom grade tag */}
+                  <div className="relative z-10 flex items-center justify-between border-t border-white/20 pt-2 text-[9px] font-extrabold uppercase tracking-wider text-white/80">
+                    <span>PANAMÁ 2026</span>
+                    <span className="bg-white/15 px-2 py-0.5 rounded-md">{res.grade}</span>
+                  </div>
                 </div>
 
-                {/* Footer details & Action button */}
-                <div className="pt-4 border-t border-slate-200/60 dark:border-slate-800/40 flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold">
-                    <span className="flex items-center gap-1">
-                      <HardDrive className="w-3.5 h-3.5 text-slate-400" />
-                      {res.fileSize}
-                    </span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1">
-                      <Download className="w-3.5 h-3.5 text-slate-400" />
-                      {res.downloadsCount} descargas
-                    </span>
-                  </div>
+                {/* Card Description & Action Body */}
+                <div className="p-6 flex-grow flex flex-col justify-between space-y-5">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                    {res.description}
+                  </p>
 
-                  <button
-                    onClick={() => handleDownload(res)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition cursor-pointer"
-                  >
-                    <span>Descargar PDF</span>
-                    <Download className="w-3.5 h-3.5" />
-                  </button>
+                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                      {res.grade === '6° Grado' ? 'PDF Directo Drive' : 'Acceso Drive'}
+                    </div>
+
+                    <button
+                      onClick={() => handleDownload(res)}
+                      className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black px-5 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-md shadow-blue-500/20 active:scale-95 transition cursor-pointer"
+                    >
+                      <span>Abrir PDF de {res.grade}</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
 
               </div>
