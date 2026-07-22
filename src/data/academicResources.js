@@ -1,5 +1,5 @@
 export const academicCategories = [
-  'Todos',
+'Todos',
   'Programas Oficiales MEDUCA',
   'Guías de Inglés AOA',
   'Estándares MCER / CEFR',

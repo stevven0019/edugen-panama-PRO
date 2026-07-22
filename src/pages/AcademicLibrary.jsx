@@ -139,6 +139,32 @@ export default function AcademicLibrary({ setPublicTab, onLoginClick, isEmbedded
           </div>
         </div>
 
+        {/* Direct Google Drive Folder Banner */}
+        <div className="glass-panel p-6 rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-700 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden my-4 group">
+          <div className="absolute -right-16 -bottom-16 w-48 h-48 bg-white/10 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
+          <div className="space-y-2 relative z-10">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white border border-white/30 text-[9px] font-black uppercase tracking-widest">
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Carpeta Oficial de Documentos 2026</span>
+            </div>
+            <h3 className="text-xl font-extrabold font-display leading-tight">
+              Acceso Directo a la Carpeta de Google Drive (Pre-K a 12º)
+            </h3>
+            <p className="text-xs text-white/85 max-w-2xl leading-relaxed">
+              Explora y descarga la colección completa de expedientes, dosificaciones trimestrales y programas didácticos oficiales directamente en Google Drive.
+            </p>
+          </div>
+          <a
+            href="https://drive.google.com/drive/folders/1I3YDntCZsQN1cV1CTXQ-m-9LZycANtAx?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white hover:bg-slate-100 text-emerald-950 font-black px-6 py-3.5 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all flex-shrink-0 relative z-10 cursor-pointer"
+          >
+            <span>Abrir Carpeta en Google Drive</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </div>
+
         {/* Resources Grid */}
         {filteredResources.length === 0 ? (
           <div className="glass-panel p-12 rounded-3xl text-center border border-dashed border-slate-300 dark:border-slate-800 space-y-2">
