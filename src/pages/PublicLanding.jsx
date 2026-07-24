@@ -247,10 +247,91 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
         </div>
       </header>
 
+      {/* SECCIÓN: GUÍAS Y RECURSOS DESTACADOS PARA TEACHERS (AdSense Value Content) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 border-t border-b border-slate-200/40 dark:border-slate-800/20">
+        <div className="text-center space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/20 text-[10px] font-black uppercase tracking-widest">
+            <BookOpen className="w-3.5 h-3.5" />
+            <span>Guías Metodológicas Gratuitas para Docentes</span>
+          </div>
+          <h2 className="text-3xl font-extrabold font-display tracking-tight text-slate-850 dark:text-slate-100">
+            Materiales Curriculares Destacados
+          </h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
+            Descarga guías completas de planificación, inclusión, objetivos SMART y andamiaje bajo el Enfoque Orientado a la Acción.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            {
+              title: "A Guide for Integrating Technology for the English Curriculum",
+              desc: "Manual para integrar herramientas tecnológicas en las misiones AOA de inglés bajo estándares de competencias.",
+              cover: "/images/guide-technology.png",
+              url: "https://drive.google.com/file/d/1Si7XXHaCaIDlLbL7m-9CgQLWioNXu6_D/view?usp=drive_link"
+            },
+            {
+              title: "Accommodations for Students with Diverse Learning Needs",
+              desc: "Estrategias de inclusión, adecuaciones y adaptaciones curriculares específicas (DLN) para la clase de inglés.",
+              cover: "/images/guide-accommodations.png",
+              url: "https://drive.google.com/file/d/1N9QEzcD_Ij1ZFu58OXDmhn21IQEtbPsa/view?usp=drive_link"
+            },
+            {
+              title: "Planning, Timing, and Task Scaffolding in Action-oriented Classroom",
+              desc: "Andamiaje didáctico, organización de tiempos y progresión de misiones en clases basadas en tareas reales.",
+              cover: "/images/guide-scaffolding.png",
+              url: "https://drive.google.com/file/d/1TRJPe-3b2EwHVA1fFXOeei1qPizGtt4x/view?usp=drive_link"
+            },
+            {
+              title: "Teacher's Guide to Writing Specific (SMART) Objectives",
+              desc: "Cómo redactar objetivos SMART y criterios de evaluación claros alineados a los programas de MEDUCA.",
+              cover: "/images/guide-smart-objectives.png",
+              url: "https://drive.google.com/file/d/1uqzsjLlU85FaZ4g-jzpmlxN7wy4fhvBy/view?usp=drive_link"
+            }
+          ].map((guide, idx) => (
+            <div 
+              key={idx}
+              className="glass-panel rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-blue-500/20 hover:scale-[1.02] transition-all duration-300 overflow-hidden flex flex-col justify-between"
+            >
+              <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-slate-200/60 dark:border-slate-800/40 bg-slate-100 dark:bg-slate-950 flex items-center justify-center">
+                <img 
+                  src={guide.cover} 
+                  alt={guide.title}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
+              </div>
+              <div className="p-4 flex-grow flex flex-col justify-between">
+                <div className="space-y-2">
+                  <h4 className="font-extrabold text-[11px] text-slate-800 dark:text-slate-100 leading-snug tracking-tight line-clamp-2 min-h-[2.5rem]">
+                    {guide.title}
+                  </h4>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-450 leading-relaxed line-clamp-3">
+                    {guide.desc}
+                  </p>
+                </div>
+                <a 
+                  href={guide.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-[10px] flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-all"
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>Descargar Recurso</span>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Ad Placement */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <AdBanner type="footer" isPremium={false} />
       </div>
+
 
       {/* Product Features Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-12">
