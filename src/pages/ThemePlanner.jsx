@@ -394,7 +394,24 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
       databaseService.decrementDownloads(user.uid);
       onTriggerAlert(`Descarga iniciada. Te quedan ${downloadsLeft - 1} descargas gratuitas de tus generaciones.`, "success");
     }
-    const blob = new Blob(['\ufeff', generatedHtml], { type: 'application/msword' });
+    // Word repeats table header groups on every page. Keep the institutional
+    // heading in the document body, without changing other tables' headings.
+    const exportDocument = new DOMParser().parseFromString(generatedHtml, 'text/html');
+    exportDocument.querySelectorAll('thead').forEach((header) => {
+      if (!/MINISTRY\s+OF\s+EDUCATION/i.test(header.textContent)) return;
+
+      const body = exportDocument.createElement('tbody');
+      for (const attribute of header.attributes) {
+        body.setAttribute(attribute.name, attribute.value);
+      }
+      body.style.display = 'table-row-group';
+      while (header.firstChild) body.appendChild(header.firstChild);
+      body.querySelectorAll('tr').forEach((row) => {
+        row.setAttribute('style', `${row.getAttribute('style') || ''}; mso-table-header: no;`);
+      });
+      header.replaceWith(body);
+    });
+    const blob = new Blob(['\ufeff', exportDocument.documentElement.outerHTML], { type: 'application/msword' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
