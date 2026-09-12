@@ -19,6 +19,19 @@ import SkeletonLoader from '../components/SkeletonLoader';
 import EditorModal from '../components/EditorModal';
 import AdBanner from '../components/AdBanner';
 
+const curriculumOptions = [
+  { grade: 'Pre-K', label: 'Prekínder', filename: 'English_Curriculum_Prekinder.json' },
+  { grade: 'Kinder', label: 'Kínder', filename: 'English_Curriculum_Kinder.json' },
+  ...Array.from({ length: 12 }, (_, index) => {
+    const number = index + 1;
+    const suffix = number === 1 ? 'st' : number === 2 ? 'nd' : number === 3 ? 'rd' : 'th';
+    return {
+      grade: `${number}${suffix} Grade`,
+      label: `Grado ${number}`,
+      filename: `English_Curriculum_Grade_${number}.json`
+    };
+  })
+];
 export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium = false, downloadsLeft = 3, triggerInterstitialAd, triggerRewardedAd }) {
   const [region, setRegion] = useState('');
   const [school, setSchool] = useState('');
@@ -44,16 +57,8 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
   const handleGradeChange = (val) => {
     setGrade(val);
 
-    // Map grade string to number for filename
-    let fileSuffix = '4';
-    if (val === 'Pre-K') fileSuffix = 'PreK';
-    else if (val === 'Kinder') fileSuffix = 'Kinder';
-    else {
-      const match = val.match(/\d+/);
-      if (match) fileSuffix = match[0];
-    }
-
-    setPdfFilename(`English_Curriculum_Grade_${fileSuffix}.json`);
+    const curriculum = curriculumOptions.find(option => option.grade === val);
+    if (curriculum) setPdfFilename(curriculum.filename);
 
     // Auto-align CEFR levels based on MEDUCA Proficiency Bands image
     if (val === 'Pre-K') setCefr('Pre-A1.1');
@@ -458,15 +463,21 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
             {sourceType === 'preloaded' ? (
               <div className="space-y-2 mt-2">
                 <div className="space-y-1">
-                  <label className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase block">Archivo de Currículo (.json)</label>
-                  <input
-                    type="text"
-                    placeholder="English_Curriculum_Grade_5.json"
+                  <label htmlFor="theme-curriculum" className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase block">Currículo por grado</label>
+                  <select
+                    id="theme-curriculum"
                     value={pdfFilename}
-                    onChange={(e) => setPdfFilename(e.target.value)}
+                    onChange={(e) => {
+                      const curriculum = curriculumOptions.find(option => option.filename === e.target.value);
+                      if (curriculum) handleGradeChange(curriculum.grade);
+                    }}
                     className="w-full border border-slate-200 dark:border-slate-850 rounded-xl px-3 py-2 text-xs outline-none bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-emerald-500/20"
-                  />
-                  <p className="text-[8px] text-slate-400 dark:text-slate-500">Se buscará automáticamente en public/curriculums/</p>
+                  >
+                    {curriculumOptions.map(option => (
+                      <option key={option.filename} value={option.filename}>{option.label}</option>
+                    ))}
+                  </select>
+                  <p className="text-[8px] text-slate-400 dark:text-slate-500">Elige el grado con el que vas a trabajar.</p>
                 </div>
               </div>
             ) : (
