@@ -1987,6 +1987,9 @@ ${grammarStr}
 RECOMMENDED VOCABULARY:
 ${vocabStr}
 
+PRONUNCIATION AND PHONEMIC AWARENESS:
+${JSON.stringify(scenarioData.pronunciation || {})}
+
 PRAGMATIC COMPETENCES (Communicative Functions):
 ${pragmaticStr}
 
@@ -2001,7 +2004,11 @@ Fill ALL 6 sections of the Theme Planner:
 
 1. GENERAL INFORMATION — Use provided teacher, school, grade, CEFR, trimester, weeks
 2. STANDARDS & LEARNING OUTCOMES — Copy the focus skills and create specific standards (extracted from curriculum.js file)
-3. COMMUNICATIVE COMPETENCES — Copy the grammar, vocabulary, pragmatic & sociolinguistic elements ABOVE into the 3-column table, then add "project21stCentury" as the 4th column
+3. COMMUNICATIVE COMPETENCES — Fill a table with EXACTLY these four columns using the source data above, without generic placeholders:
+   - GRAMMATICAL COMPETENCES: Copy all RECOMMENDED GRAMMATICAL FEATURES, including examples.
+   - LEXICAL/SEMANTIC COMPETENCES: Copy all RECOMMENDED VOCABULARY grouped by category; include pronunciation and phonemic awareness when provided.
+   - PRAGMATIC/DISCURSIVE COMPETENCES: Copy PRAGMATIC COMPETENCES and SOCIOLINGUISTIC COMPETENCES.
+   - 21ST CENTURY PROJECT: Copy the selected project's title AND overview exactly. The supplied project already corresponds to Theme 1 (first project) or Theme 2 (second project). Do not choose a different project, summarize, or invent one. If absent, state that it is not specified in the curriculum.
 4. SPECIFIC OBJECTIVES — Generate SMART objectives for all 5 skills (Listening, Reading, Speaking, Writing, Mediation)
 5. MATERIALS & DIFFERENTIATION — List 8-10 materials and DLN strategies
 6. LEARNING SEQUENCE — Design 5 lessons (Listening, Reading, Speaking, Writing, Mediation focus). Ensure the activities, objectives, and resources for each lesson are strictly aligned with the specific focus skill of that lesson, the Grade Level (${grade}), and CEFR Level (${cefr}).

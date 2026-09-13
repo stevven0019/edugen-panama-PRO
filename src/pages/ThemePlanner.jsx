@@ -260,41 +260,48 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
           }
 
           // Normalize grammar
-          const rawGrammar = rawScenario.grammar || 
+          const rawGrammar = rawScenario.communicative_competences?.linguistic_competences?.recommended_grammatical_features || rawScenario.grammar ||
                              rawScenario.communicativeCompetences?.linguistic?.grammaticalFeatures ||
                              rawScenario.communicative_competences?.linguistic?.grammatical_features ||
                              rawScenario.communicative_competences?.grammatical_features || [];
           normalizedScenario.grammar = Array.isArray(rawGrammar) ? rawGrammar : [rawGrammar];
 
           // Normalize vocabulary
-          const rawVocab = rawScenario.vocabulary || 
+          const rawVocab = rawScenario.communicative_competences?.linguistic_competences?.recommended_vocabulary || rawScenario.vocabulary ||
                            rawScenario.communicativeCompetences?.linguistic?.vocabulary ||
                            rawScenario.communicative_competences?.linguistic?.vocabulary ||
                            rawScenario.communicative_competences?.vocabulary || {};
           normalizedScenario.vocabulary = rawVocab;
 
           // Normalize pragmatic
-          const rawPragmatic = rawScenario.pragmatic ||
+          const rawPragmatic = rawScenario.communicative_competences?.pragmatic_competences || rawScenario.pragmatic ||
                                rawScenario.communicativeCompetences?.pragmatic?.functions ||
                                rawScenario.communicative_competences?.pragmatic?.functions ||
                                (rawVocab && rawVocab.pragmatic_competences) || [];
           normalizedScenario.pragmatic = Array.isArray(rawPragmatic) ? rawPragmatic : [rawPragmatic];
 
           // Normalize sociolinguistic
-          const rawSocio = rawScenario.sociolinguistic ||
+          const rawSocio = rawScenario.communicative_competences?.sociolinguistic_competences || rawScenario.sociolinguistic ||
                            rawScenario.communicativeCompetences?.sociolinguistic?.elements ||
                            rawScenario.communicative_competences?.sociolinguistic?.elements ||
                            (rawVocab && rawVocab.sociolinguistic_competences) || [];
           normalizedScenario.sociolinguistic = Array.isArray(rawSocio) ? rawSocio : [rawSocio];
 
-          // Normalize project
-          const rawProject = rawScenario.project21stCentury ||
-                             rawScenario.communicativeCompetences?.linguistic?.project21stCentury ||
-                             rawScenario.twenty_first_century_project ||
-                             rawScenario.century_21_project_ideas || '';
-          normalizedScenario.project21stCentury = typeof rawProject === 'object' 
-            ? (rawProject.title || rawProject.name || JSON.stringify(rawProject)) 
-            : rawProject;
+          normalizedScenario.pronunciation = rawScenario.communicative_competences?.linguistic_competences?.pronunciation_and_phonemic_awareness || {};
+
+          // Select the corresponding project, preserving both title and overview.
+          const projects = rawScenario.assessment_ideas?.twenty_first_century_projects;
+          const legacyProject = rawScenario.project21stCentury ||
+                                rawScenario.communicativeCompetences?.linguistic?.project21stCentury ||
+                                rawScenario.twenty_first_century_project ||
+                                rawScenario.century_21_project_ideas || '';
+          const projectIndex = themeType === 'receptive' ? 0 : 1;
+          const rawProject = Array.isArray(projects)
+            ? projects[projectIndex]
+            : (Array.isArray(legacyProject) ? legacyProject[projectIndex] : legacyProject);
+          normalizedScenario.project21stCentury = rawProject && typeof rawProject === 'object'
+            ? [rawProject.title || rawProject.name, rawProject.overview || rawProject.description].filter(Boolean).join('\n')
+            : (rawProject || 'Not specified in the selected curriculum for this theme.');
 
           scenarioData = normalizedScenario;
 
