@@ -19,6 +19,7 @@ import SkeletonLoader from '../components/SkeletonLoader';
 import EditorModal from '../components/EditorModal';
 import AdBanner from '../components/AdBanner';
 import { buildAoaFields, curriculumFilename, lessonSkills } from '../services/aoaCurriculum';
+import { finishAoaPlanner } from '../services/aoaOutput';
 
 export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = false, downloadsLeft = 3, triggerInterstitialAd, triggerRewardedAd }) {
   const [selectedSkills, setSelectedSkills] = useState(['Listening']);
@@ -511,7 +512,8 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
       };
 
       try {
-        const output = await generateCurriculumContent(type, vars);
+        const response = await generateCurriculumContent(type, vars);
+        const output = type === 'planner' ? finishAoaPlanner(response) : response;
         setGeneratedHtml(output);
 
         // Decrement credits securely
@@ -587,7 +589,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
       databaseService.decrementDownloads(user.uid);
       onTriggerAlert(`Descarga iniciada. Te quedan ${downloadsLeft - 1} descargas gratuitas de tus generaciones.`, "success");
     }
-    let contentToDownload = generatedHtml;
+    let contentToDownload = activeGenType === 'planner' ? finishAoaPlanner(generatedHtml) : generatedHtml;
     if (activeGenType === 'listeningscript' && isJsonString(generatedHtml)) {
       contentToDownload = convertScriptJsonToHtml(generatedHtml);
     }

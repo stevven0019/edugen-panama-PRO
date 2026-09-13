@@ -1319,11 +1319,11 @@ function getPromptTemplate(type, vars) {
       • Teacher reflection: What worked? What to adjust for next lesson?
       • Connection to next lesson in the theme sequence.
 
-    ## SECTION 4 — COMMENTS AND OBSERVATIONS FOOTER
-    A dashed-border box divided into 3 sub-sections:
-      📝 Homework: (Assign meaningful, skill-reinforcing homework related to ${theme}.)
-      📊 Formative Assessment of Learning: (Describe the evidence collected this lesson.)
-      💬 Teacher's Comments / Observations: (Open space for teacher notes.)
+    END OF DOCUMENT: Finish immediately after the complete STAGE 6 reflection row.
+    Generate exactly ONE filled lesson planner for the requested lesson.
+    The lesson identification table appears ONLY ONCE, before Stage 1.
+    Do not append another identification table, blank template, additional lesson, footer, or any content after Stage 6.
+    Close the HTML table and its containers and stop.
 
     ════════════════════════════════════════
     QUALITY STANDARDS:
