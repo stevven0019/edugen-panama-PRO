@@ -18,6 +18,7 @@ import { databaseService } from '../services/firebase';
 import SkeletonLoader from '../components/SkeletonLoader';
 import EditorModal from '../components/EditorModal';
 import AdBanner from '../components/AdBanner';
+import { normalizeThemeScenario } from '../services/themeCurriculum';
 
 const curriculumOptions = [
   { grade: 'Pre-K', label: 'Prekínder', filename: 'English_Curriculum_Prekinder.json' },
@@ -208,15 +209,11 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
       if (sourceType === 'preloaded') {
         setLoading(true);
         try {
-          let response = await fetch(`/curriculums/${pdfFilename}`);
+          const response = await fetch(`/curriculums/${pdfFilename}`);
           if (!response.ok) {
-            console.warn(`File ${pdfFilename} not found, trying fallback to English_Curriculum_Grade_4.json`);
-            response = await fetch(`/curriculums/English_Curriculum_Grade_4.json`);
-            if (!response.ok) {
-              throw new Error(`No se pudo encontrar el archivo "${pdfFilename}" ni el archivo de respaldo "English_Curriculum_Grade_4.json" en public/curriculums/`);
-            }
+            throw new Error(`No se pudo cargar el currículo seleccionado para ${grade}. Intenta nuevamente.`);
           }
-          
+
           const curriculumJson = await response.json();
           const rawScenario = curriculumJson.scenarios?.find(s => {
             const num = s.scenarioNum || s.scenario_number || s.id;
@@ -227,92 +224,11 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
             throw new Error(`No se encontró el escenario ${scenarioNum} en el currículo de grado.`);
           }
 
-          // Build a normalized object to support all property schema variations
-          const normalizedScenario = {
-            ...rawScenario,
-            scenarioNum: rawScenario.scenarioNum || rawScenario.scenario_number || rawScenario.id || parseInt(scenarioNum, 10),
-            scenarioName: rawScenario.scenarioName || rawScenario.scenario_title || rawScenario.title || '',
-          };
-
-          // Extract theme1 and theme2
-          if (rawScenario.theme1) {
-            normalizedScenario.theme1 = rawScenario.theme1;
-            normalizedScenario.theme2 = rawScenario.theme2 || rawScenario.theme1;
-          } else if (Array.isArray(rawScenario.themes)) {
-            if (rawScenario.themes.length > 0) {
-              const firstThemeObj = rawScenario.themes[0];
-              const secondThemeObj = rawScenario.themes[1] || firstThemeObj;
-              
-              normalizedScenario.theme1 = typeof firstThemeObj === 'string' 
-                ? firstThemeObj 
-                : (firstThemeObj.theme_title || firstThemeObj.title || '');
-                
-              normalizedScenario.theme2 = typeof secondThemeObj === 'string' 
-                ? secondThemeObj 
-                : (secondThemeObj.theme_title || secondThemeObj.title || '');
-            } else {
-              normalizedScenario.theme1 = '';
-              normalizedScenario.theme2 = '';
-            }
-          } else {
-            normalizedScenario.theme1 = '';
-            normalizedScenario.theme2 = '';
-          }
-
-          // Normalize grammar
-          const rawGrammar = rawScenario.communicative_competences?.linguistic_competences?.recommended_grammatical_features || rawScenario.grammar ||
-                             rawScenario.communicativeCompetences?.linguistic?.grammaticalFeatures ||
-                             rawScenario.communicative_competences?.linguistic?.grammatical_features ||
-                             rawScenario.communicative_competences?.grammatical_features || [];
-          normalizedScenario.grammar = Array.isArray(rawGrammar) ? rawGrammar : [rawGrammar];
-
-          // Normalize vocabulary
-          const rawVocab = rawScenario.communicative_competences?.linguistic_competences?.recommended_vocabulary || rawScenario.vocabulary ||
-                           rawScenario.communicativeCompetences?.linguistic?.vocabulary ||
-                           rawScenario.communicative_competences?.linguistic?.vocabulary ||
-                           rawScenario.communicative_competences?.vocabulary || {};
-          normalizedScenario.vocabulary = rawVocab;
-
-          // Normalize pragmatic
-          const rawPragmatic = rawScenario.communicative_competences?.pragmatic_competences || rawScenario.pragmatic ||
-                               rawScenario.communicativeCompetences?.pragmatic?.functions ||
-                               rawScenario.communicative_competences?.pragmatic?.functions ||
-                               (rawVocab && rawVocab.pragmatic_competences) || [];
-          normalizedScenario.pragmatic = Array.isArray(rawPragmatic) ? rawPragmatic : [rawPragmatic];
-
-          // Normalize sociolinguistic
-          const rawSocio = rawScenario.communicative_competences?.sociolinguistic_competences || rawScenario.sociolinguistic ||
-                           rawScenario.communicativeCompetences?.sociolinguistic?.elements ||
-                           rawScenario.communicative_competences?.sociolinguistic?.elements ||
-                           (rawVocab && rawVocab.sociolinguistic_competences) || [];
-          normalizedScenario.sociolinguistic = Array.isArray(rawSocio) ? rawSocio : [rawSocio];
-
-          normalizedScenario.pronunciation = rawScenario.communicative_competences?.linguistic_competences?.pronunciation_and_phonemic_awareness || {};
-
-          // Select the corresponding project, preserving both title and overview.
-          const projects = rawScenario.assessment_ideas?.twenty_first_century_projects;
-          const legacyProject = rawScenario.project21stCentury ||
-                                rawScenario.communicativeCompetences?.linguistic?.project21stCentury ||
-                                rawScenario.twenty_first_century_project ||
-                                rawScenario.century_21_project_ideas || '';
-          const projectIndex = themeType === 'receptive' ? 0 : 1;
-          const rawProject = Array.isArray(projects)
-            ? projects[projectIndex]
-            : (Array.isArray(legacyProject) ? legacyProject[projectIndex] : legacyProject);
-          normalizedScenario.project21stCentury = rawProject && typeof rawProject === 'object'
-            ? [rawProject.title || rawProject.name, rawProject.overview || rawProject.description].filter(Boolean).join('\n')
-            : (rawProject || 'Not specified in the selected curriculum for this theme.');
-
-          scenarioData = normalizedScenario;
-
-          if (!finalScenario) {
-            finalScenario = scenarioData.scenarioName;
-            setScenario(scenarioData.scenarioName);
-          }
-          if (!finalTheme) {
-            finalTheme = themeType === 'receptive' ? scenarioData.theme1 : scenarioData.theme2;
-            setTheme(finalTheme);
-          }
+          scenarioData = normalizeThemeScenario(rawScenario, themeType);
+          finalScenario = scenarioData.scenarioName;
+          finalTheme = themeType === 'receptive' ? scenarioData.theme1 : scenarioData.theme2;
+          setScenario(finalScenario);
+          setTheme(finalTheme);
 
           finalFile = {
             base64Data: '',
@@ -353,7 +269,7 @@ export default function ThemePlanner({ user, credits, onTriggerAlert, isPremium 
 
         const newPlan = {
           id: `tp_${Date.now()}`,
-          title: `Theme Planner #${plannerNum} - ${theme}`,
+          title: `Theme Planner #${plannerNum} - ${finalTheme}`,
           type: 'theme_planner',
           grade: grade,
           content: output,

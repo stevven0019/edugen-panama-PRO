@@ -1952,19 +1952,19 @@ REGLAS CRÍTICAS DE CALIDAD:
       : (scenarioData.theme2 || scenarioData.themeName);
 
     const grammarList = scenarioData.grammar || scenarioData.communicativeCompetences?.linguistic?.grammaticalFeatures || [];
-    const grammarStr = grammarList.join('\n') || 'Grammar structures relevant to the theme';
+    const grammarStr = grammarList.join('\n') || 'Not specified in the selected curriculum.';
 
     const vocabularyObj = scenarioData.vocabulary || scenarioData.communicativeCompetences?.linguistic?.vocabulary || {};
     const vocabStr = Object.entries(vocabularyObj).map(([k, v]) => {
       const items = Array.isArray(v) ? v.join(', ') : (typeof v === 'string' ? v : JSON.stringify(v));
       return `${k}: ${items}`;
-    }).join('\n') || 'Vocabulary from the theme';
+    }).join('\n') || 'Not specified in the selected curriculum.';
 
     const pragmaticList = scenarioData.pragmatic || scenarioData.communicativeCompetences?.pragmatic?.functions || [];
-    const pragmaticStr = pragmaticList.join('\n') || 'Communicative functions from the theme';
+    const pragmaticStr = pragmaticList.join('\n') || 'Not specified in the selected curriculum.';
 
     const socioList = scenarioData.sociolinguistic || scenarioData.communicativeCompetences?.sociolinguistic?.elements || [];
-    const socioStr = socioList.join('\n') || 'Sociolinguistic elements from the theme';
+    const socioStr = socioList.join('\n') || 'Not specified in the selected curriculum.';
 
     const project21st = scenarioData.project21stCentury || scenarioData.communicativeCompetences?.linguistic?.project21stCentury || '21st Century Project relevant to the theme';
 
@@ -1974,9 +1974,10 @@ REGLAS CRÍTICAS DE CALIDAD:
 Your task: Generate a COMPLETE Theme Planner following the official MEDUCA Panama template, using the curriculum data provided below.
 
 CRITICAL: Respond ONLY with HTML. No markdown, no preamble. Start directly with <div>.
-CRITICAL: Copy grammar, vocabulary, and language elements EXACTLY from the curriculum data below. Do NOT invent.
+CRITICAL: Copy grammar, vocabulary, and language elements EXACTLY from the curriculum data below. Do NOT invent. If a curriculum field is marked as not specified, retain that statement; do not fill it using another grade or general knowledge.
 
 ════════ CURRICULUM DATA FOR SCENARIO ${scenarioNum} ════════
+SELECTED GRADE: ${grade}. All activities and language demands must match this grade and its selected curriculum. Never substitute another grade.
 SCENARIO: ${scenarioData.scenarioName}
 THEME (${isReceptive ? 'Theme 1 - Receptive' : 'Theme 2 - Interactive'}): ${themeName}
 FOCUS TYPE: ${focusType}
@@ -1986,6 +1987,9 @@ ${grammarStr}
 
 RECOMMENDED VOCABULARY:
 ${vocabStr}
+
+SELECTED THEME STANDARDS (when available):
+${JSON.stringify(scenarioData.selectedThemeStandards || [])}
 
 PRONUNCIATION AND PHONEMIC AWARENESS:
 ${JSON.stringify(scenarioData.pronunciation || {})}
