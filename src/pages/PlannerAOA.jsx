@@ -18,9 +18,10 @@ import { databaseService } from '../services/firebase';
 import SkeletonLoader from '../components/SkeletonLoader';
 import EditorModal from '../components/EditorModal';
 import AdBanner from '../components/AdBanner';
+import { buildAoaFields, curriculumFilename, lessonSkills } from '../services/aoaCurriculum';
 
 export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = false, downloadsLeft = 3, triggerInterstitialAd, triggerRewardedAd }) {
-  const [selectedSkills, setSelectedSkills] = useState([]);
+  const [selectedSkills, setSelectedSkills] = useState(['Listening']);
   const [grade, setGrade] = useState('5th Grade');
   const [lessonNum, setLessonNum] = useState(1);
   const [scenario, setScenario] = useState('');
@@ -29,6 +30,40 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
   const [specificObjective, setSpecificObjective] = useState('');
   const [learningOutcome, setLearningOutcome] = useState('');
   const [project21st, setProject21st] = useState('');
+
+  const [curriculumState, setCurriculumState] = useState({ grade: '', scenarios: [], error: '' });
+  const [scenarioIndex, setScenarioIndex] = useState(0);
+  const [themeType, setThemeType] = useState('receptive');
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const curriculumReady = curriculumState.grade === grade && curriculumState.scenarios.length > 0;
+  const selectedScenario = curriculumReady ? curriculumState.scenarios[scenarioIndex] : null;
+
+  React.useEffect(() => {
+    const controller = new AbortController();
+    fetch('/curriculums/' + curriculumFilename(grade), { signal: controller.signal })
+      .then(response => {
+        if (!response.ok) throw new Error('No se pudo cargar el currículo de este grado. Recarga la página para reintentar.');
+        return response.json();
+      })
+      .then(data => {
+        if (!Array.isArray(data.scenarios) || !data.scenarios.length) throw new Error('Este currículo no contiene escenarios.');
+        if (!controller.signal.aborted) setCurriculumState({ grade, scenarios: data.scenarios, error: '' });
+      })
+      .catch(error => {
+        if (!controller.signal.aborted) setCurriculumState({ grade, scenarios: [], error: error.message });
+      });
+    return () => controller.abort();
+  }, [grade]);
+
+  React.useEffect(() => {
+    const fields = selectedScenario ? buildAoaFields(selectedScenario, themeType, selectedSkills) : {};
+    setScenario(fields.scenario || '');
+    setTheme(fields.theme || '');
+    setCommunicativeComp(fields.communicativeComp || '');
+    setSpecificObjective(fields.specificObjective || '');
+    setLearningOutcome(fields.learningOutcome || '');
+    setProject21st(fields.project21st || '');
+  }, [selectedScenario, themeType, selectedSkills]);
 
   // Generation Output states
   const [loading, setLoading] = useState(false);
@@ -420,8 +455,13 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
   };
 
   const handleGenerate = async (type) => {
+    if (!curriculumReady || !selectedScenario) {
+      onTriggerAlert('Espera a que cargue el currículo y selecciona un escenario.', 'info');
+      return;
+    }
     if (!theme || !specificObjective || selectedSkills.length === 0) {
-      onTriggerAlert("Por favor completa los campos obligatorios: Habilidades, Tema/Contenido y Objetivo Específico.", "info");
+      setDetailsOpen(true);
+      onTriggerAlert("Selecciona una habilidad y completa el objetivo en los detalles si falta en el currículo.", "info");
       return;
     }
 
@@ -467,7 +507,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
         objective: specificObjective,
         outcome: learningOutcome,
         communicativeComp,
-        project21st
+        project21st: lessonNum === 5 ? project21st : ''
       };
 
       try {
@@ -566,6 +606,40 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
       {/* Form Aside Panel */}
       <aside className="lg:col-span-4 space-y-4">
         <div className="glass-panel p-5 rounded-3xl bg-white/60 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800 space-y-5">
+          <div className="space-y-3">
+            <label className="block text-xs">Grado
+              <select value={grade} disabled={loading} onChange={e => { setGrade(e.target.value); setScenarioIndex(0); setThemeType('receptive'); }} className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 text-xs bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300">
+                {['Pre-K', 'Kinder', '1st Grade', '2nd Grade', '3rd Grade', '4th Grade', '5th Grade', '6th Grade', '7th Grade', '8th Grade', '9th Grade', '10th Grade', '11th Grade', '12th Grade'].map(g => <option key={g} value={g}>{g}</option>)}
+              </select>
+            </label>
+            <label className="block text-xs">Escenario
+              <select value={scenarioIndex} disabled={!curriculumReady || loading} onChange={e => { setScenarioIndex(Number(e.target.value)); setThemeType('receptive'); }} className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 text-xs bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300">
+                {!curriculumReady && <option value={0}>{curriculumState.grade !== grade ? 'Cargando currículo…' : 'Currículo no disponible'}</option>}
+                {curriculumReady && curriculumState.scenarios.map((item, index) => <option key={index} value={index}>{index + 1}. {item.scenarioName || item.scenario_title || item.title}</option>)}
+              </select>
+            </label>
+            <label className="block text-xs">Tema
+              <select value={themeType} disabled={!selectedScenario || loading} onChange={e => setThemeType(e.target.value)} className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 text-xs bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300">
+                {['receptive', 'interactive'].map((type, index) => <option key={type} value={type} disabled={!!selectedScenario && !buildAoaFields(selectedScenario, type, []).theme}>Theme {index + 1}{selectedScenario ? ' — ' + buildAoaFields(selectedScenario, type, []).theme : ''}</option>)}
+              </select>
+            </label>
+            <label className="block text-xs">Lección
+              <select value={lessonNum} disabled={loading} onChange={e => { const number = Number(e.target.value); setLessonNum(number); setSelectedSkills([lessonSkills[number - 1]]); }} className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 text-xs bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300">
+                {lessonSkills.map((skill, index) => <option key={skill} value={index + 1}>{index + 1} — {skill}</option>)}
+              </select>
+            </label>
+            <p className="text-xs text-slate-500">Los datos se completan con el currículo seleccionado. Puedes ajustar la habilidad y los detalles antes de generar.</p>
+            {curriculumState.grade === grade && curriculumState.error && <p role="alert" className="text-xs text-red-500">{curriculumState.error}</p>}
+            {selectedScenario && (!theme || !specificObjective || !learningOutcome || !communicativeComp) && <p role="status" className="text-xs text-amber-600">Este currículo tiene datos incompletos para la selección. Revisa «Ver o ajustar detalles».</p>}
+          </div>
+          <details open={detailsOpen} onToggle={e => setDetailsOpen(e.currentTarget.open)} className="space-y-4">
+            <summary className="cursor-pointer text-sm font-bold">Ver o ajustar detalles</summary>
+            <label className="block text-xs">Escenario
+              <input value={scenario} onChange={e => setScenario(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 px-3 py-2.5 text-xs" />
+            </label>
+            <label className="block text-xs">Tema / Contenido
+              <input value={theme} onChange={e => setTheme(e.target.value)} className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 px-3 py-2.5 text-xs" />
+            </label>
           {/* Target Skills Focus */}
           <div className="space-y-2">
             <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest block">
@@ -590,50 +664,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
             </div>
           </div>
 
-          {/* Grade & Lesson */}
-          <div className="grid grid-cols-2 gap-3">
-            <div className="space-y-1">
-              <label className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">Grado</label>
-              <select 
-                value={grade} 
-                onChange={(e) => setGrade(e.target.value)}
-                className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 text-xs bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
-              >
-                {['Pre-K', 'Kinder', '1st Grade', '2nd Grade', '3rd Grade', '4th Grade', '5th Grade', '6th Grade', '7th Grade', '8th Grade', '9th Grade', '10th Grade', '11th Grade', '12th Grade'].map(g => (
-                  <option key={g} value={g}>{g}</option>
-                ))}
-              </select>
-            </div>
-            <div className="space-y-1">
-              <label className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">Lección #</label>
-              <input 
-                type="number" 
-                value={lessonNum} 
-                min="1" 
-                max="5"
-                onChange={(e) => setLessonNum(parseInt(e.target.value) || 1)}
-                className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 text-xs bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300 focus:outline-none"
-              />
-            </div>
-          </div>
-
-          {/* Scenario & Theme */}
           <div className="space-y-2.5">
-            <label className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase block">Contexto & Contenido</label>
-            <input 
-              type="text" 
-              placeholder="Escenario (Ej: Planning a party)" 
-              value={scenario}
-              onChange={(e) => setScenario(e.target.value)}
-              className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 text-xs outline-none bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-blue-500/20"
-            />
-            <input 
-              type="text" 
-              placeholder="Tema / Contenido * (Ej: Food and Drinks)" 
-              value={theme}
-              onChange={(e) => setTheme(e.target.value)}
-              className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 text-xs outline-none bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300 focus:ring-2 focus:ring-blue-500/20"
-            />
             <textarea 
               rows="2" 
               placeholder="Competencias comunicativas (Linguistic, Pragmatic...)" 
@@ -678,13 +709,14 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
               className="w-full border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2.5 text-xs bg-slate-50 dark:bg-slate-950/40 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
             />
           </div>
+          </details>
         </div>
 
         {/* Action Triggers */}
         <div className="flex flex-col gap-2">
           <button 
             onClick={() => handleGenerate('planner')} 
-            disabled={loading}
+            disabled={loading || !curriculumReady}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-2xl font-bold hover:scale-[1.01] active:scale-[0.99] transition shadow-lg shadow-blue-500/10 flex items-center justify-center gap-2 text-xs"
           >
             <BookOpen className="w-4 h-4" /> GENERAR PLANNER (ENG)
@@ -692,7 +724,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
           
           <button 
             onClick={() => handleGenerate('delivery')} 
-            disabled={loading}
+            disabled={loading || !curriculumReady}
             className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-2xl font-bold hover:scale-[1.01] active:scale-[0.99] transition shadow-lg shadow-emerald-500/10 flex items-center justify-center gap-2 text-xs"
           >
             <Sparkles className="w-4 h-4" /> LESSON DELIVERY (ESP)
@@ -700,7 +732,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
           
           <button 
             onClick={() => handleGenerate('resources')} 
-            disabled={loading}
+            disabled={loading || !curriculumReady}
             className="w-full bg-violet-600 hover:bg-violet-700 text-white py-3 rounded-2xl font-bold hover:scale-[1.01] active:scale-[0.99] transition shadow-lg shadow-violet-500/10 flex items-center justify-center gap-2 text-xs"
           >
             <Sparkles className="w-4 h-4" /> RECURSOS & RÚBRICA
@@ -708,7 +740,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
 
           <button 
             onClick={() => handleGenerate('listeningscript')} 
-            disabled={loading}
+            disabled={loading || !curriculumReady}
             className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-2xl font-bold hover:scale-[1.01] active:scale-[0.99] transition shadow-lg shadow-indigo-500/10 flex items-center justify-center gap-2 text-xs"
           >
             <Volume2 className="w-4 h-4" /> 🎧 SCRIPT A AUDIO
