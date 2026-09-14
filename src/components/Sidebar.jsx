@@ -14,7 +14,7 @@ import {
   ShieldCheck
 } from 'lucide-react';
 
-export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, showPWAInstallBtn = false, onPWAInstall, isAdmin = false }) {
+export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, showPWAInstallBtn = false, onPWAInstall, isAdmin = false, pendingPaymentCount = 0 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -150,6 +150,7 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
                 >
                   <ShieldCheck className="w-5 h-5" />
                   <span>Administración</span>
+                  {pendingPaymentCount > 0 && <span aria-label={pendingPaymentCount + " pagos pendientes"} className="rounded-full bg-white text-rose-600 px-2 py-0.5 text-xs font-black">{pendingPaymentCount}</span>}
                 </button>
               </>
             )}

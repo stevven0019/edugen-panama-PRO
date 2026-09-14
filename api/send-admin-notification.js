@@ -13,6 +13,12 @@ export default async function handler(req, res) {
     return;
   }
 
+  if (req.method === 'GET') {
+    res.setHeader('Cache-Control', 'no-store');
+    const resend = Boolean(process.env.RESEND_API_KEY || process.env.VITE_RESEND_API_KEY);
+    const smtp = Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
+    return res.status(200).json({ configured: resend || smtp, provider: resend ? 'resend' : smtp ? 'smtp' : null });
+  }
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -308,7 +314,7 @@ export default async function handler(req, res) {
           'Authorization': `Bearer ${resendApiKey}`
         },
         body: JSON.stringify({
-          from: 'EduGen Admin Alerts <no-reply@edugen.pro>',
+          from: process.env.ADMIN_NOTIFICATION_FROM || 'EduGen Admin Alerts <no-reply@edugen.pro>',
           to: [adminEmail],
           subject: emailSubject,
           html: emailHtml
@@ -332,7 +338,7 @@ export default async function handler(req, res) {
   if (smtpHost && smtpUser && smtpPass) {
     try {
       console.log(`Sending admin notification (${eventType}) to ${adminEmail} via SMTP...`);
-      const nodemailer = require('nodemailer');
+      const { default: nodemailer } = await import('nodemailer');
       const transporter = nodemailer.createTransport({
         host: smtpHost,
         port: parseInt(smtpPort, 10),

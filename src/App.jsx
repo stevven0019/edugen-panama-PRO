@@ -21,6 +21,7 @@ import ThemePlanner from './pages/ThemePlanner';
 import Library from './pages/Library';
 import AdBanner from './components/AdBanner';
 import AdminPayments from './pages/AdminPayments';
+import AdminPaymentNotices from './components/AdminPaymentNotices';
 
 // EduGen Pro Billing & Ads components
 import BillingModal from './components/BillingModal';
@@ -38,6 +39,7 @@ export default function App() {
   const [credits, setCredits] = useState(0);
   const [isPremium, setIsPremium] = useState(false);
   const [downloadsLeft, setDownloadsLeft] = useState(3);
+  const [pendingPaymentCount, setPendingPaymentCount] = useState(0);
   
   // App navigation state
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -501,6 +503,7 @@ export default function App() {
         showPWAInstallBtn={showPWAInstallBtn}
         onPWAInstall={handlePWAInstall}
         isAdmin={isAdmin(user.email)}
+        pendingPaymentCount={pendingPaymentCount}
       />
       
       {/* Content wrapper panel */}
@@ -730,6 +733,7 @@ export default function App() {
         onRewardReceived={onRewardedFinished}
       />
 
+      {user && isAdmin(user.email) && <AdminPaymentNotices key={user.uid} uid={user.uid} onCount={setPendingPaymentCount} onReview={() => setActiveTab('admin-payments')} />}
       {/* Simulated push notification toast */}
       {pushNotification && (
         <div className="fixed top-4 right-4 z-50 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 px-5 py-4 rounded-3xl shadow-2xl border border-slate-800 dark:border-slate-200 flex items-start gap-3.5 max-w-sm animate-fade-in-up">

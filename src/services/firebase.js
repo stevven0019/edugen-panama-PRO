@@ -57,7 +57,8 @@ export const triggerAdminNotification = (eventType, details) => {
   })
     .then(res => res.json())
     .then(data => {
-      console.log("Admin notification sent status:", data);
+      if (!data.success) console.error('Admin email was not sent:', data.message || data.error);
+      else console.log('Admin email accepted by provider:', data.provider);
     })
     .catch(err => {
       console.error("Failed to send admin notification:", err);
@@ -706,6 +707,25 @@ export const databaseService = {
 
       return docRef;
     }
+  },
+
+  subscribePayments(onPayments, onError = console.error) {
+    if (isDemoMode) {
+      const update = () => onPayments(mockDb.getPendingPayments());
+      update();
+      window.addEventListener('storage', update);
+      return () => window.removeEventListener('storage', update);
+    }
+    let cancelled = false;
+    let unsubscribe = () => {};
+    import('firebase/firestore').then(({ collection, query, orderBy, onSnapshot }) => {
+      if (cancelled) return;
+      const payments = collection(realDb, 'artifacts', 'edugen-panama-aoa', 'pending_payments');
+      unsubscribe = onSnapshot(query(payments, orderBy('createdAt', 'desc')), snapshot => {
+        if (!cancelled) onPayments(snapshot.docs.map(item => ({ ...item.data(), id: item.id })));
+      }, error => { if (!cancelled) onError(error); });
+    }).catch(error => { if (!cancelled) onError(error); });
+    return () => { cancelled = true; unsubscribe(); };
   },
 
   async getPendingPayments() {

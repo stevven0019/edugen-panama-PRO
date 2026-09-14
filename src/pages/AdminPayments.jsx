@@ -60,6 +60,10 @@ export default function AdminPayments({ user, onTriggerAlert }) {
     }
   }, [activeFilter]);
 
+  useEffect(() => databaseService.subscribePayments(setPayments, () => {
+    onTriggerAlert('No se pudieron actualizar los pagos en tiempo real.', 'error');
+  }), [user.uid]);
+
   const handleAction = async (paymentId, status, targetUid, productType, tokenQuantity, amount) => {
     setActionLoadingId(paymentId + '_' + status);
     try {
