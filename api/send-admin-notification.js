@@ -15,6 +15,7 @@ export default async function handler(req, res) {
 
   if (req.method === 'GET') {
     res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('X-Edugen-Mail-Version', 'admin-recipient-v2');
     const resend = Boolean(process.env.RESEND_API_KEY || process.env.VITE_RESEND_API_KEY);
     const smtp = Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
     return res.status(200).json({ configured: resend || smtp, provider: resend ? 'resend' : smtp ? 'smtp' : null });
