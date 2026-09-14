@@ -34,7 +34,7 @@ export default async function handler(req, res) {
   const smtpUser = process.env.SMTP_USER;
   const smtpPass = process.env.SMTP_PASS;
 
-  const adminEmail = process.env.ADMIN_NOTIFICATION_EMAIL || process.env.VITE_ADMIN_EMAIL || 'estebanquint@gmail.com';
+  const adminEmail = 'edugenproai@gmail.com';
 
   // Build subject and HTML based on eventType
   let emailSubject = '🔔 Alerta de Administrador: EduGen Panama';
@@ -42,7 +42,10 @@ export default async function handler(req, res) {
 
   const timestamp = new Date().toLocaleString('es-PA', { timeZone: 'America/Panama' });
 
-  if (eventType === 'registration') {
+  if (eventType === 'notification_test') {
+    emailSubject = 'EduGen Panama: prueba de avisos administrativos';
+    emailHtml = '<h2>Prueba de notificaciones</h2><p>Este mensaje confirma la prueba del correo de avisos administrativos de EduGen Panama.</p><p>No corresponde a un pago ni requiere aprobar ningún comprobante.</p>';
+  } else if (eventType === 'registration') {
     const userEmail = details?.email || 'Desconocido';
     const provider = details?.provider || 'No especificado';
     const mode = details?.mode || 'No especificado';
