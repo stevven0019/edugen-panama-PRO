@@ -19,6 +19,7 @@ const PaypalIcon = (props) => (
   </svg>
 );
 import { databaseService } from '../services/firebase';
+import TelegramCommunityCard from './TelegramCommunityCard';
 
 export default function BillingModal({ isOpen, onClose, user, onTriggerAlert, initialTab = 'subscription' }) {
   if (!isOpen) return null;
@@ -433,6 +434,7 @@ export default function BillingModal({ isOpen, onClose, user, onTriggerAlert, in
             </div>
 
             <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
+              <TelegramCommunityCard />
               
               {/* SUPER OFERTA urgency banner */}
               <div className="bg-gradient-to-r from-rose-600 to-pink-600 rounded-2xl p-3.5 flex items-center gap-3 shadow-lg shadow-rose-500/20 animate-pulse">
