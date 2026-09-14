@@ -1,3 +1,5 @@
+import ResourceWorkbook from '../components/ResourceWorkbook';
+import { downloadWorkbook } from '../resources/workbookPdf';
 import React, { useEffect, useState } from 'react';
 import { 
   FolderOpen, 
@@ -17,6 +19,7 @@ import { databaseService } from '../services/firebase';
 import EditorModal from '../components/EditorModal';
 
 export default function Library({ user, onTriggerAlert, isPremium = false }) {
+  const [pdfPlan, setPdfPlan] = useState(null);
   const [plans, setPlans] = useState([]);
   const [filteredPlans, setFilteredPlans] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -95,6 +98,7 @@ export default function Library({ user, onTriggerAlert, isPremium = false }) {
       onTriggerAlert("La descarga en Word está disponible solo para usuarios PRO. ¡Activa tu plan!", "info");
       return;
     }
+    if (plan.activityPack) { try { downloadWorkbook(plan.activityPack); } catch (error) { onTriggerAlert(error.message, 'error'); } return; }
     const blob = new Blob(['\ufeff', plan.content], { type: 'application/msword' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -105,6 +109,7 @@ export default function Library({ user, onTriggerAlert, isPremium = false }) {
   };
 
   const handleOpenPlan = (plan) => {
+    if (plan.activityPack) { setPdfPlan(plan); return; }
     setSelectedPlan(plan);
     setIsEditorOpen(true);
   };
@@ -281,6 +286,7 @@ export default function Library({ user, onTriggerAlert, isPremium = false }) {
       )}
 
       {/* Editor Modal Overlay */}
+      {pdfPlan && <ResourceWorkbook user={user} initialPack={pdfPlan.activityPack} isPremium={isPremium} downloadsLeft={0} onTriggerAlert={onTriggerAlert} onClose={() => setPdfPlan(null)} />}
       <EditorModal 
         isOpen={isEditorOpen}
         plan={selectedPlan}

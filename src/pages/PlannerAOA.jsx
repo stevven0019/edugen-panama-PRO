@@ -1,3 +1,4 @@
+import ResourceWorkbook from '../components/ResourceWorkbook';
 import React, { useState } from 'react';
 import { 
   BookOpen, 
@@ -22,6 +23,7 @@ import { buildAoaFields, curriculumFilename, lessonSkills } from '../services/ao
 import { finishAoaPlanner } from '../services/aoaOutput';
 
 export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = false, downloadsLeft = 3, triggerInterstitialAd, triggerRewardedAd }) {
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const [selectedSkills, setSelectedSkills] = useState(['Listening']);
   const [grade, setGrade] = useState('5th Grade');
   const [lessonNum, setLessonNum] = useState(1);
@@ -533,6 +535,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
           type: type,
           grade: grade,
           content: output,
+          ...(type === 'planner' ? { lessonContext: vars } : {}),
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
         };
@@ -733,8 +736,8 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
           </button>
           
           <button 
-            onClick={() => handleGenerate('resources')} 
-            disabled={loading || !curriculumReady}
+            onClick={() => setResourcesOpen(true)}
+            disabled={loading}
             className="w-full bg-violet-600 hover:bg-violet-700 text-white py-3 rounded-2xl font-bold hover:scale-[1.01] active:scale-[0.99] transition shadow-lg shadow-violet-500/10 flex items-center justify-center gap-2 text-xs"
           >
             <Sparkles className="w-4 h-4" /> RECURSOS & RÚBRICA
@@ -840,6 +843,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
         )}
       </main>
 
+      {resourcesOpen && <ResourceWorkbook user={user} credits={credits} isPremium={isPremium} downloadsLeft={downloadsLeft} onTriggerAlert={onTriggerAlert} onClose={() => setResourcesOpen(false)} />}
       {/* Editor Modal Sheet */}
       <EditorModal 
         isOpen={isEditorOpen}
