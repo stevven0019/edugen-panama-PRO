@@ -31,3 +31,7 @@ dist-ssr
 # Large media files
 public/tutoriales/
 *.mp4
+
+# Temp and attachments
+tmp/
+.codex-remote-attachments/

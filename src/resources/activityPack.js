@@ -1,4 +1,4 @@
-export const ICONS = ['book','bag','desk','chair','pencil','crayon','ball','apple','tree','sun','house','fish','flower'];
+export const ICONS = ['book','bag','desk','chair','pencil','crayon','ball','apple','tree','sun','house','fish','flower','pineapple','banana','orange','watermelon','mango'];
 
 const text = (value, name, max = 600) => {
   if (typeof value !== 'string' || !value.trim()) return '';
@@ -10,6 +10,7 @@ export function normalizeIcon(icon) {
   let clean = icon.toLowerCase().trim().replace(/s$/, '');
   if (clean === 'pencile') clean = 'pencil';
   if (clean === 'table') return 'desk';
+  if (clean === 'backpack') return 'bag';
   return ICONS.includes(clean) ? clean : 'book';
 }
 
@@ -32,29 +33,95 @@ export function validatePack(pack) {
   pack.grade = text(pack.grade, 'grade', 60) || 'Grade';
   pack.skill = text(pack.skill, 'skill', 60) || 'English';
   pack.lessonTitle = text(pack.lessonTitle, 'lessonTitle', 160) || pack.title;
+  pack.color_policy = pack.color_policy || 'vocabulary_only';
 
   if (!Array.isArray(pack.activities) || pack.activities.length < 2) {
     throw new Error('El cuaderno debe tener al menos 2 actividades.');
   }
 
-  pack.activities = pack.activities.slice(0, 5).map((activity, idx) => {
+  const recognizedTypes = [
+    'vocabulary_cards',
+    'match_picture_word',
+    'match_location_word',
+    'listen_choose_picture',
+    'listen_match_price',
+    'shared_reading_page',
+    'card_choices',
+    'table_checklist',
+    'matching',
+    'dialogue_cloze',
+    'read_answer',
+    'draw_write',
+    'open_drawing'
+  ];
+
+  pack.activities = pack.activities.slice(0, 6).map((activity, idx) => {
     activity.title = text(activity.title, 'título', 140) || `Activity ${idx + 1}`;
     activity.instruction = text(activity.instruction, 'instrucción', 280) || 'Follow the instructions.';
 
-    // Default to card_choices if not recognized
-    const recognizedTypes = ['card_choices', 'picture_choice', 'table_checklist', 'matching', 'match', 'dialogue_cloze', 'read_answer', 'draw_write'];
+    if (activity.type === 'picture_choice') activity.type = 'listen_choose_picture';
+    if (activity.type === 'match') activity.type = 'match_picture_word';
+
     if (!recognizedTypes.includes(activity.type)) {
       activity.type = 'card_choices';
     }
-    if (activity.type === 'picture_choice') activity.type = 'card_choices';
-    if (activity.type === 'match') activity.type = 'matching';
 
-    // 1. CARD CHOICES / LISTENING SELECTION
-    if (activity.type === 'card_choices') {
+    // 1. VOCABULARY CARDS
+    if (activity.type === 'vocabulary_cards') {
+      if (!Array.isArray(activity.items) || !activity.items.length) {
+        activity.items = [
+          { label: 'book', icon: 'book' },
+          { label: 'desk', icon: 'desk' },
+          { label: 'chair', icon: 'chair' },
+          { label: 'bag', icon: 'bag' },
+          { label: 'pencil', icon: 'pencil' },
+          { label: 'crayon', icon: 'crayon' }
+        ];
+      }
+      activity.items = activity.items.slice(0, 6).map(it => ({
+        label: text(it.label || it.word, 'etiqueta', 50) || 'item',
+        icon: normalizeIcon(it.icon || it.label)
+      }));
+    }
+
+    // 2. MATCH PICTURE TO WORD
+    else if (activity.type === 'match_picture_word') {
+      if (!Array.isArray(activity.pairs) || !activity.pairs.length) {
+        activity.pairs = [
+          { left: 'book', icon: 'book', right: 'book' },
+          { left: 'chair', icon: 'chair', right: 'chair' }
+        ];
+      }
+      activity.pairs = activity.pairs.slice(0, 5).map(p => ({
+        left: text(p.left || p.word, 'izquierda', 50),
+        icon: normalizeIcon(p.icon || p.left),
+        right: text(p.right || p.word, 'derecha', 50)
+      }));
+    }
+
+    // 3. MATCH LOCATION WORD (Spatial relations)
+    else if (activity.type === 'match_location_word') {
+      if (!Array.isArray(activity.items) || !activity.items.length) {
+        activity.items = [
+          { subject: 'book', reference: 'bag', relation: 'in', word: 'in' },
+          { subject: 'book', reference: 'desk', relation: 'on', word: 'on' },
+          { subject: 'book', reference: 'desk', relation: 'under', word: 'under' }
+        ];
+      }
+      activity.items = activity.items.slice(0, 4).map(it => ({
+        subject: normalizeIcon(it.subject || 'book'),
+        reference: normalizeAnchor(it.reference, it.relation),
+        relation: ['on', 'under', 'in', 'next_to', 'behind'].includes(it.relation) ? it.relation : 'on',
+        word: text(it.word || it.relation, 'palabra', 30)
+      }));
+    }
+
+    // 4. LISTEN & CHOOSE PICTURE
+    else if (activity.type === 'listen_choose_picture' || activity.type === 'card_choices') {
       if (!Array.isArray(activity.items) || !activity.items.length) {
         activity.items = [
           {
-            teacherPrompt: 'Listen and choose the correct option.',
+            teacherPrompt: 'Listen and choose the correct picture.',
             options: [{ label: 'Option A' }, { label: 'Option B' }],
             answerIndex: 0
           }
@@ -65,13 +132,13 @@ export function validatePack(pack) {
         if (!Array.isArray(item.options) || item.options.length < 2) {
           item.options = [{ label: 'Option A' }, { label: 'Option B' }];
         }
-        item.options = item.options.slice(0, 3).map((opt, optIdx) => {
+        item.options = item.options.slice(0, 4).map((opt, optIdx) => {
           const letter = String.fromCharCode(65 + optIdx);
           const label = text(opt.label || opt.text, 'etiqueta', 100) || `Option ${letter}`;
           const subtext = text(opt.subtext || opt.detail || opt.price, 'subtexto', 80);
           const iconName = opt.icon ? normalizeIcon(opt.icon) : null;
           let pos = (opt.position || 'none').toLowerCase().replace(/\s+/g, '_');
-          if (!['none', 'on', 'under', 'in', 'next_to'].includes(pos)) pos = 'none';
+          if (!['none', 'on', 'under', 'in', 'next_to', 'behind'].includes(pos)) pos = 'none';
           const anchor = pos !== 'none' ? normalizeAnchor(opt.anchor, pos, item.teacherPrompt + ' ' + label) : undefined;
 
           return {
@@ -89,16 +156,50 @@ export function validatePack(pack) {
       });
     }
 
-    // 2. TABLE CHECKLIST / INFORMATION GRID
-    if (activity.type === 'table_checklist') {
+    // 5. LISTEN & MATCH PRICE
+    else if (activity.type === 'listen_match_price' || activity.type === 'matching') {
+      if (!Array.isArray(activity.pairs) || activity.pairs.length < 2) {
+        activity.pairs = [
+          { left: 'Pineapple', icon: 'pineapple', right: '$2.50' },
+          { left: 'Apple', icon: 'apple', right: '$1.00' }
+        ];
+      }
+      activity.pairs = activity.pairs.slice(0, 5).map(p => ({
+        left: text(p.left || p.fruit || p.item, 'columna izquierda', 60),
+        right: text(p.right || p.price, 'precio', 30),
+        icon: normalizeIcon(p.icon || p.left)
+      }));
+      activity.teacherScript = text(activity.teacherScript, 'guion docente', 400);
+    }
+
+    // 6. SHARED READING PAGE
+    else if (activity.type === 'shared_reading_page') {
+      if (!Array.isArray(activity.scenes) || !activity.scenes.length) {
+        activity.scenes = [
+          { num: 1, text: 'Look on the desk.', subject: 'book', reference: 'desk', relation: 'on' },
+          { num: 2, text: 'Look under the chair.', subject: 'book', reference: 'chair', relation: 'under' },
+          { num: 3, text: 'Look in the bag.', subject: 'book', reference: 'bag', relation: 'in' }
+        ];
+      }
+      activity.scenes = activity.scenes.slice(0, 3).map((sc, sci) => ({
+        num: sci + 1,
+        text: text(sc.text, 'texto', 140) || 'Look carefully.',
+        subject: normalizeIcon(sc.subject || 'book'),
+        reference: normalizeAnchor(sc.reference, sc.relation),
+        relation: ['on', 'under', 'in', 'next_to', 'behind'].includes(sc.relation) ? sc.relation : 'on'
+      }));
+    }
+
+    // 7. TABLE CHECKLIST
+    else if (activity.type === 'table_checklist') {
       if (!Array.isArray(activity.headers) || activity.headers.length < 2) {
-        activity.headers = ['Item / Detail', 'Heard in Audio?', 'Quantity / Notes'];
+        activity.headers = ['Fruit / Item', 'Heard in Audio?', 'Price'];
       }
       activity.headers = activity.headers.slice(0, 4).map(h => text(h, 'encabezado', 60));
       if (!Array.isArray(activity.rows) || !activity.rows.length) {
         activity.rows = [
-          { col1: 'Target Item 1', col2: '[ ] Yes   [ ] No', col3: '$2.50' },
-          { col1: 'Target Item 2', col2: '[ ] Yes   [ ] No', col3: '$1.00' }
+          { col1: 'Pineapple', col2: '[ ] Yes   [ ] No', col3: '$2.50' },
+          { col1: 'Apple', col2: '[ ] Yes   [ ] No', col3: '$1.00' }
         ];
       }
       activity.rows = activity.rows.slice(0, 6).map(r => ({
@@ -109,54 +210,8 @@ export function validatePack(pack) {
       activity.teacherScript = text(activity.teacherScript, 'guion docente', 400);
     }
 
-    // 3. MATCHING
-    if (activity.type === 'matching') {
-      if (!Array.isArray(activity.pairs) || activity.pairs.length < 2) {
-        activity.pairs = [
-          { left: 'Question / Item 1', right: 'Answer / Description 1' },
-          { left: 'Question / Item 2', right: 'Answer / Description 2' }
-        ];
-      }
-      activity.pairs = activity.pairs.slice(0, 5).map(p => ({
-        left: text(p.left || p.word || p.question, 'columna izquierda', 100),
-        right: text(p.right || p.definition || p.answer, 'columna derecha', 100),
-        ...(p.icon ? { icon: normalizeIcon(p.icon) } : {})
-      }));
-    }
-
-    // 4. DIALOGUE CLOZE / FILL IN THE BLANK
-    if (activity.type === 'dialogue_cloze') {
-      if (!Array.isArray(activity.wordBank) || !activity.wordBank.length) {
-        activity.wordBank = ['pineapple', 'dollars', 'market', 'cents'];
-      }
-      activity.wordBank = activity.wordBank.slice(0, 8).map(w => text(w, 'banco de palabras', 40));
-      if (!Array.isArray(activity.lines) || !activity.lines.length) {
-        activity.lines = [
-          { speaker: 'Vendor', text: 'Good morning! How can I help you?' },
-          { speaker: 'Customer', text: 'How much is the _______?' }
-        ];
-      }
-      activity.lines = activity.lines.slice(0, 6).map(l => ({
-        speaker: text(l.speaker || 'Person', 'hablante', 30),
-        text: text(l.text || l.sentence, 'línea de diálogo', 180)
-      }));
-      activity.teacherScript = text(activity.teacherScript, 'guion docente', 400);
-    }
-
-    // 5. READ & ANSWER
-    if (activity.type === 'read_answer') {
-      activity.passage = text(activity.passage, 'lectura', 1200) || 'Read the scenario text carefully.';
-      if (!Array.isArray(activity.questions) || !activity.questions.length) {
-        activity.questions = [{ question: 'What is the main topic discussed?', answer: 'The situation described above.' }];
-      }
-      activity.questions = activity.questions.slice(0, 4).map((q, qIdx) => ({
-        question: text(q.question, 'pregunta', 200) || `Question ${qIdx + 1}`,
-        answer: text(q.answer, 'respuesta', 280) || 'Expected answer.'
-      }));
-    }
-
-    // 6. DRAW & WRITE / SPEAKING TASK
-    if (activity.type === 'draw_write') {
+    // 8. OPEN DRAWING
+    else if (activity.type === 'open_drawing' || activity.type === 'draw_write') {
       activity.prompt = text(activity.prompt, 'consigna', 320) || 'Draw or write your response.';
       activity.teacherGuide = text(activity.teacherGuide, 'orientación docente', 600) || 'Observe student participation and provide scaffolding.';
     }
@@ -177,7 +232,7 @@ export function validatePack(pack) {
     emerging: text(row.emerging, 'en desarrollo', 160) || 'Beginning to recognize target structures.'
   }));
 
-  // Teacher guide timing
+  // Timing
   if (!pack.timing) {
     pack.timing = {
       warmUp: '10 min · Vocabulary review & context setting',
@@ -207,63 +262,38 @@ const getClientApiKey = () => {
 
 export async function generateActivityPack(source, signal) {
   const prompt = `You are an elite educational materials author for the Panama MEDUCA English curriculum under the Action-Oriented Approach (AOA).
-Your task is to create a REAL, HIGH-QUALITY, CLASSROOM-READY printable English Activity Workbook and Formative Assessment Rubric based directly on the provided lesson.
+Create a REAL, HIGH-QUALITY, CLASSROOM-READY printable English Activity Workbook and Formative Assessment Rubric based directly on the provided lesson.
 
-CRITICAL INSTRUCTIONS BY GRADE AND REALISTIC SCENARIOS:
-1. RELEVANT REAL-WORLD CONTENT:
-   - The activities MUST relate 100% to the specific scenario, theme, lesson, and skill provided in the context (e.g., if the topic is "How much is the pineapple?", generate real market/fruit/shopping activities, real prices like $2.50, $1.75, realistic dialogues, shopping lists, and price-matching, NOT abstract wireframe doodles!).
-   - Do NOT use generic childish icons unless the grade is explicitly Pre-K or Kinder.
+CRITICAL INSTRUCTIONS BASED ON THE SPECIFICATION ARCHITECTURE:
 
-2. ACTIVITY FORMATS TO USE:
-   Choose 3 to 4 varied, engaging activities from these supported pedagogical types:
-   a) "card_choices" (Listening / Reading selection):
-      - 2 to 3 cards per item with realistic options:
-        e.g., Option A: label: "Pineapple", subtext: "$2.50"
-        Option B: label: "Watermelon", subtext: "$3.75"
-        Option C: label: "Banana", subtext: "$0.50"
-      - For Listening, include the exact "teacherPrompt" the teacher must read aloud (e.g. "Customer: Good morning! How much is the fresh pineapple? Vendor: The pineapple is two dollars and fifty cents.").
-      - Only use "icon" and "position" (on/under/in/next_to) if the grade is Pre-K/Kinder with classroom objects.
-   b) "table_checklist" (Listening / Analysis grid):
-      - Perfect for shopping lists, daily routines, character actions, survey tables:
-        headers: ["Fruit / Item", "Price Heard in Audio", "In Stock? [Yes / No]"]
-        rows: [
-          { "col1": "Pineapple", "col2": "$2.50", "col3": "[ ] Yes   [ ] No" },
-          { "col1": "Papaya", "col2": "$1.50", "col3": "[ ] Yes   [ ] No" },
-          { "col1": "Mangoes (bag)", "col2": "$2.00", "col3": "[ ] Yes   [ ] No" }
-        ]
-        teacherScript: "The full reading passage or dialogue teacher speaks."
-   c) "matching" (Connecting pairs):
-      - Questions to answers, food items to prices, terms to definitions, or conversational rejoinders.
-        pairs: [
-          { "left": "How much is the pineapple?", "right": "It is two dollars and fifty cents." },
-          { "left": "Where are the ripe bananas?", "right": "They are next to the apples." },
-          { "left": "Can I have two papayas?", "right": "Here you go, that is three dollars." }
-        ]
-   d) "dialogue_cloze" (Fill in the blanks with Word Bank):
-      - Real authentic dialogue with a Word Bank box:
-        wordBank: ["pineapple", "change", "expensive", "dollars"]
-        lines: [
-          { "speaker": "Maria", "text": "Excuse me, how much is this _______?" },
-          { "speaker": "Vendor", "text": "That one is three _______." }
-        ]
-        teacherScript: "Complete dialogue for the teacher to read."
-   e) "read_answer" (Reading & comprehension questions with lined answer spaces):
-      - Authentic scenario passage + 2-3 questions with clear answer keys.
-   f) "draw_write" (Task-based production / Role-play / Drawing):
-      - For primary/secondary: create a market stall sign, write a short grocery list dialogue, or design a menu with prices.
+1. FOR PRE-K & KINDER (e.g. "Where Is Your Book?"):
+   - Primary Skill: Listening / Shared Reading.
+   - Do NOT require independent reading or writing from the student!
+   - Color Policy: "vocabulary_only" (Page 2 vocabulary is in color; all activity pages are in clean monochrome outline for easy school photocopying).
+   - Use these exact templates:
+     * Activity 1: "vocabulary_cards" (6 target objects: book, desk, chair, bag, pencil, crayon).
+     * Activity 2: "listen_choose_picture" (3 rows of 2 spatial choices: e.g. book on desk vs under desk, pencil in bag vs next to bag).
+     * Activity 3: "shared_reading_page" (3 illustrated scenes: 1. Look on the desk. 2. Look under the chair. 3. Look in the bag.).
+     * Activity 4: "open_drawing" (Listen and draw a book under the desk).
+   - Include teacher timing (50 min total: Warm-up 10m, Presentation 8m, Guided 12m, Performance 10m, Check 5m, Reflection 5m).
+   - Verbatim Teacher Scripts (Read Aloud) and observation rubric checklist.
 
-3. DEDICATED TEACHER SECTION:
-   - "timing": Realistic minute breakdown: warmUp (10 min), presentation (8 min), guidedPractice (12 min), performance (10 min), reflection (5 min).
-   - Verbatim "Teacher Scripts" with the exact sentences to read out loud.
-   - Complete Answer Key.
-   - Formative Rubric with 2 to 3 criteria aligned to the Panama AOA curriculum standards for this grade level.
+2. FOR PRIMARY & SECONDARY (e.g. 4th Grade "How Much Is the Pineapple?"):
+   - Primary Skill: Listening / Vocabulary / Speaking.
+   - Real-world authentic content: market fruits (pineapple, apple, banana, orange, watermelon), real consistent prices in USD ($2.50, $1.00, $0.50, $0.75).
+   - Use these exact templates:
+     * Activity 1: "listen_match_price" (fruits matching with price cards).
+     * Activity 2: "table_checklist" (Shopping list with Fruit, Heard in Audio [Yes/No], and Price).
+     * Activity 3: "dialogue_cloze" or "card_choices" (Market dialogue between Vendor and Customer with exact Teacher Script).
+   - Provide verbatim teacher read-aloud dialogue script with exact pricing and quantities.
 
-RETURN VALID JSON ONLY matching this structure:
+3. SCHEMA REQUIREMENT (Return strictly valid JSON, no markdown outside):
 {
-  "title": "Clear Catchy Title (e.g., At the Fruit Market: How Much Is the Pineapple?)",
-  "grade": "Grade from lesson (e.g., 4th Grade)",
-  "skill": "Skill from lesson (e.g., Listening)",
+  "title": "Title of the Workbook",
+  "grade": "e.g., Kinder or 4th Grade",
+  "skill": "e.g., Listening",
   "lessonTitle": "Theme and Lesson Name",
+  "color_policy": "vocabulary_only",
   "timing": {
     "warmUp": "10 min · Activity description",
     "presentation": "8 min · Activity description",
@@ -272,14 +302,14 @@ RETURN VALID JSON ONLY matching this structure:
     "reflection": "5 min · Activity description"
   },
   "activities": [
-    ... 3 to 4 activities using the types described above ...
+    ... 3 to 4 activities matching the template library above ...
   ],
   "rubric": [
     {
-      "criterion": "Listening for Specific Information (Prices & Quantities)",
-      "independent": "Identifies prices, fruit items and quantities with 90-100% accuracy.",
-      "withSupport": "Identifies target items with 1-2 repetitions or visual cues.",
-      "emerging": "Requires direct teacher demonstration and translation support."
+      "criterion": "Target Skill Performance Criterion",
+      "independent": "Mastery description without support",
+      "withSupport": "Description with verbal/visual scaffolding",
+      "emerging": "Beginning to recognize target language"
     }
   ]
 }`;
@@ -292,7 +322,7 @@ RETURN VALID JSON ONLY matching this structure:
     systemInstruction: { parts: [{ text: prompt }] },
     generationConfig: {
       responseMimeType: 'application/json',
-      temperature: 0.35,
+      temperature: 0.3,
       maxOutputTokens: 14000
     }
   };
@@ -313,7 +343,7 @@ RETURN VALID JSON ONLY matching this structure:
 
     if (response.ok) break;
 
-    // Automatic retry on temporary 503 high demand or 429 rate limit
+    // Retry on temporary 503 high demand or 429 rate limit
     if ((response.status === 503 || response.status === 429) && attempt < 3) {
       await new Promise(r => setTimeout(r, attempt * 1200));
       continue;
