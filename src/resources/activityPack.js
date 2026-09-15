@@ -287,9 +287,6 @@ RETURN VALID JSON ONLY matching this structure:
   const parts = [{ text: source.text || 'Use the attached lesson context.' }];
   if (source.media) parts.push({ inlineData: source.media });
 
-  const clientApiKey = getClientApiKey();
-  let response;
-
   const payload = {
     contents: [{ parts }],
     systemInstruction: { parts: [{ text: prompt }] },
@@ -300,20 +297,28 @@ RETURN VALID JSON ONLY matching this structure:
     }
   };
 
-  if (clientApiKey) {
-    response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${clientApiKey}`, {
+  const clientApiKey = getClientApiKey();
+  const endpoint = clientApiKey
+    ? `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${clientApiKey}`
+    : '/api/gemini';
+
+  let response;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    response = await fetch(endpoint, {
       method: 'POST',
       signal,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-  } else {
-    response = await fetch('/api/gemini', {
-      method: 'POST',
-      signal,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+
+    if (response.ok) break;
+
+    // Automatic retry on temporary 503 high demand or 429 rate limit
+    if ((response.status === 503 || response.status === 429) && attempt < 3) {
+      await new Promise(r => setTimeout(r, attempt * 1200));
+      continue;
+    }
+    break;
   }
 
   if (!response.ok) {
