@@ -1,3 +1,4 @@
+import { composePoster, paperSize } from '../resources/posterLayout';
 import { getAuth } from 'firebase/auth';
 import { databaseService } from '../services/firebase';
 import { illustratedSheets } from '../resources/illustratedPoster';
@@ -5,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function ScenarioPoster({grade,scenario,index,ready,user,credits,isPremium}) {
   const [error,setError]=useState('');
+  const [paper,setPaper]=useState('letter');
   const [images,setImages]=useState([]),[busy,setBusy]=useState(false),[progress,setProgress]=useState('');
   const urls=useRef([]),controller=useRef(null);
   useEffect(()=>()=>{controller.current?.abort();urls.current.forEach(URL.revokeObjectURL);},[]);
@@ -23,33 +25,38 @@ export default function ScenarioPoster({grade,scenario,index,ready,user,credits,
         setProgress('Creando tu póster de una página…');
         const response=await fetch('/api/scenario-poster',{method:'POST',signal:controller.current.signal,headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({grade,index,sheetIndex:0})});
         if(!response.ok){const data=await response.json().catch(()=>({}));throw new Error(data.error||'No se pudo generar la imagen.');}
-        const blob=await response.blob();
+        const atlas=await response.blob();
+        if(!atlas.type.startsWith('image/'))throw new Error('No se recibió una imagen válida.');
+        setProgress('Organizando palabras y números…');
+        const blob=await composePoster(scenario,atlas,grade,index,paper);
         if(!blob.type.startsWith('image/'))throw new Error('No se recibió una imagen válida.');
         const url=URL.createObjectURL(blob);urls.current.push(url);
-        setImages(previous=>[...previous,{url,blob,grade,index,number:1}]);
+        setImages(previous=>[...previous,{url,blob,grade,index,number:1,paper}]);
         await databaseService.decrementCredits(user.uid);
       }
     }catch(e){if(e.name!=='AbortError')setError(e.message);}finally{setBusy(false);setProgress('');}
   };
   const savePdf=async()=>{
     try{
-      const {jsPDF}=await import('jspdf');const doc=new jsPDF({format:'a4'});
+      const {jsPDF}=await import('jspdf');
       const img=images[0];
       if(!img)throw new Error('No hay póster para descargar.');
+      const doc=new jsPDF({format:img.paper}),size=paperSize(img.paper);
       {
         const data=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(img.blob);});
-        const info=doc.getImageProperties(data),scale=Math.min(200/info.width,287/info.height);
-        doc.addImage(data,info.fileType,(210-info.width*scale)/2,(297-info.height*scale)/2,info.width*scale,info.height*scale);
+        const info=doc.getImageProperties(data),scale=Math.min((size.width-6)/info.width,(size.height-6)/info.height);
+        doc.addImage(data,info.fileType,(size.width-info.width*scale)/2,(size.height-info.height*scale)/2,info.width*scale,info.height*scale);
       }
       doc.save('Scenario-'+(images[0].index+1)+'-illustrated.pdf');
     }catch{setError('No se pudo crear el PDF. Puedes descargar la imagen del póster.');}
   };
   return <section className="mt-5 p-5 rounded-2xl border border-teal-400/30 bg-gradient-to-br from-teal-500/10 to-indigo-500/10">
     <h2 className="font-bold text-lg text-teal-700 dark:text-teal-300">Crear póster Scenario</h2>
-    <p className="text-xs text-slate-500 dark:text-slate-400 my-2">Un solo póster A4 únicamente con Recommended Vocabulary del grado y escenario elegidos. Todas las palabras del JSON, cada una con su ilustración, organizadas por categoría.</p>
+    <p className="text-xs text-slate-500 dark:text-slate-400 my-2">Un solo póster únicamente con Recommended Vocabulary del grado y escenario elegidos. Todas las palabras del JSON, cada una con su ilustración, organizadas por categoría.</p>
     <p className="text-sm font-semibold my-3">{grade} · {ready?`Escenario ${index+1}: ${scenario.scenarioName||scenario.scenario_title||scenario.title}`:'Cargando currículo…'}</p>
+    <label className="block text-sm my-3">Tamaño del papel<select value={paper} disabled={busy} onChange={e=>setPaper(e.target.value)} className="block w-full rounded-lg p-2 bg-white dark:bg-slate-800"><option value="letter">Carta · 8½ × 11 pulgadas</option><option value="a4">A4 · 21 × 29,7 cm</option></select></label>
     <button disabled={!ready||busy} onClick={illustrate} className="w-full bg-teal-600 hover:bg-teal-700 text-white p-3 rounded-xl font-bold text-xs disabled:opacity-40">{busy?progress:'CREAR PÓSTER ILUSTRADO'}</button>
-    <p className="text-xs text-slate-500 mt-2">PDF A4 de una sola página · 1 token por póster generado.</p>
+    <p className="text-xs text-slate-500 mt-2">PDF de una sola página · 1 token por póster generado.</p>
     {images.length>0&&<div className="mt-4 space-y-3"><p className="text-sm">Revisa que cada palabra y dibujo coincidan antes de imprimir.</p><button disabled={busy} onClick={savePdf} className="rounded-xl bg-indigo-600 text-white px-4 py-2">Descargar póster PDF · 1 página</button>{images.map(img=><figure key={img.url}><img src={img.url} alt={img.grade+' · Escenario '+(img.index+1)+' · Lámina '+img.number} className="w-full rounded-xl"/><figcaption className="text-sm mt-2"><a href={img.url} download={'Scenario-'+(img.index+1)+'-'+img.number+(img.blob.type==='image/jpeg'?'.jpg':img.blob.type==='image/webp'?'.webp':'.png')}>Descargar imagen {img.number}</a></figcaption></figure>)}</div>}
     {error&&<p role="alert" className="text-red-500 text-sm mt-3">{error}</p>}
   </section>;
