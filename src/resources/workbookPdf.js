@@ -323,6 +323,7 @@ export function buildWorkbook(pack) {
         doc.circle(114, matchY + itemH / 2, 1.8, 'F');
 
         // Right Column Card
+        doc.setFillColor(248, 250, 252);
         doc.roundedRect(118, matchY, 74, itemH, 2, 2, 'FD');
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(10);
