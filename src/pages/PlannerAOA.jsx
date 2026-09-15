@@ -51,7 +51,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
       })
       .then(data => {
         if (!Array.isArray(data.scenarios) || !data.scenarios.length) throw new Error('Este currículo no contiene escenarios.');
-        if (!controller.signal.aborted) setCurriculumState({ grade, scenarios: data.scenarios, error: '' });
+        if (!controller.signal.aborted) setCurriculumState({ grade, scenarios: data.scenarios, cefr: data.cefrLevel || data.cefr_level || '', error: '' });
       })
       .catch(error => {
         if (!controller.signal.aborted) setCurriculumState({ grade, scenarios: [], error: error.message });
@@ -754,7 +754,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
         </div>
 
         {/* Sidebar Ad Banner */}
-        <ScenarioPoster user={user} credits={credits} isPremium={isPremium} grade={grade} scenario={selectedScenario} index={scenarioIndex} ready={curriculumReady && !!selectedScenario} />
+        <ScenarioPoster cefr={curriculumState.cefr || ''} grade={grade} scenario={selectedScenario} index={scenarioIndex} ready={curriculumReady && !!selectedScenario} />
         <AdBanner type="sidebar" isPremium={isPremium} />
       </aside>
 
