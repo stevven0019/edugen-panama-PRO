@@ -1,7 +1,7 @@
 // AI Prompt Service - Integrates Custom Prompts and Multimodal Screenshot extraction for Gemini API
 
 const getApiKey = () => {
-  const k = import.meta.env.VITE_GEMINI_API_KEY;
+  const k = (typeof import.meta !== 'undefined' && import.meta?.env?.VITE_GEMINI_API_KEY) || (typeof process !== 'undefined' && process.env?.VITE_GEMINI_API_KEY) || null;
   return k && k !== 'your_gemini_api_key' && k.trim() !== '' ? k : null;
 };
 
@@ -311,13 +311,13 @@ async function simulateResponse(type, vars, media = null) {
   }
 
   if (type === 'planner') {
-    await new Promise(r => setTimeout(r, 1500));
-    const cleanTheme = vars.theme || 'Healthy Eating';
-    const cleanScenario = vars.scenario || 'At the local supermarket';
-    const cleanSkills = vars.skills?.join(', ') || 'Reading, Speaking';
-    const cleanGrade = vars.grade || '5th Grade';
-    const cleanObjective = vars.objective || `By the end of the lesson, students will be able to communicate key concepts about ${cleanTheme} inside ${cleanScenario}.`;
-    const cleanOutcome = vars.outcome || `Students will perform dialogues using target expressions.`;
+    await new Promise(r => setTimeout(r, 1200));
+    const cleanTheme = vars.theme || 'Everyday Communication';
+    const cleanScenario = vars.scenario || 'In the Classroom and Community';
+    const cleanSkills = vars.skills?.join(', ') || 'Listening, Speaking';
+    const cleanGrade = vars.grade || '7th Grade';
+    const cleanObjective = vars.objective || `By the end of the lesson, students will be able to demonstrate communicative competence in ${cleanSkills} within the context of "${cleanTheme}".`;
+    const cleanOutcome = vars.outcome || `Students will be able to produce target expressions and interact collaboratively in pairs.`;
     const lessonNum = vars.lessonNum || 1;
 
     return `
@@ -368,10 +368,10 @@ async function simulateResponse(type, vars, media = null) {
           Stage 1: Warm-up / Pre-task<br>
           <span style="font-size: 9px; font-weight: normal; color: #555;">Engagement, Modeling, Clarification</span>
         </td>
-        <td style="border: 1px dashed #333; padding: 8px;">
-          <b>Warm-up:</b> El docente inicia la clase mostrando imágenes reales y coloridas sobre <i>"${cleanTheme}"</i>. Realiza preguntas de enganche como <i>"Do you like this?"</i> o <i>"Have you seen this in your community?"</i> para activar conocimientos previos.<br><br>
-          <b>Modeling:</b> El docente escribe 5 palabras clave de vocabulario en el tablero (relacionadas con <i>"${cleanTheme}"</i>) y modela la pronunciación correcta en inglés en forma coral e individual, asegurándose de destacar sonidos difíciles.<br><br>
-          <b>Clarification (CCQs):</b> Para verificar la comprensión, el docente realiza preguntas de verificación de concepto (CCQs), por ejemplo: <i>"Is this an action word or a naming word?"</i>, <i>"Do we do this in the morning or at night?"</i>, asegurando que todos comprendan el significado real antes de avanzar.
+        <td style="border: 1px dashed #333; padding: 8px; text-align: justify;">
+          <p style="margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher begins the session by displaying authentic visual prompts connected to <i>"${cleanTheme}"</i>. The teacher asks quick activation questions: <i>"Have you noticed this in your everyday life?"</i> and <i>"What words come to mind when you see this image?"</i> to activate learners' prior knowledge.</p>
+          <p style="margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher writes target vocabulary and key sentence structures on the board. The teacher models accurate pronunciation and natural rhythm through choral and individual repetition, highlighting challenging phonetic sounds.</p>
+          <p style="margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding using Concept Checking Questions (e.g., <i>"Is this expressing a preference or giving a direction?"</i>, <i>"Are we referring to something happening now or in the past?"</i>) to ensure clear comprehension before moving forward.</p>
         </td>
         <td style="border: 1px dashed #333; padding: 8px; text-align: center; vertical-align: middle;">10 mins</td>
       </tr>
@@ -380,10 +380,10 @@ async function simulateResponse(type, vars, media = null) {
           Stage 2: Presentation<br>
           <span style="font-size: 9px; font-weight: normal; color: #555;">Input and Context Connection</span>
         </td>
-        <td style="border: 1px dashed #333; padding: 8px;">
-          <b>Material / Input:</b> Se introduce un diálogo corto impreso entre dos personajes (e.g. "Ana y Carlos") ambientado en el escenario: <i>"${cleanScenario}"</i>.<br><br>
-          <b>Competencia Comunicativa:</b> Comprensión escrita y oral sobre descripciones y preferencias básicas del tema <i>"${cleanTheme}"</i>.<br><br>
-          <b>Actividades:</b> Los estudiantes leen el diálogo de forma de lectura compartida. Subrayan las palabras del vocabulario que reconocen de la Etapa 1. Responden 3 preguntas rápidas de Verdadero o Falso sobre el texto para evaluar la comprensión global.
+        <td style="border: 1px dashed #333; padding: 8px; text-align: justify;">
+          <p style="margin: 4px 0 8px 0;"><b>Material / Input:</b> The teacher introduces an authentic short text or dialogue between two speakers situated directly within the scenario: <i>"${cleanScenario}"</i>.</p>
+          <p style="margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Developing receptive and interactive proficiency in exchanging clear descriptions, asking questions, and discussing key aspects of <i>"${cleanTheme}"</i>.</p>
+          <p style="margin: 4px 0 8px 0;"><b>Activities:</b> Students listen to or read along with the text. They highlight the target vocabulary words introduced in Stage 1. Students then complete three gist comprehension check questions (True/False or short answer) to confirm global understanding.</p>
         </td>
         <td style="border: 1px dashed #333; padding: 8px; text-align: center; vertical-align: middle;">15 mins</td>
       </tr>
@@ -392,13 +392,15 @@ async function simulateResponse(type, vars, media = null) {
           Stage 3: Preparation / Practice<br>
           <span style="font-size: 9px; font-weight: normal; color: #555;">Accuracy-focused Activities</span>
         </td>
-        <td style="border: 1px dashed #333; padding: 8px;">
-          <b>Enfoque de Precisión (${cleanSkills}):</b> Práctica guiada estructurada para asegurar la correcta pronunciación y estructura gramatical.<br><br>
-          <b>Habilidad Comunicativa / Contenido:</b> Interacción oral y escrita utilizando expresiones clave del tema.<br><br>
-          <b>Procedimiento Detallado:</b><br>
-          1. <b>Completación:</b> Los estudiantes completan una ficha con 6 oraciones de llenar espacios usando las estructuras gramaticales del día.<br>
-          2. <b>Sustitución en cadena:</b> En parejas, sustituyen palabras clave del diálogo modelo por opciones personales (e.g., cambiar el tipo de elemento o lugar).<br>
-          3. <b>Práctica oral controlada:</b> Leen las oraciones completadas en voz alta a su compañero para corregir entonación bajo el monitoreo constante del docente.
+        <td style="border: 1px dashed #333; padding: 8px; text-align: justify;">
+          <p style="margin: 4px 0 8px 0;"><b>Accuracy Focus (${cleanSkills}):</b> Structured guided practice designed to build syntactic accuracy, lexical confidence, and correct intonation patterns.</p>
+          <p style="margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Exchanging structured information and functional expressions aligned with <i>"${cleanTheme}"</i>.</p>
+          <p style="margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+          <ul style="padding-left: 20px; margin: 4px 0 8px 0;">
+            <li style="margin-bottom: 4px;"><b>1. Controlled Cloze:</b> Students complete a guided worksheet filling in missing grammatical structures with target vocabulary words.</li>
+            <li style="margin-bottom: 4px;"><b>2. Substitution Drill:</b> In pairs, students substitute details in the model dialogue with their own personal choices and local Panamanian references.</li>
+            <li style="margin-bottom: 4px;"><b>3. Peer Audio Check:</b> Learners read their newly formed sentences aloud to their partners, peer-checking pronunciation while the teacher circulates to offer corrective feedback.</li>
+          </ul>
         </td>
         <td style="border: 1px dashed #333; padding: 8px; text-align: center; vertical-align: middle;">15 mins</td>
       </tr>
@@ -407,10 +409,10 @@ async function simulateResponse(type, vars, media = null) {
           Stage 4: Performance / Production<br>
           <span style="font-size: 9px; font-weight: normal; color: #555;">Fluency-focused Communicative Task</span>
         </td>
-        <td style="border: 1px dashed #333; padding: 8px;">
-          <b>Tarea de Desempeño:</b> Los estudiantes realizan un juego de roles (Role-play) simulando la situación del escenario real: <i>"${cleanScenario}"</i>.<br><br>
-          <b>Instrucciones:</b> En parejas, deben crear una conversación original de al menos 4 turnos cada uno utilizando las frases aprendidas. Por ejemplo, actuar como comprador y vendedor en <i>"${cleanScenario}"</i>.<br><br>
-          <b>Enfoque de Fluidez:</b> Se prioriza la comunicación y la resolución de la tarea por encima de la corrección gramatical estricta. El docente circula y anota fortalezas y errores comunes sin interrumpir el flujo.
+        <td style="border: 1px dashed #333; padding: 8px; text-align: justify;">
+          <p style="margin: 4px 0 8px 0;"><b>Communicative Task:</b> Students participate in an authentic communicative task or role-play simulating a realistic situation within <i>"${cleanScenario}"</i>.</p>
+          <p style="margin: 4px 0 8px 0;"><b>Instructions:</b> Working in pairs or triads, learners carry out an interactive exchange of at least 4 to 6 turns using the lesson's target vocabulary and grammatical structures without looking directly at notes.</p>
+          <p style="margin: 4px 0 8px 0;"><b>Fluency Focus:</b> Communication and message completion are prioritized over minor grammatical slips. The teacher observes unobtrusively, noting successful interactions and common patterns for delayed feedback.</p>
         </td>
         <td style="border: 1px dashed #333; padding: 8px; text-align: center; vertical-align: middle;">15 mins</td>
       </tr>
@@ -419,10 +421,10 @@ async function simulateResponse(type, vars, media = null) {
           Stage 5: Assessment / Post-task<br>
           <span style="font-size: 9px; font-weight: normal; color: #555;">Formative Assessment & Evidence</span>
         </td>
-        <td style="border: 1px dashed #333; padding: 8px;">
-          <b>Estrategia de Evaluación Formativa:</b> Lista de cotejo de desempeño oral durante el juego de roles de la Etapa 4.<br><br>
-          <b>Criterios Evaluados:</b> Uso de vocabulario clave de <i>"${cleanTheme}"</i>, pronunciación inteligible de las oraciones y colaboración en parejas.<br><br>
-          <b>Autoevaluación:</b> Los estudiantes completan un "Ticket de Salida" (Exit Ticket) respondiendo: <i>"Una palabra nueva que usé hoy es..."</i> y marcan una escala visual sobre cómo se sintieron hablando inglés.
+        <td style="border: 1px dashed #333; padding: 8px; text-align: justify;">
+          <p style="margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Observation checklist assessing communicative clarity, accurate use of target vocabulary for <i>"${cleanTheme}"</i>, and effective peer collaboration during Stage 4.</p>
+          <p style="margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b> Intelligible pronunciation, task completion within <i>"${cleanScenario}"</i>, and active engagement in pairs.</p>
+          <p style="margin: 4px 0 8px 0;"><b>Self-Assessment / Exit Ticket:</b> Students complete a quick reflective prompt: <i>"One target expression I mastered today is..."</i> and rate their confidence on a visual scale.</p>
         </td>
         <td style="border: 1px dashed #333; padding: 8px; text-align: center; vertical-align: middle;">10 mins</td>
       </tr>
@@ -431,9 +433,9 @@ async function simulateResponse(type, vars, media = null) {
           Stage 6: Reflection<br>
           <span style="font-size: 9px; font-weight: normal; color: #555;">Student & Teacher Reflection</span>
         </td>
-        <td style="border: 1px dashed #333; padding: 8px;">
-          <b>Reflexión del Estudiante:</b> Los alumnos responden oralmente a las preguntas: <i>"¿Qué aprendí hoy en clase?"</i> y <i>"¿Cuál actividad me costó más trabajo?"</i>.<br><br>
-          <b>Reflexión del Docente:</b> Evaluar si el tiempo asignado fue suficiente y ajustar el andamiaje visual (sentence frames) en la pizarra para la siguiente lección (Lección ${lessonNum + 1} de 5).
+        <td style="border: 1px dashed #333; padding: 8px; text-align: justify;">
+          <p style="margin: 4px 0 8px 0;"><b>Student Reflection:</b> Learners respond to the guiding questions: <i>"How did today's practice help me communicate better?"</i> and <i>"Which activity felt most natural?"</i></p>
+          <p style="margin: 4px 0 8px 0;"><b>Teacher Reflection:</b> The teacher notes student progress on the target structures and plans appropriate visual scaffolding and sentence frames for Lesson ${lessonNum + 1} of 5 in the theme sequence.</p>
         </td>
         <td style="border: 1px dashed #333; padding: 8px; text-align: center; vertical-align: middle;">5 mins</td>
       </tr>
@@ -441,9 +443,9 @@ async function simulateResponse(type, vars, media = null) {
   </table>
   
   <div style="border: 1px dashed #333; padding: 10px; margin-top: 15px; font-size: 10px;">
-    <p style="margin: 2px 0;">📝 <b>Homework:</b> Review the class vocab sheet and write 3 sentences detailing a personal connection to "${cleanTheme}".</p>
-    <p style="margin: 2px 0;">📊 <b>Formative Assessment:</b> Oral presentation checklist based on Stage 4 performance.</p>
-    <p style="margin: 2px 0;">💬 <b>Teacher's Notes:</b> Ensure scaffolds are available for students needing additional pronunciation support.</p>
+    <p style="margin: 2px 0;">📝 <b>Homework / Extension:</b> Review the vocabulary sheet and write 3 to 4 sentences connecting the theme "${cleanTheme}" to personal experience in the community.</p>
+    <p style="margin: 2px 0;">📊 <b>Formative Evidence:</b> Pair interaction rubric and exit ticket collected during Stage 5.</p>
+    <p style="margin: 2px 0;">💬 <b>Teacher's Notes:</b> Ensure differentiated sentence frames are readily available for students needing additional scaffolding.</p>
   </div>
 </div>
     `;
@@ -1041,7 +1043,7 @@ async function simulateResponse(type, vars, media = null) {
         { speaker: "Sofia", text: "Thank you, Mr. Robles! Wow, there are so many books here. I'm excited to search for a good one." },
         { speaker: "Mr. Robles", text: "Remember to be quiet in the reading room. And if you need help finding anything, just ask." },
         { speaker: "Sofia", text: "I will! I want to borrow two adventure books and one about space. Do I need my library card?" },
-        { speaker: "Mr. Robles", text: "Yes, please bring them to the desk with your library card when you are ready to check them out. Enjoy your reading!" },
+        { speaker: "Mr. Robles", text: "Yes, please bring them to the desk with your library card when you are ready to check out. Enjoy your reading!" },
         { speaker: "Sofia", text: "Thanks, Mr. Robles! This library is the best!" }
       ],
       comprehensionQuestions: [
@@ -1061,57 +1063,80 @@ export async function generateCurriculumContent(type, vars, media = null) {
   const clientApiKey = getApiKey();
   const { systemPrompt, userMsg } = getPromptTemplate(type, vars);
 
-  try {
-    const parts = [{ text: userMsg }];
-    if (media && media.base64Data && media.mimeType) {
-      parts.push({
-        inlineData: {
-          mimeType: media.mimeType,
-          data: media.base64Data
-        }
-      });
-    }
-
-    const body = {
-      contents: [{ parts: parts }],
-      systemInstruction: { parts: [{ text: systemPrompt }] }
-    };
-
-    let data;
-    if (clientApiKey) {
-      // Desarrollo local: llamada directa con API key del cliente
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${clientApiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
-      if (!response.ok) {
-        throw new Error(`API returned status ${response.status}`);
+  const parts = [{ text: userMsg }];
+  if (media && media.base64Data && media.mimeType) {
+    parts.push({
+      inlineData: {
+        mimeType: media.mimeType,
+        data: media.base64Data
       }
-      data = await response.json();
-    } else {
-      // Producción en Vercel: llamada segura a través del proxy
-      const response = await fetch('/api/gemini', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
-      if (!response.ok) {
-        throw new Error(`Proxy returned status ${response.status}`);
-      }
-      data = await response.json();
-    }
-
-    let text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-
-    // Cleanup markdown code blocks if the AI surrounded the HTML/JSON with it
-    text = text.replace(/```json|```html|```/g, '').trim();
-
-    return text;
-  } catch (error) {
-    console.error("Gemini API error, falling back to simulated data:", error);
-    return await simulateResponse(type, vars, media);
+    });
   }
+
+  const body = {
+    contents: [{ parts: parts }],
+    systemInstruction: { parts: [{ text: systemPrompt }] }
+  };
+
+  const maxAttempts = 3;
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      let data;
+      if (clientApiKey) {
+        // Desarrollo local: llamada directa con API key del cliente
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${clientApiKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        if (!response.ok) {
+          if ((response.status === 503 || response.status === 429) && attempt < maxAttempts) {
+            console.warn(`Gemini API returned status ${response.status}. Retrying attempt ${attempt + 1}/${maxAttempts}...`);
+            await new Promise(r => setTimeout(r, 1200 * attempt));
+            continue;
+          }
+          throw new Error(`API returned status ${response.status}`);
+        }
+        data = await response.json();
+      } else {
+        // Producción en Vercel: llamada segura a través del proxy
+        const response = await fetch('/api/gemini', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        if (!response.ok) {
+          if ((response.status === 503 || response.status === 429) && attempt < maxAttempts) {
+            console.warn(`Proxy returned status ${response.status}. Retrying attempt ${attempt + 1}/${maxAttempts}...`);
+            await new Promise(r => setTimeout(r, 1200 * attempt));
+            continue;
+          }
+          throw new Error(`Proxy returned status ${response.status}`);
+        }
+        data = await response.json();
+      }
+
+      let text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+
+      // Cleanup markdown code blocks if the AI surrounded the HTML/JSON with it
+      text = text.replace(/```json|```html|```/g, '').trim();
+
+      if (text) {
+        return text;
+      }
+    } catch (error) {
+      lastError = error;
+      console.warn(`Gemini API attempt ${attempt} failed:`, error?.message || error);
+      if (attempt < maxAttempts) {
+        await new Promise(r => setTimeout(r, 1200 * attempt));
+      }
+    }
+  }
+
+  console.error("Gemini API all retries exhausted, falling back to simulated data:", lastError);
+  return await simulateResponse(type, vars, media);
 }
 
 // ── Multimodal Screenshot/File Extractor (Gemini) ──
@@ -1197,11 +1222,15 @@ function getPromptTemplate(type, vars) {
   const theme = vars.theme || 'Food and Drinks';
   const project21st = vars.project21st || '';
 
-  const getCefrFromGrade = (g) => {
+  const getCefrFromGrade = (g, rawCefr) => {
+    if (rawCefr && typeof rawCefr === 'string') {
+      const match = rawCefr.match(/\b(Pre-?A1\.[1-4]|A[12]\.[1-4]|B1\.[1-3]|A[12]|B1)\b/i);
+      if (match) return match[1].replace(/PreA/i, 'Pre-A');
+    }
     if (!g) return 'A2';
     const val = g.trim();
-    if (val === 'Pre-K') return 'Pre-A1.1';
-    if (val === 'Kinder') return 'Pre-A1.2';
+    if (val === 'Pre-K' || val === 'Pre-Kinder') return 'Pre-A1.1';
+    if (val === 'Kinder' || val === 'Kindergarten') return 'Pre-A1.2';
     if (val === '1st Grade') return 'Pre-A1.3';
     if (val === '2nd Grade') return 'Pre-A1.4';
     if (val === '3rd Grade') return 'A1.1';
@@ -1216,40 +1245,56 @@ function getPromptTemplate(type, vars) {
     if (val === '12th Grade') return 'B1.3';
     return 'A2';
   };
-  const cefr = vars.cefr || getCefrFromGrade(grade);
+  const cefr = getCefrFromGrade(grade, vars.cefr);
 
   if (type === 'planner' || type === 'lessonplanner') {
     return {
-      systemPrompt: `You are an expert curriculum designer certified by MEDUCA (Ministerio de Educación de Panamá). CRITICAL: Llenar todo el formato en inglés (All generated content, fields, and activities must be written in English).
+      systemPrompt: `You are an expert curriculum designer certified by MEDUCA (Ministerio de Educación de Panamá).
+    CRITICAL REQUIREMENT: Everything in this official Lesson Planner must be written 100% in English (all activities, instructions, labels, and table content).
     Generate a complete, professional LESSON PLANNER strictly following the Action-Oriented Approach (AOA) 
     framework used in Panama's National English Curriculum.
 
     ════════════════════════════════════════
     CONTEXT VARIABLES (USE THESE THROUGHOUT):
     ════════════════════════════════════════
-    - Lesson Number   : ${lessonNum}
-    - Skills Focus    : ${skillsStr} (CRITICAL: Every stage, activity, and teacher action must strictly align with this Focus Skill)
-    - Grade Level     : ${grade}
-    - CEFR Level      : ${cefr} (CRITICAL: All vocabulary, grammar complexity, and task demands must strictly target this CEFR level)
-    - Scenario        : ${scenery}
-    - Theme           : ${theme}
-    - Lesson within Theme: This is Lesson ${lessonNum} of 5 in the theme sequence.
-    ${project21st ? `- 21st Century Skills Project Focus: ${project21st} (CRITICAL: Since this is Lesson 5 / Mediation, all activities—especially Stage 4 Performance and Stage 5 Assessment—must center on the development, translation, explanation, or presentation of this specific project, integrating it with the linguistic competences.)` : ''}
+    - Lesson Number       : ${lessonNum} of 5
+    - Skills Focus        : ${skillsStr} (CRITICAL: Every stage, activity, and teacher action must strictly align with this Focus Skill)
+    - Grade Level         : ${grade}
+    - CEFR Target Level   : ${cefr} (CRITICAL: All vocabulary, grammar complexity, and task demands must strictly target this CEFR level)
+    - Scenario            : ${scenery}
+    - Theme               : ${theme}
+    ${vars.objective ? `- Specific Objective : ${vars.objective}` : ''}
+    ${vars.outcome ? `- Learning Outcome   : ${vars.outcome}` : ''}
+    ${vars.communicativeComp ? `- Official Curriculum Competences & Recommended Language Content:
+${vars.communicativeComp}
+(CRITICAL: Systematically embed these exact grammatical structures, recommended vocabulary words, phonemic awareness, and pragmatic functions across all stages of this lesson.)` : ''}
+    ${project21st ? `- 21st Century Skills Project Focus: ${project21st} (CRITICAL: Since this is Lesson 5 / Mediation, all activities—especially Stage 4 Performance and Stage 5 Assessment—must center on developing, explaining, translating, or presenting this specific project, integrating it with the linguistic competences.)` : ''}
 
     ════════════════════════════════════════
     5-LESSON SEQUENCE & PROGRESSION COHESION (CRITICAL):
     ════════════════════════════════════════
-    EduGen plans follow a strict sequential unit flow of 5 lessons. You must design this plan as a logical step in this sequence:
-    * Lesson 1: Listening & Vocab Intro. Focus: Introducing 10 new vocabulary words, pronunciation modeling, concept checking.
-    * Lesson 2: Reading Comprehension. Focus: Reading a text using the same 10 vocabulary words to understand context.
-    * Lesson 3: Speaking & Interaction. Focus: Actively speaking and interacting in pairs using the 10 vocabulary words.
-    * Lesson 4: Writing Composition. Focus: Constructing sentences and writing paragraphs using the 10 vocabulary words.
-    * Lesson 5: Mediation & Integration. Focus: Consolidating and summarizing information, carrying out a final mission.
+    EduGen plans follow a strict sequential unit flow of 5 lessons within each theme:
+    * Lesson 1: Listening & Vocab Intro. Focus: Introducing 8-10 core vocabulary words, pronunciation modeling, concept checking.
+    * Lesson 2: Reading Comprehension. Focus: Reading a text using the same vocabulary words to understand context.
+    * Lesson 3: Speaking & Interaction. Focus: Actively speaking and interacting in pairs using the target vocabulary.
+    * Lesson 4: Writing Composition. Focus: Constructing sentences and writing paragraphs using the target vocabulary.
+    * Lesson 5: Mediation & Integration. Focus: Consolidating and summarizing information, carrying out the 21st Century Skills Project.
     
-    If generating Lesson ${lessonNum}, you must assume previous lessons have established the prior stages, and maintain strict vocabulary consistency. Keep the target vocabulary (such as 10 new words) present and sequential across all lesson stages (Warm-up, Presentation, Practice, Production).
+    If generating Lesson ${lessonNum}, you must assume previous lessons have established the prior stages, and maintain strict vocabulary consistency. Keep the target vocabulary present and sequential across all lesson stages (Warm-up, Presentation, Practice, Production).
     
-    CEFR & GRADE ADAPTATION:
-    You must strictly adapt the vocabulary choice, sentence structure complexity, and instructions to the Grade Level: "${grade}" and CEFR Level: "${cefr}". For example, A1.1 or A1.2 must use short, simple sentences, basic present tense, and high visual support, whereas B1.1 can include past/future tenses, compound sentences, and independent tasks.
+    ════════════════════════════════════════
+    CEFR & GRADE LEVEL ADAPTATION (PRE-K TO 12TH GRADE):
+    ════════════════════════════════════════
+    You must strictly calibrate vocabulary, syntax, instructions, and task difficulty to Grade: "${grade}" and CEFR: "${cefr}":
+    • Early Learners (Pre-K to 2nd Grade / Pre-A1.1 – Pre-A1.4):
+      - Emphasize multi-sensory Total Physical Response (TPR), realia, colorful picture flashcards, rhymes, and songs.
+      - Keep student oral output to 1-3 word utterances, choral imitation, pointing, matching, and coloring.
+    • Upper Elementary (3rd to 6th Grade / A1.1 – A2.1):
+      - Focus on short illustrated dialogues, sentence frames, basic present/past routines, pair work, and guided information gap tasks.
+    • Premedia / Middle School (7th to 9th Grade / A2.2 – A2.4):
+      - Involve authentic adolescent scenarios, peer interviews, comparatives/superlatives, past/future tenses, descriptive paragraphs, and collaborative role-plays.
+    • Media / High School (10th to 12th Grade / B1.1 – B1.3):
+      - Engage students in academic/vocational topics, critical thinking, debates, structured essays, collaborative problem solving, and formal presentations using compound/complex syntax.
 
     ════════════════════════════════════════
     OUTPUT STRUCTURE — FOLLOW THIS EXACTLY:
@@ -1263,89 +1308,78 @@ function getPromptTemplate(type, vars) {
     ## SECTION 2 — LESSON IDENTIFICATION TABLE
     A dashed-border HTML table with these fields in a grid layout:
     Row 1: [Lesson #: ${lessonNum}] [Skills Focus: ${skillsStr}]
-    Row 2: [Grade: ${grade}] [Scenario: ${scenery}] [Theme: ${theme}]
-    Row 3: [Date(s): From ___ to ___] [Learning Sequence Time: ___]
+    Row 2: [Grade: ${grade} (CEFR: ${cefr})] [Scenario: ${scenery}] [Theme: ${theme}]
+    Row 3: [Date(s): From ___ to ___] [Learning Sequence Time: 45–50 min]
     Row 4 (full width): 
-      - Specific Objective: (Write ONE clear, measurable objective aligned to ${skillsStr} skills. 
-        Use action verbs from Bloom's Taxonomy: identify, compare, produce, demonstrate, evaluate, etc.)
-      - Learning Outcome: (Write 2–3 bullet points. Start each with "Students will be able to..." 
-        aligned to MEDUCA's competency framework for grade ${grade}.)
+      - Specific Objective: (${vars.objective ? vars.objective : `State ONE clear, measurable objective aligned to ${skillsStr} and CEFR ${cefr} using Bloom's Taxonomy.`})
+      - Learning Outcome: (${vars.outcome ? vars.outcome : `2–3 bullet points starting with "Students will be able to..." aligned to MEDUCA's competency framework for grade ${grade}.`})
 
     ## SECTION 3 — AOA STAGES TABLE
     Title: "The Six Action-Oriented Approach (AOA) Lesson Stages"
     A 3-column HTML table with dashed borders:
     Columns: [Stage & Description] [Activities & Teacher Actions] [Estimated Date and Time]
 
-    Include ALL 6 stages with detailed content in English:
+    Include ALL 6 stages with detailed, classroom-ready content in 100% English:
 
     STAGE 1 — Warm-up / Pre-task (Engagement, Modeling and Clarification)
-
-      • Warm-up: (Describe a brief warm-up activity that connects to the theme "${theme}" and activates students' prior knowledge. Include suggested materials such as visuals, audio, or realia if applicable.)
-      • Modeling: (Explain how the teacher will present the target language or skills for this lesson. Describe the teacher's role in demonstrating the language and clarifying meaning.)
-      • Clarification: (Detail how the teacher will check for understanding of the new language or skills, using concept-checking questions (CCQs) and examples.)
+      • Warm-up: (Describe a brief warm-up activity that connects to the theme "${theme}" and activates students' prior knowledge using visuals, realia, or real-life prompts.)
+      • Modeling: (Explain how the teacher demonstrates target language, models pronunciation, and clarifies meaning for grade ${grade}.)
+      • Clarification: (Detail how the teacher checks understanding using at least two Concept Checking Questions (CCQs) and examples.)
 
     STAGE 2 — Presentation
       • Input of new language/content connected to Scenario: "${scenery}".
-      • Text, dialogue, or audio/visual input suggestion.
-      • Comprehension tasks (True/False, matching, gist questions).
-
-      • Material: (Describe the text/dialogue: genre, style, register, and format — e.g., "dialogue for an interview", "short notice", "instructions", "narrative excerpt").
-      • Communicative Competence: (State the specific communicative competence from MEDUCA for this lesson, e.g., "Communicative Competence: Interaction and Spoken Communication: Expressing preferences and opinions", "Communicative Competence: Reading for Information: Understanding main ideas in short texts").
+      • Suggest authentic text, dialogue, or audio/visual input.
+      • Material: (Describe genre, register, and format — e.g., "dialogue for an interview", "short notice", "instructions", "narrative excerpt").
+      • Communicative Competence: (State the specific communicative competence from MEDUCA for this lesson).
+      • Comprehension tasks: (Gist questions, True/False, or information matching).
 
     STAGE 3 — Preparation / Practice
-
-      • Focus on accuracy of ${skillsStr}.
-      • Detalla las actividades
-      • Communicative Skill: (e.g., "Interaction and Spoken Communication: Participating in short conversations").
-      • Language Content: (e.g., "Key expressions for asking and answering personal questions").
-      • Procedure: (Describe at least three specific classroom activities for this stage, e.g., "1. Fill-in-the-blank exercises with the target vocabulary. 2. Sentence-building using the new grammatical structures. 3. Short controlled dialogues in pairs focusing on pronunciation and intonation.").
+      • Accuracy focus on ${skillsStr}.
+      • Communicative Skill & Content: (Target grammar structure and vocabulary from the curriculum).
+      • Detailed Procedure: (Describe at least three sequential classroom activities: 1. Controlled practice/cloze; 2. Semi-controlled substitution drill; 3. Pair interaction/peer check).
 
     STAGE 4 — Performance / Production
-      • Communicative task where students USE the language in a realistic scenario.
-      • Describe the task format (role-play, presentation, written product, debate, etc.)
-      • Connect to Scenario: "${scenery}" and Theme: "${theme}".
-      • Focus on fluency and communication.
+      • Communicative task where students USE the language in a realistic scenario: "${scenery}".
+      • Describe task format (role-play, presentation, written product, debate, simulation).
+      • Connect directly to Theme: "${theme}" and Scenario: "${scenery}".
+      • Focus on fluency, collaborative interaction, and communicative task completion.
 
     STAGE 5 — Assessment / Post-task
-      • Formative assessment strategy (observation checklist, exit ticket, peer assessment, 
-        self-assessment rubric, or digital quiz suggestion).
-      • How teacher collects evidence of learning aligned to the Specific Objective.
-
-      • Assessment Task: (Describe the specific task students will perform, e.g., "Role-play: Presenting a favorite book to a partner.", "Written Report: Describing a community helper.", "Group Debate: Sharing opinions on healthy eating.").
-      • Evaluation Criteria: (Specify how the performance will be assessed, e.g., Use of target vocabulary, grammatical accuracy, clarity of communication, collaboration in group tasks). 
+      • Formative assessment strategy (observation checklist, rubric, or peer assessment).
+      • Assessment Task: (Describe what students perform or produce).
+      • Evaluation Criteria: (Intelligible pronunciation, use of target vocabulary, clarity, collaboration).
+      • Student Self-Assessment / Exit Ticket: (1-2 reflective prompts for learners).
 
     STAGE 6 — Reflection
-      • Student self-reflection prompt (2–3 guiding questions for learners).
-      • Teacher reflection: What worked? What to adjust for next lesson?
+      • Student self-reflection prompt (2 guiding questions for learners).
+      • Teacher reflection: (What worked? What adjustments and scaffolds are needed for next lesson?)
       • Connection to next lesson in the theme sequence.
 
     END OF DOCUMENT: Finish immediately after the complete STAGE 6 reflection row.
     Generate exactly ONE filled lesson planner for the requested lesson.
-    The lesson identification table appears ONLY ONCE, before Stage 1.
-    Do not append another identification table, blank template, additional lesson, footer, or any content after Stage 6.
     Close the HTML table and its containers and stop.
 
     ════════════════════════════════════════
     QUALITY STANDARDS:
     ════════════════════════════════════════
-    - Language: Professional English throughout.
-    - Alignment: Every activity must connect strictly to Skills Focus (${skillsStr}), Grade Level (${grade}), CEFR Level (${cefr}), Scenario (${scenery}), and Theme (${theme}).
-    - Strict Skill Focus: If Skills Focus is "Listening", all activities, materials, and checks must center on listening/auditory practice. If "Reading", they must center on reading/texts. If "Speaking", on speech production/interaction. If "Writing", on text composition. If "Mediation", on translation, summarizing, or explaining.
-    - CEFR Appropriateness: Grammar structure complexity and vocabulary must strictly respect the ${cefr} level.
-    - Bloom's Taxonomy: Progression from lower-order (remember, understand) to higher-order (apply, create) thinking.
-    - Differentiation: Include at least ONE suggestion per stage for supporting struggling learners (scaffolding) 
-      and challenging advanced learners (extension task).
-    - Time awareness: Suggest realistic time allocations per stage (total ~45–60 min for a standard MEDUCA class).
-    - Formatting & Justification (CRITICAL for clean exports):
-      * Never output large blocks of concatenated text inside table cells.
-      * Always use paragraph tags with text-align: justify; (e.g. <p style="text-align: justify; margin: 4px 0 8px 0;">) to separate distinct ideas, headers, or activities.
-      * Ensure each segment (such as Communicative Skill, Language Content, Procedure, Warm-up, Modeling, Clarification, Differentiation) starts in a new paragraph block.
-      * Bold labels explicitly (e.g. <b>Communicative Skill:</b>, <b>Language Content:</b>, <b>Procedure:</b>).
-      * Use bulleted lists (<ul> and <li style="margin-bottom: 4px; text-align: justify;">) for detailing step-by-step procedures and differentiation tasks to ensure they are visually ordered and formatted.
-    - Use HTML tables with style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;"
-    - Use color #1a5276 for all headings and stage titles.
-    - Tone: Practical, encouraging, and teacher-friendly.`,
-      userMsg: `Generate the complete official AOA Lesson Planner. Theme: "${theme}", Grade: "${grade}", Scenario: "${scenery}", Objective: "${vars.objective}", Outcome: "${vars.outcome}".${project21st ? ` 21st Century Skills Project: "${project21st}".` : ''}`
+    - Language: 100% Professional English throughout. No Spanish.
+    - Alignment: Strictly aligned to Skills Focus (${skillsStr}), Grade (${grade}), CEFR (${cefr}), Scenario (${scenery}), and Theme (${theme}).
+    - Strict Skill Focus: If Skills Focus is "Listening", all activities center on listening. If "Reading", on reading. If "Speaking", on speaking. If "Writing", on writing. If "Mediation", on translating/summarizing/explaining.
+    - Formatting:
+      * Use paragraph tags with text-align: justify; (<p style="text-align: justify; margin: 4px 0 8px 0;">) to separate distinct ideas and labels.
+      * Bold labels explicitly (<b>Warm-up:</b>, <b>Modeling:</b>, <b>Clarification (CCQs):</b>, <b>Detailed Procedure:</b>).
+      * Use bulleted lists (<ul> and <li style="margin-bottom: 4px; text-align: justify;">) for step-by-step procedures.
+    - Table style: style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;"
+    - Color #1a5276 for headings and stage titles.`,
+      userMsg: `Generate the complete official MEDUCA AOA Lesson Planner strictly in English.
+Grade: "${grade}" (CEFR: ${cefr})
+Lesson #: ${lessonNum} of 5
+Skills Focus: "${skillsStr}"
+Scenario: "${scenery}"
+Theme: "${theme}"
+Specific Objective: "${vars.objective || ''}"
+Learning Outcome: "${vars.outcome || ''}"
+${vars.communicativeComp ? `Linguistic Competences & Recommended Vocabulary:\n${vars.communicativeComp}\n` : ''}${project21st ? `21st Century Skills Project (Lesson 5 Mediation Focus): "${project21st}"\n` : ''}`
     };
   }
 

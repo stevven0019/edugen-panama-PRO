@@ -51,7 +51,8 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
       })
       .then(data => {
         if (!Array.isArray(data.scenarios) || !data.scenarios.length) throw new Error('Este currículo no contiene escenarios.');
-        if (!controller.signal.aborted) setCurriculumState({ grade, scenarios: data.scenarios, cefr: data.cefrLevel || data.cefr_level || '', error: '' });
+        const rawCefr = data.proficiency_level || data.cefrLevel || data.cefr_level || data.level || data.scenarios?.[0]?.level || data.scenarios?.[0]?.proficiency_level || '';
+        if (!controller.signal.aborted) setCurriculumState({ grade, scenarios: data.scenarios, cefr: rawCefr, error: '' });
       })
       .catch(error => {
         if (!controller.signal.aborted) setCurriculumState({ grade, scenarios: [], error: error.message });
@@ -505,6 +506,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
       const vars = {
         skills: selectedSkills,
         grade,
+        cefr: curriculumState.cefr || '',
         lessonNum,
         scenario,
         theme,
