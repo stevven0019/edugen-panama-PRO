@@ -7,7 +7,7 @@ export const config = { maxDuration: 60 };
 export default async function handler(req,res) {
   res.setHeader('Cache-Control','no-store');
   if(req.method!=='POST')return res.status(405).json({error:'Method not allowed'});
-  if(req.body?.posterVersion!==2)return res.status(409).json({error:'Actualiza la página para utilizar el nuevo creador de pósteres.'});
+  if(req.body?.posterVersion!==3)return res.status(409).json({error:'Actualiza la página para utilizar el nuevo creador de pósteres.'});
   const key=process.env.GEMINI_API_KEY||process.env.VITE_GEMINI_API_KEY;
   const firebaseKey=process.env.VITE_FIREBASE_API_KEY;
   if(!key||!firebaseKey)return res.status(503).json({error:'La generación de imágenes requiere configurar Gemini y Firebase en Vercel.'});

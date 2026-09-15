@@ -1,4 +1,4 @@
-import { posterTiles, numberRange } from './illustratedPoster.js';
+import { posterTiles, numberRange, needsIllustration } from './illustratedPoster.js';
 
 export const paperSize = paper => paper === 'a4' ? {width:210,height:297} : {width:215.9,height:279.4};
 const palette=['#edb900','#ff344e','#168acb','#f58a22','#20ac63','#9454d3'];
@@ -21,9 +21,10 @@ export async function composePoster(raw,blobs,grade,index,paper='letter') {
     text(`${grade} · Scenario ${index+1} · Recommended Vocabulary`,850,122,1600,26);
     const groups=Object.entries(Object.groupBy(source.entries,e=>e.category)).map(([category,entries])=>{
       const numeric=entries.length===1?numberRange(entries[0]):null;
+      const illustrated=needsIllustration(category);
       const cols=numeric?10:Math.min(6,entries.length);
       const rows=Math.ceil((numeric?.length||entries.length)/cols);
-      return {category,entries,numeric,cols,rows,weight:numeric?Math.max(1.4,rows*.22):rows+.35};
+      return {category,entries,numeric,illustrated,cols,rows,weight:numeric?Math.max(1.4,rows*.22):illustrated?rows+.35:rows*.4+.45};
     });
     const gap=20,available=canvas.height-190-gap*(groups.length-1),unit=available/groups.reduce((sum,g)=>sum+g.weight,0);
     let y=158;
@@ -40,6 +41,14 @@ export async function composePoster(raw,blobs,grade,index,paper='letter') {
           const cx=x+12+(i%group.cols)*cw,cy=top+Math.floor(i/group.cols)*rh;
           ctx.fillStyle=['#ffe1ea','#fff2b2','#d8f6cf','#d2f3ff','#e5d8fc'][Math.floor(i/group.cols)%5];
           ctx.fillRect(cx+2,cy+2,cw-4,rh-4);text(String(number),cx+cw/2,cy+rh/2,cw-10,Math.min(32,rh*.72));
+        });
+      }else if(!group.illustrated){
+        group.entries.forEach((entry,i)=>{
+          const cx=x+12+(i%group.cols)*cw,cy=top+Math.floor(i/group.cols)*rh;
+          const pillHeight=Math.min(76,rh-8);
+          ctx.fillStyle=color+'18';ctx.strokeStyle=color;ctx.lineWidth=2;
+          ctx.beginPath();ctx.roundRect(cx+7,cy+(rh-pillHeight)/2,cw-14,pillHeight,14);ctx.fill();ctx.stroke();
+          text(entry.word,cx+cw/2,cy+rh/2,cw-30,Math.min(36,pillHeight*.58));
         });
       }else group.entries.forEach((entry,i)=>{
         const tile=source.tiles.findIndex(e=>e.category===entry.category&&e.word===entry.word);
