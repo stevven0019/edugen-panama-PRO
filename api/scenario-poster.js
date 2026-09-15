@@ -1,12 +1,13 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { curriculumFilename } from '../src/services/aoaCurriculum.js';
-import { illustrationPrompt, posterTiles, validTileReview } from '../src/resources/illustratedPoster.js';
+import { illustrationPrompt, posterBatch, validTileReview } from '../src/resources/illustratedPoster.js';
 
 export const config = { maxDuration: 60 };
 export default async function handler(req,res) {
   res.setHeader('Cache-Control','no-store');
   if(req.method!=='POST')return res.status(405).json({error:'Method not allowed'});
+  if(req.body?.posterVersion!==2)return res.status(409).json({error:'Actualiza la página para utilizar el nuevo creador de pósteres.'});
   const key=process.env.GEMINI_API_KEY||process.env.VITE_GEMINI_API_KEY;
   const firebaseKey=process.env.VITE_FIREBASE_API_KEY;
   if(!key||!firebaseKey)return res.status(503).json({error:'La generación de imágenes requiere configurar Gemini y Firebase en Vercel.'});
@@ -17,18 +18,22 @@ export default async function handler(req,res) {
     if(!auth.ok || !(await auth.json()).users?.length)return res.status(401).json({error:'Tu sesión expiró. Inicia sesión nuevamente.'});
     let prompt, tiles;
     try {
-      const {grade,index,sheetIndex}=req.body||{};
+      const {grade,index,sheetIndex,batchIndex=0}=req.body||{};
       if(!Number.isInteger(index)||index<0||index>7)throw Error('Escenario no válido.');
       if(typeof grade !== 'string' || !/^(Pre-K|Kinder|(?:[1-9]|1[0-2])(?:st|nd|rd|th) Grade)$/.test(grade))throw Error('Grado no válido.');
       const filename=curriculumFilename(grade);
       const curriculum=JSON.parse(await readFile(path.join(process.cwd(),'public','curriculums',filename),'utf8'));
       if(!curriculum.scenarios[index])throw Error('Escenario no válido.');
-      tiles=posterTiles(curriculum.scenarios[index]);
-      prompt=illustrationPrompt(curriculum.scenarios[index],grade,index,sheetIndex);
+      tiles=posterBatch(curriculum.scenarios[index],batchIndex);
+      prompt=illustrationPrompt(curriculum.scenarios[index],grade,index,sheetIndex,batchIndex);
     }catch{return res.status(400).json({error:'El grado, escenario o vocabulario seleccionado no está disponible.'});}
     const model=process.env.GEMINI_IMAGE_MODEL||'gemini-2.5-flash-image';
     const response=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':key},body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{responseModalities:['TEXT','IMAGE']}}),signal:AbortSignal.timeout(33000)});
-    if(!response.ok)return res.status(response.status===429?429:502).json({error:response.status===429?'Gemini alcanzó su cuota de imágenes. Intenta más tarde.':'Gemini no pudo crear la imagen. Revisa que la clave tenga acceso al modelo de imágenes y facturación habilitada.'});
+    if(!response.ok){
+      const failure=await response.json().catch(()=>({}));
+      const noAccess=response.status===429 && /limit:\s*0/.test(failure.error?.message||'');
+      return res.status(response.status===429?429:502).json({code:noAccess?'IMAGE_QUOTA_DISABLED':'IMAGE_GENERATION_FAILED',error:noAccess?'La clave de Gemini no tiene cuota habilitada para imágenes. El administrador debe revisar la facturación y la clave configurada en Vercel.':response.status===429?'Se alcanzó el límite de imágenes. Conservamos los grupos terminados para reintentar.':'No se pudo generar este grupo de ilustraciones. Intenta nuevamente.'});
+    }
     const result=await response.json();
     const data=result.candidates?.[0]?.content?.parts?.find(p=>p.inlineData?.mimeType?.startsWith('image/'))?.inlineData;
     if(!data||!['image/png','image/jpeg','image/webp'].includes(data.mimeType))return res.status(502).json({error:'Gemini no devolvió una imagen. Intenta nuevamente.'});

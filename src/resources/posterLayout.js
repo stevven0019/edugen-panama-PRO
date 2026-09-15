@@ -2,11 +2,13 @@ import { posterTiles, numberRange } from './illustratedPoster.js';
 
 export const paperSize = paper => paper === 'a4' ? {width:210,height:297} : {width:215.9,height:279.4};
 const palette=['#edb900','#ff344e','#168acb','#f58a22','#20ac63','#9454d3'];
-export async function composePoster(raw,blob,grade,index,paper='letter') {
+export async function composePoster(raw,blobs,grade,index,paper='letter') {
   const source=posterTiles(raw),size=paperSize(paper);
-  const bitmap=await createImageBitmap(blob);
+  const bitmaps=[];
   try {
-    const canvas=document.createElement('canvas');canvas.width=1700;canvas.height=Math.round(1700*size.height/size.width);
+    for(const blob of blobs)bitmaps.push(await createImageBitmap(blob));
+    if(bitmaps.length!==Math.ceil(source.tiles.length/9))throw new Error('Faltan ilustraciones verificadas.');
+    const canvas=document.createElement('canvas');canvas.width=1700;canvas.height=Math.round(1700*(size.height-20)/(size.width-20));
     const ctx=canvas.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,canvas.width,canvas.height);
     const text=(value,x,y,maxWidth,font=30,color='#101e54')=>{
       ctx.fillStyle=color;ctx.textAlign='center';ctx.textBaseline='middle';
@@ -42,13 +44,14 @@ export async function composePoster(raw,blob,grade,index,paper='letter') {
       }else group.entries.forEach((entry,i)=>{
         const tile=source.tiles.findIndex(e=>e.category===entry.category&&e.word===entry.word);
         const cx=x+12+(i%group.cols)*cw,cy=top+Math.floor(i/group.cols)*rh;
-        const sw=bitmap.width/source.columns,sh=bitmap.height/source.rows;
+        const bitmap=bitmaps[Math.floor(tile/9)],local=tile%9;
+        const sw=bitmap.width/3,sh=bitmap.height/3;
         const scale=Math.min((cw-14)/sw,(rh-42)/sh),dw=sw*scale,dh=sh*scale;
-        ctx.drawImage(bitmap,(tile%source.columns)*sw,Math.floor(tile/source.columns)*sh,sw,sh,cx+(cw-dw)/2,cy+(rh-42-dh)/2,dw,dh);
+        ctx.drawImage(bitmap,(local%3)*sw,Math.floor(local/3)*sh,sw,sh,cx+(cw-dw)/2,cy+(rh-42-dh)/2,dw,dh);
         text(entry.word,cx+cw/2,cy+rh-20,cw-12,30);
       });
       y+=h+gap;
     });
     return await new Promise((resolve,reject)=>canvas.toBlob(result=>result?resolve(result):reject(new Error('No se pudo componer el póster.')),'image/png'));
-  } finally {bitmap.close();}
+  } finally {bitmaps.forEach(bitmap=>bitmap.close());}
 }
