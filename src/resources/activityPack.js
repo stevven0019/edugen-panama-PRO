@@ -1,13 +1,13 @@
 export const ICONS = ['book','bag','desk','chair','pencil','crayon','ball','apple','tree','sun','house','fish','flower'];
 
-const text = (value, name, max = 500) => {
+const text = (value, name, max = 600) => {
   if (typeof value !== 'string' || !value.trim()) return '';
   return value.trim().slice(0, max);
 };
 
 export function normalizeIcon(icon) {
   if (!icon || typeof icon !== 'string') return 'book';
-  let clean = icon.toLowerCase().trim().replace(/s$/, ''); // singularize
+  let clean = icon.toLowerCase().trim().replace(/s$/, '');
   if (clean === 'pencile') clean = 'pencil';
   if (clean === 'table') return 'desk';
   return ICONS.includes(clean) ? clean : 'book';
@@ -31,40 +31,55 @@ export function validatePack(pack) {
   pack.title = text(pack.title, 'title', 140) || 'Activity Workbook';
   pack.grade = text(pack.grade, 'grade', 60) || 'Grade';
   pack.skill = text(pack.skill, 'skill', 60) || 'English';
-  pack.lessonTitle = text(pack.lessonTitle, 'lessonTitle', 140) || pack.title;
+  pack.lessonTitle = text(pack.lessonTitle, 'lessonTitle', 160) || pack.title;
 
   if (!Array.isArray(pack.activities) || pack.activities.length < 2) {
     throw new Error('El cuaderno debe tener al menos 2 actividades.');
   }
 
-  // Sanitize and normalize activities
-  pack.activities = pack.activities.slice(0, 6).map((activity, idx) => {
-    activity.title = text(activity.title, 'título', 120) || `Activity ${idx + 1}`;
-    activity.instruction = text(activity.instruction, 'instrucción', 250) || 'Follow the instructions.';
+  pack.activities = pack.activities.slice(0, 5).map((activity, idx) => {
+    activity.title = text(activity.title, 'título', 140) || `Activity ${idx + 1}`;
+    activity.instruction = text(activity.instruction, 'instrucción', 280) || 'Follow the instructions.';
 
-    if (!['picture_choice', 'match', 'read_answer', 'draw_write', 'listening_script_choice'].includes(activity.type)) {
-      activity.type = 'read_answer';
+    // Default to card_choices if not recognized
+    const recognizedTypes = ['card_choices', 'picture_choice', 'table_checklist', 'matching', 'match', 'dialogue_cloze', 'read_answer', 'draw_write'];
+    if (!recognizedTypes.includes(activity.type)) {
+      activity.type = 'card_choices';
     }
+    if (activity.type === 'picture_choice') activity.type = 'card_choices';
+    if (activity.type === 'match') activity.type = 'matching';
 
-    if (activity.type === 'picture_choice') {
+    // 1. CARD CHOICES / LISTENING SELECTION
+    if (activity.type === 'card_choices') {
       if (!Array.isArray(activity.items) || !activity.items.length) {
-        activity.items = [{ teacherPrompt: 'Listen and choose.', options: [{ icon: 'book', label: 'Book' }, { icon: 'pencil', label: 'Pencil' }], answerIndex: 0 }];
+        activity.items = [
+          {
+            teacherPrompt: 'Listen and choose the correct option.',
+            options: [{ label: 'Option A' }, { label: 'Option B' }],
+            answerIndex: 0
+          }
+        ];
       }
       activity.items = activity.items.slice(0, 4).map((item, itemIdx) => {
-        item.teacherPrompt = text(item.teacherPrompt, 'guion', 260) || `Item ${itemIdx + 1}: Listen carefully.`;
+        item.teacherPrompt = text(item.teacherPrompt, 'guion', 300) || `Item ${itemIdx + 1}: Listen to the audio prompt.`;
         if (!Array.isArray(item.options) || item.options.length < 2) {
-          item.options = [{ icon: 'book', label: 'Option A' }, { icon: 'pencil', label: 'Option B' }];
+          item.options = [{ label: 'Option A' }, { label: 'Option B' }];
         }
-        item.options = item.options.slice(0, 3).map((opt) => {
-          const icon = normalizeIcon(opt.icon);
+        item.options = item.options.slice(0, 3).map((opt, optIdx) => {
+          const letter = String.fromCharCode(65 + optIdx);
+          const label = text(opt.label || opt.text, 'etiqueta', 100) || `Option ${letter}`;
+          const subtext = text(opt.subtext || opt.detail || opt.price, 'subtexto', 80);
+          const iconName = opt.icon ? normalizeIcon(opt.icon) : null;
           let pos = (opt.position || 'none').toLowerCase().replace(/\s+/g, '_');
           if (!['none', 'on', 'under', 'in', 'next_to'].includes(pos)) pos = 'none';
-          const anchor = pos !== 'none' ? normalizeAnchor(opt.anchor, pos, item.teacherPrompt + ' ' + (opt.label || '')) : undefined;
+          const anchor = pos !== 'none' ? normalizeAnchor(opt.anchor, pos, item.teacherPrompt + ' ' + label) : undefined;
+
           return {
-            icon,
-            position: pos,
-            ...(anchor ? { anchor } : {}),
-            label: text(opt.label, 'descripción', 100) || icon
+            letter,
+            label,
+            ...(subtext ? { subtext } : {}),
+            ...(iconName ? { icon: iconName } : {}),
+            ...(pos !== 'none' ? { position: pos, anchor } : {})
           };
         });
         if (!Number.isInteger(item.answerIndex) || item.answerIndex < 0 || item.answerIndex >= item.options.length) {
@@ -74,46 +89,104 @@ export function validatePack(pack) {
       });
     }
 
-    if (activity.type === 'match') {
-      if (!Array.isArray(activity.items) || activity.items.length < 2) {
-        activity.items = [{ icon: 'book', word: 'book' }, { icon: 'pencil', word: 'pencil' }];
+    // 2. TABLE CHECKLIST / INFORMATION GRID
+    if (activity.type === 'table_checklist') {
+      if (!Array.isArray(activity.headers) || activity.headers.length < 2) {
+        activity.headers = ['Item / Detail', 'Heard in Audio?', 'Quantity / Notes'];
       }
-      activity.items = activity.items.slice(0, 4).map(item => ({
-        icon: normalizeIcon(item.icon),
-        word: text(item.word, 'palabra', 50) || 'item'
+      activity.headers = activity.headers.slice(0, 4).map(h => text(h, 'encabezado', 60));
+      if (!Array.isArray(activity.rows) || !activity.rows.length) {
+        activity.rows = [
+          { col1: 'Target Item 1', col2: '[ ] Yes   [ ] No', col3: '$2.50' },
+          { col1: 'Target Item 2', col2: '[ ] Yes   [ ] No', col3: '$1.00' }
+        ];
+      }
+      activity.rows = activity.rows.slice(0, 6).map(r => ({
+        col1: text(r.col1 || r.item || r[0], 'col1', 80),
+        col2: text(r.col2 || r.status || r[1], 'col2', 80),
+        col3: text(r.col3 || r.detail || r[2], 'col3', 80)
+      }));
+      activity.teacherScript = text(activity.teacherScript, 'guion docente', 400);
+    }
+
+    // 3. MATCHING
+    if (activity.type === 'matching') {
+      if (!Array.isArray(activity.pairs) || activity.pairs.length < 2) {
+        activity.pairs = [
+          { left: 'Question / Item 1', right: 'Answer / Description 1' },
+          { left: 'Question / Item 2', right: 'Answer / Description 2' }
+        ];
+      }
+      activity.pairs = activity.pairs.slice(0, 5).map(p => ({
+        left: text(p.left || p.word || p.question, 'columna izquierda', 100),
+        right: text(p.right || p.definition || p.answer, 'columna derecha', 100),
+        ...(p.icon ? { icon: normalizeIcon(p.icon) } : {})
       }));
     }
 
+    // 4. DIALOGUE CLOZE / FILL IN THE BLANK
+    if (activity.type === 'dialogue_cloze') {
+      if (!Array.isArray(activity.wordBank) || !activity.wordBank.length) {
+        activity.wordBank = ['pineapple', 'dollars', 'market', 'cents'];
+      }
+      activity.wordBank = activity.wordBank.slice(0, 8).map(w => text(w, 'banco de palabras', 40));
+      if (!Array.isArray(activity.lines) || !activity.lines.length) {
+        activity.lines = [
+          { speaker: 'Vendor', text: 'Good morning! How can I help you?' },
+          { speaker: 'Customer', text: 'How much is the _______?' }
+        ];
+      }
+      activity.lines = activity.lines.slice(0, 6).map(l => ({
+        speaker: text(l.speaker || 'Person', 'hablante', 30),
+        text: text(l.text || l.sentence, 'línea de diálogo', 180)
+      }));
+      activity.teacherScript = text(activity.teacherScript, 'guion docente', 400);
+    }
+
+    // 5. READ & ANSWER
     if (activity.type === 'read_answer') {
-      activity.passage = text(activity.passage, 'lectura', 1200) || 'Read the text and answer the questions.';
+      activity.passage = text(activity.passage, 'lectura', 1200) || 'Read the scenario text carefully.';
       if (!Array.isArray(activity.questions) || !activity.questions.length) {
-        activity.questions = [{ question: 'What is the main topic?', answer: 'The topic described in the text.' }];
+        activity.questions = [{ question: 'What is the main topic discussed?', answer: 'The situation described above.' }];
       }
       activity.questions = activity.questions.slice(0, 4).map((q, qIdx) => ({
-        question: text(q.question, 'pregunta', 180) || `Question ${qIdx + 1}`,
-        answer: text(q.answer, 'respuesta', 260) || 'Sample response.'
+        question: text(q.question, 'pregunta', 200) || `Question ${qIdx + 1}`,
+        answer: text(q.answer, 'respuesta', 280) || 'Expected answer.'
       }));
     }
 
+    // 6. DRAW & WRITE / SPEAKING TASK
     if (activity.type === 'draw_write') {
-      activity.prompt = text(activity.prompt, 'consigna', 300) || 'Draw and write your response.';
-      activity.teacherGuide = text(activity.teacherGuide, 'orientación docente', 600) || 'Guide students through this activity.';
+      activity.prompt = text(activity.prompt, 'consigna', 320) || 'Draw or write your response.';
+      activity.teacherGuide = text(activity.teacherGuide, 'orientación docente', 600) || 'Observe student participation and provide scaffolding.';
     }
 
     return activity;
   });
 
+  // Rubric
   if (!Array.isArray(pack.rubric) || !pack.rubric.length) {
     pack.rubric = [
-      { criterion: 'Demonstrates target skill', independent: 'Completes tasks with ease and precision.', withSupport: 'Completes tasks with occasional prompts.', emerging: 'Needs continuous guidance.' }
+      { criterion: 'Demonstrates target skill in context', independent: 'Completes tasks accurately and fluently without support.', withSupport: 'Completes tasks with occasional prompts and repetitions.', emerging: 'Requires continuous modeling and direct teacher assistance.' }
     ];
   }
   pack.rubric = pack.rubric.slice(0, 4).map(row => ({
-    criterion: text(row.criterion, 'criterio', 140) || 'Target Objective',
-    independent: text(row.independent, 'independiente', 160) || 'Shows complete understanding.',
-    withSupport: text(row.withSupport, 'con apoyo', 160) || 'Shows understanding with teacher guidance.',
-    emerging: text(row.emerging, 'en desarrollo', 160) || 'Developing initial understanding.'
+    criterion: text(row.criterion, 'criterio', 160) || 'Target Learning Objective',
+    independent: text(row.independent, 'independiente', 160) || '90-100% accuracy and independence.',
+    withSupport: text(row.withSupport, 'con apoyo', 160) || 'Achieves objective with verbal/visual scaffolding.',
+    emerging: text(row.emerging, 'en desarrollo', 160) || 'Beginning to recognize target structures.'
   }));
+
+  // Teacher guide timing
+  if (!pack.timing) {
+    pack.timing = {
+      warmUp: '10 min · Vocabulary review & context setting',
+      presentation: '8 min · Target language demonstration & modeling',
+      guidedPractice: '12 min · Guided student activities with peer support',
+      performance: '10 min · Individual/pair performance task',
+      reflection: '5 min · Formative check and self-evaluation'
+    };
+  }
 
   return pack;
 }
@@ -133,83 +206,83 @@ const getClientApiKey = () => {
 };
 
 export async function generateActivityPack(source, signal) {
-  const prompt = `You are an expert curriculum designer and materials writer for the Panama MEDUCA English curriculum (Action-Oriented Approach / AOA).
-Create a complete, classroom-ready English printable Activity Pack and Assessment Rubric grounded strictly in the provided AOA lesson context.
+  const prompt = `You are an elite educational materials author for the Panama MEDUCA English curriculum under the Action-Oriented Approach (AOA).
+Your task is to create a REAL, HIGH-QUALITY, CLASSROOM-READY printable English Activity Workbook and Formative Assessment Rubric based directly on the provided lesson.
 
-CRITICAL INSTRUCTIONS BY SKILL AND GRADE:
-1. IDENTIFY THE SKILL:
-   - If the lesson skill is LISTENING: All student activities MUST be authentic listening comprehension tasks.
-     * Every listening item MUST include an explicit "teacherPrompt" (the exact spoken sentence, dialogue, or command the teacher will read out loud in class).
-     * The student workbook must only show the options/cues to circle, number, match, or point to (NEVER reveal the answer text or spoken sentence to the student).
-     * Include TPR ("Listen and do / move"), sequential numbering, or circling pictures.
-   - If the lesson skill is SPEAKING: Focus on oral production, partner talk, guided role-play dialogues, pronunciation chants, and picture description.
-   - If the lesson skill is READING: Leveled texts, reading comprehension questions, sequencing story events, and contextual vocabulary.
-   - If the lesson skill is WRITING: Guided sentence building, tracing (for early years), fill-in-the-blanks, graphic organizers, and paragraph composition.
+CRITICAL INSTRUCTIONS BY GRADE AND REALISTIC SCENARIOS:
+1. RELEVANT REAL-WORLD CONTENT:
+   - The activities MUST relate 100% to the specific scenario, theme, lesson, and skill provided in the context (e.g., if the topic is "How much is the pineapple?", generate real market/fruit/shopping activities, real prices like $2.50, $1.75, realistic dialogues, shopping lists, and price-matching, NOT abstract wireframe doodles!).
+   - Do NOT use generic childish icons unless the grade is explicitly Pre-K or Kinder.
 
-2. GRADE-LEVEL PEDAGOGY:
-   - Pre-K and Kinder: NEVER require reading or writing from the student! Use visual choices, pointing, circling, gestures, and drawing. Use icons from the supported list: ${ICONS.join(', ')}. Supported positions: on, under, in, next_to (with anchors: desk, chair, bag).
-   - 1st to 6th Grade: Word banks, illustrated prompts, sentence completion, matching, short passages.
-   - 7th to 12th Grade: Authentic scenarios, contextualized texts, analytical questions, debate topics, formal rubrics.
+2. ACTIVITY FORMATS TO USE:
+   Choose 3 to 4 varied, engaging activities from these supported pedagogical types:
+   a) "card_choices" (Listening / Reading selection):
+      - 2 to 3 cards per item with realistic options:
+        e.g., Option A: label: "Pineapple", subtext: "$2.50"
+        Option B: label: "Watermelon", subtext: "$3.75"
+        Option C: label: "Banana", subtext: "$0.50"
+      - For Listening, include the exact "teacherPrompt" the teacher must read aloud (e.g. "Customer: Good morning! How much is the fresh pineapple? Vendor: The pineapple is two dollars and fifty cents.").
+      - Only use "icon" and "position" (on/under/in/next_to) if the grade is Pre-K/Kinder with classroom objects.
+   b) "table_checklist" (Listening / Analysis grid):
+      - Perfect for shopping lists, daily routines, character actions, survey tables:
+        headers: ["Fruit / Item", "Price Heard in Audio", "In Stock? [Yes / No]"]
+        rows: [
+          { "col1": "Pineapple", "col2": "$2.50", "col3": "[ ] Yes   [ ] No" },
+          { "col1": "Papaya", "col2": "$1.50", "col3": "[ ] Yes   [ ] No" },
+          { "col1": "Mangoes (bag)", "col2": "$2.00", "col3": "[ ] Yes   [ ] No" }
+        ]
+        teacherScript: "The full reading passage or dialogue teacher speaks."
+   c) "matching" (Connecting pairs):
+      - Questions to answers, food items to prices, terms to definitions, or conversational rejoinders.
+        pairs: [
+          { "left": "How much is the pineapple?", "right": "It is two dollars and fifty cents." },
+          { "left": "Where are the ripe bananas?", "right": "They are next to the apples." },
+          { "left": "Can I have two papayas?", "right": "Here you go, that is three dollars." }
+        ]
+   d) "dialogue_cloze" (Fill in the blanks with Word Bank):
+      - Real authentic dialogue with a Word Bank box:
+        wordBank: ["pineapple", "change", "expensive", "dollars"]
+        lines: [
+          { "speaker": "Maria", "text": "Excuse me, how much is this _______?" },
+          { "speaker": "Vendor", "text": "That one is three _______." }
+        ]
+        teacherScript: "Complete dialogue for the teacher to read."
+   e) "read_answer" (Reading & comprehension questions with lined answer spaces):
+      - Authentic scenario passage + 2-3 questions with clear answer keys.
+   f) "draw_write" (Task-based production / Role-play / Drawing):
+      - For primary/secondary: create a market stall sign, write a short grocery list dialogue, or design a menu with prices.
 
-3. SCHEMA REQUIREMENT (Return strictly valid JSON, no markdown outside):
+3. DEDICATED TEACHER SECTION:
+   - "timing": Realistic minute breakdown: warmUp (10 min), presentation (8 min), guidedPractice (12 min), performance (10 min), reflection (5 min).
+   - Verbatim "Teacher Scripts" with the exact sentences to read out loud.
+   - Complete Answer Key.
+   - Formative Rubric with 2 to 3 criteria aligned to the Panama AOA curriculum standards for this grade level.
+
+RETURN VALID JSON ONLY matching this structure:
 {
-  "title": "Short catchy title (e.g., Where Is Your Book?)",
-  "grade": "e.g., Kinder, 5th Grade, 10th Grade",
-  "skill": "e.g., Listening, Speaking, Reading, Writing",
-  "lessonTitle": "Lesson and Theme title",
+  "title": "Clear Catchy Title (e.g., At the Fruit Market: How Much Is the Pineapple?)",
+  "grade": "Grade from lesson (e.g., 4th Grade)",
+  "skill": "Skill from lesson (e.g., Listening)",
+  "lessonTitle": "Theme and Lesson Name",
+  "timing": {
+    "warmUp": "10 min · Activity description",
+    "presentation": "8 min · Activity description",
+    "guidedPractice": "12 min · Activity description",
+    "performance": "10 min · Activity description",
+    "reflection": "5 min · Activity description"
+  },
   "activities": [
-    {
-      "type": "picture_choice",
-      "title": "Activity Title",
-      "instruction": "Student instruction (e.g. Listen and circle the picture)",
-      "items": [
-        {
-          "teacherPrompt": "The sentence/prompt teacher reads aloud (e.g., The book is under the chair. Where is the book?)",
-          "options": [
-            { "icon": "book", "position": "under", "anchor": "chair", "label": "Book under the chair" },
-            { "icon": "book", "position": "on", "anchor": "chair", "label": "Book on the chair" }
-          ],
-          "answerIndex": 0
-        }
-      ]
-    },
-    {
-      "type": "match",
-      "title": "Activity Title",
-      "instruction": "Match each picture with its word",
-      "items": [
-        { "icon": "pencil", "word": "pencil" },
-        { "icon": "bag", "word": "bag" }
-      ]
-    },
-    {
-      "type": "read_answer",
-      "title": "Activity Title",
-      "instruction": "Read and answer the questions",
-      "passage": "Short reading passage or transcript...",
-      "questions": [
-        { "question": "Where did Anna put her notebook?", "answer": "Inside her school bag." }
-      ]
-    },
-    {
-      "type": "draw_write",
-      "title": "Activity Title",
-      "instruction": "Draw or write your response",
-      "prompt": "Prompt for the student",
-      "teacherGuide": "Teacher observation instructions and expected student response."
-    }
+    ... 3 to 4 activities using the types described above ...
   ],
   "rubric": [
     {
-      "criterion": "Target Skill Performance (e.g. Listening Comprehension)",
-      "independent": "Identifies target language with 90-100% accuracy without support.",
-      "withSupport": "Identifies target language with visual cues or repetition.",
-      "emerging": "Requires direct demonstration and modeling."
+      "criterion": "Listening for Specific Information (Prices & Quantities)",
+      "independent": "Identifies prices, fruit items and quantities with 90-100% accuracy.",
+      "withSupport": "Identifies target items with 1-2 repetitions or visual cues.",
+      "emerging": "Requires direct teacher demonstration and translation support."
     }
   ]
-}
-
-Provide 3 to 4 varied, age-appropriate activity pages aligned specifically to the target skill.`;
+}`;
 
   const parts = [{ text: source.text || 'Use the attached lesson context.' }];
   if (source.media) parts.push({ inlineData: source.media });
@@ -222,13 +295,12 @@ Provide 3 to 4 varied, age-appropriate activity pages aligned specifically to th
     systemInstruction: { parts: [{ text: prompt }] },
     generationConfig: {
       responseMimeType: 'application/json',
-      temperature: 0.3,
-      maxOutputTokens: 12000
+      temperature: 0.35,
+      maxOutputTokens: 14000
     }
   };
 
   if (clientApiKey) {
-    // Direct call in local development mode
     response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${clientApiKey}`, {
       method: 'POST',
       signal,
@@ -236,7 +308,6 @@ Provide 3 to 4 varied, age-appropriate activity pages aligned specifically to th
       body: JSON.stringify(payload)
     });
   } else {
-    // Vercel serverless proxy in production
     response = await fetch('/api/gemini', {
       method: 'POST',
       signal,
