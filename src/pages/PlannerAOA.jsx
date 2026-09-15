@@ -1,3 +1,4 @@
+import ScenarioPoster from '../components/ScenarioPoster';
 import ResourceWorkbook from '../components/ResourceWorkbook';
 import React, { useState } from 'react';
 import { 
@@ -753,6 +754,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
         </div>
 
         {/* Sidebar Ad Banner */}
+        <ScenarioPoster grade={grade} scenario={selectedScenario} index={scenarioIndex} ready={curriculumReady && !!selectedScenario} />
         <AdBanner type="sidebar" isPremium={isPremium} />
       </aside>
 

@@ -1,0 +1,19 @@
+import { normalizeThemeScenario } from '../services/themeCurriculum.js';
+
+export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const label = key => key.replace(/([a-z])([A-Z])/g,'$1 $2').replaceAll('_',' ');
+function content(value) {
+  if (value == null || value === '') return '';
+  if (Array.isArray(value)) return value.map(content).filter(Boolean).map(item=>`<div class="item">${item}</div>`).join('');
+  if (typeof value === 'object') return Object.entries(value).map(([key,item])=>{const body=content(item);return body?`<div class="group"><h3>${escapeHtml(label(key))}</h3>${body}</div>`:'';}).join('');
+  return `<span>${escapeHtml(value)}</span>`;
+}
+export function scenarioPoster(raw,grade,index) {
+  const data=normalizeThemeScenario(raw,'receptive');
+  const sections=[['01','Grammar lab',data.grammar],['02','Word power',data.vocabulary],['03','Sound studio',data.pronunciation]];
+  const cards=sections.map(([n,title,value])=>{const body=content(value);return `<section class="card card-${n}"><div class="section-title"><b>${n}</b><h2>${title}</h2></div>${body||'<p class="missing">Not provided in this curriculum.</p>'}</section>`;}).join('');
+  if (!sections.some(([, ,value])=>content(value))) throw new Error('Este escenario no contiene competencias lingüísticas en el archivo del currículo.');
+  return `<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>${escapeHtml(grade)} - Scenario ${index+1}</title><style>
+  *{box-sizing:border-box}body{margin:0;background:#e8edf6;color:#14243e;font-family:Arial,"Segoe UI",sans-serif}.poster{width:1122px;min-height:1587px;margin:auto;background:#fffaf0;padding:54px;position:relative;overflow:hidden;border-top:20px solid #4f46e5}.eyebrow{font-size:20px;font-weight:800;letter-spacing:3px;color:#4f46e5}.meta{display:inline-block;margin:24px 0 16px;background:#14243e;color:white;border-radius:30px;padding:12px 24px;font-size:22px}h1{font-size:54px;line-height:1.08;margin:8px 0 20px;max-width:920px}header p{font-size:22px;color:#546078;margin:0 0 32px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}.card{background:white;border:3px solid #eadced;border-radius:24px;padding:26px;font-size:21px;line-height:1.45;overflow-wrap:anywhere}.card-01{border-color:#c5b9ff;background:#f4f0ff}.card-02{border-color:#92ded0;background:#edfcf6;grid-column:2;grid-row:1 / span 2}.card-03{border-color:#ffc67b;background:#fff3dd}.section-title{display:flex;align-items:center;gap:14px;margin-bottom:20px}.section-title b{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:#4f46e5;color:white;font-size:20px}.card-02 b{background:#087f70}.card-03 b{background:#b9570b}h2{font-size:29px;line-height:1.15;margin:0}h3{font-size:18px;text-transform:capitalize;letter-spacing:1px;margin:20px 0 10px;color:#43516b}.item{margin:8px 0;padding:7px 12px;border-radius:9px;background:#ffffffb8}.group>.item{display:inline-block;margin:4px 4px 4px 0}.missing{font-style:italic;font-size:18px}footer{margin-top:32px;padding-top:20px;border-top:2px solid #d8dbe4;font-size:17px;display:flex;justify-content:space-between;color:#546078}footer strong{color:#4f46e5}@page{size:A3 portrait;margin:0}@media print{body{background:white}.poster{margin:0;min-height:0;transform-origin:top left}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+  </style></head><body><article class="poster"><header><div class="eyebrow">EDUGEN PRO · LANGUAGE EXPLORERS</div><div class="meta">${escapeHtml(grade)} · SCENARIO ${escapeHtml(data.scenarioNum||index+1)}</div><h1>${escapeHtml(data.scenarioName||'Scenario '+(index+1))}</h1><p>Linguistic competences · Learn it. Say it. Use it.</p></header><main class="grid">${cards}</main><footer><strong>EduGen Pro Plannings</strong><span>Source: selected grade curriculum</span></footer></article></body></html>`;
+}
