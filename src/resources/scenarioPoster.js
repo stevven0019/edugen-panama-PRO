@@ -10,7 +10,7 @@ function content(value) {
 }
 export function scenarioPoster(raw,grade,index) {
   const data=normalizeThemeScenario(raw,'receptive');
-  const sections=[['01','Grammar lab',data.grammar],['02','Word power',data.vocabulary],['03','Sound studio',data.pronunciation]];
+  const sections=[['01','Grammar lab',data.grammar],['02','Word power',data.vocabulary],['03','Sound studio',data.pronunciation],['04','Let’s communicate',data.pragmatic],['05','Together in English',data.sociolinguistic]];
   const cards=sections.map(([n,title,value])=>{const body=content(value);return `<section class="card card-${n}"><div class="section-title"><b>${n}</b><h2>${title}</h2></div>${body||'<p class="missing">Not provided in this curriculum.</p>'}</section>`;}).join('');
   if (!sections.some(([, ,value])=>content(value))) throw new Error('Este escenario no contiene competencias lingüísticas en el archivo del currículo.');
   return `<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>${escapeHtml(grade)} - Scenario ${index+1}</title><style>

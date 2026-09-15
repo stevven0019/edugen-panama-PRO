@@ -754,7 +754,7 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
         </div>
 
         {/* Sidebar Ad Banner */}
-        <ScenarioPoster grade={grade} scenario={selectedScenario} index={scenarioIndex} ready={curriculumReady && !!selectedScenario} />
+        <ScenarioPoster user={user} credits={credits} isPremium={isPremium} grade={grade} scenario={selectedScenario} index={scenarioIndex} ready={curriculumReady && !!selectedScenario} />
         <AdBanner type="sidebar" isPremium={isPremium} />
       </aside>
 

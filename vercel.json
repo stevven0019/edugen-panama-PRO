@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/scenario-poster.js": {
+      "includeFiles": "public/curriculums/*.json",
+      "maxDuration": 60
+    }
+  }
+}

@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {illustratedSheets,vocabularyWords,illustrationPrompt} from '../src/resources/illustratedPoster.js';
+import handler from '../api/scenario-poster.js';
+assert.deepEqual(vocabularyWords('be (am, is, are), cut, fold'),['be (am, is, are)','cut','fold']);
+const grade5=JSON.parse(fs.readFileSync('public/curriculums/English_Curriculum_Grade_5.json')).scenarios[0];
+const {sheets}=illustratedSheets(grade5);const words=sheets.flat().map(i=>i.word);
+assert.ok(words.includes('scissors'));assert.ok(words.includes('flowchart'));assert.ok(words.includes('under'));assert.ok(sheets.every(s=>s.length<=20));
+assert.equal(words.length,Object.values(grade5.communicative_competences.vocabulary.linguistic_competences).flatMap(vocabularyWords).length);
+assert.ok(!illustrationPrompt(grade5,'5th Grade',0,0).includes('Grammar lab'));
+let count=0;for(const f of fs.readdirSync('public/curriculums').filter(f=>f.endsWith('.json'))){for(const raw of JSON.parse(fs.readFileSync('public/curriculums/'+f)).scenarios){try{const result=illustratedSheets(raw);assert.ok(result.sheets.every(s=>s.length>0&&s.length<=20));count++;}catch(e){assert.match(e.message,/no contiene vocabulario/);}}}
+process.env.GEMINI_API_KEY='test';process.env.VITE_FIREBASE_API_KEY='test';
+const call=async(body,authorization='Bearer test')=>{const res={headers:{},setHeader(k,v){this.headers[k]=v;},status(n){this.code=n;return this;},json(data){this.data=data;return this;},send(data){this.data=data;return this;}};await handler({method:'POST',headers:{authorization},body},res);return res;};
+const original=global.fetch;let imageCalls=0;
+global.fetch=async(url,options)=>{if(url.includes('identitytoolkit'))return {ok:true,json:async()=>({users:[{localId:'user'}]})};imageCalls++;const payload=JSON.parse(options.body);assert.deepEqual(payload.generationConfig.responseModalities,['TEXT','IMAGE']);assert.ok(payload.contents[0].parts[0].text.includes('scissors'));return {ok:true,json:async()=>({candidates:[{content:{parts:[{inlineData:{mimeType:'image/png',data:Buffer.from('mock-image').toString('base64')}}]}}]})};};
+assert.equal((await call({grade:'5th Grade',index:0,sheetIndex:0},'')).code,401);
+assert.equal((await call({grade:'../../secret',index:0,sheetIndex:0})).code,400);
+assert.equal((await call({grade:'5th Grade',index:0,sheetIndex:999})).code,400);
+const ok=await call({grade:'5th Grade',index:0,sheetIndex:0});assert.equal(ok.code,200);assert.equal(ok.headers['Content-Type'],'image/png');assert.equal(imageCalls,1);
+global.fetch=original;console.log('Passed: '+count+' curriculum scenarios, exact vocabulary, pagination, authentication and mocked image response.');
