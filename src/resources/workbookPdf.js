@@ -5,7 +5,6 @@ export function buildWorkbook(pack) {
   validatePack(pack);
   const doc = new jsPDF();
   const isKinder = /kinder|pre-?k|early/i.test(pack.grade || '');
-  const isListening = /listen/i.test(pack.skill || '');
 
   const write = (value, x, y, width = 174, size = 11, lineSpacing = 0.44) => {
     doc.setFontSize(size);
@@ -13,6 +12,351 @@ export function buildWorkbook(pack) {
     doc.text(lines, x, y);
     return y + lines.length * size * lineSpacing;
   };
+
+  // ─────────────────────────────────────────────────────────────
+  // MODERN 3-PAGE WORKBOOK BLUEPRINT RENDERER
+  // ─────────────────────────────────────────────────────────────
+  if (pack.page1 && pack.page2 && pack.page3) {
+    const p1 = pack.page1;
+    const p2 = pack.page2;
+    const p3 = pack.page3;
+
+    // ═══ PAGE 1: DISCOVERY & LINGUISTIC INPUT ═══
+    // Header
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7.5);
+    doc.setTextColor(71, 85, 105);
+    doc.text('REPÚBLICA DE PANAMÁ · MEDUCA · ENFOQUE ACCIONAL (AOA)', 18, 12);
+    doc.text(`${(pack.grade || '4TH GRADE').toUpperCase()} · ${(pack.skill || 'ENGLISH').toUpperCase()}`, 192, 12, { align: 'right' });
+
+    // Student Box
+    doc.setDrawColor(203, 213, 225);
+    doc.setFillColor(248, 250, 252);
+    doc.roundedRect(18, 15, 174, 13, 2, 2, 'FD');
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(100, 116, 139);
+    doc.text('STUDENT: ___________________________', 22, 23);
+    doc.text('DATE: ____________', 98, 23);
+    doc.text('SCORE: [     / 20 ]', 154, 23);
+
+    // Title & Scenario
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.setTextColor(15, 23, 42);
+    write(pack.title, 18, 36, 174, 14, 0.45);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(71, 85, 105);
+    doc.text(`Scenario: ${pack.scenario || pack.title}   |   Objective: ${pack.objective || 'Linguistic input and vocabulary comprehension.'}`, 18, 44);
+
+    // Section 1: Vocabulary Word Bank
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9.5);
+    doc.setTextColor(30, 41, 59);
+    doc.text('1. KEY VOCABULARY WORD BANK (Stage 1 Warm-up & Modeling)', 18, 52);
+
+    const words = p1.wordBank || [];
+    words.slice(0, 6).forEach((w, idx) => {
+      const col = idx % 3;
+      const row = Math.floor(idx / 3);
+      const bx = 18 + col * 59;
+      const by = 56 + row * 26;
+
+      doc.setDrawColor(30, 41, 59);
+      doc.setLineWidth(0.3);
+      doc.setFillColor(255, 255, 255);
+      doc.roundedRect(bx, by, 56, 23, 2, 2, 'FD');
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(9.5);
+      doc.setTextColor(15, 23, 42);
+      doc.text(w.word || 'Item', bx + 4, by + 7);
+
+      doc.setFont('helvetica', 'italic');
+      doc.setFontSize(7);
+      doc.setTextColor(100, 116, 139);
+      doc.text(`(${w.pos || 'noun'})`, bx + 36, by + 7);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(7.5);
+      doc.setTextColor(51, 65, 85);
+      write(`"${w.example || ''}"`, bx + 4, by + 12, 48, 7.5, 0.42);
+    });
+
+    // Section 2: Communicative Language Frame
+    doc.setDrawColor(99, 102, 241);
+    doc.setFillColor(238, 242, 255);
+    doc.roundedRect(18, 112, 174, 25, 2, 2, 'FD');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.setTextColor(67, 56, 202);
+    doc.text('COMMUNICATIVE LANGUAGE FRAME (Target Structure)', 22, 118);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(15, 23, 42);
+    doc.text(`Q: "${p1.languageFrame?.question || 'How much is the pineapple?'}"`, 22, 125);
+    doc.text(`A: "${p1.languageFrame?.answer || "It's three dollars."}"`, 22, 132);
+
+    // Section 3: Activity 1 (Listen & Circle)
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9.5);
+    doc.setTextColor(30, 41, 59);
+    doc.text('2. ACTIVITY 1: LISTEN & CIRCLE (Word Recognition)', 18, 146);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(71, 85, 105);
+    doc.text(p1.activity1?.instruction || 'Listen carefully to the teacher and circle each word you hear:', 18, 152);
+
+    doc.setDrawColor(30, 41, 59);
+    doc.setFillColor(255, 255, 255);
+    doc.roundedRect(18, 156, 174, 22, 2, 2, 'FD');
+
+    const act1Words = p1.activity1?.words || words.map(w => w.word);
+    act1Words.slice(0, 6).forEach((word, wi) => {
+      const wx = 22 + wi * 28;
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(9);
+      doc.setTextColor(15, 23, 42);
+      doc.text(word, wx, 169);
+      doc.circle(wx + 10, 166, 7);
+    });
+
+    // Page 1 Footer
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(148, 163, 184);
+    doc.text('EduGen Panama · Action-Oriented Approach Curriculum · MEDUCA', 18, 286);
+    doc.text('Page 1 of 3', 192, 286, { align: 'right' });
+
+    // ═══ PAGE 2: GUIDED PRACTICE & PERFORMANCE TASK ═══
+    doc.addPage();
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7.5);
+    doc.setTextColor(71, 85, 105);
+    doc.text('PAGE 2 · GUIDED PRACTICE & PERFORMANCE TASK (STAGES 3 & 4)', 18, 12);
+    doc.text(`${(pack.title || '').toUpperCase()}`, 192, 12, { align: 'right' });
+    doc.line(18, 14, 192, 14);
+
+    // Activity 2: Listen & Match
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9.5);
+    doc.setTextColor(30, 41, 59);
+    doc.text('3. ACTIVITY 2: LISTEN & MATCH (Items & Prices)', 18, 22);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(71, 85, 105);
+    doc.text(p2.activity2?.instruction || 'Listen and draw lines to match items with their prices:', 18, 28);
+
+    const pairs = p2.activity2?.pairs || [];
+    pairs.slice(0, 4).forEach((p, pi) => {
+      const py = 33 + pi * 13;
+      doc.setDrawColor(203, 213, 225);
+      doc.setFillColor(248, 250, 252);
+      doc.roundedRect(18, py, 70, 10, 1.5, 1.5, 'FD');
+      doc.roundedRect(122, py, 70, 10, 1.5, 1.5, 'FD');
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.5);
+      doc.setTextColor(15, 23, 42);
+      doc.text(p.item || p.left || 'Fruit', 24, py + 7);
+      doc.circle(84, py + 5, 1.5, 'F');
+
+      doc.circle(126, py + 5, 1.5, 'F');
+      doc.text(p.detail || p.right || '$1.00', 140, py + 7);
+    });
+
+    // Activity 3: Dialogue Cloze
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9.5);
+    doc.setTextColor(30, 41, 59);
+    doc.text('4. ACTIVITY 3: AUTHENTIC DIALOGUE CLOZE', 18, 93);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(71, 85, 105);
+    doc.text('Complete the dialogue with the correct words: [ pineapple, three, dollar, banana, please ]', 18, 99);
+
+    doc.setDrawColor(30, 41, 59);
+    doc.setFillColor(255, 255, 255);
+    doc.roundedRect(18, 103, 174, 52, 2, 2, 'FD');
+
+    const dialogue = p2.activity3?.dialogue || [];
+    dialogue.slice(0, 6).forEach((line, di) => {
+      const dy = 111 + di * 7.5;
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8);
+      doc.setTextColor(line.speaker === 'Seller' ? 67 : 16, line.speaker === 'Seller' ? 56 : 185, line.speaker === 'Seller' ? 202 : 129);
+      doc.text(`${line.speaker}:`, 24, dy);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(15, 23, 42);
+      doc.text(line.text || '', 44, dy);
+    });
+
+    // Activity 4: Performance Task
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9.5);
+    doc.setTextColor(30, 41, 59);
+    doc.text('5. ACTIVITY 4: PERFORMANCE TASK (Market Stall Mission)', 18, 166);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(71, 85, 105);
+    doc.text('Listen to the shopping list dictation. Draw items on stall and record prices:', 18, 172);
+
+    doc.setDrawColor(30, 41, 59);
+    doc.roundedRect(18, 176, 75, 48, 2, 2, 'D');
+    doc.setFontSize(7.5);
+    doc.setTextColor(148, 163, 184);
+    doc.text('[ Draw Market Stall & Items ]', 32, 202);
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(30, 41, 59);
+    doc.text('Shopping List Items & Prices:', 102, 184);
+    doc.setFont('helvetica', 'normal');
+    doc.text('1. _________________________________  Price: $________', 102, 196);
+    doc.text('2. _________________________________  Price: $________', 102, 208);
+    doc.text('3. _________________________________  Price: $________', 102, 220);
+
+    // Page 2 Footer
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(148, 163, 184);
+    doc.text('EduGen Panama · Action-Oriented Approach Curriculum · MEDUCA', 18, 286);
+    doc.text('Page 2 of 3', 192, 286, { align: 'right' });
+
+    // ═══ PAGE 3: ASSESSMENT & TEACHER RESOURCE GUIDE ═══
+    doc.addPage();
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7.5);
+    doc.setTextColor(71, 85, 105);
+    doc.text('PAGE 3 · FORMATIVE ASSESSMENT & TEACHER GUIDE (STAGES 5 & 6)', 18, 12);
+    doc.text('MEDUCA EVALUATION & ANSWER KEY', 192, 12, { align: 'right' });
+    doc.line(18, 14, 192, 14);
+
+    // Student Exit Ticket Quiz
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9.5);
+    doc.setTextColor(30, 41, 59);
+    doc.text('6. STUDENT EXIT TICKET (Formative Quiz & Self-Reflection)', 18, 22);
+
+    doc.setDrawColor(203, 213, 225);
+    doc.setFillColor(248, 250, 252);
+    doc.roundedRect(18, 26, 174, 38, 2, 2, 'FD');
+
+    const quiz = p3.exitTicket?.questions || [];
+    quiz.slice(0, 3).forEach((q, qi) => {
+      const qy = 33 + qi * 8;
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7.5);
+      doc.setTextColor(15, 23, 42);
+      doc.text(q.prompt || '', 22, qy);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(71, 85, 105);
+      doc.text(`[ ] ${q.options?.[0] || 'A'}    [ ] ${q.options?.[1] || 'B'}`, 128, qy);
+    });
+
+    doc.setFont('helvetica', 'italic');
+    doc.setFontSize(7.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text('Self-Rating:  ★ ★ ★  I can name fruits   ·   ★ ★ ★  I understand prices   ·   ★ ★ ★  I can ask How Much', 22, 59);
+
+    // Teacher Audio Scripts
+    doc.setDrawColor(30, 41, 59);
+    doc.setFillColor(241, 245, 249);
+    doc.roundedRect(18, 70, 174, 52, 2, 2, 'FD');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.setTextColor(15, 23, 42);
+    doc.text('TEACHER READ-ALOUD AUDIO SCRIPTS (Guión Textual para el Docente)', 22, 78);
+
+    const scripts = p3.teacherGuide?.scripts || [];
+    let sy = 86;
+    scripts.slice(0, 3).forEach(sc => {
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7.5);
+      doc.setTextColor(67, 56, 202);
+      doc.text(`${sc.stage}:`, 22, sy);
+      doc.setFont('helvetica', 'italic');
+      doc.setTextColor(30, 41, 59);
+      sy = write(`"${sc.text}"`, 22, sy + 4, 166, 7, 0.42) + 4;
+    });
+
+    // Official Answer Key
+    doc.setDrawColor(16, 185, 129);
+    doc.setFillColor(236, 253, 245);
+    doc.roundedRect(18, 128, 174, 26, 2, 2, 'FD');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.setTextColor(6, 95, 70);
+    doc.text('OFFICIAL TEACHER ANSWER KEY (Solucionario Oficial)', 22, 135);
+
+    const answers = p3.teacherGuide?.answerKey || [];
+    answers.slice(0, 4).forEach((ak, ai) => {
+      const ax = ai % 2 === 0 ? 22 : 108;
+      const ay = 142 + Math.floor(ai / 2) * 6;
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7.5);
+      doc.setTextColor(15, 23, 42);
+      doc.text(`${ak.item}:`, ax, ay);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(51, 65, 85);
+      doc.text(String(ak.answer || '').slice(0, 40), ax + 24, ay);
+    });
+
+    // MEDUCA 3-Level Rubric Table
+    doc.setDrawColor(30, 41, 59);
+    doc.setFillColor(255, 255, 255);
+    doc.roundedRect(18, 160, 174, 76, 2, 2, 'FD');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.setTextColor(15, 23, 42);
+    doc.text('OFFICIAL MEDUCA 3-LEVEL ASSESSMENT RUBRIC', 22, 168);
+
+    doc.line(18, 172, 192, 172);
+    doc.setFontSize(7.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text('CRITERION', 22, 177);
+    doc.text('INDEPENDENT (3 pts)', 80, 177);
+    doc.text('WITH SUPPORT (2 pts)', 122, 177);
+    doc.text('EMERGING (1 pt)', 164, 177);
+    doc.line(18, 180, 192, 180);
+
+    const rubric = p3.teacherGuide?.rubric || pack.rubric || [];
+    rubric.slice(0, 3).forEach((r, ri) => {
+      const ry = 186 + ri * 16;
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7);
+      doc.setTextColor(15, 23, 42);
+      write(r.criterion || 'Objective', 22, ry, 54, 7, 0.4);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(51, 65, 85);
+      write(r.independent || '', 80, ry, 40, 6.5, 0.4);
+      write(r.withSupport || '', 122, ry, 40, 6.5, 0.4);
+      write(r.emerging || '', 164, ry, 26, 6.5, 0.4);
+    });
+
+    // Page 3 Footer
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(148, 163, 184);
+    doc.text('EduGen Panama · Action-Oriented Approach Curriculum · MEDUCA', 18, 286);
+    doc.text('Page 3 of 3 (Teacher Guide & Solucionario)', 192, 286, { align: 'right' });
+
+    return doc;
+  }
 
   const headerFooter = (sectionLabel, title, subtitle, first = false) => {
     if (!first) doc.addPage();

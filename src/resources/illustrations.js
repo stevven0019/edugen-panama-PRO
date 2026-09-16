@@ -172,18 +172,60 @@ export function getIllustrationSvg(name, mode = 'color') {
       <polygon points="40,22 60,22 50,8" fill="${p.stroke}" stroke="${p.stroke}" stroke-width="2.5" />
     </svg>`,
 
-    // ── MARKET ACCESSORIES ──
+    // ── MARKET ACCESSORIES & GENERAL ICONS ──
     price_tag: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M22 50 L52 20 L84 20 L84 52 L54 82 L22 50 Z" fill="${p.priceTagBg}" stroke="${p.priceTagStroke}" stroke-width="3" />
-      <circle cx="70" cy="34" r="4" fill="#FFFFFF" stroke="${p.priceTagStroke}" stroke-width="2" />
+      <path d="M22 50 L52 20 L84 20 L84 52 L54 82 L22 50 Z" fill="${p.priceTagBg || '#FEF3C7'}" stroke="${p.priceTagStroke || '#D97706'}" stroke-width="3" />
+      <circle cx="70" cy="34" r="4" fill="#FFFFFF" stroke="${p.priceTagStroke || '#D97706'}" stroke-width="2" />
       <text x="44" y="58" font-family="sans-serif" font-weight="bold" font-size="16" fill="${p.stroke}">$</text>
+    </svg>`,
+
+    market: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 40 L85 40 L80 82 L20 82 Z" fill="${mode === 'color' ? '#F1F5F9' : '#FFFFFF'}" />
+      <path d="M12 40 C12 25 25 18 50 18 C75 18 88 25 88 40 Z" fill="${mode === 'color' ? '#DBEAFE' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
+      <line x1="32" y1="19" x2="28" y2="40" stroke="${p.stroke}" stroke-width="2" />
+      <line x1="50" y1="18" x2="50" y2="40" stroke="${p.stroke}" stroke-width="2" />
+      <line x1="68" y1="19" x2="72" y2="40" stroke="${p.stroke}" stroke-width="2" />
+      <rect x="35" y="55" width="30" height="27" fill="${mode === 'color' ? '#E2E8F0' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="2.5" />
+    </svg>`,
+
+    dollar: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="50" cy="50" r="38" fill="${mode === 'color' ? '#ECFDF5' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
+      <text x="50" y="65" font-family="'Outfit', sans-serif" font-weight="900" font-size="44" fill="${p.stroke}" text-anchor="middle">$</text>
+    </svg>`,
+
+    house: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 45 L50 20 L80 45 L80 82 L20 82 Z" fill="${mode === 'color' ? '#FEF3C7' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
+      <rect x="42" y="58" width="16" height="24" fill="${mode === 'color' ? '#D97706' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="2" />
+    </svg>`,
+
+    tree: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="44" y="60" width="12" height="30" fill="${mode === 'color' ? '#92400E' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="2.5" />
+      <circle cx="50" cy="42" r="28" fill="${mode === 'color' ? '#DCFCE7' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
+    </svg>`,
+
+    sun: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="50" cy="50" r="22" fill="${mode === 'color' ? '#FEF08A' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
+      <path d="M50 14 L50 22 M50 78 L50 86 M14 50 L22 50 M78 50 L86 50 M24 24 L30 30 M70 70 L76 76 M24 76 L30 70 M70 30 L76 24" stroke="${p.stroke}" stroke-width="3" stroke-linecap="round" />
     </svg>`
   };
 
   if (clean === 'pencile') return items.pencil;
   if (clean === 'table') return items.desk;
   if (clean === 'backpack') return items.bag;
-  return items[clean] || null;
+  if (clean === 'price' || clean === 'how much') return items.dollar;
+  if (clean === 'store' || clean === 'shop') return items.market;
+
+  if (items[clean]) return items[clean];
+
+  // Universal Vector Editorial Badge for any word
+  const initial = clean.charAt(0).toUpperCase() || '★';
+  const labelText = clean.length > 9 ? clean.slice(0, 8) + '.' : clean;
+  return `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="15" y="15" width="70" height="70" rx="18" fill="${mode === 'color' ? '#EEF2FF' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
+    <circle cx="50" cy="46" r="20" fill="${mode === 'color' ? '#C7D2FE' : '#F8FAFC'}" stroke="${p.stroke}" stroke-width="2" />
+    <text x="50" y="54" font-family="'Outfit', sans-serif" font-weight="900" font-size="22" fill="${p.stroke}" text-anchor="middle">${initial}</text>
+    <text x="50" y="78" font-family="'Outfit', sans-serif" font-weight="700" font-size="11" fill="${p.stroke}" text-anchor="middle">${labelText}</text>
+  </svg>`;
 }
 
 // ══════════════════════════════════════════════════════════════════

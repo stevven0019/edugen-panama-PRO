@@ -1,4 +1,6 @@
-export const ICONS = ['book','bag','desk','chair','pencil','crayon','ball','apple','tree','sun','house','fish','flower','pineapple','banana','orange','watermelon','mango'];
+import { parseAoaLessonPlan } from './lessonParser.js';
+
+export const ICONS = ['book','bag','desk','chair','pencil','crayon','ball','apple','tree','sun','house','fish','flower','pineapple','banana','orange','watermelon','mango','market','dollar'];
 
 const text = (value, name, max = 600) => {
   if (typeof value !== 'string' || !value.trim()) return '';
@@ -11,14 +13,14 @@ export function normalizeIcon(icon) {
   if (clean === 'pencile') clean = 'pencil';
   if (clean === 'table') return 'desk';
   if (clean === 'backpack') return 'bag';
-  return ICONS.includes(clean) ? clean : 'book';
+  return clean;
 }
 
 export function normalizeAnchor(anchor, position = 'none', contextText = '') {
   if (anchor && typeof anchor === 'string') {
     let clean = anchor.toLowerCase().trim();
-    if (clean === 'table') clean = 'desk';
-    if (clean === 'box') clean = 'bag';
+    if (clean === 'table') return 'desk';
+    if (clean === 'box') return 'bag';
     if (['desk', 'bag', 'chair'].includes(clean)) return clean;
   }
   if (position === 'in') return 'bag';
@@ -28,12 +30,52 @@ export function normalizeAnchor(anchor, position = 'none', contextText = '') {
 
 export function validatePack(pack) {
   if (!pack || typeof pack !== 'object') throw new Error('No se recibió un cuaderno válido.');
+
+  if (!pack.activities && !pack.page1 && pack.title) {
+    pack = parseAoaLessonPlan(pack);
+  }
   
   pack.title = text(pack.title, 'title', 140) || 'Activity Workbook';
   pack.grade = text(pack.grade, 'grade', 60) || 'Grade';
   pack.skill = text(pack.skill, 'skill', 60) || 'English';
   pack.lessonTitle = text(pack.lessonTitle, 'lessonTitle', 160) || pack.title;
   pack.color_policy = pack.color_policy || 'vocabulary_only';
+
+  // Support modern 3-Page Pedagogical Blueprint
+  if (pack.page1 && pack.page2 && pack.page3) {
+    if (!Array.isArray(pack.activities)) {
+      pack.activities = [
+        {
+          type: 'vocabulary_cards',
+          title: pack.page1.activity1?.title || 'Vocabulary Input',
+          instruction: pack.page1.activity1?.instruction || 'Review the target words.',
+          items: (pack.page1.wordBank || []).map(w => ({ label: w.word, icon: w.icon || w.word }))
+        },
+        {
+          type: 'matching',
+          title: pack.page2.activity2?.title || 'Matching Activity',
+          instruction: pack.page2.activity2?.instruction || 'Match items.',
+          pairs: (pack.page2.activity2?.pairs || []).map(p => ({ left: p.item, right: p.detail, icon: p.icon }))
+        },
+        {
+          type: 'dialogue_cloze',
+          title: pack.page2.activity3?.title || 'Dialogue Practice',
+          instruction: pack.page2.activity3?.instruction || 'Complete the dialogue.'
+        },
+        {
+          type: 'draw_write',
+          title: pack.page2.activity4?.title || 'Performance Task',
+          instruction: pack.page2.activity4?.instruction || 'Complete the task.'
+        }
+      ];
+    }
+    if (!Array.isArray(pack.rubric)) {
+      pack.rubric = pack.page3.teacherGuide?.rubric || [
+        { criterion: 'Demonstrates target skill in context', independent: 'Completes tasks accurately and fluently without support.', withSupport: 'Completes tasks with occasional prompts and repetitions.', emerging: 'Requires continuous modeling and direct teacher assistance.' }
+      ];
+    }
+    return pack;
+  }
 
   if (!Array.isArray(pack.activities) || pack.activities.length < 2) {
     throw new Error('El cuaderno debe tener al menos 2 actividades.');
@@ -261,57 +303,111 @@ const getClientApiKey = () => {
 };
 
 export async function generateActivityPack(source, signal) {
-  const prompt = `You are an elite educational materials author for the Panama MEDUCA English curriculum under the Action-Oriented Approach (AOA).
-Create a REAL, HIGH-QUALITY, CLASSROOM-READY printable English Activity Workbook and Formative Assessment Rubric based directly on the provided lesson.
+  const srcText = typeof source === 'string' ? source : (source?.text || '');
 
-CRITICAL INSTRUCTIONS BASED ON THE SPECIFICATION ARCHITECTURE:
-
-1. FOR PRE-K & KINDER (e.g. "Where Is Your Book?"):
-   - Primary Skill: Listening / Shared Reading.
-   - Do NOT require independent reading or writing from the student!
-   - Color Policy: "vocabulary_only" (Page 2 vocabulary is in color; all activity pages are in clean monochrome outline for easy school photocopying).
-   - Use these exact templates:
-     * Activity 1: "vocabulary_cards" (6 target objects: book, desk, chair, bag, pencil, crayon).
-     * Activity 2: "listen_choose_picture" (3 rows of 2 spatial choices: e.g. book on desk vs under desk, pencil in bag vs next to bag).
-     * Activity 3: "shared_reading_page" (3 illustrated scenes: 1. Look on the desk. 2. Look under the chair. 3. Look in the bag.).
-     * Activity 4: "open_drawing" (Listen and draw a book under the desk).
-   - Include teacher timing (50 min total: Warm-up 10m, Presentation 8m, Guided 12m, Performance 10m, Check 5m, Reflection 5m).
-   - Verbatim Teacher Scripts (Read Aloud) and observation rubric checklist.
-
-2. FOR PRIMARY & SECONDARY (e.g. 4th Grade "How Much Is the Pineapple?"):
-   - Primary Skill: Listening / Vocabulary / Speaking.
-   - Real-world authentic content: market fruits (pineapple, apple, banana, orange, watermelon), real consistent prices in USD ($2.50, $1.00, $0.50, $0.75).
-   - Use these exact templates:
-     * Activity 1: "listen_match_price" (fruits matching with price cards).
-     * Activity 2: "table_checklist" (Shopping list with Fruit, Heard in Audio [Yes/No], and Price).
-     * Activity 3: "dialogue_cloze" or "card_choices" (Market dialogue between Vendor and Customer with exact Teacher Script).
-   - Provide verbatim teacher read-aloud dialogue script with exact pricing and quantities.
-
-3. SCHEMA REQUIREMENT (Return strictly valid JSON, no markdown outside):
-{
-  "title": "Title of the Workbook",
-  "grade": "e.g., Kinder or 4th Grade",
-  "skill": "e.g., Listening",
-  "lessonTitle": "Theme and Lesson Name",
-  "color_policy": "vocabulary_only",
-  "timing": {
-    "warmUp": "10 min · Activity description",
-    "presentation": "8 min · Activity description",
-    "guidedPractice": "12 min · Activity description",
-    "performance": "10 min · Activity description",
-    "reflection": "5 min · Activity description"
-  },
-  "activities": [
-    ... 3 to 4 activities matching the template library above ...
-  ],
-  "rubric": [
-    {
-      "criterion": "Target Skill Performance Criterion",
-      "independent": "Mastery description without support",
-      "withSupport": "Description with verbal/visual scaffolding",
-      "emerging": "Beginning to recognize target language"
+  // 1. Zero-Token Direct Extraction:
+  // If the input has lesson planning indicators (e.g. EduGen Lesson Planner HTML or docx text),
+  // parse it directly into tangible 3-page activities according to the stages!
+  const hasStages = /stage\s*[1-6]|lesson\s*planner|warm-?up|specific\s*objective|learning\s*outcomes/i.test(srcText);
+  if (hasStages && !source.forceAi) {
+    try {
+      const directPack = parseAoaLessonPlan(srcText, {
+        grade: source.grade,
+        title: source.title,
+        scenario: source.scenario
+      });
+      if (directPack && directPack.page1 && directPack.page2 && directPack.page3) {
+        return validatePack(directPack);
+      }
+    } catch (err) {
+      console.warn('Direct parse failed, falling back to AI:', err);
     }
-  ]
+  }
+
+  // 2. AI Fallback with strict 3-Page Pedagogical Blueprint Schema
+  const prompt = `You are an elite educational materials author for the Panama MEDUCA English curriculum under the Action-Oriented Approach (AOA).
+Based directly on the provided lesson, extract and generate a tangible, classroom-ready 3-PAGE Activity Workbook according to each stage of the lesson:
+
+- PAGE 1: Discovery & Linguistic Input (Stage 1 Warm-up, Key Vocabulary Word Bank, Target Communicative Language Frame, Activity 1: Listen & Circle / Identify).
+- PAGE 2: Guided Practice & Task Performance (Stage 3 Guided Practice Activity 2: Listen & Match items to prices/details, Activity 3: Dialogue Cloze with Word Bank, Activity 4: Performance Task with drawing/ruled writing lines).
+- PAGE 3: Formative Assessment & Teacher Resource (Stage 5 Student Exit Ticket Quiz, Stage 6 Self-Assessment Scale, Teacher Read-Aloud Scripts for class, Official Answer Key, and MEDUCA 3-Level Rubric).
+
+SCHEMA REQUIREMENT (Return strictly valid JSON):
+{
+  "title": "Lesson Theme / Title",
+  "grade": "e.g., 4th Grade",
+  "skill": "e.g., Listening & Speaking",
+  "scenario": "Authentic context",
+  "objective": "Target specific objective",
+  "page1": {
+    "wordBank": [
+      { "word": "Pineapple", "pos": "noun", "example": "How much is the pineapple?", "icon": "pineapple" }
+    ],
+    "languageFrame": {
+      "question": "How much is the [item]?",
+      "answer": "It's [price] dollars."
+    },
+    "activity1": {
+      "title": "Activity 1: Listen & Circle",
+      "instruction": "Listen and circle the words heard:",
+      "words": ["pineapple", "apple", "banana", "mango", "market", "dollar"]
+    }
+  },
+  "page2": {
+    "activity2": {
+      "title": "Activity 2: Listen & Match",
+      "instruction": "Draw a line to match each item with its price:",
+      "pairs": [
+        { "item": "Pineapple", "detail": "$3.00", "icon": "pineapple" }
+      ]
+    },
+    "activity3": {
+      "title": "Activity 3: Dialogue Cloze",
+      "instruction": "Complete the dialogue using the word bank:",
+      "wordBank": ["pineapple", "three", "dollar", "banana", "please"],
+      "dialogue": [
+        { "speaker": "Seller", "text": "Hello! Welcome to the market!" },
+        { "speaker": "Buyer", "text": "How much is the pineapple?" }
+      ]
+    },
+    "activity4": {
+      "title": "Activity 4: Performance Production Task",
+      "instruction": "Listen to the dictation and draw/write the items and prices:"
+    }
+  },
+  "page3": {
+    "exitTicket": {
+      "title": "Student Exit Ticket",
+      "questions": [
+        { "prompt": "1. Question text?", "options": ["A", "B"], "correct": "A" }
+      ],
+      "selfAssessment": [
+        { "text": "I can identify the target words.", "stars": 3 }
+      ]
+    },
+    "teacherGuide": {
+      "title": "Teacher Read-Aloud Scripts & Resources",
+      "scripts": [
+        { "stage": "Stage 2 Presentation Audio", "text": "Exact verbatim dialogue transcript..." },
+        { "stage": "Stage 4 Performance Dictation", "text": "Exact dictation script..." },
+        { "stage": "Stage 5 Assessment Quiz Script", "text": "Exact quiz script..." }
+      ],
+      "answerKey": [
+        { "item": "Activity 1", "answer": "All target words circled." },
+        { "item": "Activity 2", "answer": "Pineapple -> $3.00, Apple -> $1.00" },
+        { "item": "Activity 3", "answer": "1. pineapple  2. three" },
+        { "item": "Exit Ticket Quiz", "answer": "1. A  2. True  3. B" }
+      ],
+      "rubric": [
+        {
+          "criterion": "Listening Comprehension",
+          "independent": "Identifies all items and prices accurately without support.",
+          "withSupport": "Identifies items with 1-2 prompts.",
+          "emerging": "Requires direct teacher assistance."
+        }
+      ]
+    }
+  }
 }`;
 
   const parts = [{ text: source.text || 'Use the attached lesson context.' }];
@@ -366,5 +462,6 @@ CRITICAL INSTRUCTIONS BASED ON THE SPECIFICATION ARCHITECTURE:
   }
 
   if (pack.error) throw new Error(String(pack.error).slice(0, 250));
+  pack._usedAi = true;
   return validatePack(pack);
 }

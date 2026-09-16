@@ -98,7 +98,12 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
     try {
       const input = source === 'file'
         ? await readLesson(file)
-        : { text: JSON.stringify({ grade: lesson.grade, title: lesson.title, context: lesson.lessonContext || {}, lesson: plain(lesson.content) }) };
+        : {
+            text: lesson.content || '',
+            grade: lesson.grade,
+            title: lesson.title,
+            scenario: lesson.lessonContext?.scenario || lesson.title
+          };
 
       const result = await generateActivityPack(input, controller.current.signal);
       if (source === 'latest') result.grade = lesson.grade;
@@ -116,9 +121,12 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
         createdAt: now,
         updatedAt: now
       });
-      await databaseService.decrementCredits(user.uid);
+      // If AI was actually called, decrement credits
+      if (result._usedAi) {
+        await databaseService.decrementCredits(user.uid);
+      }
       setPack(result);
-      onTriggerAlert('Cuaderno pedagógico guardado en Mi Biblioteca.', 'success');
+      onTriggerAlert('¡Cuaderno pedagógico de 3 páginas estructurado con éxito según las etapas de la lección!', 'success');
     } catch (e) {
       if (e.name !== 'AbortError') setError(e.message || 'No se pudieron generar los recursos.');
     } finally {
