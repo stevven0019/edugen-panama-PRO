@@ -891,8 +891,39 @@
           ]
         }
       ],
-      "communicative_competences": null,
-      "century_21_project_ideas": null
+      "communicative_competences": {
+        "grammatical_features": [
+          "Sequencing words (e.g., \"First, then, next, last\")",
+          "Present simple for daily routines (e.g., \"I brush my teeth.\")",
+          "Time and status expressions (e.g., \"It's bedtime.\", \"I am sleepy.\")"
+        ],
+        "vocabulary": {
+          "linguistic_competences": {
+            "nouns": "bed, pajamas, teeth, toothbrush, pillow, blanket, story, book, clock, night, water, face",
+            "verbs": "brush, wash, wear, sleep, read, yawn, close, dream",
+            "adjectives": "sleepy, tired, clean, quiet, dark, comfortable"
+          },
+          "pronunciation_and_phonemic_awareness": "Pronunciation: /b/ in \"bed\" and /t/ in \"teeth\". Phonemic awareness: Blending /w-ɒ-ʃ/ in \"wash\" and /t-iː-θ/ in \"teeth\"",
+          "pragmatic_competences": "Describing evening routines: \"First, I brush my teeth. Then I go to bed.\" Saying goodnight: \"Goodnight, sleep well!\"",
+          "sociolinguistic_competences": "Bedtime politeness: Saying goodnight politely to family members and asking for help (e.g., \"Can you read me a bedtime story, please?\")."
+        }
+      },
+      "century_21_project_ideas": {
+        "skills_and_technology_integration": {
+          "skills": "Self-Management: Organizing evening habits. Communication: Sequencing routines using first, then, last.",
+          "technology_integration": "Create an interactive digital bedtime checklist."
+        },
+        "projects": [
+          {
+            "name": "Project 1: Bedtime Routine Chart",
+            "overview": "Students create a step-by-step evening routine chart with pictures and sequencing words."
+          },
+          {
+            "name": "Project 2: Evening Role-Play",
+            "overview": "Students role-play getting ready for bed and saying goodnight in pairs."
+          }
+        ]
+      }
     }
   ]
 }
