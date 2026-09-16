@@ -1,5 +1,6 @@
 import { jsPDF } from 'jspdf';
 import { validatePack } from './activityPack.js';
+import { renderWorkbookHtml } from './renderWorkbookHtml.js';
 
 export function buildWorkbook(pack) {
   validatePack(pack);
@@ -985,3 +986,26 @@ export function downloadWorkbook(pack) {
   const filename = (pack.title || 'Activity_Workbook').replace(/[^a-z0-9_-]/gi, '_') + '.pdf';
   buildWorkbook(pack).save(filename);
 }
+
+/**
+ * Exports the structured activity pack as an editable Word document (.doc)
+ */
+export function downloadWorkbookDoc(pack) {
+  const filename = (pack.title || 'Activity_Workbook').replace(/[^a-z0-9_-]/gi, '_') + '.doc';
+  const html = renderWorkbookHtml(pack);
+  const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+/**
+ * Reference to the ReportLab + python-docx Python generator script
+ * Location: src/resources/activity_workbook_generator.py
+ */
+export const PYTHON_ACTIVITY_GENERATOR = 'src/resources/activity_workbook_generator.py';

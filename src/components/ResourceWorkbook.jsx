@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { databaseService } from '../services/firebase';
 import { generateActivityPack, latestAoa } from '../resources/activityPack';
-import { buildWorkbook, downloadWorkbook } from '../resources/workbookPdf';
+import { buildWorkbook, downloadWorkbook, downloadWorkbookDoc } from '../resources/workbookPdf';
 import { renderWorkbookHtml } from '../resources/renderWorkbookHtml';
 
 const plain = html => new DOMParser().parseFromString(html || '', 'text/html').body.textContent || '';
@@ -154,6 +154,19 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
     }
   };
 
+  const downloadDoc = async () => {
+    if (!isPremium && downloadsLeft <= 0) {
+      setError('Has agotado tus descargas disponibles.');
+      return;
+    }
+    try {
+      downloadWorkbookDoc(pack);
+      if (!isPremium) await databaseService.decrementDownloads(user.uid);
+    } catch (e) {
+      setError(e.message);
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-[100] bg-black/75 overflow-y-auto p-2 sm:p-4 backdrop-blur-sm flex items-center justify-center" role="dialog" aria-modal="true" aria-label="Recursos y rúbrica">
       <div className="w-full max-w-5xl bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-7 text-slate-900 dark:text-slate-100 shadow-2xl border border-slate-200 dark:border-slate-800 my-auto">
@@ -260,6 +273,13 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
                   className="bg-slate-800 hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5"
                 >
                   ⬇️ Descargar .pdf
+                </button>
+                <button
+                  onClick={downloadDoc}
+                  className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-blue-600/20"
+                  title="Descargar versión editable para Microsoft Word"
+                >
+                  📝 Descargar Word (.doc)
                 </button>
               </div>
             </div>

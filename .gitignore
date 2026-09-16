@@ -35,3 +35,8 @@ public/tutoriales/
 # Temp and attachments
 tmp/
 .codex-remote-attachments/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
