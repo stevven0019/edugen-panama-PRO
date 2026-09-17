@@ -1,4 +1,5 @@
 import { normalizeThemeScenario } from '../services/themeCurriculum.js';
+export { linguisticPosterStudioHtml } from './linguisticPosterStudioHtml.js';
 
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const label = key => key.replace(/([a-z])([A-Z])/g,'$1 $2').replaceAll('_',' ');

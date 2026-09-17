@@ -37,6 +37,12 @@ export const REALIA_PHOTOS = {
   orange: 'https://images.unsplash.com/photo-1582979512210-99b6a53386f9?auto=format&fit=crop&w=400&q=80',
   watermelon: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=400&q=80',
   market: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=400&q=80',
+  potatoes: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=400&q=80',
+  store: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=400&q=80',
+  cashier: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=400&q=80',
+  shopping_list: 'https://images.unsplash.com/photo-1586769852044-692d6e3703f0?auto=format&fit=crop&w=400&q=80',
+  cost: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=400&q=80',
+  item: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80',
 
   // ── Nature & Community ──
   tree: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=400&q=80',
@@ -60,6 +66,9 @@ export function getRealiaPhoto(keyword) {
   if (clean === 'table') return REALIA_PHOTOS.desk;
   if (clean === 'backpack') return REALIA_PHOTOS.bag;
   if (clean === 'money' || clean === 'price') return REALIA_PHOTOS.dollar;
+  if (clean === 'cassava') return REALIA_PHOTOS.yuca;
+  if (clean === 'potato') return REALIA_PHOTOS.potatoes;
+  if (clean === 'shopping list' || clean === 'shopping_list') return REALIA_PHOTOS.shopping_list;
   if (REALIA_PHOTOS[clean]) return REALIA_PHOTOS[clean];
   if (REALIA_PHOTOS[keyword.toLowerCase().trim()]) return REALIA_PHOTOS[keyword.toLowerCase().trim()];
   return null;

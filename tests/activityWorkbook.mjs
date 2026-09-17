@@ -166,5 +166,30 @@ const row1 = act2Block.slice(act2Block.indexOf('Photo A'), act2Block.indexOf('Ph
 assert.ok(!row1.includes('pineapple'), 'Row 1 right column does not match Photo A directly (it is shuffled)');
 console.log('Activity 2 Shuffled Matching and Part 2 Line Drawings verification passed!');
 
+// 8. Test AOA MEDUCA Linguistic Poster Studio
+import { linguisticPosterStudioHtml, NOUN_REALIA_MAP } from '../src/resources/linguisticPosterStudioHtml.js';
+
+const posterHtml = linguisticPosterStudioHtml(null, '7th Grade', 2, 'A1+ / A2');
+assert.ok(posterHtml.includes('AOA Linguistic Poster Studio'), 'Poster title found in studio header');
+assert.ok(posterHtml.includes('market'), 'Includes market noun');
+assert.ok(posterHtml.includes('pineapple'), 'Includes pineapple noun');
+assert.ok(posterHtml.includes('shopping list'), 'Includes shopping list noun');
+assert.ok(posterHtml.includes('cassava'), 'Includes cassava noun');
+assert.ok(posterHtml.includes('potatoes'), 'Includes potatoes noun');
+assert.ok(posterHtml.includes('cashier'), 'Includes cashier noun');
+assert.ok(posterHtml.includes('cost'), 'Includes cost noun');
+assert.ok(posterHtml.includes('money'), 'Includes money noun');
+assert.ok(posterHtml.includes('item'), 'Includes item noun');
+assert.ok(posterHtml.includes('store'), 'Includes store noun');
+assert.ok(posterHtml.includes('price'), 'Includes price noun');
+assert.ok(posterHtml.includes('Fotos Reales'), 'Has real photo toggle');
+assert.ok(posterHtml.includes('Ilustración Vectorial'), 'Has vector illustration support');
+assert.ok(posterHtml.includes('Carta (8.5×11)'), 'Has format toggle');
+assert.ok(posterHtml.includes('Editor de Datos JSON del Escenario'), 'Includes live JSON editor modal');
+assert.ok(Boolean(NOUN_REALIA_MAP.pineapple), 'Pineapple has high-res realia photography mapped');
+assert.ok(Boolean(NOUN_REALIA_MAP.potatoes), 'Potatoes has realia photography mapped');
+console.log('Linguistic Poster Studio verification passed!');
+
 console.log('All multi-grade and authentic activity PDF & HTML checks passed!');
+
 

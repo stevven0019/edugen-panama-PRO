@@ -5,6 +5,7 @@ import { posterTiles } from '../resources/illustratedPoster';
 import { composePoster, paperSize } from '../resources/posterLayout';
 import { classroomPosterHtml } from '../resources/classroomPoster';
 import { scenarioPoster } from '../resources/scenarioPoster';
+import { linguisticPosterStudioHtml } from '../resources/linguisticPosterStudioHtml';
 
 export default function ScenarioPoster({ grade, scenario, index, ready, user, credits, isPremium, cefr = '' }) {
   const [poster, setPoster] = useState(null);
@@ -14,7 +15,7 @@ export default function ScenarioPoster({ grade, scenario, index, ready, user, cr
   
   // Modal viewer state for instant classroom poster (0 tokens)
   const [viewerOpen, setViewerOpen] = useState(false);
-  const [posterType, setPosterType] = useState('classroom'); // 'classroom' | 'linguistic'
+  const [posterType, setPosterType] = useState('linguistic'); // 'linguistic' | 'classroom'
   const iframeRef = useRef(null);
 
   const cache = useRef({ key: '', blobs: [] });
@@ -114,13 +115,20 @@ export default function ScenarioPoster({ grade, scenario, index, ready, user, cr
 
   const scenarioName = scenario?.scenarioName || scenario?.scenario_title || scenario?.title || `Escenario ${index + 1}`;
 
+  const handleOpenStudio = () => {
+    if (!previewHtml) return;
+    const blob = new Blob([previewHtml], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    window.open(url, '_blank');
+  };
+
   // Pre-generate HTML for instant preview
   let previewHtml = '';
   if (ready && scenario) {
     try {
       previewHtml = posterType === 'classroom'
         ? classroomPosterHtml(scenario, grade, index, cefr)
-        : scenarioPoster(scenario, grade, index);
+        : linguisticPosterStudioHtml(scenario, grade, index, cefr);
     } catch (err) {
       previewHtml = `<div style="padding: 20px; font-family: sans-serif; color: #b91c1c;">${err.message}</div>`;
     }
@@ -205,25 +213,34 @@ export default function ScenarioPoster({ grade, scenario, index, ready, user, cr
             <div className="flex flex-wrap justify-between items-center gap-2 my-3 p-2 rounded-xl bg-slate-100 dark:bg-slate-800">
               <div className="flex gap-2">
                 <button
+                  onClick={() => setPosterType('linguistic')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${posterType === 'linguistic' ? 'bg-teal-600 text-white shadow-sm' : 'bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200'}`}
+                >
+                  📖 Lámina Lingüística AOA (Studio)
+                </button>
+                <button
                   onClick={() => setPosterType('classroom')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${posterType === 'classroom' ? 'bg-teal-600 text-white shadow-sm' : 'bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200'}`}
                 >
                   🏫 Póster de Aula (Accional & Diálogo)
                 </button>
-                <button
-                  onClick={() => setPosterType('linguistic')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${posterType === 'linguistic' ? 'bg-teal-600 text-white shadow-sm' : 'bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200'}`}
-                >
-                  📖 Lámina Lingüística (Grammar & Vocab)
-                </button>
               </div>
 
-              <button
-                onClick={handlePrint}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-emerald-600/20 cursor-pointer"
-              >
-                🖨️ Imprimir / Guardar Póster PDF
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleOpenStudio}
+                  title="Abrir estudio completo en pestaña independiente"
+                  className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm cursor-pointer"
+                >
+                  <span>🚀</span> Pestaña Completa
+                </button>
+                <button
+                  onClick={handlePrint}
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-emerald-600/20 cursor-pointer"
+                >
+                  🖨️ Imprimir / Guardar PDF
+                </button>
+              </div>
             </div>
 
             {/* Iframe Preview Container */}
