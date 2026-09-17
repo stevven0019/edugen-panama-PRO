@@ -7,7 +7,7 @@ import { classroomPosterHtml } from '../resources/classroomPoster';
 import { scenarioPoster } from '../resources/scenarioPoster';
 import { linguisticPosterStudioHtml } from '../resources/linguisticPosterStudioHtml';
 
-export default function ScenarioPoster({ grade, scenario, index, ready, user, credits, isPremium, cefr = '' }) {
+export default function ScenarioPoster({ grade, scenario, index, ready, user, credits, isPremium, cefr = '', allScenarios = [] }) {
   const [poster, setPoster] = useState(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -128,7 +128,7 @@ export default function ScenarioPoster({ grade, scenario, index, ready, user, cr
     try {
       previewHtml = posterType === 'classroom'
         ? classroomPosterHtml(scenario, grade, index, cefr)
-        : linguisticPosterStudioHtml(scenario, grade, index, cefr);
+        : linguisticPosterStudioHtml(scenario, grade, index, cefr, allScenarios);
     } catch (err) {
       previewHtml = `<div style="padding: 20px; font-family: sans-serif; color: #b91c1c;">${err.message}</div>`;
     }

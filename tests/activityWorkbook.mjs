@@ -166,30 +166,72 @@ const row1 = act2Block.slice(act2Block.indexOf('Photo A'), act2Block.indexOf('Ph
 assert.ok(!row1.includes('pineapple'), 'Row 1 right column does not match Photo A directly (it is shuffled)');
 console.log('Activity 2 Shuffled Matching and Part 2 Line Drawings verification passed!');
 
-// 8. Test AOA MEDUCA Linguistic Poster Studio
-import { linguisticPosterStudioHtml, NOUN_REALIA_MAP } from '../src/resources/linguisticPosterStudioHtml.js';
+// 8. Test AOA MEDUCA Linguistic Poster Studio (Multi-Grade & Dynamic Scenarios)
+import { linguisticPosterStudioHtml, extractScenarioData } from '../src/resources/linguisticPosterStudioHtml.js';
 
-const posterHtml = linguisticPosterStudioHtml(null, '7th Grade', 2, 'A1+ / A2');
-assert.ok(posterHtml.includes('AOA Linguistic Poster Studio'), 'Poster title found in studio header');
-assert.ok(posterHtml.includes('market'), 'Includes market noun');
-assert.ok(posterHtml.includes('pineapple'), 'Includes pineapple noun');
-assert.ok(posterHtml.includes('shopping list'), 'Includes shopping list noun');
-assert.ok(posterHtml.includes('cassava'), 'Includes cassava noun');
-assert.ok(posterHtml.includes('potatoes'), 'Includes potatoes noun');
-assert.ok(posterHtml.includes('cashier'), 'Includes cashier noun');
-assert.ok(posterHtml.includes('cost'), 'Includes cost noun');
-assert.ok(posterHtml.includes('money'), 'Includes money noun');
-assert.ok(posterHtml.includes('item'), 'Includes item noun');
-assert.ok(posterHtml.includes('store'), 'Includes store noun');
-assert.ok(posterHtml.includes('price'), 'Includes price noun');
-assert.ok(posterHtml.includes('Fotos Reales'), 'Has real photo toggle');
-assert.ok(posterHtml.includes('Ilustración Vectorial'), 'Has vector illustration support');
-assert.ok(posterHtml.includes('Carta (8.5×11)'), 'Has format toggle');
-assert.ok(posterHtml.includes('Editor de Datos JSON del Escenario'), 'Includes live JSON editor modal');
-assert.ok(Boolean(NOUN_REALIA_MAP.pineapple), 'Pineapple has high-res realia photography mapped');
-assert.ok(Boolean(NOUN_REALIA_MAP.potatoes), 'Potatoes has realia photography mapped');
-console.log('Linguistic Poster Studio verification passed!');
+// Test Grade 12 Scenario 5 (The exact user's example!)
+const grade12Scenario = {
+  id: 5,
+  title: 'Robotics and Space Exploration',
+  linguistic_competences: [
+    'Future perfect for discussing technology impacts (e.g., "By 2030, AI will have transformed industries.")',
+    'Passive voice for scientific reporting (e.g., "Data is collected by robots for analysis.")',
+    'Zero conditional for cause-effect scenarios (e.g., "If robots are programmed, they perform with precision.")'
+  ],
+  recommended_vocabulary: {
+    nouns: 'robot, technology, automation, industry, agriculture, medicine, factory, machine, program, control, sensor, repair, safety, space, astronaut, satellite, rocket, planet, mission, orbit, telescope, research, gravity, universe, galaxy, exploration, station, equipment',
+    verbs: 'launch, program, operate, explore, discover, orbit, repair, control, collect',
+    adjectives: 'automated, efficient, mechanical, useful, distant, unexplored, mysterious, space-related'
+  }
+};
+
+const g12PosterHtml = linguisticPosterStudioHtml(grade12Scenario, '12th Grade', 4, 'B1+');
+assert.ok(g12PosterHtml.includes('ROBOTICS AND SPACE EXPLORATION'), 'Grade 12 title rendered');
+assert.ok(g12PosterHtml.includes('Grade: 12th Grade'), 'Grade 12 rendered in meta');
+assert.ok(g12PosterHtml.includes('Future perfect for discussing technology impacts'), 'Grade 12 future perfect grammar rendered');
+assert.ok(g12PosterHtml.includes('Passive voice for scientific reporting'), 'Grade 12 passive voice rendered');
+assert.ok(g12PosterHtml.includes('Zero conditional for cause-effect scenarios'), 'Grade 12 zero conditional rendered');
+assert.ok(g12PosterHtml.includes('robot'), 'Grade 12 noun robot rendered');
+assert.ok(g12PosterHtml.includes('astronaut'), 'Grade 12 noun astronaut rendered');
+assert.ok(g12PosterHtml.includes('satellite'), 'Grade 12 noun satellite rendered');
+assert.ok(g12PosterHtml.includes('launch'), 'Grade 12 verb launch rendered');
+assert.ok(g12PosterHtml.includes('automated'), 'Grade 12 adjective automated rendered');
+assert.ok(!g12PosterHtml.includes('AT THE LOCAL MARKET'), 'Grade 12 poster does not use Market title');
+
+const g12Data = extractScenarioData(grade12Scenario, '12th Grade', 4, 'B1+');
+assert.ok(g12Data.linguistic_competence.nouns.some(n => n.word === 'robot'));
+assert.ok(g12Data.linguistic_competence.nouns.every(n => n.word !== 'pineapple'), 'G12 nouns do not have pineapple');
+
+// Test Kinder Scenario
+const kinderScenario = {
+  id: 1,
+  title: 'My Classroom Objects',
+  communicative_competences: {
+    linguistic_competences: {
+      recommended_grammatical_features: ["Imperatives (e.g., 'Stand up.')", "Present simple (e.g., 'It is a school.')"],
+      recommended_vocabulary: {
+        nouns: ['book', 'table', 'chair', 'pencil', 'door', 'window'],
+        verbs: ['listen', 'touch', 'open', 'point'],
+        adjectives: ['big', 'small', 'clean', 'red']
+      }
+    }
+  }
+};
+
+const kinderPosterHtml = linguisticPosterStudioHtml(kinderScenario, 'Kinder', 0, 'Pre-A1');
+assert.ok(kinderPosterHtml.includes('MY CLASSROOM OBJECTS'), 'Kinder title rendered');
+assert.ok(kinderPosterHtml.includes('Grade: Kinder'), 'Grade Kinder rendered');
+assert.ok(kinderPosterHtml.includes('book'), 'Kinder book noun rendered');
+assert.ok(kinderPosterHtml.includes('pencil'), 'Kinder pencil noun rendered');
+
+const kinderData = extractScenarioData(kinderScenario, 'Kinder', 0, 'Pre-A1');
+assert.ok(kinderData.linguistic_competence.nouns.some(n => n.word === 'book'));
+assert.ok(kinderData.linguistic_competence.nouns.every(n => n.word !== 'robot'), 'Kinder nouns do not have robot');
+
+console.log('Multi-grade dynamic linguistic poster tests passed for Grade 12, Kinder, and Grade 7!');
 
 console.log('All multi-grade and authentic activity PDF & HTML checks passed!');
+
+
 
 

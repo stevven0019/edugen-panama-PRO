@@ -1,108 +1,310 @@
-// Linguistic Poster Studio for Panama MEDUCA AOA Curriculum
-// Generates high-impact linguistic wall posters with dual-mode illustrations:
-// 1) High-definition Realia Photography (curated Unsplash assets)
-// 2) Procedural Vector Realia SVGs (zero-dependency, infinite sharpness, zero broken links)
-// Format toggle: Letter (8.5x11") & Tabloid (11x17")
-// Live JSON editor & preset selector for Pre-K to 12th Grade
+// Universal AOA Linguistic Poster Studio for Panama MEDUCA Curriculums (Pre-K to 12th Grade)
+// Dynamically extracts linguistic competences, recommended vocabulary (nouns, verbs, adjectives, grammar),
+// and realia photos/vectors for ANY grade and scenario chosen by the teacher.
 
 import { REALIA_PHOTOS, getRealiaPhoto } from './realiaCatalog.js';
 
-export const NOUN_REALIA_MAP = {
-  market: REALIA_PHOTOS.market || 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=600&q=80',
-  price: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80',
-  shopping_list: REALIA_PHOTOS.shopping_list || 'https://images.unsplash.com/photo-1586769852044-692d6e3703f0?auto=format&fit=crop&w=600&q=80',
-  item: REALIA_PHOTOS.item || 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80',
-  store: REALIA_PHOTOS.store || 'https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=600&q=80',
-  cost: REALIA_PHOTOS.cost || 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80',
-  pineapple: REALIA_PHOTOS.pineapple || 'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=600&q=80',
-  cashier: REALIA_PHOTOS.cashier || 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=600&q=80',
-  money: REALIA_PHOTOS.dollar || 'https://images.unsplash.com/photo-1580519542036-c47de6196ba5?auto=format&fit=crop&w=600&q=80',
-  cassava: REALIA_PHOTOS.yuca || 'https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=600&q=80',
-  potatoes: REALIA_PHOTOS.potatoes || 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=600&q=80',
-  
-  // Classroom objects
-  book: REALIA_PHOTOS.book || 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80',
-  desk: REALIA_PHOTOS.desk || 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=600&q=80',
-  chair: REALIA_PHOTOS.chair || 'https://images.unsplash.com/photo-1580481077198-c8075423e3e8?auto=format&fit=crop&w=600&q=80',
-  bag: REALIA_PHOTOS.bag || 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80',
-  pencil: REALIA_PHOTOS.pencil || 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80',
-  crayon: REALIA_PHOTOS.crayon || 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80',
+// Common Spanish translations and IPA phonetics dictionary for MEDUCA curriculum keywords
+export const VOCAB_DICTIONARY = {
+  // Technology, Robotics & Science (Grades 7 to 12)
+  robot: { translation: 'robot', phonetic: '/ˈroʊbɒt/' },
+  technology: { translation: 'tecnología', phonetic: '/tɛkˈnɒlədʒi/' },
+  automation: { translation: 'automatización', phonetic: '/ˌɔːtəˈmeɪʃən/' },
+  industry: { translation: 'industria', phonetic: '/ˈɪndəstri/' },
+  agriculture: { translation: 'agricultura', phonetic: '/ˈæɡrɪkʌltʃər/' },
+  medicine: { translation: 'medicina', phonetic: '/ˈmɛdɪsɪn/' },
+  factory: { translation: 'fábrica', phonetic: '/ˈfæktəri/' },
+  machine: { translation: 'máquina', phonetic: '/məˈʃiːn/' },
+  program: { translation: 'programa', phonetic: '/ˈproʊɡræm/' },
+  control: { translation: 'control', phonetic: '/kənˈtroʊl/' },
+  sensor: { translation: 'sensor', phonetic: '/ˈsɛnsər/' },
+  repair: { translation: 'reparación', phonetic: '/rɪˈpɛər/' },
+  safety: { translation: 'seguridad', phonetic: '/ˈseɪfti/' },
+  space: { translation: 'espacio', phonetic: '/speɪs/' },
+  astronaut: { translation: 'astronauta', phonetic: '/ˈæstrənɔːt/' },
+  satellite: { translation: 'satélite', phonetic: '/ˈsætəlaɪt/' },
+  rocket: { translation: 'cohete', phonetic: '/ˈrɒkɪt/' },
+  planet: { translation: 'planeta', phonetic: '/ˈplænɪt/' },
+  mission: { translation: 'misión', phonetic: '/ˈmɪʃən/' },
+  orbit: { translation: 'órbita', phonetic: '/ˈɔːrbɪt/' },
+  telescope: { translation: 'telescopio', phonetic: '/ˈtɛlɪskoʊp/' },
+  research: { translation: 'investigación', phonetic: '/rɪˈsɜːrtʃ/' },
+  gravity: { translation: 'gravedad', phonetic: '/ˈɡrævɪti/' },
+  universe: { translation: 'universo', phonetic: '/ˈjuːnɪvɜːrs/' },
+  galaxy: { translation: 'galaxia', phonetic: '/ˈɡæləksi/' },
+  exploration: { translation: 'exploración', phonetic: '/ˌɛkspləˈreɪʃən/' },
+  station: { translation: 'estación', phonetic: '/ˈsteɪʃən/' },
+  equipment: { translation: 'equipo', phonetic: '/ɪˈkwɪpmənt/' },
 
-  // Canal & safety objects
-  lock: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80',
-  tugboat: 'https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?auto=format&fit=crop&w=600&q=80',
-  helmet: 'https://images.unsplash.com/photo-1578873375969-d71e3c84717f?auto=format&fit=crop&w=600&q=80',
-  life_vest: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80',
-  radio: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=600&q=80',
-  ship: 'https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?auto=format&fit=crop&w=600&q=80'
+  // Energy & Environment (Grades 6 to 11)
+  energy: { translation: 'energía', phonetic: '/ˈɛnərdʒi/' },
+  solar: { translation: 'energía solar', phonetic: '/ˈsoʊlər/' },
+  wind: { translation: 'viento', phonetic: '/wɪnd/' },
+  turbine: { translation: 'turbina', phonetic: '/ˈtɜːrbaɪn/' },
+  electricity: { translation: 'electricidad', phonetic: '/ɪˌlɛkˈtrɪsɪti/' },
+  recycle: { translation: 'reciclaje', phonetic: '/ˌriːˈsaɪkəl/' },
+  recycling: { translation: 'reciclaje', phonetic: '/ˌriːˈsaɪklɪŋ/' },
+  waste: { translation: 'residuos', phonetic: '/weɪst/' },
+  environment: { translation: 'medio ambiente', phonetic: '/ɪnˈvaɪrənmənt/' },
+  pollution: { translation: 'contaminación', phonetic: '/pəˈluːʃən/' },
+  water: { translation: 'agua', phonetic: '/ˈwɔːtər/' },
+  ocean: { translation: 'océano', phonetic: '/ˈoʊʃən/' },
+  coral: { translation: 'coral', phonetic: '/ˈkɔːrəl/' },
+  reef: { translation: 'arrecife', phonetic: '/riːf/' },
+  wildlife: { translation: 'vida silvestre', phonetic: '/ˈwaɪldlaɪf/' },
+  forest: { translation: 'bosque', phonetic: '/ˈfɔːrɪst/' },
+  jaguar: { translation: 'jaguar', phonetic: '/ˈdʒæɡwɑːr/' },
+  weather: { translation: 'clima', phonetic: '/ˈwɛðər/' },
+  cloud: { translation: 'nube', phonetic: '/klaʊd/' },
+  rain: { translation: 'lluvia', phonetic: '/reɪn/' },
+
+  // School, Classroom & Foundation (Pre-K to 6th Grade)
+  book: { translation: 'libro', phonetic: '/bʊk/' },
+  desk: { translation: 'pupitre', phonetic: '/dɛsk/' },
+  table: { translation: 'mesa', phonetic: '/ˈteɪbəl/' },
+  chair: { translation: 'silla', phonetic: '/tʃɛər/' },
+  bag: { translation: 'mochila', phonetic: '/bæɡ/' },
+  pencil: { translation: 'lápiz', phonetic: '/ˈpɛnsəl/' },
+  pen: { translation: 'bolígrafo', phonetic: '/pɛn/' },
+  crayon: { translation: 'crayón', phonetic: '/ˈkreɪɒn/' },
+  marker: { translation: 'marcador', phonetic: '/ˈmɑːrkər/' },
+  scissors: { translation: 'tijeras', phonetic: '/ˈsɪzərz/' },
+  glue: { translation: 'goma/pegamento', phonetic: '/ɡluː/' },
+  ruler: { translation: 'regla', phonetic: '/ˈruːlər/' },
+  notebook: { translation: 'cuaderno', phonetic: '/ˈnoʊtbʊk/' },
+  paper: { translation: 'papel', phonetic: '/ˈpeɪpər/' },
+  board: { translation: 'tablero', phonetic: '/bɔːrd/' },
+  classroom: { translation: 'aula de clases', phonetic: '/ˈklæsruːm/' },
+  school: { translation: 'escuela', phonetic: '/skuːl/' },
+  teacher: { translation: 'docente', phonetic: '/ˈtiːtʃər/' },
+  student: { translation: 'estudiante', phonetic: '/ˈstjuːdənt/' },
+  classmate: { translation: 'compañero/a', phonetic: '/ˈklæsmeɪt/' },
+  friend: { translation: 'amigo/a', phonetic: '/frɛnd/' },
+  library: { translation: 'biblioteca', phonetic: '/ˈlaɪbrəri/' },
+  project: { translation: 'proyecto', phonetic: '/ˈprɒdʒɛkt/' },
+  poster: { translation: 'afiche', phonetic: '/ˈpoʊstər/' },
+
+  // Market & Food
+  market: { translation: 'mercado', phonetic: '/ˈmɑːrkɪt/' },
+  price: { translation: 'precio', phonetic: '/praɪs/' },
+  shopping_list: { translation: 'lista de compras', phonetic: '/ˈʃɒpɪŋ lɪst/' },
+  'shopping list': { translation: 'lista de compras', phonetic: '/ˈʃɒpɪŋ lɪst/' },
+  item: { translation: 'artículo', phonetic: '/ˈaɪtəm/' },
+  store: { translation: 'tienda', phonetic: '/stɔːr/' },
+  cost: { translation: 'costo', phonetic: '/kɒst/' },
+  pineapple: { translation: 'piña', phonetic: '/ˈpaɪnæpəl/' },
+  cashier: { translation: 'cajero/a', phonetic: '/kæˈʃɪər/' },
+  money: { translation: 'dinero', phonetic: '/ˈmʌni/' },
+  dollar: { translation: 'dólar', phonetic: '/ˈdɒlər/' },
+  cassava: { translation: 'yuca', phonetic: '/kəˈsɑːvə/' },
+  yuca: { translation: 'yuca', phonetic: '/ˈjuːkə/' },
+  potatoes: { translation: 'papas', phonetic: '/pəˈteɪtoʊz/' },
+  potato: { translation: 'papa', phonetic: '/pəˈteɪtoʊ/' },
+  banana: { translation: 'guineo/plátano', phonetic: '/bəˈnænə/' },
+  orange: { translation: 'naranja', phonetic: '/ˈɒrɪndʒ/' },
+  apple: { translation: 'manzana', phonetic: '/ˈæpəl/' },
+  fruit: { translation: 'fruta', phonetic: '/fruːt/' },
+  vegetable: { translation: 'vegetal', phonetic: '/ˈvɛdʒtəbəl/' },
+
+  // Panama Canal & Heritage
+  canal: { translation: 'Canal de Panamá', phonetic: '/kəˈnæl/' },
+  lock: { translation: 'esclusa', phonetic: '/lɒk/' },
+  tugboat: { translation: 'remolcador', phonetic: '/ˈtʌɡboʊt/' },
+  helmet: { translation: 'casco de seguridad', phonetic: '/ˈhɛlmɪt/' },
+  life_vest: { translation: 'chaleco salvavidas', phonetic: '/ˈlaɪf vɛst/' },
+  'life vest': { translation: 'chaleco salvavidas', phonetic: '/ˈlaɪf vɛst/' },
+  radio: { translation: 'radio comunicador', phonetic: '/ˈreɪdioʊ/' },
+  ship: { translation: 'buque', phonetic: '/ʃɪp/' },
+  heritage: { translation: 'patrimonio', phonetic: '/ˈhɛrɪtɪdʒ/' },
+  monument: { translation: 'monumento', phonetic: '/ˈmɒnjʊmənt/' },
+  parade: { translation: 'desfile', phonetic: '/pəˈreɪd/' },
+  festival: { translation: 'festival', phonetic: '/ˈfɛstɪvəl/' },
+  community: { translation: 'comunidad', phonetic: '/kəˈmjuːnɪti/' }
 };
 
-export function getPosterRealiaUrl(word) {
-  if (!word) return null;
-  const key = String(word).trim().toLowerCase().replace(/\s+/g, '_');
-  if (NOUN_REALIA_MAP[key]) return NOUN_REALIA_MAP[key];
-  return getRealiaPhoto(word) || null;
-}
-
 /**
- * Builds the complete self-contained HTML for the Linguistic Poster Studio.
- * Includes Tailwind CDN, Google Fonts, full SVG library, real photo fallbacks,
- * interactive JSON editor, preset switcher, and print stylesheets.
+ * Extracts and normalizes linguistic data from ANY scenario object (Pre-K to 12th Grade).
  */
-export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th Grade', scenarioIndex = 0, cefr = 'A1+') {
-  // Construct default scenario payload if active scenario provided
-  const scenarioTitle = activeScenario?.scenarioName || activeScenario?.scenario_title || activeScenario?.title || 'At the Local Market: Buying Fresh Food';
-  const scenarioNum = activeScenario?.scenarioNum || activeScenario?.scenarioNumber || (scenarioIndex + 1);
+export function extractScenarioData(scenario, grade = '7th Grade', scenarioIndex = 0, cefr = '') {
+  if (!scenario) return null;
 
-  // Extract vocabulary if available from active scenario
-  let initialNouns = null;
-  let initialVerbs = null;
-  let initialAdjs = null;
+  const scenarioTitle = scenario.title || scenario.scenarioName || scenario.scenario_title || scenario.name || `Scenario ${scenarioIndex + 1}`;
+  const scenarioNum = scenario.id || scenario.scenarioNum || scenario.scenario_number || (scenarioIndex + 1);
+  const cefrLevel = cefr || scenario.level || scenario.cefr_level || scenario.proficiency_level || (grade.includes('12') ? 'B1+' : grade.includes('7') ? 'A1+ / A2' : 'A1');
 
-  if (activeScenario) {
-    const vocab = activeScenario.vocabulary || activeScenario.linguistic_competence?.nouns;
-    if (Array.isArray(vocab) && vocab.length > 0) {
-      initialNouns = vocab.map(v => typeof v === 'object' ? v : { word: String(v), translation: '', phonetic: '' });
-    }
-    const verbs = activeScenario.verbs || activeScenario.linguistic_competence?.verbs;
-    if (Array.isArray(verbs) && verbs.length > 0) initialVerbs = verbs;
-    const adjs = activeScenario.adjectives || activeScenario.linguistic_competence?.adjectives;
-    if (Array.isArray(adjs) && adjs.length > 0) initialAdjs = adjs;
+  // 1. Linguistic Competences (Grammar Structures & Rules)
+  let grammarRules = [];
+  if (Array.isArray(scenario.linguistic_competences) && scenario.linguistic_competences.length > 0) {
+    grammarRules = scenario.linguistic_competences;
+  } else if (scenario.communicative_competences?.linguistic_competences?.recommended_grammatical_features) {
+    const gf = scenario.communicative_competences.linguistic_competences.recommended_grammatical_features;
+    grammarRules = Array.isArray(gf) ? gf : [gf];
+  } else if (Array.isArray(scenario.grammar) && scenario.grammar.length > 0) {
+    grammarRules = scenario.grammar;
+  } else if (scenario.grammar_focus) {
+    grammarRules = Array.isArray(scenario.grammar_focus) ? scenario.grammar_focus : [scenario.grammar_focus];
   }
 
-  const dynamicInitialPayload = {
+  // Fallback grammar if missing
+  if (!grammarRules.length) {
+    grammarRules = [
+      "Present Simple for general facts and core descriptions",
+      "Imperatives & modals for direct action and collaboration",
+      "Action-oriented question forms for peer dialogue"
+    ];
+  }
+
+  // 2. Recommended Vocabulary
+  const vocabSource = scenario.recommended_vocabulary ||
+                      scenario.communicative_competences?.linguistic_competences?.recommended_vocabulary ||
+                      scenario.communicative_competences?.vocabulary ||
+                      scenario.vocabulary || {};
+
+  // Nouns
+  let rawNouns = vocabSource.nouns || vocabSource.noun || [];
+  if (typeof rawNouns === 'string') {
+    rawNouns = rawNouns.split(',').map(s => s.trim()).filter(Boolean);
+  } else if (!Array.isArray(rawNouns)) {
+    rawNouns = [];
+  }
+
+  // Verbs
+  let rawVerbs = vocabSource.verbs || vocabSource.verb || [];
+  if (typeof rawVerbs === 'string') {
+    rawVerbs = rawVerbs.split(',').map(s => s.trim()).filter(Boolean);
+  } else if (!Array.isArray(rawVerbs)) {
+    rawVerbs = [];
+  }
+
+  // Adjectives
+  let rawAdjs = vocabSource.adjectives || vocabSource.adjective || [];
+  if (typeof rawAdjs === 'string') {
+    rawAdjs = rawAdjs.split(',').map(s => s.trim()).filter(Boolean);
+  } else if (!Array.isArray(rawAdjs)) {
+    rawAdjs = [];
+  }
+
+  // Adverbs & Question Words
+  let rawAdverbs = vocabSource.adverbs_of_frequency || vocabSource.adverbs || vocabSource.prepositions || vocabSource.discourse_marker || [];
+  if (typeof rawAdverbs === 'string') rawAdverbs = rawAdverbs.split(',').map(s => s.trim()).filter(Boolean);
+  if (!Array.isArray(rawAdverbs) || !rawAdverbs.length) rawAdverbs = ["always", "often", "carefully", "efficiently"];
+
+  let rawQuestions = vocabSource.question_words || vocabSource.interrogatives || [];
+  if (typeof rawQuestions === 'string') rawQuestions = rawQuestions.split(',').map(s => s.trim()).filter(Boolean);
+  if (!Array.isArray(rawQuestions) || !rawQuestions.length) rawQuestions = ["What...?", "How...?", "Why...?"];
+
+  // Format Nouns for UI
+  const processedNouns = rawNouns.map(n => {
+    const word = typeof n === 'object' ? (n.word || '') : String(n).trim();
+    const clean = word.toLowerCase();
+    const dict = VOCAB_DICTIONARY[clean] || VOCAB_DICTIONARY[clean.replace(/\s+/g, '_')] || {};
+    return {
+      word: word,
+      translation: dict.translation || word,
+      phonetic: dict.phonetic || ''
+    };
+  });
+
+  // Pick top 11-12 target nouns for visual cards
+  const targetNouns = processedNouns.length > 0 ? processedNouns.slice(0, 11) : [
+    { word: "robot", translation: "robot", phonetic: "/ˈroʊbɒt/" },
+    { word: "technology", translation: "tecnología", phonetic: "/tɛkˈnɒlədʒi/" },
+    { word: "space", translation: "espacio", phonetic: "/speɪs/" },
+    { word: "satellite", translation: "satélite", phonetic: "/ˈsætəlaɪt/" }
+  ];
+
+  // Pick verbs and adjectives
+  const displayVerbs = rawVerbs.length > 0 ? rawVerbs.slice(0, 12) : ["operate", "program", "launch", "explore", "repair", "control"];
+  const displayAdjs = rawAdjs.length > 0 ? rawAdjs.slice(0, 8) : ["automated", "efficient", "modern", "accurate", "reliable"];
+
+  // Numbers range based on grade
+  let numberRange = "1 to 100 (Quantities, measurements & change)";
+  let numberSubtext = "Applied to counting items, reading data, and collaborative task metrics.";
+  if (grade.includes('Pre-K') || grade.includes('Kinder')) {
+    numberRange = "1 to 10 (Counting Real Objects)";
+    numberSubtext = "Used for fingers, blocks, and classroom objects.";
+  } else if (grade.includes('1') || grade.includes('2') || grade.includes('3')) {
+    numberRange = "1 to 50 (Cardinal & Ordinal Numbers)";
+    numberSubtext = "Used for basic counting, age, and simple prices.";
+  } else if (grade.includes('10') || grade.includes('11') || grade.includes('12')) {
+    numberRange = "100 to 1,000,000+ (Years, Metrics & Big Data)";
+    numberSubtext = "Used for technical measurements, statistical timelines (e.g., By 2030), and precision data.";
+  }
+
+  // 3. Dialogue Generation matching target vocabulary & grammar
+  const nounSampleA = targetNouns[0]?.word || "topic";
+  const nounSampleB = targetNouns[1]?.word || "project";
+  const nounSampleC = targetNouns[2]?.word || "system";
+  const verbSample = displayVerbs[0] || "analyze";
+
+  // Build authentic dialogue lines reflecting the actual curriculum level
+  let dialogueLines = [];
+  if (grammarRules.some(g => /future perfect|passive|conditional/i.test(g))) {
+    // High school / Advanced scenario (like Grade 12 Robotics)
+    dialogueLines = [
+      { speaker: "Student A (Researcher / Specialist)", text: `By 2030, how will AI and ${nounSampleA}s have transformed our ${nounSampleB} in Panama?` },
+      { speaker: "Student B (Technical Analyst)", text: `Data is collected by advanced ${nounSampleC}s so technicians can ${verbSample} systems with high precision.` },
+      { speaker: "Student A", text: `If ${nounSampleA}s are programmed properly, they operate without mechanical failure in challenging environments.` },
+      { speaker: "Student B", text: `Exactly! Modern equipment and automated research will have revolutionized science across the region.` }
+    ];
+  } else if (grade.includes('Pre-K') || grade.includes('Kinder') || grade.includes('1')) {
+    // Early childhood / Primary
+    dialogueLines = [
+      { speaker: "Student A (Partner 1)", text: `Look! Where is the ${nounSampleA}?` },
+      { speaker: "Student B (Partner 2)", text: `Here it is! The ${nounSampleA} is next to the ${nounSampleB}.` },
+      { speaker: "Student A", text: `Can you ${verbSample} the ${nounSampleC}?` },
+      { speaker: "Student B", text: `Yes, I can! Let's work together happily.` }
+    ];
+  } else {
+    // Middle school / General AOA interaction
+    dialogueLines = [
+      { speaker: "Student A (Team Member)", text: `Good morning! Can we ${verbSample} the ${nounSampleA} and check the ${nounSampleB}?` },
+      { speaker: "Student B (Peer Collaborator)", text: `Yes, the ${nounSampleA} is ready and we need to compare the ${nounSampleC}.` },
+      { speaker: "Student A", text: `How many items do we need to organize for our classroom presentation?` },
+      { speaker: "Student B", text: `We need five items total. Here is the complete list for our team task!` }
+    ];
+  }
+
+  return {
     metadata: {
       institution: "REPÚBLICA DE PANAMÁ · MINISTERIO DE EDUCACIÓN (MEDUCA)",
-      program: "EDUGEN PRO · ENFOQUE AOA",
+      program: `EDUGEN PRO · ENFOQUE AOA (${grade})`,
       grade: grade,
-      cefr_level: cefr || "A1+ / A2",
+      cefr_level: cefrLevel,
       scenario_number: scenarioNum,
       scenario_title: scenarioTitle
     },
     linguistic_competence: {
-      nouns: initialNouns || [
-        { word: "market", translation: "mercado", phonetic: "/ˈmɑːrkɪt/" },
-        { word: "price", translation: "precio", phonetic: "/praɪs/" },
-        { word: "shopping list", translation: "lista de compras", phonetic: "/ˈʃɒpɪŋ lɪst/" },
-        { word: "item", translation: "artículo", phonetic: "/ˈaɪtəm/" },
-        { word: "store", translation: "tienda", phonetic: "/stɔːr/" },
-        { word: "cost", translation: "costo", phonetic: "/kɒst/" },
-        { word: "pineapple", translation: "piña", phonetic: "/ˈpaɪnæpəl/" },
-        { word: "cashier", translation: "cajero/a", phonetic: "/kæˈʃɪər/" },
-        { word: "money", translation: "dinero", phonetic: "/ˈmʌni/" },
-        { word: "cassava", translation: "yuca", phonetic: "/kəˈsɑːvə/" },
-        { word: "potatoes", translation: "papas", phonetic: "/pəˈteɪtoʊz/" }
-      ],
-      verbs: initialVerbs || ["buy", "sell", "ask", "pay", "choose", "compare", "need", "want", "get", "cost", "help"],
-      adjectives: initialAdjs || ["cheap", "fresh", "expensive", "delicious", "ripe"],
-      adverbs: ["quickly", "easily", "often"],
-      interrogatives: ["How much...?", "How many...?"],
-      numbers: "1 to 100 (Counting, Prices & Change in USD / Balboas)"
-    }
+      grammar: grammarRules,
+      nouns: targetNouns,
+      all_nouns_count: rawNouns.length,
+      verbs: displayVerbs,
+      adjectives: displayAdjs,
+      adverbs: rawAdverbs,
+      interrogatives: rawQuestions,
+      numbers: numberRange,
+      numbers_subtext: numberSubtext
+    },
+    dialogue: dialogueLines
   };
+}
 
-  const initialJsonStr = JSON.stringify(dynamicInitialPayload, null, 2);
-  const realiaMapJsonStr = JSON.stringify(NOUN_REALIA_MAP, null, 2);
+/**
+ * Builds the complete self-contained HTML for the Linguistic Poster Studio.
+ * Supports active scenario + all scenarios for the grade in the selector.
+ */
+export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th Grade', scenarioIndex = 0, cefr = '', allScenarios = []) {
+  // Parse active scenario
+  const parsedActive = extractScenarioData(activeScenario, grade, scenarioIndex, cefr);
+
+  // Parse all scenarios for the grade selector if provided
+  const parsedScenarioList = Array.isArray(allScenarios) && allScenarios.length > 0
+    ? allScenarios.map((sc, idx) => extractScenarioData(sc, grade, idx, cefr))
+    : [parsedActive];
+
+  const activeJsonStr = JSON.stringify(parsedActive, null, 2);
+  const scenarioListJsonStr = JSON.stringify(parsedScenarioList, null, 2);
+  const realiaMapJsonStr = JSON.stringify(REALIA_PHOTOS, null, 2);
 
   return `<!DOCTYPE html>
 <html lang="es">
@@ -123,7 +325,6 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
     code, pre {
       font-family: 'Fira Code', monospace;
     }
-    /* Institutional poster border */
     .poster-outer-frame {
       border: 5px solid #1e3a8a;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
@@ -131,7 +332,6 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
     .poster-inner-frame {
       border: 2px solid #f59e0b;
     }
-    /* Realia image styling */
     .realia-img-container {
       position: relative;
       background-color: #f8fafc;
@@ -146,7 +346,6 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
     .realia-photo:hover {
       transform: scale(1.06);
     }
-    /* Print-specific layout rules for wall posters */
     @media print {
       .no-print { display: none !important; }
       body { background: white !important; padding: 0 !important; margin: 0 !important; }
@@ -179,29 +378,29 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
         <div class="flex items-center gap-2">
           <h1 class="text-base font-black tracking-tight">AOA Linguistic Poster Studio</h1>
           <span class="bg-amber-400/20 text-amber-300 text-[11px] px-2.5 py-0.5 rounded-full font-bold border border-amber-400/30">
-            MEDUCA Panamá
+            MEDUCA Panamá · ${escapeXml(grade)}
           </span>
         </div>
         <p class="text-xs text-blue-200">
-          Afiches de Competencia Lingüística · Fotos Reales y Vectores en área de Sustantivos
+          Afiches Dinámicos por Escenario · Ilustración Realia & Fórmulas Lingüísticas Curriculares
         </p>
       </div>
     </div>
 
-    <!-- Quick action controls -->
+    <!-- Controls -->
     <div class="flex items-center flex-wrap gap-2">
-      <!-- Real Photo vs Vector SVG Toggle -->
-      <button onclick="toggleVisualMode()" id="btn-toggle-visual" class="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow-sm transition flex items-center gap-1.5">
+      <!-- Toggle Visual Mode: Real Photo vs Vector SVG -->
+      <button onclick="toggleVisualMode()" id="btn-toggle-visual" class="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow-sm transition flex items-center gap-1.5 cursor-pointer">
         <span>📸</span> <span id="visual-mode-label">Fotos Reales</span>
       </button>
       
-      <!-- JSON Modal -->
-      <button onclick="openJsonModal()" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 transition flex items-center gap-1.5">
+      <!-- JSON Modal Editor -->
+      <button onclick="openJsonModal()" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 transition flex items-center gap-1.5 cursor-pointer">
         <span>⚙️</span> Editar JSON Escenario
       </button>
 
-      <!-- Format Toggle: Letter vs Tabloid -->
-      <button onclick="togglePosterFormat()" id="btn-toggle-format" class="px-3 py-1.5 rounded-xl bg-blue-800 hover:bg-blue-700 text-white text-xs font-bold border border-blue-600 transition">
+      <!-- Toggle Format: Letter vs Tabloid -->
+      <button onclick="togglePosterFormat()" id="btn-toggle-format" class="px-3 py-1.5 rounded-xl bg-blue-800 hover:bg-blue-700 text-white text-xs font-bold border border-blue-600 transition cursor-pointer">
         Formato: Carta (8.5×11)
       </button>
 
@@ -213,23 +412,25 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
   </div>
 </header>
 
+<!-- Scenario Selector Bar -->
 <section class="max-w-7xl mx-auto w-full px-4 sm:px-6 pt-4 pb-1 no-print">
   <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs flex flex-wrap items-center justify-between gap-3">
     <div class="flex flex-wrap items-center gap-3">
       <label class="text-xs font-extrabold uppercase text-slate-600 tracking-wide flex items-center gap-1.5">
-        <span>📚</span> Seleccionar Escenario Curricular:
+        <span>📚</span> Escenario de ${escapeXml(grade)}:
       </label>
-      <select id="scenario-selector" onchange="loadScenarioPreset(this.value)" class="text-xs font-bold bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-800 focus:bg-white focus:border-blue-600 outline-none">
-        <option value="active" selected>🎯 Escenario Activo · ${escapeXml(scenarioTitle)} (${grade})</option>
-        <option value="market_7th">7mo Grado · Escenario #3: At the Local Market (Mercado, Frutas & Precios)</option>
-        <option value="classroom_kinder">Kindergarten · Escenario #1: Where Is It? (Objetos de Aula & Preposiciones)</option>
-        <option value="canal_9th">9no Grado · Escenario #4: Panama Canal Technical Safety & Equipment</option>
+      <select id="scenario-selector" onchange="switchScenario(this.value)" class="text-xs font-bold bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-800 focus:bg-white focus:border-blue-600 outline-none">
+        ${parsedScenarioList.map((sc, i) => `
+          <option value="${i}" ${i === scenarioIndex ? 'selected' : ''}>
+            Escenario #${sc.metadata.scenario_number}: ${escapeXml(sc.metadata.scenario_title)}
+          </option>
+        `).join('')}
       </select>
     </div>
 
     <div class="text-[11px] text-slate-600 font-medium flex items-center gap-2">
       <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-      <span id="visual-mode-description">Fotografía Realia HD con respaldo vectorial SVG inmediato (Cero enlaces rotos)</span>
+      <span id="visual-mode-description">Vocabulario y Competencias Lingüísticas adaptados dinámicamente al grado seleccionado</span>
     </div>
   </div>
 </section>
@@ -240,9 +441,9 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
     <div class="flex justify-between items-center border-b border-slate-100 pb-3">
       <div>
         <h3 class="text-base font-black text-slate-900">Editor de Datos JSON del Escenario</h3>
-        <p class="text-xs text-slate-500">Pega o modifica la estructura curricular de cualquier grado (Pre-K a 12°)</p>
+        <p class="text-xs text-slate-500">Estructura curricular en tiempo real (${escapeXml(grade)})</p>
       </div>
-      <button onclick="closeJsonModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold">✕</button>
+      <button onclick="closeJsonModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold cursor-pointer">✕</button>
     </div>
 
     <textarea id="json-textarea" rows="14" class="w-full text-xs font-mono p-3 bg-slate-900 text-emerald-400 rounded-xl outline-none focus:ring-2 focus:ring-blue-600 leading-relaxed"></textarea>
@@ -250,8 +451,8 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
     <div class="flex justify-between items-center pt-2">
       <div id="json-feedback" class="text-xs font-bold text-slate-500">JSON sintácticamente válido</div>
       <div class="flex gap-2">
-        <button onclick="closeJsonModal()" class="px-4 py-2 text-xs font-bold text-slate-600 hover:bg-slate-100 rounded-xl transition">Cancelar</button>
-        <button onclick="applyCustomJson()" class="px-4 py-2 text-xs font-bold bg-blue-700 hover:bg-blue-800 text-white rounded-xl shadow-xs transition">
+        <button onclick="closeJsonModal()" class="px-4 py-2 text-xs font-bold text-slate-600 hover:bg-slate-100 rounded-xl transition cursor-pointer">Cancelar</button>
+        <button onclick="applyCustomJson()" class="px-4 py-2 text-xs font-bold bg-blue-700 hover:bg-blue-800 text-white rounded-xl shadow-xs transition cursor-pointer">
           Actualizar Afiche
         </button>
       </div>
@@ -273,7 +474,7 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
         </div>
 
         <h2 id="meta-title" class="text-xl sm:text-2xl font-black text-blue-950 tracking-tight leading-tight uppercase">
-          SCENARIO #${scenarioNum}: ${escapeXml(scenarioTitle)}
+          SCENARIO #${parsedActive.metadata.scenario_number}: ${escapeXml((parsedActive.metadata.scenario_title || '').toUpperCase())}
         </h2>
 
         <div class="flex flex-wrap items-center justify-center gap-2 pt-0.5 text-xs font-bold">
@@ -281,7 +482,7 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
             Grade: ${escapeXml(grade)}
           </span>
           <span id="meta-cefr" class="bg-emerald-50 text-emerald-900 border border-emerald-200 px-2.5 py-0.5 rounded-md">
-            CEFR: ${escapeXml(cefr || 'A1+ / A2')}
+            CEFR: ${escapeXml(parsedActive.metadata.cefr_level)}
           </span>
           <span class="bg-purple-50 text-purple-900 border border-purple-200 px-2.5 py-0.5 rounded-md">
             Master Wall Poster · Linguistic Competence
@@ -295,11 +496,11 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
           <div class="flex items-center gap-2">
             <span class="text-sm">🎨</span>
             <h3 class="text-xs font-black uppercase tracking-wider">
-              Section 1: Illustrated Nouns (Sustantivos en Acción) · Realia & Target Words
+              Section 1: Illustrated Target Nouns (Sustantivos Clave en Acción)
             </h3>
           </div>
           <span id="nouns-count-badge" class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-bold">
-            11 Target Words
+            ${parsedActive.linguistic_competence.nouns.length} Target Words
           </span>
         </div>
 
@@ -318,11 +519,11 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
             <h3 class="text-xs font-black uppercase tracking-wide flex items-center gap-1.5">
               <span>⚡</span> Action Verbs (Verbos Operativos)
             </h3>
-            <span id="verbs-count" class="text-[10px] bg-white/20 px-2 py-0.2 rounded font-bold">11 Verbs</span>
+            <span id="verbs-count" class="text-[10px] bg-white/20 px-2 py-0.2 rounded font-bold">Verbs</span>
           </div>
           <div class="p-3">
             <div id="verbs-container" class="flex flex-wrap gap-1.5">
-              <!-- Verbs chips inserted here -->
+              <!-- Verbs chips -->
             </div>
           </div>
         </div>
@@ -333,52 +534,52 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
             <h3 class="text-xs font-black uppercase tracking-wide flex items-center gap-1.5">
               <span>✨</span> Descriptive Adjectives (Cualidades)
             </h3>
-            <span id="adj-count" class="text-[10px] bg-white/20 px-2 py-0.2 rounded font-bold">5 Adjectives</span>
+            <span id="adj-count" class="text-[10px] bg-white/20 px-2 py-0.2 rounded font-bold">Adjectives</span>
           </div>
           <div class="p-3">
             <div id="adj-container" class="flex flex-wrap gap-1.5">
-              <!-- Adjectives chips inserted here -->
+              <!-- Adjectives chips -->
             </div>
           </div>
         </div>
 
       </section>
 
-      <!-- SECTION 4: ADVERBS, INTERROGATIVES & NUMERICAL RANGE -->
-      <section class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <!-- SECTION 4: LINGUISTIC COMPETENCES & GRAMMAR LAB + NUMBERS -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-3">
         
-        <!-- Adverbs -->
-        <div class="border border-purple-200 bg-purple-50/40 rounded-xl overflow-hidden shadow-2xs">
-          <div class="bg-purple-700 text-white px-3 py-1 text-xs font-black uppercase tracking-wide flex items-center gap-1.5">
-            <span>⏱</span> Adverbs of Frequency & Manner
-          </div>
-          <div class="p-2.5">
-            <div id="adverbs-container" class="flex flex-wrap gap-1.5">
-              <!-- Adverbs chips -->
+        <!-- Grammar Lab & Formulas (Takes 2 cols on md screens) -->
+        <div class="md:col-span-2 border border-indigo-200 bg-indigo-50/40 rounded-xl overflow-hidden shadow-2xs">
+          <div class="bg-indigo-800 text-white px-3 py-1.5 text-xs font-black uppercase tracking-wide flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span>📐</span> Linguistic Competences & Grammatical Features (Fórmulas AOA)
             </div>
+            <span class="text-[10px] bg-white/20 px-2 py-0.2 rounded font-bold">Curricular Standard</span>
+          </div>
+          <div class="p-3 space-y-1.5" id="grammar-container">
+            <!-- Grammar rules list -->
           </div>
         </div>
 
-        <!-- Key Interrogatives -->
-        <div class="border border-amber-200 bg-amber-50/40 rounded-xl overflow-hidden shadow-2xs">
-          <div class="bg-amber-600 text-white px-3 py-1 text-xs font-black uppercase tracking-wide flex items-center gap-1.5">
-            <span>❓</span> Interrogatives (Preguntas Clave)
+        <!-- Numbers & Question Words (1 col) -->
+        <div class="border border-rose-200 bg-rose-50/40 rounded-xl overflow-hidden shadow-2xs flex flex-col justify-between">
+          <div class="bg-rose-700 text-white px-3 py-1.5 text-xs font-black uppercase tracking-wide flex items-center gap-1.5">
+            <span>🔢</span> Numbers, Prices & Question Words
           </div>
-          <div class="p-2.5 space-y-1 text-xs text-amber-950 font-bold" id="interr-container">
-            <!-- Interrogatives lines -->
-          </div>
-        </div>
+          <div class="p-3 text-xs text-slate-800 space-y-2 flex-1">
+            <div>
+              <div class="font-extrabold text-rose-900" id="num-range-text">Range: 1 to 100</div>
+              <p class="text-[11px] text-slate-600 leading-snug" id="num-subtext">
+                Applied to counting, measurements, and data collection.
+              </p>
+            </div>
 
-        <!-- Numbers & Prices -->
-        <div class="border border-rose-200 bg-rose-50/40 rounded-xl overflow-hidden shadow-2xs">
-          <div class="bg-rose-700 text-white px-3 py-1 text-xs font-black uppercase tracking-wide flex items-center gap-1.5">
-            <span>🔢</span> Numbers & Prices
-          </div>
-          <div class="p-2.5 text-xs text-slate-800 space-y-1">
-            <div class="font-extrabold text-rose-900" id="num-range-text">Range: 1 to 100</div>
-            <p class="text-[11px] text-slate-600 leading-snug" id="num-subtext">
-              Used for counting pounds, asking unit costs, and receiving change in Balboas / USD ($).
-            </p>
+            <div class="pt-1.5 border-t border-rose-200/60">
+              <span class="text-[10px] font-black text-rose-900 uppercase tracking-wider block mb-1">Key Question Prompts:</span>
+              <div id="interr-container" class="flex flex-wrap gap-1">
+                <!-- Question words chips -->
+              </div>
+            </div>
           </div>
         </div>
 
@@ -388,18 +589,15 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
       <section class="border-2 border-dashed border-slate-300 bg-slate-50/70 rounded-xl p-3 text-xs space-y-1.5">
         <div class="flex items-center justify-between">
           <span class="font-black text-blue-950 uppercase tracking-wide flex items-center gap-1.5">
-            <span>🗣</span> Authentic Classroom Action Task (AOA Role-Play Practice):
+            <span>🗣</span> Authentic Classroom Action Task (AOA Collaborative Interaction):
           </span>
           <span class="text-[10px] font-bold text-slate-500 bg-white border border-slate-200 px-2 py-0.5 rounded" id="task-badge">
-            Pair Dialogue & Realia Interaction
+            Student A & Student B Pair Practice
           </span>
         </div>
 
-        <div id="dialogue-box" class="space-y-1 text-[11.5px] font-mono text-slate-800 bg-white border border-slate-200 rounded-lg p-2.5 leading-relaxed">
-          <p><strong class="text-blue-700 font-sans font-bold">Student A (Customer / Traveler):</strong> "Good morning! How much is the ripe pineapple and the fresh cassava?"</p>
-          <p><strong class="text-emerald-700 font-sans font-bold">Student B (Cashier / Clerk):</strong> "The pineapple costs $2.00 and the cassava is $1.50 per pound. How many items do you need?"</p>
-          <p><strong class="text-blue-700 font-sans font-bold">Student A:</strong> "I want two pineapples and three pounds of potatoes, please. Can I pay quickly in cash?"</p>
-          <p><strong class="text-emerald-700 font-sans font-bold">Student B:</strong> "Of course! That will be $8.50 total. Here is your receipt and change. Have a nice day!"</p>
+        <div id="dialogue-box" class="space-y-1.5 text-[11.5px] font-mono text-slate-800 bg-white border border-slate-200 rounded-lg p-2.5 leading-relaxed">
+          <!-- Dialogue lines -->
         </div>
       </section>
 
@@ -415,453 +613,150 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
 </main>
 
 <script>
-/**
- * Procedural SVG Illustration Engine for Nouns:
- * Zero external dependencies, infinite scaling, sharp on any projector or printed paper.
- */
-const NOUN_SVGS = {
-  market: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <!-- Wooden Stall Counter -->
-      <rect x="12" y="42" width="76" height="30" rx="3" fill="#b45309" stroke="#78350f" stroke-width="1.5"/>
-      <rect x="16" y="46" width="68" height="22" fill="#d97706"/>
-      <line x1="16" y1="57" x2="84" y2="57" stroke="#92400e" stroke-width="1.5"/>
-      <!-- Fruit Baskets -->
-      <circle cx="28" cy="40" r="7" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
-      <circle cx="38" cy="38" r="6" fill="#ea580c" stroke="#c2410c" stroke-width="1"/>
-      <circle cx="50" cy="39" r="6.5" fill="#ef4444" stroke="#b91c1c" stroke-width="1"/>
-      <circle cx="62" cy="38" r="6" fill="#eab308" stroke="#a16207" stroke-width="1"/>
-      <circle cx="72" cy="40" r="7" fill="#f97316" stroke="#c2410c" stroke-width="1"/>
-      <!-- Support Poles -->
-      <rect x="14" y="20" width="4" height="24" fill="#78350f"/>
-      <rect x="82" y="20" width="4" height="24" fill="#78350f"/>
-      <!-- Striped Red & White Canopy -->
-      <polygon points="8,10 92,10 96,24 4,24" fill="#dc2626"/>
-      <polygon points="19,10 30,10 28,24 17,24" fill="#ffffff"/>
-      <polygon points="41,10 52,10 50,24 39,24" fill="#ffffff"/>
-      <polygon points="63,10 74,10 72,24 61,24" fill="#ffffff"/>
-      <polygon points="85,10 92,10 96,24 83,24" fill="#ffffff"/>
-      <!-- Wavy Valance -->
-      <path d="M4,24 Q10,29 16,24 Q22,29 28,24 Q34,29 40,24 Q46,29 52,24 Q58,29 64,24 Q70,29 76,24 Q82,29 88,24 Q93,29 96,24" fill="none" stroke="#b91c1c" stroke-width="2"/>
-    </svg>
-  \`,
-  price: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <!-- Twine String -->
-      <path d="M25,10 C45,6 55,24 35,26" fill="none" stroke="#b45309" stroke-width="2"/>
-      <!-- Hanging Price Tag -->
-      <polygon points="28,24 78,24 88,40 88,70 28,70" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
-      <!-- Eyelet -->
-      <circle cx="36" cy="47" r="6" fill="#ffffff" stroke="#a16207" stroke-width="1.5"/>
-      <circle cx="36" cy="47" r="2.5" fill="#78350f"/>
-      <!-- Tag Text -->
-      <text x="50" y="48" font-size="16" font-family="Inter, sans-serif" font-weight="900" fill="#15803d">$</text>
-      <text x="61" y="48" font-size="16" font-family="Inter, sans-serif" font-weight="900" fill="#166534">2.50</text>
-      <rect x="47" y="54" width="34" height="10" rx="2" fill="#dc2626"/>
-      <text x="50" y="62" font-size="6.5" font-family="Inter, sans-serif" font-weight="900" fill="#ffffff">OFFER</text>
-    </svg>
-  \`,
-  shopping_list: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <!-- Notepad Sheet -->
-      <rect x="18" y="8" width="54" height="66" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
-      <!-- Blue Notepad Header -->
-      <rect x="18" y="8" width="54" height="12" rx="3" fill="#3b82f6"/>
-      <!-- Checkbox Rows -->
-      <rect x="24" y="26" width="7" height="7" rx="1.5" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
-      <path d="M25,30 L27,32 L30,27" fill="none" stroke="#16a34a" stroke-width="1.5"/>
-      <line x1="35" y1="30" x2="64" y2="30" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-      <rect x="24" y="38" width="7" height="7" rx="1.5" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
-      <path d="M25,42 L27,44 L30,39" fill="none" stroke="#16a34a" stroke-width="1.5"/>
-      <line x1="35" y1="42" x2="60" y2="42" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-      <rect x="24" y="50" width="7" height="7" rx="1.5" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
-      <path d="M25,54 L27,56 L30,51" fill="none" stroke="#16a34a" stroke-width="1.5"/>
-      <line x1="35" y1="54" x2="63" y2="54" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
-      <!-- Pencil -->
-      <g transform="translate(68, 16) rotate(32)">
-        <polygon points="0,0 6,0 6,32 0,32" fill="#f59e0b" stroke="#b45309" stroke-width="0.8"/>
-        <polygon points="0,32 6,32 3,38" fill="#fed7aa"/>
-        <polygon points="2,36 4,36 3,38" fill="#0f172a"/>
-        <rect x="0" y="-5" width="6" height="5" rx="1" fill="#f472b6"/>
-      </g>
-    </svg>
-  \`,
-  item: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <!-- Items inside basket -->
-      <rect x="26" y="16" width="12" height="30" rx="2" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.2"/>
-      <circle cx="48" cy="28" r="11" fill="#eab308" stroke="#a16207" stroke-width="1.2"/>
-      <rect x="62" y="14" width="13" height="32" rx="2" fill="#ef4444" stroke="#b91c1c" stroke-width="1.2"/>
-      <!-- Grocery Basket Body -->
-      <polygon points="14,36 86,36 78,72 22,72" fill="#dc2626" stroke="#b91c1c" stroke-width="2"/>
-      <line x1="28" y1="36" x2="33" y2="72" stroke="#fecaca" stroke-width="1.5"/>
-      <line x1="42" y1="36" x2="44" y2="72" stroke="#fecaca" stroke-width="1.5"/>
-      <line x1="58" y1="36" x2="56" y2="72" stroke="#fecaca" stroke-width="1.5"/>
-      <line x1="72" y1="36" x2="67" y2="72" stroke="#fecaca" stroke-width="1.5"/>
-      <line x1="18" y1="52" x2="82" y2="52" stroke="#fecaca" stroke-width="1.5"/>
-      <!-- Silver Metal Handle -->
-      <path d="M22,36 C22,12 78,12 78,36" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"/>
-    </svg>
-  \`,
-  store: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <!-- Building Main Wall -->
-      <rect x="14" y="16" width="72" height="58" rx="3" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
-      <!-- Green Marquee Awning -->
-      <rect x="10" y="12" width="80" height="18" rx="3" fill="#10b981" stroke="#059669" stroke-width="1.5"/>
-      <text x="28" y="25" font-size="10" font-family="Inter, sans-serif" font-weight="900" fill="#ffffff" letter-spacing="2">STORE</text>
-      <!-- Glass Display Windows -->
-      <rect x="19" y="36" width="18" height="26" rx="2" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.2"/>
-      <line x1="19" y1="49" x2="37" y2="49" stroke="#bae6fd" stroke-width="1"/>
-      <rect x="63" y="36" width="18" height="26" rx="2" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.2"/>
-      <line x1="63" y1="49" x2="81" y2="49" stroke="#bae6fd" stroke-width="1"/>
-      <!-- Double Glass Entrance Door -->
-      <rect x="41" y="38" width="18" height="36" rx="1.5" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
-      <line x1="50" y1="38" x2="50" y2="74" stroke="#0284c7" stroke-width="1.5"/>
-      <circle cx="47" cy="56" r="1.5" fill="#d97706"/>
-      <circle cx="53" cy="56" r="1.5" fill="#d97706"/>
-    </svg>
-  \`,
-  cost: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <!-- Paper Receipt Slip -->
-      <rect x="16" y="10" width="46" height="62" rx="2" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
-      <line x1="22" y1="18" x2="56" y2="18" stroke="#94a3b8" stroke-width="1.5"/>
-      <line x1="22" y1="26" x2="50" y2="26" stroke="#94a3b8" stroke-width="1.5"/>
-      <line x1="22" y1="34" x2="56" y2="34" stroke="#94a3b8" stroke-width="1.5"/>
-      <line x1="22" y1="42" x2="48" y2="42" stroke="#94a3b8" stroke-width="1.5"/>
-      <line x1="20" y1="48" x2="58" y2="48" stroke="#dc2626" stroke-width="1.5"/>
-      <text x="22" y="58" font-size="7" font-family="Inter, sans-serif" font-weight="900" fill="#dc2626">TOTAL</text>
-      <text x="22" y="66" font-size="7" font-family="Inter, sans-serif" font-weight="900" fill="#15803d">$14.50</text>
-      <!-- Stack of Gold Coins -->
-      <ellipse cx="76" cy="62" rx="14" ry="6" fill="#d97706"/>
-      <ellipse cx="76" cy="59" rx="14" ry="5.5" fill="#fbbf24" stroke="#d97706" stroke-width="1"/>
-      <ellipse cx="76" cy="53" rx="14" ry="6" fill="#d97706"/>
-      <ellipse cx="76" cy="50" rx="14" ry="5.5" fill="#fbbf24" stroke="#d97706" stroke-width="1"/>
-      <ellipse cx="76" cy="44" rx="14" ry="6" fill="#d97706"/>
-      <ellipse cx="76" cy="41" rx="14" ry="5.5" fill="#fbbf24" stroke="#d97706" stroke-width="1"/>
-      <text x="73" y="44" font-size="7" font-family="Inter, sans-serif" font-weight="900" fill="#b45309">$</text>
-    </svg>
-  \`,
-  pineapple: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <!-- Spiky Green Crown Leaves -->
-      <polygon points="50,6 40,24 45,22 34,14 42,28 58,28 66,14 55,22 60,24" fill="#16a34a" stroke="#15803d" stroke-width="1"/>
-      <!-- Oval Golden Pineapple Body -->
-      <ellipse cx="50" cy="50" rx="22" ry="24" fill="#f59e0b" stroke="#b45309" stroke-width="1.8"/>
-      <!-- Crosshatch Textured Scales -->
-      <path d="M35,36 L65,64 M35,64 L65,36 M30,48 L70,48 M50,28 L50,72" stroke="#d97706" stroke-width="1.5"/>
-      <circle cx="43" cy="42" r="1.5" fill="#b45309"/>
-      <circle cx="57" cy="42" r="1.5" fill="#b45309"/>
-      <circle cx="50" cy="50" r="1.8" fill="#b45309"/>
-      <circle cx="43" cy="58" r="1.5" fill="#b45309"/>
-      <circle cx="57" cy="58" r="1.5" fill="#b45309"/>
-    </svg>
-  \`,
-  cashier: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <!-- Cashier Person -->
-      <circle cx="38" cy="22" r="12" fill="#fed7aa" stroke="#d97706" stroke-width="1.2"/>
-      <path d="M26,18 C26,8 50,8 50,18" fill="#4c1d95"/>
-      <circle cx="34" cy="21" r="1.3" fill="#1e293b"/>
-      <circle cx="42" cy="21" r="1.3" fill="#1e293b"/>
-      <path d="M35,26 Q38,29 41,26" fill="none" stroke="#b91c1c" stroke-width="1"/>
-      <polygon points="26,34 50,34 54,64 22,64" fill="#2563eb" stroke="#1d4ed8" stroke-width="1.2"/>
-      <rect x="33" y="38" width="10" height="8" fill="#ffffff" rx="1"/>
-      <rect x="10" y="54" width="80" height="22" rx="2" fill="#475569"/>
-      <rect x="52" y="36" width="34" height="24" rx="2" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
-      <rect x="56" y="40" width="26" height="9" rx="1" fill="#10b981"/>
-      <text x="59" y="47" font-size="6" font-family="monospace" font-weight="900" fill="#ffffff">$4.50</text>
-      <rect x="57" y="52" width="5" height="4" fill="#64748b" rx="0.5"/>
-      <rect x="64" y="52" width="5" height="4" fill="#64748b" rx="0.5"/>
-      <rect x="71" y="52" width="5" height="4" fill="#64748b" rx="0.5"/>
-    </svg>
-  \`,
-  money: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <g transform="translate(48,34) rotate(-14) translate(-48,-34)">
-        <rect x="12" y="16" width="62" height="34" rx="3" fill="#bbf7d0" stroke="#22c55e" stroke-width="1.5"/>
-      </g>
-      <rect x="14" y="24" width="66" height="36" rx="3" fill="#dcfce7" stroke="#16a34a" stroke-width="1.8"/>
-      <rect x="18" y="28" width="58" height="28" rx="2" fill="none" stroke="#4ade80" stroke-width="1"/>
-      <circle cx="47" cy="42" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1.2"/>
-      <text x="44" y="46" font-size="12" font-family="Inter, sans-serif" font-weight="900" fill="#15803d">$</text>
-      <text x="21" y="36" font-size="7" font-family="Inter, sans-serif" font-weight="900" fill="#15803d">20</text>
-      <text x="64" y="53" font-size="7" font-family="Inter, sans-serif" font-weight="900" fill="#15803d">20</text>
-      <circle cx="76" cy="52" r="14" fill="#fbbf24" stroke="#d97706" stroke-width="1.8"/>
-      <circle cx="76" cy="52" r="10" fill="none" stroke="#f59e0b" stroke-width="1"/>
-      <text x="72" y="56" font-size="11" font-family="Inter, sans-serif" font-weight="900" fill="#b45309">1</text>
-    </svg>
-  \`,
-  cassava: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <path d="M12,46 Q24,34 56,36 Q84,40 88,52 Q76,64 48,60 Q22,60 12,46 Z" fill="#78350f" stroke="#451a03" stroke-width="1.8"/>
-      <path d="M26,40 Q29,46 25,52 M42,38 Q45,45 40,54 M60,40 Q63,47 58,54" stroke="#b45309" stroke-width="1.5" stroke-linecap="round"/>
-      <ellipse cx="74" cy="48" rx="14" ry="17" fill="#78350f" stroke="#451a03" stroke-width="1.5"/>
-      <ellipse cx="74" cy="48" rx="11" ry="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
-      <circle cx="74" cy="48" r="2.5" fill="#cbd5e1"/>
-      <line x1="74" y1="44" x2="74" y2="52" stroke="#94a3b8" stroke-width="1"/>
-    </svg>
-  \`,
-  potatoes: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <ellipse cx="32" cy="46" rx="20" ry="16" fill="#d97706" stroke="#92400e" stroke-width="1.5"/>
-      <path d="M24,42 Q28,45 25,47" stroke="#78350f" stroke-width="1.5" stroke-linecap="round"/>
-      <ellipse cx="68" cy="42" rx="22" ry="17" fill="#f59e0b" stroke="#b45309" stroke-width="1.5"/>
-      <ellipse cx="50" cy="54" rx="24" ry="18" fill="#fbbf24" stroke="#b45309" stroke-width="1.8"/>
-      <path d="M42,48 Q46,51 43,53" stroke="#92400e" stroke-width="1.8" stroke-linecap="round"/>
-      <path d="M58,52 Q62,55 59,57" stroke="#92400e" stroke-width="1.8" stroke-linecap="round"/>
-    </svg>
-  \`,
-  // Kindergarten classroom objects
-  book: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <path d="M15,22 Q50,30 85,22 L85,62 Q50,70 15,62 Z" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.8"/>
-      <path d="M50,28 L50,68" stroke="#1e293b" stroke-width="2"/>
-      <path d="M18,25 Q50,32 50,32 L50,66 Q18,60 18,25 Z" fill="#ffffff"/>
-      <path d="M82,25 Q50,32 50,32 L50,66 Q82,60 82,25 Z" fill="#f8fafc"/>
-      <line x1="24" y1="36" x2="44" y2="38" stroke="#94a3b8" stroke-width="1.5"/>
-      <line x1="24" y1="44" x2="44" y2="46" stroke="#94a3b8" stroke-width="1.5"/>
-      <line x1="56" y1="38" x2="76" y2="36" stroke="#94a3b8" stroke-width="1.5"/>
-    </svg>
-  \`,
-  desk: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <polygon points="15,35 85,35 75,25 25,25" fill="#d97706" stroke="#92400e" stroke-width="1.5"/>
-      <rect x="18" y="35" width="64" height="8" fill="#b45309"/>
-      <rect x="22" y="43" width="6" height="30" fill="#475569"/>
-      <rect x="72" y="43" width="6" height="30" fill="#475569"/>
-      <rect x="30" y="43" width="40" height="18" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1"/>
-    </svg>
-  \`,
-  chair: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <rect x="30" y="15" width="40" height="30" rx="3" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.5"/>
-      <polygon points="25,45 75,45 70,55 30,55" fill="#2563eb"/>
-      <rect x="28" y="55" width="5" height="22" fill="#64748b"/>
-      <rect x="67" y="55" width="5" height="22" fill="#64748b"/>
-    </svg>
-  \`,
-  bag: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <path d="M38,20 C38,10 62,10 62,20" fill="none" stroke="#dc2626" stroke-width="3"/>
-      <rect x="25" y="20" width="50" height="52" rx="10" fill="#ef4444" stroke="#b91c1c" stroke-width="1.8"/>
-      <rect x="33" y="42" width="34" height="22" rx="4" fill="#dc2626" stroke="#991b1b" stroke-width="1.2"/>
-      <line x1="42" y1="42" x2="58" y2="42" stroke="#fbbf24" stroke-width="2"/>
-    </svg>
-  \`,
-  pencil: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <g transform="translate(15, 40) rotate(-35)">
-        <polygon points="0,0 60,0 60,12 0,12" fill="#f59e0b" stroke="#b45309" stroke-width="1.2"/>
-        <polygon points="60,0 72,6 60,12" fill="#fed7aa"/>
-        <polygon points="68,4 72,6 68,8" fill="#0f172a"/>
-        <rect x="-10" y="0" width="10" height="12" rx="2" fill="#f472b6"/>
-        <line x1="10" y1="4" x2="50" y2="4" stroke="#fbbf24" stroke-width="1.5"/>
-      </g>
-    </svg>
-  \`,
-  crayon: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <g transform="translate(20, 45) rotate(-30)">
-        <rect x="0" y="0" width="55" height="16" rx="2" fill="#8b5cf6" stroke="#6d28d9" stroke-width="1.2"/>
-        <polygon points="55,0 70,8 55,16" fill="#7c3aed"/>
-        <rect x="15" y="0" width="25" height="16" fill="#1e1b4b"/>
-        <circle cx="27" cy="8" r="4" fill="#a78bfa"/>
-      </g>
-    </svg>
-  \`,
-  // Canal safety objects
-  lock: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <rect x="10" y="20" width="20" height="50" fill="#475569" stroke="#1e293b" stroke-width="1.5"/>
-      <rect x="70" y="20" width="20" height="50" fill="#475569" stroke="#1e293b" stroke-width="1.5"/>
-      <rect x="30" y="45" width="40" height="25" fill="#0284c7"/>
-      <polygon points="30,30 50,45 50,65 30,50" fill="#b91c1c"/>
-      <polygon points="70,30 50,45 50,65 70,50" fill="#991b1b"/>
-    </svg>
-  \`,
-  tugboat: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <path d="M15,50 Q20,68 50,68 Q80,68 85,50 Z" fill="#dc2626" stroke="#991b1b" stroke-width="1.5"/>
-      <rect x="30" y="32" width="30" height="18" rx="2" fill="#f8fafc" stroke="#64748b" stroke-width="1.2"/>
-      <rect x="52" y="22" width="6" height="10" fill="#1e293b"/>
-      <rect x="35" y="36" width="6" height="6" fill="#38bdf8"/>
-      <rect x="45" y="36" width="6" height="6" fill="#38bdf8"/>
-    </svg>
-  \`,
-  helmet: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <path d="M22,50 C22,25 78,25 78,50 Z" fill="#eab308" stroke="#ca8a04" stroke-width="2"/>
-      <path d="M16,50 L84,50 Q84,56 50,56 Q16,56 16,50 Z" fill="#ca8a04"/>
-      <rect x="46" y="26" width="8" height="24" rx="2" fill="#fef08a"/>
-    </svg>
-  \`,
-  life_vest: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <polygon points="25,18 42,18 45,65 20,65" fill="#f97316" stroke="#c2410c" stroke-width="1.5"/>
-      <polygon points="75,18 58,18 55,65 80,65" fill="#f97316" stroke="#c2410c" stroke-width="1.5"/>
-      <line x1="43" y1="36" x2="57" y2="36" stroke="#1e293b" stroke-width="3"/>
-      <line x1="44" y1="48" x2="56" y2="48" stroke="#1e293b" stroke-width="3"/>
-      <rect x="25" y="28" width="17" height="6" fill="#ffffff"/>
-      <rect x="58" y="28" width="17" height="6" fill="#ffffff"/>
-    </svg>
-  \`,
-  radio: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <rect x="30" y="24" width="40" height="48" rx="4" fill="#334155" stroke="#0f172a" stroke-width="1.8"/>
-      <rect x="38" y="8" width="5" height="16" fill="#1e293b"/>
-      <rect x="36" y="32" width="28" height="14" rx="2" fill="#10b981"/>
-      <circle cx="50" cy="58" r="8" fill="#1e293b"/>
-      <line x1="45" y1="58" x2="55" y2="58" stroke="#64748b" stroke-width="1.5"/>
-    </svg>
-  \`,
-  ship: \`
-    <svg viewBox="0 0 100 80" class="w-full h-full">
-      <polygon points="10,50 90,50 82,68 18,68" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
-      <rect x="25" y="34" width="14" height="16" fill="#dc2626"/>
-      <rect x="42" y="34" width="14" height="16" fill="#2563eb"/>
-      <rect x="59" y="34" width="14" height="16" fill="#16a34a"/>
-      <rect x="65" y="22" width="16" height="28" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
-      <line x1="6" y1="62" x2="94" y2="62" stroke="#38bdf8" stroke-width="2"/>
-    </svg>
-  \`
-};
-
-// Curated Realia Photography dictionary
+// Scenario list & active data injected from curriculum
+const ALL_SCENARIOS = ${scenarioListJsonStr};
+let currentScenarioData = ${activeJsonStr};
 const REALIA_PHOTOS = ${realiaMapJsonStr};
 
-const SCENARIO_PRESETS = {
-  active: ${initialJsonStr},
-  market_7th: {
-    metadata: {
-      institution: "REPÚBLICA DE PANAMÁ · MINISTERIO DE EDUCACIÓN (MEDUCA)",
-      program: "EDUGEN PRO · ENFOQUE AOA",
-      grade: "7th Grade (Pre-Media)",
-      cefr_level: "A1+ / A2",
-      scenario_number: 3,
-      scenario_title: "At the Local Market: Buying Fresh Food"
-    },
-    linguistic_competence: {
-      nouns: [
-        { word: "market", translation: "mercado", phonetic: "/ˈmɑːrkɪt/" },
-        { word: "price", translation: "precio", phonetic: "/praɪs/" },
-        { word: "shopping list", translation: "lista de compras", phonetic: "/ˈʃɒpɪŋ lɪst/" },
-        { word: "item", translation: "artículo", phonetic: "/ˈaɪtəm/" },
-        { word: "store", translation: "tienda", phonetic: "/stɔːr/" },
-        { word: "cost", translation: "costo", phonetic: "/kɒst/" },
-        { word: "pineapple", translation: "piña", phonetic: "/ˈpaɪnæpəl/" },
-        { word: "cashier", translation: "cajero/a", phonetic: "/kæˈʃɪər/" },
-        { word: "money", translation: "dinero", phonetic: "/ˈmʌni/" },
-        { word: "cassava", translation: "yuca", phonetic: "/kəˈsɑːvə/" },
-        { word: "potatoes", translation: "papas", phonetic: "/pəˈteɪtoʊz/" }
-      ],
-      verbs: ["buy", "sell", "ask", "pay", "choose", "compare", "need", "want", "get", "cost", "help"],
-      adjectives: ["cheap", "fresh", "expensive", "delicious", "ripe"],
-      adverbs: ["quickly", "easily", "often"],
-      interrogatives: ["How much...?", "How many...?"],
-      numbers: "1 to 100 (Counting, Prices & Change in USD / Balboas)"
-    }
-  },
-  classroom_kinder: {
-    metadata: {
-      institution: "REPÚBLICA DE PANAMÁ · MINISTERIO DE EDUCACIÓN (MEDUCA)",
-      program: "EDUGEN PRO · ENFOQUE AOA INICIAL",
-      grade: "Kindergarten (Inicial)",
-      cefr_level: "Pre-A1 Receptivo",
-      scenario_number: 1,
-      scenario_title: "Where Is It? My Classroom Objects"
-    },
-    linguistic_competence: {
-      nouns: [
-        { word: "book", translation: "libro", phonetic: "/bʊk/" },
-        { word: "desk", translation: "pupitre/mesa", phonetic: "/dɛsk/" },
-        { word: "chair", translation: "silla", phonetic: "/tʃɛər/" },
-        { word: "bag", translation: "mochila", phonetic: "/bæɡ/" },
-        { word: "pencil", translation: "lápiz", phonetic: "/ˈpɛnsəl/" },
-        { word: "crayon", translation: "crayón", phonetic: "/ˈkreɪɒn/" }
-      ],
-      verbs: ["point", "touch", "look", "listen", "show", "open", "find"],
-      adjectives: ["big", "small", "clean", "red", "blue", "yellow"],
-      adverbs: ["here", "there", "slowly"],
-      interrogatives: ["Where is...?", "What color...?"],
-      numbers: "1 to 10 (Counting classroom objects)"
-    }
-  },
-  canal_9th: {
-    metadata: {
-      institution: "REPÚBLICA DE PANAMÁ · MINISTERIO DE EDUCACIÓN (MEDUCA)",
-      program: "EDUGEN PRO · ENFOQUE AOA TÉCNICO",
-      grade: "9th Grade (Pre-Media)",
-      cefr_level: "A2+",
-      scenario_number: 4,
-      scenario_title: "Panama Canal Operations & Technical Safety"
-    },
-    linguistic_competence: {
-      nouns: [
-        { word: "lock", translation: "esclusa", phonetic: "/lɒk/" },
-        { word: "tugboat", translation: "remolcador", phonetic: "/ˈtʌɡboʊt/" },
-        { word: "helmet", translation: "casco protector", phonetic: "/ˈhɛlmɪt/" },
-        { word: "life vest", translation: "chaleco salvavidas", phonetic: "/ˈlaɪf vɛst/" },
-        { word: "radio", translation: "radio transmisor", phonetic: "/ˈreɪdioʊ/" },
-        { word: "ship", translation: "buque de carga", phonetic: "/ʃɪp/" }
-      ],
-      verbs: ["operate", "inspect", "navigate", "secure", "coordinate", "monitor", "report"],
-      adjectives: ["safe", "heavy", "deep", "protective", "maritime", "operational"],
-      adverbs: ["carefully", "safely", "constantly"],
-      interrogatives: ["Which route...?", "What protocol...?"],
-      numbers: "100 to 50,000 (Tonnage & Channel Dimensions)"
-    }
-  }
-};
-
-let currentScenarioData = JSON.parse(JSON.stringify(SCENARIO_PRESETS.active));
 let visualMode = 'photo'; // 'photo' | 'vector'
 let currentFormatIsTabloid = false;
 
-function getRealiaPhotoUrl(word) {
+/**
+ * Universal procedural SVG icon generator for any noun:
+ * Produces crisp, beautiful vector illustrations with distinct themes.
+ */
+function getVectorSvgForNoun(word) {
+  const w = String(word).toLowerCase().trim();
+
+  // Tech / Robotics
+  if (w.includes('robot')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <rect x="25" y="22" width="50" height="42" rx="8" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+      <circle cx="40" cy="38" r="6" fill="#f8fafc"/>
+      <circle cx="40" cy="38" r="3" fill="#0284c7"/>
+      <circle cx="60" cy="38" r="6" fill="#f8fafc"/>
+      <circle cx="60" cy="38" r="3" fill="#0284c7"/>
+      <line x1="38" y1="52" x2="62" y2="52" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+      <line x1="50" y1="8" x2="50" y2="22" stroke="#1d4ed8" stroke-width="3"/>
+      <circle cx="50" cy="8" r="4" fill="#ef4444"/>
+      <rect x="18" y="32" width="7" height="18" rx="2" fill="#60a5fa"/>
+      <rect x="75" y="32" width="7" height="18" rx="2" fill="#60a5fa"/>
+    </svg>\`;
+  }
+  if (w.includes('space') || w.includes('galaxy') || w.includes('universe')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <rect x="5" y="5" width="90" height="70" rx="8" fill="#0f172a"/>
+      <circle cx="25" cy="25" r="2" fill="#ffffff"/>
+      <circle cx="75" cy="20" r="1.5" fill="#fef08a"/>
+      <circle cx="80" cy="55" r="2" fill="#ffffff"/>
+      <circle cx="20" cy="60" r="1.5" fill="#38bdf8"/>
+      <circle cx="50" cy="42" r="16" fill="#8b5cf6"/>
+      <ellipse cx="50" cy="42" rx="28" ry="7" fill="none" stroke="#e0e7ff" stroke-width="2" transform="rotate(-15 50 42)"/>
+    </svg>\`;
+  }
+  if (w.includes('rocket')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <g transform="translate(50, 38) rotate(35) translate(-50, -38)">
+        <polygon points="50,10 62,30 38,30" fill="#ef4444"/>
+        <rect x="38" y="30" width="24" height="32" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+        <circle cx="50" cy="42" r="5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5"/>
+        <polygon points="38,48 24,62 38,62" fill="#dc2626"/>
+        <polygon points="62,48 76,62 62,62" fill="#dc2626"/>
+        <polygon points="42,62 50,75 58,62" fill="#f59e0b"/>
+      </g>
+    </svg>\`;
+  }
+  if (w.includes('astronaut')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <circle cx="50" cy="36" r="24" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+      <rect x="32" y="24" width="36" height="24" rx="8" fill="#0f172a" stroke="#d97706" stroke-width="2"/>
+      <path d="M36,28 Q44,32 50,28" stroke="#38bdf8" stroke-width="2" fill="none"/>
+      <rect x="42" y="60" width="16" height="15" fill="#e2e8f0"/>
+    </svg>\`;
+  }
+  if (w.includes('satellite')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <rect x="38" y="26" width="24" height="28" rx="3" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+      <rect x="8" y="32" width="26" height="16" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.2"/>
+      <rect x="66" y="32" width="26" height="16" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.2"/>
+      <circle cx="50" cy="40" r="4" fill="#fbbf24"/>
+      <line x1="50" y1="26" x2="50" y2="12" stroke="#64748b" stroke-width="2"/>
+      <circle cx="50" cy="12" r="3" fill="#ef4444"/>
+    </svg>\`;
+  }
+  if (w.includes('factory') || w.includes('industry')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <polygon points="15,68 15,35 35,50 35,35 55,50 55,35 75,50 75,68" fill="#475569"/>
+      <rect x="75" y="20" width="12" height="48" fill="#334155"/>
+      <rect x="25" y="55" width="8" height="13" fill="#fef08a"/>
+      <rect x="45" y="55" width="8" height="13" fill="#fef08a"/>
+      <circle cx="81" cy="12" r="5" fill="#cbd5e1"/>
+    </svg>\`;
+  }
+
+  // Science / Nature / Ecology
+  if (w.includes('plant') || w.includes('tree') || w.includes('agriculture') || w.includes('leaf')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <path d="M50,70 L50,30" stroke="#78350f" stroke-width="4"/>
+      <path d="M50,45 Q70,35 68,20 Q50,25 50,45" fill="#16a34a"/>
+      <path d="M50,40 Q30,30 32,15 Q50,20 50,40" fill="#22c55e"/>
+    </svg>\`;
+  }
+
+  // Generic Modern Academic Badge SVG for any other noun
+  const colors = ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#ec4899', '#06b6d4'];
+  const charCode = w.charCodeAt(0) || 65;
+  const color = colors[charCode % colors.length];
+
+  return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+    <rect x="12" y="10" width="76" height="60" rx="10" fill="\${color}" opacity="0.15" stroke="\${color}" stroke-width="1.8"/>
+    <circle cx="50" cy="36" r="18" fill="\${color}"/>
+    <text x="50" y="44" font-size="20" font-family="Inter, sans-serif" font-weight="900" fill="#ffffff" text-anchor="middle">
+      \${w.charAt(0).toUpperCase()}
+    </text>
+    <rect x="28" y="58" width="44" height="6" rx="3" fill="\${color}" opacity="0.4"/>
+  </svg>\`;
+}
+
+function getPhotoUrl(word) {
   if (!word) return null;
-  const key = String(word).trim().toLowerCase().replace(/\\s+/g, '_');
-  if (REALIA_PHOTOS[key]) return REALIA_PHOTOS[key];
-  if (key === 'yuca') return REALIA_PHOTOS.cassava;
-  if (key === 'potato') return REALIA_PHOTOS.potatoes;
-  if (key === 'shopping_list' || key === 'shopping list') return REALIA_PHOTOS.shopping_list;
-  return null;
+  const clean = String(word).trim().toLowerCase().replace(/\\s+/g, '_');
+  if (REALIA_PHOTOS[clean]) return REALIA_PHOTOS[clean];
+  if (REALIA_PHOTOS[clean.replace(/s$/, '')]) return REALIA_PHOTOS[clean.replace(/s$/, '')];
+  return getRealiaPhoto(word);
 }
 
 function renderPoster(data) {
+  if (!data) return;
   const meta = data.metadata || {};
   const ling = data.linguistic_competence || {};
 
   // 1. Metadata rendering
-  document.getElementById('meta-inst').textContent = meta.institution || "REPÚBLICA DE PANAMÁ · MINISTERIO DE EDUCACIÓN (MEDUCA)";
+  document.getElementById('meta-inst').textContent = meta.institution || "REPÚBLICA DE PANAMÁ · MEDUCA";
   document.getElementById('meta-prog').textContent = meta.program || "EDUGEN PRO · ENFOQUE AOA";
-  document.getElementById('meta-title').textContent = \`SCENARIO #\${meta.scenario_number || 1}: \${(meta.scenario_title || 'COMMUNICATION').toUpperCase()}\`;
-  document.getElementById('meta-grade').textContent = \`Grade: \${meta.grade || '7th Grade'}\`;
-  document.getElementById('meta-cefr').textContent = \`CEFR: \${meta.cefr_level || 'A1 / A2'}\`;
+  document.getElementById('meta-title').textContent = \`SCENARIO #\${meta.scenario_number || 1}: \${(meta.scenario_title || '').toUpperCase()}\`;
+  document.getElementById('meta-grade').textContent = \`Grade: \${meta.grade || ''}\`;
+  document.getElementById('meta-cefr').textContent = \`CEFR: \${meta.cefr_level || ''}\`;
 
-  // 2. Illustrated Nouns rendering
+  // 2. Nouns Grid rendering
   const nounsGrid = document.getElementById('nouns-grid');
   nounsGrid.innerHTML = '';
 
   const nounsList = ling.nouns || [];
   document.getElementById('nouns-count-badge').textContent = \`\${nounsList.length} Target Words\`;
 
-  nounsList.forEach(noun => {
-    const word = typeof noun === 'object' ? (noun.word || '') : String(noun);
-    const trans = typeof noun === 'object' ? (noun.translation || '') : '';
-    const phon = typeof noun === 'object' ? (noun.phonetic || '') : '';
-
-    const key = word.trim().toLowerCase().replace(/\\s+/g, '_');
-    const svgIcon = NOUN_SVGS[key] || NOUN_SVGS.item || \`<svg viewBox="0 0 100 80"><circle cx="50" cy="40" r="20" fill="#3b82f6"/></svg>\`;
-    const photoUrl = getRealiaPhotoUrl(word);
+  nounsList.forEach(item => {
+    const word = item.word || String(item);
+    const trans = item.translation || '';
+    const phon = item.phonetic || '';
+    const photoUrl = getPhotoUrl(word);
+    const svgIcon = getVectorSvgForNoun(word);
 
     const card = document.createElement('div');
     card.className = "bg-white border-2 border-slate-200 hover:border-blue-500 rounded-xl p-2 flex flex-col items-center text-center shadow-2xs transition group";
     
     let visualHtml = '';
     if (visualMode === 'photo' && photoUrl) {
-      // Photo with SVG fallback on error
       visualHtml = \`
         <div class="w-full h-16 sm:h-20 rounded-lg p-0 mb-1.5 flex items-center justify-center overflow-hidden realia-img-container shadow-inner border border-slate-100">
           <img src="\${photoUrl}" alt="\${escapeHtml(word)}" class="realia-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
@@ -871,7 +766,6 @@ function renderPoster(data) {
         </div>
       \`;
     } else {
-      // Vector SVG
       visualHtml = \`
         <div class="w-full h-16 sm:h-20 bg-slate-50 rounded-lg p-1 mb-1.5 flex items-center justify-center overflow-hidden">
           \${svgIcon}
@@ -891,14 +785,14 @@ function renderPoster(data) {
     nounsGrid.appendChild(card);
   });
 
-  // Action reinforcement badge if 11 items to balance the grid
+  // Action Goal card if 11 items
   if (nounsList.length === 11) {
     const extraCard = document.createElement('div');
     extraCard.className = "bg-amber-50 border-2 border-dashed border-amber-300 rounded-xl p-2 flex flex-col justify-center items-center text-center shadow-2xs";
     extraCard.innerHTML = \`
       <span class="text-lg mb-0.5">🎯</span>
       <span class="text-[10px] font-black text-amber-950 uppercase tracking-wide">Action Goal</span>
-      <span class="text-[9px] text-amber-900 leading-tight">Order all items within a $15.00 classroom budget!</span>
+      <span class="text-[9px] text-amber-900 leading-tight">Master and connect all target vocabulary in your final task!</span>
     \`;
     nounsGrid.appendChild(extraCard);
   }
@@ -923,28 +817,46 @@ function renderPoster(data) {
     </span>
   \`).join('');
 
-  // 5. Adverbs rendering
-  const advContainer = document.getElementById('adverbs-container');
-  const advs = ling.adverbs || [];
-  advContainer.innerHTML = advs.map(adv => \`
-    <span class="bg-white border border-purple-300 text-purple-950 text-xs font-bold px-2.5 py-1 rounded-lg shadow-2xs">
-      \${escapeHtml(adv)}
-    </span>
-  \`).join('');
-
-  // 6. Interrogatives rendering
-  const interrContainer = document.getElementById('interr-container');
-  const interrs = ling.interrogatives || [];
-  interrContainer.innerHTML = interrs.map(q => \`
-    <div class="flex items-center gap-1.5">
-      <span class="text-amber-600 font-extrabold">•</span>
-      <span>\${escapeHtml(q)}</span>
+  // 5. Grammar Competences rendering
+  const grammarContainer = document.getElementById('grammar-container');
+  const grammarList = ling.grammar || [];
+  grammarContainer.innerHTML = grammarList.map(rule => \`
+    <div class="bg-white border border-indigo-200/80 rounded-lg p-2 text-xs text-indigo-950 shadow-2xs flex items-start gap-2">
+      <span class="text-indigo-600 font-extrabold mt-0.5">⚡</span>
+      <span class="leading-relaxed font-semibold">\${escapeHtml(rule)}</span>
     </div>
   \`).join('');
 
-  // 7. Numbers rendering
-  const numRange = ling.numbers || "1 to 100";
-  document.getElementById('num-range-text').textContent = \`Range: \${numRange}\`;
+  // 6. Numbers & Interrogatives rendering
+  document.getElementById('num-range-text').textContent = ling.numbers || '1 to 100';
+  document.getElementById('num-subtext').textContent = ling.numbers_subtext || '';
+
+  const interrContainer = document.getElementById('interr-container');
+  const questions = ling.interrogatives || [];
+  interrContainer.innerHTML = questions.map(q => \`
+    <span class="bg-white border border-rose-300 text-rose-950 text-[11px] font-bold px-2 py-0.5 rounded-md shadow-2xs">
+      \${escapeHtml(q)}
+    </span>
+  \`).join('');
+
+  // 7. Dialogue rendering
+  const dialogueBox = document.getElementById('dialogue-box');
+  const dialogue = data.dialogue || [];
+  dialogueBox.innerHTML = dialogue.map(d => \`
+    <p>
+      <strong class="\${d.speaker.includes('A') ? 'text-blue-700' : 'text-emerald-700'} font-sans font-bold">
+        \${escapeHtml(d.speaker)}:
+      </strong>
+      "\${escapeHtml(d.text)}"
+    </p>
+  \`).join('');
+}
+
+function switchScenario(index) {
+  const selected = ALL_SCENARIOS[Number(index)];
+  if (!selected) return;
+  currentScenarioData = selected;
+  renderPoster(currentScenarioData);
 }
 
 function toggleVisualMode() {
@@ -956,21 +868,32 @@ function toggleVisualMode() {
   if (visualMode === 'photo') {
     label.textContent = "Fotos Reales";
     desc.textContent = "Fotografía Realia HD con respaldo vectorial SVG inmediato (Cero enlaces rotos)";
-    btn.className = "px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow-sm transition flex items-center gap-1.5";
+    btn.className = "px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black shadow-sm transition flex items-center gap-1.5 cursor-pointer";
   } else {
     label.textContent = "Ilustración Vectorial";
     desc.textContent = "Vectores SVG nativos de ultra-precisión institucional (Cero dependencias externas)";
-    btn.className = "px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-black shadow-sm transition flex items-center gap-1.5";
+    btn.className = "px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-black shadow-sm transition flex items-center gap-1.5 cursor-pointer";
   }
 
   renderPoster(currentScenarioData);
 }
 
-function loadScenarioPreset(key) {
-  const preset = SCENARIO_PRESETS[key];
-  if (!preset) return;
-  currentScenarioData = JSON.parse(JSON.stringify(preset));
-  renderPoster(currentScenarioData);
+function togglePosterFormat() {
+  currentFormatIsTabloid = !currentFormatIsTabloid;
+  const root = document.getElementById('poster-root');
+  const btn = document.getElementById('btn-toggle-format');
+
+  if (currentFormatIsTabloid) {
+    root.classList.remove('max-w-5xl');
+    root.classList.add('max-w-6xl');
+    document.body.classList.add('format-tabloid');
+    btn.textContent = "Formato: Tabloide (11×17)";
+  } else {
+    root.classList.remove('max-w-6xl');
+    root.classList.add('max-w-5xl');
+    document.body.classList.remove('format-tabloid');
+    btn.textContent = "Formato: Carta (8.5×11)";
+  }
 }
 
 function openJsonModal() {
@@ -996,24 +919,6 @@ function applyCustomJson() {
   }
 }
 
-function togglePosterFormat() {
-  currentFormatIsTabloid = !currentFormatIsTabloid;
-  const root = document.getElementById('poster-root');
-  const btn = document.getElementById('btn-toggle-format');
-
-  if (currentFormatIsTabloid) {
-    root.classList.remove('max-w-5xl');
-    root.classList.add('max-w-6xl');
-    document.body.classList.add('format-tabloid');
-    btn.textContent = "Formato: Tabloide (11×17)";
-  } else {
-    root.classList.remove('max-w-6xl');
-    root.classList.add('max-w-5xl');
-    document.body.classList.remove('format-tabloid');
-    btn.textContent = "Formato: Carta (8.5×11)";
-  }
-}
-
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
@@ -1023,7 +928,6 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-// Initial hydration
 window.addEventListener('DOMContentLoaded', () => {
   renderPoster(currentScenarioData);
 });
