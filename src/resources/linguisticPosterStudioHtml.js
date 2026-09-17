@@ -126,23 +126,23 @@ export const VOCAB_DICTIONARY = {
  * Extracts and normalizes linguistic data from ANY scenario object (Pre-K to 12th Grade).
  */
 export function extractScenarioData(scenario, grade = '7th Grade', scenarioIndex = 0, cefr = '') {
-  if (!scenario) return null;
+  const sc = scenario || {};
 
-  const scenarioTitle = scenario.title || scenario.scenarioName || scenario.scenario_title || scenario.name || `Scenario ${scenarioIndex + 1}`;
-  const scenarioNum = scenario.id || scenario.scenarioNum || scenario.scenario_number || (scenarioIndex + 1);
-  const cefrLevel = cefr || scenario.level || scenario.cefr_level || scenario.proficiency_level || (grade.includes('12') ? 'B1+' : grade.includes('7') ? 'A1+ / A2' : 'A1');
+  const scenarioTitle = sc.title || sc.scenarioName || sc.scenario_title || sc.name || `Scenario ${scenarioIndex + 1}`;
+  const scenarioNum = sc.id || sc.scenarioNum || sc.scenario_number || (scenarioIndex + 1);
+  const cefrLevel = cefr || sc.level || sc.cefr_level || sc.proficiency_level || (grade.includes('12') ? 'B1+' : grade.includes('7') ? 'A1+ / A2' : 'A1');
 
   // 1. Linguistic Competences (Grammar Structures & Rules)
   let grammarRules = [];
-  if (Array.isArray(scenario.linguistic_competences) && scenario.linguistic_competences.length > 0) {
-    grammarRules = scenario.linguistic_competences;
-  } else if (scenario.communicative_competences?.linguistic_competences?.recommended_grammatical_features) {
-    const gf = scenario.communicative_competences.linguistic_competences.recommended_grammatical_features;
+  if (Array.isArray(sc.linguistic_competences) && sc.linguistic_competences.length > 0) {
+    grammarRules = sc.linguistic_competences;
+  } else if (sc.communicative_competences?.linguistic_competences?.recommended_grammatical_features) {
+    const gf = sc.communicative_competences.linguistic_competences.recommended_grammatical_features;
     grammarRules = Array.isArray(gf) ? gf : [gf];
-  } else if (Array.isArray(scenario.grammar) && scenario.grammar.length > 0) {
-    grammarRules = scenario.grammar;
-  } else if (scenario.grammar_focus) {
-    grammarRules = Array.isArray(scenario.grammar_focus) ? scenario.grammar_focus : [scenario.grammar_focus];
+  } else if (Array.isArray(sc.grammar) && sc.grammar.length > 0) {
+    grammarRules = sc.grammar;
+  } else if (sc.grammar_focus) {
+    grammarRules = Array.isArray(sc.grammar_focus) ? sc.grammar_focus : [sc.grammar_focus];
   }
 
   // Fallback grammar if missing
@@ -155,10 +155,10 @@ export function extractScenarioData(scenario, grade = '7th Grade', scenarioIndex
   }
 
   // 2. Recommended Vocabulary
-  const vocabSource = scenario.recommended_vocabulary ||
-                      scenario.communicative_competences?.linguistic_competences?.recommended_vocabulary ||
-                      scenario.communicative_competences?.vocabulary ||
-                      scenario.vocabulary || {};
+  const vocabSource = sc.recommended_vocabulary ||
+                      sc.communicative_competences?.linguistic_competences?.recommended_vocabulary ||
+                      sc.communicative_competences?.vocabulary ||
+                      sc.vocabulary || {};
 
   // Nouns
   let rawNouns = vocabSource.nouns || vocabSource.noun || [];
@@ -733,11 +733,27 @@ function getVectorSvgForNoun(word) {
   </svg>\`;
 }
 
+function getRealiaPhoto(keyword) {
+  if (!keyword) return null;
+  const clean = String(keyword).toLowerCase().trim().replace(/\\s+/g, '_');
+  const singular = clean.replace(/s$/, '');
+  if (clean === 'pencile') return REALIA_PHOTOS.pencil;
+  if (clean === 'table') return REALIA_PHOTOS.desk;
+  if (clean === 'backpack') return REALIA_PHOTOS.bag;
+  if (clean === 'money' || clean === 'price') return REALIA_PHOTOS.dollar;
+  if (clean === 'cassava') return REALIA_PHOTOS.yuca;
+  if (clean === 'potato') return REALIA_PHOTOS.potatoes;
+  if (clean === 'shopping_list' || clean === 'shopping list') return REALIA_PHOTOS.shopping_list;
+  if (REALIA_PHOTOS[clean]) return REALIA_PHOTOS[clean];
+  if (REALIA_PHOTOS[singular]) return REALIA_PHOTOS[singular];
+  for (const key of Object.keys(REALIA_PHOTOS)) {
+    if (clean.includes(key) || key.includes(clean)) return REALIA_PHOTOS[key];
+  }
+  return null;
+}
+
 function getPhotoUrl(word) {
   if (!word) return null;
-  const clean = String(word).trim().toLowerCase().replace(/\\s+/g, '_');
-  if (REALIA_PHOTOS[clean]) return REALIA_PHOTOS[clean];
-  if (REALIA_PHOTOS[clean.replace(/s$/, '')]) return REALIA_PHOTOS[clean.replace(/s$/, '')];
   return getRealiaPhoto(word);
 }
 
@@ -1050,15 +1066,26 @@ function closeJsonModal() {
 
 function applyCustomJson() {
   const text = document.getElementById('json-textarea').value;
+  const fb = document.getElementById('json-feedback');
+  let parsed;
   try {
-    const parsed = JSON.parse(text);
-    currentScenarioData = parsed;
-    renderPoster(currentScenarioData);
-    closeJsonModal();
+    parsed = JSON.parse(text);
   } catch (err) {
-    const fb = document.getElementById('json-feedback');
     fb.textContent = \`Error de sintaxis JSON: \${err.message}\`;
     fb.className = "text-xs font-bold text-red-600";
+    return;
+  }
+
+  try {
+    currentScenarioData = parsed;
+    renderPoster(currentScenarioData);
+    fb.textContent = "JSON sintácticamente válido";
+    fb.className = "text-xs font-bold text-emerald-600";
+    closeJsonModal();
+  } catch (renderErr) {
+    console.error("Error al actualizar afiche:", renderErr);
+    fb.textContent = \`Error en estructura del afiche: \${renderErr.message}\`;
+    fb.className = "text-xs font-bold text-amber-600";
   }
 }
 
