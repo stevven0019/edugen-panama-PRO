@@ -35,6 +35,10 @@ const plain = html => new DOMParser().parseFromString(html || '', 'text/html').b
 async function readLesson(file) {
   if (!file || file.size > 2 * 1024 * 1024) throw new Error('Selecciona una lección de hasta 2 MB.');
   const ext = file.name.split('.').pop().toLowerCase();
+  const baseName = file.name.replace(/\.[^/.]+$/, '').replace(/[_-]/g, ' ').trim();
+  let media = null;
+  let text = '';
+
   if (ext === 'pdf') {
     const data = await new Promise((resolve, reject) => {
       const r = new FileReader();
@@ -42,10 +46,9 @@ async function readLesson(file) {
       r.onerror = reject;
       r.readAsDataURL(file);
     });
-    return { text: 'Extract the AOA lesson from this PDF.', media: { mimeType: 'application/pdf', data } };
-  }
-  let text;
-  if (ext === 'docx') {
+    media = { mimeType: 'application/pdf', data };
+    text = `Extract and structure the AOA English lesson from this uploaded file: "${file.name}". Theme / Title: ${baseName}.`;
+  } else if (ext === 'docx') {
     const mammoth = await import('mammoth/mammoth.browser');
     text = (await mammoth.extractRawText({ arrayBuffer: await file.arrayBuffer() })).value;
   } else if (ext === 'txt' || ext === 'doc') {
@@ -57,8 +60,50 @@ async function readLesson(file) {
   } else {
     throw new Error('Usa PDF, DOCX, TXT o el DOC exportado por EduGen.');
   }
-  if (text.trim().length < 40 || text.length > 70000) throw new Error('La lección debe contener texto legible (máximo 70.000 caracteres).');
-  return { text };
+
+  if (text.trim().length < 20 || text.length > 70000) {
+    throw new Error('La lección debe contener texto legible (máximo 70.000 caracteres).');
+  }
+
+  // Detect grade hint from filename or text
+  let detectedGrade = null;
+  const combined = (baseName + ' ' + (text || '')).slice(0, 3000);
+  if (/kinder|pre-?k|early|inicial/i.test(combined)) detectedGrade = 'Kindergarten';
+  else if (/1st|1°|primer/i.test(combined)) detectedGrade = '1st Grade';
+  else if (/2nd|2°|segundo/i.test(combined)) detectedGrade = '2nd Grade';
+  else if (/3rd|3°|tercer/i.test(combined)) detectedGrade = '3rd Grade';
+  else if (/4th|4°|cuarto/i.test(combined)) detectedGrade = '4th Grade';
+  else if (/5th|5°|quinto/i.test(combined)) detectedGrade = '5th Grade';
+  else if (/6th|6°|sexto/i.test(combined)) detectedGrade = '6th Grade';
+  else if (/7th|7°|séptimo/i.test(combined)) detectedGrade = '7th Grade';
+  else if (/8th|8°|octavo/i.test(combined)) detectedGrade = '8th Grade';
+  else if (/9th|9°|noveno/i.test(combined)) detectedGrade = '9th Grade';
+  else if (/10th|10°|décimo/i.test(combined)) detectedGrade = '10th Grade';
+  else if (/11th|11°/i.test(combined)) detectedGrade = '11th Grade';
+  else if (/12th|12°/i.test(combined)) detectedGrade = '12th Grade';
+
+  // Detect title hint
+  let detectedTitle = baseName;
+  const titleMatch = (text || '').match(/(?:Theme|Title|Topic|Lección|Lesson)\s*[:#-]?\s*([^\n.]+)/i);
+  if (titleMatch && titleMatch[1].trim().length > 3) {
+    detectedTitle = titleMatch[1].trim();
+  }
+
+  // Detect scenario hint
+  let detectedScenario = null;
+  const scMatch = (text || '').match(/(?:Scenario|Escenario)\s*[:#-]?\s*([^\n.]+)/i);
+  if (scMatch && scMatch[1].trim().length > 3) {
+    detectedScenario = scMatch[1].trim();
+  }
+
+  return {
+    text,
+    media,
+    title: detectedTitle,
+    grade: detectedGrade,
+    scenario: detectedScenario,
+    fileName: file.name
+  };
 }
 
 export default function ResourceWorkbook({
@@ -205,6 +250,11 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
       }
 
       const result = await generateActivityPack(input, controller.current.signal);
+      if (source === 'file') {
+        if (input.grade) result.grade = input.grade;
+        if (input.title) result.title = input.title;
+        if (input.scenario) result.scenario = input.scenario;
+      }
       if (source === 'latest' && lesson?.grade) result.grade = lesson.grade;
       if (source === 'matrix') {
         result.scenarioIndex = matrixScenarioIndex;

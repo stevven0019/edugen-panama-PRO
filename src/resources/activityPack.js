@@ -326,10 +326,15 @@ export async function generateActivityPack(source, signal) {
   }
 
   // 2. AI Generation with strict 3-Page Pedagogical Blueprint Schema (Arquitectura Modular EduGen Pro AOA)
-  const isKinder = /kinder|pre-?k|early/i.test(source?.grade || '');
+  let targetGrade = source?.grade;
+  if (!targetGrade && srcText) {
+    const gm = srcText.match(/(?:Pre-?K|Kindergarten|Kinder|\b\d{1,2}(?:st|nd|rd|th)?\s+Grade|\b(?:1|2|3|4|5|6|7|8|9|10|11|12)°?\s*Grado)/i);
+    if (gm) targetGrade = gm[0];
+  }
+  if (!targetGrade) targetGrade = 'Kindergarten';
+  const isKinder = /kinder|pre-?k|early/i.test(targetGrade);
   const targetSkill = source?.skill || 'Listening';
-  const targetGrade = source?.grade || '4th Grade';
-  const targetCefr = source?.cefr || 'A1';
+  const targetCefr = source?.cefr || (isKinder ? 'Pre-A1' : 'A1');
 
   const prompt = `EDUGEN PRO · MOTOR CURRICULAR AOA MEDUCA PANAMÁ
 Eres el Diseñador Curricular Jefe de Inglés para el Ministerio de Educación de Panamá (MEDUCA) integrado en la plataforma EduGen Pro.
