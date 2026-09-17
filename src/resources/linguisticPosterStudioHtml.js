@@ -412,25 +412,40 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
   </div>
 </header>
 
-<!-- Scenario Selector Bar -->
+<!-- Scenario & Grade Selector Bar (All 14 Grades & 112 Scenarios) -->
 <section class="max-w-7xl mx-auto w-full px-4 sm:px-6 pt-4 pb-1 no-print">
-  <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs flex flex-wrap items-center justify-between gap-3">
-    <div class="flex flex-wrap items-center gap-3">
-      <label class="text-xs font-extrabold uppercase text-slate-600 tracking-wide flex items-center gap-1.5">
-        <span>📚</span> Escenario de ${escapeXml(grade)}:
-      </label>
-      <select id="scenario-selector" onchange="switchScenario(this.value)" class="text-xs font-bold bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-slate-800 focus:bg-white focus:border-blue-600 outline-none">
-        ${parsedScenarioList.map((sc, i) => `
-          <option value="${i}" ${i === scenarioIndex ? 'selected' : ''}>
-            Escenario #${sc.metadata.scenario_number}: ${escapeXml(sc.metadata.scenario_title)}
-          </option>
-        `).join('')}
-      </select>
+  <div class="bg-white rounded-2xl border border-slate-200 p-3.5 shadow-xs flex flex-wrap items-center justify-between gap-3">
+    <div class="flex flex-wrap items-center gap-2.5">
+      <div class="flex items-center gap-1.5">
+        <label class="text-xs font-extrabold uppercase text-slate-700 tracking-wide flex items-center gap-1">
+          <span>🎓</span> Grado:
+        </label>
+        <select id="grade-selector" onchange="onGradeChange(this.value)" class="text-xs font-bold bg-slate-50 border border-slate-300 rounded-xl px-2.5 py-1.5 text-slate-900 focus:bg-white focus:border-blue-600 outline-none cursor-pointer">
+          ${[
+            'Pre-K', 'Kinder', '1st Grade', '2nd Grade', '3rd Grade',
+            '4th Grade', '5th Grade', '6th Grade', '7th Grade', '8th Grade',
+            '9th Grade', '10th Grade', '11th Grade', '12th Grade'
+          ].map(g => `<option value="${g}" ${g === grade ? 'selected' : ''}>${g}</option>`).join('')}
+        </select>
+      </div>
+
+      <div class="flex items-center gap-1.5">
+        <label class="text-xs font-extrabold uppercase text-slate-700 tracking-wide flex items-center gap-1">
+          <span>📚</span> Escenario:
+        </label>
+        <select id="scenario-selector" onchange="switchScenario(this.value)" class="text-xs font-bold bg-slate-50 border border-slate-300 rounded-xl px-2.5 py-1.5 text-slate-900 focus:bg-white focus:border-blue-600 outline-none max-w-sm sm:max-w-md truncate cursor-pointer">
+          ${parsedScenarioList.map((sc, i) => `
+            <option value="${i}" ${i === scenarioIndex ? 'selected' : ''}>
+              #${sc.metadata.scenario_number}: ${escapeXml(sc.metadata.scenario_title)}
+            </option>
+          `).join('')}
+        </select>
+      </div>
     </div>
 
     <div class="text-[11px] text-slate-600 font-medium flex items-center gap-2">
       <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-      <span id="visual-mode-description">Vocabulario y Competencias Lingüísticas adaptados dinámicamente al grado seleccionado</span>
+      <span id="visual-mode-description">112 Escenarios oficiales (Pre-K a 12°) · Nouns ilustrados + Textos coloridos AOA</span>
     </div>
   </div>
 </section>
@@ -852,11 +867,139 @@ function renderPoster(data) {
   \`).join('');
 }
 
+// Grade files mapping for live in-browser switching across all 14 grades (112 scenarios)
+const GRADE_FILES = {
+  'Pre-K': 'English_Curriculum_Prekinder.json',
+  'Kinder': 'English_Curriculum_Kinder.json',
+  '1st Grade': 'English_Curriculum_Grade_1.json',
+  '2nd Grade': 'English_Curriculum_Grade_2.json',
+  '3rd Grade': 'English_Curriculum_Grade_3.json',
+  '4th Grade': 'English_Curriculum_Grade_4.json',
+  '5th Grade': 'English_Curriculum_Grade_5.json',
+  '6th Grade': 'English_Curriculum_Grade_6.json',
+  '7th Grade': 'English_Curriculum_Grade_7.json',
+  '8th Grade': 'English_Curriculum_Grade_8.json',
+  '9th Grade': 'English_Curriculum_Grade_9.json',
+  '10th Grade': 'English_Curriculum_Grade_10.json',
+  '11th Grade': 'English_Curriculum_Grade_11.json',
+  '12th Grade': 'English_Curriculum_Grade_12.json'
+};
+
+let currentGrade = "${escapeXml(grade)}";
+let activeScenariosList = ALL_SCENARIOS;
+const gradeScenariosCache = { [currentGrade]: ALL_SCENARIOS };
+
+async function onGradeChange(newGrade) {
+  currentGrade = newGrade;
+  if (gradeScenariosCache[newGrade]) {
+    updateScenarioList(gradeScenariosCache[newGrade], newGrade);
+  } else {
+    try {
+      const resp = await fetch('/curriculums/' + GRADE_FILES[newGrade]);
+      if (!resp.ok) throw new Error('Error al cargar currículo');
+      const data = await resp.json();
+      const rawScenarios = data.scenarios || [];
+      const parsedList = rawScenarios.map((sc, i) => clientExtractScenario(sc, newGrade, i, data.proficiency_level));
+      gradeScenariosCache[newGrade] = parsedList;
+      updateScenarioList(parsedList, newGrade);
+    } catch (err) {
+      console.warn('Fallback loading grade scenarios:', err);
+    }
+  }
+}
+
+function updateScenarioList(scenarios, gradeLabel) {
+  activeScenariosList = scenarios;
+  const sel = document.getElementById('scenario-selector');
+  sel.innerHTML = scenarios.map((sc, i) => \`
+    <option value="\${i}">#\${sc.metadata.scenario_number}: \${escapeHtml(sc.metadata.scenario_title)}</option>
+  \`).join('');
+  switchScenario(0);
+}
+
 function switchScenario(index) {
-  const selected = ALL_SCENARIOS[Number(index)];
+  const selected = activeScenariosList[Number(index)];
   if (!selected) return;
   currentScenarioData = selected;
   renderPoster(currentScenarioData);
+}
+
+function clientExtractScenario(scenario, grade, scenarioIndex, cefr) {
+  const scenarioTitle = scenario.title || scenario.scenarioName || scenario.scenario_title || scenario.name || ('Scenario ' + (scenarioIndex + 1));
+  const scenarioNum = scenario.id || scenario.scenarioNum || scenario.scenario_number || (scenarioIndex + 1);
+  const cefrLevel = cefr || scenario.level || scenario.cefr_level || scenario.proficiency_level || (grade.includes('12') ? 'B1+' : 'A1');
+
+  let grammarRules = [];
+  if (Array.isArray(scenario.linguistic_competences) && scenario.linguistic_competences.length > 0) {
+    grammarRules = scenario.linguistic_competences;
+  } else if (scenario.communicative_competences?.linguistic_competences?.recommended_grammatical_features) {
+    const gf = scenario.communicative_competences.linguistic_competences.recommended_grammatical_features;
+    grammarRules = Array.isArray(gf) ? gf : [gf];
+  } else if (Array.isArray(scenario.grammar) && scenario.grammar.length > 0) {
+    grammarRules = scenario.grammar;
+  } else if (scenario.grammar_focus) {
+    grammarRules = Array.isArray(scenario.grammar_focus) ? scenario.grammar_focus : [scenario.grammar_focus];
+  }
+  if (!grammarRules.length) {
+    grammarRules = ["Present Simple for core communication", "Active listening and response formulas"];
+  }
+
+  const vocabSource = scenario.recommended_vocabulary ||
+                      scenario.communicative_competences?.linguistic_competences?.recommended_vocabulary ||
+                      scenario.communicative_competences?.vocabulary ||
+                      scenario.vocabulary || {};
+
+  let rawNouns = vocabSource.nouns || vocabSource.noun || [];
+  if (typeof rawNouns === 'string') rawNouns = rawNouns.split(',').map(s => s.trim()).filter(Boolean);
+
+  let rawVerbs = vocabSource.verbs || vocabSource.verb || [];
+  if (typeof rawVerbs === 'string') rawVerbs = rawVerbs.split(',').map(s => s.trim()).filter(Boolean);
+
+  let rawAdjs = vocabSource.adjectives || vocabSource.adjective || [];
+  if (typeof rawAdjs === 'string') rawAdjs = rawAdjs.split(',').map(s => s.trim()).filter(Boolean);
+
+  let rawAdverbs = vocabSource.adverbs_of_frequency || vocabSource.adverbs || vocabSource.prepositions || ["always", "often", "carefully"];
+  if (typeof rawAdverbs === 'string') rawAdverbs = rawAdverbs.split(',').map(s => s.trim()).filter(Boolean);
+
+  let rawQuestions = vocabSource.question_words || vocabSource.interrogatives || ["What...?", "How...?"];
+  if (typeof rawQuestions === 'string') rawQuestions = rawQuestions.split(',').map(s => s.trim()).filter(Boolean);
+
+  const processedNouns = rawNouns.map(n => ({
+    word: typeof n === 'object' ? (n.word || '') : String(n).trim(),
+    translation: typeof n === 'object' ? (n.translation || '') : String(n).trim(),
+    phonetic: typeof n === 'object' ? (n.phonetic || '') : ''
+  })).slice(0, 11);
+
+  const nounA = processedNouns[0]?.word || "topic";
+  const nounB = processedNouns[1]?.word || "project";
+  const verbA = rawVerbs[0] || "practice";
+
+  return {
+    metadata: {
+      institution: "REPÚBLICA DE PANAMÁ · MINISTERIO DE EDUCACIÓN (MEDUCA)",
+      program: "EDUGEN PRO · ENFOQUE AOA (" + grade + ")",
+      grade: grade,
+      cefr_level: cefrLevel,
+      scenario_number: scenarioNum,
+      scenario_title: scenarioTitle
+    },
+    linguistic_competence: {
+      grammar: grammarRules,
+      nouns: processedNouns.length ? processedNouns : [{ word: "project", translation: "proyecto", phonetic: "" }],
+      verbs: rawVerbs.slice(0, 12),
+      adjectives: rawAdjs.slice(0, 8),
+      adverbs: rawAdverbs,
+      interrogatives: rawQuestions,
+      numbers: grade.includes('Kinder') || grade.includes('Pre-K') ? "1 to 10" : grade.includes('12') ? "100 to 1,000,000+" : "1 to 100",
+      numbers_subtext: "Calibrated to " + grade + " curricular standards."
+    },
+    dialogue: [
+      { speaker: "Student A", text: "Can we " + verbA + " the " + nounA + " for our lesson?" },
+      { speaker: "Student B", text: "Yes! Let's examine the " + nounB + " together in pairs." },
+      { speaker: "Student A", text: "How many items do we need for this task?" },
+      { speaker: "Student B", text: "We have all required materials ready to share." }
+    ]
+  };
 }
 
 function toggleVisualMode() {
