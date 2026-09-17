@@ -847,7 +847,20 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
         )}
       </main>
 
-      {resourcesOpen && <ResourceWorkbook user={user} credits={credits} isPremium={isPremium} downloadsLeft={downloadsLeft} onTriggerAlert={onTriggerAlert} onClose={() => setResourcesOpen(false)} />}
+      {resourcesOpen && (
+        <ResourceWorkbook
+          user={user}
+          credits={credits}
+          isPremium={isPremium}
+          downloadsLeft={downloadsLeft}
+          onTriggerAlert={onTriggerAlert}
+          onClose={() => setResourcesOpen(false)}
+          defaultGrade={grade}
+          defaultScenario={selectedScenario}
+          defaultScenarioIndex={scenarioIndex}
+          defaultSkill={selectedSkills?.[0] || 'Listening'}
+        />
+      )}
       {/* Editor Modal Sheet */}
       <EditorModal 
         isOpen={isEditorOpen}

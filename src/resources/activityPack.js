@@ -325,28 +325,69 @@ export async function generateActivityPack(source, signal) {
     }
   }
 
-  // 2. AI Generation with strict 3-Page Pedagogical Blueprint Schema
-  const prompt = `You are an elite educational materials designer for the Panama MEDUCA English curriculum under the Action-Oriented Approach (AOA).
-Analyze the provided lesson thoroughly. Extract its exact grade, unit topic, scenario, and target competencies, and generate an authentic, classroom-ready 3-PAGE Activity Workbook.
+  // 2. AI Generation with strict 3-Page Pedagogical Blueprint Schema (Arquitectura Modular EduGen Pro AOA)
+  const isKinder = /kinder|pre-?k|early/i.test(source?.grade || '');
+  const targetSkill = source?.skill || 'Listening';
+  const targetGrade = source?.grade || '4th Grade';
+  const targetCefr = source?.cefr || 'A1';
 
-CRITICAL PEDAGOGICAL RULES:
-1. STRICT THEMATIC ALIGNMENT:
-   - All activities, vocabulary words, dialogues, listening scripts, and questions MUST be 100% strictly aligned with the exact topic and scenario of the provided lesson.
-   - NEVER default to fruit, market, shopping, or prices unless the uploaded lesson is explicitly and solely about buying food in a market.
-   - For example, if the lesson is about "The Habitat of Wildlife" (Panama's Wildlife, 7th Grade), you MUST use wild animals (e.g. jaguar, harpy eagle, sloth, toucan), ecosystems (rainforest, canopy, ocean, mangrove), conservation concepts, and relevant communicative exchanges (e.g. asking where animals live or describing habitats).
+  const prompt = `EDUGEN PRO · MOTOR CURRICULAR AOA MEDUCA PANAMÁ
+Eres el Diseñador Curricular Jefe de Inglés para el Ministerio de Educación de Panamá (MEDUCA) integrado en la plataforma EduGen Pro.
+Tu tarea es generar o perfeccionar un CUADERNO DE ACTIVIDADES de 3 PÁGINAS bajo el Enfoque Orientado a la Acción (AOA) alineado estrictamente con el Marco Común Europeo de Referencia (CEFR/MCER 2020) y la currícula panameña.
 
-2. 3-PAGE BLUEPRINT STRUCTURE:
-   - PAGE 1: Discovery & Linguistic Input (Stage 1 Warm-up Key Vocabulary Word Bank of 6 authentic words with part of speech and example; Target Communicative Language Frame Q&A relevant to this lesson; Activity 1: Listen & Circle / Identify the target words).
-   - PAGE 2: Guided Practice & Task Performance (Stage 3 Guided Practice Activity 2: Listen & Match 4 concept pairs e.g. Animal -> Habitat, Object -> Function, Term -> Description; Activity 3: Dialogue Cloze roleplay with 6-8 lines between two natural speakers appropriate for the topic; Activity 4: Performance Task with drawing area and ruled lines).
-   - PAGE 3: Formative Assessment & Teacher Resource (Stage 5 Student Exit Ticket Quiz with 3 questions, Stage 6 Self-Assessment Scale, Teacher Read-Aloud Scripts for class, Official Answer Key, and MEDUCA 3-Level Rubric).
+METADATOS DEL PLAN:
+- Grado: ${targetGrade} (CEFR: ${targetCefr})
+- Habilidad Foco: ${targetSkill} (Ciclo AOA: 1. Listening, 2. Reading, 3. Writing, 4. Speaking, 5. Mediation)
+- Tema / Escenario: ${source?.scenario || source?.title || 'Contexto Curricular'}
+
+REGLAS PEDAGÓGICAS OBLIGATORIAS:
+1. ADAPTACIÓN EVOLUTIVA ESTRICTA:
+   - Si el grado es Pre-K o Kinder (Pre-A1 Receptivo):
+     * CERO lectoescritura forzada ni oraciones complejas.
+     * Todo ocurre mediante escucha (Listening), movimientos físicos (TPR), señalamiento, discriminación auditiva y visual, recuadros de pulgar arriba/abajo (👍 / 👎), y encierre en círculos.
+     * Vocabulario de objetos reales del aula o entorno inmediato (book, chair, desk, pencil, bag, door, etc.).
+     * La Actividad 1 es discriminación auditiva ("Listen & Point / Circle 👍👎"). La Actividad 2 es match gráfico o TPR. La Actividad 3 es diálogo oral repetitivo guiado por el docente. La Actividad 4 es dibujo guiado.
+   - Si el grado es 1° o 2° (Pre-A1 / A1.1): Reconocimiento de palabras cotidianas, comandos de aula, trazos asistidos.
+   - Si el grado es 3° o 4° (A1): Frases fijas, preguntas simples (Where / What / How many), lectura gráfica, interacción guiada en parejas.
+   - Si el grado es 5° o 6° (A1+): Descripciones sencillas, rutinas, instrucciones de 2 a 3 pasos, producción de textos breves guiados.
+   - Si el grado es 7° a 9° (Pre-Media A2 / A2+): Tareas auténticas situacionales de Panamá (Mercado del Marisco, compras, direcciones, metro de Panamá, oficios técnicos en el Canal, fauna local).
+   - Si el grado es 10° a 12° (Media B1 / B1+): Negociación, debate, proyectos sostenibles (ecoturismo en Bocas, bio-conservación), manuales técnicos, mediación formal.
+
+2. ESPECIALIZACIÓN DE LA HABILIDAD (${targetSkill.toUpperCase()}):
+   - LISTENING: Entrada comprensiva ("Listen & Do", "Listen & Point"), script de audio verbatim del docente, registro de verificación auditiva.
+   - READING: Alfabetización visual, avisos reales, menús de fondas, itinerarios de transporte, skimming & scanning.
+   - WRITING: Producción escrita social auténtica (desde etiquetado/labeling en preescolar hasta comandas, recibos, formularios o reportes de campo en secundaria).
+   - SPEAKING: Acción social e interacción oral, tarjetas de juego de rol (Role-play cards) para parejas con brecha de información (Information Gap) y fórmulas de cortesía.
+   - MEDIATION: Habilidad clave CEFR 2020. Facilitar la comunicación explicando conceptos o gráficos en inglés sencillo a un compañero o visitante.
+
+3. LAS 6 ETAPAS OBLIGATORIAS AOA MEDUCA:
+   - Etapa 1 (Warm-up / Pre-task): Activación del esquema con vocabulario clave visual.
+   - Etapa 2 (Presentation): Input situacional estructurado y Communicative Language Frame.
+   - Etapa 3 (Guided Practice): Precisión guiada y emparejamiento adaptado al nivel.
+   - Etapa 4 (Production / Action Task): El estudiante como AGENTE SOCIAL con producto entregable auténtico y espacio para dibujar/escribir.
+   - Etapa 5 (Assessment): Evaluación formativa MEDUCA con 3 preguntas observables.
+   - Etapa 6 (Reflection): Metacognición con descriptores 'Can-Do'.
+
+4. CONTEXTO PANAMEÑO AUTÉNTICO:
+   - Utiliza referencias culturales, geográficas y de la vida real de Panamá (Balboa/USD, Metro de Panamá, Mercado del Marisco, Canal de Panamá, Bocas del Toro, Darién, fauna y flora local).
+   - NUNCA inventes frutas o compras a menos que el tema sea específicamente compras en el mercado.
 
 SCHEMA REQUIREMENT (Return strictly valid JSON):
 {
   "title": "Exact Lesson Theme / Title from input",
-  "grade": "Exact Grade from input (e.g., 7th Grade, 4th Grade)",
-  "skill": "Target Skill Focus (e.g., Listening & Speaking, Reading & Writing)",
-  "scenario": "Authentic Scenario from input",
+  "grade": "${targetGrade}",
+  "cefr": "${targetCefr}",
+  "skill": "${targetSkill}",
+  "scenario": "Authentic Scenario Name",
   "objective": "Target Specific Objective from input",
+  "stages": [
+    { "stage_number": 1, "stage_name": "Warm-up / Pre-task", "time": 10, "teacher_command": "Teacher instruction and verbal cues", "student_action": "Student expected action or TPR", "photo_cue": "visual_item", "differentiation": "Scaffolding note" },
+    { "stage_number": 2, "stage_name": "Presentation (Input)", "time": 8, "teacher_command": "Teacher presentation script", "student_action": "Student choral repetition or CCQ response", "photo_cue": "presentation_cue", "differentiation": "Scaffolding note" },
+    { "stage_number": 3, "stage_name": "Practice (Guided)", "time": 12, "teacher_command": "Teacher practice instructions", "student_action": "Student guided matching or task", "photo_cue": "practice_cue", "differentiation": "Scaffolding note" },
+    { "stage_number": 4, "stage_name": "Production (Action Task)", "time": 10, "teacher_command": "Teacher task prompt", "student_action": "Student tangible deliverable", "photo_cue": "action_cue", "differentiation": "Scaffolding note" },
+    { "stage_number": 5, "stage_name": "Assessment (Formative)", "time": 5, "teacher_command": "Teacher assessment questions", "student_action": "Student answers", "photo_cue": "assessment_cue", "differentiation": "Scaffolding note" },
+    { "stage_number": 6, "stage_name": "Reflection (Can-Do)", "time": 5, "teacher_command": "Teacher reflection wrap-up", "student_action": "Student self-assessment", "photo_cue": "reflection_cue", "differentiation": "Scaffolding note" }
+  ],
   "page1": {
     "wordBank": [
       { "word": "TargetWord", "pos": "noun/verb/adj", "example": "Authentic context sentence using the word.", "icon": "tree/bird/animal/sun/book/etc" }
@@ -364,15 +405,15 @@ SCHEMA REQUIREMENT (Return strictly valid JSON):
   },
   "page2": {
     "activity2": {
-      "title": "Activity 2: Listen & Match",
+      "title": "Activity 2: Guided Practice",
       "instruction": "Listen to the audio statements. Draw a line to match each item with its corresponding detail:",
       "pairs": [
         { "item": "TargetItem1", "detail": "Matching Detail 1", "icon": "tree" }
       ]
     },
     "activity3": {
-      "title": "Activity 3: Authentic Dialogue Cloze",
-      "instruction": "Complete the dialogue using words from the Word Bank below:",
+      "title": "Activity 3: Authentic Communicative Exchange",
+      "instruction": "Complete the interaction using words from the Word Bank below:",
       "wordBank": ["word1", "word2", "word3", "word4", "word5"],
       "dialogue": [
         { "speaker": "Role1", "text": "Sentence with or without [ blank ]..." },
@@ -380,8 +421,8 @@ SCHEMA REQUIREMENT (Return strictly valid JSON):
       ]
     },
     "activity4": {
-      "title": "Activity 4: Performance Production Task",
-      "instruction": "Draw and complete the task based on the lesson topic:",
+      "title": "Activity 4: Performance Action Task",
+      "instruction": "Complete the tangible deliverable based on the lesson scenario:",
       "prompt": "Task Prompt..."
     }
   },
@@ -396,7 +437,7 @@ SCHEMA REQUIREMENT (Return strictly valid JSON):
       ]
     },
     "teacherGuide": {
-      "title": "Teacher Read-Aloud Scripts & Resources",
+      "title": "Teacher Read-Aloud Audio Scripts & Resources",
       "scripts": [
         { "stage": "Stage 2 Presentation Audio", "text": "Verbatim audio script..." },
         { "stage": "Stage 4 Performance Dictation", "text": "Verbatim dictation script..." },

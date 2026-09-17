@@ -139,8 +139,8 @@ export function renderWorkbookHtml(pack) {
             <span class="text-slate-500 font-bold uppercase text-[10px]">Group:</span>
             <span class="border-b border-slate-400 flex-1 h-5"></span>
           </div>
-          <div class="col-span-2 bg-white border-2 border-indigo-600 rounded-lg flex items-center justify-center font-black text-indigo-900 text-xs py-0.5">
-            Score: &nbsp;&nbsp;&nbsp;&nbsp;/20
+          <div class="col-span-2 ${isKinder ? 'bg-amber-50 border-2 border-amber-500 text-amber-900' : 'bg-white border-2 border-indigo-600 text-indigo-900'} rounded-lg flex items-center justify-center font-black text-xs py-0.5">
+            ${isKinder ? '🌟 TPR: [ ⭐⭐⭐ ]' : 'Score: &nbsp;&nbsp;&nbsp;&nbsp;/20'}
           </div>
         </div>
 
@@ -158,8 +158,8 @@ export function renderWorkbookHtml(pack) {
       <section class="mt-3">
         <div class="flex items-center gap-2 mb-2">
           <span class="w-5 h-5 rounded-full bg-slate-900 text-white font-black text-xs flex items-center justify-center">1</span>
-          <h2 class="text-xs font-black uppercase tracking-wider text-slate-900">Key Vocabulary & Concept Input (Stage 1 Warm-up)</h2>
-          <span class="text-[10px] text-slate-500 font-medium ml-auto">Listen, look at the visual cards, and repeat.</span>
+          <h2 class="text-xs font-black uppercase tracking-wider text-slate-900">${isKinder ? 'Visual Receptive Vocabulary (TPR & Pointing)' : 'Key Vocabulary & Concept Input (Stage 1 Warm-up)'}</h2>
+          <span class="text-[10px] text-slate-500 font-medium ml-auto">${isKinder ? '👆 Listen, point to the card, and show gestures.' : 'Listen, look at the visual cards, and repeat.'}</span>
         </div>
 
         <div class="grid grid-cols-3 gap-2.5">
@@ -171,7 +171,7 @@ export function renderWorkbookHtml(pack) {
               <div class="min-w-0">
                 <div class="flex items-baseline gap-1.5">
                   <span class="text-sm font-black text-slate-900 truncate">${w.word}</span>
-                  <span class="text-[9px] font-bold text-slate-500 uppercase">(${w.pos || 'n.'})</span>
+                  <span class="text-[9px] font-bold text-slate-500 uppercase">(${w.pos || (isKinder ? 'TPR' : 'n.')})</span>
                 </div>
                 <p class="text-[10px] text-slate-600 leading-tight line-clamp-2 mt-0.5 italic font-medium">"${w.example}"</p>
               </div>
@@ -189,11 +189,11 @@ export function renderWorkbookHtml(pack) {
         </div>
         <div class="grid grid-cols-2 gap-3 text-xs">
           <div class="bg-white border border-indigo-200 rounded-lg p-2 font-semibold text-slate-800">
-            <span class="text-[10px] font-black uppercase text-indigo-600 block mb-0.5">Target Question / Inquiry:</span>
+            <span class="text-[10px] font-black uppercase text-indigo-600 block mb-0.5">${isKinder ? 'Teacher Verbal Command (Input):' : 'Target Question / Inquiry:'}</span>
             <p class="text-xs font-extrabold text-slate-900">"${languageFrame.question || 'Target question structure'}"</p>
           </div>
           <div class="bg-white border border-indigo-200 rounded-lg p-2 font-semibold text-slate-800">
-            <span class="text-[10px] font-black uppercase text-indigo-600 block mb-0.5">Target Response / Exchange:</span>
+            <span class="text-[10px] font-black uppercase text-indigo-600 block mb-0.5">${isKinder ? 'Student Action / Response:' : 'Target Response / Exchange:'}</span>
             <p class="text-xs font-extrabold text-slate-900">"${languageFrame.answer || 'Target response structure'}" ${languageFrame.exchange ? `&nbsp;·&nbsp; "${languageFrame.exchange}"` : ''}</p>
           </div>
         </div>
@@ -208,7 +208,18 @@ export function renderWorkbookHtml(pack) {
         <p class="text-xs text-slate-600 mb-2 font-medium">${activity1.instruction}</p>
 
         <div class="border-2 border-slate-800 rounded-xl p-3 bg-white grid grid-cols-6 gap-2 text-center">
-          ${(activity1.words || wordBank.map(w => w.word)).slice(0, 6).map((word, i) => `
+          ${(activity1.words || wordBank.map(w => w.word)).slice(0, 6).map((word, i) => isKinder ? `
+            <div class="border-2 border-slate-700 rounded-xl p-1.5 bg-slate-50 flex flex-col items-center justify-between">
+              <div class="w-9 h-9 flex items-center justify-center bg-white rounded border border-slate-300 p-0.5 mb-1">
+                ${getIllustrationSvg(word, 'color')}
+              </div>
+              <span class="text-[11px] font-black text-slate-800 mb-1 truncate w-full">${word}</span>
+              <div class="flex items-center justify-center gap-1 text-[8px] font-extrabold">
+                <span class="px-1 py-0.5 rounded border border-emerald-500 text-emerald-700 bg-emerald-50">👍 Yes</span>
+                <span class="px-1 py-0.5 rounded border border-rose-400 text-rose-700 bg-rose-50">👎 No</span>
+              </div>
+            </div>
+          ` : `
             <div class="border-2 border-dashed border-slate-300 rounded-lg p-2 hover:border-slate-800 flex flex-col items-center justify-between">
               <span class="w-4 h-4 rounded-full border border-slate-400 text-[10px] flex items-center justify-center font-bold text-slate-400 mb-1">${i + 1}</span>
               <span class="text-xs font-black text-slate-800">${word}</span>

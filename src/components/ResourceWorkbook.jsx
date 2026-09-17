@@ -3,6 +3,32 @@ import { databaseService } from '../services/firebase';
 import { generateActivityPack, latestAoa } from '../resources/activityPack';
 import { buildWorkbook, downloadWorkbook, downloadWorkbookDoc, downloadEditorialPdf, downloadEditorialHtml } from '../resources/workbookPdf';
 import { renderWorkbookHtml } from '../resources/renderWorkbookHtml';
+import { downloadAoaSheetsCsv, getCefrByGrade } from '../resources/sheetExporter';
+
+export const GRADES_CEFR_MAP = [
+  { id: 'prek', name: 'Pre-K', label: 'Pre-K (Pre-A1 Receptivo / TPR)', cefr: 'Pre-A1', file: 'English_Curriculum_Prekinder.json' },
+  { id: 'kinder', name: 'Kinder', label: 'Kindergarten (Pre-A1 Receptivo / TPR)', cefr: 'Pre-A1', file: 'English_Curriculum_Kinder.json' },
+  { id: '1st', name: '1st Grade', label: '1° Grado (Pre-A1 / A1.1)', cefr: 'Pre-A1', file: 'English_Curriculum_Grade_1.json' },
+  { id: '2nd', name: '2nd Grade', label: '2° Grado (Pre-A1 / A1.1)', cefr: 'A1.1', file: 'English_Curriculum_Grade_2.json' },
+  { id: '3rd', name: '3rd Grade', label: '3° Grado (A1)', cefr: 'A1', file: 'English_Curriculum_Grade_3.json' },
+  { id: '4th', name: '4th Grade', label: '4° Grado (A1)', cefr: 'A1', file: 'English_Curriculum_Grade_4.json' },
+  { id: '5th', name: '5th Grade', label: '5° Grado (A1+)', cefr: 'A1+', file: 'English_Curriculum_Grade_5.json' },
+  { id: '6th', name: '6th Grade', label: '6° Grado (A1+)', cefr: 'A1+', file: 'English_Curriculum_Grade_6.json' },
+  { id: '7th', name: '7th Grade', label: '7° Grado (A2)', cefr: 'A2', file: 'English_Curriculum_Grade_7.json' },
+  { id: '8th', name: '8th Grade', label: '8° Grado (A2)', cefr: 'A2', file: 'English_Curriculum_Grade_8.json' },
+  { id: '9th', name: '9th Grade', label: '9° Grado (A2+)', cefr: 'A2+', file: 'English_Curriculum_Grade_9.json' },
+  { id: '10th', name: '10th Grade', label: '10° Grado (B1)', cefr: 'B1', file: 'English_Curriculum_Grade_10.json' },
+  { id: '11th', name: '11th Grade', label: '11° Grado (B1)', cefr: 'B1', file: 'English_Curriculum_Grade_11.json' },
+  { id: '12th', name: '12th Grade', label: '12° Grado (B1+)', cefr: 'B1+', file: 'English_Curriculum_Grade_12.json' }
+];
+
+export const SKILLS_AOA = [
+  { id: 'Listening', label: '1. Listening · Entrada Comprensiva & TPR', number: 1, desc: 'Listen & Do, discriminación auditiva y gestos' },
+  { id: 'Reading', label: '2. Reading · Alfabetización Visual & Decodificación', number: 2, desc: 'Avisos reales, menús, skimming & scanning' },
+  { id: 'Writing', label: '3. Writing · Producción Escrita Social', number: 3, desc: 'Desde rotulado hasta comandas y formularios' },
+  { id: 'Speaking', label: '4. Speaking · Acción Social & Interacción Oral', number: 4, desc: 'Role-play cards en parejas, brecha de información' },
+  { id: 'Mediation', label: '5. Mediation · Mediación Interpersonal (CEFR 2020)', number: 5, desc: 'Facilitar la comprensión a otros, explicar gráficos' }
+];
 
 const plain = html => new DOMParser().parseFromString(html || '', 'text/html').body.textContent || '';
 
@@ -35,9 +61,21 @@ async function readLesson(file) {
   return { text };
 }
 
-export default function ResourceWorkbook({ user, credits, isPremium, downloadsLeft, onTriggerAlert, onClose, initialPack = null }) {
+export default function ResourceWorkbook({
+  user,
+  credits,
+  isPremium,
+  downloadsLeft,
+  onTriggerAlert,
+  onClose,
+  initialPack = null,
+  defaultGrade = '4th Grade',
+  defaultScenario = null,
+  defaultScenarioIndex = 0,
+  defaultSkill = 'Listening'
+}) {
   const [lesson, setLesson] = useState(null);
-  const [source, setSource] = useState('latest');
+  const [source, setSource] = useState('matrix'); // 'matrix' | 'latest' | 'file'
   const [file, setFile] = useState(null);
   const [pack, setPack] = useState(initialPack);
   const [htmlUrl, setHtmlUrl] = useState('');
@@ -48,9 +86,41 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
   const [exportStatus, setExportStatus] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+
+  // Cascade Dropdown States (14 Grados x 8 Escenarios x 5 Habilidades)
+  const [matrixGrade, setMatrixGrade] = useState(() => {
+    const match = GRADES_CEFR_MAP.find(g => g.name === defaultGrade || defaultGrade?.includes(g.name));
+    return match?.id || '4th';
+  });
+  const [matrixScenarios, setMatrixScenarios] = useState([]);
+  const [matrixScenarioIndex, setMatrixScenarioIndex] = useState(defaultScenarioIndex || 0);
+  const [matrixSkill, setMatrixSkill] = useState(defaultSkill || 'Listening');
+  const [matrixLoading, setMatrixLoading] = useState(false);
+
   const controller = useRef(null);
   const iframeRef = useRef(null);
   const editorialIframeRef = useRef(null);
+
+  // Load scenarios dynamically when matrix grade changes
+  useEffect(() => {
+    const gradeItem = GRADES_CEFR_MAP.find(g => g.id === matrixGrade) || GRADES_CEFR_MAP[5];
+    setMatrixLoading(true);
+    fetch(`/curriculums/${gradeItem.file}`)
+      .then(r => {
+        if (!r.ok) throw new Error('No se pudo cargar el currículo del grado.');
+        return r.json();
+      })
+      .then(data => {
+        const list = Array.isArray(data.scenarios) ? data.scenarios : [];
+        setMatrixScenarios(list);
+        if (matrixScenarioIndex >= list.length) setMatrixScenarioIndex(0);
+      })
+      .catch(err => {
+        console.warn('Error cargando escenarios curriculares:', err);
+        setMatrixScenarios([]);
+      })
+      .finally(() => setMatrixLoading(false));
+  }, [matrixGrade]);
 
   useEffect(() => {
     let active = true;
@@ -99,18 +169,47 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
     controller.current = new AbortController();
 
     try {
-      const input = source === 'file'
-        ? { ...(await readLesson(file)), isFile: true, forceAi: true }
-        : {
-            text: lesson.content || '',
-            grade: lesson.grade,
-            title: lesson.title,
-            scenario: lesson.lessonContext?.scenario || lesson.title,
-            forceAi: true
-          };
+      let input;
+      if (source === 'matrix') {
+        const gradeItem = GRADES_CEFR_MAP.find(g => g.id === matrixGrade) || GRADES_CEFR_MAP[5];
+        const currentScenario = matrixScenarios[matrixScenarioIndex] || {};
+        const scenarioName = currentScenario.scenarioName || currentScenario.scenario_title || currentScenario.title || `Escenario ${matrixScenarioIndex + 1}`;
+        const skillObj = SKILLS_AOA.find(s => s.id === matrixSkill) || SKILLS_AOA[0];
+
+        input = {
+          isMatrix: true,
+          forceAi: true,
+          grade: gradeItem.name,
+          cefr: gradeItem.cefr,
+          scenario: scenarioName,
+          scenarioIndex: matrixScenarioIndex,
+          skill: matrixSkill,
+          lessonNum: skillObj.number,
+          scenarioData: currentScenario,
+          text: `EDUGEN PRO AOA MODULAR CURRICULUM LESSON
+Grade: ${gradeItem.name} (CEFR: ${gradeItem.cefr})
+Scenario ${matrixScenarioIndex + 1}: ${scenarioName}
+Skill Focus: ${matrixSkill} (Lesson ${skillObj.number}: ${skillObj.label})
+Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
+        };
+      } else if (source === 'file') {
+        input = { ...(await readLesson(file)), isFile: true, forceAi: true };
+      } else {
+        input = {
+          text: lesson.content || '',
+          grade: lesson.grade,
+          title: lesson.title,
+          scenario: lesson.lessonContext?.scenario || lesson.title,
+          forceAi: true
+        };
+      }
 
       const result = await generateActivityPack(input, controller.current.signal);
-      if (source === 'latest') result.grade = lesson.grade;
+      if (source === 'latest' && lesson?.grade) result.grade = lesson.grade;
+      if (source === 'matrix') {
+        result.scenarioIndex = matrixScenarioIndex;
+        result.lessonNum = SKILLS_AOA.find(s => s.id === matrixSkill)?.number || 1;
+      }
 
       buildWorkbook(result); // Validate PDF build
       const now = new Date().toISOString();
@@ -121,7 +220,7 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
         grade: result.grade,
         content: 'Printable activity workbook (PDF)',
         activityPack: result,
-        sourceLesson: source === 'file' ? file.name : lesson.id,
+        sourceLesson: source === 'file' ? file.name : (source === 'matrix' ? `AOA_${result.grade}_SC${matrixScenarioIndex + 1}` : lesson.id),
         createdAt: now,
         updatedAt: now
       });
@@ -135,6 +234,15 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
       if (e.name !== 'AbortError') setError(e.message || 'No se pudieron generar los recursos.');
     } finally {
       setBusy(false);
+    }
+  };
+
+  const downloadSheets = () => {
+    try {
+      downloadAoaSheetsCsv(pack);
+      onTriggerAlert('¡Hoja curricular AOA exportada para Google Sheets y Excel!', 'success');
+    } catch (e) {
+      setError(e.message || 'No se pudo exportar la hoja curricular.');
     }
   };
 
@@ -227,19 +335,126 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
             </p>
 
             <label className="block">
-              <span className="text-xs font-bold uppercase text-slate-500 tracking-wider">Origen de la lección</span>
+              <span className="text-xs font-bold uppercase text-slate-500 tracking-wider">Modo de Origen Curricular</span>
               <select
                 disabled={busy}
-                className="block w-full p-3.5 mt-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-medium text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition"
+                className="block w-full p-3.5 mt-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 font-bold text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition"
                 value={source}
                 onChange={e => { setSource(e.target.value); setPack(null); setError(''); }}
               >
-                <option value="latest">Última lección AOA guardada en la plataforma</option>
-                <option value="file">Subir un archivo de lección (PDF, Word DOCX/DOC, TXT)</option>
+                <option value="matrix">⚡ Matriz Modular AOA (14 Grados × 8 Escenarios × 5 Habilidades · 560 Lecciones)</option>
+                <option value="latest">📁 Última lección AOA guardada en la plataforma</option>
+                <option value="file">📄 Subir un archivo de lección (PDF, Word DOCX/DOC, TXT)</option>
               </select>
             </label>
 
-            {source === 'latest' ? (
+            {source === 'matrix' && (
+              <div className="space-y-3.5 p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/60">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-black text-indigo-700 dark:text-indigo-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <span>⚡</span> Matriz Curricular MEDUCA (14 Grados × 8 Escenarios × 5 Habilidades)
+                  </span>
+                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900/80 text-indigo-800 dark:text-indigo-200">
+                    560 Lecciones Maestras
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  {/* Paso A: Grado Escolar */}
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+                      Paso A · Grado Escolar (CEFR)
+                    </label>
+                    <select
+                      disabled={busy}
+                      className="w-full p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs font-bold text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none"
+                      value={matrixGrade}
+                      onChange={e => setMatrixGrade(e.target.value)}
+                    >
+                      {GRADES_CEFR_MAP.map(g => (
+                        <option key={g.id} value={g.id}>
+                          {g.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Paso B: Escenario Curricular */}
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+                      Paso B · Escenario Curricular (1 al 8)
+                    </label>
+                    <select
+                      disabled={busy || matrixLoading || !matrixScenarios.length}
+                      className="w-full p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs font-bold text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none"
+                      value={matrixScenarioIndex}
+                      onChange={e => setMatrixScenarioIndex(Number(e.target.value))}
+                    >
+                      {matrixLoading ? (
+                        <option value={0}>Cargando escenarios...</option>
+                      ) : matrixScenarios.length ? (
+                        matrixScenarios.map((sc, i) => (
+                          <option key={i} value={i}>
+                            {i + 1}. {sc.scenarioName || sc.scenario_title || sc.title || `Escenario ${i + 1}`}
+                          </option>
+                        ))
+                      ) : (
+                        <option value={0}>Escenario 1</option>
+                      )}
+                    </select>
+                  </div>
+
+                  {/* Paso C: Habilidad AOA */}
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+                      Paso C · Habilidad AOA (1 a 5)
+                    </label>
+                    <select
+                      disabled={busy}
+                      className="w-full p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs font-bold text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none"
+                      value={matrixSkill}
+                      onChange={e => setMatrixSkill(e.target.value)}
+                    >
+                      {SKILLS_AOA.map(s => (
+                        <option key={s.id} value={s.id}>
+                          {s.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Pedagogical Guidance Summary Box */}
+                {(() => {
+                  const gItem = GRADES_CEFR_MAP.find(g => g.id === matrixGrade);
+                  const sItem = SKILLS_AOA.find(s => s.id === matrixSkill);
+                  const scItem = matrixScenarios[matrixScenarioIndex];
+                  const isPreK = matrixGrade === 'prek' || matrixGrade === 'kinder';
+                  return (
+                    <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-200/80 dark:border-indigo-900 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                      <div className="space-y-0.5">
+                        <div className="font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                          <span>🎯 {scItem ? (scItem.scenarioName || scItem.title) : 'Escenario'}</span>
+                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-black border border-indigo-200">
+                            {gItem?.cefr}
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-slate-600 dark:text-slate-400">
+                          <strong>{sItem?.label}</strong> · {sItem?.desc}
+                        </p>
+                      </div>
+                      {isPreK && (
+                        <span className="text-[10px] font-extrabold bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 px-2.5 py-1 rounded-lg shrink-0">
+                          🌟 Preescolar: TPR Receptivo (Cero lectoescritura forzada)
+                        </span>
+                      )}
+                    </div>
+                  );
+                })()}
+              </div>
+            )}
+
+            {source === 'latest' && (
               <div className="p-4 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900 text-sm">
                 <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">Lección Seleccionada</span>
                 {loading ? 'Buscando última lección...' : lesson ? (
@@ -248,7 +463,9 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
                   </div>
                 ) : 'Primero genera una lección AOA o sube un archivo.'}
               </div>
-            ) : (
+            )}
+
+            {source === 'file' && (
               <label className="block p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-dashed border-slate-300 dark:border-slate-700">
                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Archivo de lección (máximo 2 MB)</span>
                 <input
@@ -262,7 +479,7 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
             )}
 
             <button
-              disabled={busy || (source === 'latest' ? loading || !lesson : !file)}
+              disabled={busy || (source === 'latest' ? loading || !lesson : source === 'file' ? !file : matrixLoading)}
               onClick={generate}
               className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold rounded-2xl px-8 py-3.5 disabled:opacity-40 transition shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2"
             >
@@ -341,6 +558,14 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
                   title="Descargar versión editable para Microsoft Word"
                 >
                   📝 Word (.doc)
+                </button>
+
+                <button
+                  onClick={downloadSheets}
+                  className="bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-3 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-teal-600/20"
+                  title="Exportar hoja curricular AOA sincronizada para Google Sheets y Excel (Sección 4 AOA)"
+                >
+                  📊 Google Sheets
                 </button>
 
                 <button
