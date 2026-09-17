@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { databaseService } from '../services/firebase';
 import { generateActivityPack, latestAoa } from '../resources/activityPack';
-import { buildWorkbook, downloadWorkbook, downloadWorkbookDoc } from '../resources/workbookPdf';
+import { buildWorkbook, downloadWorkbook, downloadWorkbookDoc, downloadEditorialPdf, downloadEditorialHtml } from '../resources/workbookPdf';
 import { renderWorkbookHtml } from '../resources/renderWorkbookHtml';
 
 const plain = html => new DOMParser().parseFromString(html || '', 'text/html').body.textContent || '';
@@ -44,10 +44,13 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
   const [pdfUrl, setPdfUrl] = useState('');
   const [viewMode, setViewMode] = useState('editorial'); // 'editorial' | 'pdf'
   const [busy, setBusy] = useState(false);
+  const [exportingEditorial, setExportingEditorial] = useState(false);
+  const [exportStatus, setExportStatus] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const controller = useRef(null);
   const iframeRef = useRef(null);
+  const editorialIframeRef = useRef(null);
 
   useEffect(() => {
     let active = true;
@@ -136,9 +139,45 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
   };
 
   const handlePrint = () => {
-    if (iframeRef.current?.contentWindow) {
-      iframeRef.current.contentWindow.focus();
-      iframeRef.current.contentWindow.print();
+    const targetWin = (viewMode === 'editorial' && iframeRef.current?.contentWindow)
+      ? iframeRef.current.contentWindow
+      : (editorialIframeRef.current?.contentWindow || iframeRef.current?.contentWindow);
+
+    if (targetWin) {
+      targetWin.focus();
+      targetWin.print();
+    }
+  };
+
+  const downloadEditorial = async () => {
+    if (!isPremium && downloadsLeft <= 0) {
+      setError('Has agotado tus descargas disponibles.');
+      return;
+    }
+    setExportingEditorial(true);
+    setExportStatus('Iniciando exportación editorial...');
+    try {
+      const docTarget = (viewMode === 'editorial' && iframeRef.current?.contentDocument)
+        ? iframeRef.current.contentDocument
+        : editorialIframeRef.current?.contentDocument;
+
+      await downloadEditorialPdf(pack, docTarget, msg => setExportStatus(msg));
+      if (!isPremium) await databaseService.decrementDownloads(user.uid);
+      onTriggerAlert('¡Libro editorial descargado con éxito en PDF!', 'success');
+    } catch (e) {
+      setError(e.message || 'No se pudo descargar el libro editorial en PDF.');
+    } finally {
+      setExportingEditorial(false);
+      setExportStatus('');
+    }
+  };
+
+  const downloadHtml = () => {
+    try {
+      downloadEditorialHtml(pack);
+      onTriggerAlert('¡Archivo HTML del libro editorial descargado!', 'success');
+    } catch (e) {
+      setError(e.message);
     }
   };
 
@@ -262,25 +301,54 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
                 </button>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  disabled={exportingEditorial}
+                  onClick={downloadEditorial}
+                  className="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white text-xs font-black px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-lg shadow-indigo-600/25 active:scale-95 disabled:opacity-60"
+                  title="Descargar libro editorial con ilustraciones y diseño a color en formato PDF"
+                >
+                  {exportingEditorial ? (
+                    <>
+                      <span className="animate-spin text-sm">⏳</span> {exportStatus || 'Exportando PDF...'}
+                    </>
+                  ) : (
+                    <>
+                      <span>📖</span> Descargar PDF Editorial
+                    </>
+                  )}
+                </button>
+
                 <button
                   onClick={handlePrint}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-emerald-600/20"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold px-3.5 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-emerald-600/20"
+                  title="Imprimir o guardar como PDF en máxima resolución vectorial"
                 >
-                  🖨️ Imprimir / Guardar como PDF
+                  🖨️ Imprimir
                 </button>
+
                 <button
                   onClick={download}
-                  className="bg-slate-800 hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5"
+                  className="bg-slate-800 hover:bg-slate-900 dark:bg-slate-700 dark:hover:bg-slate-600 text-white text-xs font-bold px-3 py-2.5 rounded-xl transition flex items-center gap-1.5"
+                  title="Descargar versión PDF clásica estándar (monocromática / bajo consumo de tinta)"
                 >
-                  ⬇️ Descargar .pdf
+                  📄 PDF Clásico
                 </button>
+
                 <button
                   onClick={downloadDoc}
-                  className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-blue-600/20"
+                  className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-blue-600/20"
                   title="Descargar versión editable para Microsoft Word"
                 >
-                  📝 Descargar Word (.doc)
+                  📝 Word (.doc)
+                </button>
+
+                <button
+                  onClick={downloadHtml}
+                  className="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3 py-2.5 rounded-xl transition flex items-center gap-1.5 shadow-md shadow-amber-600/20"
+                  title="Descargar página web autónoma (.html) para proyectar o visualizar sin conexión"
+                >
+                  🌐 HTML
                 </button>
               </div>
             </div>
@@ -297,6 +365,16 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
                 className="w-full h-[72vh] rounded-2xl bg-white"
               />
             </div>
+
+            {/* Hidden offscreen iframe ensuring editorial document is always fully rendered for PDF export and printing */}
+            {pack && htmlUrl && (
+              <iframe
+                ref={editorialIframeRef}
+                title="Marco de renderizado editorial"
+                src={htmlUrl}
+                style={{ position: 'fixed', top: 0, left: '-9999px', width: '210mm', height: '3500px', visibility: 'hidden' }}
+              />
+            )}
           </div>
         )}
       </div>

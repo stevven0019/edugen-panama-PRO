@@ -81,26 +81,26 @@ export function renderWorkbookHtml(pack) {
   const teacherGuide = page3.teacherGuide || {
     title: 'Teacher Read-Aloud Audio Scripts (For Classroom Instruction)',
     scripts: [
-      { stage: 'Stage 2 Presentation Audio', text: activity3.dialogue?.map(d => `${d.speaker}: "${d.text}"`).join('  ·  ') || 'Model the dialogue clearly.' },
-      { stage: 'Stage 4 Performance Dictation', text: 'At the market, please buy one pineapple. It costs three dollars. Also buy two apples for one dollar each. And one mango for two dollars. Thank you!' },
-      { stage: 'Stage 5 Assessment Quiz Script', text: 'Read clearly to the class: "Welcome! The pineapple is three dollars. The apples are one dollar each. Have a nice day!"' }
+      { stage: 'Stage 2 Presentation Audio', text: activity3.dialogue?.map(d => `${d.speaker}: "${d.text}"`).join('  ·  ') || `Teacher models the target dialogue for ${title}.` },
+      { stage: 'Stage 4 Performance Dictation', text: `Listen carefully: "In our lesson about ${scenario}, we explore ${wordBank.slice(0, 3).map(w => w.word).join(', ')}. Complete your drawing and write the key features."` },
+      { stage: 'Stage 5 Assessment Quiz Script', text: `Teacher reads: "Question 1: Listen to the description and choose the correct answer about ${title}. Pay close attention to the target vocabulary."` }
     ],
     answerKey: [
-      { item: 'Activity 1 (Circle)', answer: 'Modeled vocabulary words circled.' },
+      { item: 'Activity 1 (Circle)', answer: wordBank.map(w => w.word).join(', ') },
       { item: 'Activity 2 (Match)', answer: (activity2.pairs || []).map(p => `${p.item || p.left} ──> ${p.detail || p.right}`).join(', ') },
-      { item: 'Activity 3 (Cloze)', answer: 'pineapple, three, dollar, banana, thank you' },
-      { item: 'Exit Ticket Quiz', answer: '1. A (Pineapple)  ·  2. True  ·  3. B ($3.00)' }
+      { item: 'Activity 3 (Cloze)', answer: activity3.wordBank ? activity3.wordBank.join(', ') : wordBank.slice(0, 4).map(w => w.word).join(', ') },
+      { item: 'Exit Ticket Quiz', answer: '1. A (Theme)  ·  2. True  ·  3. A (Target Concept)' }
     ],
     rubric: pack.rubric || [
       {
-        criterion: 'Listening Comprehension (Target Vocabulary & Prices)',
-        independent: 'Identifies all items and prices accurately without teacher repetition.',
-        withSupport: 'Identifies items and prices with 1-2 visual prompts or pauses.',
-        emerging: 'Requires direct teacher translation or continuous assistance.'
+        criterion: `Listening Comprehension (${title} Target Vocabulary)`,
+        independent: 'Identifies all key terms and concept details accurately without teacher repetition.',
+        withSupport: 'Identifies target concepts with 1-2 visual prompts or pauses.',
+        emerging: 'Requires direct teacher assistance or continuous modeling.'
       },
       {
         criterion: 'Task Performance (Drawing, Matching & Completion)',
-        independent: 'Completes all 4 worksheet activities independently and fluently.',
+        independent: 'Completes all worksheet activities independently and fluently.',
         withSupport: 'Completes activities with peer modeling or scaffolding.',
         emerging: 'Completes fewer than half the tasks accurately.'
       },

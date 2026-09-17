@@ -984,8 +984,94 @@ export function buildWorkbook(pack) {
 }
 
 export function downloadWorkbook(pack) {
-  const filename = (pack.title || 'Activity_Workbook').replace(/[^a-z0-9_-]/gi, '_') + '.pdf';
+  const filename = (pack.title || 'Activity_Workbook').replace(/[^a-z0-9_-]/gi, '_') + '_Clasico.pdf';
   buildWorkbook(pack).save(filename);
+}
+
+/**
+ * Exports the illustrated editorial book as a high-fidelity 3-page PDF (.pdf)
+ */
+export async function downloadEditorialPdf(pack, existingDoc = null, onProgress = null) {
+  const { jsPDF } = await import('jspdf');
+  const html2canvasModule = await import('html2canvas');
+  const html2canvas = html2canvasModule.default || html2canvasModule;
+
+  let pages = existingDoc ? Array.from(existingDoc.querySelectorAll('.workbook-page')) : [];
+  let tempIframe = null;
+
+  if (pages.length === 0) {
+    if (onProgress) onProgress('Preparando páginas para el visor editorial...');
+    tempIframe = document.createElement('iframe');
+    tempIframe.style.position = 'fixed';
+    tempIframe.style.top = '0';
+    tempIframe.style.left = '-9999px';
+    tempIframe.style.width = '210mm';
+    tempIframe.style.height = '3500px';
+    tempIframe.style.visibility = 'hidden';
+    document.body.appendChild(tempIframe);
+
+    const htmlContent = renderWorkbookHtml(pack);
+    tempIframe.contentDocument.open();
+    tempIframe.contentDocument.write(htmlContent);
+    tempIframe.contentDocument.close();
+
+    // Give time for Tailwind CDN, Google Fonts, and SVGs to compute
+    await new Promise(resolve => setTimeout(resolve, 800));
+    pages = Array.from(tempIframe.contentDocument.querySelectorAll('.workbook-page'));
+  }
+
+  if (pages.length === 0) {
+    if (tempIframe && tempIframe.parentNode) document.body.removeChild(tempIframe);
+    throw new Error('No se pudieron renderizar las páginas del libro editorial.');
+  }
+
+  const pdf = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'a4',
+    compress: true
+  });
+
+  const pdfW = pdf.internal.pageSize.getWidth();
+  const pdfH = pdf.internal.pageSize.getHeight();
+
+  for (let i = 0; i < pages.length; i++) {
+    if (onProgress) onProgress(`Exportando página ilustrada ${i + 1} de ${pages.length}...`);
+    const pageEl = pages[i];
+    const canvas = await html2canvas(pageEl, {
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      backgroundColor: '#ffffff'
+    });
+    const imgData = canvas.toDataURL('image/jpeg', 0.95);
+    if (i > 0) pdf.addPage();
+    pdf.addImage(imgData, 'JPEG', 0, 0, pdfW, pdfH, undefined, 'FAST');
+  }
+
+  if (tempIframe && tempIframe.parentNode) {
+    document.body.removeChild(tempIframe);
+  }
+
+  const filename = (pack.title || 'Libro_Editorial_AOA').replace(/[^a-z0-9_-]/gi, '_') + '_Editorial.pdf';
+  pdf.save(filename);
+}
+
+/**
+ * Exports the illustrated editorial book as a standalone offline HTML document (.html)
+ */
+export function downloadEditorialHtml(pack) {
+  const filename = (pack.title || 'Libro_Editorial_AOA').replace(/[^a-z0-9_-]/gi, '_') + '_Editorial.html';
+  const html = renderWorkbookHtml(pack);
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 /**
