@@ -859,6 +859,8 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
           defaultScenario={selectedScenario}
           defaultScenarioIndex={scenarioIndex}
           defaultSkill={selectedSkills?.[0] || 'Listening'}
+          currentLessonHtml={generatedHtml}
+          currentLessonTitle={theme || (selectedScenario ? (selectedScenario.scenarioName || selectedScenario.scenario_title || selectedScenario.title) : 'Secuencia AOA')}
         />
       )}
       {/* Editor Modal Sheet */}

@@ -132,4 +132,27 @@ const kinderDoc = buildWorkbook(kinderPack);
 assert.ok(kinderDoc.getNumberOfPages() >= 5, 'Kinder PDF has 5+ pages');
 console.log(`Kinder PDF built with ${kinderDoc.getNumberOfPages()} pages.`);
 
-console.log('All multi-grade and authentic activity PDF checks passed!');
+import { renderWorkbookHtml } from '../src/resources/renderWorkbookHtml.js';
+
+// 5. Test 4th Grade Lesson 2 Reading HTML Rendering (Skills & Theme Adaptation)
+const readingPack = {
+  title: 'Shopping at the Market',
+  grade: '4th Grade',
+  skill: 'Reading',
+  lessonNum: 2,
+  scenario: 'Shopping at the Market',
+  activities: pineapplePack.activities,
+  rubric: pineapplePack.rubric
+};
+
+const readingHtml = renderWorkbookHtml(readingPack);
+assert.ok(readingHtml.includes('READ & DECODE'), 'Part 1 title contains READ & DECODE for reading lesson');
+assert.ok(readingHtml.includes('MARKET & FOOD ITEMS'), 'Theme noun detects MARKET & FOOD ITEMS');
+assert.ok(readingHtml.includes('Read & Check 📖'), 'Action button uses Read & Check for reading');
+assert.ok(readingHtml.includes('PART 2: READING COMPREHENSION'), 'Part 2 title is READING COMPREHENSION');
+assert.ok(readingHtml.includes('pineapple'), 'Includes market realia vocab');
+assert.ok(!readingHtml.includes('CLASSROOM OBJECTS'), 'Does not falsely refer to classroom objects');
+console.log('4th Grade Lesson 2 Reading HTML rendering verification passed!');
+
+console.log('All multi-grade and authentic activity PDF & HTML checks passed!');
+

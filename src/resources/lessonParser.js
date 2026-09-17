@@ -157,12 +157,70 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     }
   ];
 
+  const skillFocus = metadata.skill || clean.match(/Skills?\s+Focus:\s*([^\n]+)/i)?.[1]?.trim() || 'Listening & Speaking';
+  const isReading = /read/i.test(skillFocus);
+  const isWriting = /writ/i.test(skillFocus);
+  const isSpeaking = /speak|oral/i.test(skillFocus);
+  const isMediation = /mediat/i.test(skillFocus);
+
+  const actionWorksheet = {
+    part1: {
+      title: isReading
+        ? `PART 1: READ & DECODE / VISUAL TEXT DECODING (${theme.toUpperCase()})`
+        : isWriting
+        ? `PART 1: ORTHOGRAPHIC TRACE & VOCABULARY LABELING (${theme.toUpperCase()})`
+        : isSpeaking
+        ? `PART 1: ORAL RECOGNITION & PRONUNCIATION PRACTICE (${theme.toUpperCase()})`
+        : isMediation
+        ? `PART 1: VISUAL MEDIATION & CONCEPT CLARIFICATION (${theme.toUpperCase()})`
+        : `PART 1: LISTEN & POINT TO THE REAL ${theme.toUpperCase()} (REALIA HOOK)`,
+      badge: isReading ? 'Reading Comprehension' : isWriting ? 'Written Production' : isSpeaking ? 'Spoken Fluency' : isMediation ? 'Mediation Strategy' : 'Receptive Vocabulary',
+      actionCue: isReading ? '[ Read & Check 📖 ]' : isWriting ? '[ Trace & Label ✍️ ]' : isSpeaking ? '[ Say It Aloud 🗣️ ]' : isMediation ? '[ Explain Meaning 🤝 ]' : '[ Point Here 👆 ]',
+      teacherInstruction: isReading
+        ? 'Read each target word aloud. Examine the real photo and match the printed text label to the correct item!'
+        : isWriting
+        ? 'Look at the real photo. Trace each letter of the target word with your pencil and copy the label onto your practice sheet!'
+        : isSpeaking
+        ? "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking: 'What is this?'"
+        : isMediation
+        ? 'Observe the real photo. Explain what the item represents in simple English to a teammate who needs guidance!'
+        : 'Listen carefully! When teacher says the word, point to the real photo on your paper and touch the real object or show the gesture!',
+      items: vocabWords.slice(0, 6).map(w => ({
+        word: w.toUpperCase(),
+        label: w.toUpperCase()
+      }))
+    },
+    part2: {
+      title: isReading
+        ? `PART 2: READING COMPREHENSION · "TRUE OR FALSE? READ & VERIFY!"`
+        : isWriting
+        ? `PART 2: WRITTEN VERIFICATION · "CHECK & COMPLETE THE RECORD!"`
+        : isSpeaking
+        ? `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`
+        : isMediation
+        ? `PART 2: INTERPERSONAL MEDIATION · "RELAY THE MESSAGE CLEARLY!"`
+        : `PART 2: AUDITORY ACCURACY CHECK · "TRUE OR FALSE? SHOW YOUR THUMB!"`,
+      badge: isReading ? 'Reading Accuracy' : isWriting ? 'Written Accuracy' : isSpeaking ? 'Interaction Check' : isMediation ? 'Collaborative Accuracy' : 'Accuracy of Listening',
+      teacherPrompt: isReading
+        ? 'Read each short sentence carefully. Compare the text with the photo. If the sentence is TRUE according to the scenario, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!'
+        : 'Teacher says a statement and shows the photo. If it is TRUE, mark YES ( 👍 ). If it is FALSE, mark NO ( 👎 )!',
+      items: vocabWords.slice(0, 4).map((w, idx) => ({
+        concept: isReading ? `READ & CHECK ${idx + 1}` : `VERIFY ${idx + 1}`,
+        sentence: `The ${w.toLowerCase()} is an essential element in our lesson about ${theme}.`,
+        relation: idx === 0 ? 'on' : idx === 1 ? 'in' : idx === 2 ? 'under' : 'next_to',
+        subject: w.toLowerCase(),
+        reference: 'desk'
+      }))
+    }
+  };
+
   return {
     title: theme,
     grade: grade,
-    skill: clean.match(/Skills?\s+Focus:\s*([^\n]+)/i)?.[1]?.trim() || 'Listening & Speaking',
+    skill: skillFocus,
     scenario: scenario,
     objective: objective || `Identify target vocabulary and communicative structures for ${theme}.`,
+    actionWorksheet: actionWorksheet,
     
     // ── PAGE 1: DISCOVERY & LINGUISTIC INPUT ──
     page1: {

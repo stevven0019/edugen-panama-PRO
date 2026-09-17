@@ -117,10 +117,12 @@ export default function ResourceWorkbook({
   defaultGrade = '4th Grade',
   defaultScenario = null,
   defaultScenarioIndex = 0,
-  defaultSkill = 'Listening'
+  defaultSkill = 'Listening',
+  currentLessonHtml = null,
+  currentLessonTitle = ''
 }) {
   const [lesson, setLesson] = useState(null);
-  const [source, setSource] = useState('matrix'); // 'matrix' | 'latest' | 'file'
+  const [source, setSource] = useState(currentLessonHtml ? 'current' : 'matrix'); // 'current' | 'matrix' | 'latest' | 'file'
   const [file, setFile] = useState(null);
   const [pack, setPack] = useState(initialPack);
   const [htmlUrl, setHtmlUrl] = useState('');
@@ -215,7 +217,20 @@ export default function ResourceWorkbook({
 
     try {
       let input;
-      if (source === 'matrix') {
+      if (source === 'current') {
+        const scenarioName = defaultScenario?.scenarioName || defaultScenario?.scenario_title || defaultScenario?.title || currentLessonTitle || 'AOA Lesson';
+        const skillObj = SKILLS_AOA.find(s => s.id === defaultSkill) || SKILLS_AOA[0];
+        input = {
+          text: currentLessonHtml,
+          grade: defaultGrade,
+          title: currentLessonTitle || scenarioName,
+          scenario: scenarioName,
+          skill: defaultSkill,
+          lessonNum: skillObj.number,
+          isCurrent: true,
+          forceAi: false
+        };
+      } else if (source === 'matrix') {
         const gradeItem = GRADES_CEFR_MAP.find(g => g.id === matrixGrade) || GRADES_CEFR_MAP[5];
         const currentScenario = matrixScenarios[matrixScenarioIndex] || {};
         const scenarioName = currentScenario.scenarioName || currentScenario.scenario_title || currentScenario.title || `Escenario ${matrixScenarioIndex + 1}`;
@@ -250,6 +265,12 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
       }
 
       const result = await generateActivityPack(input, controller.current.signal);
+      if (source === 'current') {
+        result.grade = defaultGrade;
+        result.skill = defaultSkill;
+        result.lessonNum = SKILLS_AOA.find(s => s.id === defaultSkill)?.number || 1;
+        if (currentLessonTitle) result.title = currentLessonTitle;
+      }
       if (source === 'file') {
         if (input.grade) result.grade = input.grade;
         if (input.title) result.title = input.title;
@@ -259,6 +280,7 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
       if (source === 'matrix') {
         result.scenarioIndex = matrixScenarioIndex;
         result.lessonNum = SKILLS_AOA.find(s => s.id === matrixSkill)?.number || 1;
+        result.skill = matrixSkill;
       }
 
       buildWorkbook(result); // Validate PDF build
@@ -392,11 +414,33 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
                 value={source}
                 onChange={e => { setSource(e.target.value); setPack(null); setError(''); }}
               >
+                {currentLessonHtml && (
+                  <option value="current">📝 Lección actual en pantalla ({currentLessonTitle || 'Planificación abierta'})</option>
+                )}
                 <option value="matrix">⚡ Matriz Modular AOA (14 Grados × 8 Escenarios × 5 Habilidades · 560 Lecciones)</option>
                 <option value="latest">📁 Última lección AOA guardada en la plataforma</option>
                 <option value="file">📄 Subir un archivo de lección (PDF, Word DOCX/DOC, TXT)</option>
               </select>
             </label>
+
+            {source === 'current' && (
+              <div className="p-4 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-sm space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider block">
+                    ✨ Planificación de Lección Vinculada Directamente
+                  </span>
+                  <span className="text-[10px] font-black px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200">
+                    Foco: {defaultSkill} ({SKILLS_AOA.find(s => s.id === defaultSkill)?.label || defaultSkill})
+                  </span>
+                </div>
+                <div className="font-extrabold text-slate-900 dark:text-white text-base">
+                  {currentLessonTitle || defaultScenario?.scenarioName || defaultScenario?.title || 'Lección AOA'}
+                </div>
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Las actividades, preguntas de verificación, vocabulario y fotos reales se generarán extrayendo exactamente los contenidos, diálogos y tareas de acción de la lección que acabas de diseñar en el planificador.
+                </p>
+              </div>
+            )}
 
             {source === 'matrix' && (
               <div className="space-y-3.5 p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/60">
@@ -529,7 +573,7 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
             )}
 
             <button
-              disabled={busy || (source === 'latest' ? loading || !lesson : source === 'file' ? !file : matrixLoading)}
+              disabled={busy || (source === 'current' ? !currentLessonHtml : source === 'latest' ? loading || !lesson : source === 'file' ? !file : matrixLoading)}
               onClick={generate}
               className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold rounded-2xl px-8 py-3.5 disabled:opacity-40 transition shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2"
             >

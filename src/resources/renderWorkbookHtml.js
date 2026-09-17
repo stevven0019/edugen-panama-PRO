@@ -1,13 +1,48 @@
 import { renderRealiaCardHtml, renderSpatialCardHtml, getRealiaPhoto } from './realiaCatalog.js';
 import { getIllustrationSvg } from './illustrations.js';
 
+function getScenarioThemeNoun(scenario, title) {
+  const text = `${scenario || ''} ${title || ''}`.toLowerCase();
+  if (/market|food|fruit|grocery|compras|tienda|comida|supermarket|price|vegetable|piña|yuca|mango/i.test(text)) {
+    return 'MARKET & FOOD ITEMS';
+  }
+  if (/canal|ship|boat|waterway|transporte|mar|esclusa|puerto/i.test(text)) {
+    return 'PANAMA CANAL & LOGISTICS ITEMS';
+  }
+  if (/animal|nature|fauna|wildlife|flora|rainforest|selva|biodiversity|bosque/i.test(text)) {
+    return 'PANAMANIAN WILDLIFE & NATURE';
+  }
+  if (/community|city|neighborhood|barrio|pueblo|places|lugar|ciudad|comunidad/i.test(text)) {
+    return 'COMMUNITY & CITY PLACES';
+  }
+  if (/health|body|doctor|salud|hospital|care|cuerpo/i.test(text)) {
+    return 'HEALTH & WELL-BEING CONCEPTS';
+  }
+  if (/book|desk|chair|pencil|classroom|school|where\s*is|escuela|salon|aula/i.test(text)) {
+    return 'CLASSROOM OBJECTS';
+  }
+  return 'TARGET SCENARIO ITEMS';
+}
+
 export function renderWorkbookHtml(pack) {
-  const isKinder = /kinder|pre-?k|early/i.test(pack.grade || '');
-  const title = pack.title || 'Where Is Your Book?';
+  const title = pack.title || 'English Activity Lesson';
   const cleanTitle = title.replace(/^Action Worksheet:\s*/i, '').replace(/["']/g, '');
+  const isKinder = /kinder|pre-?k|early|inicial/i.test(pack.grade || '');
   const grade = pack.grade || (isKinder ? 'Kindergarten' : '4th Grade');
-  const skill = pack.skill || 'Listening';
-  const lessonNumber = pack.lessonNum || pack.lessonNumber || 1;
+  const lessonNumber = pack.lessonNum || pack.lessonNumber || (pack.skill === 'Reading' ? 2 : pack.skill === 'Writing' ? 3 : pack.skill === 'Speaking' ? 4 : pack.skill === 'Mediation' ? 5 : 1);
+
+  // Skill determination (1: Listening, 2: Reading, 3: Writing, 4: Speaking, 5: Mediation)
+  let rawSkill = String(pack.skill || '').trim();
+  if (!rawSkill || rawSkill === 'English' || rawSkill === 'AOA') {
+    rawSkill = lessonNumber === 2 ? 'Reading' : lessonNumber === 3 ? 'Writing' : lessonNumber === 4 ? 'Speaking' : lessonNumber === 5 ? 'Mediation' : 'Listening';
+  }
+  const isReading = /read/i.test(rawSkill);
+  const isWriting = /writ/i.test(rawSkill);
+  const isSpeaking = /speak|oral/i.test(rawSkill);
+  const isMediation = /mediat/i.test(rawSkill);
+  const isListening = !isReading && !isWriting && !isSpeaking && !isMediation;
+  const skillName = isReading ? 'Reading' : isWriting ? 'Writing' : isSpeaking ? 'Speaking' : isMediation ? 'Mediation' : 'Listening';
+
   const scenario = pack.scenario || pack.lessonTitle || (isKinder ? 'Where Is It?' : cleanTitle);
   const objective = pack.objective || 'Identify target vocabulary and communicative structures in real context.';
 
@@ -16,7 +51,10 @@ export function renderWorkbookHtml(pack) {
   const page2 = pack.page2 || {};
   const page3 = pack.page3 || {};
 
-  // Extract or synthesize Part 1 Realia Items (6 cards)
+  // Contextual theme noun
+  const scenarioNoun = getScenarioThemeNoun(scenario, cleanTitle);
+
+  // 1. Extract or synthesize Part 1 Realia Items (6 cards)
   let realiaItems = [];
   if (pack.actionWorksheet?.part1?.items?.length) {
     realiaItems = pack.actionWorksheet.part1.items.map(it => ({
@@ -24,7 +62,7 @@ export function renderWorkbookHtml(pack) {
       label: it.label || it.word,
       photoUrl: it.photoUrl || null
     }));
-  } else if (page1.wordBank?.length) {
+  } else if (page1.wordBank?.length && page1.wordBank[0]?.word?.toLowerCase() !== 'word 1') {
     realiaItems = page1.wordBank.map(it => ({
       word: it.word || it.label,
       label: it.label || it.word,
@@ -32,7 +70,7 @@ export function renderWorkbookHtml(pack) {
     }));
   }
 
-  // Default to the authentic Classroom Realia from Image 1 if Kinder / Classroom topic or words are missing
+  // Authentic thematic fallback lists if empty
   const defaultClassroomWords = [
     { word: 'BOOK', label: 'BOOK' },
     { word: 'DESK', label: 'DESK' },
@@ -42,111 +80,210 @@ export function renderWorkbookHtml(pack) {
     { word: 'CRAYON', label: 'CRAYON' }
   ];
 
-  if (!realiaItems.length || (isKinder && realiaItems[0]?.word?.toLowerCase() === 'word 1')) {
-    realiaItems = defaultClassroomWords;
+  const defaultMarketWords = [
+    { word: 'PINEAPPLE', label: 'PINEAPPLE' },
+    { word: 'YUCA', label: 'YUCA' },
+    { word: 'MANGO', label: 'MANGO' },
+    { word: 'DOLLAR', label: 'DOLLAR' },
+    { word: 'PRICE', label: 'PRICE' },
+    { word: 'MARKET', label: 'MARKET' }
+  ];
+
+  if (!realiaItems.length) {
+    if (scenarioNoun.includes('MARKET')) {
+      realiaItems = defaultMarketWords;
+    } else if (isKinder || scenarioNoun.includes('CLASSROOM')) {
+      realiaItems = defaultClassroomWords;
+    } else {
+      realiaItems = defaultMarketWords;
+    }
   }
   while (realiaItems.length < 6) {
-    realiaItems.push(defaultClassroomWords[realiaItems.length] || { word: `ITEM ${realiaItems.length + 1}` });
+    realiaItems.push({ word: `ITEM ${realiaItems.length + 1}` });
   }
   realiaItems = realiaItems.slice(0, 6);
 
-  // Extract or synthesize Part 2 Spatial / Concept Items (4 cards)
+  // 2. Skill-Specific Part 1 Configuration
+  let part1Title = `PART 1: LISTEN & POINT TO THE REAL ${scenarioNoun} (REALIA HOOK)`;
+  let part1Badge = 'Receptive Vocabulary';
+  let part1ActionCue = '[ Point Here 👆 ]';
+  let part1Instruction = 'Listen carefully! When teacher says the word, point to the real photo on your paper and touch the real object or show the gesture!';
+
+  if (isReading) {
+    part1Title = `PART 1: READ & DECODE / VISUAL TEXT DECODING (${scenarioNoun})`;
+    part1Badge = 'Reading Comprehension';
+    part1ActionCue = '[ Read & Check 📖 ]';
+    part1Instruction = 'Read each target word aloud. Examine the real photo and match the printed text label to the correct item in the scenario!';
+  } else if (isWriting) {
+    part1Title = `PART 1: ORTHOGRAPHIC TRACE & VOCABULARY LABELING (${scenarioNoun})`;
+    part1Badge = 'Written Production';
+    part1ActionCue = '[ Trace & Label ✍️ ]';
+    part1Instruction = 'Look at the real photo. Trace each letter of the target word with your pencil and copy the label onto your practice sheet!';
+  } else if (isSpeaking) {
+    part1Title = `PART 1: ORAL RECOGNITION & PRONUNCIATION PRACTICE (${scenarioNoun})`;
+    part1Badge = 'Spoken Fluency';
+    part1ActionCue = '[ Say It Aloud 🗣️ ]';
+    part1Instruction = "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking: 'What is this?'";
+  } else if (isMediation) {
+    part1Title = `PART 1: VISUAL MEDIATION & CONCEPT CLARIFICATION (${scenarioNoun})`;
+    part1Badge = 'Mediation Strategy';
+    part1ActionCue = '[ Explain Meaning 🤝 ]';
+    part1Instruction = 'Observe the real photo. Explain what the item represents in simple English to a teammate or visitor who needs guidance!';
+  }
+
+  // Override with AI custom instructions if present
+  if (pack.actionWorksheet?.part1?.title) part1Title = pack.actionWorksheet.part1.title;
+  if (pack.actionWorksheet?.part1?.badge) part1Badge = pack.actionWorksheet.part1.badge;
+  if (pack.actionWorksheet?.part1?.actionCue) part1ActionCue = pack.actionWorksheet.part1.actionCue;
+  if (pack.actionWorksheet?.part1?.teacherInstruction) part1Instruction = pack.actionWorksheet.part1.teacherInstruction;
+
+  // 3. Skill-Specific Part 2 Configuration & Items
+  let part2Title = `PART 2: AUDITORY ACCURACY CHECK · "TRUE OR FALSE? SHOW YOUR THUMB!"`;
+  let part2Badge = 'Accuracy of Listening';
+  let part2Prompt = 'Teacher reads a statement about the photo. If what you hear matches the picture, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!';
+
+  if (isReading) {
+    part2Title = `PART 2: READING COMPREHENSION · "TRUE OR FALSE? READ & VERIFY!"`;
+    part2Badge = 'Reading Accuracy';
+    part2Prompt = 'Read each short sentence carefully. Compare the text with the photo. If the sentence is TRUE according to the scenario, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!';
+  } else if (isWriting) {
+    part2Title = `PART 2: WRITTEN VERIFICATION · "CHECK & COMPLETE THE RECORD!"`;
+    part2Badge = 'Written Accuracy';
+    part2Prompt = 'Read the statement and inspect the photo. Verify the written information and mark YES ( 👍 ) or NO ( 👎 ) on your report!';
+  } else if (isSpeaking) {
+    part2Title = `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`;
+    part2Badge = 'Interaction Check';
+    part2Prompt = "Partner A asks the inquiry question. Partner B looks at the card and answers. If answered correctly and fluently, mark YES ( 👍 )!";
+  } else if (isMediation) {
+    part2Title = `PART 2: INTERPERSONAL MEDIATION · "RELAY THE MESSAGE CLEARLY!"`;
+    part2Badge = 'Collaborative Accuracy';
+    part2Prompt = 'Read the situation. Mediate the information in simple English for your peer. Verify if the explanation was understood: mark YES ( 👍 ) or NO ( 👎 )!';
+  } else if (isKinder || /preposition|where\s*is/i.test(`${scenario} ${cleanTitle}`)) {
+    part2Title = `PART 2: VISUAL PREPOSITION CHECK · "TRUE OR FALSE? SHOW YOUR THUMB!"`;
+    part2Prompt = 'Teacher says a statement and shows the photo. If it is TRUE, mark YES ( 👍 ). If it is FALSE, mark NO ( 👎 )!';
+  }
+
+  if (pack.actionWorksheet?.part2?.title) part2Title = pack.actionWorksheet.part2.title;
+  if (pack.actionWorksheet?.part2?.badge) part2Badge = pack.actionWorksheet.part2.badge;
+  if (pack.actionWorksheet?.part2?.teacherPrompt) part2Prompt = pack.actionWorksheet.part2.teacherPrompt;
+
+  // Extract or synthesize Part 2 Items (4 cards)
   let prepositionItems = [];
   if (pack.actionWorksheet?.part2?.items?.length) {
     prepositionItems = pack.actionWorksheet.part2.items;
-  }
-
-  const defaultSpatialItems = [
-    { concept: 'ON', relation: 'on', sentence: 'The book is ON the desk.', subject: 'book', reference: 'desk' },
-    { concept: 'UNDER', relation: 'under', sentence: 'The bag is UNDER the chair.', subject: 'bag', reference: 'chair' },
-    { concept: 'IN', relation: 'in', sentence: 'The pencil is IN the bag.', subject: 'pencil', reference: 'bag' },
-    { concept: 'NEXT TO', relation: 'next_to', sentence: 'The crayon is NEXT TO the book.', subject: 'crayon', reference: 'book' }
-  ];
-
-  if (!prepositionItems.length) {
-    if (isKinder || /where|book|chair|desk|preposition/i.test(cleanTitle)) {
-      prepositionItems = defaultSpatialItems;
+  } else {
+    if (isKinder || /where\s*is|preposition/i.test(`${scenario} ${cleanTitle}`)) {
+      prepositionItems = [
+        { concept: 'ON', relation: 'on', sentence: 'The book is ON the desk.', subject: 'book', reference: 'desk' },
+        { concept: 'UNDER', relation: 'under', sentence: 'The bag is UNDER the chair.', subject: 'bag', reference: 'chair' },
+        { concept: 'IN', relation: 'in', sentence: 'The pencil is IN the bag.', subject: 'pencil', reference: 'bag' },
+        { concept: 'NEXT TO', relation: 'next_to', sentence: 'The crayon is NEXT TO the book.', subject: 'crayon', reference: 'book' }
+      ];
+    } else if (scenarioNoun.includes('MARKET')) {
+      prepositionItems = [
+        { concept: 'PRICE CHECK', relation: 'on', sentence: 'The fresh pineapple costs two dollars and fifty cents.', subject: 'pineapple', reference: 'market' },
+        { concept: 'ROOT VEGETABLE', relation: 'in', sentence: 'Yuca is a fresh root vegetable sold at the market stand.', subject: 'yuca', reference: 'market' },
+        { concept: 'TROPICAL FRUIT', relation: 'on', sentence: 'The yellow mango is ripe, sweet, and ready to eat.', subject: 'mango', reference: 'market' },
+        { concept: 'CURRENCY', relation: 'next_to', sentence: 'We use dollars and cents to pay the grocery vendor.', subject: 'dollar', reference: 'market' }
+      ];
     } else {
-      // Synthesize 4 authentic concept checks from vocabulary
       const w0 = realiaItems[0]?.word || 'item';
       const w1 = realiaItems[1]?.word || 'item';
       const w2 = realiaItems[2]?.word || 'item';
       const w3 = realiaItems[3]?.word || 'item';
       prepositionItems = [
-        { concept: 'CHECK 1', relation: 'on', sentence: `The ${w0.toLowerCase()} is available in the scenario.`, subject: w0, reference: 'desk' },
-        { concept: 'CHECK 2', relation: 'under', sentence: `We identify the ${w1.toLowerCase()} in the lesson.`, subject: w1, reference: 'chair' },
-        { concept: 'CHECK 3', relation: 'in', sentence: `The customer asks about the ${w2.toLowerCase()}.`, subject: w2, reference: 'bag' },
-        { concept: 'CHECK 4', relation: 'next_to', sentence: `We compare the ${w3.toLowerCase()} with others.`, subject: w3, reference: 'book' }
+        { concept: isReading ? 'READ & CHECK' : 'FEATURE 1', relation: 'on', sentence: `The ${w0.toLowerCase()} is clearly identified in our ${scenario}.`, subject: w0, reference: 'desk' },
+        { concept: isReading ? 'READ & CHECK' : 'FEATURE 2', relation: 'in', sentence: `We explore the features of the ${w1.toLowerCase()} in the lesson.`, subject: w1, reference: 'desk' },
+        { concept: isReading ? 'READ & CHECK' : 'FEATURE 3', relation: 'under', sentence: `The ${w2.toLowerCase()} is an essential part of today's task.`, subject: w2, reference: 'desk' },
+        { concept: isReading ? 'READ & CHECK' : 'FEATURE 4', relation: 'next_to', sentence: `We use the ${w3.toLowerCase()} to complete our communicative goal.`, subject: w3, reference: 'desk' }
       ];
     }
   }
 
   // Teacher Guides & Page 2/3 Data
   const activity3 = page2.activity3 || {
-    title: 'Activity 3: Authentic Communicative Exchange',
+    title: `Activity 3: Authentic Communicative Exchange (${skillName})`,
     instruction: 'Complete the interaction using words from the Word Bank below:',
     wordBank: realiaItems.slice(0, 4).map(w => w.word),
     dialogue: [
-      { speaker: 'Teacher / Speaker 1', text: `Hello class! Look around. Where is your ${realiaItems[0]?.word || 'book'}?` },
-      { speaker: 'Student / Speaker 2', text: `It is right here on my desk!` },
-      { speaker: 'Teacher / Speaker 1', text: `Great job! Now point to your ${realiaItems[3]?.word || 'bag'}.` },
-      { speaker: 'Student / Speaker 2', text: `My bag is ready for our lesson today.` }
+      { speaker: 'Role 1', text: `Hello! Today in our lesson about ${scenario}, we focus on ${realiaItems[0]?.word || 'our topic'}.` },
+      { speaker: 'Role 2', text: `That is great! How do we use ${realiaItems[1]?.word || 'this item'} in real context?` },
+      { speaker: 'Role 1', text: `We examine the key details and share our ideas with the class.` },
+      { speaker: 'Role 2', text: `Excellent, let's complete the task together!` }
     ]
   };
 
   const activity4 = page2.activity4 || {
     title: `Activity 4: Performance Action Task (${cleanTitle})`,
-    instruction: 'Listen to the prompt. Draw your favorite object and trace its name below:'
+    instruction: isReading
+      ? 'Read the scenario prompt below. Highlight key items and answer the comprehension prompt:'
+      : isWriting
+      ? 'Write short sentences about the items in the scenario using the provided lines:'
+      : 'Listen to the prompt. Draw your favorite item and write its name below:'
   };
 
   const exitTicket = page3.exitTicket || {
     title: 'Student Exit Ticket (Quick Check)',
     questions: [
       { prompt: `1. What is the target scenario of today's lesson?`, options: [`A) ${cleanTitle}`, 'B) Unrelated Topic'], correct: `A) ${cleanTitle}` },
-      { prompt: `2. We practiced identifying objects in ${scenario}.`, options: ['True', 'False'], correct: 'True' },
-      { prompt: `3. Which item was highlighted in the activity?`, options: [`A) ${realiaItems[0]?.word || 'Book'}`, 'B) None'], correct: `A) ${realiaItems[0]?.word || 'Book'}` }
+      { prompt: `2. We practiced ${skillName.toLowerCase()} skills in ${scenario}.`, options: ['True', 'False'], correct: 'True' },
+      { prompt: `3. Which item was highlighted in the activity?`, options: [`A) ${realiaItems[0]?.word || 'Concept'}`, 'B) None'], correct: `A) ${realiaItems[0]?.word || 'Concept'}` }
     ]
   };
 
   const teacherGuide = page3.teacherGuide || {
-    title: 'Teacher Read-Aloud Audio Scripts (For Classroom Instruction)',
+    title: 'Teacher Audio Scripts & Pedagogical Guide (MEDUCA AOA)',
     scripts: [
-      { stage: 'Stage 1 Realia Hook Audio', text: `Teacher commands: "Students, look at your paper! Point to the photo of the ${realiaItems[0]?.word || 'book'}. Now touch the real one in our classroom!"` },
-      { stage: 'Stage 2 Preposition Check Script', text: `Teacher says clearly: "Number 1: The book is ON the desk. Show me your thumbs: YES (👍) or NO (👎)!"` },
-      { stage: 'Stage 4 Performance Task Dictation', text: `Listen carefully: "In our scenario ${scenario}, we use our classroom objects every day. Draw your favorite item and show your partner."` }
+      { stage: `Stage 1 ${skillName} Hook`, text: `Teacher prompts: "Class, look at your worksheet! Focus on ${realiaItems[0]?.word || 'the first item'}. ${part1Instruction}"` },
+      { stage: `Stage 2 ${skillName} Presentation`, text: `Teacher guides students through the target sentence: "${prepositionItems[0]?.sentence || 'Linguistic input modeling'}"` },
+      { stage: 'Stage 4 Performance Action Task', text: `Teacher instructions: "In our scenario ${scenario}, apply your ${skillName.toLowerCase()} skills to complete the tangible deliverable."` }
     ],
     answerKey: [
-      { item: 'Part 1 Realia Recognition', answer: realiaItems.map((w, i) => `${i + 1}. ${w.word}`).join('  ·  ') },
-      { item: 'Part 2 Preposition Check', answer: 'Item 1: YES (👍)  ·  Item 2: YES (👍)  ·  Item 3: YES (👍)  ·  Item 4: YES (👍)' },
+      { item: `Part 1 (${skillName})`, answer: realiaItems.map((w, i) => `${i + 1}. ${w.word}`).join('  ·  ') },
+      { item: `Part 2 (${skillName} Check)`, answer: prepositionItems.slice(0, 4).map((it, i) => `Item ${i + 1}: YES (👍)`).join('  ·  ') },
       { item: 'Activity 3 Exchange Cloze', answer: realiaItems.slice(0, 4).map(w => w.word).join(', ') },
       { item: 'Exit Ticket Quiz', answer: '1. A (Scenario)  ·  2. True  ·  3. A (Target Concept)' }
     ],
     rubric: pack.rubric || [
       {
-        criterion: `Receptive Listening & Non-Verbal Action (TPR)`,
-        independent: 'Points to correct real photo and performs physical action immediately without hesitation.',
-        withSupport: 'Points to target items with 1-2 teacher prompts or peer modeling.',
-        emerging: 'Requires direct physical guidance and continuous repetition.'
+        criterion: `${skillName} Competence & Target Vocabulary`,
+        independent: 'Demonstrates complete comprehension and fluency without teacher prompts.',
+        withSupport: 'Completes tasks with 1-2 prompts or visual cues.',
+        emerging: 'Requires continuous modeling and direct assistance.'
       },
       {
-        criterion: 'Spatial Concept & Preposition Discrimination',
-        independent: 'Accurately discriminates ON, UNDER, IN, NEXT TO with 90-100% precision.',
-        withSupport: 'Discriminates spatial relations with visual gesture assistance.',
-        emerging: 'Identifies fewer than half the spatial relations.'
+        criterion: 'Task Accuracy & Contextual Verification',
+        independent: 'Accurately discriminates target words and verification statements (90-100%).',
+        withSupport: 'Completes verification with peer modeling or hints.',
+        emerging: 'Identifies fewer than half the items correctly.'
       },
       {
-        criterion: 'Active Social Engagement (AOA Panama)',
-        independent: 'Participates actively in classroom routine, showing thumbs and handling realia.',
-        withSupport: 'Participates with encouragement from teacher.',
-        emerging: 'Remains passive during physical actions.'
+        criterion: 'Action-Oriented Engagement (AOA Panama)',
+        independent: 'Actively fulfills student role and completes the deliverable with autonomy.',
+        withSupport: 'Participates with teacher encouragement.',
+        emerging: 'Requires direct step-by-step supervision.'
       }
     ]
   };
 
   // Grade badge labels
-  const gradeLevelCategory = isKinder ? 'Pre-Media Inicial' : 'Primaria Media';
-  const skillsDetail = isKinder ? 'Receptive Listening & Non-Verbal Action (TPR)' : `${skill} & Communicative Practice`;
-  const skillPill = isKinder ? 'Listening & TPR' : `${skill} · AOA`;
+  const gradeLevelCategory = isKinder
+    ? 'Educación Inicial'
+    : /1|2/i.test(grade)
+    ? 'Primaria Baja'
+    : /3|4/i.test(grade)
+    ? 'Primaria Media'
+    : /5|6/i.test(grade)
+    ? 'Primaria Alta'
+    : /7|8|9/i.test(grade)
+    ? 'Pre-Media'
+    : 'Educación Media';
+
+  const skillsDetail = isKinder
+    ? 'Receptive Listening & Non-Verbal Action (TPR)'
+    : `${skillName} & Communicative Practice`;
+
+  const skillPill = isKinder ? 'Listening & TPR' : `${skillName} · AOA`;
 
   // ══════════════════════════════════════════════════════════════════
   // TOP BAR & ALERT (Matching Image 1 exact preview aesthetics)
@@ -194,7 +331,7 @@ export function renderWorkbookHtml(pack) {
   `;
 
   // ══════════════════════════════════════════════════════════════════
-  // PAGE 1: THE ACTION WORKSHEET (FICHA CONCRETA DE TRABAJO - IMAGE 1)
+  // PAGE 1: THE ACTION WORKSHEET (FICHA CONCRETA DE TRABAJO)
   // ══════════════════════════════════════════════════════════════════
   const page1Html = `
     <div class="workbook-page bg-white p-7 sm:p-9 border border-slate-200 shadow-2xl rounded-3xl print:border-none print:shadow-none print:p-0 print:m-0 print:rounded-none max-w-[215mm] mx-auto text-slate-900 my-4">
@@ -240,7 +377,7 @@ export function renderWorkbookHtml(pack) {
         </div>
       </div>
 
-      <!-- PART 1: LISTEN & POINT TO THE REAL CLASSROOM OBJECTS (REALIA HOOK) -->
+      <!-- PART 1: REALIA VOCABULARY HOOK (SKILL-ADAPTIVE) -->
       <section class="mt-2 mb-4">
         <div class="flex items-center justify-between gap-2 mb-1">
           <div class="flex items-center gap-2">
@@ -248,16 +385,16 @@ export function renderWorkbookHtml(pack) {
               A
             </span>
             <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">
-              PART 1: LISTEN & POINT TO THE REAL CLASSROOM OBJECTS (REALIA HOOK)
+              ${part1Title}
             </h3>
           </div>
           <span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700">
-            Receptive Vocabulary
+            ${part1Badge}
           </span>
         </div>
 
         <p class="text-[10.5px] text-slate-600 italic mb-2.5 font-medium leading-tight">
-          <strong>Teacher instruction:</strong> "Listen carefully! When teacher says the word, point to the real photo on your paper and touch the real object in the classroom!"
+          <strong>Teacher instruction:</strong> "${part1Instruction}"
         </p>
 
         <!-- 6 Realia Photo Cards Grid -->
@@ -274,15 +411,15 @@ export function renderWorkbookHtml(pack) {
               <span class="text-[11px] font-black text-slate-900 uppercase truncate w-full">
                 ${idx + 1}. ${item.word}
               </span>
-              <span class="mt-1 text-[9px] font-bold text-slate-500 bg-slate-50 border border-slate-200 rounded-md px-1 py-0.5 w-full">
-                [ Point Here 👆 ]
+              <span class="mt-1 text-[9px] font-bold text-slate-600 bg-slate-50 border border-slate-200 rounded-md px-1 py-0.5 w-full">
+                ${part1ActionCue}
               </span>
             </div>
           `).join('')}
         </div>
       </section>
 
-      <!-- PART 2: VISUAL PREPOSITION CHECK · "TRUE OR FALSE? SHOW YOUR THUMB!" -->
+      <!-- PART 2: ACCURACY & COMPREHENSION CHECK (SKILL-ADAPTIVE) -->
       <section class="mt-3">
         <div class="flex items-center justify-between gap-2 mb-1">
           <div class="flex items-center gap-2">
@@ -290,19 +427,19 @@ export function renderWorkbookHtml(pack) {
               B
             </span>
             <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">
-              PART 2: VISUAL PREPOSITION CHECK · "TRUE OR FALSE? SHOW YOUR THUMB!"
+              ${part2Title}
             </h3>
           </div>
           <span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700">
-            Accuracy of Listening
+            ${part2Badge}
           </span>
         </div>
 
         <p class="text-[10.5px] text-slate-600 italic mb-2.5 font-medium leading-tight">
-          <strong>Teacher prompt:</strong> "Teacher says a statement and shows the photo. If it is TRUE, mark YES ( 👍 ). If it is FALSE, mark NO ( 👎 )!"
+          <strong>Teacher prompt:</strong> "${part2Prompt}"
         </p>
 
-        <!-- 4 Preposition / Concept Cards Grid -->
+        <!-- 4 Concept Verification Cards Grid -->
         <div class="grid grid-cols-4 gap-2.5">
           ${prepositionItems.slice(0, 4).map((item, idx) => `
             <div class="border border-slate-200 rounded-2xl p-2 bg-white flex flex-col justify-between shadow-sm">
@@ -315,10 +452,10 @@ export function renderWorkbookHtml(pack) {
                 })}
               </div>
               <div class="text-[10.5px] font-black text-indigo-900 mb-0.5">
-                Item ${idx + 1}: [ ${String(item.concept || item.relation || 'ON').toUpperCase()} ]
+                Item ${idx + 1}: [ ${String(item.concept || item.relation || 'CHECK').toUpperCase()} ]
               </div>
               <p class="text-[10px] italic text-slate-600 mb-2 leading-tight line-clamp-2">
-                "${item.sentence || `The item is in context.`}"
+                "${item.sentence || `The item is verified in the scenario.`}"
               </p>
               <div class="grid grid-cols-2 gap-1 text-[11px] font-extrabold">
                 <div class="py-1 px-1 rounded-lg border border-emerald-500 bg-emerald-50 text-emerald-700 flex items-center justify-center gap-1 select-none">
@@ -336,7 +473,7 @@ export function renderWorkbookHtml(pack) {
       <!-- Footer -->
       <div class="mt-4 pt-2 border-t border-slate-200 flex justify-between items-center text-[10px] text-slate-400 font-bold">
         <span>EduGen Panama · Action-Oriented Approach Curriculum · MEDUCA</span>
-        <span>Page 1 · Action Worksheet</span>
+        <span>Page 1 · Action Worksheet (${skillName})</span>
       </div>
     </div>
   `;
@@ -356,11 +493,11 @@ export function renderWorkbookHtml(pack) {
         </div>
       </header>
 
-      <!-- Activity 2: Listen & Match with Realia Icons -->
+      <!-- Activity 2: Match with Realia Photos -->
       <section class="mt-3">
         <div class="flex items-center gap-2 mb-1">
           <span class="w-5 h-5 rounded-full bg-slate-900 text-white font-black text-xs flex items-center justify-center">1</span>
-          <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">Activity 2: Listen & Match the Classroom Objects</h3>
+          <h3 class="text-xs font-black uppercase tracking-wider text-slate-900">Activity 2: ${isReading ? 'Read & Match the Words to Realia' : 'Listen & Match the Target Items'}</h3>
         </div>
         <p class="text-xs text-slate-600 mb-2 font-medium">Draw a straight line to connect each photo with its matching English word:</p>
 
@@ -404,7 +541,7 @@ export function renderWorkbookHtml(pack) {
         </div>
       </section>
 
-      <!-- Activity 4: Performance Action Task (Drawing Space) -->
+      <!-- Activity 4: Performance Action Task (Drawing & Writing Space) -->
       <section class="mt-4">
         <div class="flex items-center gap-2 mb-1">
           <span class="w-5 h-5 rounded-full bg-slate-900 text-white font-black text-xs flex items-center justify-center">3</span>
@@ -413,10 +550,10 @@ export function renderWorkbookHtml(pack) {
         <p class="text-xs text-slate-600 mb-1.5 font-medium">${activity4.instruction}</p>
 
         <div class="border-2 border-dashed border-slate-400 rounded-2xl p-4 bg-slate-50/50 min-h-[140px] flex flex-col justify-between items-center text-center">
-          <span class="text-xs font-bold text-slate-400">🎨 Draw your classroom object here (e.g. My Favorite Book / Bag / Desk)</span>
+          <span class="text-xs font-bold text-slate-400">🎨 Tangible Learning Task (${scenarioNoun})</span>
           <div class="w-full pt-4 border-t border-slate-300 flex justify-between items-center text-xs font-bold text-slate-600">
-            <span>Label: _______________________</span>
-            <span>Where is it? It is _______________________</span>
+            <span>Item: _______________________</span>
+            <span>Notes / Description: _______________________</span>
           </div>
         </div>
       </section>
