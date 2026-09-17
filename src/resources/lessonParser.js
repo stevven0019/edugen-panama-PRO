@@ -202,7 +202,7 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
         : `PART 2: AUDITORY ACCURACY CHECK · "TRUE OR FALSE? SHOW YOUR THUMB!"`,
       badge: isReading ? 'Reading Accuracy' : isWriting ? 'Written Accuracy' : isSpeaking ? 'Interaction Check' : isMediation ? 'Collaborative Accuracy' : 'Accuracy of Listening',
       teacherPrompt: isReading
-        ? 'Read each short sentence carefully. Compare the text with the photo. If the sentence is TRUE according to the scenario, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!'
+        ? 'Read each short statement carefully. Evaluate if the sentence is TRUE according to the scenario, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!'
         : 'Teacher says a statement and shows the photo. If it is TRUE, mark YES ( 👍 ). If it is FALSE, mark NO ( 👎 )!',
       items: vocabWords.slice(0, 4).map((w, idx) => ({
         concept: isReading ? `READ & CHECK ${idx + 1}` : `VERIFY ${idx + 1}`,

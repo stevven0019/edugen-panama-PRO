@@ -1,5 +1,6 @@
 import { renderRealiaCardHtml, renderSpatialCardHtml, getRealiaPhoto } from './realiaCatalog.js';
 import { getIllustrationSvg } from './illustrations.js';
+import { getAoaCurricularBlueprint, resolveCefrBand, CEFR_BANDS } from './aoaMasterBank.js';
 
 function getScenarioThemeNoun(scenario, title) {
   const text = `${scenario || ''} ${title || ''}`.toLowerCase();
@@ -22,6 +23,98 @@ function getScenarioThemeNoun(scenario, title) {
     return 'CLASSROOM OBJECTS';
   }
   return 'TARGET SCENARIO ITEMS';
+}
+
+const CARD_THEMES = [
+  {
+    stroke: '#065F46',
+    bg: '#ECFDF5',
+    accent: '#10B981',
+    border: 'border-emerald-300',
+    headerBg: 'bg-emerald-50/70',
+    tagBg: 'bg-emerald-100 text-emerald-800'
+  },
+  {
+    stroke: '#92400E',
+    bg: '#FFFBEB',
+    accent: '#F59E0B',
+    border: 'border-amber-300',
+    headerBg: 'bg-amber-50/70',
+    tagBg: 'bg-amber-100 text-amber-800'
+  },
+  {
+    stroke: '#3730A3',
+    bg: '#EEF2FF',
+    accent: '#6366F1',
+    border: 'border-indigo-300',
+    headerBg: 'bg-indigo-50/70',
+    tagBg: 'bg-indigo-100 text-indigo-800'
+  },
+  {
+    stroke: '#075985',
+    bg: '#F0F9FF',
+    accent: '#0EA5E9',
+    border: 'border-sky-300',
+    headerBg: 'bg-sky-50/70',
+    tagBg: 'bg-sky-100 text-sky-800'
+  }
+];
+
+function renderConceptLineDrawingSvg(item, theme) {
+  const text = `${item.concept || ''} ${item.subject || ''} ${item.sentence || ''} ${item.relation || ''}`.toLowerCase();
+  const stroke = theme.stroke;
+  const bg = theme.bg;
+  const accent = theme.accent;
+
+  // 1. Price / Currency / Money / Dollar
+  if (/price|cost|dollar|cent|money|currency|pago|precio/i.test(text)) {
+    return `
+      <svg viewBox="0 0 100 70" class="w-16 h-12 select-none" fill="none" stroke="${stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="14" y="12" width="72" height="46" rx="8" fill="${bg}" stroke="${stroke}" stroke-width="2.5" />
+        <circle cx="50" cy="35" r="14" fill="${accent}" fill-opacity="0.2" stroke="${stroke}" stroke-width="2" />
+        <path d="M50 26 L50 44 M46 30 C46 27 54 27 54 32 C54 37 46 37 46 41 C46 41 54 41 54 41" stroke="${stroke}" stroke-width="2.2" />
+        <circle cx="24" cy="35" r="2.5" fill="${stroke}" />
+        <circle cx="76" cy="35" r="2.5" fill="${stroke}" />
+      </svg>
+    `;
+  }
+
+  // 2. Vegetable / Harvest / Root / Agriculture / Food
+  if (/vegetable|root|yuca|carrot|plant|harvest|verdura|crop/i.test(text)) {
+    return `
+      <svg viewBox="0 0 100 70" class="w-16 h-12 select-none" fill="none" stroke="${stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M50 62 C38 48 34 36 34 24 C34 14 66 14 66 24 C66 36 62 48 50 62 Z" fill="${bg}" stroke="${stroke}" stroke-width="2.5" />
+        <path d="M50 14 L50 6 M42 14 L34 6 M58 14 L66 6" stroke="${accent}" stroke-width="3" />
+        <line x1="40" y1="28" x2="52" y2="30" stroke="${stroke}" stroke-width="2" />
+        <line x1="46" y1="40" x2="60" y2="42" stroke="${stroke}" stroke-width="2" />
+      </svg>
+    `;
+  }
+
+  // 3. Fruit / Tropical Fruit / Food
+  if (/fruit|mango|pineapple|apple|orange|banana|fruta/i.test(text)) {
+    return `
+      <svg viewBox="0 0 100 70" class="w-16 h-12 select-none" fill="none" stroke="${stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="50" cy="40" r="22" fill="${bg}" stroke="${stroke}" stroke-width="2.5" />
+        <path d="M50 18 C50 10 58 6 64 6" stroke="${accent}" stroke-width="3" />
+        <path d="M58 6 C64 12 58 18 50 18" fill="${accent}" fill-opacity="0.3" stroke="${stroke}" stroke-width="2" />
+        <circle cx="43" cy="35" r="2" fill="${stroke}" />
+        <path d="M40 46 C45 51 55 51 60 46" stroke="${stroke}" stroke-width="2" />
+      </svg>
+    `;
+  }
+
+  // 4. Default / Reading Statement Check / Fact Verification
+  return `
+    <svg viewBox="0 0 100 70" class="w-16 h-12 select-none" fill="none" stroke="${stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 16 C30 12 44 14 50 18 C56 14 70 12 82 16 L82 54 C70 50 56 52 50 56 C44 52 30 50 18 54 Z" fill="${bg}" stroke="${stroke}" stroke-width="2.5" />
+      <line x1="50" y1="18" x2="50" y2="56" stroke="${stroke}" stroke-width="2" />
+      <path d="M28 26 L42 26 M28 34 L42 34 M28 42 L38 42" stroke="${accent}" stroke-width="2" />
+      <path d="M58 26 L72 26 M58 34 L72 34 M58 42 L68 42" stroke="${accent}" stroke-width="2" />
+      <circle cx="74" cy="50" r="8" fill="${accent}" stroke="${stroke}" stroke-width="1.8" />
+      <path d="M71 50 L73 52 L78 47" stroke="#FFFFFF" stroke-width="2" />
+    </svg>
+  `;
 }
 
 export function renderWorkbookHtml(pack) {
@@ -53,6 +146,14 @@ export function renderWorkbookHtml(pack) {
 
   // Contextual theme noun
   const scenarioNoun = getScenarioThemeNoun(scenario, cleanTitle);
+
+  // AOA Master Pedagogical Catalog Blueprint
+  const aoaBlueprint = getAoaCurricularBlueprint({
+    grade,
+    skill: skillName,
+    scenario,
+    lessonNum: lessonNumber
+  });
 
   // 1. Extract or synthesize Part 1 Realia Items (6 cards)
   let realiaItems = [];
@@ -145,22 +246,22 @@ export function renderWorkbookHtml(pack) {
   if (isReading) {
     part2Title = `PART 2: READING COMPREHENSION · "TRUE OR FALSE? READ & VERIFY!"`;
     part2Badge = 'Reading Accuracy';
-    part2Prompt = 'Read each short sentence carefully. Compare the text with the photo. If the sentence is TRUE according to the scenario, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!';
+    part2Prompt = 'Read each short statement carefully. Evaluate if the sentence is TRUE according to the scenario, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!';
   } else if (isWriting) {
     part2Title = `PART 2: WRITTEN VERIFICATION · "CHECK & COMPLETE THE RECORD!"`;
     part2Badge = 'Written Accuracy';
-    part2Prompt = 'Read the statement and inspect the photo. Verify the written information and mark YES ( 👍 ) or NO ( 👎 ) on your report!';
+    part2Prompt = 'Read the statement carefully. Verify the written facts and mark YES ( 👍 ) or NO ( 👎 ) on your report!';
   } else if (isSpeaking) {
     part2Title = `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`;
     part2Badge = 'Interaction Check';
-    part2Prompt = "Partner A asks the inquiry question. Partner B looks at the card and answers. If answered correctly and fluently, mark YES ( 👍 )!";
+    part2Prompt = "Partner A asks the inquiry question. Partner B checks the statement and answers aloud. If answered correctly and fluently, mark YES ( 👍 )!";
   } else if (isMediation) {
     part2Title = `PART 2: INTERPERSONAL MEDIATION · "RELAY THE MESSAGE CLEARLY!"`;
     part2Badge = 'Collaborative Accuracy';
     part2Prompt = 'Read the situation. Mediate the information in simple English for your peer. Verify if the explanation was understood: mark YES ( 👍 ) or NO ( 👎 )!';
   } else if (isKinder || /preposition|where\s*is/i.test(`${scenario} ${cleanTitle}`)) {
     part2Title = `PART 2: VISUAL PREPOSITION CHECK · "TRUE OR FALSE? SHOW YOUR THUMB!"`;
-    part2Prompt = 'Teacher says a statement and shows the photo. If it is TRUE, mark YES ( 👍 ). If it is FALSE, mark NO ( 👎 )!';
+    part2Prompt = 'Teacher says a statement and shows the spatial scene. If it is TRUE, mark YES ( 👍 ). If it is FALSE, mark NO ( 👎 )!';
   }
 
   if (pack.actionWorksheet?.part2?.title) part2Title = pack.actionWorksheet.part2.title;
@@ -214,12 +315,8 @@ export function renderWorkbookHtml(pack) {
   };
 
   const activity4 = page2.activity4 || {
-    title: `Activity 4: Performance Action Task (${cleanTitle})`,
-    instruction: isReading
-      ? 'Read the scenario prompt below. Highlight key items and answer the comprehension prompt:'
-      : isWriting
-      ? 'Write short sentences about the items in the scenario using the provided lines:'
-      : 'Listen to the prompt. Draw your favorite item and write its name below:'
+    title: `Activity 4: ${aoaBlueprint.stages.stage4.name}`,
+    instruction: aoaBlueprint.stages.stage4.desc
   };
 
   const exitTicket = page3.exitTicket || {
@@ -241,6 +338,7 @@ export function renderWorkbookHtml(pack) {
     answerKey: [
       { item: `Part 1 (${skillName})`, answer: realiaItems.map((w, i) => `${i + 1}. ${w.word}`).join('  ·  ') },
       { item: `Part 2 (${skillName} Check)`, answer: prepositionItems.slice(0, 4).map((it, i) => `Item ${i + 1}: YES (👍)`).join('  ·  ') },
+      { item: 'Activity 2 Matching Key', answer: realiaItems.slice(0, 4).map((w, i) => `Photo ${String.fromCharCode(65 + i)} → ${w.word.toLowerCase()}`).join('  ·  ') },
       { item: 'Activity 3 Exchange Cloze', answer: realiaItems.slice(0, 4).map(w => w.word).join(', ') },
       { item: 'Exit Ticket Quiz', answer: '1. A (Scenario)  ·  2. True  ·  3. A (Target Concept)' }
     ],
@@ -266,24 +364,13 @@ export function renderWorkbookHtml(pack) {
     ]
   };
 
-  // Grade badge labels
-  const gradeLevelCategory = isKinder
-    ? 'Educación Inicial'
-    : /1|2/i.test(grade)
-    ? 'Primaria Baja'
-    : /3|4/i.test(grade)
-    ? 'Primaria Media'
-    : /5|6/i.test(grade)
-    ? 'Primaria Alta'
-    : /7|8|9/i.test(grade)
-    ? 'Pre-Media'
-    : 'Educación Media';
-
+  // Grade badge labels from AOA Master Bank
+  const gradeLevelCategory = `${aoaBlueprint.bandMeta.name} (${aoaBlueprint.bandMeta.cefr})`;
   const skillsDetail = isKinder
     ? 'Receptive Listening & Non-Verbal Action (TPR)'
-    : `${skillName} & Communicative Practice`;
+    : `${skillName} · ${aoaBlueprint.bandMeta.cefr} · Action-Oriented Practice`;
 
-  const skillPill = isKinder ? 'Listening & TPR' : `${skillName} · AOA`;
+  const skillPill = `${skillName} · ${aoaBlueprint.bandMeta.cefr}`;
 
   // ══════════════════════════════════════════════════════════════════
   // TOP BAR & ALERT (Matching Image 1 exact preview aesthetics)
@@ -439,34 +526,53 @@ export function renderWorkbookHtml(pack) {
           <strong>Teacher prompt:</strong> "${part2Prompt}"
         </p>
 
-        <!-- 4 Concept Verification Cards Grid -->
+        <!-- 4 Concept Verification Cards Grid (Textos Coloridos & Dibujos Lineales) -->
         <div class="grid grid-cols-4 gap-2.5">
-          ${prepositionItems.slice(0, 4).map((item, idx) => `
-            <div class="border border-slate-200 rounded-2xl p-2 bg-white flex flex-col justify-between shadow-sm">
-              <div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 mb-1.5 flex items-center justify-center relative">
-                ${renderSpatialCardHtml({
+          ${prepositionItems.slice(0, 4).map((item, idx) => {
+            const theme = CARD_THEMES[idx % CARD_THEMES.length];
+            const isPrepositionScene = isKinder && /where\s*is|preposition/i.test(`${scenario} ${cleanTitle}`);
+
+            return `
+            <div class="border-2 ${theme.border} rounded-2xl p-2.5 bg-white flex flex-col justify-between shadow-sm transition">
+              <!-- Top Thematic Tag -->
+              <div class="flex items-center justify-between gap-1 mb-1.5">
+                <span class="text-[9.5px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md ${theme.tagBg}">
+                  Item ${idx + 1} · [ ${String(item.concept || item.relation || 'CHECK').toUpperCase()} ]
+                </span>
+                <span class="text-[9px] font-black text-slate-400">
+                  #${idx + 1}
+                </span>
+              </div>
+
+              <!-- Visual Element: Realia Preposition Scene (Kinder) OR Colorful Outline Line Drawing -->
+              <div class="w-full aspect-[16/9] rounded-xl overflow-hidden ${theme.headerBg} border border-slate-200/80 mb-2 flex items-center justify-center relative">
+                ${isPrepositionScene ? renderSpatialCardHtml({
                   relation: item.relation || item.concept || 'on',
                   subject: item.subject || 'book',
                   reference: item.reference || 'desk',
                   photoUrl: item.photoUrl
-                })}
+                }) : renderConceptLineDrawingSvg(item, theme)}
               </div>
-              <div class="text-[10.5px] font-black text-indigo-900 mb-0.5">
-                Item ${idx + 1}: [ ${String(item.concept || item.relation || 'CHECK').toUpperCase()} ]
+
+              <!-- Reading / Verification Sentence in Clear Legible Font -->
+              <div class="p-2 rounded-xl bg-slate-50 border border-slate-200/80 mb-2.5 flex items-center justify-center min-h-[48px] text-center">
+                <p class="text-[11px] font-bold text-slate-800 leading-snug">
+                  "${item.sentence || `The item is verified in the scenario.`}"
+                </p>
               </div>
-              <p class="text-[10px] italic text-slate-600 mb-2 leading-tight line-clamp-2">
-                "${item.sentence || `The item is verified in the scenario.`}"
-              </p>
-              <div class="grid grid-cols-2 gap-1 text-[11px] font-extrabold">
-                <div class="py-1 px-1 rounded-lg border border-emerald-500 bg-emerald-50 text-emerald-700 flex items-center justify-center gap-1 select-none">
+
+              <!-- Comprehension Verification Buttons -->
+              <div class="grid grid-cols-2 gap-1.5 text-[11px] font-black">
+                <div class="py-1 px-1 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-800 flex items-center justify-center gap-1 select-none shadow-sm cursor-pointer">
                   👍 YES
                 </div>
-                <div class="py-1 px-1 rounded-lg border border-slate-300 bg-white text-slate-600 flex items-center justify-center gap-1 select-none">
+                <div class="py-1 px-1 rounded-xl border-2 border-slate-300 bg-white text-slate-600 flex items-center justify-center gap-1 select-none cursor-pointer">
                   👎 NO
                 </div>
               </div>
             </div>
-          `).join('')}
+          `;
+          }).join('')}
         </div>
       </section>
 
@@ -501,25 +607,59 @@ export function renderWorkbookHtml(pack) {
         </div>
         <p class="text-xs text-slate-600 mb-2 font-medium">Draw a straight line to connect each photo with its matching English word:</p>
 
-        <div class="space-y-2 max-w-lg mx-auto">
-          ${realiaItems.slice(0, 4).map((it, idx) => `
-            <div class="flex items-center justify-between gap-3">
-              <div class="flex-1 bg-white border-2 border-slate-800 rounded-xl p-1.5 px-3 flex items-center justify-between shadow-sm">
-                <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 rounded-lg overflow-hidden bg-slate-100 flex items-center justify-center">
-                    ${renderRealiaCardHtml({ word: it.word, label: it.label || it.word, photoUrl: it.photoUrl })}
+        <div class="space-y-2.5 max-w-lg mx-auto">
+          ${(() => {
+            const matchItems = realiaItems.slice(0, 4);
+            const matchLeft = matchItems.map((it, idx) => ({
+              letter: String.fromCharCode(65 + idx), // 'A', 'B', 'C', 'D'
+              num: idx + 1,
+              word: it.word,
+              photoUrl: it.photoUrl
+            }));
+            const n = matchLeft.length;
+            // Derangement shift so items never match horizontally across the row:
+            const shift = n > 2 ? 2 : 1;
+            const matchRight = matchLeft.map((_, idx) => matchLeft[(idx + shift) % n]);
+
+            return matchLeft.map((leftItem, idx) => {
+              const rightItem = matchRight[idx];
+              return `
+              <div class="flex items-center justify-between gap-3">
+                <!-- Left Column: Authentic Photo + Letter (No text answer spoiler!) -->
+                <div class="flex-1 bg-white border-2 border-slate-800 rounded-xl p-1.5 px-3 flex items-center justify-between shadow-sm">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-md bg-indigo-600 text-white font-black text-xs flex items-center justify-center select-none shadow-sm shrink-0">
+                      ${leftItem.letter}
+                    </span>
+                    <div class="w-9 h-9 rounded-lg overflow-hidden bg-slate-100 flex items-center justify-center border border-slate-200 shrink-0">
+                      ${renderRealiaCardHtml({ word: leftItem.word, label: leftItem.word, photoUrl: leftItem.photoUrl })}
+                    </div>
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">
+                      Photo ${leftItem.letter}
+                    </span>
                   </div>
-                  <span class="text-xs font-black text-slate-900">${it.word}</span>
+                  <div class="w-3.5 h-3.5 rounded-full bg-slate-800 shrink-0"></div>
                 </div>
-                <div class="w-3 h-3 rounded-full bg-slate-800"></div>
+
+                <!-- Dashed matching line connector -->
+                <div class="w-8 border-t-2 border-dashed border-slate-400 shrink-0"></div>
+
+                <!-- Right Column: Shuffled English Word + Write-in Bracket -->
+                <div class="flex-1 bg-white border-2 border-slate-800 rounded-xl p-1.5 px-3 flex items-center justify-between shadow-sm">
+                  <div class="w-3.5 h-3.5 rounded-full bg-slate-800 shrink-0"></div>
+                  <div class="flex items-center gap-2.5 ml-2 w-full justify-between">
+                    <div class="w-7 h-7 rounded-md border-2 border-dashed border-indigo-400 bg-indigo-50/60 flex items-center justify-center text-[11px] font-black text-indigo-700 select-none">
+                      [&nbsp;]
+                    </div>
+                    <span class="text-xs font-black text-slate-900 capitalize tracking-tight flex-1 text-right">
+                      ${rightItem.word.toLowerCase()}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div class="w-8 border-t-2 border-dashed border-slate-400"></div>
-              <div class="flex-1 bg-white border-2 border-slate-800 rounded-xl p-1.5 px-3 flex items-center justify-between shadow-sm">
-                <div class="w-3 h-3 rounded-full bg-slate-800"></div>
-                <span class="text-xs font-black text-slate-900">${it.word.toLowerCase()}</span>
-              </div>
-            </div>
-          `).join('')}
+            `;
+            }).join('');
+          })()}
         </div>
       </section>
 
@@ -640,6 +780,133 @@ export function renderWorkbookHtml(pack) {
               `).join('')}
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <!-- Stage 6: Metacognitive Reflection (AOA MEDUCA) -->
+      <section class="mt-3">
+        <div class="border-2 border-indigo-600 bg-indigo-50/40 rounded-2xl p-3">
+          <div class="flex items-center justify-between border-b border-indigo-200 pb-1 mb-2">
+            <span class="text-xs font-black uppercase tracking-wider text-indigo-950 flex items-center gap-1.5">
+              <span>🧠</span> Etapa 6: Metacognición & Can-Do · "${aoaBlueprint.stages.stage6.tool}"
+            </span>
+            <span class="text-[10px] text-indigo-700 font-extrabold uppercase bg-indigo-100 px-2 py-0.5 rounded">
+              ${aoaBlueprint.bandMeta.cefr}
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-700 font-medium mb-2">
+            <strong>Instrucción / Can-Do:</strong> "${aoaBlueprint.stages.stage6.prompt}"
+          </p>
+
+          ${isKinder ? `
+            <div class="flex items-center justify-around py-1 text-center">
+              <div class="flex flex-col items-center gap-0.5 cursor-pointer">
+                <span class="text-2xl select-none">😊</span>
+                <span class="text-[10px] font-black text-emerald-800">¡Pude hacerlo!</span>
+              </div>
+              <div class="flex flex-col items-center gap-0.5 cursor-pointer">
+                <span class="text-2xl select-none">😐</span>
+                <span class="text-[10px] font-black text-amber-800">Casi lo logro</span>
+              </div>
+              <div class="flex flex-col items-center gap-0.5 cursor-pointer">
+                <span class="text-2xl select-none">🙋‍♂️</span>
+                <span class="text-[10px] font-black text-blue-800">Necesito apoyo</span>
+              </div>
+            </div>
+          ` : isReading ? `
+            <div class="grid grid-cols-3 gap-2 text-[11px]">
+              <label class="p-1.5 px-2 rounded-xl border border-indigo-200 bg-white flex items-center gap-1.5 cursor-pointer font-bold text-slate-800 shadow-sm">
+                <input type="checkbox" class="rounded text-indigo-600" />
+                <span>📷 Mirar las fotos reales</span>
+              </label>
+              <label class="p-1.5 px-2 rounded-xl border border-indigo-200 bg-white flex items-center gap-1.5 cursor-pointer font-bold text-slate-800 shadow-sm">
+                <input type="checkbox" class="rounded text-indigo-600" />
+                <span>🔍 Palabras parecidas</span>
+              </label>
+              <label class="p-1.5 px-2 rounded-xl border border-indigo-200 bg-white flex items-center gap-1.5 cursor-pointer font-bold text-slate-800 shadow-sm">
+                <input type="checkbox" class="rounded text-indigo-600" />
+                <span>🤝 Leer con mi compañero</span>
+              </label>
+            </div>
+          ` : isWriting ? `
+            <div class="grid grid-cols-3 gap-2 text-[11px]">
+              <label class="p-1.5 px-2 rounded-xl border border-indigo-200 bg-white flex items-center gap-1.5 cursor-pointer font-bold text-slate-800 shadow-sm">
+                <input type="checkbox" class="rounded text-indigo-600" />
+                <span>Mayúsculas al inicio</span>
+              </label>
+              <label class="p-1.5 px-2 rounded-xl border border-indigo-200 bg-white flex items-center gap-1.5 cursor-pointer font-bold text-slate-800 shadow-sm">
+                <input type="checkbox" class="rounded text-indigo-600" />
+                <span>Espacio entre palabras</span>
+              </label>
+              <label class="p-1.5 px-2 rounded-xl border border-indigo-200 bg-white flex items-center gap-1.5 cursor-pointer font-bold text-slate-800 shadow-sm">
+                <input type="checkbox" class="rounded text-indigo-600" />
+                <span>Letra legible y limpia</span>
+              </label>
+            </div>
+          ` : isSpeaking ? `
+            <div class="flex items-center justify-around py-1 text-xs font-bold">
+              <span class="p-1 px-3 rounded-xl border border-slate-200 bg-white flex items-center gap-1.5 text-slate-600 shadow-sm">
+                <span>❄️</span> Cold (Con dudas)
+              </span>
+              <span class="p-1 px-3 rounded-xl border border-amber-300 bg-amber-50 flex items-center gap-1.5 text-amber-900 shadow-sm">
+                <span>🌤️</span> Warm (Mejorando)
+              </span>
+              <span class="p-1 px-3 rounded-xl border border-emerald-400 bg-emerald-50 flex items-center gap-1.5 text-emerald-900 font-black shadow-sm">
+                <span>🔥</span> Confident (¡Fluido!)
+              </span>
+            </div>
+          ` : `
+            <div class="grid grid-cols-2 gap-2 text-[11px]">
+              <label class="p-1.5 px-2 rounded-xl border border-indigo-200 bg-white flex items-center gap-1.5 cursor-pointer font-bold text-slate-800 shadow-sm">
+                <input type="checkbox" class="rounded text-indigo-600" />
+                <span>Fui paciente y empático al explicar</span>
+              </label>
+              <label class="p-1.5 px-2 rounded-xl border border-indigo-200 bg-white flex items-center gap-1.5 cursor-pointer font-bold text-slate-800 shadow-sm">
+                <input type="checkbox" class="rounded text-indigo-600" />
+                <span>Usé palabras sencillas que se entendieron</span>
+              </label>
+            </div>
+          `}
+        </div>
+      </section>
+
+      <!-- Banco Maestro AOA MEDUCA: Progresión Curricular de las 6 Etapas -->
+      <section class="mt-3">
+        <div class="border border-slate-300 rounded-2xl p-2.5 bg-slate-50">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[10px] font-black uppercase tracking-wider text-slate-700 flex items-center gap-1">
+              <span>🏛️</span> Banco Maestro AOA MEDUCA · Progresión Curricular (${aoaBlueprint.bandMeta.name} · ${aoaBlueprint.bandMeta.cefr})
+            </span>
+            <span class="text-[9px] font-black px-2 py-0.5 rounded bg-indigo-100 text-indigo-800">
+              Macro-Habilidad: ${skillName}
+            </span>
+          </div>
+          <div class="grid grid-cols-6 gap-1.5 text-[8.5px]">
+            <div class="bg-white border border-slate-200 rounded-lg p-1.5">
+              <span class="font-black text-indigo-700 block">Etapa 1 · Warm-up</span>
+              <span class="font-bold text-slate-800 block truncate" title="${aoaBlueprint.stages.stage1.name}">${aoaBlueprint.stages.stage1.name}</span>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-lg p-1.5">
+              <span class="font-black text-indigo-700 block">Etapa 2 · Input</span>
+              <span class="font-bold text-slate-800 block truncate" title="${aoaBlueprint.stages.stage2.name}">${aoaBlueprint.stages.stage2.name}</span>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-lg p-1.5">
+              <span class="font-black text-indigo-700 block">Etapa 3 · Practice</span>
+              <span class="font-bold text-slate-800 block truncate" title="${aoaBlueprint.stages.stage3.name}">${aoaBlueprint.stages.stage3.name}</span>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-lg p-1.5">
+              <span class="font-black text-indigo-700 block">Etapa 4 · Action Task</span>
+              <span class="font-bold text-slate-800 block truncate" title="${aoaBlueprint.stages.stage4.name}">${aoaBlueprint.stages.stage4.name}</span>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-lg p-1.5">
+              <span class="font-black text-indigo-700 block">Etapa 5 · Assessment</span>
+              <span class="font-bold text-slate-800 block truncate" title="${aoaBlueprint.stages.stage5.name}">${aoaBlueprint.stages.stage5.name}</span>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-lg p-1.5">
+              <span class="font-black text-indigo-700 block">Etapa 6 · Reflection</span>
+              <span class="font-bold text-slate-800 block truncate" title="${aoaBlueprint.stages.stage6.tool}">${aoaBlueprint.stages.stage6.tool}</span>
+            </div>
+          </div>
         </div>
       </section>
 

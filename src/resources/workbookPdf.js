@@ -647,6 +647,9 @@ export function buildWorkbook(pack) {
     // ── C. MATCHING ──
     else if (act.type === 'matching') {
       const pairs = act.pairs || [];
+      const n = pairs.length;
+      const shift = n > 2 ? 2 : 1;
+      const shuffledRights = n > 1 ? pairs.map((_, i) => pairs[(i + shift) % n].right) : pairs.map(p => p.right);
       let matchY = curY + 4;
 
       pairs.forEach((pair, pIdx) => {
@@ -669,13 +672,13 @@ export function buildWorkbook(pack) {
         // Dot on left of right box
         doc.circle(114, matchY + itemH / 2, 1.8, 'F');
 
-        // Right Column Card
+        // Right Column Card (Shuffled)
         doc.setFillColor(248, 250, 252);
         doc.roundedRect(118, matchY, 74, itemH, 2, 2, 'FD');
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(10);
         doc.setTextColor(51, 65, 85);
-        write(pair.right || '', 124, matchY + 11, 62, 10);
+        write(shuffledRights[pIdx] || '', 124, matchY + 11, 62, 10);
 
         matchY += itemH + 8;
       });

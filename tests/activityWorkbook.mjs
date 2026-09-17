@@ -152,7 +152,19 @@ assert.ok(readingHtml.includes('Read & Check 📖'), 'Action button uses Read & 
 assert.ok(readingHtml.includes('PART 2: READING COMPREHENSION'), 'Part 2 title is READING COMPREHENSION');
 assert.ok(readingHtml.includes('pineapple'), 'Includes market realia vocab');
 assert.ok(!readingHtml.includes('CLASSROOM OBJECTS'), 'Does not falsely refer to classroom objects');
-console.log('4th Grade Lesson 2 Reading HTML rendering verification passed!');
+
+// 6. Test Part 2 does NOT render stock photos (backpack/books) for Market Reading, but colorful line drawings
+assert.ok(readingHtml.includes('select-none'), 'Line drawing SVGs rendered in Part 2');
+assert.ok(!readingHtml.includes('aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 mb-1.5 flex items-center justify-center relative">\n                <img\n        src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6'), 'Does not show books photo in Part 2');
+
+// 7. Test Activity 2 Shuffled Matching
+assert.ok(readingHtml.includes('Photo A'), 'Activity 2 includes Photo A on left');
+assert.ok(readingHtml.includes('Photo B'), 'Activity 2 includes Photo B on left');
+// Check that right column in row 0 is NOT pineapple (shuffled)
+const act2Block = readingHtml.slice(readingHtml.indexOf('Activity 2:'), readingHtml.indexOf('Activity 3:'));
+const row1 = act2Block.slice(act2Block.indexOf('Photo A'), act2Block.indexOf('Photo B'));
+assert.ok(!row1.includes('pineapple'), 'Row 1 right column does not match Photo A directly (it is shuffled)');
+console.log('Activity 2 Shuffled Matching and Part 2 Line Drawings verification passed!');
 
 console.log('All multi-grade and authentic activity PDF & HTML checks passed!');
 
