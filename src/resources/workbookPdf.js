@@ -99,8 +99,8 @@ export function buildWorkbook(pack) {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
     doc.setTextColor(15, 23, 42);
-    doc.text(`Q: "${p1.languageFrame?.question || 'How much is the pineapple?'}"`, 22, 125);
-    doc.text(`A: "${p1.languageFrame?.answer || "It's three dollars."}"`, 22, 132);
+    doc.text(`Q: "${p1.languageFrame?.question || 'Target inquiry structure'}"`, 22, 125);
+    doc.text(`A: "${p1.languageFrame?.answer || 'Target response structure'}"`, 22, 132);
 
     // Section 3: Activity 1 (Listen & Circle)
     doc.setFont('helvetica', 'bold');
@@ -147,12 +147,12 @@ export function buildWorkbook(pack) {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9.5);
     doc.setTextColor(30, 41, 59);
-    doc.text('3. ACTIVITY 2: LISTEN & MATCH (Items & Prices)', 18, 22);
+    doc.text(p2.activity2?.title ? `3. ${p2.activity2.title.toUpperCase()}` : '3. ACTIVITY 2: LISTEN & MATCH', 18, 22);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8);
     doc.setTextColor(71, 85, 105);
-    doc.text(p2.activity2?.instruction || 'Listen and draw lines to match items with their prices:', 18, 28);
+    doc.text(p2.activity2?.instruction || 'Listen and draw lines to match each item with its corresponding detail:', 18, 28);
 
     const pairs = p2.activity2?.pairs || [];
     pairs.slice(0, 4).forEach((p, pi) => {
@@ -165,23 +165,24 @@ export function buildWorkbook(pack) {
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(8.5);
       doc.setTextColor(15, 23, 42);
-      doc.text(p.item || p.left || 'Fruit', 24, py + 7);
+      doc.text(p.item || p.left || 'Item', 24, py + 7);
       doc.circle(84, py + 5, 1.5, 'F');
 
       doc.circle(126, py + 5, 1.5, 'F');
-      doc.text(p.detail || p.right || '$1.00', 140, py + 7);
+      doc.text(p.detail || p.right || 'Detail', 130, py + 7);
     });
 
     // Activity 3: Dialogue Cloze
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9.5);
     doc.setTextColor(30, 41, 59);
-    doc.text('4. ACTIVITY 3: AUTHENTIC DIALOGUE CLOZE', 18, 93);
+    doc.text(p2.activity3?.title ? `4. ${p2.activity3.title.toUpperCase()}` : '4. ACTIVITY 3: AUTHENTIC DIALOGUE CLOZE', 18, 93);
 
+    const clozeWords = p2.activity3?.wordBank?.length ? p2.activity3.wordBank.join(', ') : (words.slice(0, 5).map(w => w.word).join(', ') || 'key vocabulary words');
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8);
     doc.setTextColor(71, 85, 105);
-    doc.text('Complete the dialogue with the correct words: [ pineapple, three, dollar, banana, please ]', 18, 99);
+    doc.text(`Complete the dialogue with the correct words: [ ${clozeWords} ]`, 18, 99);
 
     doc.setDrawColor(30, 41, 59);
     doc.setFillColor(255, 255, 255);
@@ -192,8 +193,8 @@ export function buildWorkbook(pack) {
       const dy = 111 + di * 7.5;
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(8);
-      doc.setTextColor(line.speaker === 'Seller' ? 67 : 16, line.speaker === 'Seller' ? 56 : 185, line.speaker === 'Seller' ? 202 : 129);
-      doc.text(`${line.speaker}:`, 24, dy);
+      doc.setTextColor(line.speaker?.toLowerCase().includes('seller') || line.speaker?.toLowerCase().includes('guide') ? 67 : 16, 56, 202);
+      doc.text(`${line.speaker || 'Speaker'}:`, 24, dy);
 
       doc.setFont('helvetica', 'normal');
       doc.setTextColor(15, 23, 42);
@@ -204,27 +205,27 @@ export function buildWorkbook(pack) {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9.5);
     doc.setTextColor(30, 41, 59);
-    doc.text('5. ACTIVITY 4: PERFORMANCE TASK (Market Stall Mission)', 18, 166);
+    doc.text(p2.activity4?.title ? `5. ${p2.activity4.title.toUpperCase()}` : '5. ACTIVITY 4: PERFORMANCE TASK', 18, 166);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8);
     doc.setTextColor(71, 85, 105);
-    doc.text('Listen to the shopping list dictation. Draw items on stall and record prices:', 18, 172);
+    doc.text(p2.activity4?.instruction || 'Listen to the dictation and illustrate/record the key concepts on the lines below:', 18, 172);
 
     doc.setDrawColor(30, 41, 59);
     doc.roundedRect(18, 176, 75, 48, 2, 2, 'D');
     doc.setFontSize(7.5);
     doc.setTextColor(148, 163, 184);
-    doc.text('[ Draw Market Stall & Items ]', 32, 202);
+    doc.text('[ Performance Drawing Area ]', 26, 202);
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(8);
     doc.setTextColor(30, 41, 59);
-    doc.text('Shopping List Items & Prices:', 102, 184);
+    doc.text('Key Concepts & Written Response:', 102, 184);
     doc.setFont('helvetica', 'normal');
-    doc.text('1. _________________________________  Price: $________', 102, 196);
-    doc.text('2. _________________________________  Price: $________', 102, 208);
-    doc.text('3. _________________________________  Price: $________', 102, 220);
+    doc.text('1. __________________________________________________', 102, 196);
+    doc.text('2. __________________________________________________', 102, 208);
+    doc.text('3. __________________________________________________', 102, 220);
 
     // Page 2 Footer
     doc.setFont('helvetica', 'normal');

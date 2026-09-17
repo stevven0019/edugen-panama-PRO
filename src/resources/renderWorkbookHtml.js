@@ -13,13 +13,11 @@ export function renderWorkbookHtml(pack) {
   const page2 = pack.page2 || {};
   const page3 = pack.page3 || {};
 
-  const wordBank = page1.wordBank || (pack.activities?.[0]?.items || [
-    { word: 'Pineapple', pos: 'fruit / noun', example: 'How much is the pineapple?', icon: 'pineapple' },
-    { word: 'Apple', pos: 'fruit / noun', example: 'The apples are one dollar each.', icon: 'apple' },
-    { word: 'Banana', pos: 'fruit / noun', example: 'Can I have a banana, please?', icon: 'banana' },
-    { word: 'Mango', pos: 'fruit / noun', example: 'The mango is two dollars.', icon: 'mango' },
-    { word: 'Market', pos: 'noun', example: 'Welcome to the market!', icon: 'market' },
-    { word: 'Dollar', pos: 'noun', example: 'It costs three dollars.', icon: 'dollar' }
+  const wordBank = (page1.wordBank || pack.activities?.[0]?.items || [
+    { word: 'Word 1', pos: 'noun', example: `Target word for ${title}`, icon: 'tree' },
+    { word: 'Word 2', pos: 'noun', example: `Target word for ${title}`, icon: 'sun' },
+    { word: 'Word 3', pos: 'noun', example: `Target word for ${title}`, icon: 'book' },
+    { word: 'Word 4', pos: 'noun', example: `Target word for ${title}`, icon: 'star' }
   ]).map(it => ({
     word: it.word || it.label || 'Item',
     pos: it.pos || 'noun',
@@ -28,60 +26,55 @@ export function renderWorkbookHtml(pack) {
   }));
 
   const languageFrame = page1.languageFrame || {
-    question: 'How much is the pineapple?',
-    answer: "It's three dollars.",
-    exchange: 'Can I have an apple, please? ──> Yes, here you go!'
+    question: `Key question pattern for ${title}?`,
+    answer: `Target response structure for ${scenario}.`,
+    exchange: `Speaker A: "..." ──> Speaker B: "..."`
   };
 
   const activity1 = page1.activity1 || {
     title: 'Activity 1: Listen & Circle (Word Recognition)',
-    instruction: 'Listen carefully as your teacher reads the market words. Circle each word you hear:',
+    instruction: 'Listen carefully as your teacher reads the target words. Circle each word you hear:',
     words: wordBank.map(w => w.word)
   };
 
   const activity2 = page2.activity2 || {
-    title: 'Activity 2: Listen & Match (Prices & Items)',
-    instruction: 'Listen to the audio sentences. Draw a line to match each market item with its stated price:',
-    pairs: [
-      { item: 'Pineapple', detail: '$3.00', icon: 'pineapple' },
-      { item: 'Apples', detail: '$1.00', icon: 'apple' },
-      { item: 'Mango', detail: '$2.00', icon: 'mango' },
-      { item: 'Bananas', detail: '$0.50', icon: 'banana' }
-    ]
+    title: 'Activity 2: Listen & Match',
+    instruction: 'Listen to the audio sentences. Draw a line to match each item with its corresponding detail:',
+    pairs: wordBank.slice(0, 4).map((w, i) => ({
+      item: w.word,
+      detail: `Detail for ${w.word}`,
+      icon: w.icon
+    }))
   };
 
   const activity3 = page2.activity3 || {
     title: 'Activity 3: Authentic Dialogue Cloze',
-    instruction: 'Complete the market dialogue using words from the Word Bank:',
+    instruction: 'Complete the dialogue using words from the Word Bank below:',
     wordBank: wordBank.slice(0, 5).map(w => w.word),
     dialogue: [
-      { speaker: 'Seller', text: 'Hello! Welcome to the market!' },
-      { speaker: 'Buyer', text: 'Hello! How much is the pineapple?' },
-      { speaker: 'Seller', text: 'It is three dollars.' },
-      { speaker: 'Buyer', text: 'Okay. And the apples?' },
-      { speaker: 'Seller', text: 'They are one dollar each.' },
-      { speaker: 'Buyer', text: 'Can I have a banana, please?' },
-      { speaker: 'Seller', text: 'Yes, here you go.' },
-      { speaker: 'Buyer', text: 'Thank you!' }
+      { speaker: 'Speaker 1', text: `Hello! Today we are learning about ${title}.` },
+      { speaker: 'Speaker 2', text: `That sounds interesting! What should we look for?` },
+      { speaker: 'Speaker 1', text: `We need to identify the key concepts and take notes.` },
+      { speaker: 'Speaker 2', text: `Great, let's complete the task together!` }
     ]
   };
 
   const activity4 = page2.activity4 || {
-    title: 'Activity 4: Performance Production (Market Stall Task)',
-    instruction: 'Listen to the Shopping List dictation. Draw the items on the stall and write the price on each tag:'
+    title: `Activity 4: Performance Production (${title})`,
+    instruction: 'Listen to the dictation. Illustrate the concept and write your responses on the lines below:'
   };
 
   const exitTicket = page3.exitTicket || {
     title: 'Student Exit Ticket (Quick Check)',
     questions: [
-      { prompt: '1. Did the buyer ask for an apple or a pineapple first?', options: ['A) Pineapple', 'B) Mango'], correct: 'A) Pineapple' },
-      { prompt: '2. The apples are one dollar each.', options: ['True', 'False'], correct: 'True' },
-      { prompt: '3. How much is the pineapple?', options: ['A) $1.00', 'B) $3.00', 'C) $5.00'], correct: 'B) $3.00' }
+      { prompt: `1. What is the central theme of today's lesson?`, options: [`A) ${title}`, 'B) Unrelated Topic'], correct: `A) ${title}` },
+      { prompt: `2. We practiced vocabulary related to ${scenario}.`, options: ['True', 'False'], correct: 'True' },
+      { prompt: `3. Which concept was highlighted in the activity?`, options: [`A) ${wordBank[0]?.word || 'Concept'}`, 'B) None'], correct: `A) ${wordBank[0]?.word || 'Concept'}` }
     ],
     selfAssessment: [
       { text: 'I can identify the target vocabulary words.', stars: 3 },
-      { text: 'I can understand the prices and numbers mentioned.', stars: 3 },
-      { text: 'I can participate in the market dialogue exchange.', stars: 3 }
+      { text: 'I can understand the key concepts in spoken audio.', stars: 3 },
+      { text: 'I can participate in the communicative exchange.', stars: 3 }
     ]
   };
 
@@ -196,12 +189,12 @@ export function renderWorkbookHtml(pack) {
         </div>
         <div class="grid grid-cols-2 gap-3 text-xs">
           <div class="bg-white border border-indigo-200 rounded-lg p-2 font-semibold text-slate-800">
-            <span class="text-[10px] font-black uppercase text-indigo-600 block mb-0.5">Asking for Price / Information:</span>
-            <p class="text-xs font-extrabold text-slate-900">"${languageFrame.question || 'How much is the pineapple?'}"</p>
+            <span class="text-[10px] font-black uppercase text-indigo-600 block mb-0.5">Target Question / Inquiry:</span>
+            <p class="text-xs font-extrabold text-slate-900">"${languageFrame.question || 'Target question structure'}"</p>
           </div>
           <div class="bg-white border border-indigo-200 rounded-lg p-2 font-semibold text-slate-800">
-            <span class="text-[10px] font-black uppercase text-indigo-600 block mb-0.5">Stating Price / Ordering:</span>
-            <p class="text-xs font-extrabold text-slate-900">"${languageFrame.answer || "It's three dollars."}" &nbsp;·&nbsp; "${languageFrame.exchange || 'Yes, here you go!'}"</p>
+            <span class="text-[10px] font-black uppercase text-indigo-600 block mb-0.5">Target Response / Exchange:</span>
+            <p class="text-xs font-extrabold text-slate-900">"${languageFrame.answer || 'Target response structure'}" ${languageFrame.exchange ? `&nbsp;·&nbsp; "${languageFrame.exchange}"` : ''}</p>
           </div>
         </div>
       </section>
@@ -273,10 +266,10 @@ export function renderWorkbookHtml(pack) {
 
               <div class="w-8 border-t-2 border-dashed border-slate-400"></div>
 
-              <!-- Price card -->
-              <div class="w-28 bg-white border-2 border-slate-800 rounded-xl p-1.5 px-3 flex items-center justify-between shadow-sm">
+              <!-- Detail / Match card -->
+              <div class="flex-1 bg-white border-2 border-slate-800 rounded-xl p-1.5 px-3 flex items-center justify-between shadow-sm">
                 <div class="w-3 h-3 rounded-full bg-slate-800"></div>
-                <span class="text-sm font-black text-slate-900 font-mono">${p.detail || p.right || '$' + (idx + 1) + '.00'}</span>
+                <span class="text-xs font-black text-slate-900">${p.detail || p.right || `Item ${idx + 1}`}</span>
               </div>
             </div>
           `).join('')}
@@ -304,7 +297,7 @@ export function renderWorkbookHtml(pack) {
             const isTargetLine = li === 1 || li === 2 || li === 4 || li === 5;
             return `
               <div class="flex items-baseline gap-2">
-                <span class="font-black ${line.speaker === 'Seller' ? 'text-indigo-700' : 'text-emerald-700'} w-14 shrink-0">${line.speaker}:</span>
+                <span class="font-black text-indigo-700 w-20 shrink-0">${line.speaker || 'Speaker'}:</span>
                 <span class="font-semibold text-slate-800 flex-1">
                   ${isTargetLine
                     ? line.text.replace(new RegExp(`(${wordBank.map(w => w.word).join('|')})`, 'gi'), '<span class="inline-block border-b-2 border-slate-600 w-28 text-center text-slate-400 font-mono text-[10px]">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')
@@ -325,36 +318,30 @@ export function renderWorkbookHtml(pack) {
         </div>
         <p class="text-xs text-slate-600 mb-1.5 font-medium">${activity4.instruction}</p>
 
-        <!-- Market Stall / Drawing & Writing Box with Ruled Lines -->
+        <!-- Drawing & Writing Performance Box -->
         <div class="border-2 border-slate-800 rounded-xl p-3 bg-white grid grid-cols-12 gap-3">
-          <div class="col-span-5 border-2 border-dashed border-slate-300 rounded-lg p-2 flex flex-col justify-between items-center text-center bg-slate-50">
-            <span class="text-[10px] font-bold text-slate-400 uppercase">Draw Market Stall & Items Heard</span>
-            <div class="my-auto w-16 h-16 flex items-center justify-center opacity-40">
-              ${getIllustrationSvg('market', 'outline')}
+          <div class="col-span-5 border-2 border-dashed border-slate-300 rounded-lg p-2 flex flex-col justify-between items-center text-center bg-slate-50 min-h-[110px]">
+            <span class="text-[10px] font-bold text-slate-500 uppercase">Performance Drawing Canvas</span>
+            <div class="my-auto w-12 h-12 flex items-center justify-center opacity-40">
+              ${getIllustrationSvg('book', 'outline')}
             </div>
-            <span class="text-[9px] text-slate-400">Illustrate 3 items dictated</span>
+            <span class="text-[9px] text-slate-400">Illustrate target concept</span>
           </div>
 
-          <div class="col-span-7 space-y-2">
-            <span class="text-[10px] font-black text-slate-700 uppercase block">Student Shopping List & Price Record:</span>
-            <div class="space-y-2">
-              <div class="flex items-center gap-2 text-xs">
+          <div class="col-span-7 space-y-2.5 flex flex-col justify-center">
+            <span class="text-[10px] font-black text-slate-700 uppercase block">Student Written Response & Notes:</span>
+            <div class="space-y-3 text-xs">
+              <div class="flex items-center gap-2">
                 <span class="font-black text-slate-700">1.</span>
                 <span class="border-b border-slate-400 flex-1 h-5"></span>
-                <span class="text-slate-500 font-bold">$</span>
-                <span class="border-b border-slate-400 w-12 h-5"></span>
               </div>
-              <div class="flex items-center gap-2 text-xs">
+              <div class="flex items-center gap-2">
                 <span class="font-black text-slate-700">2.</span>
                 <span class="border-b border-slate-400 flex-1 h-5"></span>
-                <span class="text-slate-500 font-bold">$</span>
-                <span class="border-b border-slate-400 w-12 h-5"></span>
               </div>
-              <div class="flex items-center gap-2 text-xs">
+              <div class="flex items-center gap-2">
                 <span class="font-black text-slate-700">3.</span>
                 <span class="border-b border-slate-400 flex-1 h-5"></span>
-                <span class="text-slate-500 font-bold">$</span>
-                <span class="border-b border-slate-400 w-12 h-5"></span>
               </div>
             </div>
           </div>

@@ -202,13 +202,13 @@ export function validatePack(pack) {
     else if (activity.type === 'listen_match_price' || activity.type === 'matching') {
       if (!Array.isArray(activity.pairs) || activity.pairs.length < 2) {
         activity.pairs = [
-          { left: 'Pineapple', icon: 'pineapple', right: '$2.50' },
-          { left: 'Apple', icon: 'apple', right: '$1.00' }
+          { left: 'Concept A', icon: 'book', right: 'Definition A' },
+          { left: 'Concept B', icon: 'star', right: 'Definition B' }
         ];
       }
       activity.pairs = activity.pairs.slice(0, 5).map(p => ({
-        left: text(p.left || p.fruit || p.item, 'columna izquierda', 60),
-        right: text(p.right || p.price, 'precio', 30),
+        left: text(p.left || p.item, 'columna izquierda', 60),
+        right: text(p.right || p.detail || p.description, 'detalle', 60),
         icon: normalizeIcon(p.icon || p.left)
       }));
       activity.teacherScript = text(activity.teacherScript, 'guion docente', 400);
@@ -235,13 +235,13 @@ export function validatePack(pack) {
     // 7. TABLE CHECKLIST
     else if (activity.type === 'table_checklist') {
       if (!Array.isArray(activity.headers) || activity.headers.length < 2) {
-        activity.headers = ['Fruit / Item', 'Heard in Audio?', 'Price'];
+        activity.headers = ['Target Concept', 'Observed in Context', 'Key Feature'];
       }
       activity.headers = activity.headers.slice(0, 4).map(h => text(h, 'encabezado', 60));
       if (!Array.isArray(activity.rows) || !activity.rows.length) {
         activity.rows = [
-          { col1: 'Pineapple', col2: '[ ] Yes   [ ] No', col3: '$2.50' },
-          { col1: 'Apple', col2: '[ ] Yes   [ ] No', col3: '$1.00' }
+          { col1: 'Item 1', col2: '[ ] Yes   [ ] No', col3: 'Feature 1' },
+          { col1: 'Item 2', col2: '[ ] Yes   [ ] No', col3: 'Feature 2' }
         ];
       }
       activity.rows = activity.rows.slice(0, 6).map(r => ({
@@ -304,106 +304,116 @@ const getClientApiKey = () => {
 
 export async function generateActivityPack(source, signal) {
   const srcText = typeof source === 'string' ? source : (source?.text || '');
+  const isFileUpload = Boolean(source?.isFile || source?.media || source?.forceAi);
 
-  // 1. Zero-Token Direct Extraction:
-  // If the input has lesson planning indicators (e.g. EduGen Lesson Planner HTML or docx text),
-  // parse it directly into tangible 3-page activities according to the stages!
-  const hasStages = /stage\s*[1-6]|lesson\s*planner|warm-?up|specific\s*objective|learning\s*outcomes/i.test(srcText);
-  if (hasStages && !source.forceAi) {
-    try {
-      const directPack = parseAoaLessonPlan(srcText, {
-        grade: source.grade,
-        title: source.title,
-        scenario: source.scenario
-      });
-      if (directPack && directPack.page1 && directPack.page2 && directPack.page3) {
-        return validatePack(directPack);
+  // 1. Direct Extraction only for locally formatted EduGen plans (never for custom uploads, which require AI):
+  if (!isFileUpload) {
+    const hasStages = /stage\s*[1-6]|lesson\s*planner|warm-?up|specific\s*objective|learning\s*outcomes/i.test(srcText);
+    if (hasStages) {
+      try {
+        const directPack = parseAoaLessonPlan(srcText, {
+          grade: source?.grade,
+          title: source?.title,
+          scenario: source?.scenario
+        });
+        if (directPack && directPack.page1 && directPack.page2 && directPack.page3) {
+          return validatePack(directPack);
+        }
+      } catch (err) {
+        console.warn('Direct parse not applicable, generating authentic pack via AI:', err);
       }
-    } catch (err) {
-      console.warn('Direct parse failed, falling back to AI:', err);
     }
   }
 
-  // 2. AI Fallback with strict 3-Page Pedagogical Blueprint Schema
-  const prompt = `You are an elite educational materials author for the Panama MEDUCA English curriculum under the Action-Oriented Approach (AOA).
-Based directly on the provided lesson, extract and generate a tangible, classroom-ready 3-PAGE Activity Workbook according to each stage of the lesson:
+  // 2. AI Generation with strict 3-Page Pedagogical Blueprint Schema
+  const prompt = `You are an elite educational materials designer for the Panama MEDUCA English curriculum under the Action-Oriented Approach (AOA).
+Analyze the provided lesson thoroughly. Extract its exact grade, unit topic, scenario, and target competencies, and generate an authentic, classroom-ready 3-PAGE Activity Workbook.
 
-- PAGE 1: Discovery & Linguistic Input (Stage 1 Warm-up, Key Vocabulary Word Bank, Target Communicative Language Frame, Activity 1: Listen & Circle / Identify).
-- PAGE 2: Guided Practice & Task Performance (Stage 3 Guided Practice Activity 2: Listen & Match items to prices/details, Activity 3: Dialogue Cloze with Word Bank, Activity 4: Performance Task with drawing/ruled writing lines).
-- PAGE 3: Formative Assessment & Teacher Resource (Stage 5 Student Exit Ticket Quiz, Stage 6 Self-Assessment Scale, Teacher Read-Aloud Scripts for class, Official Answer Key, and MEDUCA 3-Level Rubric).
+CRITICAL PEDAGOGICAL RULES:
+1. STRICT THEMATIC ALIGNMENT:
+   - All activities, vocabulary words, dialogues, listening scripts, and questions MUST be 100% strictly aligned with the exact topic and scenario of the provided lesson.
+   - NEVER default to fruit, market, shopping, or prices unless the uploaded lesson is explicitly and solely about buying food in a market.
+   - For example, if the lesson is about "The Habitat of Wildlife" (Panama's Wildlife, 7th Grade), you MUST use wild animals (e.g. jaguar, harpy eagle, sloth, toucan), ecosystems (rainforest, canopy, ocean, mangrove), conservation concepts, and relevant communicative exchanges (e.g. asking where animals live or describing habitats).
+
+2. 3-PAGE BLUEPRINT STRUCTURE:
+   - PAGE 1: Discovery & Linguistic Input (Stage 1 Warm-up Key Vocabulary Word Bank of 6 authentic words with part of speech and example; Target Communicative Language Frame Q&A relevant to this lesson; Activity 1: Listen & Circle / Identify the target words).
+   - PAGE 2: Guided Practice & Task Performance (Stage 3 Guided Practice Activity 2: Listen & Match 4 concept pairs e.g. Animal -> Habitat, Object -> Function, Term -> Description; Activity 3: Dialogue Cloze roleplay with 6-8 lines between two natural speakers appropriate for the topic; Activity 4: Performance Task with drawing area and ruled lines).
+   - PAGE 3: Formative Assessment & Teacher Resource (Stage 5 Student Exit Ticket Quiz with 3 questions, Stage 6 Self-Assessment Scale, Teacher Read-Aloud Scripts for class, Official Answer Key, and MEDUCA 3-Level Rubric).
 
 SCHEMA REQUIREMENT (Return strictly valid JSON):
 {
-  "title": "Lesson Theme / Title",
-  "grade": "e.g., 4th Grade",
-  "skill": "e.g., Listening & Speaking",
-  "scenario": "Authentic context",
-  "objective": "Target specific objective",
+  "title": "Exact Lesson Theme / Title from input",
+  "grade": "Exact Grade from input (e.g., 7th Grade, 4th Grade)",
+  "skill": "Target Skill Focus (e.g., Listening & Speaking, Reading & Writing)",
+  "scenario": "Authentic Scenario from input",
+  "objective": "Target Specific Objective from input",
   "page1": {
     "wordBank": [
-      { "word": "Pineapple", "pos": "noun", "example": "How much is the pineapple?", "icon": "pineapple" }
+      { "word": "TargetWord", "pos": "noun/verb/adj", "example": "Authentic context sentence using the word.", "icon": "tree/bird/animal/sun/book/etc" }
     ],
     "languageFrame": {
-      "question": "How much is the [item]?",
-      "answer": "It's [price] dollars."
+      "question": "Authentic target question pattern for this topic?",
+      "answer": "Authentic target response pattern for this topic.",
+      "exchange": "Speaker A: '...' ──> Speaker B: '...'"
     },
     "activity1": {
-      "title": "Activity 1: Listen & Circle",
-      "instruction": "Listen and circle the words heard:",
-      "words": ["pineapple", "apple", "banana", "mango", "market", "dollar"]
+      "title": "Activity 1: Listen & Circle (Word Recognition)",
+      "instruction": "Listen carefully as your teacher reads the target words. Circle each word you hear:",
+      "words": ["word1", "word2", "word3", "word4", "word5", "word6"]
     }
   },
   "page2": {
     "activity2": {
       "title": "Activity 2: Listen & Match",
-      "instruction": "Draw a line to match each item with its price:",
+      "instruction": "Listen to the audio statements. Draw a line to match each item with its corresponding detail:",
       "pairs": [
-        { "item": "Pineapple", "detail": "$3.00", "icon": "pineapple" }
+        { "item": "TargetItem1", "detail": "Matching Detail 1", "icon": "tree" }
       ]
     },
     "activity3": {
-      "title": "Activity 3: Dialogue Cloze",
-      "instruction": "Complete the dialogue using the word bank:",
-      "wordBank": ["pineapple", "three", "dollar", "banana", "please"],
+      "title": "Activity 3: Authentic Dialogue Cloze",
+      "instruction": "Complete the dialogue using words from the Word Bank below:",
+      "wordBank": ["word1", "word2", "word3", "word4", "word5"],
       "dialogue": [
-        { "speaker": "Seller", "text": "Hello! Welcome to the market!" },
-        { "speaker": "Buyer", "text": "How much is the pineapple?" }
+        { "speaker": "Role1", "text": "Sentence with or without [ blank ]..." },
+        { "speaker": "Role2", "text": "Response..." }
       ]
     },
     "activity4": {
       "title": "Activity 4: Performance Production Task",
-      "instruction": "Listen to the dictation and draw/write the items and prices:"
+      "instruction": "Draw and complete the task based on the lesson topic:",
+      "prompt": "Task Prompt..."
     }
   },
   "page3": {
     "exitTicket": {
-      "title": "Student Exit Ticket",
+      "title": "Student Exit Ticket (Quick Check)",
       "questions": [
-        { "prompt": "1. Question text?", "options": ["A", "B"], "correct": "A" }
+        { "prompt": "1. Comprehension question?", "options": ["A) Option 1", "B) Option 2"], "correct": "A) Option 1" }
       ],
       "selfAssessment": [
-        { "text": "I can identify the target words.", "stars": 3 }
+        { "text": "I can identify the target vocabulary.", "stars": 3 }
       ]
     },
     "teacherGuide": {
       "title": "Teacher Read-Aloud Scripts & Resources",
       "scripts": [
-        { "stage": "Stage 2 Presentation Audio", "text": "Exact verbatim dialogue transcript..." },
-        { "stage": "Stage 4 Performance Dictation", "text": "Exact dictation script..." },
-        { "stage": "Stage 5 Assessment Quiz Script", "text": "Exact quiz script..." }
+        { "stage": "Stage 2 Presentation Audio", "text": "Verbatim audio script..." },
+        { "stage": "Stage 4 Performance Dictation", "text": "Verbatim dictation script..." },
+        { "stage": "Stage 5 Assessment Quiz Script", "text": "Verbatim quiz script..." }
       ],
       "answerKey": [
-        { "item": "Activity 1", "answer": "All target words circled." },
-        { "item": "Activity 2", "answer": "Pineapple -> $3.00, Apple -> $1.00" },
-        { "item": "Activity 3", "answer": "1. pineapple  2. three" },
-        { "item": "Exit Ticket Quiz", "answer": "1. A  2. True  3. B" }
+        { "item": "Activity 1", "answer": "Expected answers" },
+        { "item": "Activity 2", "answer": "Matching pairs" },
+        { "item": "Activity 3", "answer": "Cloze blanks" },
+        { "item": "Exit Ticket Quiz", "answer": "Q1: A, Q2: True, Q3: B" }
       ],
       "rubric": [
         {
-          "criterion": "Listening Comprehension",
-          "independent": "Identifies all items and prices accurately without support.",
-          "withSupport": "Identifies items with 1-2 prompts.",
-          "emerging": "Requires direct teacher assistance."
+          "criterion": "Listening Comprehension & Target Vocabulary",
+          "independent": "Identifies all key concepts accurately and fluently.",
+          "withSupport": "Identifies key concepts with occasional teacher prompting.",
+          "emerging": "Requires direct modeling and continuous assistance."
         }
       ]
     }
@@ -456,9 +466,18 @@ SCHEMA REQUIREMENT (Return strictly valid JSON):
   const raw = data.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('') || '';
   let pack;
   try {
-    pack = JSON.parse(raw.replace(/^```(?:json)?\s*|```$/g, ''));
-  } catch {
-    throw new Error('La IA devolvió una respuesta incompleta. Por favor intenta de nuevo.');
+    let clean = raw.trim();
+    const firstBrace = clean.indexOf('{');
+    const lastBrace = clean.lastIndexOf('}');
+    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+      clean = clean.slice(firstBrace, lastBrace + 1);
+    } else {
+      clean = clean.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
+    }
+    pack = JSON.parse(clean);
+  } catch (err) {
+    console.error('Failed to parse AI response as JSON:', err, raw);
+    throw new Error('La IA devolvió una respuesta incompleta o en formato inesperado. Por favor intenta de nuevo.');
   }
 
   if (pack.error) throw new Error(String(pack.error).slice(0, 250));

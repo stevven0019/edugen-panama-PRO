@@ -97,12 +97,13 @@ export default function ResourceWorkbook({ user, credits, isPremium, downloadsLe
 
     try {
       const input = source === 'file'
-        ? await readLesson(file)
+        ? { ...(await readLesson(file)), isFile: true, forceAi: true }
         : {
             text: lesson.content || '',
             grade: lesson.grade,
             title: lesson.title,
-            scenario: lesson.lessonContext?.scenario || lesson.title
+            scenario: lesson.lessonContext?.scenario || lesson.title,
+            forceAi: true
           };
 
       const result = await generateActivityPack(input, controller.current.signal);

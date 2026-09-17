@@ -206,6 +206,52 @@ export function getIllustrationSvg(name, mode = 'color') {
     sun: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="50" cy="50" r="22" fill="${mode === 'color' ? '#FEF08A' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
       <path d="M50 14 L50 22 M50 78 L50 86 M14 50 L22 50 M78 50 L86 50 M24 24 L30 30 M70 70 L76 76 M24 76 L30 70 M70 30 L76 24" stroke="${p.stroke}" stroke-width="3" stroke-linecap="round" />
+    </svg>`,
+
+    leaf: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M25 75 C25 35 45 20 80 20 C80 55 65 75 25 75 Z" fill="${mode === 'color' ? '#BBF7D0' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
+      <path d="M25 75 L60 40 M42 58 L52 64 M50 48 L62 54" stroke="${p.stroke}" stroke-width="2.5" />
+    </svg>`,
+
+    bird: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 50 C30 30 55 35 70 45 C80 40 85 42 90 48 C85 52 78 52 75 56 C70 70 50 75 35 68 L20 75 Z" fill="${mode === 'color' ? '#E0E7FF' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
+      <circle cx="78" cy="46" r="2" fill="${p.stroke}" />
+      <path d="M45 50 C55 40 65 45 60 60" stroke="${p.stroke}" stroke-width="2" />
+    </svg>`,
+
+    animal: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="50" cy="58" rx="22" ry="18" fill="${mode === 'color' ? '#FED7AA' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
+      <circle cx="36" cy="42" r="7" fill="${mode === 'color' ? '#FDBA74' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="2" />
+      <circle cx="64" cy="42" r="7" fill="${mode === 'color' ? '#FDBA74' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="2" />
+      <circle cx="43" cy="54" r="2.5" fill="${p.stroke}" />
+      <circle cx="57" cy="54" r="2.5" fill="${p.stroke}" />
+      <ellipse cx="50" cy="62" rx="4" ry="3" fill="${p.stroke}" />
+      <path d="M46 66 Q50 70 54 66" stroke="${p.stroke}" stroke-width="2" />
+    </svg>`,
+
+    fish: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 35 C40 50 65 30 85 50 C65 70 40 50 20 65 Z" fill="${mode === 'color' ? '#BAE6FD' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
+      <circle cx="72" cy="48" r="2" fill="${p.stroke}" />
+      <path d="M50 44 C48 50 48 56 50 62" stroke="${p.stroke}" stroke-width="2" />
+    </svg>`,
+
+    flower: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="50" cy="50" r="12" fill="${mode === 'color' ? '#FEF08A' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="2.5" />
+      <circle cx="50" cy="28" r="10" fill="${mode === 'color' ? '#FBCFE8' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="2" />
+      <circle cx="50" cy="72" r="10" fill="${mode === 'color' ? '#FBCFE8' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="2" />
+      <circle cx="28" cy="50" r="10" fill="${mode === 'color' ? '#FBCFE8' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="2" />
+      <circle cx="72" cy="50" r="10" fill="${mode === 'color' ? '#FBCFE8' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="2" />
+    </svg>`,
+
+    mountain: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="15,80 50,25 85,80" fill="${mode === 'color' ? '#E2E8F0' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="3" />
+      <polygon points="40,42 50,25 60,42 54,38 50,44 46,38" fill="${mode === 'color' ? '#FFFFFF' : '#FFFFFF'}" stroke="${p.stroke}" stroke-width="2" />
+    </svg>`,
+
+    water: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 45 Q32 35 50 45 T85 45" stroke="${mode === 'color' ? '#38BDF8' : p.stroke}" stroke-width="4" fill="none" />
+      <path d="M15 60 Q32 50 50 60 T85 60" stroke="${mode === 'color' ? '#0284C7' : p.stroke}" stroke-width="4" fill="none" />
+      <path d="M15 75 Q32 65 50 75 T85 75" stroke="${mode === 'color' ? '#0369A1' : p.stroke}" stroke-width="4" fill="none" />
     </svg>`
   };
 

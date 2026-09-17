@@ -2,14 +2,8 @@
  * Parser that extracts structured 3-Page Pedagogical Activity Pack data
  * directly from EduGen AOA Lesson Plans (HTML, Docx-extracted text, or plain text).
  * 
- * Extracts:
- * - Stage 1 (Warm-up & Modeling) -> Key Vocabulary cards & Language Frame
- * - Stage 2 (Presentation & Dialogue) -> Communicative Dialogue & Context
- * - Stage 3 (Preparation & Practice) -> Matching & Cloze activities
- * - Stage 4 (Performance & Production) -> Action-Oriented Task & Ruled Writing Lines
- * - Stage 5 (Assessment) -> Quiz questions (Multiple Choice & True/False)
- * - Stage 6 (Reflection) -> Student Self-Evaluation scale
- * - Teacher Materials -> Verbatim Read-Aloud Scripts & Official Answer Key
+ * Returns null if authentic vocabulary or structures cannot be parsed,
+ * so the system seamlessly falls back to Gemini AI for complete generation.
  */
 
 const cleanHtml = (html) => {
@@ -31,6 +25,7 @@ const cleanHtml = (html) => {
 export function parseAoaLessonPlan(rawInput, metadata = {}) {
   const text = typeof rawInput === 'string' ? rawInput : (rawInput?.text || '');
   const clean = cleanHtml(text);
+  if (!clean || clean.length < 50) return null;
 
   // 1. Extract Grade & Theme
   let grade = metadata.grade || '';
@@ -55,158 +50,134 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
   const objMatch = clean.match(/Specific\s+Objective:\s*([^.\n]+?\.)/i);
   if (objMatch) objective = objMatch[1].trim();
 
-  // 2. Extract Vocabulary Words from Stage 1
+  // 2. Extract Vocabulary Words from Stage 1 or Vocabulary Section
   let vocabWords = [];
-  const vocabMatch = clean.match(/(?:vocabulary\s+words?|target\s+fruits?|target\s+objects?|target\s+vocabulary)[^:]*:\s*([^\n.]+)/i);
+  const vocabMatch = clean.match(/(?:vocabulary\s+words?|target\s+vocabulary|key\s+vocabulary|vocabulary\s+items?|words?)[^:]*:\s*([^\n.]+)/i);
   if (vocabMatch) {
     const rawWords = vocabMatch[1]
       .replace(/\*\*/g, '')
       .replace(/\./g, '')
       .split(/[,;\/]| and /i)
       .map(w => w.trim())
-      .filter(w => w.length > 1 && !w.startsWith('(') && !w.startsWith('e.g'));
+      .filter(w => w.length > 2 && !w.startsWith('(') && !w.startsWith('e.g'));
     vocabWords = [...new Set(rawWords)].slice(0, 6);
   }
 
   if (vocabWords.length < 4) {
-    // Fallback search for highlighted items
-    const starWords = [...clean.matchAll(/\*\*([a-zA-Z\s]{3,20})\*\*/g)].map(m => m[1].toLowerCase().trim());
-    const uniqueStars = [...new Set(starWords)].filter(w => !['stage', 'warm-up', 'procedure', 'differentiation'].includes(w));
-    if (uniqueStars.length >= 4) {
-      vocabWords = uniqueStars.slice(0, 6);
-    } else {
-      vocabWords = ['pineapple', 'apple', 'banana', 'mango', 'market', 'dollar'];
+    // Search for bolded keywords in Stage 1 / Warm-up
+    const stage1Snippet = clean.match(/Stage\s*1[\s\S]*?(?=Stage\s*2|$)/i)?.[0] || '';
+    if (stage1Snippet) {
+      const starWords = [...stage1Snippet.matchAll(/\*\*([a-zA-Z\s]{3,20})\*\*/g)].map(m => m[1].toLowerCase().trim());
+      const filtered = [...new Set(starWords)].filter(w => !['stage', 'warm-up', 'procedure', 'differentiation', 'teacher', 'students', 'materials', 'time'].includes(w));
+      if (filtered.length >= 4) {
+        vocabWords = filtered.slice(0, 6);
+      }
     }
   }
 
-  // 3. Extract Dialogue from Stage 2
+  // If we could not extract genuine, theme-specific vocabulary, DO NOT guess or fallback to fruit/market.
+  // Return null so Gemini AI generates authentic activities!
+  if (vocabWords.length < 4) {
+    return null;
+  }
+
+  // 3. Extract Dialogue Lines from Stage 2
   let dialogueLines = [];
-  const sellerBuyerRegex = /(Seller|Buyer|Teacher|Student|A|B):\s*([^.\n?!]+[.?!])/gi;
-  const matches = [...clean.matchAll(sellerBuyerRegex)];
+  const speakerRegex = /(Teacher|Student|A|B|Guide|Ranger|Speaker\s*1|Speaker\s*2|Person\s*1|Person\s*2):\s*([^.\n?!]+[.?!])/gi;
+  const matches = [...clean.matchAll(speakerRegex)];
   if (matches.length >= 4) {
     dialogueLines = matches.slice(0, 8).map(m => ({
       speaker: m[1].trim(),
       text: m[2].replace(/\*\*/g, '').trim()
     }));
-  } else {
-    dialogueLines = [
-      { speaker: 'Seller', text: 'Hello! Welcome to the market!' },
-      { speaker: 'Buyer', text: 'Hello! How much is the pineapple?' },
-      { speaker: 'Seller', text: 'It is three dollars.' },
-      { speaker: 'Buyer', text: 'Okay. And the apples?' },
-      { speaker: 'Seller', text: 'They are one dollar each.' },
-      { speaker: 'Buyer', text: 'Can I have a banana, please?' },
-      { speaker: 'Seller', text: 'Yes, here you go.' },
-      { speaker: 'Buyer', text: 'Thank you!' }
-    ];
+  }
+
+  // If dialogue could not be extracted from text, let AI handle it
+  if (dialogueLines.length < 3) {
+    return null;
   }
 
   // 4. Extract Language Frame
-  let languageFrame = {
-    question: 'How much is the [item]?',
-    answer: "It's [price] dollars.",
-    exchange: 'Can I have a [item], please? ──> Yes, here you go!'
-  };
-  const frameMatch = clean.match(/simple\s+exchange[^:]*:\s*["“]([^"”]+)["”]/i);
+  let languageFrame = null;
+  const frameMatch = clean.match(/(?:language\s+frame|target\s+structure|exchange)[^:]*:\s*["“]([^"”]+)["”]/i);
   if (frameMatch) {
-    languageFrame.question = frameMatch[1].trim();
+    languageFrame = {
+      question: frameMatch[1].trim(),
+      answer: `Target response related to ${theme}.`,
+      exchange: `A: "${frameMatch[1].trim()}"`
+    };
+  } else {
+    // Try to find Q&A in dialogue
+    if (dialogueLines.length >= 2) {
+      languageFrame = {
+        question: dialogueLines[0].text,
+        answer: dialogueLines[1].text,
+        exchange: `${dialogueLines[0].speaker}: "${dialogueLines[0].text}" ──> ${dialogueLines[1].speaker}: "${dialogueLines[1].text}"`
+      };
+    }
+  }
+
+  if (!languageFrame) {
+    return null;
   }
 
   // 5. Extract Pairs for Stage 3 Matching Activity
   let matchPairs = [];
-  const pricesFound = clean.match(/\$\d+(?:\.\d{2})?/g) || ['$1.00', '$2.00', '$3.00', '$5.00'];
-  const uniquePrices = [...new Set(pricesFound)].slice(0, 4);
   const matchedVocab = vocabWords.slice(0, 4);
-
   matchedVocab.forEach((word, idx) => {
     matchPairs.push({
       item: word.charAt(0).toUpperCase() + word.slice(1),
-      detail: uniquePrices[idx] || `$${idx + 1}.00`,
+      detail: `Context ${idx + 1}: ${word}`,
       icon: word.toLowerCase()
     });
   });
 
-  // 6. Extract Dictation Script from Stage 4
-  let dictationScript = '';
-  const dictMatch = clean.match(/dictates[^:]*:\s*["“]([^"”]+)["”]/i) || clean.match(/(?:dictates|script)[^:]*:\s*([^.\n]+(?:\.[^.\n]+){2,4}\.)/i);
-  if (dictMatch) {
-    dictationScript = dictMatch[1].replace(/\*\*/g, '').trim();
-  } else {
-    dictationScript = `At the market, please buy one pineapple. It costs three dollars. Also buy two apples for one dollar each. And one mango for two dollars. Thank you!`;
-  }
+  // 6. Dictation script
+  let dictationScript = `Listen carefully and write the target words: ${vocabWords.slice(0, 4).join(', ')}.`;
 
-  // 7. Extract Assessment Quiz from Stage 5
+  // 7. Questions
   let quizQuestions = [
     {
       type: 'multiple_choice',
-      prompt: '1. Did the buyer ask for an apple or a pineapple first?',
-      options: ['A) Pineapple', 'B) Mango'],
-      correct: 'A) Pineapple'
+      prompt: `1. What is the primary topic of the lesson?`,
+      options: [`A) ${theme}`, `B) Unrelated Topic`],
+      correct: `A) ${theme}`
     },
     {
       type: 'true_false',
-      prompt: '2. The apples are one dollar each.',
+      prompt: `2. The target vocabulary includes '${vocabWords[0]}'.`,
       options: ['True', 'False'],
       correct: 'True'
     },
     {
       type: 'multiple_choice',
-      prompt: '3. How much is the pineapple?',
-      options: ['A) $1.00', 'B) $3.00', 'C) $5.00'],
-      correct: 'B) $3.00'
+      prompt: `3. Which word belongs to the key vocabulary?`,
+      options: [`A) ${vocabWords[1] || vocabWords[0]}`, `B) None of the above`],
+      correct: `A) ${vocabWords[1] || vocabWords[0]}`
     }
   ];
 
-  // Try parsing actual Stage 5 questions if present
-  const qA = clean.match(/A\.\s*([^?]+[?]?)/i);
-  const qB = clean.match(/B\.\s*([^?]+[?]?)/i);
-  const qC = clean.match(/C\.\s*([^?]+[?]?)/i);
-
-  if (qA && qB && qC) {
-    quizQuestions = [
-      {
-        type: 'multiple_choice',
-        prompt: `1. ${qA[1].replace(/\*\*/g, '').trim()}`,
-        options: ['A) Yes / First Option', 'B) No / Second Option'],
-        correct: 'A'
-      },
-      {
-        type: 'true_false',
-        prompt: `2. ${qB[1].replace(/\*\*/g, '').trim()}`,
-        options: ['True', 'False'],
-        correct: 'True'
-      },
-      {
-        type: 'multiple_choice',
-        prompt: `3. ${qC[1].replace(/\*\*/g, '').trim()}`,
-        options: ['A) $1.00', 'B) $2.00', 'C) $3.00'],
-        correct: 'B) $3.00'
-      }
-    ];
-  }
-
-  // 8. Build Complete 3-Page Blueprint Data Structure
   return {
     title: theme,
     grade: grade,
     skill: clean.match(/Skills?\s+Focus:\s*([^\n]+)/i)?.[1]?.trim() || 'Listening & Speaking',
     scenario: scenario,
-    objective: objective || 'Identify target vocabulary and communicative structures in real context.',
+    objective: objective || `Identify target vocabulary and communicative structures for ${theme}.`,
     
     // ── PAGE 1: DISCOVERY & LINGUISTIC INPUT ──
     page1: {
       sectionTitle: 'Stage 1 & 2: Discovery & Linguistic Input',
       instructions: 'Review the key words and the communicative frame before listening.',
-      wordBank: vocabWords.map((word, i) => ({
+      wordBank: vocabWords.map((word) => ({
         word: word.charAt(0).toUpperCase() + word.slice(1),
-        pos: ['dollar', 'market'].includes(word.toLowerCase()) ? 'noun' : ['how much'].includes(word.toLowerCase()) ? 'phrase' : 'fruit / noun',
-        example: `I see a ${word.toLowerCase()} at the market.`,
+        pos: 'noun',
+        example: `Context sentence with ${word.toLowerCase()}.`,
         icon: word.toLowerCase()
       })),
       languageFrame: languageFrame,
       activity1: {
         title: 'Activity 1: Listen & Circle (Word Recognition)',
-        instruction: 'Listen carefully as your teacher reads the market words. Circle each word you hear:',
+        instruction: 'Listen carefully as your teacher reads the target words. Circle each word you hear:',
         words: vocabWords
       }
     },
@@ -215,8 +186,8 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     page2: {
       sectionTitle: 'Stage 3 & 4: Guided Practice & Tangible Learning Task',
       activity2: {
-        title: 'Activity 2: Listen & Match (Items to Details)',
-        instruction: 'Listen to the audio sentences. Draw a line to match each market item with its stated price:',
+        title: 'Activity 2: Listen & Match',
+        instruction: 'Listen and draw a line to match each item with its corresponding detail:',
         pairs: matchPairs
       },
       activity3: {
@@ -226,9 +197,9 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
         dialogue: dialogueLines
       },
       activity4: {
-        title: 'Activity 4: Performance Production (Market Stall Task)',
-        instruction: 'Listen to the Shopping List dictation. Draw the items on the stall and write the price on each tag:',
-        prompt: 'Market Stall: Draw the items heard and write their prices on the lines below:'
+        title: `Activity 4: Performance Production (${theme})`,
+        instruction: `Draw and write about ${theme} using the target vocabulary:`,
+        prompt: `Performance Task: Draw and label the key items for ${theme}:`
       }
     },
 
@@ -240,8 +211,8 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
         questions: quizQuestions,
         selfAssessment: [
           { text: 'I can identify the target vocabulary words.', stars: 3 },
-          { text: 'I can understand the prices and numbers mentioned.', stars: 3 },
-          { text: 'I can participate in the market dialogue exchange.', stars: 3 }
+          { text: 'I can understand the key concepts in spoken sentences.', stars: 3 },
+          { text: 'I can participate in the communicative exchange.', stars: 3 }
         ]
       },
       teacherGuide: {
@@ -257,7 +228,7 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
           },
           {
             stage: 'Stage 5 Assessment Quiz Script',
-            text: 'Read clearly to the class: "Welcome! The pineapple is three dollars. The apples are one dollar each. Have a nice day!"'
+            text: `Read clearly to the class: "Review question 1: What is the main theme? Review question 2: Focus on ${vocabWords[0]}."`
           }
         ],
         answerKey: [
@@ -268,9 +239,9 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
         ],
         rubric: [
           {
-            criterion: 'Listening Comprehension (Target Vocabulary & Prices)',
-            independent: 'Identifies all items and prices accurately without teacher repetition.',
-            withSupport: 'Identifies items and prices with 1-2 visual prompts or pauses.',
+            criterion: 'Listening Comprehension & Target Vocabulary',
+            independent: 'Identifies all target items and details accurately without teacher repetition.',
+            withSupport: 'Identifies items and details with 1-2 visual prompts or pauses.',
             emerging: 'Requires direct teacher translation or continuous assistance.'
           },
           {
