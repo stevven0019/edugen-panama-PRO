@@ -155,9 +155,13 @@ export function extractScenarioData(scenario, grade = '7th Grade', scenarioIndex
   }
 
   // 2. Recommended Vocabulary
-  const vocabSource = sc.recommended_vocabulary ||
+  const vocabSource = sc.communicative_competences?.vocabulary?.linguistic_competences ||
+                      sc.communicativeCompetences?.vocabulary?.linguisticCompetences ||
+                      sc.communicativeCompetences?.linguistic?.vocabulary ||
+                      sc.recommended_vocabulary ||
                       sc.communicative_competences?.linguistic_competences?.recommended_vocabulary ||
                       sc.communicative_competences?.vocabulary ||
+                      sc.communicative_competences?.linguistic?.vocabulary ||
                       sc.vocabulary || {};
 
   // Nouns
@@ -735,8 +739,18 @@ function getVectorSvgForNoun(word) {
 
 function getRealiaPhoto(keyword) {
   if (!keyword) return null;
-  const clean = String(keyword).toLowerCase().trim().replace(/\\s+/g, '_');
+  const clean = String(keyword).toLowerCase().trim().replace(/['"()]/g, '').replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
   const singular = clean.replace(/s$/, '');
+
+  // 1. Check local downloaded PNGs from manifest
+  if (window.NOUN_MANIFEST && window.NOUN_MANIFEST[clean] && window.NOUN_MANIFEST[clean].downloaded) {
+    return window.NOUN_MANIFEST[clean].path;
+  }
+  if (window.NOUN_MANIFEST && window.NOUN_MANIFEST[singular] && window.NOUN_MANIFEST[singular].downloaded) {
+    return window.NOUN_MANIFEST[singular].path;
+  }
+
+  // 2. Direct aliases and Curated Realia Catalog
   if (clean === 'pencile') return REALIA_PHOTOS.pencil;
   if (clean === 'table') return REALIA_PHOTOS.desk;
   if (clean === 'backpack') return REALIA_PHOTOS.bag;
@@ -960,9 +974,13 @@ function clientExtractScenario(scenario, grade, scenarioIndex, cefr) {
     grammarRules = ["Present Simple for core communication", "Active listening and response formulas"];
   }
 
-  const vocabSource = scenario.recommended_vocabulary ||
+  const vocabSource = scenario.communicative_competences?.vocabulary?.linguistic_competences ||
+                      scenario.communicativeCompetences?.vocabulary?.linguisticCompetences ||
+                      scenario.communicativeCompetences?.linguistic?.vocabulary ||
+                      scenario.recommended_vocabulary ||
                       scenario.communicative_competences?.linguistic_competences?.recommended_vocabulary ||
                       scenario.communicative_competences?.vocabulary ||
+                      scenario.communicative_competences?.linguistic?.vocabulary ||
                       scenario.vocabulary || {};
 
   let rawNouns = vocabSource.nouns || vocabSource.noun || [];
@@ -1100,6 +1118,13 @@ function escapeHtml(str) {
 
 window.addEventListener('DOMContentLoaded', () => {
   renderPoster(currentScenarioData);
+  fetch('/assets/nouns/manifest.json')
+    .then(r => r.ok ? r.json() : {})
+    .then(manifest => {
+      window.NOUN_MANIFEST = manifest || {};
+      if (currentScenarioData) renderPoster(currentScenarioData);
+    })
+    .catch(() => {});
 });
 </script>
 

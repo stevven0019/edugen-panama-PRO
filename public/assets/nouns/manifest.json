@@ -1,0 +1,102 @@
+{
+  "neighborhood": {
+    "noun": "neighborhood",
+    "filename": "neighborhood.png",
+    "path": "/assets/nouns/neighborhood.png",
+    "grades": [
+      "4"
+    ],
+    "scenarios": [
+      {
+        "grade": "4",
+        "scenario": 1,
+        "title": "A Walk in the Neighborhood"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 118046,
+    "sourceUrl": "https://www.pinclipart.com/picdir/big/34-345734_sensational-design-neighborhood-clipart-house-clip-houses-cartoon.png",
+    "updatedAt": "2026-09-18T04:03:38.073Z"
+  },
+  "park": {
+    "noun": "park",
+    "filename": "park.png",
+    "path": "/assets/nouns/park.png",
+    "grades": [
+      "4"
+    ],
+    "scenarios": [
+      {
+        "grade": "4",
+        "scenario": 1,
+        "title": "A Walk in the Neighborhood"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 242997,
+    "sourceUrl": "https://i.pinimg.com/originals/03/08/47/030847a92e51de34a02ac54b13c8a98c.png",
+    "updatedAt": "2026-09-18T04:03:40.321Z"
+  },
+  "place": {
+    "noun": "place",
+    "filename": "place.png",
+    "path": "/assets/nouns/place.png",
+    "grades": [
+      "4"
+    ],
+    "scenarios": [
+      {
+        "grade": "4",
+        "scenario": 1,
+        "title": "A Walk in the Neighborhood"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 106015,
+    "sourceUrl": "https://clipart-library.com/8300/map-location-clipart-xl.png",
+    "updatedAt": "2026-09-18T04:03:43.244Z"
+  },
+  "tree": {
+    "noun": "tree",
+    "filename": "tree.png",
+    "path": "/assets/nouns/tree.png",
+    "grades": [
+      "4"
+    ],
+    "scenarios": [
+      {
+        "grade": "4",
+        "scenario": 1,
+        "title": "A Walk in the Neighborhood"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 1710414,
+    "sourceUrl": "https://clipart-library.com/img1/978083.png",
+    "updatedAt": "2026-09-18T04:03:46.212Z"
+  },
+  "flower": {
+    "noun": "flower",
+    "filename": "flower.png",
+    "path": "/assets/nouns/flower.png",
+    "grades": [
+      "4"
+    ],
+    "scenarios": [
+      {
+        "grade": "4",
+        "scenario": 1,
+        "title": "A Walk in the Neighborhood"
+      },
+      {
+        "grade": "4",
+        "scenario": 2,
+        "title": "Helping in the Garden"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 1320009,
+    "sourceUrl": "http://pluspng.com/img-png/flower-png-large-pink-flower-png-clipart-2000.png",
+    "updatedAt": "2026-09-18T04:03:49.669Z"
+  }
+}
