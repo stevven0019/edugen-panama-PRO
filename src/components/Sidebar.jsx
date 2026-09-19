@@ -75,7 +75,7 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
           <img 
             src="/edugen-logo.png" 
             alt="EduGen Panama" 
-            className="w-9 h-9 rounded-xl object-contain shadow-md shadow-blue-500/20 bg-blue-900/10 p-0.5" 
+            className="w-9 h-9 rounded-xl object-contain shadow-md shadow-blue-500/20" 
           />
           <span className="font-extrabold font-display text-lg tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
             EduGen Panama
