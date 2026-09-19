@@ -19,6 +19,9 @@ function getScenarioThemeNoun(scenario, title) {
   if (/health|body|doctor|salud|hospital|care|cuerpo/i.test(text)) {
     return 'HEALTH & WELL-BEING CONCEPTS';
   }
+  if (/rain|weather|storm|puddle|umbrella|cloud|clima|lluvia|tiempo/i.test(text)) {
+    return 'WEATHER & RAINY SEASON ITEMS';
+  }
   if (/book|desk|chair|pencil|classroom|school|where\s*is|escuela|salon|aula/i.test(text)) {
     return 'CLASSROOM OBJECTS';
   }
@@ -158,51 +161,72 @@ export function renderWorkbookHtml(pack) {
   // 1. Extract or synthesize Part 1 Realia Items (6 cards)
   let realiaItems = [];
   if (pack.actionWorksheet?.part1?.items?.length) {
-    realiaItems = pack.actionWorksheet.part1.items.map(it => ({
-      word: it.word || it.label,
-      label: it.label || it.word,
-      photoUrl: it.photoUrl || null
-    }));
+    realiaItems = pack.actionWorksheet.part1.items.map(it => {
+      const w = it.word || it.label;
+      return {
+        word: w,
+        label: it.label || it.word,
+        photoUrl: it.photoUrl || getRealiaPhoto(w)
+      };
+    });
   } else if (page1.wordBank?.length && page1.wordBank[0]?.word?.toLowerCase() !== 'word 1') {
-    realiaItems = page1.wordBank.map(it => ({
-      word: it.word || it.label,
-      label: it.label || it.word,
-      photoUrl: it.photoUrl || null
-    }));
+    realiaItems = page1.wordBank.map(it => {
+      const w = it.word || it.label;
+      return {
+        word: w,
+        label: it.label || it.word,
+        photoUrl: it.photoUrl || getRealiaPhoto(w)
+      };
+    });
   }
 
   // Authentic thematic fallback lists if empty
   const defaultClassroomWords = [
-    { word: 'BOOK', label: 'BOOK' },
-    { word: 'DESK', label: 'DESK' },
-    { word: 'CHAIR', label: 'CHAIR' },
-    { word: 'BAG', label: 'BAG' },
-    { word: 'PENCIL', label: 'PENCIL' },
-    { word: 'CRAYON', label: 'CRAYON' }
+    { word: 'BOOK', label: 'BOOK', photoUrl: getRealiaPhoto('book') },
+    { word: 'DESK', label: 'DESK', photoUrl: getRealiaPhoto('desk') },
+    { word: 'CHAIR', label: 'CHAIR', photoUrl: getRealiaPhoto('chair') },
+    { word: 'BAG', label: 'BAG', photoUrl: getRealiaPhoto('bag') },
+    { word: 'PENCIL', label: 'PENCIL', photoUrl: getRealiaPhoto('pencil') },
+    { word: 'CRAYON', label: 'CRAYON', photoUrl: getRealiaPhoto('crayon') }
   ];
 
   const defaultMarketWords = [
-    { word: 'PINEAPPLE', label: 'PINEAPPLE' },
-    { word: 'YUCA', label: 'YUCA' },
-    { word: 'MANGO', label: 'MANGO' },
-    { word: 'DOLLAR', label: 'DOLLAR' },
-    { word: 'PRICE', label: 'PRICE' },
-    { word: 'MARKET', label: 'MARKET' }
+    { word: 'PINEAPPLE', label: 'PINEAPPLE', photoUrl: getRealiaPhoto('pineapple') },
+    { word: 'YUCA', label: 'YUCA', photoUrl: getRealiaPhoto('yuca') },
+    { word: 'MANGO', label: 'MANGO', photoUrl: getRealiaPhoto('mango') },
+    { word: 'DOLLAR', label: 'DOLLAR', photoUrl: getRealiaPhoto('dollar') },
+    { word: 'PRICE', label: 'PRICE', photoUrl: getRealiaPhoto('price') },
+    { word: 'MARKET', label: 'MARKET', photoUrl: getRealiaPhoto('market') }
+  ];
+
+  const defaultWeatherWords = [
+    { word: 'UMBRELLA', label: 'UMBRELLA', photoUrl: getRealiaPhoto('umbrella') },
+    { word: 'BOOTS', label: 'BOOTS', photoUrl: getRealiaPhoto('boots') },
+    { word: 'PUDDLE', label: 'PUDDLE', photoUrl: getRealiaPhoto('puddle') },
+    { word: 'RAINCOAT', label: 'RAINCOAT', photoUrl: getRealiaPhoto('raincoat') },
+    { word: 'SPLASH', label: 'SPLASH', photoUrl: getRealiaPhoto('splash') },
+    { word: 'WET', label: 'WET', photoUrl: getRealiaPhoto('wet') }
   ];
 
   if (!realiaItems.length) {
-    if (scenarioNoun.includes('MARKET')) {
+    if (scenarioNoun.includes('WEATHER') || /rain|weather|puddle|storm|umbrella/i.test(`${scenario} ${cleanTitle}`)) {
+      realiaItems = defaultWeatherWords;
+    } else if (scenarioNoun.includes('MARKET')) {
       realiaItems = defaultMarketWords;
     } else if (isKinder || scenarioNoun.includes('CLASSROOM')) {
       realiaItems = defaultClassroomWords;
     } else {
-      realiaItems = defaultMarketWords;
+      realiaItems = defaultWeatherWords;
     }
   }
   while (realiaItems.length < 6) {
-    realiaItems.push({ word: `ITEM ${realiaItems.length + 1}` });
+    const fallbackWord = `ITEM ${realiaItems.length + 1}`;
+    realiaItems.push({ word: fallbackWord, label: fallbackWord, photoUrl: getRealiaPhoto(fallbackWord) });
   }
   realiaItems = realiaItems.slice(0, 6);
+  realiaItems.forEach(it => {
+    if (!it.photoUrl) it.photoUrl = getRealiaPhoto(it.word || it.label);
+  });
 
   // 2. Skill-Specific Part 1 Configuration
   let part1Title = `PART 1: LISTEN & POINT TO THE REAL ${scenarioNoun} (REALIA HOOK)`;
@@ -271,21 +295,24 @@ export function renderWorkbookHtml(pack) {
   // Extract or synthesize Part 2 Items (4 cards)
   let prepositionItems = [];
   if (pack.actionWorksheet?.part2?.items?.length) {
-    prepositionItems = pack.actionWorksheet.part2.items;
+    prepositionItems = pack.actionWorksheet.part2.items.map((it, idx) => ({
+      ...it,
+      photoUrl: it.photoUrl || getRealiaPhoto(it.subject || it.word || it.concept) || realiaItems[idx]?.photoUrl
+    }));
   } else {
     if (isKinder || /where\s*is|preposition/i.test(`${scenario} ${cleanTitle}`)) {
       prepositionItems = [
-        { concept: 'ON', relation: 'on', sentence: 'The book is ON the desk.', subject: 'book', reference: 'desk' },
-        { concept: 'UNDER', relation: 'under', sentence: 'The bag is UNDER the chair.', subject: 'bag', reference: 'chair' },
-        { concept: 'IN', relation: 'in', sentence: 'The pencil is IN the bag.', subject: 'pencil', reference: 'bag' },
-        { concept: 'NEXT TO', relation: 'next_to', sentence: 'The crayon is NEXT TO the book.', subject: 'crayon', reference: 'book' }
+        { concept: 'ON', relation: 'on', sentence: 'The book is ON the desk.', subject: 'book', reference: 'desk', photoUrl: getRealiaPhoto('book') },
+        { concept: 'UNDER', relation: 'under', sentence: 'The bag is UNDER the chair.', subject: 'bag', reference: 'chair', photoUrl: getRealiaPhoto('bag') },
+        { concept: 'IN', relation: 'in', sentence: 'The pencil is IN the bag.', subject: 'pencil', reference: 'bag', photoUrl: getRealiaPhoto('pencil') },
+        { concept: 'NEXT TO', relation: 'next_to', sentence: 'The crayon is NEXT TO the book.', subject: 'crayon', reference: 'book', photoUrl: getRealiaPhoto('crayon') }
       ];
     } else if (scenarioNoun.includes('MARKET')) {
       prepositionItems = [
-        { concept: 'PRICE CHECK', relation: 'on', sentence: 'The fresh pineapple costs two dollars and fifty cents.', subject: 'pineapple', reference: 'market' },
-        { concept: 'ROOT VEGETABLE', relation: 'in', sentence: 'Yuca is a fresh root vegetable sold at the market stand.', subject: 'yuca', reference: 'market' },
-        { concept: 'TROPICAL FRUIT', relation: 'on', sentence: 'The yellow mango is ripe, sweet, and ready to eat.', subject: 'mango', reference: 'market' },
-        { concept: 'CURRENCY', relation: 'next_to', sentence: 'We use dollars and cents to pay the grocery vendor.', subject: 'dollar', reference: 'market' }
+        { concept: 'PRICE CHECK', relation: 'on', sentence: 'The fresh pineapple costs two dollars and fifty cents.', subject: 'pineapple', reference: 'market', photoUrl: getRealiaPhoto('pineapple') },
+        { concept: 'ROOT VEGETABLE', relation: 'in', sentence: 'Yuca is a fresh root vegetable sold at the market stand.', subject: 'yuca', reference: 'market', photoUrl: getRealiaPhoto('yuca') },
+        { concept: 'TROPICAL FRUIT', relation: 'on', sentence: 'The yellow mango is ripe, sweet, and ready to eat.', subject: 'mango', reference: 'market', photoUrl: getRealiaPhoto('mango') },
+        { concept: 'CURRENCY', relation: 'next_to', sentence: 'We use dollars and cents to pay the grocery vendor.', subject: 'dollar', reference: 'market', photoUrl: getRealiaPhoto('dollar') }
       ];
     } else {
       const w0 = realiaItems[0]?.word || 'item';
@@ -293,10 +320,10 @@ export function renderWorkbookHtml(pack) {
       const w2 = realiaItems[2]?.word || 'item';
       const w3 = realiaItems[3]?.word || 'item';
       prepositionItems = [
-        { concept: isReading ? 'READ & CHECK' : 'FEATURE 1', relation: 'on', sentence: `The ${w0.toLowerCase()} is clearly identified in our ${scenario}.`, subject: w0, reference: 'desk' },
-        { concept: isReading ? 'READ & CHECK' : 'FEATURE 2', relation: 'in', sentence: `We explore the features of the ${w1.toLowerCase()} in the lesson.`, subject: w1, reference: 'desk' },
-        { concept: isReading ? 'READ & CHECK' : 'FEATURE 3', relation: 'under', sentence: `The ${w2.toLowerCase()} is an essential part of today's task.`, subject: w2, reference: 'desk' },
-        { concept: isReading ? 'READ & CHECK' : 'FEATURE 4', relation: 'next_to', sentence: `We use the ${w3.toLowerCase()} to complete our communicative goal.`, subject: w3, reference: 'desk' }
+        { concept: isReading ? 'READ & CHECK' : 'FEATURE 1', relation: 'on', sentence: `The ${w0.toLowerCase()} is clearly identified in our ${scenario}.`, subject: w0, reference: 'desk', photoUrl: realiaItems[0]?.photoUrl || getRealiaPhoto(w0) },
+        { concept: isReading ? 'READ & CHECK' : 'FEATURE 2', relation: 'in', sentence: `We explore the features of the ${w1.toLowerCase()} in the lesson.`, subject: w1, reference: 'desk', photoUrl: realiaItems[1]?.photoUrl || getRealiaPhoto(w1) },
+        { concept: isReading ? 'READ & CHECK' : 'FEATURE 3', relation: 'under', sentence: `The ${w2.toLowerCase()} is an essential part of today's task.`, subject: w2, reference: 'desk', photoUrl: realiaItems[2]?.photoUrl || getRealiaPhoto(w2) },
+        { concept: isReading ? 'READ & CHECK' : 'FEATURE 4', relation: 'next_to', sentence: `We use the ${w3.toLowerCase()} to complete our communicative goal.`, subject: w3, reference: 'desk', photoUrl: realiaItems[3]?.photoUrl || getRealiaPhoto(w3) }
       ];
     }
   }
@@ -544,14 +571,35 @@ export function renderWorkbookHtml(pack) {
                 </span>
               </div>
 
-              <!-- Visual Element: Realia Preposition Scene (Kinder) OR Colorful Outline Line Drawing -->
-              <div class="w-full aspect-[16/9] rounded-xl overflow-hidden ${theme.headerBg} border border-slate-200/80 mb-2 flex items-center justify-center relative">
-                ${isPrepositionScene ? renderSpatialCardHtml({
-                  relation: item.relation || item.concept || 'on',
-                  subject: item.subject || 'book',
-                  reference: item.reference || 'desk',
-                  photoUrl: item.photoUrl
-                }) : renderConceptLineDrawingSvg(item, theme)}
+              <!-- Visual Element: Authentic Realia Item Photo OR Spatial Preposition Scene OR Line Drawing -->
+              <div class="w-full aspect-[16/9] rounded-xl overflow-hidden ${theme.headerBg} border border-slate-200/80 mb-2 flex items-center justify-center relative p-1.5">
+                ${(() => {
+                  const cardImg = item.photoUrl || getRealiaPhoto(item.subject) || getRealiaPhoto(item.word) || getRealiaPhoto(item.concept);
+                  if (cardImg && !isPrepositionScene) {
+                    return `
+                      <img
+                        src="${cardImg}"
+                        alt="${item.subject || 'visual'}"
+                        class="w-full h-full object-contain select-none"
+                        loading="lazy"
+                        crossorigin="anonymous"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                      />
+                      <div style="display:none;" class="w-full h-full flex items-center justify-center">
+                        ${renderConceptLineDrawingSvg(item, theme)}
+                      </div>
+                    `;
+                  }
+                  if (isPrepositionScene) {
+                    return renderSpatialCardHtml({
+                      relation: item.relation || item.concept || 'on',
+                      subject: item.subject || 'book',
+                      reference: item.reference || 'desk',
+                      photoUrl: item.photoUrl
+                    });
+                  }
+                  return renderConceptLineDrawingSvg(item, theme);
+                })()}
               </div>
 
               <!-- Reading / Verification Sentence in Clear Legible Font -->
@@ -614,7 +662,7 @@ export function renderWorkbookHtml(pack) {
               letter: String.fromCharCode(65 + idx), // 'A', 'B', 'C', 'D'
               num: idx + 1,
               word: it.word,
-              photoUrl: it.photoUrl
+              photoUrl: it.photoUrl || getRealiaPhoto(it.word)
             }));
             const n = matchLeft.length;
             // Derangement shift so items never match horizontally across the row:
@@ -631,7 +679,7 @@ export function renderWorkbookHtml(pack) {
                     <span class="w-6 h-6 rounded-md bg-indigo-600 text-white font-black text-xs flex items-center justify-center select-none shadow-sm shrink-0">
                       ${leftItem.letter}
                     </span>
-                    <div class="w-9 h-9 rounded-lg overflow-hidden bg-slate-100 flex items-center justify-center border border-slate-200 shrink-0">
+                    <div class="w-9 h-9 rounded-lg overflow-hidden bg-slate-50 flex items-center justify-center border border-slate-200 shrink-0 p-0.5">
                       ${renderRealiaCardHtml({ word: leftItem.word, label: leftItem.word, photoUrl: leftItem.photoUrl })}
                     </div>
                     <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wide">
@@ -922,6 +970,7 @@ export function renderWorkbookHtml(pack) {
     <html lang="es">
     <head>
       <meta charset="UTF-8" />
+      <base href="${typeof window !== 'undefined' && window.location?.origin ? window.location.origin : ''}/" />
       <title>Action Worksheet: "${cleanTitle}" - AOA MEDUCA</title>
       <script src="https://cdn.tailwindcss.com"></script>
       <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -23174,5 +23174,41 @@
     "sizeBytes": 475581,
     "sourceUrl": "https://clipart-library.com/new_gallery/insect-clipart-5.png",
     "updatedAt": "2026-09-18T04:56:23.906Z"
+  },
+  "splash": {
+    "noun": "splash",
+    "filename": "splash.png",
+    "path": "/assets/nouns/splash.png",
+    "grades": [
+      "4"
+    ],
+    "scenarios": [
+      {
+        "grade": "4",
+        "scenario": 6,
+        "title": "It's the Rainy Season"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 480950,
+    "updatedAt": "2026-09-18T10:09:08.501Z"
+  },
+  "wet": {
+    "noun": "wet",
+    "filename": "wet.png",
+    "path": "/assets/nouns/wet.png",
+    "grades": [
+      "4"
+    ],
+    "scenarios": [
+      {
+        "grade": "4",
+        "scenario": 6,
+        "title": "It's the Rainy Season"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 653258,
+    "updatedAt": "2026-09-18T10:09:08.502Z"
   }
 }

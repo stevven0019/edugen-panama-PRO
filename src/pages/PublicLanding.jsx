@@ -140,9 +140,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
       <nav className="sticky top-0 z-40 w-full glass-panel border-b border-slate-200/60 dark:border-slate-800/40 bg-white/70 dark:bg-slate-950/70 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-2.5 cursor-pointer" onClick={() => setPublicTab('landing')}>
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-600 w-9 h-9 rounded-xl text-white flex items-center justify-center shadow-md shadow-blue-500/10">
-              <School className="w-5 h-5" />
-            </div>
+            <img src="/edugen-logo.png" alt="EduGen Panama" className="w-9 h-9 rounded-xl object-contain shadow-md shadow-blue-500/20" />
             <span className="font-extrabold font-display text-sm tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
               EduGen Panama
             </span>
@@ -893,9 +891,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           <div className="space-y-4">
             <div className="flex items-center justify-center md:justify-start space-x-2">
-              <div className="bg-gradient-to-br from-blue-600 to-indigo-600 w-8 h-8 rounded-lg text-white flex items-center justify-center">
-                <School className="w-4 h-4" />
-              </div>
+              <img src="/edugen-logo.png" alt="EduGen Panama" className="w-8 h-8 rounded-lg object-contain" />
               <span className="font-extrabold font-display text-sm tracking-tight">EduGen Panama PRO</span>
             </div>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs mx-auto md:mx-0">

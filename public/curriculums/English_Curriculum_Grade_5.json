@@ -201,7 +201,7 @@
         ],
         "vocabulary": {
           "linguistic_competences": {
-            "nouns": "whiteboard, window, door, trash can, dustpan, mop, sponge, bucket, cloth, cleaner, cleaning supplies",
+            "nouns": "chair, desk, table, whiteboard, window, door, trash can, dustpan, mop, sponge, bucket, cloth, cleaner, cleaning supplies",
             "verbs": "sweep, wipe, arrange, organize, tidy, put away, clean up",
             "adjectives": "tidy, clean, organized, easy, messy, neat, dirty, busy, lazy",
             "adverbs": "quickly, carefully, quietly"

@@ -6,6 +6,8 @@
  * so the system seamlessly falls back to Gemini AI for complete generation.
  */
 
+import { getRealiaPhoto } from './realiaCatalog.js';
+
 const cleanHtml = (html) => {
   if (!html) return '';
   return html
@@ -128,7 +130,8 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     matchPairs.push({
       item: word.charAt(0).toUpperCase() + word.slice(1),
       detail: `Context ${idx + 1}: ${word}`,
-      icon: word.toLowerCase()
+      icon: word.toLowerCase(),
+      photoUrl: getRealiaPhoto(word)
     });
   });
 
@@ -187,7 +190,8 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
         : 'Listen carefully! When teacher says the word, point to the real photo on your paper and touch the real object or show the gesture!',
       items: vocabWords.slice(0, 6).map(w => ({
         word: w.toUpperCase(),
-        label: w.toUpperCase()
+        label: w.toUpperCase(),
+        photoUrl: getRealiaPhoto(w)
       }))
     },
     part2: {
@@ -209,7 +213,8 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
         sentence: `The ${w.toLowerCase()} is an essential element in our lesson about ${theme}.`,
         relation: idx === 0 ? 'on' : idx === 1 ? 'in' : idx === 2 ? 'under' : 'next_to',
         subject: w.toLowerCase(),
-        reference: 'desk'
+        reference: 'desk',
+        photoUrl: getRealiaPhoto(w)
       }))
     }
   };
@@ -230,7 +235,8 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
         word: word.charAt(0).toUpperCase() + word.slice(1),
         pos: 'noun',
         example: `Context sentence with ${word.toLowerCase()}.`,
-        icon: word.toLowerCase()
+        icon: word.toLowerCase(),
+        photoUrl: getRealiaPhoto(word)
       })),
       languageFrame: languageFrame,
       activity1: {

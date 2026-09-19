@@ -87,7 +87,7 @@
             "WH-questions (e.g., 'What is it?')"
           ],
           "recommended_vocabulary": {
-            "nouns": ["child", "table", "morning", "book", "music", "window", "door"],
+            "nouns": ["chair", "desk", "table", "child", "morning", "book", "music", "window", "door", "teacher", "student"],
             "verbs": ["listen", "stand up", "jump", "touch", "open"],
             "adjectives": ["nice", "calm", "top", "bottom"],
             "prepositions": ["near"],
@@ -208,7 +208,7 @@
             "Imperatives (e.g., 'Pick it up.')"
           ],
           "recommended_vocabulary": {
-            "nouns": ["bag", "pen", "paper", "notebook", "calendar", "alphabet", "door", "eraser"],
+            "nouns": ["chair", "desk", "bag", "pen", "paper", "notebook", "calendar", "alphabet", "door", "eraser"],
             "verbs": ["sit", "play", "take", "put", "jump", "clap", "pick up", "draw"],
             "adjectives": ["big", "small", "long", "short"],
             "prepositions": ["on", "up", "down"],
@@ -441,16 +441,16 @@
       "communicative_competences": {
         "linguistic_competences": {
           "recommended_grammatical_features": [
-            "Prepositions (e.g., 'on the desks')",
-            "WH-Questions for Location (e.g., 'Where is the book?')",
+            "Prepositions of place (in, on, under, next to, behind, in front of, between, near)",
+            "WH-Questions for Location (e.g., 'Where is the book? It is on the desk.' 'Where is the pencil? It is under the chair.')",
             "Plural nouns in simple responses (e.g., 'on the desk' or 'three books')"
           ],
           "recommended_vocabulary": {
-            "nouns": ["poster", "clip", "ruler", "glue", "marker", "folder", "card", "shelf", "chart", "pen", "chalk", "key", "notebook"],
+            "nouns": ["chair", "desk", "table", "book", "bag", "box", "pencil", "poster", "clip", "ruler", "glue", "marker", "folder", "card", "shelf", "chart", "pen", "chalk", "key", "notebook"],
             "verbs": ["point", "hold", "pick", "put", "draw", "write", "show", "go"],
             "adjectives": ["large", "small"],
             "colors": ["yellow", "red", "blue", "orange", "green", "purple"],
-            "prepositions": ["on", "in", "under"]
+            "prepositions": ["in", "on", "under", "next to", "behind", "in front of", "between", "near"]
           },
           "pronunciation_and_phonemic_awareness": {
             "pronunciation": "/w/ in 'where' and /b/ in 'book'",
@@ -685,10 +685,10 @@
             "Positional commands with prepositions (e.g., 'Stand next to the chair.' 'Jump over the line.')"
           ],
           "recommended_vocabulary": {
-            "nouns": ["numbers (one to ten)", "step", "dance", "foot", "circle", "line", "voice"],
+            "nouns": ["chair", "desk", "numbers (one to ten)", "step", "dance", "foot", "circle", "line", "voice"],
             "verbs": ["move", "dance", "step", "spin", "turn", "twirl", "shake", "hop", "put", "jump"],
             "adjectives": ["fast", "slow", "big", "small"],
-            "prepositions": ["in", "out", "around", "up"]
+            "prepositions": ["in", "out", "around", "up", "next to", "over"]
           },
           "pronunciation_and_phonemic_awareness": {
             "pronunciation": "/t/ in 'two' and /d/ in 'dance'",

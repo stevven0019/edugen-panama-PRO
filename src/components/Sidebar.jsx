@@ -71,10 +71,12 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
     <>
       {/* Mobile Header Bar */}
       <div className="lg:hidden flex items-center justify-between p-4 glass-panel border-b sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80">
-        <div className="flex items-center space-x-2">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-2 rounded-xl text-white">
-            <School className="w-5 h-5" />
-          </div>
+        <div className="flex items-center space-x-2.5">
+          <img 
+            src="/edugen-logo.png" 
+            alt="EduGen Panama" 
+            className="w-9 h-9 rounded-xl object-contain shadow-md shadow-blue-500/20 bg-blue-900/10 p-0.5" 
+          />
           <span className="font-extrabold font-display text-lg tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
             EduGen Panama
           </span>
@@ -104,9 +106,11 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
         <div className="space-y-8">
           {/* Logo & Brand Header */}
           <div className="flex items-center space-x-3 pb-4 border-b border-slate-200/60 dark:border-slate-800/40">
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-600 p-3 rounded-2xl text-white shadow-lg shadow-blue-500/20">
-              <School className="w-6 h-6" />
-            </div>
+            <img 
+              src="/edugen-logo.png" 
+              alt="EduGen Panama" 
+              className="w-12 h-12 rounded-2xl object-contain shadow-lg shadow-blue-500/25 border border-blue-400/20" 
+            />
             <div>
               <h1 className="font-extrabold font-display text-xl tracking-tight leading-none bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
                 EduGen Panama

@@ -1,4 +1,5 @@
 import { parseAoaLessonPlan } from './lessonParser.js';
+import { getRealiaPhoto } from './realiaCatalog.js';
 
 export const ICONS = ['book','bag','desk','chair','pencil','crayon','ball','apple','tree','sun','house','fish','flower','pineapple','banana','orange','watermelon','mango','market','dollar'];
 
@@ -28,6 +29,74 @@ export function normalizeAnchor(anchor, position = 'none', contextText = '') {
   return 'desk';
 }
 
+export function hydratePackPhotos(pack) {
+  if (!pack || typeof pack !== 'object') return;
+
+  if (pack.actionWorksheet) {
+    if (Array.isArray(pack.actionWorksheet.part1?.items)) {
+      pack.actionWorksheet.part1.items.forEach(item => {
+        if (!item.photoUrl) {
+          const candidate = item.word || item.item || item.label || '';
+          const p = getRealiaPhoto(candidate);
+          if (p) item.photoUrl = p;
+        }
+      });
+    }
+    if (Array.isArray(pack.actionWorksheet.part2?.items)) {
+      pack.actionWorksheet.part2.items.forEach(item => {
+        if (!item.photoUrl) {
+          const candidate = item.subject || item.item || item.feature || item.label || '';
+          const p = getRealiaPhoto(candidate);
+          if (p) item.photoUrl = p;
+        }
+      });
+    }
+  }
+
+  if (Array.isArray(pack.page1?.wordBank)) {
+    pack.page1.wordBank.forEach(item => {
+      if (!item.photoUrl) {
+        const candidate = item.word || item.item || '';
+        const p = getRealiaPhoto(candidate);
+        if (p) item.photoUrl = p;
+      }
+    });
+  }
+
+  if (Array.isArray(pack.page2?.activity2?.pairs)) {
+    pack.page2.activity2.pairs.forEach(pair => {
+      if (!pair.photoUrl) {
+        const candidate = pair.item || pair.left || '';
+        const p = getRealiaPhoto(candidate);
+        if (p) pair.photoUrl = p;
+      }
+    });
+  }
+
+  if (Array.isArray(pack.activities)) {
+    pack.activities.forEach(act => {
+      if (Array.isArray(act.items)) {
+        act.items.forEach(item => {
+          if (!item.photoUrl) {
+            const candidate = item.label || item.word || item.icon || '';
+            const p = getRealiaPhoto(candidate);
+            if (p) item.photoUrl = p;
+          }
+        });
+      }
+      if (Array.isArray(act.pairs)) {
+        act.pairs.forEach(pair => {
+          if (!pair.photoUrl) {
+            const candidate = pair.left || pair.item || pair.icon || '';
+            const p = getRealiaPhoto(candidate);
+            if (p) pair.photoUrl = p;
+          }
+        });
+      }
+    });
+  }
+}
+
 export function validatePack(pack) {
   if (!pack || typeof pack !== 'object') throw new Error('No se recibió un cuaderno válido.');
 
@@ -49,13 +118,13 @@ export function validatePack(pack) {
           type: 'vocabulary_cards',
           title: pack.page1.activity1?.title || 'Vocabulary Input',
           instruction: pack.page1.activity1?.instruction || 'Review the target words.',
-          items: (pack.page1.wordBank || []).map(w => ({ label: w.word, icon: w.icon || w.word }))
+          items: (pack.page1.wordBank || []).map(w => ({ label: w.word, icon: w.icon || w.word, photoUrl: w.photoUrl }))
         },
         {
           type: 'matching',
           title: pack.page2.activity2?.title || 'Matching Activity',
           instruction: pack.page2.activity2?.instruction || 'Match items.',
-          pairs: (pack.page2.activity2?.pairs || []).map(p => ({ left: p.item, right: p.detail, icon: p.icon }))
+          pairs: (pack.page2.activity2?.pairs || []).map(p => ({ left: p.item, right: p.detail, icon: p.icon, photoUrl: p.photoUrl }))
         },
         {
           type: 'dialogue_cloze',
@@ -74,6 +143,7 @@ export function validatePack(pack) {
         { criterion: 'Demonstrates target skill in context', independent: 'Completes tasks accurately and fluently without support.', withSupport: 'Completes tasks with occasional prompts and repetitions.', emerging: 'Requires continuous modeling and direct teacher assistance.' }
       ];
     }
+    hydratePackPhotos(pack);
     return pack;
   }
 
@@ -285,6 +355,7 @@ export function validatePack(pack) {
     };
   }
 
+  hydratePackPhotos(pack);
   return pack;
 }
 

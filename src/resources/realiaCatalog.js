@@ -19,12 +19,24 @@ export const REALIA_PHOTOS = {
   notebook: 'https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&w=400&q=80',
   ball: 'https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=400&q=80',
 
-  // ── Prepositions & Spatial Scenes ──
+  // ── Prepositions & Spatial Scenes (Kindergarten & Primary) ──
   'on': 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=400&q=80', // stack of books on desk
   'on the desk': 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=400&q=80',
+  'on the table': 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=400&q=80',
   'under': 'https://images.unsplash.com/photo-1580481077198-c8075423e3e8?auto=format&fit=crop&w=400&q=80',
+  'under the chair': 'https://images.unsplash.com/photo-1580481077198-c8075423e3e8?auto=format&fit=crop&w=400&q=80',
+  'under the desk': 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=400&q=80',
   'in': 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&q=80', // pencil in bag
+  'in the bag': 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&q=80',
+  'in the box': 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=80',
   'next to': 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=80',
+  'next to the chair': 'https://images.unsplash.com/photo-1580481077198-c8075423e3e8?auto=format&fit=crop&w=400&q=80',
+  'next to the desk': 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=400&q=80',
+  'behind': 'https://images.unsplash.com/photo-1580481077198-c8075423e3e8?auto=format&fit=crop&w=400&q=80',
+  'in front of': 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=400&q=80',
+  'between': 'https://images.unsplash.com/photo-1580481077198-c8075423e3e8?auto=format&fit=crop&w=400&q=80',
+  'near': 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=80',
+  'over': 'https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=400&q=80',
 
   // ── Fruits, Food & Market (4th Grade & Primary) ──
   pineapple: 'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=400&q=80',
@@ -86,35 +98,85 @@ export const REALIA_PHOTOS = {
   weather: 'https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=400&q=80'
 };
 
+import { getNounImagePath, hasNounImage } from './availableNouns.js';
+
 /**
  * Returns a clean image URL for a given keyword, or null if unmapped
  */
 export function getRealiaPhoto(keyword) {
   if (!keyword || typeof keyword !== 'string') return null;
-  const clean = keyword.toLowerCase().trim().replace(/s$/, '');
-  if (clean === 'pencile') return REALIA_PHOTOS.pencil;
-  if (clean === 'table') return REALIA_PHOTOS.desk;
-  if (clean === 'backpack') return REALIA_PHOTOS.bag;
-  if (clean === 'money' || clean === 'price') return REALIA_PHOTOS.dollar;
-  if (clean === 'cassava') return REALIA_PHOTOS.yuca;
-  if (clean === 'potato') return REALIA_PHOTOS.potatoes;
-  if (clean === 'shopping list' || clean === 'shopping_list') return REALIA_PHOTOS.shopping_list;
+  const clean = keyword.toLowerCase().trim().replace(/['"“”‘’()[\],;:]/g, '');
+  if (!clean) return null;
+
+  // 1. Direct match in /assets/nouns/ (1,023 curriculum assets)
+  const nounImg = getNounImagePath(clean);
+  if (nounImg) return nounImg;
+
+  // 2. Normalized snake_case check
+  const normalized = clean.replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+  const normImg = getNounImagePath(normalized);
+  if (normImg) return normImg;
+
+  // 3. Common educational curriculum aliases & compound phrases
+  const ALIASES = {
+    pencile: 'pencil',
+    table: 'desk',
+    backpack: 'bag',
+    school_bag: 'bag',
+    money: 'dollar',
+    price: 'dollar',
+    cost: 'dollar',
+    cassava: 'yuca',
+    potato: 'potatoes',
+    tomato: 'tomatoes',
+    shopping_list: 'shopping_list',
+    rain_boots: 'boots',
+    rubber_boots: 'boots',
+    rain_coat: 'raincoat',
+    water_puddle: 'puddle',
+    water_splash: 'splash',
+    water_drops: 'wet',
+    rain_drops: 'raindrop',
+    raindrops: 'raindrop',
+    splashing: 'splash',
+    wet_weather: 'wet',
+    rainy: 'rain',
+    stormy: 'storm'
+  };
+  const alias = ALIASES[clean] || ALIASES[normalized];
+  if (alias) {
+    const aliasImg = getNounImagePath(alias);
+    if (aliasImg) return aliasImg;
+    if (REALIA_PHOTOS[alias]) return REALIA_PHOTOS[alias];
+  }
+
+  // 4. Singular / Plural resolution
+  const singular = normalized.replace(/s$/, '');
+  const singImg = getNounImagePath(singular);
+  if (singImg) return singImg;
+
+  const plural = normalized + 's';
+  const plurImg = getNounImagePath(plural);
+  if (plurImg) return plurImg;
+
+  // 5. Unsplash Curated Photos
   if (REALIA_PHOTOS[clean]) return REALIA_PHOTOS[clean];
-  if (REALIA_PHOTOS[keyword.toLowerCase().trim()]) return REALIA_PHOTOS[keyword.toLowerCase().trim()];
+  if (REALIA_PHOTOS[normalized]) return REALIA_PHOTOS[normalized];
+  if (REALIA_PHOTOS[singular]) return REALIA_PHOTOS[singular];
+
   return null;
 }
 
 /**
  * Renders an authentic visual card (matching Image 1 exactly):
- * - If item is 'chair' or 'under chair' and styled card is desired, renders solid high-contrast card
- * - Otherwise renders real photo with seamless fallback
+ * - Renders real curriculum photo/clipart with seamless fallback
  */
 export function renderRealiaCardHtml({ word = 'book', label = '', photoUrl = null, fallbackStyle = 'blue' }) {
   const cleanWord = String(word || label || '').toLowerCase().trim();
   const url = photoUrl || getRealiaPhoto(cleanWord);
 
-  // Exact match for the blue "CHAIR" card from Image 1:
-  if (cleanWord === 'chair' && !photoUrl) {
+  // Exact match for the blue "CHAIR" card only if no image exists:
+  if (cleanWord === 'chair' && !url && !photoUrl) {
     return `
       <div class="w-full h-full bg-[#1E3A8A] text-white font-black flex items-center justify-center text-sm tracking-widest shadow-inner select-none">
         CHAIR
@@ -127,13 +189,14 @@ export function renderRealiaCardHtml({ word = 'book', label = '', photoUrl = nul
       <img
         src="${url}"
         alt="${label || word}"
-        class="w-full h-full object-cover select-none"
+        class="w-full h-full object-contain p-1 select-none transition-transform hover:scale-105"
         loading="lazy"
         crossorigin="anonymous"
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       />
-      <div style="display:none;" class="w-full h-full bg-slate-800 text-white font-black flex items-center justify-center text-xs uppercase tracking-wider select-none p-1 text-center">
-        ${label || word}
+      <div style="display:none;" class="w-full h-full bg-slate-50 text-slate-700 font-extrabold flex flex-col items-center justify-center text-[10px] uppercase tracking-wider select-none p-1 text-center border border-slate-200 rounded-lg">
+        <span class="text-base">🖼️</span>
+        <span class="truncate w-full">${label || word}</span>
       </div>
     `;
   }
@@ -156,7 +219,7 @@ export function renderRealiaCardHtml({ word = 'book', label = '', photoUrl = nul
 export function renderSpatialCardHtml({ relation = 'on', subject = 'book', reference = 'desk', photoUrl = null }) {
   const rel = String(relation).toLowerCase().trim();
 
-  // Exact match for green "UNDER CHAIR" card from Image 1:
+  // Exact match for green "UNDER CHAIR" card:
   if (rel === 'under' || rel.includes('chair')) {
     return `
       <div class="w-full h-full bg-[#047857] text-white font-black flex items-center justify-center text-sm tracking-wider shadow-inner select-none">
@@ -165,11 +228,23 @@ export function renderSpatialCardHtml({ relation = 'on', subject = 'book', refer
     `;
   }
 
+  // Preposition text display cards for clear spatial comprehension
+  if (['behind', 'in front of', 'between', 'next to', 'next_to'].includes(rel)) {
+    const label = rel.replace('_', ' ').toUpperCase();
+    return `
+      <div class="w-full h-full bg-[#1E3A8A] text-white font-black flex flex-col items-center justify-center p-2 text-center shadow-inner select-none">
+        <span class="text-xs uppercase tracking-widest text-blue-200">Preposition</span>
+        <span class="text-sm font-black tracking-wider text-white mt-0.5">${label}</span>
+      </div>
+    `;
+  }
+
   let url = photoUrl;
   if (!url) {
     if (rel === 'on') url = REALIA_PHOTOS.on;
     else if (rel === 'in') url = REALIA_PHOTOS.bag;
-    else if (rel === 'next_to' || rel === 'next to') url = REALIA_PHOTOS.pencil;
+    else if (rel === 'next_to' || rel === 'next to') url = REALIA_PHOTOS['next to'] || REALIA_PHOTOS.pencil;
+    else if (REALIA_PHOTOS[rel]) url = REALIA_PHOTOS[rel];
     else url = getRealiaPhoto(subject) || getRealiaPhoto(reference) || REALIA_PHOTOS.desk;
   }
 

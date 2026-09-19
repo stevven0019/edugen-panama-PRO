@@ -578,11 +578,11 @@
         "Prepositions (e.g., \"The book is on the table.\")"
       ],
       "recommended_vocabulary": {
-        "nouns": "classroom, teacher, classmate, principal, toy",
+        "nouns": "classroom, teacher, classmate, principal, toy, chair, desk, book, table",
         "verbs": "sit, stand, read, write, learn, ask, play, meet, answer",
         "adjectives": "big, small, clean, new",
         "demonstrative_adjectives": "this, these",
-        "prepositions": "in, on, under",
+        "prepositions": "in, on, under, next to",
         "questions": "what, where",
         "interjections": "hi, hello"
       },

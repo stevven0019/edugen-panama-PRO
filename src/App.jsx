@@ -22,6 +22,7 @@ import Library from './pages/Library';
 import AdBanner from './components/AdBanner';
 import AdminPayments from './pages/AdminPayments';
 import AdminPaymentNotices from './components/AdminPaymentNotices';
+import AIChatAssistant from './components/AIChatAssistant';
 
 // EduGen Pro Billing & Ads components
 import BillingModal from './components/BillingModal';
@@ -760,6 +761,9 @@ export default function App() {
         type={alertType} 
         onClose={() => setAlertOpen(false)} 
       />
+
+      {/* Floating AI English Panama Chat Assistant (Accessible across all tabs & views) */}
+      <AIChatAssistant />
     </div>
   );
 }
