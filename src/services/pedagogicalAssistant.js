@@ -161,7 +161,7 @@ EduGen implementa el formato oficial de la **Guía de Aprendizajes Interdiscipli
 Todos los módulos de EduGen te permiten guardar y llevar tu material al aula:
 
 * **Descargar Word (.docx):**
-  * Genera un archivo `.docx` nativo compatible con Microsoft Word, Google Docs y LibreOffice.
+  * Genera un archivo .docx nativo compatible con Microsoft Word, Google Docs y LibreOffice.
   * Incluye el membrete institucional oficial de MEDUCA, tablas formateadas con colores y márgenes profesionales.
   * Es 100% editable para que agregues tu nombre, sello o ajustes personales.
 * **Exportar PDF / Imprimir:**
