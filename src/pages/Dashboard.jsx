@@ -12,7 +12,8 @@ import {
   Download,
   X,
   ChevronLeft,
-  Maximize2
+  Maximize2,
+  FileCheck
 } from 'lucide-react';
 import { databaseService } from '../services/firebase';
 
@@ -136,6 +137,14 @@ export default function Dashboard({ user, credits, setActiveTab, isPremium = fal
       color: 'from-emerald-600 to-emerald-700 shadow-emerald-500/10',
       textColor: 'text-emerald-500',
       icon: <Layers className="w-6 h-6" /> 
+    },
+    { 
+      id: 'lesson-test', 
+      title: 'Lesson Test Studio', 
+      desc: 'Pruebas formativas y sumativas AOA (2 páginas máx con clave).', 
+      color: 'from-blue-700 to-indigo-800 shadow-blue-600/10',
+      textColor: 'text-blue-600 dark:text-blue-400',
+      icon: <FileCheck className="w-6 h-6" /> 
     },
   ];
 

@@ -18,6 +18,7 @@ import Dashboard from './pages/Dashboard';
 import PlannerAOA from './pages/PlannerAOA';
 import Interdisciplinary from './pages/Interdisciplinary';
 import ThemePlanner from './pages/ThemePlanner';
+import LessonTest from './pages/LessonTest';
 import Library from './pages/Library';
 import AdBanner from './components/AdBanner';
 import AdminPayments from './pages/AdminPayments';
@@ -554,6 +555,17 @@ export default function App() {
           )}
           {activeTab === 'theme-planner' && (
             <ThemePlanner 
+              user={user} 
+              credits={credits} 
+              onTriggerAlert={triggerAlert} 
+              isPremium={isPremium}
+              downloadsLeft={downloadsLeft}
+              triggerInterstitialAd={triggerInterstitialAd}
+              triggerRewardedAd={triggerRewardedAd}
+            />
+          )}
+          {activeTab === 'lesson-test' && (
+            <LessonTest 
               user={user} 
               credits={credits} 
               onTriggerAlert={triggerAlert} 
