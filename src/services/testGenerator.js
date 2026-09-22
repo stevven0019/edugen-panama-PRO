@@ -1,25 +1,36 @@
 // EDUGEN PRO · AOA MEDUCA TEST & ASSESSMENT ENGINE
 // Generador oficial de pruebas formativas, sumativas, quizzes y rúbricas de desempeño
-// Compatible con los 14 grados escolares (Pre-K a 12°) y todos los escenarios curriculares
+// Compatible con los 14 grados escolares (Pre-K a 12°), todos los escenarios curriculares
+// y enfocado rigurosamente en las 5 macro-habilidades AOA:
+// 1. Listening · 2. Reading · 3. Writing · 4. Speaking · 5. Mediation (CEFR 2020)
 
 import { getIllustrationSvg } from '../resources/illustrations.js';
 import { getRealiaPhoto } from '../resources/realiaCatalog.js';
 
 export const GRADES_LIST = [
-  { id: 'prek', name: 'Pre-K', label: 'Pre-K (Pre-A1 Receptivo / TPR)', cefr: 'Pre-A1', file: 'English_Curriculum_Prekinder.json', time: '30 min', defaultItems: 4 },
-  { id: 'kinder', name: 'Kinder', label: 'Kínder (Pre-A1 Receptivo / TPR)', cefr: 'Pre-A1', file: 'English_Curriculum_Kinder.json', time: '35 min', defaultItems: 4 },
-  { id: '1st', name: '1st Grade', label: '1° Grado (Pre-A1 / A1.1)', cefr: 'A1.1', file: 'English_Curriculum_Grade_1.json', time: '40 min', defaultItems: 5 },
-  { id: '2nd', name: '2nd Grade', label: '2° Grado (A1.1)', cefr: 'A1.1', file: 'English_Curriculum_Grade_2.json', time: '40 min', defaultItems: 5 },
-  { id: '3rd', name: '3rd Grade', label: '3° Grado (A1)', cefr: 'A1', file: 'English_Curriculum_Grade_3.json', time: '45 min', defaultItems: 5 },
-  { id: '4th', name: '4th Grade', label: '4° Grado (A1)', cefr: 'A1', file: 'English_Curriculum_Grade_4.json', time: '45 min', defaultItems: 6 },
-  { id: '5th', name: '5th Grade', label: '5° Grado (A1+)', cefr: 'A1+', file: 'English_Curriculum_Grade_5.json', time: '45 min', defaultItems: 6 },
-  { id: '6th', name: '6th Grade', label: '6° Grado (A1+)', cefr: 'A1+', file: 'English_Curriculum_Grade_6.json', time: '45 min', defaultItems: 6 },
-  { id: '7th', name: '7th Grade', label: '7° Grado (A2)', cefr: 'A2', file: 'English_Curriculum_Grade_7.json', time: '50 min', defaultItems: 6 },
-  { id: '8th', name: '8th Grade', label: '8° Grado (A2)', cefr: 'A2', file: 'English_Curriculum_Grade_8.json', time: '50 min', defaultItems: 6 },
-  { id: '9th', name: '9th Grade', label: '9° Grado (A2+)', cefr: 'A2+', file: 'English_Curriculum_Grade_9.json', time: '50 min', defaultItems: 6 },
-  { id: '10th', name: '10th Grade', label: '10° Grado (B1)', cefr: 'B1', file: 'English_Curriculum_Grade_10.json', time: '55 min', defaultItems: 6 },
-  { id: '11th', name: '11th Grade', label: '11° Grado (B1)', cefr: 'B1', file: 'English_Curriculum_Grade_11.json', time: '55 min', defaultItems: 6 },
-  { id: '12th', name: '12th Grade', label: '12° Grado (B1+)', cefr: 'B1+', file: 'English_Curriculum_Grade_12.json', time: '60 min', defaultItems: 6 }
+  { id: 'prek', name: 'Pre-K', label: 'Pre-K (Pre-A1 Receptivo / TPR)', cefr: 'Pre-A1', file: 'English_Curriculum_Prekinder.json', time: '30 min' },
+  { id: 'kinder', name: 'Kinder', label: 'Kínder (Pre-A1 Receptivo / TPR)', cefr: 'Pre-A1', file: 'English_Curriculum_Kinder.json', time: '35 min' },
+  { id: '1st', name: '1st Grade', label: '1° Grado (Pre-A1 / A1.1)', cefr: 'A1.1', file: 'English_Curriculum_Grade_1.json', time: '40 min' },
+  { id: '2nd', name: '2nd Grade', label: '2° Grado (A1.1)', cefr: 'A1.1', file: 'English_Curriculum_Grade_2.json', time: '40 min' },
+  { id: '3rd', name: '3rd Grade', label: '3° Grado (A1)', cefr: 'A1', file: 'English_Curriculum_Grade_3.json', time: '45 min' },
+  { id: '4th', name: '4th Grade', label: '4° Grado (A1)', cefr: 'A1', file: 'English_Curriculum_Grade_4.json', time: '45 min' },
+  { id: '5th', name: '5th Grade', label: '5° Grado (A1+)', cefr: 'A1+', file: 'English_Curriculum_Grade_5.json', time: '45 min' },
+  { id: '6th', name: '6th Grade', label: '6° Grado (A1+)', cefr: 'A1+', file: 'English_Curriculum_Grade_6.json', time: '45 min' },
+  { id: '7th', name: '7th Grade', label: '7° Grado (A2)', cefr: 'A2', file: 'English_Curriculum_Grade_7.json', time: '50 min' },
+  { id: '8th', name: '8th Grade', label: '8° Grado (A2)', cefr: 'A2', file: 'English_Curriculum_Grade_8.json', time: '50 min' },
+  { id: '9th', name: '9th Grade', label: '9° Grado (A2+)', cefr: 'A2+', file: 'English_Curriculum_Grade_9.json', time: '50 min' },
+  { id: '10th', name: '10th Grade', label: '10° Grado (B1)', cefr: 'B1', file: 'English_Curriculum_Grade_10.json', time: '55 min' },
+  { id: '11th', name: '11th Grade', label: '11° Grado (B1)', cefr: 'B1', file: 'English_Curriculum_Grade_11.json', time: '55 min' },
+  { id: '12th', name: '12th Grade', label: '12° Grado (B1+)', cefr: 'B1+', file: 'English_Curriculum_Grade_12.json', time: '60 min' }
+];
+
+export const SKILLS_LIST = [
+  { id: 'all', num: 0, label: 'All Skills — Evaluación Integral (5 Macro-Skills)', short: 'Integral' },
+  { id: 'Listening', num: 1, label: '1 — Listening (Comprensión Auditiva & Discriminación)', short: 'Listening' },
+  { id: 'Reading', num: 2, label: '2 — Reading (Alfabetización Visual & Comprensión Lectora)', short: 'Reading' },
+  { id: 'Speaking', num: 3, label: '3 — Speaking (Interacción Oral & Acción Social)', short: 'Speaking' },
+  { id: 'Writing', num: 4, label: '4 — Writing (Producción Escrita & Decodificación)', short: 'Writing' },
+  { id: 'Mediation', num: 5, label: '5 — Mediation (Mediación Interpersonal & Lingüística CEFR 2020)', short: 'Mediation' }
 ];
 
 export function getGradeMeta(gradeStr) {
@@ -45,7 +56,6 @@ export function getGradeMeta(gradeStr) {
   return found || GRADES_LIST[5]; // default 4th grade
 }
 
-// Clean and normalize vocabulary words into simple array
 export function extractCleanWords(vocabInput) {
   if (!vocabInput) return [];
   if (Array.isArray(vocabInput)) {
@@ -63,12 +73,13 @@ export function extractCleanWords(vocabInput) {
 }
 
 /**
- * Generate an authentic evaluation tailored to the given curriculum scenario or lesson plan
+ * Generate assessment focusing on all 5 Macro-Skills (Listening, Reading, Writing, Speaking, Mediation)
  */
 export function generateAssessmentTest({
   grade = '4th Grade',
   scenario = 'Shopping at the Market',
   theme = 'How Much Is the Pineapple?',
+  skillFocus = 'all', // 'all' | 'Listening' | 'Reading' | 'Speaking' | 'Writing' | 'Mediation'
   cefr = 'A1',
   nouns = [],
   verbs = [],
@@ -91,7 +102,6 @@ export function generateAssessmentTest({
   const cleanVerbs = extractCleanWords(verbs);
   const cleanAdj = extractCleanWords(adjectives);
 
-  // Fallback defaults if vocabulary list is sparse
   const sampleNouns = cleanNouns.length >= 4 ? cleanNouns : 
     (isEarlyChildhood 
       ? ['book', 'desk', 'chair', 'bag', 'pencil', 'crayon']
@@ -104,286 +114,202 @@ export function generateAssessmentTest({
     (isEarlyChildhood ? ['big', 'small', 'red', 'yellow'] : ['fresh', 'ripe', 'sweet', 'cheap', 'delicious']);
 
   // Total points determination
+  // Standard Formative: 20 pts (4 pts per skill x 5 skills = 20 pts)
+  // Summative: 30 pts (6 pts per skill x 5 skills = 30 pts)
+  // Quiz: 10 pts
   let totalPoints = 20;
-  let part1Pts = 6;
-  let part2Pts = 5;
-  let part3Pts = 5;
-  let part4Pts = 4;
-  let part5Pts = 0;
+  let ptsPerSkill = 4;
 
   if (testType === 'summative') {
     totalPoints = 30;
-    part1Pts = 8;
-    part2Pts = 6;
-    part3Pts = 6;
-    part4Pts = 5;
-    part5Pts = 5;
+    ptsPerSkill = 6;
   } else if (testType === 'quiz') {
     totalPoints = 10;
-    part1Pts = 5;
-    part2Pts = 5;
-    part3Pts = 0;
-    part4Pts = 0;
+    ptsPerSkill = 2;
   } else if (testType === 'action_rubric') {
     totalPoints = 20;
-    part1Pts = 0;
-    part2Pts = 0;
-    part3Pts = 0;
-    part4Pts = 20;
+    ptsPerSkill = 4;
   }
 
-  // 1. Build Title & Badges
-  const typeLabel = testType === 'formative' ? 'FORMATIVE EVALUATION' :
-    testType === 'summative' ? 'SUMMATIVE UNIT TEST' :
-    testType === 'quiz' ? 'QUICK CHECK QUIZ' : 'ORAL PERFORMANCE RUBRIC';
+  // 1. Title & Header Info
+  const typeLabel = testType === 'formative' ? 'FORMATIVE EVALUATION · 5 MACRO-SKILLS' :
+    testType === 'summative' ? 'SUMMATIVE UNIT ASSESSMENT · 5 MACRO-SKILLS' :
+    testType === 'quiz' ? `SKILL FOCUS QUIZ · ${skillFocus.toUpperCase()}` : 'AOA PERFORMANCE RUBRIC (SPEAKING & MEDIATION)';
 
   const testTitle = `ENGLISH ${typeLabel} · SCENARIO: ${scenario.toUpperCase()}`;
-  const testTheme = `Theme: "${theme}" · ${isEarlyChildhood ? 'Receptive Listening & Non-Verbal TPR Action' : 'Communicative Interaction & Task Achievement'}`;
+  const skillSubtitle = skillFocus === 'all' 
+    ? 'Comprehensive Assessment: Listening, Reading, Writing, Speaking & Mediation' 
+    : `Primary Focus: ${skillFocus} Focus Assessment`;
+  const testTheme = `Theme: "${theme}" · ${skillSubtitle}`;
 
-  // 2. Build Audio Script for Teacher (Listening Prompt)
+  // ════════════════════════════════════════════════════════════════════
+  // SKILL 1: LISTENING (COMPRENSIÓN AUDITIVA)
+  // ════════════════════════════════════════════════════════════════════
   let audioScriptLines = [];
   if (dialogueText && dialogueText.trim().length > 30) {
-    // Use user-provided dialogue lines
     audioScriptLines = dialogueText
       .split('\n')
       .map(line => line.trim())
-      .filter(line => line && !line.toLowerCase().startsWith('dialogue:') && !line.toLowerCase().startsWith('theme:') && !line.toLowerCase().startsWith('scenario:'))
-      .slice(0, 7);
+      .filter(line => line && !line.toLowerCase().startsWith('dialogue:') && !line.toLowerCase().startsWith('theme:') && !line.toLowerCase().startsWith('scenario:') && !line.toLowerCase().startsWith('grade:'))
+      .slice(0, 6);
   } else if (isEarlyChildhood) {
-    // Kindergarten / Pre-K TPR Commands
     audioScriptLines = [
-      `Teacher: "Good morning class! Look at our classroom today."`,
+      `Teacher: "Good morning class! Listen carefully to my instructions."`,
       `Teacher: "Command 1: Touch your ${sampleNouns[0] || 'book'} on your ${sampleNouns[1] || 'desk'}."`,
       `Teacher: "Command 2: Put your ${sampleNouns[4] || 'pencil'} in your ${sampleNouns[3] || 'bag'}."`,
       `Teacher: "Command 3: Point to the ${sampleNouns[2] || 'chair'}."`,
-      `Teacher: "Where is the ${sampleNouns[0] || 'book'}? It is on the ${sampleNouns[1] || 'desk'}! Excellent job."`
+      `Teacher: "Where is the ${sampleNouns[0] || 'book'}? It is on the ${sampleNouns[1] || 'desk'}! Excellent."`
     ];
-  } else if (scenario.toLowerCase().includes('canal') || scenario.toLowerCase().includes('job') || scenario.toLowerCase().includes('transit')) {
+  } else if (scenario.toLowerCase().includes('canal') || scenario.toLowerCase().includes('locks')) {
     audioScriptLines = [
       `Officer: "Welcome to Miraflores Locks control station. What is your team assignment today?"`,
-      `Technician: "Good morning! We need to inspect the safety tugboats and navigation signals before ship transit."`,
+      `Technician: "Good morning! We need to inspect the safety tugboats and navigation signals."`,
       `Officer: "Make sure all technicians wear their safety helmets and high-visibility vests."`,
       `Technician: "Understood. The cargo ship arrives at eight o'clock (8:00 AM) through the Pacific locks."`,
       `Officer: "Thank you for following the safety protocols. Have a safe operation!"`
     ];
-  } else if (scenario.toLowerCase().includes('bocas') || scenario.toLowerCase().includes('tour') || scenario.toLowerCase().includes('reef')) {
+  } else if (scenario.toLowerCase().includes('bocas') || scenario.toLowerCase().includes('eco')) {
     audioScriptLines = [
       `Guide: "Welcome to Bocas del Toro! Today we are visiting the marine sanctuary and coral reef."`,
       `Tourist: "Hello! How much is the boat tour to Starfish Beach, please?"`,
       `Guide: "The eco-friendly boat tour is twelve dollars ($12.00) per person, including life vests."`,
-      `Tourist: "Great! Are we allowed to touch the starfish in the water?"`,
-      `Guide: "No, please never remove or touch the starfish. We must protect our fragile marine ecosystem."`,
-      `Tourist: "Understood. Here is twenty dollars ($20.00). Thank you for guiding us!"`
+      `Tourist: "Understood. Are visitors allowed to touch or lift the starfish?"`,
+      `Guide: "No, please never remove or touch the starfish to protect our delicate marine ecosystem."`
     ];
   } else {
-    // Default Market / Shopping / Everyday Dialogue
+    // Default Market / Shopping Dialogue
     const itemA = sampleNouns[0] || 'pineapple';
     const itemB = sampleNouns[1] || 'apple';
     const itemC = sampleNouns[2] || 'banana';
     audioScriptLines = [
-      `Seller: "Good morning! Welcome to our local stall. We have fresh tropical items today."`,
+      `Seller: "Good morning! Welcome to the market stall. We have fresh tropical fruits today."`,
       `Buyer: "Good morning! How much is the ripe ${itemA}, please?"`,
       `Seller: "The ${itemA} is three dollars ($3.00), and the ${itemB}s are one dollar ($1.00) each."`,
       `Buyer: "Can I have one ${itemA} and two ${itemC}s, please?"`,
-      `Seller: "Of course! The ${itemC}s are one dollar ($1.00) for both. That is four dollars ($4.00) total."`,
-      `Buyer: "Here is five dollars ($5.00). Thank you very much!"`,
-      `Seller: "Here is one dollar ($1.00) in change. Have a wonderful day!"`
+      `Seller: "The ${itemC}s are one dollar ($1.00) for both. That is four dollars ($4.00) total."`,
+      `Buyer: "Here is five dollars ($5.00). Thank you very much!"`
     ];
   }
 
-  // 3. Build Part 1: Listening Questions
-  const part1Items = [];
+  // Listening questions (4 items for standard formative)
+  const listeningItems = [];
   if (isEarlyChildhood) {
-    part1Items.push({
-      q: `1. Where does the teacher say the ${sampleNouns[0] || 'book'} is?`,
-      options: [
-        { text: 'Under the chair', key: false },
-        { text: `On the ${sampleNouns[1] || 'desk'}`, key: true },
-        { text: 'Outside the room', key: false }
-      ]
-    });
-    part1Items.push({
-      q: `2. Where should students place the ${sampleNouns[4] || 'pencil'}?`,
-      options: [
-        { text: `In the ${sampleNouns[3] || 'bag'}`, key: true },
-        { text: 'On the floor', key: false },
-        { text: 'In the trash', key: false }
-      ]
-    });
-    part1Items.push({
-      q: `3. What object did the teacher tell students to point to?`,
-      options: [
-        { text: 'The window', key: false },
-        { text: `The ${sampleNouns[2] || 'chair'}`, key: true },
-        { text: 'The door', key: false }
-      ]
-    });
-    part1Items.push({
-      q: `4. Is the instruction about English classroom objects?`,
-      options: [
-        { text: 'Yes, classroom realia', key: true },
-        { text: 'No, wild jungle', key: false },
-        { text: 'No, space rockets', key: false }
-      ]
-    });
-  } else if (scenario.toLowerCase().includes('canal')) {
-    part1Items.push(
-      { q: '1. Where does this conversation take place?', options: [{ text: 'At a supermarket', key: false }, { text: 'At Miraflores Locks control station', key: true }, { text: 'At the airport', key: false }] },
-      { q: '2. What equipment must all technicians wear for safety?', options: [{ text: 'Safety helmets and vests', key: true }, { text: 'Party hats', key: false }, { text: 'Sunglasses only', key: false }] },
-      { q: '3. What time does the cargo ship arrive at the locks?', options: [{ text: '8:00 AM', key: true }, { text: '12:00 PM', key: false }, { text: '6:00 PM', key: false }] },
-      { q: '4. What are the technicians inspecting before the transit?', options: [{ text: 'Tugboats and signals', key: true }, { text: 'Souvenirs', key: false }, { text: 'Tourist buses', key: false }] },
-      { q: '5. Which locks are mentioned in the spoken dialogue?', options: [{ text: 'Pacific locks', key: true }, { text: 'Atlantic beach', key: false }, { text: 'Mountain locks', key: false }] },
-      { q: '6. What is the main purpose of following the protocol?', options: [{ text: 'Safe canal operation', key: true }, { text: 'Going home early', key: false }, { text: 'Buying lunch', key: false }] }
-    );
-  } else if (scenario.toLowerCase().includes('bocas')) {
-    part1Items.push(
-      { q: '1. Where does this conversation take place?', options: [{ text: 'In Panama City metro', key: false }, { text: 'In Bocas del Toro marine sanctuary', key: true }, { text: 'In a mountain farm', key: false }] },
-      { q: '2. How much is the eco-boat tour per person?', options: [{ text: '$5.00', key: false }, { text: '$12.00', key: true }, { text: '$50.00', key: false }] },
-      { q: '3. Are visitors allowed to touch or lift the starfish?', options: [{ text: 'No, never touch them', key: true }, { text: 'Yes, to take photos', key: false }, { text: 'Yes, to take them home', key: false }] },
-      { q: '4. What safety equipment is included in the tour?', options: [{ text: 'Life vests', key: true }, { text: 'Winter coats', key: false }, { text: 'Fishing nets', key: false }] },
-      { q: '5. What polite words were exchanged during the booking?', options: [{ text: '"Please" and "Thank you"', key: true }, { text: '"Hurry up"', key: false }, { text: '"Goodbye only"', key: false }] },
-      { q: '6. How much money did the tourist give the guide?', options: [{ text: '$20.00', key: true }, { text: '$10.00', key: false }, { text: '$100.00', key: false }] }
+    listeningItems.push(
+      { q: `1. Where did the teacher tell students to put the ${sampleNouns[0] || 'book'}?`, options: [{ text: 'Under the chair', key: false }, { text: `On the ${sampleNouns[1] || 'desk'}`, key: true }, { text: 'Outside the room', key: false }] },
+      { q: `2. Where should students place the ${sampleNouns[4] || 'pencil'}?`, options: [{ text: `In the ${sampleNouns[3] || 'bag'}`, key: true }, { text: 'On the floor', key: false }, { text: 'In the box', key: false }] },
+      { q: `3. What object did the teacher tell students to point to?`, options: [{ text: 'The window', key: false }, { text: `The ${sampleNouns[2] || 'chair'}`, key: true }, { text: 'The door', key: false }] },
+      { q: `4. Are these classroom objects in our English class?`, options: [{ text: 'Yes, classroom realia', key: true }, { text: 'No, farm animals', key: false }, { text: 'No, rockets', key: false }] }
     );
   } else {
-    // Default Market / Dialogue Questions
     const item1 = sampleNouns[0] || 'pineapple';
     const item2 = sampleNouns[1] || 'apple';
-    part1Items.push(
-      { q: '1. Where does the spoken conversation take place?', options: [{ text: 'At the hospital', key: false }, { text: 'At the local market stall', key: true }, { text: 'At the train station', key: false }] },
-      { q: `2. How much does the ripe ${item1} cost?`, options: [{ text: '$1.00', key: false }, { text: '$2.00', key: false }, { text: '$3.00', key: true }] },
-      { q: `3. How much are the ${item2}s each?`, options: [{ text: '$1.00 dollar', key: true }, { text: '$4.00 dollars', key: false }, { text: 'Free', key: false }] },
-      { q: `4. Did the buyer ask for a ${item1} first?`, options: [{ text: `Yes, the ripe ${item1}`, key: true }, { text: 'No, vegetables', key: false }, { text: 'No, meat', key: false }] },
-      { q: '5. What polite word did the customer use when ordering?', options: [{ text: 'Hurry up', key: false }, { text: 'Please', key: true }, { text: 'Later', key: false }] },
-      { q: '6. What was the total cost calculated by the cashier?', options: [{ text: '$2.00', key: false }, { text: '$4.00', key: true }, { text: '$10.00', key: false }] }
+    listeningItems.push(
+      { q: '1. Where does the spoken conversation take place?', options: [{ text: 'At a hospital', key: false }, { text: 'At the local scenario venue', key: true }, { text: 'At a train station', key: false }] },
+      { q: `2. What primary item did the customer/speaker ask for first?`, options: [{ text: `The ${item1}`, key: true }, { text: `The ${item2}`, key: false }, { text: 'A ticket only', key: false }] },
+      { q: `3. What polite formula was used during the interaction?`, options: [{ text: '"Hurry up"', key: false }, { text: '"Please" and "Thank you"', key: true }, { text: '"Later"', key: false }] },
+      { q: '4. What was the main numerical or price detail mentioned?', options: [{ text: '$1.00 / 8:00 AM', key: false }, { text: '$3.00 / Target detail', key: true }, { text: '$100.00', key: false }] }
     );
   }
 
-  // Slice to targeted items
-  const finalPart1 = part1Items.slice(0, Math.min(part1Pts, part1Items.length));
+  // ════════════════════════════════════════════════════════════════════
+  // SKILL 2: READING (COMPRENSIÓN LECTORA & ALFABETIZACIÓN VISUAL)
+  // ════════════════════════════════════════════════════════════════════
+  // Reading Stimulus Text (Authentic store notice, schedule, sign or descriptive passage)
+  let readingPassage = '';
+  if (isEarlyChildhood) {
+    readingPassage = `CLASSROOM VISUAL NOTICE:\n"Look at the picture symbols. We keep our ${sampleNouns[0] || 'books'} on our ${sampleNouns[1] || 'desks'}. Pencils stay in our ${sampleNouns[3] || 'bags'}."`;
+  } else if (scenario.toLowerCase().includes('canal')) {
+    readingPassage = `MIRAFLORES OPERATIONAL NOTICE:\n"Notice to Transit Crew: Cargo Ship Pacific Star arrives at Lock Chamber 2. Tugboat Echo assists at 8:00 AM. Helmets mandatory."`;
+  } else {
+    readingPassage = `LOCAL COMMUNITY NOTICE & PRICE LIST:\n"Fresh tropical fruits today at Stall #4: Sweet pineapples ($3.00), crisp apples ($1.00 each), and ripe bananas (2 for $1.00). Open 7:00 AM - 4:00 PM."`;
+  }
 
-  // 4. Build Part 2: Realia Items & Matching Table (5 items max for 2-page fit)
-  const realiaGallery = [];
-  const matchingStatements = [];
-  const galleryKeys = ['A', 'B', 'C', 'D', 'E'];
-  const galleryItems = sampleNouns.slice(0, 5);
-
-  galleryItems.forEach((word, idx) => {
-    const letter = galleryKeys[idx] || `${idx + 1}`;
+  // 4 Realia visual gallery items with SVGs
+  const readingGallery = sampleNouns.slice(0, 4).map((word, idx) => {
+    const letter = ['A', 'B', 'C', 'D'][idx];
     const cleanWord = word.toLowerCase().trim();
-    const svgCode = getIllustrationSvg(cleanWord, 'color');
-    const photo = getRealiaPhoto(cleanWord);
-
-    realiaGallery.push({
+    return {
       letter,
       name: word.toUpperCase(),
       cleanWord,
-      svgCode,
-      photoUrl: photo
-    });
-
-    let desc = `Item related to ${word} in the curriculum context.`;
-    if (cleanWord === 'pineapple') desc = `"Costs three dollars ($3.00), sweet and has spiky green leaves."`;
-    else if (cleanWord === 'apple') desc = `"Costs one dollar ($1.00) each, crisp red tropical/imported fruit."`;
-    else if (cleanWord === 'banana') desc = `"Yellow curved fruit, sold two for one dollar ($1.00)."`;
-    else if (cleanWord === 'watermelon') desc = `"Large fruit with green rind and sweet red slices inside."`;
-    else if (cleanWord === 'mango') desc = `"Orange juicy tropical fruit that costs two dollars ($2.00)."`;
-    else if (cleanWord === 'book') desc = `"Educational object opened and placed ON the desk."`;
-    else if (cleanWord === 'desk') desc = `"Classroom furniture where students write and place their books."`;
-    else if (cleanWord === 'chair') desc = `"Furniture students sit on during English class."`;
-    else if (cleanWord === 'bag') desc = `"Carries school supplies; students put pencils inside it."`;
-    else if (cleanWord === 'pencil') desc = `"Writing utensil used to write and draw on paper."`;
-    else if (cleanWord === 'crayon') desc = `"Coloring wax stick used for art and drawing."`;
-    else if (cleanWord === 'locks' || cleanWord === 'ship') desc = `"Canal infrastructure where cargo ships transit between oceans."`;
-    else if (cleanWord === 'coral' || cleanWord === 'reef') desc = `"Delicate marine habitat protected in Bocas del Toro."`;
-    else {
-      desc = `"Key vocabulary word: ${word}. Used frequently in the scenario context."`;
-    }
-
-    matchingStatements.push({
-      num: idx + 1,
-      statement: desc,
-      keyLetter: letter,
-      keyWord: word
-    });
+      svgCode: getIllustrationSvg(cleanWord, 'color'),
+      photoUrl: getRealiaPhoto(cleanWord)
+    };
   });
 
-  // 5. Build Part 3: Communicative Dialogue with Word Bank
-  const wordBankWords = isEarlyChildhood 
-    ? ['book', 'desk', 'on', 'under', 'chair']
-    : (scenario.toLowerCase().includes('canal') 
-      ? ['safety', 'helmet', 'transit', 'locks', 'please']
-      : ['How much', 'please', 'dollars', 'Thank you', 'change']);
-
-  let dialogueBlanks = [];
-  if (isEarlyChildhood) {
-    dialogueBlanks = [
-      { speaker: 'Teacher', text: 'Hello! Please open your (1) _______________________.', key: 'book' },
-      { speaker: 'Student', text: 'Yes, teacher! I put it (2) _______________________ my desk.', key: 'on' },
-      { speaker: 'Teacher', text: 'Very good! Now look under your (3) _______________________.', key: 'chair' },
-      { speaker: 'Student', text: 'I see my bag under my (4) _______________________.', key: 'chair' },
-      { speaker: 'Teacher', text: 'Super work! (5) _______________________ very much!', key: 'Thank you' }
-    ];
-  } else if (scenario.toLowerCase().includes('canal')) {
-    dialogueBlanks = [
-      { speaker: 'Coordinator', text: 'Good morning! Is the (1) _______________________ inspection completed?', key: 'safety' },
-      { speaker: 'Technician', text: 'Yes! Every worker is wearing a safety (2) _______________________.', key: 'helmet' },
-      { speaker: 'Coordinator', text: 'What is the schedule for the ship (3) _______________________ today?', key: 'transit' },
-      { speaker: 'Technician', text: 'The vessel is entering the Pacific (4) _______________________ at 8:00 AM.', key: 'locks' },
-      { speaker: 'Coordinator', text: 'Radio the captain with confirmation, (5) _______________________.', key: 'please' }
-    ];
-  } else {
-    // Default Market Dialogue
-    dialogueBlanks = [
-      { speaker: 'Customer', text: 'Good afternoon! (1) _______________________ is the ripe pineapple?', key: 'How much' },
-      { speaker: 'Cashier', text: 'It costs three (2) _______________________ ($3.00).', key: 'dollars' },
-      { speaker: 'Customer', text: 'Can I also have one apple, (3) _______________________?', key: 'please' },
-      { speaker: 'Cashier', text: 'Sure! That is $4.00. You gave me $5.00, so here is $1.00 in (4) _______________________.', key: 'change' },
-      { speaker: 'Customer', text: '(5) _______________________ very much! Have a wonderful day!', key: 'Thank you' }
-    ];
-  }
-
-  // 6. Build Part 4: AOA Action Task & MEDUCA Observation Rubric
-  let roleA = {
-    title: '👤 Pair Role A: Customer / Student',
-    desc: 'Ask questions using targeted structures, use polite words ("please", "thank you"), and interact naturally.'
-  };
-  let roleB = {
-    title: '👨‍🍳 Pair Role B: Vendor / Partner',
-    desc: 'Respond to your partner, provide prices or locations clearly, and conclude the communicative task.'
-  };
-
-  if (isEarlyChildhood) {
-    roleA = {
-      title: '🧒 Pair Role A: Simon / Leader',
-      desc: 'Give simple TPR commands to your peer (e.g. "Put the book on the desk", "Show me the pencil").'
-    };
-    roleB = {
-      title: '👧 Pair Role B: Active Responder',
-      desc: 'Listen attentively and execute the physical motion immediately without speaking, demonstrating comprehension.'
-    };
-  } else if (scenario.toLowerCase().includes('canal')) {
-    roleA = {
-      title: '👷 Pair Role A: Canal Transit Coordinator',
-      desc: 'Confirm the arrival time, verify safety gear (helmet, vest), and give authorization for locks transit.'
-    };
-    roleB = {
-      title: '🚢 Pair Role B: Vessel Tugboat Pilot',
-      desc: 'Report vessel dimensions, confirm tugboat position, and confirm safety protocol readiness over radio.'
-    };
-  }
-
-  const rubricCriteria = [
-    { num: 1, title: 'Task Completion', desc: 'Successfully achieved the communicative goal within the simulated scenario.', max: 1.0 },
-    { num: 2, title: 'Linguistic Accuracy', desc: `Used target vocabulary (${sampleNouns.slice(0, 3).join(', ')}) and structures appropriately.`, max: 1.0 },
-    { num: 3, title: 'Socio-pragmatic Politeness', desc: 'Used polite markers ("please", "thank you", "excuse me") and appropriate register.', max: 1.0 },
-    { num: 4, title: 'Active Listening & Turn-taking', desc: 'Maintained conversational flow without freezing or needing Spanish translation.', max: 1.0 }
+  const readingStatements = [
+    { num: 1, text: `Read the notice: What is the main topic or venue described?`, key: `The ${scenario}` },
+    { num: 2, text: `Identify item A (${readingGallery[0]?.name}): How much or where is it?`, key: isEarlyChildhood ? 'On the desk' : '$3.00 / Available' },
+    { num: 3, text: `Identify item B (${readingGallery[1]?.name}): What detail is true?`, key: isEarlyChildhood ? 'In the bag' : '$1.00 each / Fresh' },
+    { num: 4, text: `True or False: The notice provides clear instructions for readers.`, key: 'True' }
   ];
 
-  // 7. Official MEDUCA Grading Scale Breakdown
+  // ════════════════════════════════════════════════════════════════════
+  // SKILL 3: WRITING (PRODUCCIÓN ESCRITA SOCIAL & WORD BANK)
+  // ════════════════════════════════════════════════════════════════════
+  const wordBank = isEarlyChildhood 
+    ? ['book', 'desk', 'on', 'chair']
+    : ['How much', 'dollars', 'please', 'thank you'];
+
+  const writingItems = isEarlyChildhood ? [
+    { prompt: '1. I read my (1) _______________________ in English class.', key: 'book' },
+    { prompt: '2. I put the book (2) _______________________ the desk.', key: 'on' },
+    { prompt: '3. The notebook is on the wooden (3) _______________________.', key: 'desk' },
+    { prompt: '4. I sit down on my classroom (4) _______________________.', key: 'chair' }
+  ] : [
+    { prompt: '1. Customer: "(1) _______________________ is the ripe pineapple?"', key: 'How much' },
+    { prompt: '2. Cashier: "It costs three (2) _______________________ ($3.00)."', key: 'dollars' },
+    { prompt: '3. Customer: "Can I have two items, (3) _______________________?"', key: 'please' },
+    { prompt: '4. Customer: "(4) _______________________ very much! Have a nice day!"', key: 'thank you' }
+  ];
+
+  // ════════════════════════════════════════════════════════════════════
+  // SKILL 4: SPEAKING (INTERACCIÓN ORAL & SOCIAL ACTION SIMULATION)
+  // ════════════════════════════════════════════════════════════════════
+  const speakingRoleA = isEarlyChildhood ? {
+    title: '👦 Pair Role A: Instruction Leader',
+    instruction: `Say aloud to your peer: "Show me the ${sampleNouns[0] || 'book'} on the ${sampleNouns[1] || 'desk'}!" Use a clear voice.`
+  } : {
+    title: '👤 Pair Role A: Inquirer / Customer',
+    instruction: `Greet your peer, ask the price/detail of 2 items using "How much is...?", and use polite markers ("please", "thank you").`
+  };
+
+  const speakingRoleB = isEarlyChildhood ? {
+    title: '👧 Pair Role B: Active Performer',
+    instruction: `Listen carefully to your partner, execute the physical action or point to the object, and say "Here it is!".`
+  } : {
+    title: '👨‍🍳 Pair Role B: Provider / Vendor',
+    instruction: `Welcome your peer, state the prices clearly ($3.00, $1.00), calculate the total, and conclude politely.`
+  };
+
+  // ════════════════════════════════════════════════════════════════════
+  // SKILL 5: MEDIATION (MEDIACIÓN INTERPERSONAL & LINGÜÍSTICA CEFR 2020)
+  // ════════════════════════════════════════════════════════════════════
+  const mediationScenario = isEarlyChildhood ? {
+    challenge: 'A new classmate does not speak English and feels confused about what to do with the materials.',
+    task: `Guide your classmate with gentle gestures and point to the ${sampleNouns[0] || 'book'} on the ${sampleNouns[1] || 'desk'} to show them how to follow the teacher's instructions.`,
+    promptQuestion: 'How did you help your friend understand without speaking Spanish?'
+  } : {
+    challenge: 'A foreign tourist / visitor cannot understand the local sign or needs help ordering their food/ticket.',
+    task: `Act as a bilingual mediator: Explain the prices ($3.00 / $1.00) or directions to the visitor in simple, clear English so they can make a successful choice.`,
+    promptQuestion: 'Write or say the 1 essential sentence you used to explain the situation clearly to the visitor:'
+  };
+
+  // ════════════════════════════════════════════════════════════════════
+  // OBSERVATION RUBRIC & MEDUCA CONVERSION SCALE
+  // ════════════════════════════════════════════════════════════════════
+  const rubricCriteria = [
+    { skill: '1. Listening', desc: 'Comprehended spoken cues and details without freezing.', pts: '___ / 1.0' },
+    { skill: '2. Reading', desc: 'Identified key facts and symbols in the authentic stimulus.', pts: '___ / 1.0' },
+    { skill: '3. Writing', desc: 'Completed sentence blanks accurately using target lexicon.', pts: '___ / 1.0' },
+    { skill: '4. Speaking', desc: 'Maintained communicative turn-taking and politeness.', pts: '___ / 1.0' },
+    { skill: '5. Mediation', desc: 'Acted as an empathetic communication bridge for a peer.', pts: '___ / 1.0' }
+  ];
+
   const meducaScale = {
     max50: totalPoints,
-    min50: Math.round(totalPoints * 0.92),
-    max40: Math.round(totalPoints * 0.91),
+    min50: Math.round(totalPoints * 0.90),
+    max40: Math.round(totalPoints * 0.89),
     min40: Math.round(totalPoints * 0.75),
     max30: Math.round(totalPoints * 0.74),
     min30: Math.round(totalPoints * 0.60),
@@ -398,11 +324,12 @@ export function generateAssessmentTest({
       time: gradeMeta.time,
       scenario,
       theme,
+      skillFocus,
       testType,
       typeLabel,
       totalPoints,
       testScale,
-      numbers
+      ptsPerSkill
     },
     header: {
       institution: 'REPÚBLICA DE PANAMÁ · MINISTERIO DE EDUCACIÓN (MEDUCA)',
@@ -414,36 +341,41 @@ export function generateAssessmentTest({
       instructions: 'Teacher\'s Spoken Audio Script (Read aloud 2 times to the class clearly):',
       lines: audioScriptLines
     },
-    part1: {
-      title: `Part I: Listening Comprehension · Fact & Detail Check (${part1Pts} Points)`,
-      subtitle: `${finalPart1.length} Items · 1 pt each`,
-      instruction: 'Listen carefully to the dialogue read aloud by the teacher. Circle the correct letter (a, b, or c) according to what you hear.',
-      points: part1Pts,
-      items: finalPart1
+    // The 5 Macro-Skills Sections
+    skill1Listening: {
+      title: `Skill 1: Listening Comprehension · Fact & Detail Check (${ptsPerSkill} Pts)`,
+      instruction: 'Listen carefully to the teacher reading the spoken prompt. Circle the correct option (a, b, or c):',
+      items: listeningItems.slice(0, ptsPerSkill)
     },
-    part2: {
-      title: `Part II: Vocabulary Realia & Matching (${part2Pts} Points)`,
-      subtitle: `${matchingStatements.length} Items · 1 pt each`,
-      instruction: 'Look at the realia illustrations below. Write the letter of the correct item inside the bracket [ ] matching each description from the audio.',
-      points: part2Pts,
-      gallery: realiaGallery,
-      statements: matchingStatements
+    skill2Reading: {
+      title: `Skill 2: Reading Comprehension & Realia Literacy (${ptsPerSkill} Pts)`,
+      instruction: 'Read the authentic community notice and observe the illustrations below. Answer the questions:',
+      passage: readingPassage,
+      gallery: readingGallery,
+      statements: readingStatements.slice(0, ptsPerSkill)
     },
-    part3: {
-      title: `Part III: Communicative Dialogue & Sentence Completion (${part3Pts} Points)`,
-      subtitle: `${dialogueBlanks.length} Items · 1 pt each`,
-      instruction: 'Complete the missing blanks in the dialogue using the words from the Word Bank:',
-      points: part3Pts,
-      wordBank: wordBankWords,
-      dialogue: dialogueBlanks
+    skill3Writing: {
+      title: `Skill 3: Writing Production & Word Bank (${ptsPerSkill} Pts)`,
+      instruction: 'Complete the dialogue blanks using the appropriate words from the Word Bank:',
+      wordBank,
+      items: writingItems.slice(0, ptsPerSkill)
     },
-    part4: {
+    skill4Speaking: {
+      title: `Skill 4: Speaking · Pair Interaction & Action Task (${ptsPerSkill} Pts)`,
+      instruction: 'Work in pairs. Act out the communicative scenario following your assigned role:',
+      roleA: speakingRoleA,
+      roleB: speakingRoleB
+    },
+    skill5Mediation: {
+      title: `Skill 5: Mediation · Interpersonal Communication Bridge (${ptsPerSkill} Pts)`,
+      instruction: 'CEFR 2020 Action Challenge: Help a classmate or visitor understand the situation:',
+      challenge: mediationScenario.challenge,
+      task: mediationScenario.task,
+      prompt: mediationScenario.promptQuestion
+    },
+    rubric: {
       show: includeRubric,
-      title: `Part IV: Action Task · Social Interaction & Observation Rubric (${part4Pts} Points)`,
-      badge: 'Social Agent Action Task',
-      points: part4Pts,
-      roleA,
-      roleB,
+      title: 'MEDUCA 5-Skill Observational Rubric',
       criteria: rubricCriteria
     },
     meducaScale,
