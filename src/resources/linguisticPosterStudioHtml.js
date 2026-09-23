@@ -177,6 +177,111 @@ export const VOCAB_DICTIONARY = {
 };
 
 /**
+ * Extracts authentic MEDUCA Pronunciation and Phonemic Awareness from any curriculum scenario.
+ */
+export function extractPhoneticsFromScenario(scenario, grade = '') {
+  let pronunciation = '';
+  let phonemic = '';
+
+  if (!scenario) {
+    return {
+      pronunciation: 'Practice clear articulation of target vocabulary, sentence rhythm, and communicative intonation.',
+      phonemic_awareness: 'Phoneme isolation, blending of target sounds, and recognition of syllables.'
+    };
+  }
+
+  // 1. Direct scenario keys (e.g. Grades 7, 8, 9, 10, 11, 12, Pre-K)
+  if (scenario.pronunciation) {
+    if (typeof scenario.pronunciation === 'string') {
+      pronunciation = scenario.pronunciation;
+    } else if (typeof scenario.pronunciation === 'object') {
+      pronunciation = scenario.pronunciation.sounds || scenario.pronunciation.pronunciation || scenario.pronunciation.description || '';
+      if (scenario.pronunciation.phonemic_awareness || scenario.pronunciation.phonemicAwareness) {
+        phonemic = scenario.pronunciation.phonemic_awareness || scenario.pronunciation.phonemicAwareness;
+      }
+    }
+  }
+  if (scenario.phonemic_awareness) {
+    phonemic = scenario.phonemic_awareness;
+  }
+
+  // 2. Communicative & linguistic competences
+  const cc = scenario.communicative_competences || scenario.communicativeCompetences || {};
+  const lc = cc.linguistic_competences || cc.linguisticCompetences || cc.linguistic || {};
+  const vocab = cc.vocabulary || {};
+
+  // Check recommended_vocabulary.pronunciation_and_phonemic_awareness (e.g. Grade 6)
+  if (lc.recommended_vocabulary && lc.recommended_vocabulary.pronunciation_and_phonemic_awareness) {
+    const rvPpa = lc.recommended_vocabulary.pronunciation_and_phonemic_awareness;
+    if (typeof rvPpa === 'object') {
+      if (rvPpa.pronunciation && !pronunciation) pronunciation = rvPpa.pronunciation;
+      if (rvPpa.phonemic_awareness && !phonemic) phonemic = rvPpa.phonemic_awareness;
+    } else if (typeof rvPpa === 'string' && !pronunciation) {
+      pronunciation = rvPpa;
+    }
+  }
+
+  // Check nested in lc or vocab (e.g. Grades 1, 2, 3, 4, 5, Kinder)
+  const ppa = lc.pronunciation_and_phonemic_awareness || lc.pronunciationAndPhonemicAwareness ||
+              vocab.pronunciation_and_phonemic_awareness || vocab.pronunciationAndPhonemicAwareness ||
+              lc.pronunciation || scenario.pronunciation_and_phonemic_awareness;
+
+  if (ppa) {
+    if (typeof ppa === 'object') {
+      if (ppa.pronunciation && !pronunciation) pronunciation = ppa.pronunciation;
+      if ((ppa.phonemic_awareness || ppa.phonemicAwareness) && !phonemic) {
+        phonemic = ppa.phonemic_awareness || ppa.phonemicAwareness;
+      }
+      if (ppa.sounds && !pronunciation) pronunciation = ppa.sounds;
+    } else if (typeof ppa === 'string') {
+      const splitMatch = ppa.match(/(?:pronunciation:?\s*)([\s\S]*?)(?:phonemic(?:\s*awareness)?:?\s*)([\s\S]*)/i);
+      if (splitMatch) {
+        if (!pronunciation) pronunciation = splitMatch[1].trim();
+        if (!phonemic) phonemic = splitMatch[2].trim();
+      } else {
+        if (!pronunciation) pronunciation = ppa;
+      }
+    }
+  }
+
+  // 3. Fallback to reading standards if phonemic awareness is explicitly defined there
+  if (!phonemic && scenario.standards_and_learning_outcomes?.reading?.specific_standards?.phonemic_awareness) {
+    phonemic = scenario.standards_and_learning_outcomes.reading.specific_standards.phonemic_awareness;
+  }
+  if (!phonemic && scenario.reading?.specific_standard && typeof scenario.reading.specific_standard === 'string' && /phonemic|syllable|sound|stress/i.test(scenario.reading.specific_standard)) {
+    phonemic = scenario.reading.specific_standard;
+  }
+
+  // 4. Secondary & High school scenarios (Grades 9-12) often have combined phonological instruction in pronunciation:
+  if (!phonemic && pronunciation) {
+    const splitRegex = /(?:\. |\n|\)\s+)(?=(?:Practice the alternation|Practice alternating|Practice word stress|Practice stress|Focus on|Stress pattern|Stress Wh-|Stress Modal|Work on sentence rhythm))/i;
+    const parts = pronunciation.split(splitRegex);
+    if (parts.length > 1) {
+      pronunciation = parts[0].trim();
+      phonemic = parts.slice(1).join(' ').trim();
+    } else {
+      phonemic = 'Auditory discrimination of contrastive sounds, minimal pairs, and rhythm/stress patterns in connected speech.';
+    }
+  }
+
+  if (!pronunciation) {
+    pronunciation = 'Practice clear articulation of target vocabulary, sentence rhythm, and communicative intonation.';
+  }
+  if (!phonemic) {
+    phonemic = 'Phoneme isolation, blending of target sounds, and recognition of syllables.';
+  }
+
+  // Clean trailing punctuation or label prefixes
+  pronunciation = pronunciation.replace(/^pronunciation:\s*/i, '').trim();
+  phonemic = phonemic.replace(/^phonemic(?:\s*awareness)?:\s*/i, '').trim();
+
+  return {
+    pronunciation,
+    phonemic_awareness: phonemic
+  };
+}
+
+/**
  * Extracts and normalizes linguistic data from ANY scenario object (Pre-K to 12th Grade).
  */
 export function extractScenarioData(scenario, grade = '7th Grade', scenarioIndex = 0, cefr = '') {
@@ -289,39 +394,8 @@ export function extractScenarioData(scenario, grade = '7th Grade', scenarioIndex
     numberSubtext = "Used for technical measurements, statistical timelines (e.g., By 2030), and precision data.";
   }
 
-  // 3. Dialogue Generation matching target vocabulary & grammar
-  const nounSampleA = targetNouns[0]?.word || "topic";
-  const nounSampleB = targetNouns[1]?.word || "project";
-  const nounSampleC = targetNouns[2]?.word || "system";
-  const verbSample = displayVerbs[0] || "analyze";
-
-  // Build authentic dialogue lines reflecting the actual curriculum level
-  let dialogueLines = [];
-  if (grammarRules.some(g => /future perfect|passive|conditional/i.test(g))) {
-    // High school / Advanced scenario (like Grade 12 Robotics)
-    dialogueLines = [
-      { speaker: "Student A (Researcher / Specialist)", text: `By 2030, how will AI and ${nounSampleA}s have transformed our ${nounSampleB} in Panama?` },
-      { speaker: "Student B (Technical Analyst)", text: `Data is collected by advanced ${nounSampleC}s so technicians can ${verbSample} systems with high precision.` },
-      { speaker: "Student A", text: `If ${nounSampleA}s are programmed properly, they operate without mechanical failure in challenging environments.` },
-      { speaker: "Student B", text: `Exactly! Modern equipment and automated research will have revolutionized science across the region.` }
-    ];
-  } else if (grade.includes('Pre-K') || grade.includes('Kinder') || grade.includes('1')) {
-    // Early childhood / Primary
-    dialogueLines = [
-      { speaker: "Student A (Partner 1)", text: `Look! Where is the ${nounSampleA}?` },
-      { speaker: "Student B (Partner 2)", text: `Here it is! The ${nounSampleA} is next to the ${nounSampleB}.` },
-      { speaker: "Student A", text: `Can you ${verbSample} the ${nounSampleC}?` },
-      { speaker: "Student B", text: `Yes, I can! Let's work together happily.` }
-    ];
-  } else {
-    // Middle school / General AOA interaction
-    dialogueLines = [
-      { speaker: "Student A (Team Member)", text: `Good morning! Can we ${verbSample} the ${nounSampleA} and check the ${nounSampleB}?` },
-      { speaker: "Student B (Peer Collaborator)", text: `Yes, the ${nounSampleA} is ready and we need to compare the ${nounSampleC}.` },
-      { speaker: "Student A", text: `How many items do we need to organize for our classroom presentation?` },
-      { speaker: "Student B", text: `We need five items total. Here is the complete list for our team task!` }
-    ];
-  }
+  // 3. Extract authentic MEDUCA Pronunciation & Phonemic Awareness
+  const phonetics = extractPhoneticsFromScenario(sc, grade);
 
   return {
     metadata: {
@@ -343,7 +417,7 @@ export function extractScenarioData(scenario, grade = '7th Grade', scenarioIndex
       numbers: numberRange,
       numbers_subtext: numberSubtext
     },
-    dialogue: dialogueLines
+    phonetics: phonetics
   };
 }
 
@@ -658,19 +732,40 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
 
       </section>
 
-      <!-- SECTION 5: AUTHENTIC CLASSROOM ACTION TASK & MINI-DIALOGUE -->
-      <section class="border-2 border-dashed border-slate-300 bg-slate-50/70 rounded-xl p-3 text-xs space-y-1.5">
-        <div class="flex items-center justify-between">
-          <span class="font-black text-blue-950 uppercase tracking-wide flex items-center gap-1.5">
-            <span>🗣</span> Authentic Classroom Action Task (AOA Collaborative Interaction):
-          </span>
-          <span class="text-[10px] font-bold text-slate-500 bg-white border border-slate-200 px-2 py-0.5 rounded" id="task-badge">
-            Student A & Student B Pair Practice
+      <!-- SECTION 5: PRONUNCIATION & PHONEMIC AWARENESS -->
+      <section class="border-2 border-indigo-200 bg-gradient-to-r from-indigo-50/80 via-white to-purple-50/80 rounded-xl p-3 text-xs shadow-2xs space-y-2">
+        <div class="flex items-center justify-between border-b border-indigo-100 pb-1.5">
+          <div class="flex items-center gap-2">
+            <span class="text-base">🎙️</span>
+            <h3 class="text-xs font-black uppercase tracking-wider text-indigo-950">
+              Section 5: Pronunciation & Phonemic Awareness (Fonética y Pronunciación)
+            </h3>
+          </div>
+          <span class="text-[10px] font-bold text-indigo-700 bg-indigo-100/70 border border-indigo-200 px-2 py-0.5 rounded-md">
+            MEDUCA Curricular Standard
           </span>
         </div>
 
-        <div id="dialogue-box" class="space-y-1.5 text-[11.5px] font-mono text-slate-800 bg-white border border-slate-200 rounded-lg p-2.5 leading-relaxed">
-          <!-- Dialogue lines -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-0.5">
+          <div class="bg-white border border-indigo-200 rounded-lg p-2.5 shadow-2xs space-y-1">
+            <div class="flex items-center gap-1.5">
+              <span class="text-indigo-600 font-black text-xs">🗣️</span>
+              <span class="text-[11px] font-black text-indigo-950 uppercase tracking-wide">Pronunciation (Pronunciación y Entonación):</span>
+            </div>
+            <p id="poster-pronunciation" class="text-[11.5px] text-slate-700 leading-relaxed font-medium pl-5">
+              ${escapeXml(parsedActive.phonetics?.pronunciation || '')}
+            </p>
+          </div>
+
+          <div class="bg-white border border-purple-200 rounded-lg p-2.5 shadow-2xs space-y-1">
+            <div class="flex items-center gap-1.5">
+              <span class="text-purple-600 font-black text-xs">🎧</span>
+              <span class="text-[11px] font-black text-purple-950 uppercase tracking-wide">Phonemic Awareness (Conciencia Fonológica):</span>
+            </div>
+            <p id="poster-phonemic" class="text-[11.5px] text-slate-700 leading-relaxed font-medium pl-5">
+              ${escapeXml(parsedActive.phonetics?.phonemic_awareness || '')}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -1030,17 +1125,16 @@ function renderPoster(data) {
     </span>
   \`).join('');
 
-  // 7. Dialogue rendering
-  const dialogueBox = document.getElementById('dialogue-box');
-  const dialogue = data.dialogue || [];
-  dialogueBox.innerHTML = dialogue.map(d => \`
-    <p>
-      <strong class="\${d.speaker.includes('A') ? 'text-blue-700' : 'text-emerald-700'} font-sans font-bold">
-        \${escapeHtml(d.speaker)}:
-      </strong>
-      "\${escapeHtml(d.text)}"
-    </p>
-  \`).join('');
+  // 7. Pronunciation & Phonemic Awareness rendering
+  const phonetics = data.phonetics || {};
+  const pronEl = document.getElementById('poster-pronunciation');
+  const phonEl = document.getElementById('poster-phonemic');
+  if (pronEl) {
+    pronEl.textContent = phonetics.pronunciation || 'Practice clear articulation of target vocabulary, sentence rhythm, and communicative intonation.';
+  }
+  if (phonEl) {
+    phonEl.textContent = phonetics.phonemic_awareness || 'Phoneme isolation, blending of target sounds, and recognition of syllables.';
+  }
 }
 
 // Grade files mapping for live in-browser switching across all 14 grades (112 scenarios)
@@ -1100,6 +1194,101 @@ function switchScenario(index) {
   renderPoster(currentScenarioData);
 }
 
+function clientExtractPhonetics(scenario, grade) {
+  let pronunciation = '';
+  let phonemic = '';
+
+  if (!scenario) {
+    return {
+      pronunciation: 'Practice clear articulation of target vocabulary, sentence rhythm, and communicative intonation.',
+      phonemic_awareness: 'Phoneme isolation, blending of target sounds, and recognition of syllables.'
+    };
+  }
+
+  if (scenario.pronunciation) {
+    if (typeof scenario.pronunciation === 'string') {
+      pronunciation = scenario.pronunciation;
+    } else if (typeof scenario.pronunciation === 'object') {
+      pronunciation = scenario.pronunciation.sounds || scenario.pronunciation.pronunciation || scenario.pronunciation.description || '';
+      if (scenario.pronunciation.phonemic_awareness || scenario.pronunciation.phonemicAwareness) {
+        phonemic = scenario.pronunciation.phonemic_awareness || scenario.pronunciation.phonemicAwareness;
+      }
+    }
+  }
+  if (scenario.phonemic_awareness) {
+    phonemic = scenario.phonemic_awareness;
+  }
+
+  const cc = scenario.communicative_competences || scenario.communicativeCompetences || {};
+  const lc = cc.linguistic_competences || cc.linguisticCompetences || cc.linguistic || {};
+  const vocab = cc.vocabulary || {};
+
+  if (lc.recommended_vocabulary && lc.recommended_vocabulary.pronunciation_and_phonemic_awareness) {
+    const rvPpa = lc.recommended_vocabulary.pronunciation_and_phonemic_awareness;
+    if (typeof rvPpa === 'object') {
+      if (rvPpa.pronunciation && !pronunciation) pronunciation = rvPpa.pronunciation;
+      if (rvPpa.phonemic_awareness && !phonemic) phonemic = rvPpa.phonemic_awareness;
+    } else if (typeof rvPpa === 'string' && !pronunciation) {
+      pronunciation = rvPpa;
+    }
+  }
+
+  const ppa = lc.pronunciation_and_phonemic_awareness || lc.pronunciationAndPhonemicAwareness ||
+              vocab.pronunciation_and_phonemic_awareness || vocab.pronunciationAndPhonemicAwareness ||
+              lc.pronunciation || scenario.pronunciation_and_phonemic_awareness;
+
+  if (ppa) {
+    if (typeof ppa === 'object') {
+      if (ppa.pronunciation && !pronunciation) pronunciation = ppa.pronunciation;
+      if ((ppa.phonemic_awareness || ppa.phonemicAwareness) && !phonemic) {
+        phonemic = ppa.phonemic_awareness || ppa.phonemicAwareness;
+      }
+      if (ppa.sounds && !pronunciation) pronunciation = ppa.sounds;
+    } else if (typeof ppa === 'string') {
+      const splitMatch = ppa.match(/(?:pronunciation:?\s*)([\s\S]*?)(?:phonemic(?:\s*awareness)?:?\s*)([\s\S]*)/i);
+      if (splitMatch) {
+        if (!pronunciation) pronunciation = splitMatch[1].trim();
+        if (!phonemic) phonemic = splitMatch[2].trim();
+      } else {
+        if (!pronunciation) pronunciation = ppa;
+      }
+    }
+  }
+
+  if (!phonemic && scenario.standards_and_learning_outcomes?.reading?.specific_standards?.phonemic_awareness) {
+    phonemic = scenario.standards_and_learning_outcomes.reading.specific_standards.phonemic_awareness;
+  }
+  if (!phonemic && scenario.reading?.specific_standard && typeof scenario.reading.specific_standard === 'string' && /phonemic|syllable|sound|stress/i.test(scenario.reading.specific_standard)) {
+    phonemic = scenario.reading.specific_standard;
+  }
+
+  if (!phonemic && pronunciation) {
+    const splitRegex = /(?:\. |\n|\)\s+)(?=(?:Practice the alternation|Practice alternating|Practice word stress|Practice stress|Focus on|Stress pattern|Stress Wh-|Stress Modal|Work on sentence rhythm))/i;
+    const parts = pronunciation.split(splitRegex);
+    if (parts.length > 1) {
+      pronunciation = parts[0].trim();
+      phonemic = parts.slice(1).join(' ').trim();
+    } else {
+      phonemic = 'Auditory discrimination of contrastive sounds, minimal pairs, and rhythm/stress patterns in connected speech.';
+    }
+  }
+
+  if (!pronunciation) {
+    pronunciation = 'Practice clear articulation of target vocabulary, sentence rhythm, and communicative intonation.';
+  }
+  if (!phonemic) {
+    phonemic = 'Phoneme isolation, blending of target sounds, and recognition of syllables.';
+  }
+
+  pronunciation = pronunciation.replace(/^pronunciation:\s*/i, '').trim();
+  phonemic = phonemic.replace(/^phonemic(?:\s*awareness)?:\s*/i, '').trim();
+
+  return {
+    pronunciation: pronunciation,
+    phonemic_awareness: phonemic
+  };
+}
+
 function clientExtractScenario(scenario, grade, scenarioIndex, cefr) {
   const scenarioTitle = scenario.title || scenario.scenarioName || scenario.scenario_title || scenario.name || ('Scenario ' + (scenarioIndex + 1));
   const scenarioNum = scenario.id || scenario.scenarioNum || scenario.scenario_number || (scenarioIndex + 1);
@@ -1150,9 +1339,7 @@ function clientExtractScenario(scenario, grade, scenarioIndex, cefr) {
     phonetic: typeof n === 'object' ? (n.phonetic || '') : ''
   })).slice(0, 11);
 
-  const nounA = processedNouns[0]?.word || "topic";
-  const nounB = processedNouns[1]?.word || "project";
-  const verbA = rawVerbs[0] || "practice";
+  const phonetics = clientExtractPhonetics(scenario, grade);
 
   return {
     metadata: {
@@ -1173,12 +1360,7 @@ function clientExtractScenario(scenario, grade, scenarioIndex, cefr) {
       numbers: grade.includes('Kinder') || grade.includes('Pre-K') ? "1 to 10" : grade.includes('12') ? "100 to 1,000,000+" : "1 to 100",
       numbers_subtext: "Calibrated to " + grade + " curricular standards."
     },
-    dialogue: [
-      { speaker: "Student A", text: "Can we " + verbA + " the " + nounA + " for our lesson?" },
-      { speaker: "Student B", text: "Yes! Let's examine the " + nounB + " together in pairs." },
-      { speaker: "Student A", text: "How many items do we need for this task?" },
-      { speaker: "Student B", text: "We have all required materials ready to share." }
-    ]
+    phonetics: phonetics
   };
 }
 
