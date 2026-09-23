@@ -177,6 +177,211 @@ export const VOCAB_DICTIONARY = {
 };
 
 /**
+ * Universal procedural SVG icon generator for any noun:
+ * Produces crisp, beautiful vector illustrations with distinct themes.
+ */
+export function getVectorSvgForNoun(word) {
+  const w = String(word).toLowerCase().trim();
+
+  // Tech / Robotics
+  if (w.includes('robot')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <rect x="25" y="22" width="50" height="42" rx="8" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+      <circle cx="40" cy="38" r="6" fill="#f8fafc"/>
+      <circle cx="40" cy="38" r="3" fill="#0284c7"/>
+      <circle cx="60" cy="38" r="6" fill="#f8fafc"/>
+      <circle cx="60" cy="38" r="3" fill="#0284c7"/>
+      <line x1="38" y1="52" x2="62" y2="52" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+      <line x1="50" y1="8" x2="50" y2="22" stroke="#1d4ed8" stroke-width="3"/>
+      <circle cx="50" cy="8" r="4" fill="#ef4444"/>
+      <rect x="18" y="32" width="7" height="18" rx="2" fill="#60a5fa"/>
+      <rect x="75" y="32" width="7" height="18" rx="2" fill="#60a5fa"/>
+    </svg>`;
+  }
+  if (w.includes('space') || w.includes('galaxy') || w.includes('universe')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <rect x="5" y="5" width="90" height="70" rx="8" fill="#0f172a"/>
+      <circle cx="25" cy="25" r="2" fill="#ffffff"/>
+      <circle cx="75" cy="20" r="1.5" fill="#fef08a"/>
+      <circle cx="80" cy="55" r="2" fill="#ffffff"/>
+      <circle cx="20" cy="60" r="1.5" fill="#38bdf8"/>
+      <circle cx="50" cy="42" r="16" fill="#8b5cf6"/>
+      <ellipse cx="50" cy="42" rx="28" ry="7" fill="none" stroke="#e0e7ff" stroke-width="2" transform="rotate(-15 50 42)"/>
+    </svg>`;
+  }
+  if (w.includes('rocket')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <g transform="translate(50, 38) rotate(35) translate(-50, -38)">
+        <polygon points="50,10 62,30 38,30" fill="#ef4444"/>
+        <rect x="38" y="30" width="24" height="32" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+        <circle cx="50" cy="42" r="5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5"/>
+        <polygon points="38,48 24,62 38,62" fill="#dc2626"/>
+        <polygon points="62,48 76,62 62,62" fill="#dc2626"/>
+        <polygon points="42,62 50,75 58,62" fill="#f59e0b"/>
+      </g>
+    </svg>`;
+  }
+  if (w.includes('astronaut')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <circle cx="50" cy="36" r="24" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+      <rect x="32" y="24" width="36" height="24" rx="8" fill="#0f172a" stroke="#d97706" stroke-width="2"/>
+      <path d="M36,28 Q44,32 50,28" stroke="#38bdf8" stroke-width="2" fill="none"/>
+      <rect x="42" y="60" width="16" height="15" fill="#e2e8f0"/>
+    </svg>`;
+  }
+  if (w.includes('satellite')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <rect x="38" y="26" width="24" height="28" rx="3" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+      <rect x="8" y="32" width="26" height="16" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.2"/>
+      <rect x="66" y="32" width="26" height="16" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.2"/>
+      <circle cx="50" cy="40" r="4" fill="#fbbf24"/>
+      <line x1="50" y1="26" x2="50" y2="12" stroke="#64748b" stroke-width="2"/>
+      <circle cx="50" cy="12" r="3" fill="#ef4444"/>
+    </svg>`;
+  }
+
+  // Sports & Outdoors: Baseball Bat
+  if (w.includes('bat') && !w.includes('bath')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <g transform="translate(50, 40) rotate(42) translate(-50, -40)">
+        <rect x="47" y="60" width="6" height="15" rx="2" fill="#78350f" stroke="#451a03" stroke-width="1"/>
+        <rect x="46" y="52" width="8" height="10" rx="1" fill="#f8fafc" stroke="#94a3b8" stroke-width="0.8"/>
+        <path d="M46,52 L44,14 C44,9 56,9 56,14 L54,52 Z" fill="#d97706" stroke="#b45309" stroke-width="1.2"/>
+        <circle cx="50" cy="76" r="4.5" fill="#92400e"/>
+      </g>
+      <circle cx="34" cy="48" r="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+      <path d="M26,42 Q32,48 26,54" stroke="#ef4444" stroke-width="1.5" fill="none" stroke-dasharray="2,2"/>
+      <path d="M42,42 Q36,48 42,54" stroke="#ef4444" stroke-width="1.5" fill="none" stroke-dasharray="2,2"/>
+    </svg>`;
+  }
+
+  // Sports & Play: Ball
+  if (w === 'ball' || w.includes('soccer') || w.includes('basketball')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <circle cx="50" cy="40" r="24" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+      <path d="M30,28 Q50,40 30,52" fill="#f59e0b"/>
+      <path d="M70,28 Q50,40 70,52" fill="#ef4444"/>
+      <circle cx="50" cy="40" r="8" fill="#ffffff" stroke="#1e293b" stroke-width="1.5"/>
+    </svg>`;
+  }
+
+  // Sports & Outdoors: Bike
+  if (w.includes('bike') || w.includes('bicycle')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <circle cx="28" cy="52" r="14" fill="none" stroke="#0284c7" stroke-width="3"/>
+      <circle cx="72" cy="52" r="14" fill="none" stroke="#0284c7" stroke-width="3"/>
+      <polyline points="28,52 46,52 56,36 38,36 28,52" fill="none" stroke="#0f172a" stroke-width="2.5"/>
+      <polyline points="46,52 56,36 72,52" fill="none" stroke="#0f172a" stroke-width="2.5"/>
+      <line x1="56" y1="36" x2="56" y2="28" stroke="#0f172a" stroke-width="2.5"/>
+      <line x1="50" y1="28" x2="62" y2="28" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+      <line x1="38" y1="36" x2="34" y2="30" stroke="#0f172a" stroke-width="2.5"/>
+      <line x1="30" y1="30" x2="38" y2="30" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    </svg>`;
+  }
+
+  // Recycling & Waste Management
+  if (w.includes('recycle') || w.includes('recycling')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <path d="M42,20 L58,20 L52,12 M58,20 L52,28" stroke="#16a34a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M68,36 L76,50 L84,42 M76,50 L68,52" stroke="#16a34a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M32,54 L24,40 L16,48 M24,40 L32,38" stroke="#16a34a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="50" cy="40" r="10" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+    </svg>`;
+  }
+
+  if (w.includes('bin') || w.includes('trash') || w.includes('waste')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <rect x="30" y="26" width="40" height="46" rx="4" fill="#0284c7" stroke="#0369a1" stroke-width="2"/>
+      <rect x="25" y="18" width="50" height="8" rx="2" fill="#0369a1"/>
+      <rect x="42" y="12" width="16" height="6" rx="2" fill="#075985"/>
+      <line x1="40" y1="36" x2="40" y2="60" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="50" y1="36" x2="50" y2="60" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="60" y1="36" x2="60" y2="60" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>`;
+  }
+
+  if (w.includes('bottle') || w.includes('plastic')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <rect x="42" y="12" width="16" height="8" rx="2" fill="#38bdf8"/>
+      <path d="M42,20 L35,32 L35,68 Q35,72 50,72 Q65,72 65,68 L65,32 L58,20 Z" fill="#bae6fd" stroke="#0284c7" stroke-width="2"/>
+      <rect x="35" y="42" width="30" height="14" fill="#0284c7" opacity="0.3"/>
+    </svg>`;
+  }
+
+  if (w.includes('compost') || w.includes('food') || w.includes('scrap')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <circle cx="50" cy="46" r="22" fill="#84cc16" stroke="#4d7c0f" stroke-width="2"/>
+      <path d="M50,24 C50,14 62,12 62,12 C62,12 60,24 50,24 Z" fill="#15803d"/>
+      <circle cx="43" cy="42" r="3" fill="#ffffff"/>
+      <circle cx="57" cy="42" r="3" fill="#ffffff"/>
+      <path d="M44,54 Q50,60 56,54" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </svg>`;
+  }
+
+  // Water / Current / Canal / River
+  if (w.includes('current') || w.includes('water') || w.includes('wave') || w.includes('river') || w.includes('stream')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <path d="M10,32 Q25,20 40,32 T70,32 T90,32" fill="none" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/>
+      <path d="M10,46 Q25,34 40,46 T70,46 T90,46" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
+      <path d="M10,60 Q25,48 40,60 T70,60 T90,60" fill="none" stroke="#0369a1" stroke-width="4" stroke-linecap="round"/>
+    </svg>`;
+  }
+
+  // Fair / Carnival
+  if (w.includes('fair') || w.includes('carnival')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <polygon points="50,14 18,42 82,42" fill="#ef4444"/>
+      <polygon points="50,14 34,42 66,42" fill="#ffffff"/>
+      <rect x="22" y="42" width="56" height="26" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <rect x="42" y="48" width="16" height="20" rx="8" fill="#1e293b"/>
+      <line x1="50" y1="14" x2="50" y2="6" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="50,6 60,10 50,14" fill="#f59e0b"/>
+    </svg>`;
+  }
+
+  // Fan / Supporter
+  if (w.includes('fan') || w.includes('supporter')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <circle cx="50" cy="40" r="24" fill="#fef08a" stroke="#eab308" stroke-width="2"/>
+      <polygon points="50,22 55,34 68,34 57,42 61,54 50,46 39,54 43,42 32,34 45,34" fill="#eab308"/>
+      <circle cx="50" cy="40" r="6" fill="#ffffff"/>
+    </svg>`;
+  }
+  if (w.includes('factory') || w.includes('industry')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <polygon points="15,68 15,35 35,50 35,35 55,50 55,35 75,50 75,68" fill="#475569"/>
+      <rect x="75" y="20" width="12" height="48" fill="#334155"/>
+      <rect x="25" y="55" width="8" height="13" fill="#fef08a"/>
+      <rect x="45" y="55" width="8" height="13" fill="#fef08a"/>
+      <circle cx="81" cy="12" r="5" fill="#cbd5e1"/>
+    </svg>`;
+  }
+
+  // Science / Nature / Ecology
+  if (w.includes('plant') || w.includes('tree') || w.includes('agriculture') || w.includes('leaf') || w.includes('environment')) {
+    return `<svg viewBox="0 0 100 80" class="w-full h-full">
+      <path d="M50,70 L50,30" stroke="#78350f" stroke-width="4"/>
+      <path d="M50,45 Q70,35 68,20 Q50,25 50,45" fill="#16a34a"/>
+      <path d="M50,40 Q30,30 32,15 Q50,20 50,40" fill="#22c55e"/>
+    </svg>`;
+  }
+
+  // Generic Modern Academic Badge SVG for any other noun
+  const colors = ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#ec4899', '#06b6d4'];
+  const charCode = w.charCodeAt(0) || 65;
+  const color = colors[charCode % colors.length];
+
+  return `<svg viewBox="0 0 100 80" class="w-full h-full">
+    <rect x="12" y="10" width="76" height="60" rx="10" fill="${color}" opacity="0.15" stroke="${color}" stroke-width="1.8"/>
+    <circle cx="50" cy="36" r="18" fill="${color}"/>
+    <text x="50" y="44" font-size="20" font-family="Inter, sans-serif" font-weight="900" fill="#ffffff" text-anchor="middle">
+      ${w.charAt(0).toUpperCase()}
+    </text>
+    <rect x="28" y="58" width="44" height="6" rx="3" fill="${color}" opacity="0.4"/>
+  </svg>`;
+}
+
+/**
  * Extracts authentic MEDUCA Pronunciation and Phonemic Awareness from any curriculum scenario.
  */
 export function extractPhoneticsFromScenario(scenario, grade = '') {
@@ -254,11 +459,27 @@ export function extractPhoneticsFromScenario(scenario, grade = '') {
 
   // 4. Secondary & High school scenarios (Grades 9-12) often have combined phonological instruction in pronunciation:
   if (!phonemic && pronunciation) {
-    const splitRegex = /(?:\. |\n|\)\s+)(?=(?:Practice the alternation|Practice alternating|Practice word stress|Practice stress|Focus on|Stress pattern|Stress Wh-|Stress Modal|Work on sentence rhythm))/i;
-    const parts = pronunciation.split(splitRegex);
-    if (parts.length > 1) {
-      pronunciation = parts[0].trim();
-      phonemic = parts.slice(1).join(' ').trim();
+    const splitTokens = [
+      'Practice the alternation',
+      'Practice alternating',
+      'Practice word stress',
+      'Practice stress',
+      'Focus on',
+      'Stress pattern',
+      'Stress Wh-',
+      'Stress Modal',
+      'Work on sentence rhythm'
+    ];
+    let splitIdx = -1;
+    for (let t = 0; t < splitTokens.length; t++) {
+      const idx = pronunciation.toLowerCase().indexOf(splitTokens[t].toLowerCase());
+      if (idx > 10 && (splitIdx === -1 || idx < splitIdx)) {
+        splitIdx = idx;
+      }
+    }
+    if (splitIdx > 0) {
+      phonemic = pronunciation.slice(splitIdx).trim();
+      pronunciation = pronunciation.slice(0, splitIdx).trim();
     } else {
       phonemic = 'Auditory discrimination of contrastive sounds, minimal pairs, and rhythm/stress patterns in connected speech.';
     }
@@ -295,8 +516,17 @@ export function extractScenarioData(scenario, grade = '7th Grade', scenarioIndex
   let grammarRules = [];
   if (Array.isArray(sc.linguistic_competences) && sc.linguistic_competences.length > 0) {
     grammarRules = sc.linguistic_competences;
+  } else if (sc.communicative_competences?.grammatical_features) {
+    const gf = sc.communicative_competences.grammatical_features;
+    grammarRules = Array.isArray(gf) ? gf : [gf];
+  } else if (sc.communicativeCompetences?.grammaticalFeatures) {
+    const gf = sc.communicativeCompetences.grammaticalFeatures;
+    grammarRules = Array.isArray(gf) ? gf : [gf];
   } else if (sc.communicative_competences?.linguistic_competences?.recommended_grammatical_features) {
     const gf = sc.communicative_competences.linguistic_competences.recommended_grammatical_features;
+    grammarRules = Array.isArray(gf) ? gf : [gf];
+  } else if (sc.communicative_competences?.linguistic?.grammatical_features) {
+    const gf = sc.communicative_competences.linguistic.grammatical_features;
     grammarRules = Array.isArray(gf) ? gf : [gf];
   } else if (Array.isArray(sc.grammar) && sc.grammar.length > 0) {
     grammarRules = sc.grammar;
@@ -437,6 +667,76 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
   const activeJsonStr = JSON.stringify(parsedActive, null, 2);
   const scenarioListJsonStr = JSON.stringify(parsedScenarioList, null, 2);
   const realiaMapJsonStr = JSON.stringify(REALIA_PHOTOS, null, 2);
+
+  // Pre-render all poster sections directly into HTML (Zero blank state / instantaneous render)
+  const initialNounsGridHtml = (parsedActive.linguistic_competence.nouns || []).map(item => {
+    const word = item.word || String(item);
+    const trans = item.translation || '';
+    const phon = item.phonetic || '';
+    const photoUrl = getRealiaPhoto(word);
+    const svgIcon = getVectorSvgForNoun(word);
+
+    let visualHtml = '';
+    if (photoUrl) {
+      visualHtml = `
+        <div class="w-full h-16 sm:h-20 rounded-lg p-0 mb-1.5 flex items-center justify-center overflow-hidden realia-img-container shadow-inner border border-slate-100">
+          <img src="${photoUrl}" alt="${escapeXml(word)}" class="realia-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="w-full h-full p-1 hidden items-center justify-center">
+            ${svgIcon}
+          </div>
+        </div>
+      `;
+    } else {
+      visualHtml = `
+        <div class="w-full h-16 sm:h-20 bg-slate-50 rounded-lg p-1 mb-1.5 flex items-center justify-center overflow-hidden">
+          ${svgIcon}
+        </div>
+      `;
+    }
+
+    return `
+      <div class="bg-white border-2 border-slate-200 hover:border-blue-500 rounded-xl p-2 flex flex-col items-center text-center shadow-2xs transition group">
+        ${visualHtml}
+        <div class="text-[11px] sm:text-xs font-black text-slate-900 uppercase tracking-tight group-hover:text-blue-700">
+          ${escapeXml(word)}
+        </div>
+        <div class="text-[9px] text-slate-500 font-semibold truncate max-w-full">
+          ${escapeXml(trans)} ${phon ? `<span class="italic text-slate-400 font-normal">${escapeXml(phon)}</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('') + (parsedActive.linguistic_competence.nouns?.length === 11 ? `
+    <div class="bg-amber-50 border-2 border-dashed border-amber-300 rounded-xl p-2 flex flex-col justify-center items-center text-center shadow-2xs">
+      <span class="text-lg mb-0.5">🎯</span>
+      <span class="text-[10px] font-black text-amber-950 uppercase tracking-wide">Action Goal</span>
+      <span class="text-[9px] text-amber-900 leading-tight">Master and connect all target vocabulary in your final task!</span>
+    </div>
+  ` : '');
+
+  const initialVerbsHtml = (parsedActive.linguistic_competence.verbs || []).map(v => `
+    <span class="bg-white border border-sky-300 text-sky-950 text-xs font-bold px-2.5 py-1 rounded-lg shadow-2xs hover:bg-sky-100 transition">
+      ${escapeXml(v)}
+    </span>
+  `).join('');
+
+  const initialAdjsHtml = (parsedActive.linguistic_competence.adjectives || []).map(a => `
+    <span class="bg-white border border-emerald-300 text-emerald-950 text-xs font-bold px-2.5 py-1 rounded-lg shadow-2xs hover:bg-emerald-100 transition">
+      ${escapeXml(a)}
+    </span>
+  `).join('');
+
+  const initialGrammarHtml = (parsedActive.linguistic_competence.grammar || []).map(rule => `
+    <div class="bg-white border border-indigo-200/80 rounded-lg p-2 text-xs text-indigo-950 shadow-2xs flex items-start gap-2">
+      <span class="text-indigo-600 font-extrabold mt-0.5">⚡</span>
+      <span class="leading-relaxed font-semibold">${escapeXml(rule)}</span>
+    </div>
+  `).join('');
+
+  const initialQuestionsHtml = (parsedActive.linguistic_competence.interrogatives || []).map(q => `
+    <span class="bg-white border border-rose-300 text-rose-950 text-[11px] font-bold px-2 py-0.5 rounded-md shadow-2xs">
+      ${escapeXml(q)}
+    </span>
+  `).join('');
 
   return `<!DOCTYPE html>
 <html lang="es">
@@ -653,7 +953,7 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
 
         <!-- Noun Cards Grid -->
         <div id="nouns-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2.5">
-          <!-- Rendered dynamically by JavaScript -->
+          ${initialNounsGridHtml}
         </div>
       </section>
 
@@ -666,11 +966,11 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
             <h3 class="text-xs font-black uppercase tracking-wide flex items-center gap-1.5">
               <span>⚡</span> Action Verbs (Verbos Operativos)
             </h3>
-            <span id="verbs-count" class="text-[10px] bg-white/20 px-2 py-0.2 rounded font-bold">Verbs</span>
+            <span id="verbs-count" class="text-[10px] bg-white/20 px-2 py-0.2 rounded font-bold">${parsedActive.linguistic_competence.verbs.length} Verbs</span>
           </div>
           <div class="p-3">
             <div id="verbs-container" class="flex flex-wrap gap-1.5">
-              <!-- Verbs chips -->
+              ${initialVerbsHtml}
             </div>
           </div>
         </div>
@@ -681,11 +981,11 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
             <h3 class="text-xs font-black uppercase tracking-wide flex items-center gap-1.5">
               <span>✨</span> Descriptive Adjectives (Cualidades)
             </h3>
-            <span id="adj-count" class="text-[10px] bg-white/20 px-2 py-0.2 rounded font-bold">Adjectives</span>
+            <span id="adj-count" class="text-[10px] bg-white/20 px-2 py-0.2 rounded font-bold">${parsedActive.linguistic_competence.adjectives.length} Adjectives</span>
           </div>
           <div class="p-3">
             <div id="adj-container" class="flex flex-wrap gap-1.5">
-              <!-- Adjectives chips -->
+              ${initialAdjsHtml}
             </div>
           </div>
         </div>
@@ -704,7 +1004,7 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
             <span class="text-[10px] bg-white/20 px-2 py-0.2 rounded font-bold">Curricular Standard</span>
           </div>
           <div class="p-3 space-y-1.5" id="grammar-container">
-            <!-- Grammar rules list -->
+            ${initialGrammarHtml}
           </div>
         </div>
 
@@ -715,16 +1015,16 @@ export function linguisticPosterStudioHtml(activeScenario = null, grade = '7th G
           </div>
           <div class="p-3 text-xs text-slate-800 space-y-2 flex-1">
             <div>
-              <div class="font-extrabold text-rose-900" id="num-range-text">Range: 1 to 100</div>
+              <div class="font-extrabold text-rose-900" id="num-range-text">${escapeXml(parsedActive.linguistic_competence.numbers || '1 to 100')}</div>
               <p class="text-[11px] text-slate-600 leading-snug" id="num-subtext">
-                Applied to counting, measurements, and data collection.
+                ${escapeXml(parsedActive.linguistic_competence.numbers_subtext || '')}
               </p>
             </div>
 
             <div class="pt-1.5 border-t border-rose-200/60">
               <span class="text-[10px] font-black text-rose-900 uppercase tracking-wider block mb-1">Key Question Prompts:</span>
               <div id="interr-container" class="flex flex-wrap gap-1">
-                <!-- Question words chips -->
+                ${initialQuestionsHtml}
               </div>
             </div>
           </div>
@@ -1263,11 +1563,27 @@ function clientExtractPhonetics(scenario, grade) {
   }
 
   if (!phonemic && pronunciation) {
-    const splitRegex = /(?:\. |\n|\)\s+)(?=(?:Practice the alternation|Practice alternating|Practice word stress|Practice stress|Focus on|Stress pattern|Stress Wh-|Stress Modal|Work on sentence rhythm))/i;
-    const parts = pronunciation.split(splitRegex);
-    if (parts.length > 1) {
-      pronunciation = parts[0].trim();
-      phonemic = parts.slice(1).join(' ').trim();
+    const splitTokens = [
+      'Practice the alternation',
+      'Practice alternating',
+      'Practice word stress',
+      'Practice stress',
+      'Focus on',
+      'Stress pattern',
+      'Stress Wh-',
+      'Stress Modal',
+      'Work on sentence rhythm'
+    ];
+    let splitIdx = -1;
+    for (let t = 0; t < splitTokens.length; t++) {
+      const idx = pronunciation.toLowerCase().indexOf(splitTokens[t].toLowerCase());
+      if (idx > 10 && (splitIdx === -1 || idx < splitIdx)) {
+        splitIdx = idx;
+      }
+    }
+    if (splitIdx > 0) {
+      phonemic = pronunciation.slice(splitIdx).trim();
+      pronunciation = pronunciation.slice(0, splitIdx).trim();
     } else {
       phonemic = 'Auditory discrimination of contrastive sounds, minimal pairs, and rhythm/stress patterns in connected speech.';
     }
@@ -1297,8 +1613,17 @@ function clientExtractScenario(scenario, grade, scenarioIndex, cefr) {
   let grammarRules = [];
   if (Array.isArray(scenario.linguistic_competences) && scenario.linguistic_competences.length > 0) {
     grammarRules = scenario.linguistic_competences;
+  } else if (scenario.communicative_competences?.grammatical_features) {
+    const gf = scenario.communicative_competences.grammatical_features;
+    grammarRules = Array.isArray(gf) ? gf : [gf];
+  } else if (scenario.communicativeCompetences?.grammaticalFeatures) {
+    const gf = scenario.communicativeCompetences.grammaticalFeatures;
+    grammarRules = Array.isArray(gf) ? gf : [gf];
   } else if (scenario.communicative_competences?.linguistic_competences?.recommended_grammatical_features) {
     const gf = scenario.communicative_competences.linguistic_competences.recommended_grammatical_features;
+    grammarRules = Array.isArray(gf) ? gf : [gf];
+  } else if (scenario.communicative_competences?.linguistic?.grammatical_features) {
+    const gf = scenario.communicative_competences.linguistic.grammatical_features;
     grammarRules = Array.isArray(gf) ? gf : [gf];
   } else if (Array.isArray(scenario.grammar) && scenario.grammar.length > 0) {
     grammarRules = scenario.grammar;
@@ -1306,7 +1631,11 @@ function clientExtractScenario(scenario, grade, scenarioIndex, cefr) {
     grammarRules = Array.isArray(scenario.grammar_focus) ? scenario.grammar_focus : [scenario.grammar_focus];
   }
   if (!grammarRules.length) {
-    grammarRules = ["Present Simple for core communication", "Active listening and response formulas"];
+    grammarRules = [
+      "Present Simple for general facts and core descriptions",
+      "Imperatives & modals for direct action and collaboration",
+      "Action-oriented question forms for peer dialogue"
+    ];
   }
 
   const vocabSource = scenario.communicative_competences?.vocabulary?.linguistic_competences ||
@@ -1444,16 +1773,27 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  renderPoster(currentScenarioData);
-  fetch('/assets/nouns/manifest.json')
-    .then(r => r.ok ? r.json() : {})
-    .then(manifest => {
-      window.NOUN_MANIFEST = manifest || {};
-      if (currentScenarioData) renderPoster(currentScenarioData);
-    })
-    .catch(() => {});
-});
+function initPoster() {
+  if (currentScenarioData) {
+    renderPoster(currentScenarioData);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPoster);
+} else {
+  initPoster();
+}
+window.addEventListener('load', initPoster);
+setTimeout(initPoster, 50);
+
+fetch('/assets/nouns/manifest.json')
+  .then(r => r.ok ? r.json() : {})
+  .then(manifest => {
+    window.NOUN_MANIFEST = manifest || {};
+    if (currentScenarioData) renderPoster(currentScenarioData);
+  })
+  .catch(() => {});
 </script>
 
 </body>
