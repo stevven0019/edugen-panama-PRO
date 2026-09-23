@@ -33,7 +33,7 @@ export const SKILLS_AOA = [
 const plain = html => new DOMParser().parseFromString(html || '', 'text/html').body.textContent || '';
 
 async function readLesson(file) {
-  if (!file || file.size > 2 * 1024 * 1024) throw new Error('Selecciona una lección de hasta 2 MB.');
+  if (!file || file.size > 10 * 1024 * 1024) throw new Error('Selecciona un archivo de lección de hasta 10 MB.');
   const ext = file.name.split('.').pop().toLowerCase();
   const baseName = file.name.replace(/\.[^/.]+$/, '').replace(/[_-]/g, ' ').trim();
   let media = null;
@@ -50,19 +50,25 @@ async function readLesson(file) {
     text = `Extract and structure the AOA English lesson from this uploaded file: "${file.name}". Theme / Title: ${baseName}.`;
   } else if (ext === 'docx') {
     const mammoth = await import('mammoth/mammoth.browser');
-    text = (await mammoth.extractRawText({ arrayBuffer: await file.arrayBuffer() })).value;
-  } else if (ext === 'txt' || ext === 'doc') {
+    text = (await mammoth.extractRawText({ arrayBuffer: await file.arrayBuffer() })).value || '';
+  } else if (ext === 'txt' || ext === 'doc' || ext === 'html' || ext === 'htm') {
     text = await file.text();
-    if (ext === 'doc') {
-      if (!/<(?:html|table|body)/i.test(text)) throw new Error('Convierte este archivo Word antiguo a DOCX o PDF.');
-      text = plain(text);
+    if (ext === 'doc' || ext === 'html' || ext === 'htm') {
+      if (/<(?:html|table|body|div)/i.test(text)) {
+        text = plain(text);
+      }
     }
   } else {
-    throw new Error('Usa PDF, DOCX, TXT o el DOC exportado por EduGen.');
+    throw new Error('Usa PDF, DOCX, DOC o TXT.');
   }
 
-  if (text.trim().length < 20 || text.length > 70000) {
-    throw new Error('La lección debe contener texto legible (máximo 70.000 caracteres).');
+  if (text.trim().length < 15) {
+    throw new Error('El archivo seleccionado no contiene suficiente texto legible.');
+  }
+
+  // Gracefully truncate large files so they never exceed token limits or block the user
+  if (text.length > 50000) {
+    text = text.slice(0, 50000);
   }
 
   // Detect grade hint from filename or text
@@ -253,14 +259,15 @@ Skill Focus: ${matrixSkill} (Lesson ${skillObj.number}: ${skillObj.label})
 Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
         };
       } else if (source === 'file') {
-        input = { ...(await readLesson(file)), isFile: true, forceAi: true };
+        input = { ...(await readLesson(file)), isFile: true, forceAi: false };
       } else {
+        if (!lesson) throw new Error('No hay una lección guardada disponible en el historial.');
         input = {
           text: lesson.content || '',
           grade: lesson.grade,
           title: lesson.title,
           scenario: lesson.lessonContext?.scenario || lesson.title,
-          forceAi: true
+          forceAi: false
         };
       }
 
@@ -292,7 +299,7 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
         grade: result.grade,
         content: 'Printable activity workbook (PDF)',
         activityPack: result,
-        sourceLesson: source === 'file' ? file.name : (source === 'matrix' ? `AOA_${result.grade}_SC${matrixScenarioIndex + 1}` : lesson.id),
+        sourceLesson: source === 'file' ? (file?.name || 'uploaded_lesson') : (source === 'matrix' ? `AOA_${result.grade}_SC${matrixScenarioIndex + 1}` : (lesson?.id || 'current_screen_lesson')),
         createdAt: now,
         updatedAt: now
       });

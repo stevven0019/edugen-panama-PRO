@@ -24,15 +24,55 @@ const cleanHtml = (html) => {
     .trim();
 };
 
+const extractHtmlKeywords = (html) => {
+  if (!html) return [];
+  const words = [];
+  const matches = [...html.matchAll(/<(?:strong|b|em|li|td)[^>]*>([\s\S]*?)<\/(?:strong|b|em|li|td)>/gi)];
+  for (const m of matches) {
+    const raw = m[1].replace(/<[^>]+>/g, '').trim();
+    if (raw.length > 2 && raw.length < 30 && !/^(stage|warm|presentation|practice|production|assessment|reflection|step|grade|minute|time|teacher|student|materials|procedure|differentiation)/i.test(raw)) {
+      words.push(raw);
+    }
+  }
+  return words;
+};
+
+const CURRICULUM_TOPIC_VOCAB = {
+  market: ['pineapple', 'banana', 'orange', 'apple', 'watermelon', 'market', 'price', 'dollar'],
+  shopping: ['pineapple', 'banana', 'orange', 'shopping list', 'store', 'cashier', 'money', 'price'],
+  fruit: ['pineapple', 'banana', 'orange', 'apple', 'watermelon', 'mango', 'papaya', 'lemon'],
+  food: ['rice', 'chicken', 'fish', 'salad', 'water', 'fruit', 'vegetables', 'bread'],
+  school: ['book', 'pencil', 'desk', 'chair', 'bag', 'crayon', 'marker', 'eraser'],
+  classroom: ['book', 'desk', 'chair', 'pencil', 'board', 'door', 'window', 'table'],
+  animal: ['jaguar', 'monkey', 'toucan', 'sloth', 'bird', 'frog', 'turtle', 'fish'],
+  nature: ['tree', 'river', 'forest', 'sun', 'flower', 'cloud', 'rain', 'mountain'],
+  recycle: ['recycle', 'bin', 'bottle', 'plastic', 'compost', 'trash', 'environment', 'paper'],
+  community: ['house', 'street', 'park', 'hospital', 'school', 'store', 'bus', 'library'],
+  family: ['mother', 'father', 'brother', 'sister', 'grandmother', 'grandfather', 'baby', 'family'],
+  weather: ['sunny', 'rainy', 'cloudy', 'windy', 'stormy', 'hot', 'cold', 'warm'],
+  health: ['exercise', 'water', 'fruit', 'sleep', 'doctor', 'teeth', 'soap', 'clean'],
+  clothing: ['shirt', 'pants', 'dress', 'shoes', 'hat', 'jacket', 'socks', 'uniform'],
+  technology: ['computer', 'robot', 'screen', 'keyboard', 'internet', 'phone', 'tablet', 'code'],
+  transport: ['bus', 'car', 'train', 'metro', 'boat', 'airplane', 'bicycle', 'station']
+};
+
+function getTopicVocabFallback(textContext) {
+  const lower = (textContext || '').toLowerCase();
+  for (const [key, list] of Object.entries(CURRICULUM_TOPIC_VOCAB)) {
+    if (lower.includes(key)) return list;
+  }
+  return ['book', 'desk', 'pencil', 'chair', 'bag', 'apple'];
+}
+
 export function parseAoaLessonPlan(rawInput, metadata = {}) {
-  const text = typeof rawInput === 'string' ? rawInput : (rawInput?.text || '');
-  const clean = cleanHtml(text);
-  if (!clean || clean.length < 50) return null;
+  const rawText = typeof rawInput === 'string' ? rawInput : (rawInput?.text || '');
+  const clean = cleanHtml(rawText);
+  if (!clean || clean.length < 20) return null;
 
   // 1. Extract Grade & Theme
   let grade = metadata.grade || '';
   if (!grade) {
-    const gradeMatch = clean.match(/Grade:\s*([^\s]+(?:\s+Grade)?)/i) || clean.match(/(?:Pre-?K|Kindergarten|Kinder|\b\d{1,2}(?:st|nd|rd|th)?\s+Grade)/i);
+    const gradeMatch = clean.match(/Grade:\s*([^\s]+(?:\s+Grade)?)/i) || clean.match(/(?:Pre-?K|Kindergarten|Kinder|\b\d{1,2}(?:st|nd|rd|th)?\s+Grade|\b(?:1|2|3|4|5|6|7|8|9|10|11|12)°?\s*Grado)/i);
     grade = gradeMatch ? gradeMatch[1] || gradeMatch[0] : '4th Grade';
   }
 
@@ -40,6 +80,10 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
   if (!theme || theme.includes('Lesson Planner') || theme.includes('EduGen')) {
     const themeMatch = clean.match(/Theme:\s*([^.\n]+?)(?:Date|\bSpecific|$)/i) || clean.match(/Theme\s*#\s*\d+\s*[-–—:]\s*Lesson\s*#\s*\d+\s*[-–—:]?\s*([^.\n]+)/i);
     if (themeMatch) theme = themeMatch[1].trim();
+  }
+  if (!theme) {
+    const headingMatch = rawText.match(/<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/i);
+    if (headingMatch) theme = headingMatch[1].replace(/<[^>]+>/g, '').trim();
   }
   if (!theme) theme = 'English AOA Lesson';
 
@@ -52,7 +96,7 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
   const objMatch = clean.match(/Specific\s+Objective:\s*([^.\n]+?\.)/i);
   if (objMatch) objective = objMatch[1].trim();
 
-  // 2. Extract Vocabulary Words from Stage 1 or Vocabulary Section
+  // 2. Extract Vocabulary Words from Stage 1, Vocabulary Section, HTML tags or quoted words
   let vocabWords = [];
   const vocabMatch = clean.match(/(?:vocabulary\s+words?|target\s+vocabulary|key\s+vocabulary|vocabulary\s+items?|words?)[^:]*:\s*([^\n.]+)/i);
   if (vocabMatch) {
@@ -60,43 +104,58 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
       .replace(/\*\*/g, '')
       .replace(/\./g, '')
       .split(/[,;\/]| and /i)
-      .map(w => w.trim())
+      .map(w => w.trim().toLowerCase())
       .filter(w => w.length > 2 && !w.startsWith('(') && !w.startsWith('e.g'));
     vocabWords = [...new Set(rawWords)].slice(0, 6);
   }
 
   if (vocabWords.length < 4) {
-    // Search for bolded keywords in Stage 1 / Warm-up
-    const stage1Snippet = clean.match(/Stage\s*1[\s\S]*?(?=Stage\s*2|$)/i)?.[0] || '';
-    if (stage1Snippet) {
-      const starWords = [...stage1Snippet.matchAll(/\*\*([a-zA-Z\s]{3,20})\*\*/g)].map(m => m[1].toLowerCase().trim());
-      const filtered = [...new Set(starWords)].filter(w => !['stage', 'warm-up', 'procedure', 'differentiation', 'teacher', 'students', 'materials', 'time'].includes(w));
-      if (filtered.length >= 4) {
-        vocabWords = filtered.slice(0, 6);
-      }
+    // Check highlighted HTML tags or markdown stars
+    const htmlWords = extractHtmlKeywords(rawText);
+    const starWords = [...clean.matchAll(/\*\*([a-zA-Z\s]{3,20})\*\*/g)].map(m => m[1].toLowerCase().trim());
+    const candidates = [...new Set([...htmlWords, ...starWords])].map(w => w.toLowerCase())
+      .filter(w => !['stage', 'warm-up', 'procedure', 'differentiation', 'teacher', 'students', 'materials', 'time', 'learning', 'outcomes', 'objective'].includes(w));
+    if (candidates.length >= 2) {
+      vocabWords = [...new Set([...vocabWords, ...candidates])].slice(0, 6);
     }
   }
 
-  // If we could not extract genuine, theme-specific vocabulary, DO NOT guess or fallback to fruit/market.
-  // Return null so Gemini AI generates authentic activities!
+  // Fallback vocabulary if text has fewer than 4 extracted words
   if (vocabWords.length < 4) {
-    return null;
+    const topicDefaults = getTopicVocabFallback(`${theme} ${scenario} ${clean}`);
+    vocabWords = [...new Set([...vocabWords, ...topicDefaults])].slice(0, 6);
   }
 
-  // 3. Extract Dialogue Lines from Stage 2
+  // 3. Extract Dialogue Lines from Stage 2 / Dialogue Sections
   let dialogueLines = [];
-  const speakerRegex = /(Teacher|Student|A|B|Guide|Ranger|Speaker\s*1|Speaker\s*2|Person\s*1|Person\s*2):\s*([^.\n?!]+[.?!])/gi;
+  const speakerRegex = /(Teacher|Student|Buyer|Seller|Customer|Vendor|Clerk|Cashier|Doctor|Patient|Guide|Ranger|Tourist|Passenger|Officer|Speaker\s*\d+|Person\s*\d+|Student\s*[A-Z\d]|A|B):\s*([^.\n?!]+[.?!]?)/gi;
   const matches = [...clean.matchAll(speakerRegex)];
-  if (matches.length >= 4) {
+  if (matches.length >= 2) {
     dialogueLines = matches.slice(0, 8).map(m => ({
       speaker: m[1].trim(),
       text: m[2].replace(/\*\*/g, '').trim()
     }));
   }
 
-  // If dialogue could not be extracted from text, let AI handle it
-  if (dialogueLines.length < 3) {
-    return null;
+  // Fallback dialogue if fewer than 2 lines found in text
+  if (dialogueLines.length < 2) {
+    const firstWord = vocabWords[0] || 'target item';
+    const isShopping = /market|shop|buy|sell|price|cost|dollar|fruit/i.test(`${theme} ${scenario}`);
+    if (isShopping) {
+      dialogueLines = [
+        { speaker: 'Customer', text: `Hello! How much is the ${firstWord}?` },
+        { speaker: 'Vendor', text: `Good morning! The ${firstWord} is two dollars and fifty cents.` },
+        { speaker: 'Customer', text: 'Great, can I have one please?' },
+        { speaker: 'Vendor', text: 'Here you go! Thank you for shopping with us.' }
+      ];
+    } else {
+      dialogueLines = [
+        { speaker: 'Student A', text: `Hello! Can you help me practice our lesson about ${theme}?` },
+        { speaker: 'Student B', text: `Yes! Let's identify the ${firstWord} together in our class.` },
+        { speaker: 'Student A', text: 'How do we use this in our daily communication?' },
+        { speaker: 'Student B', text: 'We work together in pairs and follow the action steps.' }
+      ];
+    }
   }
 
   // 4. Extract Language Frame
@@ -108,19 +167,18 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
       answer: `Target response related to ${theme}.`,
       exchange: `A: "${frameMatch[1].trim()}"`
     };
+  } else if (dialogueLines.length >= 2) {
+    languageFrame = {
+      question: dialogueLines[0].text,
+      answer: dialogueLines[1].text,
+      exchange: `${dialogueLines[0].speaker}: "${dialogueLines[0].text}" ──> ${dialogueLines[1].speaker}: "${dialogueLines[1].text}"`
+    };
   } else {
-    // Try to find Q&A in dialogue
-    if (dialogueLines.length >= 2) {
-      languageFrame = {
-        question: dialogueLines[0].text,
-        answer: dialogueLines[1].text,
-        exchange: `${dialogueLines[0].speaker}: "${dialogueLines[0].text}" ──> ${dialogueLines[1].speaker}: "${dialogueLines[1].text}"`
-      };
-    }
-  }
-
-  if (!languageFrame) {
-    return null;
+    languageFrame = {
+      question: `What is the key concept of ${theme}?`,
+      answer: `We identify and practice ${vocabWords[0] || 'the target concept'}.`,
+      exchange: `Speaker A: "Can you identify ${vocabWords[0] || 'the item'}?" ──> Speaker B: "Yes, here it is!"`
+    };
   }
 
   // 5. Extract Pairs for Stage 3 Matching Activity

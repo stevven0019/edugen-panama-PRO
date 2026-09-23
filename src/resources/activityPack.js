@@ -373,21 +373,85 @@ const getClientApiKey = () => {
   return null;
 };
 
+function repairAndParseJson(raw) {
+  if (!raw || typeof raw !== 'string') throw new Error('Empty AI response');
+  let clean = raw.trim();
+  clean = clean.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
+
+  const firstBrace = clean.indexOf('{');
+  const lastBrace = clean.lastIndexOf('}');
+  if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+    clean = clean.slice(firstBrace, lastBrace + 1);
+  }
+
+  // 1. Try standard JSON.parse
+  try {
+    return JSON.parse(clean);
+  } catch (e1) {
+    // 2. Remove trailing commas before } or ]
+    clean = clean.replace(/,\s*([}\]])/g, '$1');
+    try {
+      return JSON.parse(clean);
+    } catch (e2) {
+      // 3. Attempt to balance unclosed braces and brackets if cut off
+      let openBraces = 0;
+      let openBrackets = 0;
+      let inString = false;
+      let escaped = false;
+      for (let i = 0; i < clean.length; i++) {
+        const c = clean[i];
+        if (escaped) {
+          escaped = false;
+          continue;
+        }
+        if (c === '\\') {
+          escaped = true;
+          continue;
+        }
+        if (c === '"') {
+          inString = !inString;
+          continue;
+        }
+        if (!inString) {
+          if (c === '{') openBraces++;
+          else if (c === '}') openBraces = Math.max(0, openBraces - 1);
+          else if (c === '[') openBrackets++;
+          else if (c === ']') openBrackets = Math.max(0, openBrackets - 1);
+        }
+      }
+      if (inString) clean += '"';
+      while (openBrackets > 0) {
+        clean += ']';
+        openBrackets--;
+      }
+      while (openBraces > 0) {
+        clean += '}';
+        openBraces--;
+      }
+      return JSON.parse(clean);
+    }
+  }
+}
+
 export async function generateActivityPack(source, signal) {
   const srcText = typeof source === 'string' ? source : (source?.text || '');
-  const isFileUpload = Boolean(source?.isFile || source?.media || source?.forceAi);
+  const forceAi = Boolean(source?.forceAi);
 
-  // 1. Direct Extraction only for locally formatted EduGen plans (never for custom uploads, which require AI):
-  if (!isFileUpload) {
-    const hasStages = /stage\s*[1-6]|lesson\s*planner|warm-?up|specific\s*objective|learning\s*outcomes/i.test(srcText);
-    if (hasStages) {
+  // 1. Direct Extraction first:
+  // If the lesson plan has AOA stages, warm-up, presentation, practice, production, or lesson metadata,
+  // extract directly! This is instantaneous, reliable, costs 0 tokens, and matches the teacher's exact plan.
+  if (!forceAi) {
+    const hasStages = /stage\s*[1-6]|lesson\s*planner|warm-?up|presentation|practice|production|specific\s*objective|learning\s*outcomes|theme|scenario/i.test(srcText);
+    if (hasStages || source?.isCurrent) {
       try {
         const directPack = parseAoaLessonPlan(srcText, {
           grade: source?.grade,
           title: source?.title,
-          scenario: source?.scenario
+          scenario: source?.scenario,
+          skill: source?.skill
         });
         if (directPack && directPack.page1 && directPack.page2 && directPack.page3) {
+          directPack._usedAi = false;
           return validatePack(directPack);
         }
       } catch (err) {
@@ -418,35 +482,22 @@ METADATOS DEL PLAN:
 
 REGLAS PEDAGÓGICAS OBLIGATORIAS:
 1. ADAPTACIÓN EVOLUTIVA ESTRICTA:
-   - Si el grado es Pre-K o Kinder (Pre-A1 Receptivo):
-     * CERO lectoescritura forzada ni oraciones complejas.
-     * Todo ocurre mediante escucha (Listening), movimientos físicos (TPR), señalamiento, discriminación auditiva y visual, recuadros de pulgar arriba/abajo (👍 / 👎), y encierre en círculos.
-     * Vocabulario de objetos reales del aula o entorno inmediato (book, chair, desk, pencil, bag, door, etc.).
-     * La Actividad 1 es discriminación auditiva ("Listen & Point / Circle 👍👎"). La Actividad 2 es match gráfico o TPR. La Actividad 3 es diálogo oral repetitivo guiado por el docente. La Actividad 4 es dibujo guiado.
+   - Si el grado es Pre-K o Kinder (Pre-A1 Receptivo): CERO lectoescritura forzada ni oraciones complejas. Todo ocurre mediante escucha (Listening), movimientos físicos (TPR), discriminación auditiva y visual, recuadros de pulgar arriba/abajo (👍 / 👎), y encierre en círculos.
    - Si el grado es 1° o 2° (Pre-A1 / A1.1): Reconocimiento de palabras cotidianas, comandos de aula, trazos asistidos.
    - Si el grado es 3° o 4° (A1): Frases fijas, preguntas simples (Where / What / How many), lectura gráfica, interacción guiada en parejas.
    - Si el grado es 5° o 6° (A1+): Descripciones sencillas, rutinas, instrucciones de 2 a 3 pasos, producción de textos breves guiados.
    - Si el grado es 7° a 9° (Pre-Media A2 / A2+): Tareas auténticas situacionales de Panamá (Mercado del Marisco, compras, direcciones, metro de Panamá, oficios técnicos en el Canal, fauna local).
-   - Si el grado es 10° a 12° (Media B1 / B1+): Negociación, debate, proyectos sostenibles (ecoturismo en Bocas, bio-conservación), manuales técnicos, mediación formal.
+   - Si el grado es 10° a 12° (Media B1 / B1+): Negociación, debate, proyectos sostenibles, manuales técnicos, mediación formal.
 
 2. ESPECIALIZACIÓN DE LA HABILIDAD (${targetSkill.toUpperCase()}):
    - LISTENING: Entrada comprensiva ("Listen & Do", "Listen & Point"), script de audio verbatim del docente, registro de verificación auditiva.
    - READING: Alfabetización visual, avisos reales, menús de fondas, itinerarios de transporte, skimming & scanning.
-   - WRITING: Producción escrita social auténtica (desde etiquetado/labeling en preescolar hasta comandas, recibos, formularios o reportes de campo en secundaria).
-   - SPEAKING: Acción social e interacción oral, tarjetas de juego de rol (Role-play cards) para parejas con brecha de información (Information Gap) y fórmulas de cortesía.
+   - WRITING: Producción escrita social auténtica (desde etiquetado/labeling hasta comandas, recibos, formularios o reportes de campo).
+   - SPEAKING: Acción social e interacción oral, tarjetas de juego de rol (Role-play cards) para parejas con brecha de información.
    - MEDIATION: Habilidad clave CEFR 2020. Facilitar la comunicación explicando conceptos o gráficos en inglés sencillo a un compañero o visitante.
 
-3. LAS 6 ETAPAS OBLIGATORIAS AOA MEDUCA:
-   - Etapa 1 (Warm-up / Pre-task): Activación del esquema con vocabulario clave visual.
-   - Etapa 2 (Presentation): Input situacional estructurado y Communicative Language Frame.
-   - Etapa 3 (Guided Practice): Precisión guiada y emparejamiento adaptado al nivel.
-   - Etapa 4 (Production / Action Task): El estudiante como AGENTE SOCIAL con producto entregable auténtico y espacio para dibujar/escribir.
-   - Etapa 5 (Assessment): Evaluación formativa MEDUCA con 3 preguntas observables.
-   - Etapa 6 (Reflection): Metacognición con descriptores 'Can-Do'.
-
-4. CONTEXTO PANAMEÑO AUTÉNTICO:
+3. CONTEXTO PANAMEÑO AUTÉNTICO:
    - Utiliza referencias culturales, geográficas y de la vida real de Panamá (Balboa/USD, Metro de Panamá, Mercado del Marisco, Canal de Panamá, Bocas del Toro, Darién, fauna y flora local).
-   - NUNCA inventes frutas o compras a menos que el tema sea específicamente compras en el mercado.
 
 SCHEMA REQUIREMENT (Return strictly valid JSON):
 {
@@ -527,7 +578,7 @@ SCHEMA REQUIREMENT (Return strictly valid JSON):
       ],
       "rubric": [
         {
-          "criterion": "Listening Comprehension & Target Vocabulary",
+          "criterion": "Target Skill Competence & Vocabulary",
           "independent": "Identifies all key concepts accurately and fluently.",
           "withSupport": "Identifies key concepts with occasional teacher prompting.",
           "emerging": "Requires direct modeling and continuous assistance."
@@ -537,7 +588,20 @@ SCHEMA REQUIREMENT (Return strictly valid JSON):
   }
 }`;
 
-  const parts = [{ text: source.text || 'Use the attached lesson context.' }];
+  let cleanInputText = typeof srcText === 'string' ? srcText : '';
+  if (/<[a-z][\s\S]*>/i.test(cleanInputText)) {
+    cleanInputText = cleanInputText
+      .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+      .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+  if (cleanInputText.length > 20000) {
+    cleanInputText = cleanInputText.slice(0, 20000);
+  }
+
+  const parts = [{ text: cleanInputText || 'Use the attached lesson context.' }];
   if (source.media) parts.push({ inlineData: source.media });
 
   const payload = {
@@ -546,7 +610,7 @@ SCHEMA REQUIREMENT (Return strictly valid JSON):
     generationConfig: {
       responseMimeType: 'application/json',
       temperature: 0.3,
-      maxOutputTokens: 14000
+      maxOutputTokens: 8192
     }
   };
 
@@ -557,43 +621,64 @@ SCHEMA REQUIREMENT (Return strictly valid JSON):
 
   let response;
   for (let attempt = 1; attempt <= 3; attempt++) {
-    response = await fetch(endpoint, {
-      method: 'POST',
-      signal,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    if (response.ok) break;
-
-    // Retry on temporary 503 high demand or 429 rate limit
-    if ((response.status === 503 || response.status === 429) && attempt < 3) {
-      await new Promise(r => setTimeout(r, attempt * 1200));
-      continue;
+    try {
+      response = await fetch(endpoint, {
+        method: 'POST',
+        signal,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (response.ok) break;
+      if ((response.status === 503 || response.status === 429) && attempt < 3) {
+        await new Promise(r => setTimeout(r, attempt * 1200));
+        continue;
+      }
+    } catch (fetchErr) {
+      if (attempt === 3) break;
+      await new Promise(r => setTimeout(r, 1000));
     }
-    break;
   }
 
-  if (!response.ok) {
-    const errText = await response.text().catch(() => '');
-    throw new Error(`No se pudieron generar los recursos (${response.status}): ${errText || 'Error de conexión'}`);
+  if (!response || !response.ok) {
+    console.warn('AI call unsuccessful, falling back to direct curriculum lesson extraction.');
+    try {
+      const fallbackPack = parseAoaLessonPlan(srcText, {
+        grade: targetGrade,
+        title: source?.title || source?.scenario || 'English Lesson',
+        scenario: source?.scenario || source?.title,
+        skill: targetSkill
+      });
+      if (fallbackPack) {
+        fallbackPack._usedAi = false;
+        return validatePack(fallbackPack);
+      }
+    } catch (fallbackErr) {
+      console.error('Fallback parse failed:', fallbackErr);
+    }
+    const errText = response ? await response.text().catch(() => '') : 'Error de conexión';
+    throw new Error(`No se pudieron generar los recursos: ${errText || 'Intenta de nuevo'}`);
   }
 
   const data = await response.json();
   const raw = data.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('') || '';
   let pack;
   try {
-    let clean = raw.trim();
-    const firstBrace = clean.indexOf('{');
-    const lastBrace = clean.lastIndexOf('}');
-    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
-      clean = clean.slice(firstBrace, lastBrace + 1);
-    } else {
-      clean = clean.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
-    }
-    pack = JSON.parse(clean);
+    pack = repairAndParseJson(raw);
   } catch (err) {
-    console.error('Failed to parse AI response as JSON:', err, raw);
+    console.warn('Failed to parse AI response as JSON, falling back to direct curriculum extraction:', err, raw);
+    try {
+      pack = parseAoaLessonPlan(srcText, {
+        grade: targetGrade,
+        title: source?.title || source?.scenario || 'English Lesson',
+        scenario: source?.scenario || source?.title,
+        skill: targetSkill
+      });
+    } catch (fallbackErr) {
+      console.error('Fallback also failed:', fallbackErr);
+    }
+  }
+
+  if (!pack) {
     throw new Error('La IA devolvió una respuesta incompleta o en formato inesperado. Por favor intenta de nuevo.');
   }
 
