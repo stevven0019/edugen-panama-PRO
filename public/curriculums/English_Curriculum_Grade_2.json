@@ -204,7 +204,7 @@
         ],
         "vocabulary": {
           "linguistic_competences": {
-            "nouns": "book, bag, pencil, desk, chair, eraser, ruler, board, marker, crayon, paper, shelf, folder, backpack, notebook, window, door, chalk, scissors, poster, table, bin, please, thank you",
+            "nouns": "book, bag, pencil, desk, chair, eraser, ruler, board, marker, crayon, paper, shelf, folder, backpack, notebook, window, door, chalk, scissors, poster, table, bin",
             "verbs": "see, look, find, lost, draw, write, read, point, stack",
             "adjectives": "brown, red, blue, yellow, green, black, white, round, flat, big, small, long, short, tall, square, rectangular, oval, diamond",
             "pronoun": "it",
@@ -790,7 +790,7 @@
         ],
         "vocabulary": {
           "linguistic_competences": {
-            "nouns": "friend, team, park, playground, activity, race, game, sport, ball, bike, bat, goal, soccer, baseball, basketball",
+            "nouns": "friend, team, park, playground, activity, race, game, sport, ball, bike, baseball bat, goal, soccer, baseball, basketball",
             "verbs": "run, jump, swim, play, race, climb, rest, like, love, watch, pass, win, lose, enjoy",
             "adjectives": "fast, slow, happy, fun, big, small, little, good, bad, nice",
             "adverbs": "quickly, slowly, high, low, fast"

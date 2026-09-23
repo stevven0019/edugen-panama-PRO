@@ -199,14 +199,74 @@ export function extractAllCurriculumNouns(filterGrade = null, filterScenario = n
   return Array.from(nounsMap.values());
 }
 
-// --- Step 2: Multi-Engine Image Search ---
+// --- Step 2: Contextual Disambiguation & Multi-Engine Image Search ---
+
+export const CONTEXTUAL_SEARCH_OVERRIDES = {
+  bat: (occ) => 'baseball bat sports equipment wooden aluminum',
+  baseball_bat: () => 'baseball bat sports equipment wooden aluminum',
+  current: (occ) => occ?.some((o) => /canal|river|water|ocean|beach/i.test(o.scenarioTitle))
+    ? 'water flow river current canal stream wave'
+    : 'electric current circuit electricity power',
+  water_current: () => 'water flow river current canal stream wave',
+  fan: (occ) => occ?.some((o) => /famous|panamanian|celebrity|music|sport|talent/i.test(o.scenarioTitle))
+    ? 'cheering sports fans crowd supporters spectator'
+    : 'electric cooling desk fan ventilator appliance',
+  sports_fan: () => 'cheering sports fans crowd supporters spectator',
+  fair: (occ) => 'school community fair carnival booths festival',
+  community_fair: () => 'school community fair carnival booths festival',
+  spot: (occ) => 'scenic peaceful nature park quiet spot relaxation',
+  nature_spot: () => 'scenic peaceful nature park quiet spot relaxation',
+  quiet_spot: () => 'scenic peaceful nature park quiet spot relaxation',
+  plant: (occ) => occ?.some((o) => /energy|electric|renewable|power/i.test(o.scenarioTitle))
+    ? 'clean renewable energy power plant electricity facility'
+    : 'green botanical plant leaves garden flower',
+  power_plant: () => 'clean renewable energy power plant electricity facility',
+  ruler: () => 'measuring ruler school classroom stationer tool',
+  board: () => 'classroom blackboard chalkboard green whiteboard',
+  chest: (occ) => occ?.some((o) => /body|health|doctor/i.test(o.scenarioTitle))
+    ? 'human chest torso medical anatomy'
+    : 'treasure chest wooden pirate gold',
+  bark: (occ) => occ?.some((o) => /tree|nature|forest/i.test(o.scenarioTitle))
+    ? 'tree bark texture wood brown'
+    : 'dog barking sound puppy',
+  wave: (occ) => occ?.some((o) => /beach|ocean|sea|canal|water/i.test(o.scenarioTitle))
+    ? 'ocean sea wave water blue crest'
+    : 'hand waving friendly greeting gesture',
+  nail: (occ) => occ?.some((o) => /tool|hardware|wood|construction/i.test(o.scenarioTitle))
+    ? 'steel iron nail construction hardware tool'
+    : 'human fingernail hand hygiene'
+};
+
+export function buildContextualSearchQuery(noun, occurrences = []) {
+  const clean = sanitizeNoun(noun);
+  if (CONTEXTUAL_SEARCH_OVERRIDES[clean]) {
+    return CONTEXTUAL_SEARCH_OVERRIDES[clean](occurrences);
+  }
+
+  // If word has scenario occurrences, use scenario keywords to give context
+  if (occurrences && occurrences.length > 0) {
+    const titles = occurrences.map((o) => o.scenarioTitle || '').join(' ').toLowerCase();
+    if (/sport|outdoor|game|fun|baseball|soccer/i.test(titles) && !clean.includes('sport')) {
+      return `${clean} sports equipment`;
+    }
+    if (/school|classroom|student|study/i.test(titles) && !clean.includes('school')) {
+      return `${clean} classroom school supplies`;
+    }
+    if (/nature|wildlife|animal|forest|marine|canal/i.test(titles) && !clean.includes('nature')) {
+      return `${clean} nature outdoor`;
+    }
+  }
+
+  return clean;
+}
 
 /**
  * Engine 1: Web Image Search (Direct high-res transparent PNGs)
  */
-async function searchWebTransparentPng(noun) {
+async function searchWebTransparentPng(noun, contextualQuery = '') {
   try {
-    const query = `${noun} transparent png clipart`;
+    const effectiveQuery = contextualQuery || noun;
+    const query = `${effectiveQuery} transparent png clipart`;
     const searchUrl = `https://www.bing.com/images/search?q=${encodeURIComponent(query)}&qft=+filterui:photo-transparent`;
     const res = await fetch(searchUrl, {
       headers: {
@@ -230,10 +290,11 @@ async function searchWebTransparentPng(noun) {
 /**
  * Engine 2: Wikimedia Commons API (Educational, Public Domain & Creative Commons PNGs)
  */
-async function searchWikimediaCommonsPng(noun) {
+async function searchWikimediaCommonsPng(noun, contextualQuery = '') {
   try {
+    const effectiveQuery = contextualQuery || noun;
     const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(
-      noun + ' png'
+      effectiveQuery + ' png'
     )}&gsrnamespace=6&gsrlimit=5&prop=imageinfo&iiprop=url|mime|thumburl&iiurlwidth=600&format=json`;
 
     const res = await fetch(url, {
@@ -267,9 +328,10 @@ async function searchWikimediaCommonsPng(noun) {
 /**
  * Engine 3: Openverse API (Creative Commons Open Access Images)
  */
-async function searchOpenversePng(noun) {
+async function searchOpenversePng(noun, contextualQuery = '') {
   try {
-    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(noun)}&extension=png&page_size=5`;
+    const effectiveQuery = contextualQuery || noun;
+    const url = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(effectiveQuery)}&extension=png&page_size=5`;
     const res = await fetch(url, {
       headers: {
         'User-Agent': 'EduGenCurriculumDownloader/1.0 (info@edugen.pa)'
@@ -313,23 +375,23 @@ async function downloadAndValidate(url) {
 }
 
 /**
- * Search and download a PNG for a single noun using multi-engine fallback
+ * Search and download a PNG for a single noun using multi-engine fallback with linguistic context
  */
-async function fetchNounPng(noun) {
-  // Collect candidate URLs from all search providers
+async function fetchNounPng(noun, occurrences = []) {
+  const contextualQuery = buildContextualSearchQuery(noun, occurrences);
   const candidateUrls = [];
 
-  // 1. Web Transparent PNG search
-  const webUrls = await searchWebTransparentPng(noun);
+  // 1. Web Transparent PNG search with context
+  const webUrls = await searchWebTransparentPng(noun, contextualQuery);
   candidateUrls.push(...webUrls);
 
-  // 2. Wikimedia Commons File search
-  const wikiUrls = await searchWikimediaCommonsPng(noun);
+  // 2. Wikimedia Commons File search with context
+  const wikiUrls = await searchWikimediaCommonsPng(noun, contextualQuery);
   candidateUrls.push(...wikiUrls);
 
-  // 3. Openverse Search
+  // 3. Openverse Search with context
   if (candidateUrls.length < 3) {
-    const openverseUrls = await searchOpenversePng(noun);
+    const openverseUrls = await searchOpenversePng(noun, contextualQuery);
     candidateUrls.push(...openverseUrls);
   }
 
@@ -340,7 +402,7 @@ async function fetchNounPng(noun) {
   for (const url of uniqueUrls) {
     const buf = await downloadAndValidate(url);
     if (buf) {
-      return { buffer: buf, sourceUrl: url };
+      return { buffer: buf, sourceUrl: url, contextualQuery };
     }
   }
 
@@ -441,7 +503,7 @@ Options:
     process.stdout.write(`[${i + 1}/${targetList.length}] 🌐 Searching & Downloading: "${item.noun}"... `);
 
     try {
-      const result = await fetchNounPng(item.noun);
+      const result = await fetchNounPng(item.noun, item.occurrences);
 
       if (result && result.buffer) {
         fs.writeFileSync(destPath, result.buffer);

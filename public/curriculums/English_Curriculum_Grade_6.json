@@ -82,7 +82,7 @@
             "Adjectives for describing physical appearance (e.g., 'Mr. Ricardo is tall and wears a sombrero pintao.')"
           ],
           "recommended_vocabulary": {
-            "nouns": ["community", "neighborhood", "reporter", "news", "mural", "festival", "carnival", "parade", "fair", "artisan", "tradition", "Pollera", "sombrero Pintao", "cultural event", "Carnival float", "Carnival Queen", "market", "banner"],
+            "nouns": ["community", "neighborhood", "reporter", "news", "mural", "festival", "carnival", "parade", "community fair", "artisan", "tradition", "Pollera", "sombrero Pintao", "cultural event", "Carnival float", "Carnival Queen", "market", "banner"],
             "verbs": ["report", "describe", "interview", "celebrate", "participate", "decorate", "gather", "prepare"],
             "adjectives": ["colorful", "traditional", "friendly", "tall", "excited", "proud", "slender", "short", "chubby", "soft", "strong", "thin", "fat", "blond", "curly hair", "black straight hair", "black eyes"],
             "question_words": ["who", "what", "where", "when", "why", "how"],
@@ -448,7 +448,7 @@
             "Past simple in affirmative and interrogative sentences (e.g., 'Yesterday, we went on a field trip.' 'When did this happen?')"
           ],
           "recommended_vocabulary": {
-            "nouns": ["article", "newsletter", "announcement", "editor", "class", "pictures", "event", "presentation", "poster", "teacher", "topic", "paragraph", "fan", "editor", "camera", "student", "fact", "school", "ideas", "art", "reader", "target", "headline", "script", "photo", "column", "layout"],
+            "nouns": ["article", "newsletter", "announcement", "editor", "class", "pictures", "event", "presentation", "poster", "teacher", "topic", "paragraph", "camera", "student", "fact", "school", "ideas", "art", "reader", "target", "headline", "script", "photo", "column", "layout"],
             "verbs": ["write", "edit", "revise", "take", "post", "publish", "report", "announce", "share", "record", "explain", "describe", "discuss", "organize", "add", "show", "paraphrase", "proofread", "interview"],
             "adjectives": ["exciting", "fun", "meaningful", "weekly", "monthly", "creative", "simple", "colorful", "new"],
             "contractions": ["it's", "we're", "they're"],

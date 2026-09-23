@@ -6859,25 +6859,57 @@
     "filename": "spot.png",
     "path": "/assets/nouns/spot.png",
     "grades": [
-      "11",
-      "Grade 3"
+      "Grade 2",
+      "Grade 3",
+      "4",
+      "6",
+      "7"
     ],
     "scenarios": [
       {
-        "grade": "11",
-        "scenario": 3,
-        "title": "Managing Stress in Changing Times"
+        "grade": "Grade 2",
+        "scenario": 5,
+        "title": "Exploring My Community"
+      },
+      {
+        "grade": "Grade 2",
+        "scenario": 7,
+        "title": "Fun Outdoors!"
+      },
+      {
+        "grade": "Grade 3",
+        "scenario": 1,
+        "title": "Places I Can Go"
       },
       {
         "grade": "Grade 3",
         "scenario": 6,
         "title": "I Can Connect with Nature!"
+      },
+      {
+        "grade": "4",
+        "scenario": 1,
+        "title": "A Walk in the Neighborhood"
+      },
+      {
+        "grade": "6",
+        "scenario": 2,
+        "title": "Scenario 2"
+      },
+      {
+        "grade": "6",
+        "scenario": 5,
+        "title": "Scenario 5"
+      },
+      {
+        "grade": "7",
+        "scenario": 5,
+        "title": "The Town Square"
       }
     ],
     "downloaded": true,
-    "sizeBytes": 519065,
-    "sourceUrl": "https://cdn.pnggallery.com/wp-content/uploads/spot-light-04.png",
-    "updatedAt": "2026-09-18T04:23:13.522Z"
+    "sizeBytes": 242997,
+    "updatedAt": "2026-09-23T03:08:08.093Z"
   },
   "sites": {
     "noun": "sites",
@@ -13099,9 +13131,9 @@
       }
     ],
     "downloaded": true,
-    "sizeBytes": 229261,
-    "sourceUrl": "https://clipart-library.com/image_gallery2/Bat-PNG-HD.png",
-    "updatedAt": "2026-09-18T04:34:34.214Z"
+    "sizeBytes": 114748,
+    "sourceUrl": "https://www.pngmart.com/files/1/Baseball-Bat-PNG-Transparent-Image.png",
+    "updatedAt": "2026-09-23T01:11:51.500Z"
   },
   "goal": {
     "noun": "goal",
@@ -14782,19 +14814,19 @@
     "filename": "current.png",
     "path": "/assets/nouns/current.png",
     "grades": [
-      "4"
+      "Grade 3"
     ],
     "scenarios": [
       {
-        "grade": "4",
-        "scenario": 4,
-        "title": "Visiting the Panama Canal"
+        "grade": "Grade 3",
+        "scenario": 6,
+        "title": "I Can Connect with Nature!"
       }
     ],
     "downloaded": true,
-    "sizeBytes": 1335000,
-    "sourceUrl": "http://www.pngall.com/wp-content/uploads/4/Electric-Current-PNG.png",
-    "updatedAt": "2026-09-18T04:37:58.937Z"
+    "sizeBytes": 408394,
+    "sourceUrl": "https://cdn.pixabay.com/photo/2014/04/03/10/20/stream-310145_1280.png",
+    "updatedAt": "2026-09-23T03:08:08.078Z"
   },
   "vessel": {
     "noun": "vessel",
@@ -17155,9 +17187,9 @@
       }
     ],
     "downloaded": true,
-    "sizeBytes": 226472,
-    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/Viscount_Ebrington_Vanity_Fair_19_February_1887.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-    "updatedAt": "2026-09-18T04:43:07.661Z"
+    "sizeBytes": 386539,
+    "sourceUrl": "https://clipartcraft.com/images/carnival-clipart-5.png",
+    "updatedAt": "2026-09-23T03:08:08.090Z"
   },
   "artisan": {
     "noun": "artisan",
@@ -23210,5 +23242,157 @@
     "downloaded": true,
     "sizeBytes": 653258,
     "updatedAt": "2026-09-18T10:09:08.502Z"
+  },
+  "baseball_bat": {
+    "noun": "baseball bat",
+    "filename": "baseball_bat.png",
+    "path": "/assets/nouns/baseball_bat.png",
+    "grades": [
+      "Grade 2"
+    ],
+    "scenarios": [
+      {
+        "grade": "Grade 2",
+        "scenario": 7,
+        "title": "Fun Outdoors!"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 114748,
+    "sourceUrl": "https://www.pngmart.com/files/1/Baseball-Bat-PNG-Transparent-Image.png",
+    "updatedAt": "2026-09-23T01:11:51.500Z"
+  },
+  "water_current": {
+    "noun": "water current",
+    "filename": "water_current.png",
+    "path": "/assets/nouns/water_current.png",
+    "grades": [
+      "Grade 3"
+    ],
+    "scenarios": [
+      {
+        "grade": "Grade 3",
+        "scenario": 6,
+        "title": "I Can Connect with Nature!"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 408394,
+    "sourceUrl": "https://cdn.pixabay.com/photo/2014/04/03/10/20/stream-310145_1280.png",
+    "updatedAt": "2026-09-23T03:08:08.079Z"
+  },
+  "community_fair": {
+    "noun": "community fair",
+    "filename": "community_fair.png",
+    "path": "/assets/nouns/community_fair.png",
+    "grades": [
+      "6"
+    ],
+    "scenarios": [
+      {
+        "grade": "6",
+        "scenario": 1,
+        "title": "Scenario 1"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 386539,
+    "sourceUrl": "https://clipartcraft.com/images/carnival-clipart-5.png",
+    "updatedAt": "2026-09-23T03:08:08.090Z"
+  },
+  "nature_spot": {
+    "noun": "nature spot",
+    "filename": "nature_spot.png",
+    "path": "/assets/nouns/nature_spot.png",
+    "grades": [
+      "Grade 2",
+      "Grade 3",
+      "4",
+      "6",
+      "7"
+    ],
+    "scenarios": [
+      {
+        "grade": "Grade 2",
+        "scenario": 5,
+        "title": "Exploring My Community"
+      },
+      {
+        "grade": "Grade 2",
+        "scenario": 7,
+        "title": "Fun Outdoors!"
+      },
+      {
+        "grade": "Grade 3",
+        "scenario": 1,
+        "title": "Places I Can Go"
+      },
+      {
+        "grade": "Grade 3",
+        "scenario": 6,
+        "title": "I Can Connect with Nature!"
+      },
+      {
+        "grade": "4",
+        "scenario": 1,
+        "title": "A Walk in the Neighborhood"
+      },
+      {
+        "grade": "6",
+        "scenario": 2,
+        "title": "Scenario 2"
+      },
+      {
+        "grade": "6",
+        "scenario": 5,
+        "title": "Scenario 5"
+      },
+      {
+        "grade": "7",
+        "scenario": 5,
+        "title": "The Town Square"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 242997,
+    "updatedAt": "2026-09-23T03:08:08.093Z"
+  },
+  "power_plant": {
+    "noun": "power plant",
+    "filename": "power_plant.png",
+    "path": "/assets/nouns/power_plant.png",
+    "grades": [
+      "9"
+    ],
+    "scenarios": [
+      {
+        "grade": "9",
+        "scenario": 3,
+        "title": "Renewable Energy in Panama"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 378247,
+    "sourceUrl": "https://static.vecteezy.com/system/resources/previews/026/820/742/original/solar-panel-clipart-flat-design-on-transparent-background-clean-energy-concept-isolated-clipping-path-element-png.png",
+    "updatedAt": "2026-09-23T03:27:42.938Z"
+  },
+  "sports_fan": {
+    "noun": "sports fan",
+    "filename": "sports_fan.png",
+    "path": "/assets/nouns/sports_fan.png",
+    "grades": [
+      "6"
+    ],
+    "scenarios": [
+      {
+        "grade": "6",
+        "scenario": 8,
+        "title": "Scenario 8"
+      }
+    ],
+    "downloaded": true,
+    "sizeBytes": 1041420,
+    "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Pgm04b-compos-audience_watches-x768.png/960px-Pgm04b-compos-audience_watches-x768.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "updatedAt": "2026-09-23T03:27:42.948Z"
   }
 }

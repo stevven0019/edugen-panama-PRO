@@ -668,7 +668,7 @@
         ],
         "vocabulary": {
           "linguistic_competences": {
-            "nouns": "tree, grass, flower, bird, leaf, park, nature, trail, sun, sky, stream, water fall, picnic, spot, river, butterfly, spider",
+            "nouns": "tree, grass, flower, bird, leaf, park, nature, trail, sun, sky, stream, water fall, picnic, nature spot, river, butterfly, spider",
             "verbs": "walk, listen, look, explore, relax, breathe, hear, enjoy, observe, smell, have, see",
             "adjectives": "quiet, peaceful, beautiful, green, bright"
           },

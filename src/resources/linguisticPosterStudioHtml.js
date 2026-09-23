@@ -119,7 +119,61 @@ export const VOCAB_DICTIONARY = {
   monument: { translation: 'monumento', phonetic: '/ˈmɒnjʊmənt/' },
   parade: { translation: 'desfile', phonetic: '/pəˈreɪd/' },
   festival: { translation: 'festival', phonetic: '/ˈfɛstɪvəl/' },
-  community: { translation: 'comunidad', phonetic: '/kəˈmjuːnɪti/' }
+  community: { translation: 'comunidad', phonetic: '/kəˈmjuːnɪti/' },
+
+  // Sports, Outdoors & Recreation (Grades 1 to 12)
+  bat: { translation: 'bate (béisbol)', phonetic: '/bæt/' },
+  baseball_bat: { translation: 'bate de béisbol', phonetic: '/ˈbeɪsbɔːl bæt/' },
+  'baseball bat': { translation: 'bate de béisbol', phonetic: '/ˈbeɪsbɔːl bæt/' },
+  baseball: { translation: 'béisbol', phonetic: '/ˈbeɪsbɔːl/' },
+  ball: { translation: 'pelota / balón', phonetic: '/bɔːl/' },
+  bike: { translation: 'bicicleta', phonetic: '/baɪk/' },
+  sport: { translation: 'deporte', phonetic: '/spɔːrt/' },
+  sports: { translation: 'deportes', phonetic: '/spɔːrts/' },
+  game: { translation: 'juego', phonetic: '/ɡeɪm/' },
+  race: { translation: 'carrera', phonetic: '/reɪs/' },
+  playground: { translation: 'parque de juegos', phonetic: '/ˈpleɪɡraʊnd/' },
+  park: { translation: 'parque', phonetic: '/pɑːrk/' },
+  team: { translation: 'equipo', phonetic: '/tiːm/' },
+  goal: { translation: 'meta / gol', phonetic: '/ɡoʊl/' },
+  soccer: { translation: 'fútbol', phonetic: '/ˈsɒkər/' },
+  basketball: { translation: 'baloncesto', phonetic: '/ˈbæskɪtbɔːl/' },
+  athlete: { translation: 'atleta', phonetic: '/ˈæθliːt/' },
+  competition: { translation: 'competencia', phonetic: '/ˌkɒmpəˈtɪʃən/' },
+  entertainer: { translation: 'artista / animador', phonetic: '/ˌɛntərˈteɪnər/' },
+  performance: { translation: 'presentación / actuación', phonetic: '/pərˈfɔːrməns/' },
+  fan: { translation: 'fan / admirador', phonetic: '/fæn/' },
+  sports_fan: { translation: 'fan / seguidor deportivo', phonetic: '/spɔːrts fæn/' },
+  'sports fan': { translation: 'fan / seguidor deportivo', phonetic: '/spɔːrts fæn/' },
+  activity: { translation: 'actividad', phonetic: '/ækˈtɪvɪti/' },
+  supporter: { translation: 'seguidor / aficionado', phonetic: '/səˈpɔːrtər/' },
+
+  // Water, Waterway & Canal Context
+  current: { translation: 'corriente de agua', phonetic: '/ˈkɜːrənt/' },
+  water_current: { translation: 'corriente de agua', phonetic: '/ˈwɔːtər ˈkɜːrənt/' },
+  'water current': { translation: 'corriente de agua', phonetic: '/ˈwɔːtər ˈkɜːrənt/' },
+  stream: { translation: 'riachuelo / corriente', phonetic: '/striːm/' },
+  river: { translation: 'río', phonetic: '/ˈrɪvər/' },
+  wave: { translation: 'ola', phonetic: '/weɪv/' },
+  bridge: { translation: 'puente', phonetic: '/brɪdʒ/' },
+  vessel: { translation: 'embarcación / navío', phonetic: '/ˈvɛsəl/' },
+  yacht: { translation: 'yate', phonetic: '/jɒt/' },
+  goods: { translation: 'mercancías / carga', phonetic: '/ɡʊdz/' },
+
+  // Community Events & Wellness
+  fair: { translation: 'feria comunitaria / escolar', phonetic: '/fɛər/' },
+  community_fair: { translation: 'feria comunitaria', phonetic: '/kəˈmjuːnɪti fɛər/' },
+  'community fair': { translation: 'feria comunitaria', phonetic: '/kəˈmjuːnɪti fɛər/' },
+  carnival: { translation: 'carnaval', phonetic: '/ˈkɑːrnɪvəl/' },
+  spot: { translation: 'lugar / punto de encuentro', phonetic: '/spɒt/' },
+  nature_spot: { translation: 'rincón natural / sitio tranquilo', phonetic: '/ˈneɪtʃər spɒt/' },
+  'nature spot': { translation: 'rincón natural / sitio tranquilo', phonetic: '/ˈneɪtʃər spɒt/' },
+  quiet_spot: { translation: 'rincón de paz / sitio tranquilo', phonetic: '/ˈkwaɪət spɒt/' },
+  'quiet spot': { translation: 'rincón de paz / sitio tranquilo', phonetic: '/ˈkwaɪət spɒt/' },
+  power_plant: { translation: 'central / planta de energía', phonetic: '/ˈpaʊər plænt/' },
+  'power plant': { translation: 'central / planta de energía', phonetic: '/ˈpaʊər plænt/' },
+  mindfulness: { translation: 'atención plena / bienestar', phonetic: '/ˈmaɪndfʊlnəs/' },
+  relaxation: { translation: 'relajación', phonetic: '/ˌriːlækˈseɪʃən/' }
 };
 
 /**
@@ -703,6 +757,77 @@ function getVectorSvgForNoun(word) {
       <circle cx="50" cy="12" r="3" fill="#ef4444"/>
     </svg>\`;
   }
+
+  // Sports & Outdoors: Baseball Bat
+  if (w.includes('bat') && !w.includes('bath')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <!-- Crossed wooden baseball bat -->
+      <g transform="translate(50, 40) rotate(42) translate(-50, -40)">
+        <rect x="47" y="60" width="6" height="15" rx="2" fill="#78350f" stroke="#451a03" stroke-width="1"/>
+        <rect x="46" y="52" width="8" height="10" rx="1" fill="#f8fafc" stroke="#94a3b8" stroke-width="0.8"/>
+        <path d="M46,52 L44,14 C44,9 56,9 56,14 L54,52 Z" fill="#d97706" stroke="#b45309" stroke-width="1.2"/>
+        <circle cx="50" cy="76" r="4.5" fill="#92400e"/>
+      </g>
+      <!-- Baseball ball -->
+      <circle cx="34" cy="48" r="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+      <path d="M26,42 Q32,48 26,54" stroke="#ef4444" stroke-width="1.5" fill="none" stroke-dasharray="2,2"/>
+      <path d="M42,42 Q36,48 42,54" stroke="#ef4444" stroke-width="1.5" fill="none" stroke-dasharray="2,2"/>
+    </svg>\`;
+  }
+
+  // Sports & Play: Ball
+  if (w === 'ball' || w.includes('soccer') || w.includes('basketball')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <circle cx="50" cy="40" r="24" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+      <path d="M30,28 Q50,40 30,52" fill="#f59e0b"/>
+      <path d="M70,28 Q50,40 70,52" fill="#ef4444"/>
+      <circle cx="50" cy="40" r="8" fill="#ffffff" stroke="#1e293b" stroke-width="1.5"/>
+    </svg>\`;
+  }
+
+  // Sports & Outdoors: Bike
+  if (w.includes('bike') || w.includes('bicycle')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <circle cx="28" cy="52" r="14" fill="none" stroke="#0284c7" stroke-width="3"/>
+      <circle cx="72" cy="52" r="14" fill="none" stroke="#0284c7" stroke-width="3"/>
+      <polyline points="28,52 46,52 56,36 38,36 28,52" fill="none" stroke="#0f172a" stroke-width="2.5"/>
+      <polyline points="46,52 56,36 72,52" fill="none" stroke="#0f172a" stroke-width="2.5"/>
+      <line x1="56" y1="36" x2="56" y2="28" stroke="#0f172a" stroke-width="2.5"/>
+      <line x1="50" y1="28" x2="62" y2="28" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+      <line x1="38" y1="36" x2="34" y2="30" stroke="#0f172a" stroke-width="2.5"/>
+      <line x1="30" y1="30" x2="38" y2="30" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    </svg>\`;
+  }
+
+  // Water / Current / Canal / River
+  if (w.includes('current') || w.includes('water') || w.includes('wave') || w.includes('river') || w.includes('stream')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <path d="M10,32 Q25,20 40,32 T70,32 T90,32" fill="none" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/>
+      <path d="M10,46 Q25,34 40,46 T70,46 T90,46" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
+      <path d="M10,60 Q25,48 40,60 T70,60 T90,60" fill="none" stroke="#0369a1" stroke-width="4" stroke-linecap="round"/>
+    </svg>\`;
+  }
+
+  // Fair / Carnival
+  if (w.includes('fair') || w.includes('carnival')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <polygon points="50,14 18,42 82,42" fill="#ef4444"/>
+      <polygon points="50,14 34,42 66,42" fill="#ffffff"/>
+      <rect x="22" y="42" width="56" height="26" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+      <rect x="42" y="48" width="16" height="20" rx="8" fill="#1e293b"/>
+      <line x1="50" y1="14" x2="50" y2="6" stroke="#94a3b8" stroke-width="2"/>
+      <polygon points="50,6 60,10 50,14" fill="#f59e0b"/>
+    </svg>\`;
+  }
+
+  // Fan / Supporter
+  if (w.includes('fan') || w.includes('supporter')) {
+    return \`<svg viewBox="0 0 100 80" class="w-full h-full">
+      <circle cx="50" cy="40" r="24" fill="#fef08a" stroke="#eab308" stroke-width="2"/>
+      <polygon points="50,22 55,34 68,34 57,42 61,54 50,46 39,54 43,42 32,34 45,34" fill="#eab308"/>
+      <circle cx="50" cy="40" r="6" fill="#ffffff"/>
+    </svg>\`;
+  }
   if (w.includes('factory') || w.includes('industry')) {
     return \`<svg viewBox="0 0 100 80" class="w-full h-full">
       <polygon points="15,68 15,35 35,50 35,35 55,50 55,35 75,50 75,68" fill="#475569"/>
@@ -751,6 +876,27 @@ function getRealiaPhoto(keyword) {
   }
 
   // 2. Direct aliases and Curated Realia Catalog
+  if (clean === 'bat' || clean === 'baseball_bat') {
+    if (window.NOUN_MANIFEST?.baseball_bat?.downloaded) return window.NOUN_MANIFEST.baseball_bat.path;
+    if (window.NOUN_MANIFEST?.bat?.downloaded) return window.NOUN_MANIFEST.bat.path;
+    return REALIA_PHOTOS.baseball_bat || REALIA_PHOTOS.bat;
+  }
+  if (clean === 'current' || clean === 'water_current') {
+    if (window.NOUN_MANIFEST?.water_current?.downloaded) return window.NOUN_MANIFEST.water_current.path;
+    if (window.NOUN_MANIFEST?.current?.downloaded) return window.NOUN_MANIFEST.current.path;
+    return REALIA_PHOTOS.current;
+  }
+  if (clean === 'fair' || clean === 'community_fair') {
+    if (window.NOUN_MANIFEST?.community_fair?.downloaded) return window.NOUN_MANIFEST.community_fair.path;
+    if (window.NOUN_MANIFEST?.fair?.downloaded) return window.NOUN_MANIFEST.fair.path;
+    return REALIA_PHOTOS.fair;
+  }
+  if (clean === 'spot' || clean === 'nature_spot' || clean === 'quiet_spot') {
+    if (window.NOUN_MANIFEST?.nature_spot?.downloaded) return window.NOUN_MANIFEST.nature_spot.path;
+    if (window.NOUN_MANIFEST?.quiet_spot?.downloaded) return window.NOUN_MANIFEST.quiet_spot.path;
+    if (window.NOUN_MANIFEST?.spot?.downloaded) return window.NOUN_MANIFEST.spot.path;
+    return REALIA_PHOTOS.spot || REALIA_PHOTOS.park;
+  }
   if (clean === 'pencile') return REALIA_PHOTOS.pencil;
   if (clean === 'table') return REALIA_PHOTOS.desk;
   if (clean === 'backpack') return REALIA_PHOTOS.bag;

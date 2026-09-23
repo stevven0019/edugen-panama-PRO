@@ -414,7 +414,7 @@
             "3. Comparatives and superlatives (e.g., 'That ship is bigger than this yacht.' 'That vessel is the biggest one.')"
           ],
           "vocabulary": {
-            "nouns": ["canal", "boat", "ocean", "bridge", "current", "vessel", "ship", "yacht", "goods", "locks"],
+            "nouns": ["canal", "boat", "ocean", "bridge", "water current", "vessel", "ship", "yacht", "goods", "locks"],
             "verbs": ["travel", "connect", "observe", "see", "visit"],
             "adjectives": ["important", "historic", "wide", "deep", "fascinating", "big", "small"],
             "prepositions": ["across", "along", "through"]

@@ -141,7 +141,16 @@ export function getRealiaPhoto(keyword) {
     splashing: 'splash',
     wet_weather: 'wet',
     rainy: 'rain',
-    stormy: 'storm'
+    stormy: 'storm',
+    baseball_bat: 'baseball_bat',
+    baseballbat: 'baseball_bat',
+    water_current: 'water_current',
+    community_fair: 'community_fair',
+    school_fair: 'community_fair',
+    nature_spot: 'nature_spot',
+    quiet_spot: 'quiet_spot',
+    power_plant: 'power_plant',
+    sports_fan: 'sports_fan'
   };
   const alias = ALIASES[clean] || ALIASES[normalized];
   if (alias) {
