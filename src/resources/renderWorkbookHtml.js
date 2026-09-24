@@ -185,14 +185,18 @@ export function renderWorkbookHtml(pack) {
     });
   }
 
-  // Authentic thematic fallback lists if empty
+  // Filter out any prepositions contaminated into realiaItems for Part 1
+  const PREPOSITIONS_SET = new Set(['in', 'on', 'under', 'next to', 'next_to', 'behind', 'in front of', 'between', 'near', 'over', 'above', 'below', 'at', 'by', 'to', 'from', 'with', 'into', 'onto']);
+  realiaItems = realiaItems.filter(it => !PREPOSITIONS_SET.has(String(it.word || it.label || '').toLowerCase().trim()));
+
+  // Authentic thematic fallback lists
   const defaultClassroomWords = [
-    { word: 'BOOK', label: 'BOOK', photoUrl: getRealiaPhoto('book') },
+    { word: 'RED BOOK', label: 'RED BOOK', photoUrl: getRealiaPhoto('book') },
+    { word: 'YELLOW PENCIL', label: 'YELLOW PENCIL', photoUrl: getRealiaPhoto('pencil') },
+    { word: 'BLUE CHAIR', label: 'BLUE CHAIR', photoUrl: getRealiaPhoto('chair') },
     { word: 'DESK', label: 'DESK', photoUrl: getRealiaPhoto('desk') },
-    { word: 'CHAIR', label: 'CHAIR', photoUrl: getRealiaPhoto('chair') },
-    { word: 'BAG', label: 'BAG', photoUrl: getRealiaPhoto('bag') },
-    { word: 'PENCIL', label: 'PENCIL', photoUrl: getRealiaPhoto('pencil') },
-    { word: 'CRAYON', label: 'CRAYON', photoUrl: getRealiaPhoto('crayon') }
+    { word: 'GREEN BAG', label: 'GREEN BAG', photoUrl: getRealiaPhoto('bag') },
+    { word: 'ORANGE CRAYON', label: 'ORANGE CRAYON', photoUrl: getRealiaPhoto('crayon') }
   ];
 
   const defaultMarketWords = [
@@ -213,17 +217,24 @@ export function renderWorkbookHtml(pack) {
     { word: 'WET', label: 'WET', photoUrl: getRealiaPhoto('wet') }
   ];
 
-  if (!realiaItems.length) {
+  const isKinderClassroom = isKinder || /where\s*is|preposition|classroom|school/i.test(`${scenario} ${cleanTitle}`);
+
+  if (isKinderClassroom) {
+    const classroomNouns = new Set(['book', 'pencil', 'chair', 'desk', 'bag', 'crayon', 'ruler', 'eraser', 'notebook']);
+    const hasEnoughClassroom = realiaItems.filter(it => classroomNouns.has(String(it.word).toLowerCase().replace(/^(?:red|yellow|blue|green|orange|purple)\s+/i, ''))).length >= 4;
+    if (!hasEnoughClassroom || realiaItems.length < 6) {
+      realiaItems = defaultClassroomWords;
+    }
+  } else if (!realiaItems.length) {
     if (scenarioNoun.includes('WEATHER') || /rain|weather|puddle|storm|umbrella/i.test(`${scenario} ${cleanTitle}`)) {
       realiaItems = defaultWeatherWords;
     } else if (scenarioNoun.includes('MARKET')) {
       realiaItems = defaultMarketWords;
-    } else if (isKinder || scenarioNoun.includes('CLASSROOM')) {
-      realiaItems = defaultClassroomWords;
     } else {
-      realiaItems = defaultWeatherWords;
+      realiaItems = defaultClassroomWords;
     }
   }
+
   while (realiaItems.length < 6) {
     const fallbackWord = `ITEM ${realiaItems.length + 1}`;
     realiaItems.push({ word: fallbackWord, label: fallbackWord, photoUrl: getRealiaPhoto(fallbackWord) });
@@ -299,20 +310,21 @@ export function renderWorkbookHtml(pack) {
 
   // Extract or synthesize Part 2 Items (4 cards)
   let prepositionItems = [];
-  if (pack.actionWorksheet?.part2?.items?.length) {
+  const isWhereIsIt = isKinder || /where\s*is|preposition/i.test(`${scenario} ${cleanTitle}`);
+
+  if (isWhereIsIt) {
+    prepositionItems = [
+      { concept: 'ON', relation: 'on', sentence: 'The book is ON the desk.', subject: 'book', reference: 'desk', photoUrl: getRealiaPhoto('book') },
+      { concept: 'UNDER', relation: 'under', sentence: 'The bag is UNDER the chair.', subject: 'bag', reference: 'chair', photoUrl: getRealiaPhoto('bag') },
+      { concept: 'IN', relation: 'in', sentence: 'The pencil is IN the bag.', subject: 'pencil', reference: 'bag', photoUrl: getRealiaPhoto('pencil') },
+      { concept: 'NEXT TO', relation: 'next_to', sentence: 'The crayon is NEXT TO the book.', subject: 'crayon', reference: 'book', photoUrl: getRealiaPhoto('crayon') }
+    ];
+  } else if (pack.actionWorksheet?.part2?.items?.length) {
     prepositionItems = pack.actionWorksheet.part2.items.map((it, idx) => ({
       ...it,
       photoUrl: it.photoUrl || getRealiaPhoto(it.subject || it.word || it.concept) || realiaItems[idx]?.photoUrl
     }));
-  } else {
-    if (isKinder || /where\s*is|preposition/i.test(`${scenario} ${cleanTitle}`)) {
-      prepositionItems = [
-        { concept: 'ON', relation: 'on', sentence: 'The book is ON the desk.', subject: 'book', reference: 'desk', photoUrl: getRealiaPhoto('book') },
-        { concept: 'UNDER', relation: 'under', sentence: 'The bag is UNDER the chair.', subject: 'bag', reference: 'chair', photoUrl: getRealiaPhoto('bag') },
-        { concept: 'IN', relation: 'in', sentence: 'The pencil is IN the bag.', subject: 'pencil', reference: 'bag', photoUrl: getRealiaPhoto('pencil') },
-        { concept: 'NEXT TO', relation: 'next_to', sentence: 'The crayon is NEXT TO the book.', subject: 'crayon', reference: 'book', photoUrl: getRealiaPhoto('crayon') }
-      ];
-    } else if (scenarioNoun.includes('MARKET')) {
+  } else if (scenarioNoun.includes('MARKET')) {
       prepositionItems = [
         { concept: 'PRICE CHECK', relation: 'on', sentence: 'The fresh pineapple costs two dollars and fifty cents.', subject: 'pineapple', reference: 'market', photoUrl: getRealiaPhoto('pineapple') },
         { concept: 'ROOT VEGETABLE', relation: 'in', sentence: 'Yuca is a fresh root vegetable sold at the market stand.', subject: 'yuca', reference: 'market', photoUrl: getRealiaPhoto('yuca') },
@@ -331,7 +343,6 @@ export function renderWorkbookHtml(pack) {
         { concept: isReading ? 'READ & CHECK' : 'FEATURE 4', relation: 'next_to', sentence: `We use the ${w3.toLowerCase()} to complete our communicative goal.`, subject: w3, reference: 'desk', photoUrl: realiaItems[3]?.photoUrl || getRealiaPhoto(w3) }
       ];
     }
-  }
 
   // Teacher Guides & Page 2/3 Data
   const activity3 = page2.activity3 || {
@@ -564,7 +575,11 @@ export function renderWorkbookHtml(pack) {
         <div class="grid grid-cols-4 gap-2.5">
           ${prepositionItems.slice(0, 4).map((item, idx) => {
             const theme = CARD_THEMES[idx % CARD_THEMES.length];
-            const isPrepositionScene = isKinder && /where\s*is|preposition/i.test(`${scenario} ${cleanTitle}`);
+            const relKey = String(item.relation || item.concept || '').toLowerCase().trim();
+            const isPrepositionScene = Boolean(
+              ['on', 'under', 'in', 'next_to', 'next to', 'behind', 'between'].includes(relKey) ||
+              (isKinder && /where\s*is|preposition/i.test(`${scenario} ${cleanTitle}`))
+            );
 
             return `
             <div class="border-2 ${theme.border} rounded-2xl p-2.5 bg-white flex flex-col justify-between shadow-sm transition">

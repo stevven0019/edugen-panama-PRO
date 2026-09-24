@@ -5,18 +5,18 @@
 export const PALETTES = {
   color: {
     stroke: '#1E293B',
-    deskTop: '#F1F5F9',
-    deskDrawer: '#FFFFFF',
-    chairBack: '#F1F5F9',
-    chairSeat: '#E2E8F0',
-    bagBody: '#EFF6FF',
-    bagPocket: '#DBEAFE',
-    bookCover: '#EFF6FF',
-    bookBadge: '#DBEAFE',
-    pencilBody: '#FEF08A',
-    pencilEraser: '#FCA5A5',
-    crayonBody: '#C7D2FE',
-    crayonBand: '#818CF8',
+    deskTop: '#FDE68A',
+    deskDrawer: '#FEF3C7',
+    chairBack: '#93C5FD',
+    chairSeat: '#3B82F6',
+    bagBody: '#10B981',
+    bagPocket: '#059669',
+    bookCover: '#EF4444',
+    bookBadge: '#FEE2E2',
+    pencilBody: '#FACC15',
+    pencilEraser: '#F87171',
+    crayonBody: '#F97316',
+    crayonBand: '#EA580C',
     pineappleBody: '#FEF3C7',
     pineappleLines: '#D97706',
     pineappleDot: '#B45309',
@@ -263,6 +263,15 @@ export function getIllustrationSvg(name, mode = 'color') {
 
   if (items[clean]) return items[clean];
 
+  // Strip color prefix if present (e.g., 'red book' -> 'book', 'yellow pencil' -> 'pencil')
+  const withoutColor = clean.replace(/^(?:red|yellow|blue|green|orange|purple|pink|brown|black|white|warm)\s+/i, '').trim();
+  if (withoutColor && withoutColor !== clean) {
+    if (items[withoutColor]) return items[withoutColor];
+    if (withoutColor === 'pencile') return items.pencil;
+    if (withoutColor === 'table') return items.desk;
+    if (withoutColor === 'backpack') return items.bag;
+  }
+
   // Universal Vector Editorial Badge for any word
   const initial = clean.charAt(0).toUpperCase() || '★';
   const labelText = clean.length > 9 ? clean.slice(0, 8) + '.' : clean;
@@ -278,96 +287,130 @@ export function getIllustrationSvg(name, mode = 'color') {
 // SPATIAL SCENE RENDERER (Clean geometric composite scenes)
 // Relations: 'on' | 'under' | 'in' | 'next_to' | 'behind'
 // ══════════════════════════════════════════════════════════════════
-export function renderSpatialSceneSvg({ subject = 'book', reference = 'desk', relation = 'on', mode = 'outline' }) {
-  const p = PALETTES[mode] || PALETTES.outline;
-  const sub = String(subject).toLowerCase().replace(/s$/, '');
-  const ref = String(reference).toLowerCase().replace(/s$/, '');
+export function renderSpatialSceneSvg({ subject = 'book', reference = 'desk', relation = 'on', mode = 'color' }) {
+  const p = PALETTES[mode] || PALETTES.color;
+  const sub = String(subject).toLowerCase().replace(/s$/, '').replace(/^(?:the|a|an|red|yellow|blue|green|orange|purple)\s+/i, '').trim();
+  const ref = String(reference).toLowerCase().replace(/s$/, '').replace(/^(?:the|a|an|red|yellow|blue|green|orange|purple)\s+/i, '').trim();
+  const rel = String(relation).toLowerCase().trim().replace(/\s+/g, '_');
 
-  // Dimensions of canvas: 160 x 130
+  // Dimensions of canvas: 170 x 130
   let subjectSvg = '';
   let referenceSvg = '';
   let foregroundSvg = '';
 
-  // Base Reference Drawing
+  // ── BASE REFERENCE DRAWINGS ──
   if (ref === 'desk' || ref === 'table') {
     referenceSvg = `
       <!-- Desktop Table -->
-      <rect x="25" y="52" width="110" height="12" rx="2" fill="${p.deskTop}" stroke="${p.stroke}" stroke-width="3" />
-      <rect x="60" y="64" width="40" height="16" rx="1" fill="${p.deskDrawer}" stroke="${p.stroke}" stroke-width="2.5" />
-      <line x1="74" y1="72" x2="86" y2="72" stroke="${p.stroke}" stroke-width="3" />
-      <line x1="36" y1="64" x2="36" y2="114" stroke="${p.stroke}" stroke-width="3.5" />
-      <line x1="124" y1="64" x2="124" y2="114" stroke="${p.stroke}" stroke-width="3.5" />
+      <line x1="12" y1="116" x2="158" y2="116" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round" />
+      <rect x="24" y="54" width="116" height="12" rx="3" fill="${p.deskTop}" stroke="${p.stroke}" stroke-width="3" />
+      <rect x="62" y="66" width="40" height="15" rx="1.5" fill="${p.deskDrawer}" stroke="${p.stroke}" stroke-width="2.5" />
+      <line x1="76" y1="73" x2="88" y2="73" stroke="${p.stroke}" stroke-width="3" stroke-linecap="round" />
+      <line x1="36" y1="66" x2="36" y2="116" stroke="${p.stroke}" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="128" y1="66" x2="128" y2="116" stroke="${p.stroke}" stroke-width="3.5" stroke-linecap="round" />
     `;
   } else if (ref === 'chair') {
     referenceSvg = `
       <!-- Chair Backrest -->
-      <rect x="46" y="24" width="68" height="38" rx="3" fill="${p.chairBack}" stroke="${p.stroke}" stroke-width="3" />
-      <line x1="56" y1="36" x2="104" y2="36" stroke="${p.stroke}" stroke-width="2" />
-      <line x1="56" y1="48" x2="104" y2="48" stroke="${p.stroke}" stroke-width="2" />
+      <line x1="20" y1="116" x2="150" y2="116" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round" />
+      <rect x="46" y="20" width="70" height="40" rx="4" fill="${p.chairBack}" stroke="${p.stroke}" stroke-width="3" />
+      <line x1="58" y1="32" x2="104" y2="32" stroke="${p.stroke}" stroke-width="2" />
+      <line x1="58" y1="44" x2="104" y2="44" stroke="${p.stroke}" stroke-width="2" />
       <!-- Chair Seat -->
-      <rect x="40" y="62" width="80" height="12" rx="2" fill="${p.chairSeat}" stroke="${p.stroke}" stroke-width="3" />
+      <rect x="38" y="60" width="86" height="13" rx="3" fill="${p.chairSeat}" stroke="${p.stroke}" stroke-width="3" />
       <!-- Chair Legs -->
-      <line x1="48" y1="74" x2="48" y2="116" stroke="${p.stroke}" stroke-width="3.5" />
-      <line x1="112" y1="74" x2="112" y2="116" stroke="${p.stroke}" stroke-width="3.5" />
+      <line x1="48" y1="73" x2="48" y2="116" stroke="${p.stroke}" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="114" y1="73" x2="114" y2="116" stroke="${p.stroke}" stroke-width="3.5" stroke-linecap="round" />
     `;
-  } else if (ref === 'bag' || ref === 'box') {
+  } else if (ref === 'bag' || ref === 'box' || ref === 'backpack') {
     referenceSvg = `
-      <!-- Backpack base -->
-      <path d="M60 30 C60 20 100 20 100 30" stroke="${p.stroke}" stroke-width="3" fill="none" />
-      <rect x="42" y="30" width="76" height="84" rx="14" fill="${p.bagBody}" stroke="${p.stroke}" stroke-width="3" />
+      <!-- Backpack Base in Center -->
+      <line x1="20" y1="116" x2="150" y2="116" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round" />
+      <path d="M64 26 C64 14 96 14 96 26" stroke="${p.stroke}" stroke-width="3.5" fill="none" />
+      <rect x="44" y="26" width="72" height="88" rx="14" fill="${p.bagBody}" stroke="${p.stroke}" stroke-width="3" />
     `;
     foregroundSvg = `
-      <!-- Front pocket covering in/behind -->
-      <rect x="52" y="68" width="56" height="38" rx="6" fill="${p.bagPocket}" stroke="${p.stroke}" stroke-width="3" />
+      <!-- Front pocket layered on top of subject for 'in' effect -->
+      <rect x="52" y="66" width="56" height="42" rx="7" fill="${p.bagPocket}" stroke="${p.stroke}" stroke-width="2.5" />
       <line x1="52" y1="62" x2="108" y2="62" stroke="${p.stroke}" stroke-width="2.5" />
+      <circle cx="80" cy="84" r="5" fill="#FEF08A" stroke="${p.stroke}" stroke-width="1.5" />
+    `;
+  } else if (ref === 'book') {
+    referenceSvg = `
+      <!-- Big Reference Book on Left -->
+      <line x1="14" y1="116" x2="156" y2="116" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round" />
+      <rect x="22" y="32" width="70" height="82" rx="4" fill="${p.bookCover}" stroke="${p.stroke}" stroke-width="3" />
+      <line x1="28" y1="32" x2="28" y2="114" stroke="${p.stroke}" stroke-width="2" />
+      <rect x="36" y="46" width="42" height="30" rx="2" fill="${p.bookBadge}" stroke="${p.stroke}" stroke-width="1.8" />
+      <text x="57" y="66" font-family="'Outfit', sans-serif" font-weight="900" font-size="14" fill="${p.stroke}" text-anchor="middle">ABC</text>
     `;
   }
 
-  // Calculate Subject Position (sx, sy, scale)
-  let sx = 66, sy = 24, sw = 28, sh = 28;
+  // ── CALCULATE SUBJECT POSITION ──
+  let sx = 66, sy = 24, sw = 32, sh = 32;
 
-  if (relation === 'on') {
-    if (ref === 'desk' || ref === 'table') { sx = 66; sy = 25; }
-    else if (ref === 'chair') { sx = 66; sy = 34; }
-    else { sx = 66; sy = 12; }
-  } else if (relation === 'under') {
-    if (ref === 'desk' || ref === 'table') { sx = 66; sy = 78; }
-    else if (ref === 'chair') { sx = 66; sy = 82; }
-    else { sx = 66; sy = 92; }
-  } else if (relation === 'next_to') {
-    if (ref === 'desk' || ref === 'table') { sx = 138; sy = 68; }
-    else if (ref === 'chair') { sx = 126; sy = 70; }
-    else { sx = 122; sy = 65; }
-  } else if (relation === 'behind') {
-    if (ref === 'desk' || ref === 'table') { sx = 66; sy = 40; }
-    else if (ref === 'chair') { sx = 66; sy = 50; }
-    else { sx = 66; sy = 22; }
-  } else if (relation === 'in') {
-    sx = 66; sy = 38;
+  if (rel === 'on') {
+    if (ref === 'desk' || ref === 'table') { sx = 64; sy = 24; }
+    else if (ref === 'chair') { sx = 64; sy = 30; }
+    else { sx = 64; sy = 12; }
+  } else if (rel === 'under') {
+    if (ref === 'chair') { sx = 65; sy = 76; }
+    else if (ref === 'desk' || ref === 'table') { sx = 65; sy = 76; }
+    else { sx = 65; sy = 86; }
+  } else if (rel === 'next_to' || rel === 'next to') {
+    if (ref === 'book') { sx = 108; sy = 40; }
+    else if (ref === 'desk' || ref === 'table') { sx = 142; sy = 62; }
+    else if (ref === 'chair') { sx = 130; sy = 68; }
+    else { sx = 120; sy = 60; }
+  } else if (rel === 'behind') {
+    if (ref === 'desk' || ref === 'table') { sx = 64; sy = 38; }
+    else if (ref === 'chair') { sx = 64; sy = 48; }
+    else { sx = 64; sy = 20; }
+  } else if (rel === 'in') {
+    sx = 74; sy = 16;
   }
 
-  // Mini Subject SVG (book, pencil, crayon, apple, pineapple)
+  // ── MINI SUBJECT DRAWINGS ──
   if (sub === 'book') {
     subjectSvg = `
+      <!-- Book Subject -->
       <g transform="translate(${sx}, ${sy})">
-        <rect x="0" y="0" width="${sw}" height="${sh * 0.9}" rx="2" fill="${p.bookCover}" stroke="${p.stroke}" stroke-width="2.5" />
-        <line x1="${sw / 2}" y1="0" x2="${sw / 2}" y2="${sh * 0.9}" stroke="${p.stroke}" stroke-width="2" />
-        <rect x="${sw * 0.2}" y="${sh * 0.2}" width="${sw * 0.25}" height="${sh * 0.4}" fill="${p.bookBadge}" stroke="${p.stroke}" stroke-width="1.5" />
+        <rect x="0" y="0" width="36" height="28" rx="2" fill="${p.bookCover}" stroke="${p.stroke}" stroke-width="2.5" />
+        <line x1="18" y1="0" x2="18" y2="28" stroke="${p.stroke}" stroke-width="2" />
+        <rect x="4" y="4" width="9" height="14" rx="1" fill="${p.bookBadge}" stroke="${p.stroke}" stroke-width="1.2" />
+        <line x1="4" y1="21" x2="14" y2="21" stroke="${p.stroke}" stroke-width="1.5" />
+      </g>
+    `;
+  } else if (sub === 'bag' || sub === 'backpack') {
+    subjectSvg = `
+      <!-- Bag Subject -->
+      <g transform="translate(${sx}, ${sy})">
+        <path d="M12 4 C12 0 24 0 24 4" stroke="${p.stroke}" stroke-width="2.2" fill="none" />
+        <rect x="3" y="4" width="30" height="36" rx="7" fill="${p.bagBody}" stroke="${p.stroke}" stroke-width="2.5" />
+        <rect x="7" y="18" width="22" height="18" rx="4" fill="${p.bagPocket}" stroke="${p.stroke}" stroke-width="2" />
+        <line x1="7" y1="15" x2="29" y2="15" stroke="${p.stroke}" stroke-width="1.5" />
       </g>
     `;
   } else if (sub === 'pencil') {
     subjectSvg = `
+      <!-- Pencil Subject -->
       <g transform="translate(${sx}, ${sy})">
-        <rect x="8" y="0" width="10" height="28" fill="${p.pencilBody}" stroke="${p.stroke}" stroke-width="2" />
-        <polygon points="8,28 18,28 13,38" fill="${p.pencilBody}" stroke="${p.stroke}" stroke-width="2" />
-        <polygon points="10,33 16,33 13,38" fill="${p.stroke}" />
+        <rect x="3" y="8" width="13" height="46" fill="${p.pencilBody}" stroke="${p.stroke}" stroke-width="2" />
+        <line x1="9" y1="8" x2="9" y2="54" stroke="${p.stroke}" stroke-width="1" />
+        <rect x="3" y="2" width="13" height="6" rx="1" fill="${p.pencilEraser}" stroke="${p.stroke}" stroke-width="1.5" />
+        <polygon points="3,54 16,54 9.5,70" fill="${p.pencilBody}" stroke="${p.stroke}" stroke-width="2" />
+        <polygon points="6,62 13,62 9.5,70" fill="${p.stroke}" />
       </g>
     `;
   } else if (sub === 'crayon') {
     subjectSvg = `
+      <!-- Crayon Subject -->
       <g transform="translate(${sx}, ${sy})">
-        <rect x="6" y="8" width="14" height="28" rx="2" fill="${p.crayonBody}" stroke="${p.stroke}" stroke-width="2" />
-        <polygon points="6,8 20,8 13,0" fill="${p.stroke}" stroke="${p.stroke}" stroke-width="2" />
+        <rect x="3" y="16" width="20" height="56" rx="2" fill="${p.crayonBody}" stroke="${p.stroke}" stroke-width="2.5" />
+        <rect x="3" y="28" width="20" height="24" fill="${p.crayonBand}" stroke="${p.stroke}" stroke-width="2" />
+        <line x1="3" y1="36" x2="23" y2="36" stroke="${p.stroke}" stroke-width="1.5" />
+        <polygon points="3,16 23,16 13,0" fill="${p.crayonBody}" stroke="${p.stroke}" stroke-width="2.5" />
+        <polygon points="8,12 18,12 13,0" fill="${p.stroke}" fill-opacity="0.3" />
       </g>
     `;
   } else if (sub === 'pineapple') {
@@ -389,9 +432,9 @@ export function renderSpatialSceneSvg({ subject = 'book', reference = 'desk', re
 
   // Layer ordering according to relation
   let layers = '';
-  if (relation === 'behind') {
+  if (rel === 'behind') {
     layers = `${subjectSvg} ${referenceSvg} ${foregroundSvg}`;
-  } else if (relation === 'in') {
+  } else if (rel === 'in') {
     layers = `${referenceSvg} ${subjectSvg} ${foregroundSvg}`;
   } else {
     // on, under, next_to: reference first, subject on top

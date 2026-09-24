@@ -53,6 +53,10 @@ const cleanHtml = (html) => {
 
 const INVALID_VOCAB_REGEX = /^(?:the\s+teacher|the\s+student|teacher|student|model|models|modeling|describing|asking|explaining|identifying|practicing|evaluating|speaking|writing|reading|listening|stage|warm|warm-up|presentation|practice|production|assessment|reflection|step|grade|minute|time|materials|procedure|differentiation|learning|outcome|objective|check|dialogue|instructions?|rubric|performance|task|essential|target|language|comprehension|production|accuracy|fluency|inquiry|strategy|concept|detail|focus|context|element|statement|question|answer|true|false|yes|no)/i;
 
+const PREPOSITIONS_SET = new Set([
+  'in', 'on', 'under', 'next to', 'next_to', 'behind', 'in front of', 'between', 'near', 'over', 'above', 'below', 'at', 'by', 'to', 'from', 'with', 'into', 'onto'
+]);
+
 export function isValidVocabWord(word) {
   if (!word || typeof word !== 'string') return false;
   const clean = word.replace(/^[#*_\s]+|[#*_\s]+$/g, '').trim();
@@ -62,6 +66,7 @@ export function isValidVocabWord(word) {
   if (/\d/.test(clean)) return false;
   if (INVALID_VOCAB_REGEX.test(clean)) return false;
   if (/^the\s+/i.test(clean) && clean.split(/\s+/).length > 1) return false;
+  if (PREPOSITIONS_SET.has(clean.toLowerCase())) return false;
   return true;
 }
 
@@ -91,8 +96,10 @@ export const CURRICULUM_TOPIC_VOCAB = {
   weather: ['sunny', 'rainy', 'cloudy', 'windy', 'stormy', 'hot', 'cold', 'warm'],
   mola: ['mola', 'fabric', 'color', 'turtle', 'butterfly', 'jaguar', 'art', 'pattern'],
   clothing: ['pollera', 'dress', 'shirt', 'pants', 'shoes', 'hat', 'uniform', 'costume'],
-  school: ['book', 'pencil', 'desk', 'chair', 'bag', 'crayon', 'marker', 'eraser'],
-  classroom: ['book', 'desk', 'chair', 'pencil', 'board', 'door', 'window', 'table'],
+  'where is it': ['red book', 'yellow pencil', 'blue chair', 'desk', 'green bag', 'orange crayon'],
+  preposition: ['red book', 'yellow pencil', 'blue chair', 'desk', 'green bag', 'orange crayon'],
+  school: ['book', 'pencil', 'chair', 'desk', 'bag', 'crayon'],
+  classroom: ['red book', 'yellow pencil', 'blue chair', 'desk', 'green bag', 'orange crayon'],
   animal: ['jaguar', 'monkey', 'toucan', 'sloth', 'bird', 'frog', 'turtle', 'fish'],
   nature: ['tree', 'river', 'forest', 'sun', 'flower', 'cloud', 'rain', 'mountain'],
   recycle: ['recycle', 'bin', 'bottle', 'plastic', 'compost', 'trash', 'environment', 'paper'],
@@ -217,6 +224,17 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     vocabWords = [...new Set([...vocabWords, ...topicDefaults])].filter(w => isValidVocabWord(w)).slice(0, 6);
   }
 
+  const isKinderGrade = /(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b)/i.test(grade);
+  const isWhereIsItContext = /where\s*is|preposition/i.test(`${cleanTheme} ${scenario} ${clean}`);
+
+  if (isKinderGrade || isWhereIsItContext) {
+    const classroomNouns = new Set(['book', 'pencil', 'chair', 'desk', 'bag', 'crayon', 'ruler', 'eraser', 'notebook']);
+    const hasEnoughClassroom = vocabWords.filter(w => classroomNouns.has(w.toLowerCase().replace(/^(?:red|yellow|blue|green|orange|purple)\s+/i, ''))).length >= 4;
+    if (!hasEnoughClassroom || vocabWords.length < 6) {
+      vocabWords = ['red book', 'yellow pencil', 'blue chair', 'desk', 'green bag', 'orange crayon'];
+    }
+  }
+
   // 6. Dialogue Extraction
   let dialogueLines = [];
   const speakerRegex = /(Teacher|Student|Buyer|Seller|Customer|Vendor|Clerk|Cashier|Doctor|Patient|Guide|Ranger|Tourist|Passenger|Officer|Student\s*[A-Z\d]|Partner\s*[A-Z]|Speaker\s*[A-Z\d]|A|B):\s*([^.\n?!]+[.?!]?)/gi;
@@ -300,41 +318,87 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
   let part2Items = [];
 
   if (isSpeaking) {
-    part1Title = `PART 1: ORAL RECOGNITION & PRONUNCIATION PRACTICE (${cleanTheme.toUpperCase()})`;
-    part1Badge = 'Spoken Fluency';
-    part1ActionCue = '[ Say It Aloud 🗣️ ]';
-    part1Instruction = "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking: 'What is this?' / 'How much is it?'";
+    if (isKinderGrade || isWhereIsItContext) {
+      part1Title = `PART 1: ORAL RECOGNITION & PRONUNCIATION PRACTICE (CLASSROOM OBJECTS)`;
+      part1Badge = 'Spoken Fluency';
+      part1ActionCue = '[ Say It Aloud 🗣️ ]';
+      part1Instruction = "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking: 'What is this?'";
 
-    part2Title = `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`;
-    part2Badge = 'Interaction Check';
-    part2Prompt = "Partner A asks the inquiry question. Partner B checks the statement and answers aloud. If answered correctly and fluently, mark YES ( 👍 )!";
+      part2Title = `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`;
+      part2Badge = 'Interaction Check';
+      part2Prompt = "Partner A asks the inquiry question. Partner B checks the statement and answers aloud. If answered correctly and fluently, mark YES ( 👍 )!";
 
-    part2Items = [
-      {
-        concept: 'INQUIRY 1',
-        sentence: `Partner A: "How much is the ${vocabWords[0] || 'pineapple'}?" ──> Partner B: "The fresh ${vocabWords[0] || 'pineapple'} is two dollars and fifty cents."`,
-        subject: vocabWords[0] || 'pineapple',
-        photoUrl: getRealiaPhoto(vocabWords[0] || 'pineapple')
-      },
-      {
-        concept: 'INQUIRY 2',
-        sentence: `Partner A: "How many ${vocabWords[1] || 'banana'}s do you need?" ──> Partner B: "I need four ${vocabWords[1] || 'banana'}s for my family."`,
-        subject: vocabWords[1] || 'banana',
-        photoUrl: getRealiaPhoto(vocabWords[1] || 'banana')
-      },
-      {
-        concept: 'INQUIRY 3',
-        sentence: `Partner A: "Can you identify the ${vocabWords[2] || 'orange'}?" ──> Partner B: "Yes, the ${vocabWords[2] || 'orange'} is fresh and ripe."`,
-        subject: vocabWords[2] || 'orange',
-        photoUrl: getRealiaPhoto(vocabWords[2] || 'orange')
-      },
-      {
-        concept: 'INQUIRY 4',
-        sentence: `Partner A: "What is the price of the ${vocabWords[3] || 'apple'}?" ──> Partner B: "The ${vocabWords[3] || 'apple'} costs one dollar each."`,
-        subject: vocabWords[3] || 'apple',
-        photoUrl: getRealiaPhoto(vocabWords[3] || 'apple')
-      }
-    ];
+      part2Items = [
+        {
+          concept: 'ON',
+          relation: 'on',
+          sentence: 'The book is ON the desk.',
+          subject: 'book',
+          reference: 'desk',
+          photoUrl: getRealiaPhoto('book')
+        },
+        {
+          concept: 'UNDER',
+          relation: 'under',
+          sentence: 'The bag is UNDER the chair.',
+          subject: 'bag',
+          reference: 'chair',
+          photoUrl: getRealiaPhoto('bag')
+        },
+        {
+          concept: 'IN',
+          relation: 'in',
+          sentence: 'The pencil is IN the bag.',
+          subject: 'pencil',
+          reference: 'bag',
+          photoUrl: getRealiaPhoto('pencil')
+        },
+        {
+          concept: 'NEXT TO',
+          relation: 'next_to',
+          sentence: 'The crayon is NEXT TO the book.',
+          subject: 'crayon',
+          reference: 'book',
+          photoUrl: getRealiaPhoto('crayon')
+        }
+      ];
+    } else {
+      part1Title = `PART 1: ORAL RECOGNITION & PRONUNCIATION PRACTICE (${cleanTheme.toUpperCase()})`;
+      part1Badge = 'Spoken Fluency';
+      part1ActionCue = '[ Say It Aloud 🗣️ ]';
+      part1Instruction = "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking: 'What is this?' / 'How much is it?'";
+
+      part2Title = `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`;
+      part2Badge = 'Interaction Check';
+      part2Prompt = "Partner A asks the inquiry question. Partner B checks the statement and answers aloud. If answered correctly and fluently, mark YES ( 👍 )!";
+
+      part2Items = [
+        {
+          concept: 'INQUIRY 1',
+          sentence: `Partner A: "How much is the ${vocabWords[0] || 'pineapple'}?" ──> Partner B: "The fresh ${vocabWords[0] || 'pineapple'} is two dollars and fifty cents."`,
+          subject: vocabWords[0] || 'pineapple',
+          photoUrl: getRealiaPhoto(vocabWords[0] || 'pineapple')
+        },
+        {
+          concept: 'INQUIRY 2',
+          sentence: `Partner A: "How many ${vocabWords[1] || 'banana'}s do you need?" ──> Partner B: "I need four ${vocabWords[1] || 'banana'}s for my family."`,
+          subject: vocabWords[1] || 'banana',
+          photoUrl: getRealiaPhoto(vocabWords[1] || 'banana')
+        },
+        {
+          concept: 'INQUIRY 3',
+          sentence: `Partner A: "Can you identify the ${vocabWords[2] || 'orange'}?" ──> Partner B: "Yes, the ${vocabWords[2] || 'orange'} is fresh and ripe."`,
+          subject: vocabWords[2] || 'orange',
+          photoUrl: getRealiaPhoto(vocabWords[2] || 'orange')
+        },
+        {
+          concept: 'INQUIRY 4',
+          sentence: `Partner A: "What is the price of the ${vocabWords[3] || 'apple'}?" ──> Partner B: "The ${vocabWords[3] || 'apple'} costs one dollar each."`,
+          subject: vocabWords[3] || 'apple',
+          photoUrl: getRealiaPhoto(vocabWords[3] || 'apple')
+        }
+      ];
+    }
   } else if (isReading) {
     part1Title = `PART 1: READ & DECODE / VISUAL TEXT DECODING (${cleanTheme.toUpperCase()})`;
     part1Badge = 'Reading Comprehension';
