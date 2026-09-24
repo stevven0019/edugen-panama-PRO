@@ -101,6 +101,36 @@ export function detectLessonMetadata(text = '', baseName = '') {
   };
 }
 
+export function getScenarioTitle(sc, index = 0) {
+  if (!sc) return `Escenario ${index + 1}`;
+  return sc.scenarioName || sc.scenario_title || sc.title || sc.name || `Escenario ${index + 1}`;
+}
+
+export function getScenarioThemes(sc) {
+  if (!sc) return { theme1: 'Theme 1', theme2: 'Theme 2' };
+  let t1 = '';
+  let t2 = '';
+
+  if (typeof sc.theme1 === 'string') t1 = sc.theme1;
+  else if (sc.theme1?.theme_title) t1 = sc.theme1.theme_title;
+
+  if (typeof sc.theme2 === 'string') t2 = sc.theme2;
+  else if (sc.theme2?.theme_title) t2 = sc.theme2.theme_title;
+
+  if ((!t1 || !t2) && Array.isArray(sc.themes)) {
+    if (!t1 && sc.themes[0]) {
+      t1 = typeof sc.themes[0] === 'string' ? sc.themes[0] : (sc.themes[0].theme_title || sc.themes[0].title || '');
+    }
+    if (!t2 && sc.themes[1]) {
+      t2 = typeof sc.themes[1] === 'string' ? sc.themes[1] : (sc.themes[1].theme_title || sc.themes[1].title || '');
+    }
+  }
+
+  if (!t1) t1 = sc.scenarioName || sc.scenario_title || 'Theme 1';
+  if (!t2) t2 = t1 ? `${t1} (Part 2)` : 'Theme 2';
+  return { theme1: t1, theme2: t2 };
+}
+
 async function readLesson(file) {
   if (!file || file.size > 10 * 1024 * 1024) throw new Error('Selecciona un archivo de lección de hasta 10 MB.');
   const ext = file.name.split('.').pop().toLowerCase();
@@ -191,6 +221,7 @@ export default function ResourceWorkbook({
   });
   const [matrixScenarios, setMatrixScenarios] = useState([]);
   const [matrixScenarioIndex, setMatrixScenarioIndex] = useState(defaultScenarioIndex || 0);
+  const [matrixThemeNum, setMatrixThemeNum] = useState(() => (defaultThemeType === 'productive' ? 2 : 1));
   const [matrixSkill, setMatrixSkill] = useState(() => {
     if (defaultLessonNum && defaultLessonNum >= 1 && defaultLessonNum <= 5) {
       return SKILLS_AOA[defaultLessonNum - 1].id;
@@ -303,11 +334,18 @@ export default function ResourceWorkbook({
       } else if (source === 'matrix') {
         const gradeItem = GRADES_CEFR_MAP.find(g => g.id === matrixGrade) || GRADES_CEFR_MAP[5];
         const currentScenario = matrixScenarios[matrixScenarioIndex] || {};
-        const scenarioName = currentScenario.scenarioName || currentScenario.scenario_title || currentScenario.title || `Escenario ${matrixScenarioIndex + 1}`;
+        const scenarioName = getScenarioTitle(currentScenario, matrixScenarioIndex);
+        const { theme1, theme2 } = getScenarioThemes(currentScenario);
+        const themeTitle = matrixThemeNum === 2 ? theme2 : theme1;
+        const themeType = matrixThemeNum === 2 ? 'productive' : 'receptive';
         const skillObj = SKILLS_AOA.find(s => s.id === matrixSkill) || SKILLS_AOA[0];
         const isMediation = skillObj.number === 5;
-        const projs = currentScenario.communicativeCompetences?.assessmentIdeas?.projects || currentScenario.assessmentIdeas?.projects || [];
-        const project21st = projs[0] || '';
+        const projs = currentScenario.communicativeCompetences?.assessmentIdeas?.projects 
+          || currentScenario.communicative_competences?.assessment_ideas?.projects 
+          || currentScenario.assessmentIdeas?.projects 
+          || currentScenario.twenty_first_century_projects
+          || [];
+        const project21st = matrixThemeNum === 2 ? (projs[1] || projs[0] || '') : (projs[0] || '');
 
         input = {
           isMatrix: true,
@@ -316,6 +354,10 @@ export default function ResourceWorkbook({
           cefr: gradeItem.cefr,
           scenario: scenarioName,
           scenarioIndex: matrixScenarioIndex,
+          theme: themeTitle,
+          title: themeTitle,
+          themeNum: matrixThemeNum,
+          themeType: themeType,
           skill: matrixSkill,
           lessonNum: skillObj.number,
           scenarioData: currentScenario,
@@ -323,6 +365,7 @@ export default function ResourceWorkbook({
           text: `EDUGEN PRO AOA MODULAR CURRICULUM LESSON
 Grade: ${gradeItem.name} (CEFR: ${gradeItem.cefr})
 Scenario ${matrixScenarioIndex + 1}: ${scenarioName}
+Theme ${matrixThemeNum}: ${themeTitle} (${themeType === 'receptive' ? 'Receptive Focus · Weeks 1-2' : 'Productive Focus · Weeks 3-4'})
 Skill Focus: ${matrixSkill} (Lesson ${skillObj.number}: ${skillObj.label})
 Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
         };
@@ -360,6 +403,7 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
         result.scenarioIndex = matrixScenarioIndex;
         result.lessonNum = SKILLS_AOA.find(s => s.id === matrixSkill)?.number || 1;
         result.skill = matrixSkill;
+        result.title = sanitizeThemeTitle(input.title);
       }
 
       buildWorkbook(result); // Validate PDF build
@@ -496,7 +540,7 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
                 {currentLessonHtml && (
                   <option value="current">📝 Lección actual en pantalla ({currentLessonTitle || 'Planificación abierta'})</option>
                 )}
-                <option value="matrix">⚡ Matriz Modular AOA (14 Grados × 8 Escenarios × 5 Habilidades · 560 Lecciones)</option>
+                <option value="matrix">⚡ Matriz Modular AOA (14 Grados × 8 Escenarios × 2 Temas × 5 Habilidades · 1,120 Lecciones)</option>
                 <option value="latest">📁 Última lección AOA guardada en la plataforma</option>
                 <option value="file">📄 Subir un archivo de lección (PDF, Word DOCX/DOC, TXT)</option>
               </select>
@@ -525,14 +569,14 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
               <div className="space-y-3.5 p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900/60">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-black text-indigo-700 dark:text-indigo-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <span>⚡</span> Matriz Curricular MEDUCA (14 Grados × 8 Escenarios × 5 Habilidades)
+                    <span>⚡</span> Matriz Curricular MEDUCA (14 Grados × 8 Escenarios × 2 Temas × 5 Habilidades)
                   </span>
                   <span className="text-[10px] font-extrabold px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900/80 text-indigo-800 dark:text-indigo-200">
-                    560 Lecciones Maestras
+                    1,120 Lecciones Maestras
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                   {/* Paso A: Grado Escolar */}
                   <div>
                     <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
@@ -568,7 +612,7 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
                       ) : matrixScenarios.length ? (
                         matrixScenarios.map((sc, i) => (
                           <option key={i} value={i}>
-                            {i + 1}. {sc.scenarioName || sc.scenario_title || sc.title || `Escenario ${i + 1}`}
+                            {i + 1}. {getScenarioTitle(sc, i)}
                           </option>
                         ))
                       ) : (
@@ -577,10 +621,36 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
                     </select>
                   </div>
 
-                  {/* Paso C: Habilidad AOA */}
+                  {/* Paso C: Tema Curricular (Theme 1 o 2) */}
                   <div>
                     <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
-                      Paso C · Habilidad AOA (1 a 5)
+                      Paso C · Tema Curricular (1 o 2)
+                    </label>
+                    {(() => {
+                      const sc = matrixScenarios[matrixScenarioIndex];
+                      const { theme1, theme2 } = getScenarioThemes(sc);
+                      return (
+                        <select
+                          disabled={busy || matrixLoading || !matrixScenarios.length}
+                          className="w-full p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs font-bold text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none truncate"
+                          value={matrixThemeNum}
+                          onChange={e => setMatrixThemeNum(Number(e.target.value))}
+                        >
+                          <option value={1} title={`1. ${theme1} (Receptivo / Semanas 1-2)`}>
+                            1. {theme1} (Receptivo)
+                          </option>
+                          <option value={2} title={`2. ${theme2} (Productivo / Semanas 3-4)`}>
+                            2. {theme2} (Productivo)
+                          </option>
+                        </select>
+                      );
+                    })()}
+                  </div>
+
+                  {/* Paso D: Habilidad AOA */}
+                  <div>
+                    <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
+                      Paso D · Habilidad AOA (1 a 5)
                     </label>
                     <select
                       disabled={busy}
@@ -602,14 +672,20 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
                   const gItem = GRADES_CEFR_MAP.find(g => g.id === matrixGrade);
                   const sItem = SKILLS_AOA.find(s => s.id === matrixSkill);
                   const scItem = matrixScenarios[matrixScenarioIndex];
+                  const scTitle = getScenarioTitle(scItem, matrixScenarioIndex);
+                  const { theme1, theme2 } = getScenarioThemes(scItem);
+                  const activeThemeTitle = matrixThemeNum === 2 ? theme2 : theme1;
                   const isPreK = matrixGrade === 'prek' || matrixGrade === 'kinder';
                   return (
                     <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-200/80 dark:border-indigo-900 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-                      <div className="space-y-0.5">
-                        <div className="font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-                          <span>🎯 {scItem ? (scItem.scenarioName || scItem.title) : 'Escenario'}</span>
+                      <div className="space-y-1">
+                        <div className="font-extrabold text-slate-900 dark:text-white flex flex-wrap items-center gap-2">
+                          <span>🎯 {scTitle}</span>
                           <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-black border border-indigo-200">
                             {gItem?.cefr}
+                          </span>
+                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-black border border-emerald-200">
+                            Tema {matrixThemeNum}: {activeThemeTitle}
                           </span>
                         </div>
                         <p className="text-[11px] text-slate-600 dark:text-slate-400">
