@@ -1,5 +1,14 @@
 import { parseAoaLessonPlan } from './lessonParser.js';
 import { getRealiaPhoto } from './realiaCatalog.js';
+import {
+  buildLessonContract,
+  selectActivityPatterns,
+  buildAOABlueprint,
+  validateActivityPack,
+  repairActivityPack,
+  normalizeSkill,
+  detectSkillFromText
+} from './activityEngine.js';
 
 export const ICONS = ['book','bag','desk','chair','pencil','crayon','ball','apple','tree','sun','house','fish','flower','pineapple','banana','orange','watermelon','mango','market','dollar'];
 
@@ -437,22 +446,35 @@ export async function generateActivityPack(source, signal) {
   const srcText = typeof source === 'string' ? source : (source?.text || '');
   const forceAi = Boolean(source?.forceAi);
 
-  // 1. Direct Extraction first:
+  // 1. Build Lesson Contract (generador de actividades.txt)
+  // lesson.skill is authoritative. Never assume lesson number = skill.
+  const contract = buildLessonContract({
+    lesson: typeof source === 'object' ? source : {},
+    theme: source?.title || source?.theme,
+    scenario: source?.scenario,
+    grade: source?.grade,
+    cefr: source?.cefr,
+    skill: source?.skill,
+    lessonNum: source?.lessonNum,
+    themeType: source?.themeType,
+    project21st: source?.project21st,
+    rawText: srcText
+  });
+  const patterns = selectActivityPatterns(contract);
+
+  // 2. Direct Extraction first:
   // If the lesson plan has AOA stages, warm-up, presentation, practice, production, or lesson metadata,
   // extract directly! This is instantaneous, reliable, costs 0 tokens, and matches the teacher's exact plan.
   if (!forceAi) {
     const hasStages = /stage\s*[1-6]|lesson\s*planner|warm-?up|presentation|practice|production|specific\s*objective|learning\s*outcomes|theme|scenario/i.test(srcText);
     if (hasStages || source?.isCurrent) {
       try {
-        const directPack = parseAoaLessonPlan(srcText, {
-          grade: source?.grade,
-          title: source?.title,
-          scenario: source?.scenario,
-          skill: source?.skill
-        });
+        const directPack = parseAoaLessonPlan(srcText, contract);
         if (directPack && directPack.page1 && directPack.page2 && directPack.page3) {
           directPack._usedAi = false;
-          return validatePack(directPack);
+          const validation = validateActivityPack(directPack, contract);
+          const finalPack = validation.pass ? directPack : repairActivityPack(directPack, validation.errors, contract);
+          return validatePack(finalPack);
         }
       } catch (err) {
         console.warn('Direct parse not applicable, generating authentic pack via AI:', err);
@@ -460,25 +482,23 @@ export async function generateActivityPack(source, signal) {
     }
   }
 
-  // 2. AI Generation with strict 3-Page Pedagogical Blueprint Schema (Arquitectura Modular EduGen Pro AOA)
-  let targetGrade = source?.grade;
-  if (!targetGrade && srcText) {
-    const gm = srcText.match(/(?:Pre-?K|Kindergarten|Kinder|\b\d{1,2}(?:st|nd|rd|th)?\s+Grade|\b(?:1|2|3|4|5|6|7|8|9|10|11|12)°?\s*Grado)/i);
-    if (gm) targetGrade = gm[0];
-  }
-  if (!targetGrade) targetGrade = '4th Grade';
-  const isKinder = /(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b|educaci[oó]n\s+inicial)/i.test(targetGrade);
-  const targetSkill = source?.skill || 'Listening';
-  const targetCefr = source?.cefr || (isKinder ? 'Pre-A1' : 'A1');
+  // 3. AI Generation with strict 3-Page Pedagogical Blueprint Schema & Activity Contract
+  const targetGrade = contract.grade;
+  const targetCefr = contract.cefr;
+  const targetSkill = contract.skill;
 
   const prompt = `EDUGEN PRO · MOTOR CURRICULAR AOA MEDUCA PANAMÁ
 Eres el Diseñador Curricular Jefe de Inglés para el Ministerio de Educación de Panamá (MEDUCA) integrado en la plataforma EduGen Pro.
 Tu tarea es generar o perfeccionar un CUADERNO DE ACTIVIDADES de 3 PÁGINAS bajo el Enfoque Orientado a la Acción (AOA) alineado estrictamente con el Marco Común Europeo de Referencia (CEFR/MCER 2020) y la currícula panameña.
 
-METADATOS DEL PLAN:
+CONTRATO PEDAGÓGICO DE LA LECCIÓN (generador de actividades.txt):
 - Grado: ${targetGrade} (CEFR: ${targetCefr})
-- Habilidad Foco: ${targetSkill} (Ciclo AOA: 1. Listening, 2. Reading, 3. Writing, 4. Speaking, 5. Mediation)
-- Tema / Escenario: ${source?.scenario || source?.title || 'Contexto Curricular'}
+- Habilidad Foco (AUTHORITATIVE): ${targetSkill}
+- Tema / Escenario: ${contract.scenario || contract.theme || 'Contexto Curricular'}
+- Patrón Actividad 1: ${patterns.activity1.pattern}
+- Patrón Actividad 2: ${patterns.activity2.pattern}
+- Evidencia Primaria Requerida: ${contract.constraints.oral_evidence_required ? 'Producción e interacción oral en parejas' : contract.constraints.writing_as_primary_evidence ? 'Producción escrita y etiquetado' : contract.constraints.listening_comprehension_required ? 'Comprensión auditiva con guion de audio verbatim' : contract.constraints.reading_comprehension_required ? 'Decodificación visual y comprensión lectora' : 'Mediación interpersonal y proyecto del siglo XXI'}
+${contract.project_21st ? `- Proyecto 21st Century Skills: ${contract.project_21st}` : ''}
 
 REGLAS PEDAGÓGICAS OBLIGATORIAS:
 1. ADAPTACIÓN EVOLUTIVA ESTRICTA:
@@ -525,15 +545,15 @@ SCHEMA REQUIREMENT (Return strictly valid JSON):
       "exchange": "Speaker A: '...' ──> Speaker B: '...'"
     },
     "activity1": {
-      "title": "Activity 1: Listen & Circle (Word Recognition)",
-      "instruction": "Listen carefully as your teacher reads the target words. Circle each word you hear:",
+      "title": "Activity 1: ${patterns.activity1.pattern}",
+      "instruction": "${patterns.activity1.instruction}",
       "words": ["word1", "word2", "word3", "word4", "word5", "word6"]
     }
   },
   "page2": {
     "activity2": {
       "title": "Activity 2: Guided Practice",
-      "instruction": "Listen to the audio statements. Draw a line to match each item with its corresponding detail:",
+      "instruction": "Draw a line to match each item with its corresponding detail:",
       "pairs": [
         { "item": "TargetItem1", "detail": "Matching Detail 1", "icon": "tree" }
       ]
@@ -639,50 +659,36 @@ SCHEMA REQUIREMENT (Return strictly valid JSON):
     }
   }
 
-  if (!response || !response.ok) {
-    console.warn('AI call unsuccessful, falling back to direct curriculum lesson extraction.');
+  let pack = null;
+  if (response && response.ok) {
     try {
-      const fallbackPack = parseAoaLessonPlan(srcText, {
-        grade: targetGrade,
-        title: source?.title || source?.scenario || 'English Lesson',
-        scenario: source?.scenario || source?.title,
-        skill: targetSkill
-      });
-      if (fallbackPack) {
-        fallbackPack._usedAi = false;
-        return validatePack(fallbackPack);
-      }
+      const data = await response.json();
+      const raw = data.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('') || '';
+      pack = repairAndParseJson(raw);
+    } catch (err) {
+      console.warn('Failed to parse AI response as JSON, falling back to direct curriculum extraction:', err);
+    }
+  }
+
+  // Guaranteed Curriculum Fallback: If AI is offline, rate-limited, or returned malformed JSON,
+  // extract directly using the authoritative Lesson Parser. Never fail or throw an unexpected format error!
+  if (!pack || !pack.page1 || !pack.page2 || !pack.page3) {
+    try {
+      pack = parseAoaLessonPlan(srcText, contract);
     } catch (fallbackErr) {
       console.error('Fallback parse failed:', fallbackErr);
     }
-    const errText = response ? await response.text().catch(() => '') : 'Error de conexión';
-    throw new Error(`No se pudieron generar los recursos: ${errText || 'Intenta de nuevo'}`);
   }
 
-  const data = await response.json();
-  const raw = data.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('') || '';
-  let pack;
-  try {
-    pack = repairAndParseJson(raw);
-  } catch (err) {
-    console.warn('Failed to parse AI response as JSON, falling back to direct curriculum extraction:', err, raw);
-    try {
-      pack = parseAoaLessonPlan(srcText, {
-        grade: targetGrade,
-        title: source?.title || source?.scenario || 'English Lesson',
-        scenario: source?.scenario || source?.title,
-        skill: targetSkill
-      });
-    } catch (fallbackErr) {
-      console.error('Fallback also failed:', fallbackErr);
+  // Strict Alignment Validator & Self-Healing Repair
+  if (pack) {
+    const validation = validateActivityPack(pack, contract);
+    if (!validation.pass) {
+      pack = repairActivityPack(pack, validation.errors, contract);
     }
+    pack._usedAi = Boolean(response && response.ok && !pack._usedFallback);
+    return validatePack(pack);
   }
 
-  if (!pack) {
-    throw new Error('La IA devolvió una respuesta incompleta o en formato inesperado. Por favor intenta de nuevo.');
-  }
-
-  if (pack.error) throw new Error(String(pack.error).slice(0, 250));
-  pack._usedAi = true;
-  return validatePack(pack);
+  throw new Error('No se pudieron estructurar las actividades pedagógicas de la lección.');
 }

@@ -103,12 +103,40 @@ async function readLesson(file) {
     detectedScenario = scMatch[1].trim();
   }
 
+  // Detect skill hint (generador de actividades.txt: lesson.skill is authoritative)
+  let detectedSkill = null;
+  const skillMatch = (combined || '').match(/(?:Skill|Target\s+Skill|Habilidad|Macro-?habilidad)\s*[:#-]?\s*([a-zA-Z\s]+)/i);
+  if (skillMatch) {
+    const s = skillMatch[1].toLowerCase();
+    if (s.includes('listen') || s.includes('escuch')) detectedSkill = 'Listening';
+    else if (s.includes('read') || s.includes('lect')) detectedSkill = 'Reading';
+    else if (s.includes('speak') || s.includes('oral') || s.includes('habl')) detectedSkill = 'Speaking';
+    else if (s.includes('writ') || s.includes('escr')) detectedSkill = 'Writing';
+    else if (s.includes('mediat') || s.includes('mediac')) detectedSkill = 'Mediation';
+  }
+  if (!detectedSkill) {
+    if (/(?:^|[^a-z])speaking\b/i.test(combined)) detectedSkill = 'Speaking';
+    else if (/(?:^|[^a-z])reading\b/i.test(combined)) detectedSkill = 'Reading';
+    else if (/(?:^|[^a-z])writing\b/i.test(combined)) detectedSkill = 'Writing';
+    else if (/(?:^|[^a-z])mediation\b/i.test(combined)) detectedSkill = 'Mediation';
+    else if (/(?:^|[^a-z])listening\b/i.test(combined)) detectedSkill = 'Listening';
+  }
+
+  // Detect lesson number
+  let detectedLessonNum = null;
+  const lNumMatch = (combined || '').match(/(?:Lesson|Lecci[oó]n)\s*[:#-]?\s*(\d)/i);
+  if (lNumMatch) {
+    detectedLessonNum = parseInt(lNumMatch[1], 10);
+  }
+
   return {
     text,
     media,
     title: detectedTitle,
     grade: detectedGrade,
     scenario: detectedScenario,
+    skill: detectedSkill,
+    lessonNum: detectedLessonNum,
     fileName: file.name
   };
 }
@@ -311,6 +339,8 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
         if (input.grade) result.grade = input.grade;
         if (input.title) result.title = sanitizeThemeTitle(input.title);
         if (input.scenario) result.scenario = input.scenario;
+        if (input.skill) result.skill = input.skill;
+        if (input.lessonNum) result.lessonNum = input.lessonNum;
       }
       if (source === 'latest' && lesson?.grade) result.grade = lesson.grade;
       if (source === 'matrix') {

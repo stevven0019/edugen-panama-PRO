@@ -11,6 +11,13 @@
  */
 
 import { getRealiaPhoto } from './realiaCatalog.js';
+import {
+  buildLessonContract,
+  selectActivityPatterns,
+  buildAOABlueprint,
+  detectSkillFromText,
+  normalizeSkill
+} from './activityEngine.js';
 
 export function sanitizeThemeTitle(rawTitle) {
   if (!rawTitle || typeof rawTitle !== 'string') return 'English AOA Lesson';
@@ -120,9 +127,16 @@ export function getTopicVocabFallback(textContext) {
 }
 
 export function parseAoaLessonPlan(rawInput, metadata = {}) {
-  const rawText = typeof rawInput === 'string' ? rawInput : (rawInput?.text || '');
-  const clean = cleanHtml(rawText);
-  if (!clean || clean.length < 20) return null;
+  let rawText = typeof rawInput === 'string' ? rawInput : (rawInput?.text || '');
+  let clean = cleanHtml(rawText);
+  if (!clean || clean.length < 10) {
+    if (metadata?.title || metadata?.scenario || metadata?.theme) {
+      rawText = `Theme: ${metadata.title || metadata.scenario || metadata.theme}\nGrade: ${metadata.grade || '4th Grade'}\nSkill: ${metadata.skill || 'Listening'}\nScenario: ${metadata.scenario || metadata.title || 'AOA Context'}`;
+      clean = cleanHtml(rawText);
+    } else {
+      return null;
+    }
+  }
 
   // 1. Grade Resolution (Strictly avoid /early/ matching Kindergarten!)
   let grade = metadata.grade || '';
@@ -155,24 +169,19 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     scenario = cleanTheme;
   }
 
-  // 4. Lesson Number & Skill Focus (MEDUCA 5-Skill Progression)
-  // Lesson 1 = Listening, Lesson 2 = Reading, Lesson 3 = Speaking, Lesson 4 = Writing, Lesson 5 = Mediation
-  let lessonNum = metadata.lessonNum || metadata.lessonNumber;
-  let skillFocus = metadata.skill || '';
 
-  if (!lessonNum && skillFocus) {
-    const s = skillFocus.toLowerCase();
-    if (s.includes('listen')) lessonNum = 1;
-    else if (s.includes('read')) lessonNum = 2;
-    else if (s.includes('speak') || s.includes('oral')) lessonNum = 3;
-    else if (s.includes('writ')) lessonNum = 4;
-    else if (s.includes('mediat')) lessonNum = 5;
-  }
 
+  // 4. Authoritative Skill Resolution (generador de actividades.txt)
+  // lesson.skill MUST determine the primary activity architecture. NEVER assume lesson number = skill.
+  let lessonNum = Number(metadata.lessonNum || metadata.lessonNumber) || null;
   if (!lessonNum) {
     const numMatch = clean.match(/Lesson\s*(?:#|No\.?|Number)?\s*(\d)/i) || rawText.match(/Lesson\s*(?:#|No\.?|Number)?\s*(\d)/i);
     lessonNum = numMatch ? parseInt(numMatch[1], 10) : 1;
   }
+
+  let skillFocus = metadata.skill
+    ? normalizeSkill(metadata.skill)
+    : (detectSkillFromText(clean) || detectSkillFromText(rawText));
 
   if (!skillFocus) {
     skillFocus = lessonNum === 2 ? 'Reading'
@@ -180,13 +189,15 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
       : lessonNum === 4 ? 'Writing'
       : lessonNum === 5 ? 'Mediation'
       : 'Listening';
+  } else {
+    skillFocus = normalizeSkill(skillFocus);
   }
 
-  const isReading = lessonNum === 2 || /read/i.test(skillFocus);
-  const isSpeaking = lessonNum === 3 || /speak|oral/i.test(skillFocus);
-  const isWriting = lessonNum === 4 || /writ/i.test(skillFocus);
-  const isMediation = lessonNum === 5 || /mediat/i.test(skillFocus);
-  const isListening = !isReading && !isSpeaking && !isWriting && !isMediation;
+  const isReading = skillFocus === 'Reading';
+  const isSpeaking = skillFocus === 'Speaking';
+  const isWriting = skillFocus === 'Writing';
+  const isMediation = skillFocus === 'Mediation';
+  const isListening = skillFocus === 'Listening';
 
   let objective = metadata.objective || '';
   if (!objective) {
@@ -305,15 +316,30 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     }
   }
 
-  // 9. Structured Action Worksheet (Ficha Concreta de Trabajo)
-  let part1Title = `PART 1: LISTEN & POINT TO THE REAL OBJECTS (AUDITORY HOOK)`;
-  let part1Badge = 'Receptive Listening';
-  let part1ActionCue = '[ Point Here 👆 ]';
-  let part1Instruction = 'Listen carefully! When teacher says the word, point to the real photo on your paper and touch the real object or show the gesture!';
+  // 9. Activity Contract, Blueprint & Diversity Patterns (generador de actividades.txt)
+  const contract = buildLessonContract({
+    lesson: { grade, scenario, theme: cleanTheme, skill: skillFocus, lessonNum, objective, vocabulary: vocabWords },
+    theme: cleanTheme,
+    scenario,
+    grade,
+    skill: skillFocus,
+    lessonNum,
+    themeType: isTheme2 ? 'productive' : 'receptive',
+    project21st,
+    rawText: clean
+  });
+  const patterns = selectActivityPatterns(contract);
+  const blueprint = buildAOABlueprint(contract);
 
-  let part2Title = `PART 2: AUDITORY ACCURACY CHECK · "TRUE OR FALSE? SHOW YOUR THUMB!"`;
-  let part2Badge = 'Accuracy of Listening';
-  let part2Prompt = 'Teacher reads a statement about the photo. If what you hear matches the picture, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!';
+  // Structured Action Worksheet (Ficha Concreta de Trabajo)
+  let part1Title = `PART 1: ${patterns.activity1.pattern.toUpperCase()} (${cleanTheme.toUpperCase()})`;
+  let part1Badge = patterns.activity1.badge;
+  let part1ActionCue = patterns.activity1.actionCue;
+  let part1Instruction = patterns.activity1.instruction;
+
+  let part2Title = `PART 2: ${patterns.activity2.pattern.toUpperCase()}`;
+  let part2Badge = patterns.activity2.badge;
+  let part2Prompt = patterns.activity2.prompt;
 
   let part2Items = [];
 
@@ -596,6 +622,8 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     scenario: scenario,
     objective: objective,
     project21st: project21st,
+    contract: contract,
+    stages: blueprint.stages,
     actionWorksheet: actionWorksheet,
 
     // ── PAGE 1: DISCOVERY & LINGUISTIC INPUT ──
