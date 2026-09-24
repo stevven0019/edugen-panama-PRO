@@ -157,25 +157,36 @@ export function resolveConstraints({ grade = '4th Grade', cefr = 'A1', skill = '
 }
 
 /**
- * 2. SELECT ACTIVITY PATTERNS
- * Activity Diversity Engine: selects skill-specific pedagogical patterns.
+ * 2. SELECT ACTIVITY PATTERNS (Activity Diversity Engine)
+ * Controls:
+ * 1. Tipo de interacción: Individual, Pair, Small group, Whole class, Team, Teacher-student
+ * 2. Tipo de acción: Identify, Choose, Sort, Predict, Ask, Answer, Compare, Order, Solve, Create, Explain, Transfer, Present, Negotiate
+ * 3. Tipo de material: Picture cards, Flashcards, Map, Menu, Poster, Dialogue, Short text, Chart, Schedule, Role cards, Information cards
+ * 4. Tipo de evidencia: Oral response, Written response, Physical action, Information transfer, Product, Performance, Presentation, Collaborative solution
  */
 export function selectActivityPatterns(contract) {
-  const { skill, isEarly, scenario, theme_type } = contract;
+  const { skill, isEarly, bandKey, scenario, theme, theme_type, lesson_number } = contract;
+  const isA2orB1 = bandKey === 'a2' || bandKey === 'b1';
 
   if (skill === 'Listening') {
     return {
+      interaction_type: isEarly ? 'Teacher-student / Whole class' : 'Individual / Pair verification',
+      student_action: isEarly ? 'Listen, Point & Show TPR' : 'Listen, Discriminate & Verify',
+      materials: isEarly ? 'Picture cards & Classroom Realia' : 'Audio Read-Aloud Script & Verification Cards',
+      evidence_type: isEarly ? 'Physical action (TPR) & Gesture' : 'Demonstrable Auditory Comprehension',
       activity1: {
-        pattern: isEarly ? 'Listen & Point (TPR Hook)' : 'Listen & Identify (Auditory Hook)',
+        pattern: isEarly ? 'Listen & Point (TPR Hook)' : isA2orB1 ? 'Public Audio Broadcast & Key Info Hunt' : 'Listen & Identify (Auditory Hook)',
         taskType: 'listen_and_point',
         instruction: isEarly
           ? 'Listen carefully! When your teacher says the word, point to the real photo on your paper and touch the real classroom object!'
+          : isA2orB1
+          ? 'Listen to the audio broadcast excerpt read by your teacher. Mark and locate the crucial situational terms.'
           : 'Listen to the audio statements spoken by your teacher. Point to each target item as you hear it pronounced with clear intonation.',
         actionCue: '[ Point Here 👆 ]',
         badge: 'Receptive Listening'
       },
       activity2: {
-        pattern: isEarly ? 'True or False? Show Your Thumb (TPR)' : 'Listen & Verify (Auditory Accuracy)',
+        pattern: isEarly ? 'True or False? Show Your Thumb (TPR)' : isA2orB1 ? 'Auditory Detail Audit & Scenario Verification' : 'Listen & Verify (Auditory Accuracy)',
         taskType: 'listen_and_verify',
         prompt: isEarly
           ? 'Teacher says a sentence about the picture. If what you hear is TRUE, show THUMBS UP ( 👍 )! If FALSE, show THUMBS DOWN ( 👎 )!'
@@ -187,15 +198,21 @@ export function selectActivityPatterns(contract) {
 
   if (skill === 'Reading') {
     return {
+      interaction_type: isA2orB1 ? 'Pair scanning & comparative analysis' : 'Individual / Pair decoding',
+      student_action: 'Read, Scan, Skim, Decode & Verify',
+      materials: isA2orB1 ? 'Authentic Schedules, Route Maps & Informational Notices' : 'Printed Labels, Realia Photos & Word Banks',
+      evidence_type: 'Demonstrable Comprehension of Written Information',
       activity1: {
-        pattern: 'Visual Text Decoding & Label Matching',
+        pattern: isA2orB1 ? 'Authentic Informational Text & Graphic Scanning' : 'Visual Text Decoding & Label Matching',
         taskType: 'read_and_decode',
-        instruction: 'Read each printed label aloud with your partner. Examine the authentic photo and match the text label to the correct item.',
+        instruction: isA2orB1
+          ? `Read the authentic informational notices and schedules for ${scenario}. Highlight key operational details.`
+          : 'Read each printed label aloud with your partner. Examine the authentic photo and match the text label to the correct item.',
         actionCue: '[ Read & Match 📖 ]',
         badge: 'Visual Decoding'
       },
       activity2: {
-        pattern: 'Text Detective & Fact Verification',
+        pattern: isA2orB1 ? 'Text Detective & Critical Fact Verification' : 'Text Detective & Fact Verification',
         taskType: 'read_and_verify',
         prompt: 'Read each informational statement carefully. Evaluate if the statement is TRUE according to the reading text: mark YES ( 👍 ) or NO ( 👎 )!',
         badge: 'Reading Accuracy'
@@ -204,16 +221,34 @@ export function selectActivityPatterns(contract) {
   }
 
   if (skill === 'Speaking') {
+    // Distinct speaking pattern based on grade & scenario
+    const isShopping = /market|shop|store|price|cost|dollar/i.test(`${scenario} ${theme}`);
+    const isTransit = /metro|terminal|transit|bus|train|canal/i.test(`${scenario} ${theme}`);
+    const isEcoForum = /environment|community|tourism|nature|fauna/i.test(`${scenario} ${theme}`) || isA2orB1;
+
+    const patternName1 = isEarly ? 'Oral Naming & Echo Chant' : 'Oral Recognition & Pronunciation Model';
+    const patternName2 = isShopping
+      ? 'Market Price Inquiry Challenge (Pair Role-Play)'
+      : isTransit
+      ? 'Transit Information Desk (Pair Role-Play)'
+      : isEcoForum
+      ? 'Community Forum & Situational Pitch (Pair Role-Play)'
+      : 'Communicative Inquiry & Pair Role-Play Exchange';
+
     return {
+      interaction_type: 'Pair interaction / Student-Student exchange',
+      student_action: 'Ask, Answer, Pronounce, Negotiate & Produce Spoken Language',
+      materials: 'Role cards, Picture cards & Conversational Question Frames',
+      evidence_type: 'Oral language production & interactive spoken fluency',
       activity1: {
-        pattern: 'Oral Recognition & Pronunciation Model',
+        pattern: patternName1,
         taskType: 'oral_pronunciation',
         instruction: "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking: 'What is this?' / 'How much is it?'",
         actionCue: '[ Say It Aloud 🗣️ ]',
         badge: 'Spoken Fluency'
       },
       activity2: {
-        pattern: 'Communicative Inquiry & Pair Role-Play Exchange',
+        pattern: patternName2,
         taskType: 'pair_inquiry',
         prompt: "Partner A asks the inquiry question. Partner B checks the statement and answers aloud. If answered correctly and fluently, mark YES ( 👍 )!",
         badge: 'Spoken Interaction'
@@ -223,8 +258,12 @@ export function selectActivityPatterns(contract) {
 
   if (skill === 'Writing') {
     return {
+      interaction_type: 'Individual composition with peer check',
+      student_action: isEarly ? 'Trace, Copy & Label' : 'Complete, Structure, Draft & Verify',
+      materials: isEarly ? 'Letter Tracing Lines & Visual Flashcards' : 'Writing Frames, Official Form Records & Field Logs',
+      evidence_type: 'Written production appropriate to grade and CEFR level',
       activity1: {
-        pattern: isEarly ? 'Orthographic Trace & Picture Labeling' : 'Sentence Builder & Vocabulary Labeling',
+        pattern: isEarly ? 'Orthographic Trace & Picture Labeling' : isA2orB1 ? 'Technical Vocabulary Builder & Field Log Entry' : 'Sentence Builder & Vocabulary Labeling',
         taskType: 'trace_and_label',
         instruction: isEarly
           ? 'Look at the real photo. Trace each letter of the target word with your pencil and copy the label onto your practice sheet!'
@@ -233,7 +272,7 @@ export function selectActivityPatterns(contract) {
         badge: 'Orthographic Practice'
       },
       activity2: {
-        pattern: 'Authentic Record & Written Verification',
+        pattern: isA2orB1 ? 'Authentic Field Log & Incident Report Verification' : 'Authentic Record & Written Verification',
         taskType: 'written_record',
         prompt: 'Read the prompt. Verify the written facts and complete the official record or receipt: mark YES ( 👍 ) or NO ( 👎 )!',
         badge: 'Written Accuracy'
@@ -242,11 +281,18 @@ export function selectActivityPatterns(contract) {
   }
 
   if (skill === 'Mediation') {
+    const isTheme2 = theme_type === 'productive';
+    const projectTitle = isTheme2 ? 'Project 2 (Interactive Showcase)' : 'Project 1 (Collaborative Action Poster)';
+
     return {
+      interaction_type: 'Team / Small group collaboration (Student A -> Student B)',
+      student_action: 'Understand, Select Information, Explain in Simple English & Transfer Meaning',
+      materials: 'Team Role Cards, Information Sheets & 21st Century Project Display Guides',
+      evidence_type: 'Information transfer & collaborative project milestone delivery',
       activity1: {
-        pattern: '21st Century Project · Team Roles & Information Extraction',
+        pattern: `21st Century Skills Project · Team Roles & Information Extraction (${projectTitle})`,
         taskType: 'team_roles_extraction',
-        instruction: `Examine the project elements and team roles. Mediate and explain the goals of our 21st Century Project (${theme_type === 'productive' ? 'Project 2' : 'Project 1'}) to your teammates in clear, simple English!`,
+        instruction: `Examine the project elements and team roles. Mediate and explain the goals of our 21st Century Project (${isTheme2 ? 'Project 2' : 'Project 1'}) to your teammates in clear, simple English!`,
         actionCue: '[ Team Collaboration 🤝 ]',
         badge: '21st Century Project'
       },
@@ -260,6 +306,10 @@ export function selectActivityPatterns(contract) {
   }
 
   return {
+    interaction_type: 'Pair',
+    student_action: 'Practice',
+    materials: 'Worksheet',
+    evidence_type: 'Observable Task Evidence',
     activity1: { pattern: 'Vocabulary Hook', taskType: 'vocab_hook', instruction: 'Review the items.', actionCue: '[ Focus 🔍 ]', badge: 'Vocabulary' },
     activity2: { pattern: 'Contextual Check', taskType: 'context_check', prompt: 'Verify the items.', badge: 'Accuracy' }
   };

@@ -303,8 +303,8 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
 
   // 8. 21st Century Skills Project Context for Lesson 5 (Mediation)
   // Theme 1 develops Project 1; Theme 2 develops Project 2
-  const isTheme2 = metadata.themeType === 'productive' || /theme\s*#?\s*2|productive/i.test(clean);
-  let project21st = metadata.project21st || '';
+  const isTheme2 = metadata.themeType === 'productive' || metadata.theme_type === 'productive' || /theme\s*#?\s*2|productive/i.test(clean);
+  let project21st = metadata.project21st || metadata.project_21st || '';
   if (!project21st && isMediation) {
     if (metadata.scenarioData?.communicativeCompetences?.assessmentIdeas?.projects) {
       const projs = metadata.scenarioData.communicativeCompetences.assessmentIdeas.projects;
