@@ -1,6 +1,7 @@
 import { renderRealiaCardHtml, renderSpatialCardHtml, getRealiaPhoto } from './realiaCatalog.js';
 import { getIllustrationSvg } from './illustrations.js';
 import { getAoaCurricularBlueprint, resolveCefrBand, CEFR_BANDS } from './aoaMasterBank.js';
+import { sanitizeThemeTitle } from './lessonParser.js';
 
 function getScenarioThemeNoun(scenario, title) {
   const text = `${scenario || ''} ${title || ''}`.toLowerCase();
@@ -121,21 +122,25 @@ function renderConceptLineDrawingSvg(item, theme) {
 }
 
 export function renderWorkbookHtml(pack) {
-  const title = pack.title || 'English Activity Lesson';
-  const cleanTitle = title.replace(/^Action Worksheet:\s*/i, '').replace(/["']/g, '');
-  const isKinder = /kinder|pre-?k|early|inicial/i.test(pack.grade || '');
+  const cleanTitle = sanitizeThemeTitle(pack.title || pack.lessonTitle || 'English Activity Lesson');
+  const isKinder = /(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b|educaci[oó]n\s+inicial)/i.test(pack.grade || '');
   const grade = pack.grade || (isKinder ? 'Kindergarten' : '4th Grade');
-  const lessonNumber = pack.lessonNum || pack.lessonNumber || (pack.skill === 'Reading' ? 2 : pack.skill === 'Writing' ? 3 : pack.skill === 'Speaking' ? 4 : pack.skill === 'Mediation' ? 5 : 1);
+  const lessonNumber = pack.lessonNum || pack.lessonNumber || (
+    pack.skill === 'Reading' ? 2 :
+    pack.skill === 'Speaking' ? 3 :
+    pack.skill === 'Writing' ? 4 :
+    pack.skill === 'Mediation' ? 5 : 1
+  );
 
-  // Skill determination (1: Listening, 2: Reading, 3: Writing, 4: Speaking, 5: Mediation)
+  // Skill determination (1: Listening, 2: Reading, 3: Speaking, 4: Writing, 5: Mediation)
   let rawSkill = String(pack.skill || '').trim();
   if (!rawSkill || rawSkill === 'English' || rawSkill === 'AOA') {
-    rawSkill = lessonNumber === 2 ? 'Reading' : lessonNumber === 3 ? 'Writing' : lessonNumber === 4 ? 'Speaking' : lessonNumber === 5 ? 'Mediation' : 'Listening';
+    rawSkill = lessonNumber === 2 ? 'Reading' : lessonNumber === 3 ? 'Speaking' : lessonNumber === 4 ? 'Writing' : lessonNumber === 5 ? 'Mediation' : 'Listening';
   }
-  const isReading = /read/i.test(rawSkill);
-  const isWriting = /writ/i.test(rawSkill);
-  const isSpeaking = /speak|oral/i.test(rawSkill);
-  const isMediation = /mediat/i.test(rawSkill);
+  const isReading = lessonNumber === 2 || /read/i.test(rawSkill);
+  const isSpeaking = lessonNumber === 3 || /speak|oral/i.test(rawSkill);
+  const isWriting = lessonNumber === 4 || /writ/i.test(rawSkill);
+  const isMediation = lessonNumber === 5 || /mediat/i.test(rawSkill);
   const isListening = !isReading && !isWriting && !isSpeaking && !isMediation;
   const skillName = isReading ? 'Reading' : isWriting ? 'Writing' : isSpeaking ? 'Speaking' : isMediation ? 'Mediation' : 'Listening';
 
@@ -395,9 +400,11 @@ export function renderWorkbookHtml(pack) {
   const gradeLevelCategory = `${aoaBlueprint.bandMeta.name} (${aoaBlueprint.bandMeta.cefr})`;
   const skillsDetail = isKinder
     ? 'Receptive Listening & Non-Verbal Action (TPR)'
+    : isMediation
+    ? 'Mediation · 21st Century Skills Project'
     : `${skillName} · ${aoaBlueprint.bandMeta.cefr} · Action-Oriented Practice`;
 
-  const skillPill = `${skillName} · ${aoaBlueprint.bandMeta.cefr}`;
+  const skillPill = isMediation ? 'Mediation · 21st Century Project' : `${skillName} · ${aoaBlueprint.bandMeta.cefr}`;
 
   // ══════════════════════════════════════════════════════════════════
   // TOP BAR & ALERT (Matching Image 1 exact preview aesthetics)

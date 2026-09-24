@@ -45,7 +45,7 @@ export const CEFR_BANDS = {
 
 export function resolveCefrBand(gradeStr) {
   const g = String(gradeStr || '').toLowerCase();
-  if (/pre-?k|kinder|inicial|early/i.test(g)) return 'pre-a1';
+  if (/(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b|inicial)/i.test(g)) return 'pre-a1';
   if (/1st|2nd|primero|segundo|1°|2°/i.test(g)) return 'a1.1';
   if (/3rd|4th|tercero|cuarto|3°|4°/i.test(g)) return 'a1';
   if (/5th|6th|quinto|sexto|5°|6°/i.test(g)) return 'a1+';

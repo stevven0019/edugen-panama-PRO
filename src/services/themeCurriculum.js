@@ -42,7 +42,7 @@ export function normalizeThemeScenario(raw, themeType) {
     pragmatic: asList(pragmatic),
     sociolinguistic: asList(socio),
     pronunciation,
-    selectedThemeStandards: raw.themes?.[index]?.standards || [],
+    selectedThemeStandards: raw.themes?.[index]?.standards,
     project21stCentury: projectText || missingCurriculumData
   };
 }

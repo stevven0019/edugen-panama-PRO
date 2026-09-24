@@ -1,11 +1,10 @@
 import { jsPDF } from 'jspdf';
 import { validatePack } from './activityPack.js';
 import { renderWorkbookHtml } from './renderWorkbookHtml.js';
-
 export function buildWorkbook(pack) {
   validatePack(pack);
   const doc = new jsPDF();
-  const isKinder = /kinder|pre-?k|early/i.test(pack.grade || '');
+  const isKinder = /(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b|educaci[oó]n\s+inicial)/i.test(pack.grade || '');
   const isListening = /listen/i.test(pack.skill || '');
 
   const write = (value, x, y, width = 174, size = 11, lineSpacing = 0.44) => {

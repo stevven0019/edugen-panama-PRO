@@ -4,6 +4,7 @@ import { generateActivityPack, latestAoa } from '../resources/activityPack';
 import { buildWorkbook, downloadWorkbook, downloadWorkbookDoc, downloadEditorialPdf, downloadEditorialHtml } from '../resources/workbookPdf';
 import { renderWorkbookHtml } from '../resources/renderWorkbookHtml';
 import { downloadAoaSheetsCsv, getCefrByGrade } from '../resources/sheetExporter';
+import { sanitizeThemeTitle } from '../resources/lessonParser';
 
 export const GRADES_CEFR_MAP = [
   { id: 'prek', name: 'Pre-K', label: 'Pre-K (Pre-A1 Receptivo / TPR)', cefr: 'Pre-A1', file: 'English_Curriculum_Prekinder.json' },
@@ -25,9 +26,9 @@ export const GRADES_CEFR_MAP = [
 export const SKILLS_AOA = [
   { id: 'Listening', label: '1. Listening · Entrada Comprensiva & TPR', number: 1, desc: 'Listen & Do, discriminación auditiva y gestos' },
   { id: 'Reading', label: '2. Reading · Alfabetización Visual & Decodificación', number: 2, desc: 'Avisos reales, menús, skimming & scanning' },
-  { id: 'Writing', label: '3. Writing · Producción Escrita Social', number: 3, desc: 'Desde rotulado hasta comandas y formularios' },
-  { id: 'Speaking', label: '4. Speaking · Acción Social & Interacción Oral', number: 4, desc: 'Role-play cards en parejas, brecha de información' },
-  { id: 'Mediation', label: '5. Mediation · Mediación Interpersonal (CEFR 2020)', number: 5, desc: 'Facilitar la comprensión a otros, explicar gráficos' }
+  { id: 'Speaking', label: '3. Speaking · Acción Social & Interacción Oral', number: 3, desc: 'Role-play cards en parejas, brecha de información' },
+  { id: 'Writing', label: '4. Writing · Producción Escrita Social', number: 4, desc: 'Desde rotulado hasta comandas y formularios' },
+  { id: 'Mediation', label: '5. Mediation · Mediación Interpersonal (CEFR 2020)', number: 5, desc: '21st Century Skills Project (Theme 1: Proj 1, Theme 2: Proj 2)' }
 ];
 
 const plain = html => new DOMParser().parseFromString(html || '', 'text/html').body.textContent || '';
@@ -74,7 +75,7 @@ async function readLesson(file) {
   // Detect grade hint from filename or text
   let detectedGrade = null;
   const combined = (baseName + ' ' + (text || '')).slice(0, 3000);
-  if (/kinder|pre-?k|early|inicial/i.test(combined)) detectedGrade = 'Kindergarten';
+  if (/(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b|educaci[oó]n\s+inicial)/i.test(combined)) detectedGrade = 'Kindergarten';
   else if (/1st|1°|primer/i.test(combined)) detectedGrade = '1st Grade';
   else if (/2nd|2°|segundo/i.test(combined)) detectedGrade = '2nd Grade';
   else if (/3rd|3°|tercer/i.test(combined)) detectedGrade = '3rd Grade';
@@ -124,6 +125,9 @@ export default function ResourceWorkbook({
   defaultScenario = null,
   defaultScenarioIndex = 0,
   defaultSkill = 'Listening',
+  defaultLessonNum = 1,
+  defaultThemeType = 'receptive',
+  defaultProject21st = '',
   currentLessonHtml = null,
   currentLessonTitle = ''
 }) {
@@ -147,7 +151,12 @@ export default function ResourceWorkbook({
   });
   const [matrixScenarios, setMatrixScenarios] = useState([]);
   const [matrixScenarioIndex, setMatrixScenarioIndex] = useState(defaultScenarioIndex || 0);
-  const [matrixSkill, setMatrixSkill] = useState(defaultSkill || 'Listening');
+  const [matrixSkill, setMatrixSkill] = useState(() => {
+    if (defaultLessonNum && defaultLessonNum >= 1 && defaultLessonNum <= 5) {
+      return SKILLS_AOA[defaultLessonNum - 1].id;
+    }
+    return defaultSkill || 'Listening';
+  });
   const [matrixLoading, setMatrixLoading] = useState(false);
 
   const controller = useRef(null);
@@ -225,14 +234,28 @@ export default function ResourceWorkbook({
       let input;
       if (source === 'current') {
         const scenarioName = defaultScenario?.scenarioName || defaultScenario?.scenario_title || defaultScenario?.title || currentLessonTitle || 'AOA Lesson';
-        const skillObj = SKILLS_AOA.find(s => s.id === defaultSkill) || SKILLS_AOA[0];
+        const effectiveLessonNum = defaultLessonNum || 1;
+        const skillObj = SKILLS_AOA[effectiveLessonNum - 1] || SKILLS_AOA[0];
+        const effectiveSkill = skillObj.id;
+        const cleanTitle = sanitizeThemeTitle(currentLessonTitle || scenarioName);
+
+        // Lesson 5 Mediation & 21st Century Project
+        let project21st = defaultProject21st || '';
+        if (!project21st && effectiveLessonNum === 5) {
+          const projs = defaultScenario?.communicativeCompetences?.assessmentIdeas?.projects || defaultScenario?.assessmentIdeas?.projects || [];
+          project21st = defaultThemeType === 'productive' ? (projs[1] || projs[0] || '') : (projs[0] || '');
+        }
+
         input = {
           text: currentLessonHtml,
           grade: defaultGrade,
-          title: currentLessonTitle || scenarioName,
+          title: cleanTitle,
           scenario: scenarioName,
-          skill: defaultSkill,
-          lessonNum: skillObj.number,
+          skill: effectiveSkill,
+          lessonNum: effectiveLessonNum,
+          themeType: defaultThemeType,
+          project21st,
+          scenarioData: defaultScenario,
           isCurrent: true,
           forceAi: false
         };
@@ -241,6 +264,9 @@ export default function ResourceWorkbook({
         const currentScenario = matrixScenarios[matrixScenarioIndex] || {};
         const scenarioName = currentScenario.scenarioName || currentScenario.scenario_title || currentScenario.title || `Escenario ${matrixScenarioIndex + 1}`;
         const skillObj = SKILLS_AOA.find(s => s.id === matrixSkill) || SKILLS_AOA[0];
+        const isMediation = skillObj.number === 5;
+        const projs = currentScenario.communicativeCompetences?.assessmentIdeas?.projects || currentScenario.assessmentIdeas?.projects || [];
+        const project21st = projs[0] || '';
 
         input = {
           isMatrix: true,
@@ -252,6 +278,7 @@ export default function ResourceWorkbook({
           skill: matrixSkill,
           lessonNum: skillObj.number,
           scenarioData: currentScenario,
+          project21st: isMediation ? project21st : '',
           text: `EDUGEN PRO AOA MODULAR CURRICULUM LESSON
 Grade: ${gradeItem.name} (CEFR: ${gradeItem.cefr})
 Scenario ${matrixScenarioIndex + 1}: ${scenarioName}
@@ -272,15 +299,17 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
       }
 
       const result = await generateActivityPack(input, controller.current.signal);
+      result.title = sanitizeThemeTitle(result.title);
+
       if (source === 'current') {
         result.grade = defaultGrade;
-        result.skill = defaultSkill;
-        result.lessonNum = SKILLS_AOA.find(s => s.id === defaultSkill)?.number || 1;
-        if (currentLessonTitle) result.title = currentLessonTitle;
+        result.skill = input.skill;
+        result.lessonNum = input.lessonNum;
+        if (currentLessonTitle) result.title = sanitizeThemeTitle(currentLessonTitle);
       }
       if (source === 'file') {
         if (input.grade) result.grade = input.grade;
-        if (input.title) result.title = input.title;
+        if (input.title) result.title = sanitizeThemeTitle(input.title);
         if (input.scenario) result.scenario = input.scenario;
       }
       if (source === 'latest' && lesson?.grade) result.grade = lesson.grade;

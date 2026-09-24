@@ -2,11 +2,38 @@
  * Parser that extracts structured 3-Page Pedagogical Activity Pack data
  * directly from EduGen AOA Lesson Plans (HTML, Docx-extracted text, or plain text).
  * 
- * Returns null if authentic vocabulary or structures cannot be parsed,
- * so the system seamlessly falls back to Gemini AI for complete generation.
+ * Supports Pre-K to 12th Grade · 8 Scenarios · 5 Lessons per Scenario:
+ * Lesson 1: Listening
+ * Lesson 2: Reading
+ * Lesson 3: Speaking
+ * Lesson 4: Writing
+ * Lesson 5: Mediation (21st Century Skills Project: Theme 1 -> Project 1, Theme 2 -> Project 2)
  */
 
 import { getRealiaPhoto } from './realiaCatalog.js';
+
+export function sanitizeThemeTitle(rawTitle) {
+  if (!rawTitle || typeof rawTitle !== 'string') return 'English AOA Lesson';
+  let t = rawTitle
+    .replace(/^Action Worksheet:\s*/i, '')
+    .replace(/["'“”]/g, '')
+    .replace(/^Action Worksheet:\s*/i, '')
+    .replace(/^Planner\s*(?:AOA\s*)?[-–—:]\s*/i, '')
+    .replace(/^Theme\s*#?\s*\d*\s*[-–—:]\s*/i, '')
+    .replace(/^Theme\s*#?\s*/i, '')
+    .replace(/[-–—:]\s*Lesson\s*#?\s*\d+.*$/i, '')
+    .replace(/\(L\d+\)/gi, '')
+    .replace(/^EduGen\s*(?:Pro\s*)?(?:AOA\s*)?[:\-–—]?\s*/i, '')
+    .trim();
+  t = t.replace(/^Planner\s*(?:AOA\s*)?[-–—:]?\s*/i, '')
+       .replace(/^Theme\s*#?\s*\d*[-–—:]?\s*/i, '')
+       .replace(/^Theme\s*#?\s*/i, '')
+       .replace(/^Lesson\s*#?\s*\d*[-–—:]?\s*/i, '')
+       .replace(/[-–—:]\s*Lesson\s*#?\s*\d+.*$/i, '')
+       .replace(/^[:\-–—\s]+/, '')
+       .trim();
+  return t || 'English AOA Lesson';
+}
 
 const cleanHtml = (html) => {
   if (!html) return '';
@@ -24,24 +51,46 @@ const cleanHtml = (html) => {
     .trim();
 };
 
+const INVALID_VOCAB_REGEX = /^(?:the\s+teacher|the\s+student|teacher|student|model|models|modeling|describing|asking|explaining|identifying|practicing|evaluating|speaking|writing|reading|listening|stage|warm|warm-up|presentation|practice|production|assessment|reflection|step|grade|minute|time|materials|procedure|differentiation|learning|outcome|objective|check|dialogue|instructions?|rubric|performance|task|essential|target|language|comprehension|production|accuracy|fluency|inquiry|strategy|concept|detail|focus|context|element|statement|question|answer|true|false|yes|no)/i;
+
+export function isValidVocabWord(word) {
+  if (!word || typeof word !== 'string') return false;
+  const clean = word.replace(/^[#*_\s]+|[#*_\s]+$/g, '').trim();
+  if (clean.length < 2 || clean.length > 22) return false;
+  if (clean.split(/\s+/).length > 2) return false;
+  if (/[.,;?!:()"'\[\]{}<>\/\\#*]/.test(clean)) return false;
+  if (/\d/.test(clean)) return false;
+  if (INVALID_VOCAB_REGEX.test(clean)) return false;
+  if (/^the\s+/i.test(clean) && clean.split(/\s+/).length > 1) return false;
+  return true;
+}
+
 const extractHtmlKeywords = (html) => {
   if (!html) return [];
   const words = [];
-  const matches = [...html.matchAll(/<(?:strong|b|em|li|td)[^>]*>([\s\S]*?)<\/(?:strong|b|em|li|td)>/gi)];
+  const matches = [...html.matchAll(/<(?:strong|b|em|li)[^>]*>([\s\S]*?)<\/(?:strong|b|em|li)>/gi)];
   for (const m of matches) {
-    const raw = m[1].replace(/<[^>]+>/g, '').trim();
-    if (raw.length > 2 && raw.length < 30 && !/^(stage|warm|presentation|practice|production|assessment|reflection|step|grade|minute|time|teacher|student|materials|procedure|differentiation)/i.test(raw)) {
+    const raw = m[1].replace(/<[^>]+>/g, '').trim().toLowerCase();
+    if (isValidVocabWord(raw)) {
       words.push(raw);
     }
   }
   return words;
 };
 
-const CURRICULUM_TOPIC_VOCAB = {
+export const CURRICULUM_TOPIC_VOCAB = {
   market: ['pineapple', 'banana', 'orange', 'apple', 'watermelon', 'market', 'price', 'dollar'],
   shopping: ['pineapple', 'banana', 'orange', 'shopping list', 'store', 'cashier', 'money', 'price'],
   fruit: ['pineapple', 'banana', 'orange', 'apple', 'watermelon', 'mango', 'papaya', 'lemon'],
   food: ['rice', 'chicken', 'fish', 'salad', 'water', 'fruit', 'vegetables', 'bread'],
+  garden: ['tomato', 'plant', 'flower', 'seed', 'soil', 'water', 'sun', 'leaf'],
+  neighborhood: ['park', 'library', 'store', 'school', 'playground', 'street', 'house', 'tree'],
+  canal: ['canal', 'ship', 'boat', 'ocean', 'bridge', 'vessel', 'locks', 'goods'],
+  beach: ['beach', 'towel', 'sand', 'shell', 'wave', 'picnic', 'sun', 'umbrella'],
+  rain: ['puddle', 'umbrella', 'raincoat', 'boots', 'storm', 'cloud', 'sky', 'rain'],
+  weather: ['sunny', 'rainy', 'cloudy', 'windy', 'stormy', 'hot', 'cold', 'warm'],
+  mola: ['mola', 'fabric', 'color', 'turtle', 'butterfly', 'jaguar', 'art', 'pattern'],
+  clothing: ['pollera', 'dress', 'shirt', 'pants', 'shoes', 'hat', 'uniform', 'costume'],
   school: ['book', 'pencil', 'desk', 'chair', 'bag', 'crayon', 'marker', 'eraser'],
   classroom: ['book', 'desk', 'chair', 'pencil', 'board', 'door', 'window', 'table'],
   animal: ['jaguar', 'monkey', 'toucan', 'sloth', 'bird', 'frog', 'turtle', 'fish'],
@@ -49,14 +98,13 @@ const CURRICULUM_TOPIC_VOCAB = {
   recycle: ['recycle', 'bin', 'bottle', 'plastic', 'compost', 'trash', 'environment', 'paper'],
   community: ['house', 'street', 'park', 'hospital', 'school', 'store', 'bus', 'library'],
   family: ['mother', 'father', 'brother', 'sister', 'grandmother', 'grandfather', 'baby', 'family'],
-  weather: ['sunny', 'rainy', 'cloudy', 'windy', 'stormy', 'hot', 'cold', 'warm'],
   health: ['exercise', 'water', 'fruit', 'sleep', 'doctor', 'teeth', 'soap', 'clean'],
-  clothing: ['shirt', 'pants', 'dress', 'shoes', 'hat', 'jacket', 'socks', 'uniform'],
   technology: ['computer', 'robot', 'screen', 'keyboard', 'internet', 'phone', 'tablet', 'code'],
-  transport: ['bus', 'car', 'train', 'metro', 'boat', 'airplane', 'bicycle', 'station']
+  transport: ['bus', 'car', 'train', 'metro', 'boat', 'airplane', 'bicycle', 'station'],
+  project: ['poster', 'chart', 'guide', 'presentation', 'team', 'display', 'research', 'card']
 };
 
-function getTopicVocabFallback(textContext) {
+export function getTopicVocabFallback(textContext) {
   const lower = (textContext || '').toLowerCase();
   for (const [key, list] of Object.entries(CURRICULUM_TOPIC_VOCAB)) {
     if (lower.includes(key)) return list;
@@ -69,34 +117,78 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
   const clean = cleanHtml(rawText);
   if (!clean || clean.length < 20) return null;
 
-  // 1. Extract Grade & Theme
+  // 1. Grade Resolution (Strictly avoid /early/ matching Kindergarten!)
   let grade = metadata.grade || '';
   if (!grade) {
-    const gradeMatch = clean.match(/Grade:\s*([^\s]+(?:\s+Grade)?)/i) || clean.match(/(?:Pre-?K|Kindergarten|Kinder|\b\d{1,2}(?:st|nd|rd|th)?\s+Grade|\b(?:1|2|3|4|5|6|7|8|9|10|11|12)°?\s*Grado)/i);
-    grade = gradeMatch ? gradeMatch[1] || gradeMatch[0] : '4th Grade';
+    const gradeMatch = clean.match(/Grade:\s*([^\s\n]+(?:\s+Grade)?)/i) ||
+      clean.match(/(?:Pre-?K|Kindergarten|Kinder\b|\b\d{1,2}(?:st|nd|rd|th)?\s+Grade|\b(?:1|2|3|4|5|6|7|8|9|10|11|12)°?\s*Grado)/i);
+    grade = gradeMatch ? (gradeMatch[1] || gradeMatch[0]).trim() : '4th Grade';
   }
 
-  let theme = metadata.theme || metadata.title || '';
-  if (!theme || theme.includes('Lesson Planner') || theme.includes('EduGen')) {
-    const themeMatch = clean.match(/Theme:\s*([^.\n]+?)(?:Date|\bSpecific|$)/i) || clean.match(/Theme\s*#\s*\d+\s*[-–—:]\s*Lesson\s*#\s*\d+\s*[-–—:]?\s*([^.\n]+)/i);
-    if (themeMatch) theme = themeMatch[1].trim();
+  // 2. Title & Theme Resolution
+  let rawTheme = metadata.title || metadata.theme || '';
+  if (!rawTheme || rawTheme.includes('Lesson Planner') || rawTheme.includes('EduGen') || rawTheme.includes('Secuencia AOA')) {
+    const themeMatch = clean.match(/Theme:\s*([^.\n]+?)(?:Date|\bSpecific|$)/i) ||
+      clean.match(/Theme\s*#\s*\d*\s*[-–—:]\s*Lesson\s*#\s*\d*\s*[-–—:]?\s*([^.\n]+)/i);
+    if (themeMatch) rawTheme = themeMatch[1].trim();
   }
-  if (!theme) {
+  if (!rawTheme) {
     const headingMatch = rawText.match(/<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/i);
-    if (headingMatch) theme = headingMatch[1].replace(/<[^>]+>/g, '').trim();
+    if (headingMatch) rawTheme = headingMatch[1].replace(/<[^>]+>/g, '').trim();
   }
-  if (!theme) theme = 'English AOA Lesson';
+  const cleanTheme = sanitizeThemeTitle(rawTheme || 'English AOA Lesson');
 
+  // 3. Scenario Resolution
   let scenario = metadata.scenario || '';
-  const scenarioMatch = clean.match(/Scenario:\s*([^.\n]+?)(?:Theme|Specific|Date|$)/i);
-  if (scenarioMatch) scenario = scenarioMatch[1].trim();
-  if (!scenario) scenario = theme;
+  if (!scenario) {
+    const scenarioMatch = clean.match(/Scenario:\s*([^.\n]+?)(?:Skills?|Theme|Specific|Date|Learning|$)/i);
+    if (scenarioMatch) scenario = scenarioMatch[1].trim();
+  }
+  if (!scenario || scenario.includes('Planner') || scenario.length > 50) {
+    scenario = cleanTheme;
+  }
 
-  let objective = '';
-  const objMatch = clean.match(/Specific\s+Objective:\s*([^.\n]+?\.)/i);
-  if (objMatch) objective = objMatch[1].trim();
+  // 4. Lesson Number & Skill Focus (MEDUCA 5-Skill Progression)
+  // Lesson 1 = Listening, Lesson 2 = Reading, Lesson 3 = Speaking, Lesson 4 = Writing, Lesson 5 = Mediation
+  let lessonNum = metadata.lessonNum || metadata.lessonNumber;
+  let skillFocus = metadata.skill || '';
 
-  // 2. Extract Vocabulary Words from Stage 1, Vocabulary Section, HTML tags or quoted words
+  if (!lessonNum && skillFocus) {
+    const s = skillFocus.toLowerCase();
+    if (s.includes('listen')) lessonNum = 1;
+    else if (s.includes('read')) lessonNum = 2;
+    else if (s.includes('speak') || s.includes('oral')) lessonNum = 3;
+    else if (s.includes('writ')) lessonNum = 4;
+    else if (s.includes('mediat')) lessonNum = 5;
+  }
+
+  if (!lessonNum) {
+    const numMatch = clean.match(/Lesson\s*(?:#|No\.?|Number)?\s*(\d)/i) || rawText.match(/Lesson\s*(?:#|No\.?|Number)?\s*(\d)/i);
+    lessonNum = numMatch ? parseInt(numMatch[1], 10) : 1;
+  }
+
+  if (!skillFocus) {
+    skillFocus = lessonNum === 2 ? 'Reading'
+      : lessonNum === 3 ? 'Speaking'
+      : lessonNum === 4 ? 'Writing'
+      : lessonNum === 5 ? 'Mediation'
+      : 'Listening';
+  }
+
+  const isReading = lessonNum === 2 || /read/i.test(skillFocus);
+  const isSpeaking = lessonNum === 3 || /speak|oral/i.test(skillFocus);
+  const isWriting = lessonNum === 4 || /writ/i.test(skillFocus);
+  const isMediation = lessonNum === 5 || /mediat/i.test(skillFocus);
+  const isListening = !isReading && !isSpeaking && !isWriting && !isMediation;
+
+  let objective = metadata.objective || '';
+  if (!objective) {
+    const objMatch = clean.match(/Specific\s+Objective:\s*([^.\n]+?\.)/i);
+    if (objMatch) objective = objMatch[1].trim();
+    else objective = `Demonstrate ${skillFocus.toLowerCase()} skills in the context of "${cleanTheme}".`;
+  }
+
+  // 5. Authentic Vocabulary Extraction (Filtered Strictly Against Procedural Sentences)
   let vocabWords = [];
   const vocabMatch = clean.match(/(?:vocabulary\s+words?|target\s+vocabulary|key\s+vocabulary|vocabulary\s+items?|words?)[^:]*:\s*([^\n.]+)/i);
   if (vocabMatch) {
@@ -105,30 +197,29 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
       .replace(/\./g, '')
       .split(/[,;\/]| and /i)
       .map(w => w.trim().toLowerCase())
-      .filter(w => w.length > 2 && !w.startsWith('(') && !w.startsWith('e.g'));
+      .filter(w => isValidVocabWord(w));
     vocabWords = [...new Set(rawWords)].slice(0, 6);
   }
 
   if (vocabWords.length < 4) {
-    // Check highlighted HTML tags or markdown stars
     const htmlWords = extractHtmlKeywords(rawText);
-    const starWords = [...clean.matchAll(/\*\*([a-zA-Z\s]{3,20})\*\*/g)].map(m => m[1].toLowerCase().trim());
-    const candidates = [...new Set([...htmlWords, ...starWords])].map(w => w.toLowerCase())
-      .filter(w => !['stage', 'warm-up', 'procedure', 'differentiation', 'teacher', 'students', 'materials', 'time', 'learning', 'outcomes', 'objective'].includes(w));
-    if (candidates.length >= 2) {
-      vocabWords = [...new Set([...vocabWords, ...candidates])].slice(0, 6);
+    const starMatches = [...clean.matchAll(/\*\*([a-zA-Z\s]{3,22})\*\*/g)].map(m => m[1].toLowerCase().trim());
+    const validStarWords = starMatches.filter(w => isValidVocabWord(w));
+    const candidates = [...new Set([...htmlWords, ...validStarWords])];
+    if (candidates.length > 0) {
+      vocabWords = [...new Set([...vocabWords, ...candidates])].filter(w => isValidVocabWord(w)).slice(0, 6);
     }
   }
 
-  // Fallback vocabulary if text has fewer than 4 extracted words
+  // Fallback to rich authentic scenario vocabulary if fewer than 4 valid words found
   if (vocabWords.length < 4) {
-    const topicDefaults = getTopicVocabFallback(`${theme} ${scenario} ${clean}`);
-    vocabWords = [...new Set([...vocabWords, ...topicDefaults])].slice(0, 6);
+    const topicDefaults = getTopicVocabFallback(`${cleanTheme} ${scenario} ${clean}`);
+    vocabWords = [...new Set([...vocabWords, ...topicDefaults])].filter(w => isValidVocabWord(w)).slice(0, 6);
   }
 
-  // 3. Extract Dialogue Lines from Stage 2 / Dialogue Sections
+  // 6. Dialogue Extraction
   let dialogueLines = [];
-  const speakerRegex = /(Teacher|Student|Buyer|Seller|Customer|Vendor|Clerk|Cashier|Doctor|Patient|Guide|Ranger|Tourist|Passenger|Officer|Speaker\s*\d+|Person\s*\d+|Student\s*[A-Z\d]|A|B):\s*([^.\n?!]+[.?!]?)/gi;
+  const speakerRegex = /(Teacher|Student|Buyer|Seller|Customer|Vendor|Clerk|Cashier|Doctor|Patient|Guide|Ranger|Tourist|Passenger|Officer|Student\s*[A-Z\d]|Partner\s*[A-Z]|Speaker\s*[A-Z\d]|A|B):\s*([^.\n?!]+[.?!]?)/gi;
   const matches = [...clean.matchAll(speakerRegex)];
   if (matches.length >= 2) {
     dialogueLines = matches.slice(0, 8).map(m => ({
@@ -137,34 +228,34 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     }));
   }
 
-  // Fallback dialogue if fewer than 2 lines found in text
   if (dialogueLines.length < 2) {
-    const firstWord = vocabWords[0] || 'target item';
-    const isShopping = /market|shop|buy|sell|price|cost|dollar|fruit/i.test(`${theme} ${scenario}`);
+    const firstWord = vocabWords[0] || 'pineapple';
+    const secondWord = vocabWords[1] || 'banana';
+    const isShopping = /market|shop|buy|sell|price|cost|dollar|fruit/i.test(`${cleanTheme} ${scenario}`);
     if (isShopping) {
       dialogueLines = [
         { speaker: 'Customer', text: `Hello! How much is the ${firstWord}?` },
         { speaker: 'Vendor', text: `Good morning! The ${firstWord} is two dollars and fifty cents.` },
-        { speaker: 'Customer', text: 'Great, can I have one please?' },
-        { speaker: 'Vendor', text: 'Here you go! Thank you for shopping with us.' }
+        { speaker: 'Customer', text: `Can I have one ${firstWord} and two ${secondWord}s, please?` },
+        { speaker: 'Vendor', text: 'Here you go! Thank you for shopping with us today.' }
       ];
     } else {
       dialogueLines = [
-        { speaker: 'Student A', text: `Hello! Can you help me practice our lesson about ${theme}?` },
-        { speaker: 'Student B', text: `Yes! Let's identify the ${firstWord} together in our class.` },
-        { speaker: 'Student A', text: 'How do we use this in our daily communication?' },
-        { speaker: 'Student B', text: 'We work together in pairs and follow the action steps.' }
+        { speaker: 'Partner A', text: `Hello! Can you help me practice our lesson about ${cleanTheme}?` },
+        { speaker: 'Partner B', text: `Yes! Let's examine the ${firstWord} together in our pair activity.` },
+        { speaker: 'Partner A', text: `How do we use the ${secondWord} to communicate clearly?` },
+        { speaker: 'Partner B', text: 'We practice the question frame and share our ideas with the class.' }
       ];
     }
   }
 
-  // 4. Extract Language Frame
+  // 7. Language Frame
   let languageFrame = null;
   const frameMatch = clean.match(/(?:language\s+frame|target\s+structure|exchange)[^:]*:\s*["“]([^"”]+)["”]/i);
   if (frameMatch) {
     languageFrame = {
       question: frameMatch[1].trim(),
-      answer: `Target response related to ${theme}.`,
+      answer: `Target response related to ${cleanTheme}.`,
       exchange: `A: "${frameMatch[1].trim()}"`
     };
   } else if (dialogueLines.length >= 2) {
@@ -175,77 +266,219 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     };
   } else {
     languageFrame = {
-      question: `What is the key concept of ${theme}?`,
+      question: `What is the key concept of ${cleanTheme}?`,
       answer: `We identify and practice ${vocabWords[0] || 'the target concept'}.`,
-      exchange: `Speaker A: "Can you identify ${vocabWords[0] || 'the item'}?" ──> Speaker B: "Yes, here it is!"`
+      exchange: `Partner A: "Can you identify the ${vocabWords[0] || 'item'}?" ──> Partner B: "Yes, here it is!"`
     };
   }
 
-  // 5. Extract Pairs for Stage 3 Matching Activity
-  let matchPairs = [];
-  const matchedVocab = vocabWords.slice(0, 4);
-  matchedVocab.forEach((word, idx) => {
-    matchPairs.push({
-      item: word.charAt(0).toUpperCase() + word.slice(1),
-      detail: `Context ${idx + 1}: ${word}`,
-      icon: word.toLowerCase(),
-      photoUrl: getRealiaPhoto(word)
-    });
-  });
-
-  // 6. Dictation script
-  let dictationScript = `Listen carefully and write the target words: ${vocabWords.slice(0, 4).join(', ')}.`;
-
-  // 7. Questions
-  let quizQuestions = [
-    {
-      type: 'multiple_choice',
-      prompt: `1. What is the primary topic of the lesson?`,
-      options: [`A) ${theme}`, `B) Unrelated Topic`],
-      correct: `A) ${theme}`
-    },
-    {
-      type: 'true_false',
-      prompt: `2. The target vocabulary includes '${vocabWords[0]}'.`,
-      options: ['True', 'False'],
-      correct: 'True'
-    },
-    {
-      type: 'multiple_choice',
-      prompt: `3. Which word belongs to the key vocabulary?`,
-      options: [`A) ${vocabWords[1] || vocabWords[0]}`, `B) None of the above`],
-      correct: `A) ${vocabWords[1] || vocabWords[0]}`
+  // 8. 21st Century Skills Project Context for Lesson 5 (Mediation)
+  // Theme 1 develops Project 1; Theme 2 develops Project 2
+  const isTheme2 = metadata.themeType === 'productive' || /theme\s*#?\s*2|productive/i.test(clean);
+  let project21st = metadata.project21st || '';
+  if (!project21st && isMediation) {
+    if (metadata.scenarioData?.communicativeCompetences?.assessmentIdeas?.projects) {
+      const projs = metadata.scenarioData.communicativeCompetences.assessmentIdeas.projects;
+      project21st = isTheme2 ? (projs[1] || projs[0]) : projs[0];
+    } else {
+      project21st = isTheme2
+        ? `Project 2: Comparative Display & Peer Guide — Students work in teams to compare items and mediate findings for ${cleanTheme}.`
+        : `Project 1: Collaborative Action Poster — Students create a visual poster to explain key concepts and mediate meaning for ${cleanTheme}.`;
     }
-  ];
+  }
 
-  const skillFocus = metadata.skill || clean.match(/Skills?\s+Focus:\s*([^\n]+)/i)?.[1]?.trim() || 'Listening & Speaking';
-  const isReading = /read/i.test(skillFocus);
-  const isWriting = /writ/i.test(skillFocus);
-  const isSpeaking = /speak|oral/i.test(skillFocus);
-  const isMediation = /mediat/i.test(skillFocus);
+  // 9. Structured Action Worksheet (Ficha Concreta de Trabajo)
+  let part1Title = `PART 1: LISTEN & POINT TO THE REAL OBJECTS (AUDITORY HOOK)`;
+  let part1Badge = 'Receptive Listening';
+  let part1ActionCue = '[ Point Here 👆 ]';
+  let part1Instruction = 'Listen carefully! When teacher says the word, point to the real photo on your paper and touch the real object or show the gesture!';
+
+  let part2Title = `PART 2: AUDITORY ACCURACY CHECK · "TRUE OR FALSE? SHOW YOUR THUMB!"`;
+  let part2Badge = 'Accuracy of Listening';
+  let part2Prompt = 'Teacher reads a statement about the photo. If what you hear matches the picture, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!';
+
+  let part2Items = [];
+
+  if (isSpeaking) {
+    part1Title = `PART 1: ORAL RECOGNITION & PRONUNCIATION PRACTICE (${cleanTheme.toUpperCase()})`;
+    part1Badge = 'Spoken Fluency';
+    part1ActionCue = '[ Say It Aloud 🗣️ ]';
+    part1Instruction = "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking: 'What is this?' / 'How much is it?'";
+
+    part2Title = `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`;
+    part2Badge = 'Interaction Check';
+    part2Prompt = "Partner A asks the inquiry question. Partner B checks the statement and answers aloud. If answered correctly and fluently, mark YES ( 👍 )!";
+
+    part2Items = [
+      {
+        concept: 'INQUIRY 1',
+        sentence: `Partner A: "How much is the ${vocabWords[0] || 'pineapple'}?" ──> Partner B: "The fresh ${vocabWords[0] || 'pineapple'} is two dollars and fifty cents."`,
+        subject: vocabWords[0] || 'pineapple',
+        photoUrl: getRealiaPhoto(vocabWords[0] || 'pineapple')
+      },
+      {
+        concept: 'INQUIRY 2',
+        sentence: `Partner A: "How many ${vocabWords[1] || 'banana'}s do you need?" ──> Partner B: "I need four ${vocabWords[1] || 'banana'}s for my family."`,
+        subject: vocabWords[1] || 'banana',
+        photoUrl: getRealiaPhoto(vocabWords[1] || 'banana')
+      },
+      {
+        concept: 'INQUIRY 3',
+        sentence: `Partner A: "Can you identify the ${vocabWords[2] || 'orange'}?" ──> Partner B: "Yes, the ${vocabWords[2] || 'orange'} is fresh and ripe."`,
+        subject: vocabWords[2] || 'orange',
+        photoUrl: getRealiaPhoto(vocabWords[2] || 'orange')
+      },
+      {
+        concept: 'INQUIRY 4',
+        sentence: `Partner A: "What is the price of the ${vocabWords[3] || 'apple'}?" ──> Partner B: "The ${vocabWords[3] || 'apple'} costs one dollar each."`,
+        subject: vocabWords[3] || 'apple',
+        photoUrl: getRealiaPhoto(vocabWords[3] || 'apple')
+      }
+    ];
+  } else if (isReading) {
+    part1Title = `PART 1: READ & DECODE / VISUAL TEXT DECODING (${cleanTheme.toUpperCase()})`;
+    part1Badge = 'Reading Comprehension';
+    part1ActionCue = '[ Read & Check 📖 ]';
+    part1Instruction = 'Read each target word aloud. Examine the real photo and match the printed text label to the correct item!';
+
+    part2Title = `PART 2: READING COMPREHENSION · "TRUE OR FALSE? READ & VERIFY!"`;
+    part2Badge = 'Reading Accuracy';
+    part2Prompt = 'Read each short statement carefully. Evaluate if the sentence is TRUE according to the scenario, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!';
+
+    part2Items = [
+      {
+        concept: 'READ & CHECK 1',
+        sentence: `The store sign clearly displays the price of the fresh ${vocabWords[0] || 'pineapple'}.`,
+        subject: vocabWords[0] || 'pineapple',
+        photoUrl: getRealiaPhoto(vocabWords[0] || 'pineapple')
+      },
+      {
+        concept: 'READ & CHECK 2',
+        sentence: `According to our scenario reading, customers can choose the ${vocabWords[1] || 'banana'} at the stand.`,
+        subject: vocabWords[1] || 'banana',
+        photoUrl: getRealiaPhoto(vocabWords[1] || 'banana')
+      },
+      {
+        concept: 'READ & CHECK 3',
+        sentence: `The shopping receipt lists two units of ${vocabWords[2] || 'orange'} purchased today.`,
+        subject: vocabWords[2] || 'orange',
+        photoUrl: getRealiaPhoto(vocabWords[2] || 'orange')
+      },
+      {
+        concept: 'READ & CHECK 4',
+        sentence: `The informational text confirms that ${vocabWords[3] || 'apple'} is available at the market.`,
+        subject: vocabWords[3] || 'apple',
+        photoUrl: getRealiaPhoto(vocabWords[3] || 'apple')
+      }
+    ];
+  } else if (isWriting) {
+    part1Title = `PART 1: ORTHOGRAPHIC TRACE & VOCABULARY LABELING (${cleanTheme.toUpperCase()})`;
+    part1Badge = 'Written Production';
+    part1ActionCue = '[ Trace & Label ✍️ ]';
+    part1Instruction = 'Look at the real photo. Trace each letter of the target word with your pencil and copy the label onto your practice sheet!';
+
+    part2Title = `PART 2: WRITTEN VERIFICATION · "CHECK & COMPLETE THE RECORD!"`;
+    part2Badge = 'Written Accuracy';
+    part2Prompt = 'Read the statement carefully. Verify the written facts and mark YES ( 👍 ) or NO ( 👎 ) on your report!';
+
+    part2Items = [
+      {
+        concept: 'WRITING CHECK 1',
+        sentence: `Write the correct English name for ${vocabWords[0] || 'item'} on the official inventory record.`,
+        subject: vocabWords[0] || 'item',
+        photoUrl: getRealiaPhoto(vocabWords[0] || 'item')
+      },
+      {
+        concept: 'WRITING CHECK 2',
+        sentence: `The written grocery list includes ${vocabWords[1] || 'item'} with the correct quantity specified.`,
+        subject: vocabWords[1] || 'item',
+        photoUrl: getRealiaPhoto(vocabWords[1] || 'item')
+      },
+      {
+        concept: 'WRITING CHECK 3',
+        sentence: `Complete the sentence by writing the price of the ${vocabWords[2] || 'item'} in words.`,
+        subject: vocabWords[2] || 'item',
+        photoUrl: getRealiaPhoto(vocabWords[2] || 'item')
+      },
+      {
+        concept: 'WRITING CHECK 4',
+        sentence: `Verify the spelling and punctuation of the sentence describing the ${vocabWords[3] || 'item'}.`,
+        subject: vocabWords[3] || 'item',
+        photoUrl: getRealiaPhoto(vocabWords[3] || 'item')
+      }
+    ];
+  } else if (isMediation) {
+    part1Title = `PART 1: 21ST CENTURY PROJECT · TEAM ROLES & MEDIATION (${cleanTheme.toUpperCase()})`;
+    part1Badge = '21st Century Skills Project';
+    part1ActionCue = '[ Team Collaboration 🤝 ]';
+    part1Instruction = `Examine the project elements and team roles. Mediate and explain the goals of our 21st Century Project (${isTheme2 ? 'Project 2' : 'Project 1'}) to your teammates in clear, simple English!`;
+
+    part2Title = `PART 2: PEER MEDIATION & PROJECT VERIFICATION · "CHECK TEAM GOALS!"`;
+    part2Badge = 'Collaborative Accuracy';
+    part2Prompt = 'Work with your project group. Mediate the instructions in simple English. Verify each project milestone: mark YES ( 👍 ) or NO ( 👎 )!';
+
+    part2Items = [
+      {
+        concept: 'TEAM ROLE 1',
+        sentence: `Role 1 (Leader): Explain the main objective of our ${cleanTheme} project to the group.`,
+        subject: vocabWords[0] || 'project',
+        photoUrl: getRealiaPhoto(vocabWords[0] || 'project')
+      },
+      {
+        concept: 'TEAM ROLE 2',
+        sentence: `Role 2 (Researcher): Clarify and check key vocabulary terms like ${vocabWords[1] || 'market'} for peers.`,
+        subject: vocabWords[1] || 'market',
+        photoUrl: getRealiaPhoto(vocabWords[1] || 'market')
+      },
+      {
+        concept: 'TEAM ROLE 3',
+        sentence: `Role 3 (Designer): Organize visual realia and pictures of ${vocabWords[2] || 'pineapple'} on the display.`,
+        subject: vocabWords[2] || 'pineapple',
+        photoUrl: getRealiaPhoto(vocabWords[2] || 'pineapple')
+      },
+      {
+        concept: 'TEAM ROLE 4',
+        sentence: `Role 4 (Speaker): Mediate and present the team's project deliverable to another group.`,
+        subject: vocabWords[3] || 'presentation',
+        photoUrl: getRealiaPhoto(vocabWords[3] || 'presentation')
+      }
+    ];
+  } else {
+    // Listening default
+    part2Items = [
+      {
+        concept: 'LISTEN & VERIFY 1',
+        sentence: `The speaker in the audio dialogue specifically mentioned the fresh ${vocabWords[0] || 'pineapple'}.`,
+        subject: vocabWords[0] || 'pineapple',
+        photoUrl: getRealiaPhoto(vocabWords[0] || 'pineapple')
+      },
+      {
+        concept: 'LISTEN & VERIFY 2',
+        sentence: `We heard the vendor confirm that the ${vocabWords[1] || 'banana'} is ready for purchase.`,
+        subject: vocabWords[1] || 'banana',
+        photoUrl: getRealiaPhoto(vocabWords[1] || 'banana')
+      },
+      {
+        concept: 'LISTEN & VERIFY 3',
+        sentence: `The customer in the recording asked for the price of the ${vocabWords[2] || 'orange'}.`,
+        subject: vocabWords[2] || 'orange',
+        photoUrl: getRealiaPhoto(vocabWords[2] || 'orange')
+      },
+      {
+        concept: 'LISTEN & VERIFY 4',
+        sentence: `The audio prompt instructs the student to identify the ${vocabWords[3] || 'apple'} on the table.`,
+        subject: vocabWords[3] || 'apple',
+        photoUrl: getRealiaPhoto(vocabWords[3] || 'apple')
+      }
+    ];
+  }
 
   const actionWorksheet = {
     part1: {
-      title: isReading
-        ? `PART 1: READ & DECODE / VISUAL TEXT DECODING (${theme.toUpperCase()})`
-        : isWriting
-        ? `PART 1: ORTHOGRAPHIC TRACE & VOCABULARY LABELING (${theme.toUpperCase()})`
-        : isSpeaking
-        ? `PART 1: ORAL RECOGNITION & PRONUNCIATION PRACTICE (${theme.toUpperCase()})`
-        : isMediation
-        ? `PART 1: VISUAL MEDIATION & CONCEPT CLARIFICATION (${theme.toUpperCase()})`
-        : `PART 1: LISTEN & POINT TO THE REAL ${theme.toUpperCase()} (REALIA HOOK)`,
-      badge: isReading ? 'Reading Comprehension' : isWriting ? 'Written Production' : isSpeaking ? 'Spoken Fluency' : isMediation ? 'Mediation Strategy' : 'Receptive Vocabulary',
-      actionCue: isReading ? '[ Read & Check 📖 ]' : isWriting ? '[ Trace & Label ✍️ ]' : isSpeaking ? '[ Say It Aloud 🗣️ ]' : isMediation ? '[ Explain Meaning 🤝 ]' : '[ Point Here 👆 ]',
-      teacherInstruction: isReading
-        ? 'Read each target word aloud. Examine the real photo and match the printed text label to the correct item!'
-        : isWriting
-        ? 'Look at the real photo. Trace each letter of the target word with your pencil and copy the label onto your practice sheet!'
-        : isSpeaking
-        ? "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking: 'What is this?'"
-        : isMediation
-        ? 'Observe the real photo. Explain what the item represents in simple English to a teammate who needs guidance!'
-        : 'Listen carefully! When teacher says the word, point to the real photo on your paper and touch the real object or show the gesture!',
+      title: part1Title,
+      badge: part1Badge,
+      actionCue: part1ActionCue,
+      teacherInstruction: part1Instruction,
       items: vocabWords.slice(0, 6).map(w => ({
         word: w.toUpperCase(),
         label: w.toUpperCase(),
@@ -253,42 +486,58 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
       }))
     },
     part2: {
-      title: isReading
-        ? `PART 2: READING COMPREHENSION · "TRUE OR FALSE? READ & VERIFY!"`
-        : isWriting
-        ? `PART 2: WRITTEN VERIFICATION · "CHECK & COMPLETE THE RECORD!"`
-        : isSpeaking
-        ? `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`
-        : isMediation
-        ? `PART 2: INTERPERSONAL MEDIATION · "RELAY THE MESSAGE CLEARLY!"`
-        : `PART 2: AUDITORY ACCURACY CHECK · "TRUE OR FALSE? SHOW YOUR THUMB!"`,
-      badge: isReading ? 'Reading Accuracy' : isWriting ? 'Written Accuracy' : isSpeaking ? 'Interaction Check' : isMediation ? 'Collaborative Accuracy' : 'Accuracy of Listening',
-      teacherPrompt: isReading
-        ? 'Read each short statement carefully. Evaluate if the sentence is TRUE according to the scenario, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!'
-        : 'Teacher says a statement and shows the photo. If it is TRUE, mark YES ( 👍 ). If it is FALSE, mark NO ( 👎 )!',
-      items: vocabWords.slice(0, 4).map((w, idx) => ({
-        concept: isReading ? `READ & CHECK ${idx + 1}` : `VERIFY ${idx + 1}`,
-        sentence: `The ${w.toLowerCase()} is an essential element in our lesson about ${theme}.`,
-        relation: idx === 0 ? 'on' : idx === 1 ? 'in' : idx === 2 ? 'under' : 'next_to',
-        subject: w.toLowerCase(),
-        reference: 'desk',
-        photoUrl: getRealiaPhoto(w)
-      }))
+      title: part2Title,
+      badge: part2Badge,
+      teacherPrompt: part2Prompt,
+      items: part2Items
     }
   };
 
+  const matchPairs = vocabWords.slice(0, 4).map((word, idx) => ({
+    item: word.charAt(0).toUpperCase() + word.slice(1),
+    detail: `Context ${idx + 1}: ${word}`,
+    icon: word.toLowerCase(),
+    photoUrl: getRealiaPhoto(word)
+  }));
+
+  const dictationScript = `Listen carefully and write the target words: ${vocabWords.slice(0, 4).join(', ')}.`;
+
+  const quizQuestions = [
+    {
+      type: 'multiple_choice',
+      prompt: `1. What is the primary scenario of the lesson?`,
+      options: [`A) ${cleanTheme}`, `B) Unrelated Topic`],
+      correct: `A) ${cleanTheme}`
+    },
+    {
+      type: 'true_false',
+      prompt: `2. The target vocabulary includes '${vocabWords[0] || 'target item'}'.`,
+      options: ['True', 'False'],
+      correct: 'True'
+    },
+    {
+      type: 'multiple_choice',
+      prompt: `3. Which word belongs to the key scenario vocabulary?`,
+      options: [`A) ${vocabWords[1] || vocabWords[0]}`, `B) None of the above`],
+      correct: `A) ${vocabWords[1] || vocabWords[0]}`
+    }
+  ];
+
   return {
-    title: theme,
+    title: cleanTheme,
+    rawTitle: rawTheme,
     grade: grade,
     skill: skillFocus,
+    lessonNum: lessonNum,
     scenario: scenario,
-    objective: objective || `Identify target vocabulary and communicative structures for ${theme}.`,
+    objective: objective,
+    project21st: project21st,
     actionWorksheet: actionWorksheet,
-    
+
     // ── PAGE 1: DISCOVERY & LINGUISTIC INPUT ──
     page1: {
-      sectionTitle: 'Stage 1 & 2: Discovery & Linguistic Input',
-      instructions: 'Review the key words and the communicative frame before listening.',
+      sectionTitle: `Stage 1 & 2: Discovery & Linguistic Input (${skillFocus})`,
+      instructions: `Review the key words and the communicative frame for ${cleanTheme}.`,
       wordBank: vocabWords.map((word) => ({
         word: word.charAt(0).toUpperCase() + word.slice(1),
         pos: 'noun',
@@ -298,47 +547,53 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
       })),
       languageFrame: languageFrame,
       activity1: {
-        title: 'Activity 1: Listen & Circle (Word Recognition)',
-        instruction: 'Listen carefully as your teacher reads the target words. Circle each word you hear:',
+        title: `Activity 1: ${isSpeaking ? 'Pronounce & Circle' : isWriting ? 'Trace & Identify' : isMediation ? 'Clarify & Circle' : 'Listen & Circle'}`,
+        instruction: `Review the target words with your teacher. Circle each word accurately:`,
         words: vocabWords
       }
     },
 
     // ── PAGE 2: GUIDED PRACTICE & PERFORMANCE TASK ──
     page2: {
-      sectionTitle: 'Stage 3 & 4: Guided Practice & Tangible Learning Task',
+      sectionTitle: `Stage 3 & 4: Guided Practice & Tangible Learning Task (${skillFocus})`,
       activity2: {
-        title: 'Activity 2: Listen & Match',
-        instruction: 'Listen and draw a line to match each item with its corresponding detail:',
+        title: 'Activity 2: Visual & Concept Matching',
+        instruction: 'Draw a line to match each target word with its corresponding detail:',
         pairs: matchPairs
       },
       activity3: {
-        title: 'Activity 3: Authentic Dialogue Cloze',
+        title: `Activity 3: Authentic Exchange Cloze (${skillFocus})`,
         instruction: 'Complete the dialogue with the correct words from the Word Bank below:',
         wordBank: vocabWords.slice(0, 5),
         dialogue: dialogueLines
       },
       activity4: {
-        title: `Activity 4: Performance Production (${theme})`,
-        instruction: `Draw and write about ${theme} using the target vocabulary:`,
-        prompt: `Performance Task: Draw and label the key items for ${theme}:`
+        title: isMediation
+          ? `Activity 4: 21st Century Skills Project Task (${isTheme2 ? 'Project 2' : 'Project 1'})`
+          : `Activity 4: Performance Action Task (${cleanTheme})`,
+        instruction: isMediation
+          ? (project21st || `Collaborate in teams to create the tangible project deliverable for ${cleanTheme}.`)
+          : `Apply your ${skillFocus.toLowerCase()} skills to complete the tangible deliverable for ${cleanTheme}:`,
+        prompt: isMediation
+          ? `Project Deliverable: Work in teams of 3-4. Assign roles (Leader, Researcher, Designer, Speaker) and build your project presentation for ${cleanTheme}.`
+          : `Performance Deliverable: Complete your action task using the target language structures.`
       }
     },
 
     // ── PAGE 3: FORMATIVE ASSESSMENT, TEACHER SCRIPTS & ANSWER KEY ──
     page3: {
-      sectionTitle: 'Stage 5 & 6: Formative Assessment, Exit Ticket & Teacher Guide',
+      sectionTitle: `Stage 5 & 6: Formative Assessment, Exit Ticket & Teacher Guide (${skillFocus})`,
       exitTicket: {
         title: 'Student Exit Ticket (Quick Check)',
         questions: quizQuestions,
         selfAssessment: [
-          { text: 'I can identify the target vocabulary words.', stars: 3 },
-          { text: 'I can understand the key concepts in spoken sentences.', stars: 3 },
-          { text: 'I can participate in the communicative exchange.', stars: 3 }
+          { text: `I can identify the target vocabulary words for ${cleanTheme}.`, stars: 3 },
+          { text: `I can apply the communicative structures in ${skillFocus.toLowerCase()} tasks.`, stars: 3 },
+          { text: isMediation ? 'I can collaborate with my team on the 21st century project.' : 'I can participate in the communicative exchange with peers.', stars: 3 }
         ]
       },
       teacherGuide: {
-        title: 'Teacher Read-Aloud Audio Scripts (For Classroom Instruction)',
+        title: `Teacher Audio Scripts & Pedagogical Guide (${skillFocus} · Lesson ${lessonNum})`,
         scripts: [
           {
             stage: 'Stage 2 Presentation Audio',
@@ -350,31 +605,37 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
           },
           {
             stage: 'Stage 5 Assessment Quiz Script',
-            text: `Read clearly to the class: "Review question 1: What is the main theme? Review question 2: Focus on ${vocabWords[0]}."`
+            text: `Read clearly to the class: "Question 1: What is the main scenario? Question 2: Focus on ${vocabWords[0] || 'the target concept'}."`
           }
         ],
         answerKey: [
           { item: 'Activity 1 (Circle)', answer: 'All modeled words circled accurately.' },
           { item: 'Activity 2 (Match)', answer: matchPairs.map(p => `${p.item} ──> ${p.detail}`).join(', ') },
           { item: 'Activity 3 (Cloze)', answer: dialogueLines.slice(1, 4).map(d => d.text).join(' | ') },
-          { item: 'Exit Ticket Quiz', answer: quizQuestions.map((q, i) => `Q${i+1}: ${q.correct || q.options[0]}`).join('  ·  ') }
+          { item: 'Exit Ticket Quiz', answer: quizQuestions.map((q, i) => `Q${i + 1}: ${q.correct || q.options[0]}`).join('  ·  ') }
         ],
         rubric: [
           {
-            criterion: 'Listening Comprehension & Target Vocabulary',
-            independent: 'Identifies all target items and details accurately without teacher repetition.',
-            withSupport: 'Identifies items and details with 1-2 visual prompts or pauses.',
-            emerging: 'Requires direct teacher translation or continuous assistance.'
+            criterion: isMediation ? '21st Century Skills & Peer Mediation' : `${skillFocus} Competence & Target Vocabulary`,
+            independent: isMediation
+              ? 'Facilitates communication effectively, explains concepts in simple English, and fulfills team role with full autonomy.'
+              : 'Demonstrates target communicative competence and vocabulary fluency without teacher prompts.',
+            withSupport: isMediation
+              ? 'Participates in team project with 1-2 prompts and assists peers using gestures or visual realia.'
+              : 'Completes communicative tasks with occasional prompts and repetitions.',
+            emerging: isMediation
+              ? 'Requires continuous teacher facilitation and direct guidance to participate in team project.'
+              : 'Requires direct modeling and continuous assistance.'
           },
           {
-            criterion: 'Task Performance (Drawing, Matching & Completion)',
-            independent: 'Completes all 4 worksheet activities independently and fluently.',
-            withSupport: 'Completes activities with peer modeling or scaffolding.',
+            criterion: 'Task Accuracy & Deliverable Quality',
+            independent: 'Completes all worksheet activities and the action deliverable with 90-100% accuracy.',
+            withSupport: 'Completes activities with peer modeling or scaffolding (70-89% accuracy).',
             emerging: 'Completes fewer than half the tasks accurately.'
           },
           {
-            criterion: 'Communicative Use of Language (AOA Interaction)',
-            independent: 'Produces question and response frames with clear pronunciation.',
+            criterion: 'Action-Oriented Communication (AOA Panama)',
+            independent: 'Produces appropriate question and response frames with natural intonation and collaborative engagement.',
             withSupport: 'Uses isolated target words with acceptable pronunciation.',
             emerging: 'Relies on non-verbal pointing or gestures only.'
           }

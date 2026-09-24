@@ -466,8 +466,8 @@ export async function generateActivityPack(source, signal) {
     const gm = srcText.match(/(?:Pre-?K|Kindergarten|Kinder|\b\d{1,2}(?:st|nd|rd|th)?\s+Grade|\b(?:1|2|3|4|5|6|7|8|9|10|11|12)°?\s*Grado)/i);
     if (gm) targetGrade = gm[0];
   }
-  if (!targetGrade) targetGrade = 'Kindergarten';
-  const isKinder = /kinder|pre-?k|early/i.test(targetGrade);
+  if (!targetGrade) targetGrade = '4th Grade';
+  const isKinder = /(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b|educaci[oó]n\s+inicial)/i.test(targetGrade);
   const targetSkill = source?.skill || 'Listening';
   const targetCefr = source?.cefr || (isKinder ? 'Pre-A1' : 'A1');
 

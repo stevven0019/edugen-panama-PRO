@@ -26,7 +26,7 @@ export function buildAoaFields(raw, themeType, skills) {
     const key = skill.toLowerCase();
     const entry = (Array.isArray(standards) ? standards.find(item => item.skill?.toLowerCase() === key) : standards?.[key]) || raw[key];
     let objective = focused(entry?.specific_standards || entry?.specificStandards || entry?.specific_standard, themeType);
-    if (!objective && normalized.selectedThemeStandards.length) {
+    if (!objective && normalized.selectedThemeStandards?.length) {
       const patterns = { Listening: /listen/i, Reading: /read/i, Speaking: /speak|oral|describe|ask|interview|present|report/i, Writing: /writ/i, Mediation: /mediat|summar|relay|explain/i };
       objective = normalized.selectedThemeStandards.filter(item => patterns[skill]?.test(item)).join('\n');
     }
