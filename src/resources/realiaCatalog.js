@@ -147,6 +147,8 @@ export function getRealiaPhoto(keyword) {
     shopping_list: 'shopping_list',
     rain_boots: 'boots',
     rubber_boots: 'boots',
+    boot: 'boots',
+    boots: 'boots',
     rain_coat: 'raincoat',
     water_puddle: 'puddle',
     water_splash: 'splash',

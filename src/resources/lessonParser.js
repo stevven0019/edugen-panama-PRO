@@ -38,6 +38,7 @@ export function sanitizeThemeTitle(rawTitle) {
        .replace(/^Lesson\s*#?\s*\d*[-–—:]?\s*/i, '')
        .replace(/[-–—:]\s*Lesson\s*#?\s*\d+.*$/i, '')
        .replace(/^[:\-–—\s]+/, '')
+       .replace(/[:\-–—\s]+$/, '')
        .trim();
   return t || 'English AOA Lesson';
 }
@@ -58,7 +59,7 @@ const cleanHtml = (html) => {
     .trim();
 };
 
-const INVALID_VOCAB_REGEX = /^(?:the\s+teacher|the\s+student|teacher|student|model|models|modeling|describing|asking|explaining|identifying|practicing|evaluating|speaking|writing|reading|listening|stage|warm|warm-up|presentation|practice|production|assessment|reflection|step|grade|minute|time|materials|procedure|differentiation|learning|outcome|objective|check|dialogue|instructions?|rubric|performance|task|essential|target|language|comprehension|production|accuracy|fluency|inquiry|strategy|concept|detail|focus|context|element|statement|question|answer|true|false|yes|no)/i;
+const INVALID_VOCAB_REGEX = /^(?:the\s+teacher|the\s+student|teacher|student|model|models|modeling|describing|asking|explaining|identifying|practicing|evaluating|speaking|writing|reading|listening|stage|warm|warm-up|presentation|practice|production|assessment|reflection|step|grade|minute|time|materials|procedure|differentiation|learning|outcome|objective|check|dialogue|instructions?|rubric|performance|task|essential|target|language|comprehension|accuracy|fluency|inquiry|strategy|concept|detail|focus|context|element|statement|question|answer|true|false|yes|no|what|who|where|when|why|how|which|whose|this|that|these|those|is|are|was|were|do|does|did|have|has|had|can|could|would|should|will|different|different\s+weather|weather|clima|item|words?|pronunciation|initial\s+sounds?|sound|sounds?)/i;
 
 const PREPOSITIONS_SET = new Set([
   'in', 'on', 'under', 'next to', 'next_to', 'behind', 'in front of', 'between', 'near', 'over', 'above', 'below', 'at', 'by', 'to', 'from', 'with', 'into', 'onto'
@@ -91,6 +92,8 @@ const extractHtmlKeywords = (html) => {
 };
 
 export const CURRICULUM_TOPIC_VOCAB = {
+  rain: ['puddle', 'umbrella', 'raincoat', 'boots', 'storm', 'cloud', 'sky', 'rain'],
+  weather: ['puddle', 'umbrella', 'raincoat', 'boots', 'storm', 'cloud', 'sky', 'rain'],
   market: ['pineapple', 'banana', 'orange', 'apple', 'watermelon', 'market', 'price', 'dollar'],
   shopping: ['pineapple', 'banana', 'orange', 'shopping list', 'store', 'cashier', 'money', 'price'],
   fruit: ['pineapple', 'banana', 'orange', 'apple', 'watermelon', 'mango', 'papaya', 'lemon'],
@@ -99,14 +102,9 @@ export const CURRICULUM_TOPIC_VOCAB = {
   neighborhood: ['park', 'library', 'store', 'school', 'playground', 'street', 'house', 'tree'],
   canal: ['canal', 'ship', 'boat', 'ocean', 'bridge', 'vessel', 'locks', 'goods'],
   beach: ['beach', 'towel', 'sand', 'shell', 'wave', 'picnic', 'sun', 'umbrella'],
-  rain: ['puddle', 'umbrella', 'raincoat', 'boots', 'storm', 'cloud', 'sky', 'rain'],
-  weather: ['sunny', 'rainy', 'cloudy', 'windy', 'stormy', 'hot', 'cold', 'warm'],
   mola: ['mola', 'fabric', 'color', 'turtle', 'butterfly', 'jaguar', 'art', 'pattern'],
   clothing: ['pollera', 'dress', 'shirt', 'pants', 'shoes', 'hat', 'uniform', 'costume'],
-  'where is it': ['red book', 'yellow pencil', 'blue chair', 'desk', 'green bag', 'orange crayon'],
-  preposition: ['red book', 'yellow pencil', 'blue chair', 'desk', 'green bag', 'orange crayon'],
   school: ['book', 'pencil', 'chair', 'desk', 'bag', 'crayon'],
-  classroom: ['red book', 'yellow pencil', 'blue chair', 'desk', 'green bag', 'orange crayon'],
   animal: ['jaguar', 'monkey', 'toucan', 'sloth', 'bird', 'frog', 'turtle', 'fish'],
   nature: ['tree', 'river', 'forest', 'sun', 'flower', 'cloud', 'rain', 'mountain'],
   recycle: ['recycle', 'bin', 'bottle', 'plastic', 'compost', 'trash', 'environment', 'paper'],
@@ -118,12 +116,502 @@ export const CURRICULUM_TOPIC_VOCAB = {
   project: ['poster', 'chart', 'guide', 'presentation', 'team', 'display', 'research', 'card']
 };
 
+export function detectScenarioDomain(scenario = '', theme = '', textContext = '') {
+  const combined = `${scenario} ${theme} ${textContext}`.toLowerCase();
+  if (/rain|weather|puddle|umbrella|storm|cloud|lightning|thunder|clima|lluvia|temporal|estaci[oó]n\s+lluviosa/i.test(combined)) return 'weather';
+  if (/garden|plant|seed|soil|flower|vegetable|watering|huerto|jard[ií]n/i.test(combined)) return 'garden';
+  if (/market|shopping|fruit|price|dollar|cost|supermercado|mercado|compra/i.test(combined)) return 'market';
+  if (/canal|ship|boat|ocean|locks|vessel|puente de las am[eé]ricas/i.test(combined)) return 'canal';
+  if (/animal|wildlife|bird|toucan|jaguar|sloth|monkey|fauna|selva/i.test(combined)) return 'animals';
+  if (/classroom|school|desk|pencil|backpack|book|sal[oó]n|escuela/i.test(combined)) return 'classroom';
+  if (/health|doctor|exercise|hygiene|salud/i.test(combined)) return 'health';
+  if (/community|neighborhood|city|town|park|street|comunidad/i.test(combined)) return 'community';
+  return 'general';
+}
+
 export function getTopicVocabFallback(textContext) {
+  const domain = detectScenarioDomain('', '', textContext);
+  if (domain === 'weather') return CURRICULUM_TOPIC_VOCAB.weather;
+  if (domain === 'garden') return CURRICULUM_TOPIC_VOCAB.garden;
+  if (domain === 'market') return CURRICULUM_TOPIC_VOCAB.market;
+  if (domain === 'canal') return CURRICULUM_TOPIC_VOCAB.canal;
+  if (domain === 'animals') return CURRICULUM_TOPIC_VOCAB.animal;
+  if (domain === 'classroom') return CURRICULUM_TOPIC_VOCAB.school;
+  if (domain === 'health') return CURRICULUM_TOPIC_VOCAB.health;
+  if (domain === 'community') return CURRICULUM_TOPIC_VOCAB.community;
+
   const lower = (textContext || '').toLowerCase();
   for (const [key, list] of Object.entries(CURRICULUM_TOPIC_VOCAB)) {
     if (lower.includes(key)) return list;
   }
   return ['book', 'desk', 'pencil', 'chair', 'bag', 'apple'];
+}
+
+export function buildPart2Items({
+  skill = 'Listening',
+  scenario = '',
+  cleanTheme = '',
+  vocabWords = [],
+  grade = '4th Grade'
+}) {
+  const normSkill = normalizeSkill(skill);
+  const domain = detectScenarioDomain(scenario, cleanTheme, vocabWords.join(' '));
+  const w0 = vocabWords[0] || 'item';
+  const w1 = vocabWords[1] || 'item';
+  const w2 = vocabWords[2] || 'item';
+  const w3 = vocabWords[3] || 'item';
+
+  if (normSkill === 'Listening') {
+    if (domain === 'weather') {
+      return [
+        {
+          concept: 'LISTEN & VERIFY 1',
+          sentence: `The teacher introduces the lesson by asking about the weather and pointing to the ${w0}.`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'LISTEN & VERIFY 2',
+          sentence: `The speaker in the audio dialogue specifically mentions the ${w1} in the rain.`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'LISTEN & VERIFY 3',
+          sentence: `We heard the story character talk about the ${w2} during the rainy season.`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'LISTEN & VERIFY 4',
+          sentence: `The audio prompt instructs the student to identify the ${w3} on the worksheet.`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
+    if (domain === 'garden') {
+      return [
+        {
+          concept: 'LISTEN & VERIFY 1',
+          sentence: `The teacher asks the students to observe the green ${w0} growing in the garden.`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'LISTEN & VERIFY 2',
+          sentence: `We heard the gardener say that seeds need water and sunlight to sprout in the soil.`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'LISTEN & VERIFY 3',
+          sentence: `The student in the recording points to the fresh ${w2} on the plant.`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'LISTEN & VERIFY 4',
+          sentence: `The audio prompt instructs the class to identify the ${w3} on the table.`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
+    if (domain === 'market') {
+      return [
+        {
+          concept: 'LISTEN & VERIFY 1',
+          sentence: `The customer in the audio dialogue asks for the price of the fresh ${w0}.`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'LISTEN & VERIFY 2',
+          sentence: `We heard the market vendor confirm that the ${w1} is fresh and ready for purchase.`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'LISTEN & VERIFY 3',
+          sentence: `The shopper in the recording asks how many ${w2}s they can buy for two dollars.`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'LISTEN & VERIFY 4',
+          sentence: `The audio prompt instructs the student to identify the ${w3} on the grocery counter.`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
+    if (domain === 'animals') {
+      return [
+        {
+          concept: 'LISTEN & VERIFY 1',
+          sentence: `The park guide in the recording describes the colorful ${w0} living in Panama.`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'LISTEN & VERIFY 2',
+          sentence: `We heard the speaker mention that the ${w1} moves quickly through the green trees.`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'LISTEN & VERIFY 3',
+          sentence: `The audio dialogue confirms that the ${w2} is protected in the national park.`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'LISTEN & VERIFY 4',
+          sentence: `The audio prompt instructs the student to listen carefully and identify the ${w3}.`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
+    if (domain === 'canal') {
+      return [
+        {
+          concept: 'LISTEN & VERIFY 1',
+          sentence: `The guide explains how the cargo ship moves smoothly through the canal locks.`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'LISTEN & VERIFY 2',
+          sentence: `We heard the narrator describe the large vessel crossing from ocean to ocean.`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'LISTEN & VERIFY 3',
+          sentence: `The audio mentions the tugboats guiding the ship under the bridge.`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'LISTEN & VERIFY 4',
+          sentence: `The audio prompt asks students to identify the water current in the channel.`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
+    return [
+      {
+        concept: 'LISTEN & VERIFY 1',
+        sentence: `The speaker in the audio dialogue specifically introduces the ${w0}.`,
+        subject: w0,
+        photoUrl: getRealiaPhoto(w0)
+      },
+      {
+        concept: 'LISTEN & VERIFY 2',
+        sentence: `We heard the audio prompt highlight the key features of the ${w1}.`,
+        subject: w1,
+        photoUrl: getRealiaPhoto(w1)
+      },
+      {
+        concept: 'LISTEN & VERIFY 3',
+        sentence: `The teacher in the recording models how to use the word ${w2} in our lesson.`,
+        subject: w2,
+        photoUrl: getRealiaPhoto(w2)
+      },
+      {
+        concept: 'LISTEN & VERIFY 4',
+        sentence: `The audio prompt instructs the student to identify the ${w3} in the scenario.`,
+        subject: w3,
+        photoUrl: getRealiaPhoto(w3)
+      }
+    ];
+  }
+
+  if (normSkill === 'Reading') {
+    if (domain === 'weather') {
+      return [
+        {
+          concept: 'READ & CHECK 1',
+          sentence: `The weather forecast in the story announces heavy rain throughout the afternoon.`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'READ & CHECK 2',
+          sentence: `According to our reading, the boy holds an umbrella to protect himself from the rain.`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'READ & CHECK 3',
+          sentence: `The informational text notes that children wear boots to splash safely in the puddle.`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'READ & CHECK 4',
+          sentence: `The short story describes dark clouds gathering in the sky before the storm begins.`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
+    if (domain === 'garden') {
+      return [
+        {
+          concept: 'READ & CHECK 1',
+          sentence: `The garden guide explains that green plants absorb water through their roots.`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'READ & CHECK 2',
+          sentence: `According to our reading, seeds sprout best in rich, moist soil.`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'READ & CHECK 3',
+          sentence: `The text states that flowers need bright sunlight to bloom successfully.`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'READ & CHECK 4',
+          sentence: `The informational sheet reminds students to care for the garden every morning.`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
+    if (domain === 'market') {
+      return [
+        {
+          concept: 'READ & CHECK 1',
+          sentence: `The store sign clearly displays the price of the fresh ${w0}.`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'READ & CHECK 2',
+          sentence: `According to our scenario reading, shoppers can choose the ${w1} at the stand.`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'READ & CHECK 3',
+          sentence: `The shopping receipt lists the quantities of ${w2} purchased today.`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'READ & CHECK 4',
+          sentence: `The informational text confirms that ${w3} is available at the market.`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
+    return [
+      {
+        concept: 'READ & CHECK 1',
+        sentence: `The text clearly describes the importance of the ${w0} in our ${cleanTheme} lesson.`,
+        subject: w0,
+        photoUrl: getRealiaPhoto(w0)
+      },
+      {
+        concept: 'READ & CHECK 2',
+        sentence: `According to the scenario reading, students can examine the ${w1} in context.`,
+        subject: w1,
+        photoUrl: getRealiaPhoto(w1)
+      },
+      {
+        concept: 'READ & CHECK 3',
+        sentence: `The reading passage explains how the ${w2} relates to our communicative goal.`,
+        subject: w2,
+        photoUrl: getRealiaPhoto(w2)
+      },
+      {
+        concept: 'READ & CHECK 4',
+        sentence: `The informational passage confirms key facts and details about the ${w3}.`,
+        subject: w3,
+        photoUrl: getRealiaPhoto(w3)
+      }
+    ];
+  }
+
+  if (normSkill === 'Speaking') {
+    if (domain === 'weather') {
+      return [
+        {
+          concept: 'ORAL EXCHANGE 1',
+          sentence: `Partner A: "What is the weather like today?" ──> Partner B: "It is rainy! Look at the big puddle on the ground."`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'ORAL EXCHANGE 2',
+          sentence: `Partner A: "What do you need when it rains?" ──> Partner B: "I need a warm raincoat and my boots."`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'ORAL EXCHANGE 3',
+          sentence: `Partner A: "Do you have an umbrella?" ──> Partner B: "Yes, I hold my umbrella so I do not get wet."`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'ORAL EXCHANGE 4',
+          sentence: `Partner A: "Can you hear the storm outside?" ──> Partner B: "Yes, the dark clouds bring plenty of rain."`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
+    if (domain === 'market') {
+      return [
+        {
+          concept: 'INQUIRY 1',
+          sentence: `Partner A: "How much is the ${w0}?" ──> Partner B: "The fresh ${w0} is two dollars and fifty cents."`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'INQUIRY 2',
+          sentence: `Partner A: "How many ${w1}s do you need?" ──> Partner B: "I need four ${w1}s for my family."`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'INQUIRY 3',
+          sentence: `Partner A: "Can you show me the ${w2}?" ──> Partner B: "Yes, the ${w2} is fresh and ready."`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'INQUIRY 4',
+          sentence: `Partner A: "What is the price of the ${w3}?" ──> Partner B: "The ${w3} costs one dollar each."`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
+    return [
+      {
+        concept: 'ORAL EXCHANGE 1',
+        sentence: `Partner A: "What can you tell me about the ${w0}?" ──> Partner B: "The ${w0} is an important part of our ${cleanTheme} lesson."`,
+        subject: w0,
+        photoUrl: getRealiaPhoto(w0)
+      },
+      {
+        concept: 'ORAL EXCHANGE 2',
+        sentence: `Partner A: "How do we use the ${w1} in this situation?" ──> Partner B: "We observe and practice with the ${w1} together."`,
+        subject: w1,
+        photoUrl: getRealiaPhoto(w1)
+      },
+      {
+        concept: 'ORAL EXCHANGE 3',
+        sentence: `Partner A: "Can you show me the ${w2}?" ──> Partner B: "Yes, here is the ${w2} in our activity."`,
+        subject: w2,
+        photoUrl: getRealiaPhoto(w2)
+      },
+      {
+        concept: 'ORAL EXCHANGE 4',
+        sentence: `Partner A: "Why do we need the ${w3}?" ──> Partner B: "We need the ${w3} to complete our communicative task."`,
+        subject: w3,
+        photoUrl: getRealiaPhoto(w3)
+      }
+    ];
+  }
+
+  if (normSkill === 'Writing') {
+    if (domain === 'weather') {
+      return [
+        {
+          concept: 'WRITING CHECK 1',
+          sentence: `Write the word 'rain' and label the weather elements in your daily observation chart.`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'WRITING CHECK 2',
+          sentence: `Complete the sentence: "I wear my boots and carry an umbrella when it rains."`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'WRITING CHECK 3',
+          sentence: `Write a short sentence describing the puddle forming on the ground.`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'WRITING CHECK 4',
+          sentence: `Verify the spelling of weather words like storm, cloud, and raincoat on your sheet.`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
+    return [
+      {
+        concept: 'WRITING CHECK 1',
+        sentence: `Write the correct English label for ${w0} on your activity sheet.`,
+        subject: w0,
+        photoUrl: getRealiaPhoto(w0)
+      },
+      {
+        concept: 'WRITING CHECK 2',
+        sentence: `Complete the descriptive sentence about the ${w1} using clear handwriting.`,
+        subject: w1,
+        photoUrl: getRealiaPhoto(w1)
+      },
+      {
+        concept: 'WRITING CHECK 3',
+        sentence: `Write a complete sentence explaining how the ${w2} is used in ${scenario}.`,
+        subject: w2,
+        photoUrl: getRealiaPhoto(w2)
+      },
+      {
+        concept: 'WRITING CHECK 4',
+        sentence: `Verify the spelling and punctuation of the sentence describing the ${w3}.`,
+        subject: w3,
+        photoUrl: getRealiaPhoto(w3)
+      }
+    ];
+  }
+
+  // Mediation (21st Century Skills Project)
+  return [
+    {
+      concept: 'TEAM ROLE 1',
+      sentence: `Role 1 (Leader): Explain the main objective of our ${cleanTheme} project to the group.`,
+      subject: w0 || 'project',
+      photoUrl: getRealiaPhoto(w0 || 'project')
+    },
+    {
+      concept: 'TEAM ROLE 2',
+      sentence: `Role 2 (Researcher): Clarify and check key terms like ${w1} for peers in simple English.`,
+      subject: w1 || 'poster',
+      photoUrl: getRealiaPhoto(w1 || 'poster')
+    },
+    {
+      concept: 'TEAM ROLE 3',
+      sentence: `Role 3 (Designer): Organize visual realia and pictures of ${w2} on the display.`,
+      subject: w2 || 'display',
+      photoUrl: getRealiaPhoto(w2 || 'display')
+    },
+    {
+      concept: 'TEAM ROLE 4',
+      sentence: `Role 4 (Speaker): Mediate and present the team's project deliverable to another group.`,
+      subject: w3 || 'presentation',
+      photoUrl: getRealiaPhoto(w3 || 'presentation')
+    }
+  ];
 }
 
 export function parseAoaLessonPlan(rawInput, metadata = {}) {
@@ -138,50 +626,55 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     }
   }
 
-  // 1. Grade Resolution (Strictly avoid /early/ matching Kindergarten!)
-  let grade = metadata.grade || '';
-  if (!grade) {
-    const gradeMatch = clean.match(/Grade:\s*([^\s\n]+(?:\s+Grade)?)/i) ||
-      clean.match(/(?:Pre-?K|Kindergarten|Kinder\b|\b\d{1,2}(?:st|nd|rd|th)?\s+Grade|\b(?:1|2|3|4|5|6|7|8|9|10|11|12)°?\s*Grado)/i);
-    grade = gradeMatch ? (gradeMatch[1] || gradeMatch[0]).trim() : '4th Grade';
+  // 1. Grade Resolution
+  let grade = '';
+  const textGradeMatch = clean.match(/Grade:\s*([^\s\n\t(<]+(?:\s+Grade)?)/i);
+  if (textGradeMatch && textGradeMatch[1].trim().length > 2) {
+    grade = textGradeMatch[1].trim();
+  } else if (metadata.grade) {
+    grade = metadata.grade;
+  } else {
+    const generalGradeMatch = clean.match(/(?:Pre-?K|Kindergarten|Kinder\b|\b\d{1,2}(?:st|nd|rd|th)?\s+Grade|\b(?:1|2|3|4|5|6|7|8|9|10|11|12)°?\s*Grado)/i);
+    grade = generalGradeMatch ? generalGradeMatch[0].trim() : '4th Grade';
   }
 
-  // 2. Title & Theme Resolution
-  let rawTheme = metadata.title || metadata.theme || '';
-  if (!rawTheme || rawTheme.includes('Lesson Planner') || rawTheme.includes('EduGen') || rawTheme.includes('Secuencia AOA')) {
-    const themeMatch = clean.match(/Theme:\s*([^.\n]+?)(?:Date|\bSpecific|$)/i) ||
-      clean.match(/Theme\s*#\s*\d*\s*[-–—:]\s*Lesson\s*#\s*\d*\s*[-–—:]?\s*([^.\n]+)/i);
-    if (themeMatch) rawTheme = themeMatch[1].trim();
+  // 2. Title & Theme Resolution (Text has authoritative priority over stale metadata)
+  let rawTheme = '';
+  const textThemeMatch = clean.match(/(?:Theme|Tema)\s*#?\s*[:#-]?\s*([^\n\t.]+?)(?:Date|\bSpecific|\bLesson|$)/i) ||
+    clean.match(/Theme\s*#\s*([^–—:\n\t]+?)(?:–|—|-|Lesson|$)/i) ||
+    clean.match(/(?:Title|Topic):\s*([^\n\t.]+)/i);
+  if (textThemeMatch && textThemeMatch[1].trim().length > 2 && !textThemeMatch[1].toLowerCase().includes('planner')) {
+    rawTheme = textThemeMatch[1].trim();
+  } else if (metadata.title || metadata.theme) {
+    rawTheme = metadata.title || metadata.theme;
   }
-  if (!rawTheme) {
+  if (!rawTheme || rawTheme.includes('Lesson Planner') || rawTheme.includes('EduGen') || rawTheme.includes('Secuencia AOA')) {
     const headingMatch = rawText.match(/<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/i);
     if (headingMatch) rawTheme = headingMatch[1].replace(/<[^>]+>/g, '').trim();
   }
   const cleanTheme = sanitizeThemeTitle(rawTheme || 'English AOA Lesson');
 
-  // 3. Scenario Resolution
-  let scenario = metadata.scenario || '';
-  if (!scenario) {
-    const scenarioMatch = clean.match(/Scenario:\s*([^.\n]+?)(?:Skills?|Theme|Specific|Date|Learning|$)/i);
-    if (scenarioMatch) scenario = scenarioMatch[1].trim();
+  // 3. Scenario Resolution (Text has authoritative priority over stale metadata)
+  let scenario = '';
+  const textScenarioMatch = clean.match(/(?:Scenario|Escenario)\s*[:#-]?\s*([^.\n\t]+?)(?:Skills?|Theme|Specific|Date|Learning|$)/i);
+  if (textScenarioMatch && textScenarioMatch[1].trim().length > 3 && !textScenarioMatch[1].toLowerCase().includes('planner')) {
+    scenario = textScenarioMatch[1].trim();
+  } else if (metadata.scenario && !metadata.scenario.toLowerCase().includes('planner')) {
+    scenario = metadata.scenario;
   }
   if (!scenario || scenario.includes('Planner') || scenario.length > 50) {
     scenario = cleanTheme;
   }
 
-
-
   // 4. Authoritative Skill Resolution (generador de actividades.txt)
   // lesson.skill MUST determine the primary activity architecture. NEVER assume lesson number = skill.
   let lessonNum = Number(metadata.lessonNum || metadata.lessonNumber) || null;
   if (!lessonNum) {
-    const numMatch = clean.match(/Lesson\s*(?:#|No\.?|Number)?\s*(\d)/i) || rawText.match(/Lesson\s*(?:#|No\.?|Number)?\s*(\d)/i);
+    const numMatch = clean.match(/Lesson\s*(?:#|No\.?|Number)?\s*[:#-]?\s*(\d)/i) || rawText.match(/Lesson\s*(?:#|No\.?|Number)?\s*[:#-]?\s*(\d)/i);
     lessonNum = numMatch ? parseInt(numMatch[1], 10) : 1;
   }
 
-  let skillFocus = metadata.skill
-    ? normalizeSkill(metadata.skill)
-    : (detectSkillFromText(clean) || detectSkillFromText(rawText));
+  let skillFocus = detectSkillFromText(clean) || (metadata.skill ? normalizeSkill(metadata.skill) : null) || detectSkillFromText(rawText);
 
   if (!skillFocus) {
     skillFocus = lessonNum === 2 ? 'Reading'
@@ -219,26 +712,69 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     vocabWords = [...new Set(rawWords)].slice(0, 6);
   }
 
+  // Extract from narrative visuals/realia (e.g., "visuals (flashcards/realia) of raincoats, boots, and umbrellas")
+  if (vocabWords.length < 6) {
+    const visualsMatches = [...clean.matchAll(/(?:visuals|flashcards|realia)(?:\s*\([^)]*\))?\s*of\s*([^\n.]+)/gi)];
+    for (const m of visualsMatches) {
+      const vWords = m[1]
+        .replace(/and/gi, ',')
+        .split(/[,;]/)
+        .map(w => w.trim().toLowerCase().replace(/s$/, ''))
+        .filter(w => isValidVocabWord(w));
+      vocabWords = [...new Set([...vocabWords, ...vWords])];
+    }
+  }
+
+  // Extract from key vocabulary mentions (e.g., "key vocabulary like 'puddle' /pʌdl/ and 'rain' /reɪn/")
+  if (vocabWords.length < 6) {
+    const keyVocabMatches = [...clean.matchAll(/(?:key\s+vocabulary\s+like|vocabulary\s+like|pronunciation\s+of\s+key\s+vocabulary\s+like|pronunciation\s+of)\s*([^\n.]+)/gi)];
+    for (const m of keyVocabMatches) {
+      const wordsWithPhonetics = m[1]
+        .replace(/\/[^/]+\//g, ' ')
+        .replace(/['"`]/g, ' ')
+        .replace(/and/gi, ',')
+        .split(/[,;]/)
+        .map(w => w.trim().toLowerCase().replace(/s$/, ''))
+        .filter(w => isValidVocabWord(w));
+      vocabWords = [...new Set([...vocabWords, ...wordsWithPhonetics])];
+    }
+  }
+
+  // Extract from HTML markup and quotes in Modeling / Warm-up
   if (vocabWords.length < 4) {
     const htmlWords = extractHtmlKeywords(rawText);
     const starMatches = [...clean.matchAll(/\*\*([a-zA-Z\s]{3,22})\*\*/g)].map(m => m[1].toLowerCase().trim());
-    const validStarWords = starMatches.filter(w => isValidVocabWord(w));
-    const candidates = [...new Set([...htmlWords, ...validStarWords])];
+    const quotedMatches = [...clean.matchAll(/['"]([a-zA-Z]{3,15})['"]/g)].map(m => m[1].toLowerCase().trim());
+    const candidates = [...new Set([...htmlWords, ...starMatches, ...quotedMatches])].filter(w => isValidVocabWord(w));
     if (candidates.length > 0) {
       vocabWords = [...new Set([...vocabWords, ...candidates])].filter(w => isValidVocabWord(w)).slice(0, 6);
     }
   }
 
-  // Fallback to rich authentic scenario vocabulary if fewer than 4 valid words found
-  if (vocabWords.length < 4) {
+  const normalizeNoun = (w) => {
+    let s = (w || '').trim().toLowerCase();
+    if (s === 'boot' || s === 'boots' || s === 'rain boots' || s === 'rubber boots') return 'boots';
+    if (s === 'raincoat' || s === 'raincoats') return 'raincoat';
+    if (s === 'umbrella' || s === 'umbrellas') return 'umbrella';
+    if (s === 'puddle' || s === 'puddles') return 'puddle';
+    if (s === 'tomato' || s === 'tomatoes') return 'tomato';
+    if (s === 'potato' || s === 'potatoes') return 'potato';
+    return s;
+  };
+
+  vocabWords = vocabWords.map(normalizeNoun).filter(w => isValidVocabWord(w));
+  vocabWords = [...new Set(vocabWords)];
+
+  // Fallback to rich authentic scenario vocabulary if fewer than 6 valid words found
+  if (vocabWords.length < 6) {
     const topicDefaults = getTopicVocabFallback(`${cleanTheme} ${scenario} ${clean}`);
-    vocabWords = [...new Set([...vocabWords, ...topicDefaults])].filter(w => isValidVocabWord(w)).slice(0, 6);
+    vocabWords = [...new Set([...vocabWords, ...topicDefaults.map(normalizeNoun)])].filter(w => isValidVocabWord(w)).slice(0, 6);
   }
 
   const isKinderGrade = /(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b)/i.test(grade);
-  const isWhereIsItContext = /where\s*is|preposition/i.test(`${cleanTheme} ${scenario} ${clean}`);
+  const isKinderClassroomContext = isKinderGrade && /classroom|preposition|school|where\s*is\s*it/i.test(`${cleanTheme} ${scenario} ${clean}`);
 
-  if (isKinderGrade || isWhereIsItContext) {
+  if (isKinderClassroomContext) {
     const classroomNouns = new Set(['book', 'pencil', 'chair', 'desk', 'bag', 'crayon', 'ruler', 'eraser', 'notebook']);
     const hasEnoughClassroom = vocabWords.filter(w => classroomNouns.has(w.toLowerCase().replace(/^(?:red|yellow|blue|green|orange|purple)\s+/i, ''))).length >= 4;
     if (!hasEnoughClassroom || vocabWords.length < 6) {
@@ -343,88 +879,22 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
 
   let part2Items = [];
 
-  if (isSpeaking) {
-    if (isKinderGrade || isWhereIsItContext) {
-      part1Title = `PART 1: ORAL RECOGNITION & PRONUNCIATION PRACTICE (CLASSROOM OBJECTS)`;
-      part1Badge = 'Spoken Fluency';
-      part1ActionCue = '[ Say It Aloud 🗣️ ]';
-      part1Instruction = "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking: 'What is this?'";
+  if (isSpeaking && isKinderClassroomContext) {
+    part1Title = `PART 1: ORAL RECOGNITION & PRONUNCIATION PRACTICE (CLASSROOM OBJECTS)`;
+    part1Badge = 'Spoken Fluency';
+    part1ActionCue = '[ Say It Aloud 🗣️ ]';
+    part1Instruction = "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking: 'What is this?'";
 
-      part2Title = `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`;
-      part2Badge = 'Interaction Check';
-      part2Prompt = "Partner A asks the inquiry question. Partner B checks the statement and answers aloud. If answered correctly and fluently, mark YES ( 👍 )!";
+    part2Title = `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`;
+    part2Badge = 'Interaction Check';
+    part2Prompt = "Partner A asks the inquiry question. Partner B checks the statement and answers aloud. If answered correctly and fluently, mark YES ( 👍 )!";
 
-      part2Items = [
-        {
-          concept: 'ON',
-          relation: 'on',
-          sentence: 'The book is ON the desk.',
-          subject: 'book',
-          reference: 'desk',
-          photoUrl: getRealiaPhoto('book')
-        },
-        {
-          concept: 'UNDER',
-          relation: 'under',
-          sentence: 'The bag is UNDER the chair.',
-          subject: 'bag',
-          reference: 'chair',
-          photoUrl: getRealiaPhoto('bag')
-        },
-        {
-          concept: 'IN',
-          relation: 'in',
-          sentence: 'The pencil is IN the bag.',
-          subject: 'pencil',
-          reference: 'bag',
-          photoUrl: getRealiaPhoto('pencil')
-        },
-        {
-          concept: 'NEXT TO',
-          relation: 'next_to',
-          sentence: 'The crayon is NEXT TO the book.',
-          subject: 'crayon',
-          reference: 'book',
-          photoUrl: getRealiaPhoto('crayon')
-        }
-      ];
-    } else {
-      part1Title = `PART 1: ORAL RECOGNITION & PRONUNCIATION PRACTICE (${cleanTheme.toUpperCase()})`;
-      part1Badge = 'Spoken Fluency';
-      part1ActionCue = '[ Say It Aloud 🗣️ ]';
-      part1Instruction = "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking: 'What is this?' / 'How much is it?'";
-
-      part2Title = `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`;
-      part2Badge = 'Interaction Check';
-      part2Prompt = "Partner A asks the inquiry question. Partner B checks the statement and answers aloud. If answered correctly and fluently, mark YES ( 👍 )!";
-
-      part2Items = [
-        {
-          concept: 'INQUIRY 1',
-          sentence: `Partner A: "How much is the ${vocabWords[0] || 'pineapple'}?" ──> Partner B: "The fresh ${vocabWords[0] || 'pineapple'} is two dollars and fifty cents."`,
-          subject: vocabWords[0] || 'pineapple',
-          photoUrl: getRealiaPhoto(vocabWords[0] || 'pineapple')
-        },
-        {
-          concept: 'INQUIRY 2',
-          sentence: `Partner A: "How many ${vocabWords[1] || 'banana'}s do you need?" ──> Partner B: "I need four ${vocabWords[1] || 'banana'}s for my family."`,
-          subject: vocabWords[1] || 'banana',
-          photoUrl: getRealiaPhoto(vocabWords[1] || 'banana')
-        },
-        {
-          concept: 'INQUIRY 3',
-          sentence: `Partner A: "Can you identify the ${vocabWords[2] || 'orange'}?" ──> Partner B: "Yes, the ${vocabWords[2] || 'orange'} is fresh and ripe."`,
-          subject: vocabWords[2] || 'orange',
-          photoUrl: getRealiaPhoto(vocabWords[2] || 'orange')
-        },
-        {
-          concept: 'INQUIRY 4',
-          sentence: `Partner A: "What is the price of the ${vocabWords[3] || 'apple'}?" ──> Partner B: "The ${vocabWords[3] || 'apple'} costs one dollar each."`,
-          subject: vocabWords[3] || 'apple',
-          photoUrl: getRealiaPhoto(vocabWords[3] || 'apple')
-        }
-      ];
-    }
+    part2Items = [
+      { concept: 'ON', relation: 'on', sentence: 'The book is ON the desk.', subject: 'book', reference: 'desk', photoUrl: getRealiaPhoto('book') },
+      { concept: 'UNDER', relation: 'under', sentence: 'The bag is UNDER the chair.', subject: 'bag', reference: 'chair', photoUrl: getRealiaPhoto('bag') },
+      { concept: 'IN', relation: 'in', sentence: 'The pencil is IN the bag.', subject: 'pencil', reference: 'bag', photoUrl: getRealiaPhoto('pencil') },
+      { concept: 'NEXT TO', relation: 'next_to', sentence: 'The crayon is NEXT TO the book.', subject: 'crayon', reference: 'book', photoUrl: getRealiaPhoto('crayon') }
+    ];
   } else if (isReading) {
     part1Title = `PART 1: READ & DECODE / VISUAL TEXT DECODING (${cleanTheme.toUpperCase()})`;
     part1Badge = 'Reading Comprehension';
@@ -435,32 +905,7 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     part2Badge = 'Reading Accuracy';
     part2Prompt = 'Read each short statement carefully. Evaluate if the sentence is TRUE according to the scenario, mark YES ( 👍 ). If FALSE, mark NO ( 👎 )!';
 
-    part2Items = [
-      {
-        concept: 'READ & CHECK 1',
-        sentence: `The store sign clearly displays the price of the fresh ${vocabWords[0] || 'pineapple'}.`,
-        subject: vocabWords[0] || 'pineapple',
-        photoUrl: getRealiaPhoto(vocabWords[0] || 'pineapple')
-      },
-      {
-        concept: 'READ & CHECK 2',
-        sentence: `According to our scenario reading, customers can choose the ${vocabWords[1] || 'banana'} at the stand.`,
-        subject: vocabWords[1] || 'banana',
-        photoUrl: getRealiaPhoto(vocabWords[1] || 'banana')
-      },
-      {
-        concept: 'READ & CHECK 3',
-        sentence: `The shopping receipt lists two units of ${vocabWords[2] || 'orange'} purchased today.`,
-        subject: vocabWords[2] || 'orange',
-        photoUrl: getRealiaPhoto(vocabWords[2] || 'orange')
-      },
-      {
-        concept: 'READ & CHECK 4',
-        sentence: `The informational text confirms that ${vocabWords[3] || 'apple'} is available at the market.`,
-        subject: vocabWords[3] || 'apple',
-        photoUrl: getRealiaPhoto(vocabWords[3] || 'apple')
-      }
-    ];
+    part2Items = buildPart2Items({ skill: 'Reading', scenario, cleanTheme, vocabWords, grade });
   } else if (isWriting) {
     part1Title = `PART 1: ORTHOGRAPHIC TRACE & VOCABULARY LABELING (${cleanTheme.toUpperCase()})`;
     part1Badge = 'Written Production';
@@ -471,32 +916,7 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     part2Badge = 'Written Accuracy';
     part2Prompt = 'Read the statement carefully. Verify the written facts and mark YES ( 👍 ) or NO ( 👎 ) on your report!';
 
-    part2Items = [
-      {
-        concept: 'WRITING CHECK 1',
-        sentence: `Write the correct English name for ${vocabWords[0] || 'item'} on the official inventory record.`,
-        subject: vocabWords[0] || 'item',
-        photoUrl: getRealiaPhoto(vocabWords[0] || 'item')
-      },
-      {
-        concept: 'WRITING CHECK 2',
-        sentence: `The written grocery list includes ${vocabWords[1] || 'item'} with the correct quantity specified.`,
-        subject: vocabWords[1] || 'item',
-        photoUrl: getRealiaPhoto(vocabWords[1] || 'item')
-      },
-      {
-        concept: 'WRITING CHECK 3',
-        sentence: `Complete the sentence by writing the price of the ${vocabWords[2] || 'item'} in words.`,
-        subject: vocabWords[2] || 'item',
-        photoUrl: getRealiaPhoto(vocabWords[2] || 'item')
-      },
-      {
-        concept: 'WRITING CHECK 4',
-        sentence: `Verify the spelling and punctuation of the sentence describing the ${vocabWords[3] || 'item'}.`,
-        subject: vocabWords[3] || 'item',
-        photoUrl: getRealiaPhoto(vocabWords[3] || 'item')
-      }
-    ];
+    part2Items = buildPart2Items({ skill: 'Writing', scenario, cleanTheme, vocabWords, grade });
   } else if (isMediation) {
     part1Title = `PART 1: 21ST CENTURY PROJECT · TEAM ROLES & MEDIATION (${cleanTheme.toUpperCase()})`;
     part1Badge = '21st Century Skills Project';
@@ -507,60 +927,21 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     part2Badge = 'Collaborative Accuracy';
     part2Prompt = 'Work with your project group. Mediate the instructions in simple English. Verify each project milestone: mark YES ( 👍 ) or NO ( 👎 )!';
 
-    part2Items = [
-      {
-        concept: 'TEAM ROLE 1',
-        sentence: `Role 1 (Leader): Explain the main objective of our ${cleanTheme} project to the group.`,
-        subject: vocabWords[0] || 'project',
-        photoUrl: getRealiaPhoto(vocabWords[0] || 'project')
-      },
-      {
-        concept: 'TEAM ROLE 2',
-        sentence: `Role 2 (Researcher): Clarify and check key vocabulary terms like ${vocabWords[1] || 'market'} for peers.`,
-        subject: vocabWords[1] || 'market',
-        photoUrl: getRealiaPhoto(vocabWords[1] || 'market')
-      },
-      {
-        concept: 'TEAM ROLE 3',
-        sentence: `Role 3 (Designer): Organize visual realia and pictures of ${vocabWords[2] || 'pineapple'} on the display.`,
-        subject: vocabWords[2] || 'pineapple',
-        photoUrl: getRealiaPhoto(vocabWords[2] || 'pineapple')
-      },
-      {
-        concept: 'TEAM ROLE 4',
-        sentence: `Role 4 (Speaker): Mediate and present the team's project deliverable to another group.`,
-        subject: vocabWords[3] || 'presentation',
-        photoUrl: getRealiaPhoto(vocabWords[3] || 'presentation')
-      }
-    ];
+    part2Items = buildPart2Items({ skill: 'Mediation', scenario, cleanTheme, vocabWords, grade });
+  } else if (isSpeaking) {
+    part1Title = `PART 1: ORAL RECOGNITION & PRONUNCIATION PRACTICE (${cleanTheme.toUpperCase()})`;
+    part1Badge = 'Spoken Fluency';
+    part1ActionCue = '[ Say It Aloud 🗣️ ]';
+    part1Instruction = "Work with your partner. Point to each real photo, pronounce the English word with clear intonation, and take turns asking and answering!";
+
+    part2Title = `PART 2: COMMUNICATIVE INQUIRY · "ASK & ANSWER IN PAIRS!"`;
+    part2Badge = 'Interaction Check';
+    part2Prompt = "Partner A asks the inquiry question. Partner B checks the statement and answers aloud. If answered correctly and fluently, mark YES ( 👍 )!";
+
+    part2Items = buildPart2Items({ skill: 'Speaking', scenario, cleanTheme, vocabWords, grade });
   } else {
     // Listening default
-    part2Items = [
-      {
-        concept: 'LISTEN & VERIFY 1',
-        sentence: `The speaker in the audio dialogue specifically mentioned the fresh ${vocabWords[0] || 'pineapple'}.`,
-        subject: vocabWords[0] || 'pineapple',
-        photoUrl: getRealiaPhoto(vocabWords[0] || 'pineapple')
-      },
-      {
-        concept: 'LISTEN & VERIFY 2',
-        sentence: `We heard the vendor confirm that the ${vocabWords[1] || 'banana'} is ready for purchase.`,
-        subject: vocabWords[1] || 'banana',
-        photoUrl: getRealiaPhoto(vocabWords[1] || 'banana')
-      },
-      {
-        concept: 'LISTEN & VERIFY 3',
-        sentence: `The customer in the recording asked for the price of the ${vocabWords[2] || 'orange'}.`,
-        subject: vocabWords[2] || 'orange',
-        photoUrl: getRealiaPhoto(vocabWords[2] || 'orange')
-      },
-      {
-        concept: 'LISTEN & VERIFY 4',
-        sentence: `The audio prompt instructs the student to identify the ${vocabWords[3] || 'apple'} on the table.`,
-        subject: vocabWords[3] || 'apple',
-        photoUrl: getRealiaPhoto(vocabWords[3] || 'apple')
-      }
-    ];
+    part2Items = buildPart2Items({ skill: 'Listening', scenario, cleanTheme, vocabWords, grade });
   }
 
   const actionWorksheet = {

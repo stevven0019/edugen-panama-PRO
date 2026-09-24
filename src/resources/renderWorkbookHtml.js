@@ -217,7 +217,7 @@ export function renderWorkbookHtml(pack) {
     { word: 'WET', label: 'WET', photoUrl: getRealiaPhoto('wet') }
   ];
 
-  const isKinderClassroom = isKinder || /where\s*is|preposition|classroom|school/i.test(`${scenario} ${cleanTitle}`);
+  const isKinderClassroom = isKinder && /where\s*(?:is\s*it|are\s*you)|preposition|classroom|school/i.test(`${scenario} ${cleanTitle}`);
 
   if (isKinderClassroom) {
     const classroomNouns = new Set(['book', 'pencil', 'chair', 'desk', 'bag', 'crayon', 'ruler', 'eraser', 'notebook']);
@@ -310,7 +310,7 @@ export function renderWorkbookHtml(pack) {
 
   // Extract or synthesize Part 2 Items (4 cards)
   let prepositionItems = [];
-  const isWhereIsIt = isKinder || /where\s*is|preposition/i.test(`${scenario} ${cleanTitle}`);
+  const isWhereIsIt = isKinder && /where\s*(?:is\s*it|are\s*you)|preposition/i.test(`${scenario} ${cleanTitle}`);
 
   if (isWhereIsIt) {
     prepositionItems = [
@@ -324,6 +324,13 @@ export function renderWorkbookHtml(pack) {
       ...it,
       photoUrl: it.photoUrl || getRealiaPhoto(it.subject || it.word || it.concept) || realiaItems[idx]?.photoUrl
     }));
+  } else if (scenarioNoun.includes('WEATHER') || /rain|weather|puddle|storm|umbrella|clima|lluvia/i.test(`${scenario} ${cleanTitle}`)) {
+    prepositionItems = [
+      { concept: 'WEATHER CHECK', relation: 'on', sentence: 'Dark clouds gather in the sky as the rain begins to fall.', subject: 'cloud', reference: 'weather', photoUrl: getRealiaPhoto('cloud') },
+      { concept: 'RAIN PROTECTION', relation: 'on', sentence: 'We hold up a big umbrella to stay dry in the rainy season.', subject: 'umbrella', reference: 'weather', photoUrl: getRealiaPhoto('umbrella') },
+      { concept: 'FOOTWEAR', relation: 'in', sentence: 'Wear your waterproof boots before stepping into the puddle.', subject: 'boots', reference: 'weather', photoUrl: getRealiaPhoto('boots') },
+      { concept: 'WATER PUDDLE', relation: 'under', sentence: 'A clear water puddle forms on the ground after the rain.', subject: 'puddle', reference: 'weather', photoUrl: getRealiaPhoto('puddle') }
+    ];
   } else if (scenarioNoun.includes('MARKET')) {
       prepositionItems = [
         { concept: 'PRICE CHECK', relation: 'on', sentence: 'The fresh pineapple costs two dollars and fifty cents.', subject: 'pineapple', reference: 'market', photoUrl: getRealiaPhoto('pineapple') },

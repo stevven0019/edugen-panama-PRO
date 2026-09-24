@@ -33,6 +33,74 @@ export const SKILLS_AOA = [
 
 const plain = html => new DOMParser().parseFromString(html || '', 'text/html').body.textContent || '';
 
+export function detectLessonMetadata(text = '', baseName = '') {
+  let detectedGrade = null;
+  const combined = (baseName + ' ' + (text || '')).slice(0, 5000);
+  if (/(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b|educaci[oó]n\s+inicial)/i.test(combined)) detectedGrade = 'Kindergarten';
+  else if (/1st|1°|primer/i.test(combined)) detectedGrade = '1st Grade';
+  else if (/2nd|2°|segundo/i.test(combined)) detectedGrade = '2nd Grade';
+  else if (/3rd|3°|tercer/i.test(combined)) detectedGrade = '3rd Grade';
+  else if (/4th|4°|cuarto/i.test(combined)) detectedGrade = '4th Grade';
+  else if (/5th|5°|quinto/i.test(combined)) detectedGrade = '5th Grade';
+  else if (/6th|6°|sexto/i.test(combined)) detectedGrade = '6th Grade';
+  else if (/7th|7°|séptimo/i.test(combined)) detectedGrade = '7th Grade';
+  else if (/8th|8°|octavo/i.test(combined)) detectedGrade = '8th Grade';
+  else if (/9th|9°|noveno/i.test(combined)) detectedGrade = '9th Grade';
+  else if (/10th|10°|décimo/i.test(combined)) detectedGrade = '10th Grade';
+  else if (/11th|11°/i.test(combined)) detectedGrade = '11th Grade';
+  else if (/12th|12°/i.test(combined)) detectedGrade = '12th Grade';
+
+  // Detect title hint
+  let detectedTitle = baseName;
+  const titleMatch = (text || '').match(/(?:Theme|Tema)\s*#?\s*[:#-]?\s*([^\n\t.<]+?)(?:Date|\bSpecific|\bLesson|$)/i) ||
+                     (text || '').match(/Theme\s*#\s*([^–—:\n\t<]+?)(?:–|—|-|Lesson|$)/i) ||
+                     (text || '').match(/(?:Theme|Title|Topic|Lección|Lesson)\s*[:#-]?\s*([^\n\t.<]+)/i);
+  if (titleMatch && titleMatch[1].trim().length > 2 && !titleMatch[1].toLowerCase().includes('planner')) {
+    detectedTitle = sanitizeThemeTitle(titleMatch[1].trim());
+  }
+
+  // Detect scenario hint
+  let detectedScenario = null;
+  const scMatch = (text || '').match(/(?:Scenario|Escenario)\s*[:#-]?\s*([^\n\t.<]+)/i);
+  if (scMatch && scMatch[1].trim().length > 3 && !scMatch[1].toLowerCase().includes('planner')) {
+    detectedScenario = scMatch[1].trim();
+  }
+
+  // Detect skill hint (generador de actividades.txt: lesson.skill is authoritative)
+  let detectedSkill = null;
+  const skillMatch = (combined || '').match(/(?:Skills?\s*(?:Focus)?|Target\s+Skill|Habilidad|Macro-?habilidad)\s*[:#-]?\s*([a-zA-Z\s]+)/i);
+  if (skillMatch) {
+    const s = skillMatch[1].toLowerCase();
+    if (s.includes('listen') || s.includes('escuch')) detectedSkill = 'Listening';
+    else if (s.includes('read') || s.includes('lect')) detectedSkill = 'Reading';
+    else if (s.includes('speak') || s.includes('oral') || s.includes('habl')) detectedSkill = 'Speaking';
+    else if (s.includes('writ') || s.includes('escr')) detectedSkill = 'Writing';
+    else if (s.includes('mediat') || s.includes('mediac')) detectedSkill = 'Mediation';
+  }
+  if (!detectedSkill) {
+    if (/(?:^|[^a-z])speaking\b/i.test(combined)) detectedSkill = 'Speaking';
+    else if (/(?:^|[^a-z])reading\b/i.test(combined)) detectedSkill = 'Reading';
+    else if (/(?:^|[^a-z])writing\b/i.test(combined)) detectedSkill = 'Writing';
+    else if (/(?:^|[^a-z])mediation\b/i.test(combined)) detectedSkill = 'Mediation';
+    else if (/(?:^|[^a-z])listening\b/i.test(combined)) detectedSkill = 'Listening';
+  }
+
+  // Detect lesson number
+  let detectedLessonNum = null;
+  const lNumMatch = (combined || '').match(/(?:Lesson|Lecci[oó]n)\s*(?:#|No\.?|Number)?\s*[:#-]?\s*(\d)/i);
+  if (lNumMatch) {
+    detectedLessonNum = parseInt(lNumMatch[1], 10);
+  }
+
+  return {
+    grade: detectedGrade,
+    scenario: detectedScenario,
+    title: detectedTitle,
+    skill: detectedSkill,
+    lessonNum: detectedLessonNum
+  };
+}
+
 async function readLesson(file) {
   if (!file || file.size > 10 * 1024 * 1024) throw new Error('Selecciona un archivo de lección de hasta 10 MB.');
   const ext = file.name.split('.').pop().toLowerCase();
@@ -67,76 +135,20 @@ async function readLesson(file) {
     throw new Error('El archivo seleccionado no contiene suficiente texto legible.');
   }
 
-  // Gracefully truncate large files so they never exceed token limits or block the user
   if (text.length > 50000) {
     text = text.slice(0, 50000);
   }
 
-  // Detect grade hint from filename or text
-  let detectedGrade = null;
-  const combined = (baseName + ' ' + (text || '')).slice(0, 3000);
-  if (/(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b|educaci[oó]n\s+inicial)/i.test(combined)) detectedGrade = 'Kindergarten';
-  else if (/1st|1°|primer/i.test(combined)) detectedGrade = '1st Grade';
-  else if (/2nd|2°|segundo/i.test(combined)) detectedGrade = '2nd Grade';
-  else if (/3rd|3°|tercer/i.test(combined)) detectedGrade = '3rd Grade';
-  else if (/4th|4°|cuarto/i.test(combined)) detectedGrade = '4th Grade';
-  else if (/5th|5°|quinto/i.test(combined)) detectedGrade = '5th Grade';
-  else if (/6th|6°|sexto/i.test(combined)) detectedGrade = '6th Grade';
-  else if (/7th|7°|séptimo/i.test(combined)) detectedGrade = '7th Grade';
-  else if (/8th|8°|octavo/i.test(combined)) detectedGrade = '8th Grade';
-  else if (/9th|9°|noveno/i.test(combined)) detectedGrade = '9th Grade';
-  else if (/10th|10°|décimo/i.test(combined)) detectedGrade = '10th Grade';
-  else if (/11th|11°/i.test(combined)) detectedGrade = '11th Grade';
-  else if (/12th|12°/i.test(combined)) detectedGrade = '12th Grade';
-
-  // Detect title hint
-  let detectedTitle = baseName;
-  const titleMatch = (text || '').match(/(?:Theme|Title|Topic|Lección|Lesson)\s*[:#-]?\s*([^\n.]+)/i);
-  if (titleMatch && titleMatch[1].trim().length > 3) {
-    detectedTitle = titleMatch[1].trim();
-  }
-
-  // Detect scenario hint
-  let detectedScenario = null;
-  const scMatch = (text || '').match(/(?:Scenario|Escenario)\s*[:#-]?\s*([^\n.]+)/i);
-  if (scMatch && scMatch[1].trim().length > 3) {
-    detectedScenario = scMatch[1].trim();
-  }
-
-  // Detect skill hint (generador de actividades.txt: lesson.skill is authoritative)
-  let detectedSkill = null;
-  const skillMatch = (combined || '').match(/(?:Skill|Target\s+Skill|Habilidad|Macro-?habilidad)\s*[:#-]?\s*([a-zA-Z\s]+)/i);
-  if (skillMatch) {
-    const s = skillMatch[1].toLowerCase();
-    if (s.includes('listen') || s.includes('escuch')) detectedSkill = 'Listening';
-    else if (s.includes('read') || s.includes('lect')) detectedSkill = 'Reading';
-    else if (s.includes('speak') || s.includes('oral') || s.includes('habl')) detectedSkill = 'Speaking';
-    else if (s.includes('writ') || s.includes('escr')) detectedSkill = 'Writing';
-    else if (s.includes('mediat') || s.includes('mediac')) detectedSkill = 'Mediation';
-  }
-  if (!detectedSkill) {
-    if (/(?:^|[^a-z])speaking\b/i.test(combined)) detectedSkill = 'Speaking';
-    else if (/(?:^|[^a-z])reading\b/i.test(combined)) detectedSkill = 'Reading';
-    else if (/(?:^|[^a-z])writing\b/i.test(combined)) detectedSkill = 'Writing';
-    else if (/(?:^|[^a-z])mediation\b/i.test(combined)) detectedSkill = 'Mediation';
-    else if (/(?:^|[^a-z])listening\b/i.test(combined)) detectedSkill = 'Listening';
-  }
-
-  // Detect lesson number
-  let detectedLessonNum = null;
-  const lNumMatch = (combined || '').match(/(?:Lesson|Lecci[oó]n)\s*[:#-]?\s*(\d)/i);
-  if (lNumMatch) {
-    detectedLessonNum = parseInt(lNumMatch[1], 10);
-  }
+  const meta = detectLessonMetadata(text, baseName);
 
   return {
     text,
     media,
-    title: detectedTitle,
-    grade: detectedGrade,
-    scenario: detectedScenario,
-    skill: detectedSkill,
-    lessonNum: detectedLessonNum,
+    title: meta.title || baseName,
+    grade: meta.grade,
+    scenario: meta.scenario,
+    skill: meta.skill,
+    lessonNum: meta.lessonNum,
     fileName: file.name
   };
 }
@@ -261,11 +273,12 @@ export default function ResourceWorkbook({
     try {
       let input;
       if (source === 'current') {
-        const scenarioName = defaultScenario?.scenarioName || defaultScenario?.scenario_title || defaultScenario?.title || currentLessonTitle || 'AOA Lesson';
-        const effectiveLessonNum = defaultLessonNum || 1;
-        const skillObj = SKILLS_AOA[effectiveLessonNum - 1] || SKILLS_AOA[0];
-        const effectiveSkill = skillObj.id;
-        const cleanTitle = sanitizeThemeTitle(currentLessonTitle || scenarioName);
+        const detected = detectLessonMetadata(currentLessonHtml, currentLessonTitle);
+        const scenarioName = detected.scenario || defaultScenario?.scenarioName || defaultScenario?.scenario_title || defaultScenario?.title || currentLessonTitle || 'AOA Lesson';
+        const effectiveLessonNum = detected.lessonNum || defaultLessonNum || 1;
+        const effectiveSkill = detected.skill || (SKILLS_AOA[effectiveLessonNum - 1] || SKILLS_AOA[0]).id;
+        const cleanTitle = sanitizeThemeTitle(detected.title || currentLessonTitle || scenarioName);
+        const effectiveGrade = detected.grade || defaultGrade;
 
         // Lesson 5 Mediation & 21st Century Project
         let project21st = defaultProject21st || '';
@@ -276,7 +289,7 @@ export default function ResourceWorkbook({
 
         input = {
           text: currentLessonHtml,
-          grade: defaultGrade,
+          grade: effectiveGrade,
           title: cleanTitle,
           scenario: scenarioName,
           skill: effectiveSkill,
