@@ -127,16 +127,32 @@ export function buildLessonContract({
       skill: p.skill,
       vocabulary: p.vocabulary || []
     })),
-    constraints: {
-      primary_skill: resolvedSkill.toLowerCase(),
-      oral_evidence_required: resolvedSkill === 'Speaking',
-      writing_as_primary_evidence: resolvedSkill === 'Writing',
-      listening_comprehension_required: resolvedSkill === 'Listening',
-      reading_comprehension_required: resolvedSkill === 'Reading',
-      mediation_transfer_required: resolvedSkill === 'Mediation',
-      zero_forced_literacy: isEarly,
-      tpr_required: isEarly
-    }
+    constraints: resolveConstraints({
+      grade: cleanGrade,
+      cefr: cleanCefr,
+      skill: resolvedSkill,
+      scenario: cleanScenario,
+      theme: cleanTheme
+    })
+  };
+}
+
+/**
+ * 2. RESOLVE CONSTRAINTS
+ */
+export function resolveConstraints({ grade = '4th Grade', cefr = 'A1', skill = 'Listening', scenario = '', theme = '' }) {
+  const normSkill = normalizeSkill(skill);
+  const bandKey = resolveCefrBand(grade);
+  const isEarly = bandKey === 'pre-a1';
+  return {
+    primary_skill: normSkill.toLowerCase(),
+    oral_evidence_required: normSkill === 'Speaking',
+    writing_as_primary_evidence: normSkill === 'Writing',
+    listening_comprehension_required: normSkill === 'Listening',
+    reading_comprehension_required: normSkill === 'Reading',
+    mediation_transfer_required: normSkill === 'Mediation',
+    zero_forced_literacy: isEarly,
+    tpr_required: isEarly
   };
 }
 
@@ -414,4 +430,20 @@ export function repairActivityPack(pack, errors, contract) {
   }
 
   return repaired;
+}
+
+/**
+ * Regenerate alias for self-healing repair (generador de actividades.txt)
+ */
+export const regenerate = repairActivityPack;
+
+/**
+ * Save for review when validation fails after retries
+ */
+export function saveForReview(pack, validation) {
+  return {
+    ...pack,
+    _needsReview: true,
+    _validationErrors: validation.errors || []
+  };
 }
