@@ -58,6 +58,16 @@ export const VOCAB_DICTIONARY = {
   cloud: { translation: 'nube', phonetic: '/klaʊd/' },
   rain: { translation: 'lluvia', phonetic: '/reɪn/' },
 
+  // Colors & Descriptors (Pre-K to 12th Grade)
+  green: { translation: 'verde', phonetic: '/ɡriːn/' },
+  blue: { translation: 'azul', phonetic: '/bluː/' },
+  red: { translation: 'rojo', phonetic: '/rɛd/' },
+  yellow: { translation: 'amarillo', phonetic: '/ˈjɛloʊ/' },
+  purple: { translation: 'morado', phonetic: '/ˈpɜːrpəl/' },
+  orange: { translation: 'naranja / anaranjado', phonetic: '/ˈɒrɪndʒ/' },
+  small: { translation: 'pequeño/a', phonetic: '/smɔːl/' },
+  big: { translation: 'grande', phonetic: '/bɪɡ/' },
+
   // School, Classroom & Foundation (Pre-K to 6th Grade)
   book: { translation: 'libro', phonetic: '/bʊk/' },
   desk: { translation: 'pupitre', phonetic: '/dɛsk/' },
@@ -607,8 +617,9 @@ export function extractScenarioData(scenario, grade = '7th Grade', scenarioIndex
   ];
 
   // Pick verbs and adjectives
-  const displayVerbs = rawVerbs.length > 0 ? rawVerbs.slice(0, 12) : ["operate", "program", "launch", "explore", "repair", "control"];
-  const displayAdjs = rawAdjs.length > 0 ? rawAdjs.slice(0, 8) : ["automated", "efficient", "modern", "accurate", "reliable"];
+  const isEarlyOrColor = grade.includes('Pre-K') || grade.includes('Kinder') || grade.includes('1') || grade.includes('2') || grade.includes('3') || grade.includes('4') || /color|shape|size|description|senses/i.test(`${scenario}`);
+  const displayVerbs = rawVerbs.length > 0 ? rawVerbs.slice(0, 12) : (isEarlyOrColor ? ["look", "point", "touch", "name", "show", "color", "paint", "draw"] : ["operate", "program", "launch", "explore", "repair", "control"]);
+  const displayAdjs = rawAdjs.length > 0 ? rawAdjs.slice(0, 8) : (isEarlyOrColor ? ["green", "blue", "red", "yellow", "purple", "orange", "small", "big"] : ["automated", "efficient", "modern", "accurate", "reliable"]);
 
   // Numbers range based on grade
   let numberRange = "1 to 100 (Quantities, measurements & change)";
@@ -1682,8 +1693,8 @@ function clientExtractScenario(scenario, grade, scenarioIndex, cefr) {
     linguistic_competence: {
       grammar: grammarRules,
       nouns: processedNouns.length ? processedNouns : [{ word: "project", translation: "proyecto", phonetic: "" }],
-      verbs: rawVerbs.slice(0, 12),
-      adjectives: rawAdjs.slice(0, 8),
+      verbs: rawVerbs.length ? rawVerbs.slice(0, 12) : (isEarlyOrColor ? ["look", "point", "touch", "name", "show", "color", "paint", "draw"] : ["operate", "program", "launch", "explore", "repair", "control"]),
+      adjectives: rawAdjs.length ? rawAdjs.slice(0, 8) : (isEarlyOrColor ? ["green", "blue", "red", "yellow", "purple", "orange", "small", "big"] : ["automated", "efficient", "modern", "accurate", "reliable"]),
       adverbs: rawAdverbs,
       interrogatives: rawQuestions,
       numbers: grade.includes('Kinder') || grade.includes('Pre-K') ? "1 to 10" : grade.includes('12') ? "100 to 1,000,000+" : "1 to 100",

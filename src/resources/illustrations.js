@@ -33,7 +33,19 @@ export const PALETTES = {
     mangoBody: '#FEF08A',
     mangoStroke: '#EAB308',
     priceTagBg: '#FEF3C7',
-    priceTagStroke: '#D97706'
+    priceTagStroke: '#D97706',
+    colorGreen: '#22C55E',
+    colorGreenBorder: '#15803D',
+    colorBlue: '#3B82F6',
+    colorBlueBorder: '#1D4ED8',
+    colorRed: '#EF4444',
+    colorRedBorder: '#B91C1C',
+    colorYellow: '#EAB308',
+    colorYellowBorder: '#A16207',
+    colorPurple: '#A855F7',
+    colorPurpleBorder: '#7E22CE',
+    colorOrange: '#F97316',
+    colorOrangeBorder: '#C2410C'
   },
   outline: {
     stroke: '#0F172A',
@@ -123,6 +135,51 @@ export function getIllustrationSvg(name, mode = 'color') {
     mango: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M50 20 L50 14" stroke="${p.stroke}" stroke-width="3" />
       <path d="M50 22 C34 22 24 38 28 58 C32 78 50 86 64 82 C78 76 80 50 72 34 C66 24 58 22 50 22 Z" fill="${p.mangoBody}" stroke="${p.mangoStroke}" stroke-width="3" />
+    </svg>`,
+
+    // ── COLORS & SIZES ──
+    green: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="50" cy="50" r="36" fill="${p.colorGreen || '#22C55E'}" stroke="${p.colorGreenBorder || '#15803D'}" stroke-width="3.5" />
+      <path d="M32 40 C32 30 45 24 58 28" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <circle cx="50" cy="50" r="10" fill="#FFFFFF" opacity="0.9" />
+    </svg>`,
+
+    blue: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="50" cy="50" r="36" fill="${p.colorBlue || '#3B82F6'}" stroke="${p.colorBlueBorder || '#1D4ED8'}" stroke-width="3.5" />
+      <path d="M32 40 C32 30 45 24 58 28" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <circle cx="50" cy="50" r="10" fill="#FFFFFF" opacity="0.9" />
+    </svg>`,
+
+    red: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="50" cy="50" r="36" fill="${p.colorRed || '#EF4444'}" stroke="${p.colorRedBorder || '#B91C1C'}" stroke-width="3.5" />
+      <path d="M32 40 C32 30 45 24 58 28" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <circle cx="50" cy="50" r="10" fill="#FFFFFF" opacity="0.9" />
+    </svg>`,
+
+    yellow: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="50" cy="50" r="36" fill="${p.colorYellow || '#EAB308'}" stroke="${p.colorYellowBorder || '#A16207'}" stroke-width="3.5" />
+      <path d="M32 40 C32 30 45 24 58 28" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <circle cx="50" cy="50" r="10" fill="#FFFFFF" opacity="0.9" />
+    </svg>`,
+
+    purple: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="50" cy="50" r="36" fill="${p.colorPurple || '#A855F7'}" stroke="${p.colorPurpleBorder || '#7E22CE'}" stroke-width="3.5" />
+      <path d="M32 40 C32 30 45 24 58 28" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <circle cx="50" cy="50" r="10" fill="#FFFFFF" opacity="0.9" />
+    </svg>`,
+
+    small: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="15" y="15" width="70" height="70" rx="8" fill="#F8FAFC" stroke="${p.stroke}" stroke-width="2" />
+      <circle cx="35" cy="46" r="18" fill="#CBD5E1" stroke="#94A3B8" stroke-width="2" stroke-dasharray="3 3" />
+      <circle cx="70" cy="50" r="8" fill="${p.colorBlue || '#3B82F6'}" stroke="${p.colorBlueBorder || '#1D4ED8'}" stroke-width="2.5" />
+      <text x="50" y="80" text-anchor="middle" font-size="10" font-weight="900" fill="${p.stroke}">SMALL</text>
+    </svg>`,
+
+    big: `<svg viewBox="0 0 100 100" class="w-full h-full" fill="none" stroke="${p.stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="15" y="15" width="70" height="70" rx="8" fill="#F8FAFC" stroke="${p.stroke}" stroke-width="2" />
+      <circle cx="48" cy="44" r="24" fill="${p.colorRed || '#EF4444'}" stroke="${p.colorRedBorder || '#B91C1C'}" stroke-width="3" />
+      <circle cx="82" cy="58" r="6" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="2 2" />
+      <text x="50" y="82" text-anchor="middle" font-size="10" font-weight="900" fill="${p.stroke}">BIG</text>
     </svg>`,
 
     // ── CLASSROOM OBJECTS ──

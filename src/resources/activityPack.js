@@ -10,7 +10,7 @@ import {
   detectSkillFromText
 } from './activityEngine.js';
 
-export const ICONS = ['book','bag','desk','chair','pencil','crayon','ball','apple','tree','sun','house','fish','flower','pineapple','banana','orange','watermelon','mango','market','dollar'];
+export const ICONS = ['book','bag','desk','chair','pencil','crayon','ball','apple','tree','sun','house','fish','flower','pineapple','banana','orange','watermelon','mango','market','dollar','green','blue','red','yellow','purple','small','big'];
 
 const text = (value, name, max = 600) => {
   if (typeof value !== 'string' || !value.trim()) return '';

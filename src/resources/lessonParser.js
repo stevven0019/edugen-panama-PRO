@@ -113,11 +113,13 @@ export const CURRICULUM_TOPIC_VOCAB = {
   health: ['exercise', 'water', 'fruit', 'sleep', 'doctor', 'teeth', 'soap', 'clean'],
   technology: ['computer', 'robot', 'screen', 'keyboard', 'internet', 'phone', 'tablet', 'code'],
   transport: ['bus', 'car', 'train', 'metro', 'boat', 'airplane', 'bicycle', 'station'],
-  project: ['poster', 'chart', 'guide', 'presentation', 'team', 'display', 'research', 'card']
+  project: ['poster', 'chart', 'guide', 'presentation', 'team', 'display', 'research', 'card'],
+  colors: ['green', 'blue', 'red', 'yellow', 'purple', 'orange', 'small', 'big']
 };
 
 export function detectScenarioDomain(scenario = '', theme = '', textContext = '') {
   const combined = `${scenario} ${theme} ${textContext}`.toLowerCase();
+  if (/color|colores|red|blue|green|yellow|purple|orange|small|big|tama[ñn]o|palette|paint|draw|arte|craft/i.test(combined)) return 'colors';
   if (/rain|weather|puddle|umbrella|storm|cloud|lightning|thunder|clima|lluvia|temporal|estaci[oó]n\s+lluviosa/i.test(combined)) return 'weather';
   if (/garden|plant|seed|soil|flower|vegetable|watering|huerto|jard[ií]n/i.test(combined)) return 'garden';
   if (/market|shopping|fruit|price|dollar|cost|supermercado|mercado|compra/i.test(combined)) return 'market';
@@ -131,6 +133,7 @@ export function detectScenarioDomain(scenario = '', theme = '', textContext = ''
 
 export function getTopicVocabFallback(textContext) {
   const domain = detectScenarioDomain('', '', textContext);
+  if (domain === 'colors') return CURRICULUM_TOPIC_VOCAB.colors;
   if (domain === 'weather') return CURRICULUM_TOPIC_VOCAB.weather;
   if (domain === 'garden') return CURRICULUM_TOPIC_VOCAB.garden;
   if (domain === 'market') return CURRICULUM_TOPIC_VOCAB.market;
@@ -654,6 +657,10 @@ export function buildAoaLudicKit({
     } else if (domain === 'garden') {
       tag = i % 2 === 0 ? '🌱 Garden' : '🍅 Fresh';
       sub = 'School Garden Care';
+    } else if (domain === 'colors') {
+      price = `$${(i % 3) + 1}`;
+      tag = i < 6 ? `🎨 ${w.toUpperCase()}` : `📏 ${w.toUpperCase()}`;
+      sub = 'Art & Color Studio';
     } else {
       tag = `🏷️ Item ${i + 1}`;
       sub = cleanTheme;
@@ -679,6 +686,9 @@ export function buildAoaLudicKit({
   } else if (normSkill === 'Speaking' && domain === 'weather') {
     stage1GameName = 'Weather Radar Flash!';
     stage1Prompt = `Teacher shows ☔: "What do you need when it rains?" ──> Class shouts: "I need an umbrella!"`;
+  } else if (normSkill === 'Speaking' && domain === 'colors') {
+    stage1GameName = 'Rainbow Color & Size Detective!';
+    stage1Prompt = `Teacher flashes 🟢 / 🔴: "What color is this? Is it big or small?" ──> Class shouts: "It is a big red card!"`;
   } else if (normSkill === 'Listening') {
     stage1GameName = 'Acoustic Sound Detective!';
     stage1Prompt = `Teacher gives oral cue: "Touch the ${words[0]}!" ──> Students point instantly!`;
@@ -703,6 +713,9 @@ export function buildAoaLudicKit({
     } else if (domain === 'weather') {
       script = `Teacher prompt: "It is raining outside! Find the ${w}."`;
       response = `Student points and speaks: "I have the ${w} ready!"`;
+    } else if (domain === 'colors') {
+      script = `Teacher prompt: "Show me the ${w} card on your desk."`;
+      response = `Student points and speaks: "This is ${w}!"`;
     } else {
       script = `Teacher prompt: "Listen for '${w}' and locate the real photo."`;
       response = `Student points to ${w} and articulates: "This is the ${w}."`;
@@ -739,6 +752,13 @@ export function buildAoaLudicKit({
       { step: 2, title: 'Draw & Ask', text: 'Partner A flips 1 Weather Gear Card + 1 Number and says: "We have two umbrellas in the rain."' },
       { step: 3, title: 'Inquire Condition', text: 'Partner A asks: "What do we wear for the storm?" ──> Partner B answers: "We wear our raincoats and boots."' },
       { step: 4, title: 'Hand Over & Switch', text: 'Partner B awards the badge: "You are storm-ready!" Switch roles for Round 2.' }
+    ];
+  } else if (domain === 'colors') {
+    cardGameRules = [
+      { step: 1, title: 'Shuffle & Deal', text: 'Place Color Cards (🟢, 🔵, 🔴, 🟡) and Number/Size Cards face down.' },
+      { step: 2, title: 'Draw & Announce', text: 'Partner A flips 1 Color Card + 1 Size Card and says: "I have a big green circle!"' },
+      { step: 3, title: 'Inquire & Show', text: 'Partner A asks: "What color is this?" ──> Partner B answers: "It is green and it is big!"' },
+      { step: 4, title: 'Switch Roles', text: 'Partner B takes a turn. Score 1 star for each correct color and size call!' }
     ];
   } else {
     cardGameRules = [
@@ -809,6 +829,36 @@ export function buildAoaLudicKit({
         { speaker: 'Traveler', text: 'What do I need for the puddle on the street?' },
         { speaker: 'Forecaster', text: 'You need your boots and an umbrella.' },
         { speaker: 'Traveler', text: 'Thank you! I am ready for the rain.' }
+      ]
+    };
+  } else if (domain === 'colors') {
+    mission = {
+      title: 'Communicative Action Mission: "The Bilingual Color & Art Studio!"',
+      roleA: {
+        role: '🎨 ARTIST CARD',
+        name: 'Student A (The Artist)',
+        goal: 'Collect color pigments and tools: green, blue, red, yellow, small, big.',
+        tokens: ['💵 $1', '💵 $2', '💵 $2', '💵 $5'],
+        budgetNote: 'Deliver currency tokens for each color and size tool you purchase!'
+      },
+      roleB: {
+        role: '🖌️ ART STUDIO STAND',
+        name: 'Student B (Studio Assistant)',
+        standName: `Panama Art Workshop · Studio #${lessonNum || 1}`,
+        prices: [
+          { item: 'green card', price: '$1 each' },
+          { item: 'blue card', price: '$2 each' },
+          { item: 'red card', price: '$2 each' },
+          { item: 'yellow card', price: '$1 each' }
+        ],
+        vendorCue: 'Deliver the requested color: "Here is your color! What else do you need?"'
+      },
+      dialogueBubbles: [
+        { speaker: 'Artist', text: 'Good morning! I need green and blue colors for my painting.' },
+        { speaker: 'Studio', text: 'Here is the green color. Do you need a big or a small brush?' },
+        { speaker: 'Artist', text: 'I need a small brush and a red card, please.' },
+        { speaker: 'Studio', text: 'Here they are! That is three dollars, please.' },
+        { speaker: 'Artist', text: 'Thank you! My Panama painting is complete.' }
       ]
     };
   } else {
@@ -890,9 +940,9 @@ export function buildAoaLudicKit({
       ? `Pick 1 card from your deck. Say your phrase clearly to your teacher or peer before packing up:`
       : `Complete the final 30-second check on your lesson badge:`,
     sampleCardPrompts: [
-      { word: words[0], sentence: domain === 'market' ? `"How much is the ${words[0]}?"` : `I observe the ${words[0]}.` },
-      { word: words[1], sentence: domain === 'market' ? `"I need three ${words[1]}s."` : `We have a ${words[1]} ready.` },
-      { word: words[2], sentence: domain === 'market' ? `"It is two dollars."` : `The ${words[2]} is important today.` }
+      { word: words[0], sentence: domain === 'market' ? `"How much is the ${words[0]}?"` : domain === 'colors' ? `The card is ${words[0]}.` : `I observe the ${words[0]}.` },
+      { word: words[1], sentence: domain === 'market' ? `"I need three ${words[1]}s."` : domain === 'colors' ? `I see a ${words[1]} card.` : `We have a ${words[1]} ready.` },
+      { word: words[2], sentence: domain === 'market' ? `"It is two dollars."` : domain === 'colors' ? `This is a big ${words[2]} shape.` : `The ${words[2]} is important today.` }
     ],
     emojis: [
       { label: 'I can do it!', icon: '😀', sub: 'Strong & clear' },

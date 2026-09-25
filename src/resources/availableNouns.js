@@ -2,6 +2,14 @@
 // Total assets: 1030
 
 export const AVAILABLE_NOUNS = new Set([
+  // Colors & Sizes
+  "green",
+  "blue",
+  "red",
+  "yellow",
+  "purple",
+  "small",
+  "big",
   "academic_resources",
   "access",
   "accommodations",
