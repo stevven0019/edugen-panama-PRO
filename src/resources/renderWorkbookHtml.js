@@ -201,9 +201,9 @@ export function renderWorkbookHtml(pack) {
 
   const defaultMarketWords = [
     { word: 'PINEAPPLE', label: 'PINEAPPLE', photoUrl: getRealiaPhoto('pineapple') },
-    { word: 'YUCA', label: 'YUCA', photoUrl: getRealiaPhoto('yuca') },
-    { word: 'MANGO', label: 'MANGO', photoUrl: getRealiaPhoto('mango') },
-    { word: 'DOLLAR', label: 'DOLLAR', photoUrl: getRealiaPhoto('dollar') },
+    { word: 'CASSAVA', label: 'CASSAVA', photoUrl: getRealiaPhoto('cassava') },
+    { word: 'POTATOES', label: 'POTATOES', photoUrl: getRealiaPhoto('potatoes') },
+    { word: 'MONEY', label: 'MONEY', photoUrl: getRealiaPhoto('money') },
     { word: 'PRICE', label: 'PRICE', photoUrl: getRealiaPhoto('price') },
     { word: 'MARKET', label: 'MARKET', photoUrl: getRealiaPhoto('market') }
   ];
@@ -235,9 +235,19 @@ export function renderWorkbookHtml(pack) {
     }
   }
 
-  while (realiaItems.length < 6) {
-    const fallbackWord = `ITEM ${realiaItems.length + 1}`;
-    realiaItems.push({ word: fallbackWord, label: fallbackWord, photoUrl: getRealiaPhoto(fallbackWord) });
+  // Complete up to 6 with authentic thematic vocabulary instead of placeholder names
+  const fallbackThematicPool = scenarioNoun.includes('MARKET')
+    ? ['PINEAPPLE', 'CASSAVA', 'POTATOES', 'APPLE', 'BANANA', 'MARKET']
+    : scenarioNoun.includes('WEATHER')
+    ? ['UMBRELLA', 'BOOTS', 'PUDDLE', 'RAINCOAT', 'SPLASH', 'WET']
+    : ['BOOK', 'PENCIL', 'DESK', 'CHAIR', 'BAG', 'CRAYON'];
+
+  let poolIdx = 0;
+  while (realiaItems.length < 6 && poolIdx < fallbackThematicPool.length) {
+    const fallbackWord = fallbackThematicPool[poolIdx++];
+    if (!realiaItems.some(it => String(it.word).toUpperCase() === fallbackWord)) {
+      realiaItems.push({ word: fallbackWord, label: fallbackWord, photoUrl: getRealiaPhoto(fallbackWord) });
+    }
   }
   realiaItems = realiaItems.slice(0, 6);
   realiaItems.forEach(it => {
@@ -334,8 +344,8 @@ export function renderWorkbookHtml(pack) {
   } else if (scenarioNoun.includes('MARKET')) {
       prepositionItems = [
         { concept: 'PRICE CHECK', relation: 'on', sentence: 'The fresh pineapple costs two dollars and fifty cents.', subject: 'pineapple', reference: 'market', photoUrl: getRealiaPhoto('pineapple') },
-        { concept: 'ROOT VEGETABLE', relation: 'in', sentence: 'Yuca is a fresh root vegetable sold at the market stand.', subject: 'yuca', reference: 'market', photoUrl: getRealiaPhoto('yuca') },
-        { concept: 'TROPICAL FRUIT', relation: 'on', sentence: 'The yellow mango is ripe, sweet, and ready to eat.', subject: 'mango', reference: 'market', photoUrl: getRealiaPhoto('mango') },
+        { concept: 'ROOT VEGETABLE', relation: 'in', sentence: 'Fresh cassava is a staple root vegetable sold at the market stand.', subject: 'cassava', reference: 'market', photoUrl: getRealiaPhoto('cassava') },
+        { concept: 'VEGETABLES', relation: 'on', sentence: 'Potatoes are weighed and bagged by the grocery cashier.', subject: 'potatoes', reference: 'market', photoUrl: getRealiaPhoto('potatoes') },
         { concept: 'CURRENCY', relation: 'next_to', sentence: 'We use dollars and cents to pay the grocery vendor.', subject: 'dollar', reference: 'market', photoUrl: getRealiaPhoto('dollar') }
       ];
     } else {
@@ -624,8 +634,12 @@ export function renderWorkbookHtml(pack) {
             </div>
           `).join('') : lk.stage2ListenPoint.items.map((item, idx) => `
             <div class="border border-slate-200 rounded-2xl p-2.5 bg-slate-50/60 flex items-start gap-3 shadow-sm">
-              <div class="w-14 h-14 rounded-xl overflow-hidden bg-white border border-slate-200 shrink-0 flex items-center justify-center p-0.5 part2-photo">
-                <img src="${item.photoUrl}" alt="${item.targetWord}" class="w-full h-full object-cover rounded-lg" />
+              <div class="w-14 h-14 rounded-xl overflow-hidden bg-white border border-slate-200 shrink-0 flex items-center justify-center p-0.5 part2-photo relative">
+                ${renderRealiaCardHtml({
+                  word: item.targetWord,
+                  label: item.targetWord,
+                  photoUrl: item.photoUrl
+                })}
               </div>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center justify-between gap-1 mb-0.5">
@@ -687,8 +701,12 @@ export function renderWorkbookHtml(pack) {
             <div class="border-2 border-dashed border-slate-400 rounded-xl p-2 bg-white flex flex-col items-center justify-between text-center shadow-sm relative">
               <span class="absolute top-1 left-1.5 text-[9px] font-black text-indigo-600">Photo ${String.fromCharCode(65 + idx)}</span>
               <span class="absolute top-1 right-1.5 text-[8px] font-bold text-slate-400">✂️ Cut</span>
-              <div class="w-14 h-14 rounded-lg overflow-hidden bg-slate-100 mt-3 mb-1 flex items-center justify-center p-0.5 border border-slate-200">
-                <img src="${card.photoUrl}" alt="${card.name}" class="w-full h-full object-cover rounded" />
+              <div class="w-14 h-14 rounded-lg overflow-hidden bg-slate-100 mt-3 mb-1 flex items-center justify-center p-0.5 border border-slate-200 relative">
+                ${renderRealiaCardHtml({
+                  word: card.word || card.name,
+                  label: card.name || card.word,
+                  photoUrl: card.photoUrl
+                })}
               </div>
               <span class="text-xs font-black text-slate-900 uppercase truncate w-full">${card.name}</span>
               <span class="text-[9.5px] font-black text-emerald-800 bg-emerald-50 border border-emerald-200 rounded px-1.5 py-0.5 mt-0.5 w-full">

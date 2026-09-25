@@ -653,15 +653,74 @@ export function buildAoaLudicKit({
 }) {
   const normSkill = normalizeSkill(skill || 'Listening');
   const domain = detectScenarioDomain(scenario, cleanTheme);
-  const words = (vocabWords && vocabWords.length >= 4) ? vocabWords.slice(0, 6) : ['apple', 'pineapple', 'banana', 'potato'];
+  const words = (vocabWords && vocabWords.length >= 4) ? vocabWords.slice(0, 6) : ['pineapple', 'cassava', 'potatoes', 'apple'];
 
-  // 1. Tangible Concept Cards with Domain Attributes
-  const items = words.map((w, i) => {
+  // Non-tangible / abstract words that must NOT be counted as grocery products or cutout items to buy
+  const NON_TANGIBLE_NOUNS = new Set([
+    'money', 'price', 'cost', 'cashier', 'market', 'store', 'supermarket',
+    'shopping list', 'shopping_list', 'item', 'items', 'dollar', 'dollars', 'cent', 'cents',
+    'weather', 'forecast', 'season', 'transit', 'route', 'system', 'process',
+    'activity', 'lesson', 'stage', 'theme', 'action', 'project'
+  ]);
+
+  // Extract strictly tangible products (fruits, vegetables, physical items)
+  const tangibleWords = words.filter(w => !NON_TANGIBLE_NOUNS.has(String(w).toLowerCase().trim()));
+  const defaultMarketTangibles = ['pineapple', 'cassava', 'potatoes', 'apple', 'banana', 'orange'];
+  const finalTangibleWords = [...tangibleWords];
+  if (domain === 'market') {
+    for (const mw of defaultMarketTangibles) {
+      if (finalTangibleWords.length >= 4) break;
+      if (!finalTangibleWords.includes(mw)) finalTangibleWords.push(mw);
+    }
+  } else {
+    for (const w of words) {
+      if (finalTangibleWords.length >= 4) break;
+      if (!finalTangibleWords.includes(w)) finalTangibleWords.push(w);
+    }
+  }
+
+  // Helper for natural, grammatically correct English counting & responses
+  function formatCountItem(count, word) {
+    const w = String(word).toLowerCase().trim();
+    if (w === 'potatoes' || w === 'potato') {
+      return {
+        qtyPrompt: count === 1 ? '1 potato' : `${count} potatoes`,
+        qtyResponse: count === 1 ? 'Here is 1 fresh potato.' : `Here are ${count} fresh potatoes.`
+      };
+    }
+    if (w === 'cassava' || w === 'yuca') {
+      return {
+        qtyPrompt: count === 1 ? '1 cassava' : `${count} cassavas`,
+        qtyResponse: count === 1 ? 'Here is 1 fresh cassava.' : `Here are ${count} fresh cassavas.`
+      };
+    }
+    if (w === 'boots' || w === 'boot') {
+      return {
+        qtyPrompt: count === 1 ? '1 pair of boots' : `${count} pairs of boots`,
+        qtyResponse: count === 1 ? 'Here is 1 pair of boots.' : `Here are ${count} pairs of boots.`
+      };
+    }
+    const singular = w.endsWith('s') && !w.endsWith('ss') ? w.slice(0, -1) : w;
+    const plural = singular.endsWith('s') ? singular : `${singular}s`;
+    if (count === 1) {
+      return {
+        qtyPrompt: `1 ${singular}`,
+        qtyResponse: `Here is 1 ${singular}.`
+      };
+    }
+    return {
+      qtyPrompt: `${count} ${plural}`,
+      qtyResponse: `Here are ${count} ${plural}.`
+    };
+  }
+
+  // 1. Tangible Concept Cards with Domain Attributes (Uses strictly tangible items)
+  const items = finalTangibleWords.slice(0, 4).map((w, i) => {
     let tag = '';
     let price = '';
     let sub = '';
     if (domain === 'market') {
-      price = `$${(i % 4) + 1}`;
+      price = `$${(i % 3) + 1}`;
       tag = price;
       sub = 'Fresh Market Item';
     } else if (domain === 'weather') {
@@ -700,7 +759,7 @@ export function buildAoaLudicKit({
 
   // 2. Stage 1: Detective Flash Game (SEE & SAY)
   let stage1GameName = 'Mystery Flash!';
-  let stage1Prompt = `Teacher flashes photo card for 2 seconds: "What is this?" ──> Class responds: "A ${words[0]}!"`;
+  let stage1Prompt = `Teacher flashes photo card for 2 seconds: "What is this?" ──> Class responds: "A ${finalTangibleWords[0]}!"`;
   let stage1Rules = 'Raise the card quickly. Students must speak the correct target phrase before the card disappears into the mystery envelope!';
   if (normSkill === 'Speaking' && domain === 'market') {
     stage1GameName = 'Fast Market Detective!';
@@ -713,25 +772,26 @@ export function buildAoaLudicKit({
     stage1Prompt = `Teacher flashes 🟢 / 🔴: "What color is this? Is it big or small?" ──> Class shouts: "It is a big red card!"`;
   } else if (normSkill === 'Listening') {
     stage1GameName = 'Acoustic Sound Detective!';
-    stage1Prompt = `Teacher gives oral cue: "Touch the ${words[0]}!" ──> Students point instantly!`;
+    stage1Prompt = `Teacher gives oral cue: "Touch the ${finalTangibleWords[0]}!" ──> Students point instantly!`;
   } else if (normSkill === 'Reading') {
     stage1GameName = 'Speed Signpost Decoder!';
     stage1Prompt = `Teacher flashes word tag for 3 seconds: "Decode and read aloud!" ──> Class reads in unison.`;
   } else if (normSkill === 'Writing') {
     stage1GameName = 'Flash Spell & Letter Detective!';
-    stage1Prompt = `Teacher reveals missing letter card: "${words[0].slice(0, 2)}__" ──> Students spell aloud!`;
+    stage1Prompt = `Teacher reveals missing letter card: "${finalTangibleWords[0].slice(0, 2)}__" ──> Students spell aloud!`;
   } else if (normSkill === 'Mediation') {
     stage1GameName = 'Team Radar & Role Call!';
     stage1Prompt = `Teacher flashes role badge: "Who is the team speaker?" ──> Designated student responds!`;
   }
 
   // 3. Stage 2: Listen, Point & Say (AUDITORY TO ORAL BRIDGE)
-  const listenPointItems = words.slice(0, 4).map((w, i) => {
+  const listenPointItems = finalTangibleWords.slice(0, 4).map((w, i) => {
     let script = '';
     let response = '';
     if (domain === 'market') {
-      script = `Teacher prompt: "I need ${i + 1} ${w}."`;
-      response = `Student points and speaks: "Here are ${i + 1} ${w}s."`;
+      const { qtyPrompt, qtyResponse } = formatCountItem(i + 1, w);
+      script = `Teacher prompt: "I need ${qtyPrompt}."`;
+      response = `Student points and speaks: "${qtyResponse}"`;
     } else if (domain === 'weather') {
       script = `Teacher prompt: "It is raining outside! Find the ${w}."`;
       response = `Student points and speaks: "I have the ${w} ready!"`;
@@ -751,7 +811,7 @@ export function buildAoaLudicKit({
     };
   });
 
-  // 4. Stage 3: Cut-Out Pair Card Game (PLAY)
+  // 4. Stage 3: Cut-Out Pair Card Game (PLAY) - Strictly uses tangible product cards
   const productCards = items.slice(0, 4);
   const numberCards = [
     { value: '1', label: 'ONE', icon: '1️⃣', cue: 'Single item' },
@@ -799,7 +859,7 @@ export function buildAoaLudicKit({
       roleA: {
         role: '🛒 SHOPPER CARD',
         name: 'Student A (The Customer)',
-        goal: `Shopping List: 1 ${words[0] || 'pineapple'}, 2 ${words[1] || 'apples'}, 3 ${words[2] || 'bananas'}.`,
+        goal: `Shopping List: 1 ${finalTangibleWords[0] || 'pineapple'}, 2 ${finalTangibleWords[1] || 'cassavas'}, 3 ${finalTangibleWords[2] || 'potatoes'}.`,
         tokens: ['💵 $1', '💵 $2', '💵 $2', '💵 $5'],
         budgetNote: 'Pretend budget: $10. Pay the vendor for each completed purchase!'
       },
@@ -808,10 +868,10 @@ export function buildAoaLudicKit({
         name: 'Student B (The Stall Owner)',
         standName: `Panama Fresh Market · Stand #${lessonNum || 1}`,
         prices: [
-          { item: words[0] || 'pineapple', price: '$2 each' },
-          { item: words[1] || 'apple', price: '$1 each' },
-          { item: words[2] || 'banana', price: '$1 each' },
-          { item: words[3] || 'potato', price: '$3 a bag' }
+          { item: finalTangibleWords[0] || 'pineapple', price: '$2 each' },
+          { item: finalTangibleWords[1] || 'cassava', price: '$1 each' },
+          { item: finalTangibleWords[2] || 'potatoes', price: '$2 a bag' },
+          { item: finalTangibleWords[3] || 'apple', price: '$1 each' }
         ],
         vendorCue: 'Keep the stand organized. Check currency and say: "Here you are!"'
       },
