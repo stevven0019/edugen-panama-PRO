@@ -62,6 +62,27 @@ export function hydratePackPhotos(pack) {
     }
   }
 
+  if (pack.ludicKit) {
+    if (Array.isArray(pack.ludicKit.stage2ListenPoint?.items)) {
+      pack.ludicKit.stage2ListenPoint.items.forEach(item => {
+        if (!item.photoUrl) {
+          const candidate = item.targetWord || item.word || '';
+          const p = getRealiaPhoto(candidate);
+          if (p) item.photoUrl = p;
+        }
+      });
+    }
+    if (Array.isArray(pack.ludicKit.stage3CardGame?.productCards)) {
+      pack.ludicKit.stage3CardGame.productCards.forEach(card => {
+        if (!card.photoUrl) {
+          const candidate = card.word || card.name || '';
+          const p = getRealiaPhoto(candidate);
+          if (p) card.photoUrl = p;
+        }
+      });
+    }
+  }
+
   if (Array.isArray(pack.page1?.wordBank)) {
     pack.page1.wordBank.forEach(item => {
       if (!item.photoUrl) {

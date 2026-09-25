@@ -230,6 +230,15 @@ export function renderWorkbookHtml(pack) {
       realiaItems = defaultWeatherWords;
     } else if (scenarioNoun.includes('MARKET')) {
       realiaItems = defaultMarketWords;
+    } else if (scenarioNoun.includes('CANAL') || scenarioNoun.includes('LOGISTICS') || /canal|trade|shipping|transit/i.test(`${scenario} ${cleanTitle}`)) {
+      realiaItems = [
+        { word: 'PANAMA CANAL', label: 'PANAMA CANAL', photoUrl: getRealiaPhoto('panama canal') },
+        { word: 'OPERATION', label: 'OPERATION', photoUrl: getRealiaPhoto('operation') },
+        { word: 'TRAFFIC', label: 'TRAFFIC', photoUrl: getRealiaPhoto('traffic') },
+        { word: 'SHIPPING', label: 'SHIPPING', photoUrl: getRealiaPhoto('shipping') },
+        { word: 'TRADE', label: 'TRADE', photoUrl: getRealiaPhoto('trade') },
+        { word: 'INFRASTRUCTURE', label: 'INFRASTRUCTURE', photoUrl: getRealiaPhoto('infrastructure') }
+      ];
     } else {
       realiaItems = defaultClassroomWords;
     }
@@ -240,6 +249,12 @@ export function renderWorkbookHtml(pack) {
     ? ['PINEAPPLE', 'CASSAVA', 'POTATOES', 'APPLE', 'BANANA', 'MARKET']
     : scenarioNoun.includes('WEATHER')
     ? ['UMBRELLA', 'BOOTS', 'PUDDLE', 'RAINCOAT', 'SPLASH', 'WET']
+    : scenarioNoun.includes('CANAL') || scenarioNoun.includes('LOGISTICS') || /canal|trade|shipping|transit/i.test(`${scenario} ${cleanTitle}`)
+    ? ['PANAMA CANAL', 'OPERATION', 'TRAFFIC', 'SHIPPING', 'TRADE', 'INFRASTRUCTURE', 'EFFICIENCY']
+    : scenarioNoun.includes('COMMUNITY') || scenarioNoun.includes('CITY')
+    ? ['PARK', 'LIBRARY', 'HOSPITAL', 'POLICE', 'STREET', 'STORE']
+    : scenarioNoun.includes('WILDLIFE') || scenarioNoun.includes('NATURE')
+    ? ['JAGUAR', 'FOREST', 'TREE', 'RIVER', 'BIRD', 'PLANT']
     : ['BOOK', 'PENCIL', 'DESK', 'CHAIR', 'BAG', 'CRAYON'];
 
   let poolIdx = 0;

@@ -59,7 +59,7 @@ const cleanHtml = (html) => {
     .trim();
 };
 
-const INVALID_VOCAB_REGEX = /^(?:the\s+teacher|the\s+student|teacher|student|model|models|modeling|describing|asking|explaining|identifying|practicing|evaluating|speaking|writing|reading|listening|stage|warm|warm-up|presentation|practice|production|assessment|reflection|step|grade|minute|time|materials|procedure|differentiation|learning|outcome|objective|check|dialogue|instructions?|rubric|performance|task|essential|target|language|comprehension|accuracy|fluency|inquiry|strategy|concept|detail|focus|context|element|statement|question|answer|true|false|yes|no|what|who|where|when|why|how|which|whose|this|that|these|those|is|are|was|were|do|does|did|have|has|had|can|could|would|should|will|different|different\s+weather|weather|clima|item|items|words?|pronunciation|initial\s+sounds?|sound|sounds?|number|numbers|numeral|numerals|digit|digits|count|counting|alphabet|letter|letters|phonics|phonemic|grammar|rule|rules|example|examples|frame|frames|pattern|patterns|structure|structures|verb|verbs|noun|nouns|adjective|adjectives|adverb|adverbs|pronoun|pronouns|vocabulary|vocab|syllable|syllables)/i;
+const INVALID_VOCAB_REGEX = /^(?:the\s+teacher|the\s+student|teacher|student|model|models|modeling|describing|asking|explaining|identifying|practicing|evaluating|speaking|writing|reading|listening|stage|warm|warm-up|presentation|practice|production|assessment|reflection|step|grade|minute|time|materials|procedure|differentiation|learning|outcome|objective|check|dialogue|instructions?|rubric|performance|task|essential|target|language|comprehension|accuracy|fluency|inquiry|strategy|concept|detail|focus|context|element|statement|question|answer|true|false|yes|no|what|who|where|when|why|how|which|whose|this|that|these|those|is|are|was|were|do|does|did|have|has|had|can|could|would|should|will|different|different\s+weather|weather|clima|item|items|words?|pronunciation|initial\s+sounds?|sound|sounds?|number|numbers|numeral|numerals|digit|digits|count|counting|alphabet|letter|letters|phonics|phonemic|grammar|rule|rules|example|examples|frame|frames|pattern|patterns|structure|structures|verb|verbs|noun|nouns|adjective|adjectives|adverb|adverbs|pronoun|pronouns|vocabulary|vocab|syllable|syllables|community\s+leader|acp\s+representative|acp|representative|environmental\s+group|group\s+activist|activist|role-?play|simulation|debater|speaker|listener|partner)/i;
 
 const PREPOSITIONS_SET = new Set([
   'in', 'on', 'under', 'next to', 'next_to', 'behind', 'in front of', 'between', 'near', 'over', 'above', 'below', 'at', 'by', 'to', 'from', 'with', 'into', 'onto'
@@ -121,7 +121,9 @@ export const CURRICULUM_TOPIC_VOCAB = {
   food: ['rice', 'chicken', 'fish', 'salad', 'water', 'fruit', 'vegetables', 'bread'],
   garden: ['tomato', 'plant', 'flower', 'seed', 'soil', 'water', 'sun', 'leaf'],
   neighborhood: ['neighborhood', 'park', 'library', 'store', 'school', 'playground', 'street', 'house', 'tree'],
-  canal: ['canal', 'ship', 'boat', 'ocean', 'bridge', 'vessel', 'locks', 'goods'],
+  canal: ['panama canal', 'operation', 'traffic', 'congestion', 'routes', 'shipping', 'trade', 'infrastructure', 'efficiency', 'costs', 'delays'],
+  trade: ['panama canal', 'operation', 'traffic', 'congestion', 'routes', 'shipping', 'trade', 'infrastructure', 'efficiency', 'costs', 'delays'],
+  shipping: ['panama canal', 'operation', 'traffic', 'congestion', 'routes', 'shipping', 'trade', 'infrastructure', 'efficiency', 'costs', 'delays'],
   beach: ['beach', 'towel', 'sand', 'shell', 'wave', 'picnic', 'sun', 'umbrella'],
   mola: ['mola', 'fabric', 'color', 'turtle', 'butterfly', 'jaguar', 'art', 'pattern'],
   clothing: ['pollera', 'dress', 'shirt', 'pants', 'shoes', 'hat', 'uniform', 'costume'],
@@ -145,7 +147,7 @@ export function detectScenarioDomain(scenario = '', theme = '', textContext = ''
   if (/garden|plant|seed|soil|flower|vegetable|watering|huerto|jard[ií]n/i.test(combined)) return 'garden';
   if (/canal|ship|boat|ocean|locks|vessel|puente de las am[eé]ricas/i.test(combined)) return 'canal';
   if (/animal|wildlife|bird|toucan|jaguar|sloth|monkey|fauna|selva/i.test(combined)) return 'animals';
-  if (/color|colores|palette|paint|arte|craft|red|blue|green|yellow|purple/i.test(combined)) return 'colors';
+  if (/\b(?:colors?|colores|palette|paint|paints|arte|craft|crafts|red|blue|green|yellow|purple)\b/i.test(combined)) return 'colors';
   if (/classroom|preposition|desk|pencil|backpack|book|sal[oó]n|escuela/i.test(combined)) return 'classroom';
   if (/health|doctor|exercise|hygiene|salud/i.test(combined)) return 'health';
   if (/community|neighborhood|city|town|park|street|comunidad/i.test(combined)) return 'community';
@@ -649,10 +651,12 @@ export function buildAoaLudicKit({
   isMediation = false,
   isTheme2 = false,
   languageFrame = {},
-  project21st = ''
+  project21st = '',
+  rawText = ''
 }) {
   const normSkill = normalizeSkill(skill || 'Listening');
   const domain = detectScenarioDomain(scenario, cleanTheme);
+  const isHighGrade = /(?:7|8|9|10|11|12)th\s*Grade/i.test(grade || '') || /B1|B2/i.test(grade || '');
   const words = (vocabWords && vocabWords.length >= 4) ? vocabWords.slice(0, 6) : ['pineapple', 'cassava', 'potatoes', 'apple'];
 
   // Non-tangible / abstract words that must NOT be counted as grocery products or cutout items to buy
@@ -663,8 +667,9 @@ export function buildAoaLudicKit({
     'activity', 'lesson', 'stage', 'theme', 'action', 'project'
   ]);
 
-  // Extract strictly tangible products (fruits, vegetables, physical items)
-  const tangibleWords = words.filter(w => !NON_TANGIBLE_NOUNS.has(String(w).toLowerCase().trim()));
+  // Extract strictly words that have valid photos
+  const wordsWithPhotos = words.filter(w => getRealiaPhoto(w) !== null);
+  const tangibleWords = wordsWithPhotos.filter(w => !NON_TANGIBLE_NOUNS.has(String(w).toLowerCase().trim()));
   const defaultMarketTangibles = ['pineapple', 'cassava', 'potatoes', 'apple', 'banana', 'orange'];
   const finalTangibleWords = [...tangibleWords];
   if (domain === 'market') {
@@ -673,9 +678,20 @@ export function buildAoaLudicKit({
       if (!finalTangibleWords.includes(mw)) finalTangibleWords.push(mw);
     }
   } else {
-    for (const w of words) {
+    for (const w of wordsWithPhotos) {
       if (finalTangibleWords.length >= 4) break;
       if (!finalTangibleWords.includes(w)) finalTangibleWords.push(w);
+    }
+  }
+
+  // If still fewer than 4, pull from CURRICULUM_TOPIC_VOCAB[domain] with photos
+  if (finalTangibleWords.length < 4) {
+    const topicDefaults = CURRICULUM_TOPIC_VOCAB[domain] || ['book', 'desk', 'chair', 'bag', 'pencil', 'crayon'];
+    for (const tw of topicDefaults) {
+      if (finalTangibleWords.length >= 4) break;
+      if (!finalTangibleWords.includes(tw) && getRealiaPhoto(tw) !== null && !NON_TANGIBLE_NOUNS.has(tw)) {
+        finalTangibleWords.push(tw);
+      }
     }
   }
 
@@ -731,6 +747,7 @@ export function buildAoaLudicKit({
       sub = 'Panama Wildlife';
     } else if (domain === 'canal') {
       tag = i % 2 === 0 ? '🚢 Transit' : '🌊 Locks';
+      price = 'Key Term';
       sub = 'Canal Navigation';
     } else if (domain === 'classroom') {
       tag = i % 2 === 0 ? '🎒 Desk' : '✏️ Station';
@@ -771,8 +788,14 @@ export function buildAoaLudicKit({
     stage1GameName = 'Rainbow Color & Size Detective!';
     stage1Prompt = `Teacher flashes 🟢 / 🔴: "What color is this? Is it big or small?" ──> Class shouts: "It is a big red card!"`;
   } else if (normSkill === 'Listening') {
-    stage1GameName = 'Acoustic Sound Detective!';
-    stage1Prompt = `Teacher gives oral cue: "Touch the ${finalTangibleWords[0]}!" ──> Students point instantly!`;
+    if (isHighGrade) {
+      stage1GameName = 'Acoustic Sound & Keyword Detective!';
+      stage1Prompt = `Teacher gives oral cue / audio clip: "Listen for the target term: '${finalTangibleWords[0]}'!" ──> Students locate the concept card on their desk and verify context.`;
+      stage1Rules = 'Listen attentively to the oral prompt. Locate the target term card and signal comprehension before time runs out!';
+    } else {
+      stage1GameName = 'Acoustic Sound Detective!';
+      stage1Prompt = `Teacher gives oral cue: "Point to the ${finalTangibleWords[0]}!" ──> Students point instantly!`;
+    }
   } else if (normSkill === 'Reading') {
     stage1GameName = 'Speed Signpost Decoder!';
     stage1Prompt = `Teacher flashes word tag for 3 seconds: "Decode and read aloud!" ──> Class reads in unison.`;
@@ -798,8 +821,11 @@ export function buildAoaLudicKit({
     } else if (domain === 'colors') {
       script = `Teacher prompt: "Show me the ${w} card on your desk."`;
       response = `Student points and speaks: "This is ${w}!"`;
+    } else if (isHighGrade) {
+      script = `Teacher prompt: "Listen for '${w}' in our scenario context."`;
+      response = `Student points to card and articulates: "Here is '${w}' — it is essential for ${cleanTheme}."`;
     } else {
-      script = `Teacher prompt: "Listen for '${w}' and locate the real photo."`;
+      script = `Teacher prompt: "Listen for '${w}' and locate the picture."`;
       response = `Student points to ${w} and articulates: "This is the ${w}."`;
     }
     return {
@@ -817,7 +843,7 @@ export function buildAoaLudicKit({
     { value: '1', label: 'ONE', icon: '1️⃣', cue: 'Single item' },
     { value: '2', label: 'TWO', icon: '2️⃣', cue: 'Pair of items' },
     { value: '3', label: 'THREE', icon: '3️⃣', cue: 'Small bundle' },
-    { value: '5', label: 'FIVE', icon: '5️⃣', cue: 'Family pack' }
+    { value: '4', label: 'FOUR', icon: '4️⃣', cue: 'Full set' }
   ];
 
   let cardGameRules = [];
@@ -845,11 +871,13 @@ export function buildAoaLudicKit({
   } else {
     cardGameRules = [
       { step: 1, title: 'Shuffle & Deal', text: 'Place Concept Cards and Number Cards face down in front of you.' },
-      { step: 2, title: 'Draw & Announce', text: `Partner A draws 1 Concept Card and says: "Can you identify the ${words[0]}?"` },
-      { step: 3, title: 'Verify & Explain', text: `Partner B checks the photo and answers: "Yes, this is the ${words[0]} for our lesson."` },
+      { step: 2, title: 'Draw & Announce', text: `Partner A draws 1 Concept Card and says: "Can you identify the ${finalTangibleWords[0]}?"` },
+      { step: 3, title: 'Verify & Explain', text: `Partner B checks the photo and answers: "Yes, this is the ${finalTangibleWords[0]} for our lesson."` },
       { step: 4, title: 'Switch Roles', text: 'Switch roles and play the next round with a new card combination!' }
     ];
   }
+
+  const cleanThemeTitle = cleanTheme.replace(/^the\s+/i, '');
 
   // 5. Stage 4: Communicative Role-Play Mission (INTERACT & PERFORM)
   let mission = {};
@@ -889,7 +917,7 @@ export function buildAoaLudicKit({
       roleA: {
         role: '🎒 STUDENT ON THE WAY CARD',
         name: 'Student A (Traveler)',
-        goal: `Mission: Prepare gear for school in the storm: 1 ${words[0] || 'umbrella'}, 1 pair of ${words[1] || 'boots'}, 1 ${words[2] || 'raincoat'}.`,
+        goal: `Mission: Prepare gear for school in the storm: 1 ${finalTangibleWords[0] || 'umbrella'}, 1 pair of ${finalTangibleWords[1] || 'boots'}, 1 ${finalTangibleWords[2] || 'raincoat'}.`,
         tokens: ['⭐ Prepared', '⭐ Dry', '⭐ Safe'],
         budgetNote: 'Check off each piece of gear before stepping outside!'
       },
@@ -898,10 +926,10 @@ export function buildAoaLudicKit({
         name: 'Student B (Weather Station)',
         standName: `Panama Rain Watch · Station #${lessonNum || 1}`,
         prices: [
-          { item: words[0] || 'umbrella', price: 'High Storm Alert' },
-          { item: words[1] || 'boots', price: 'Deep Puddle Warning' },
-          { item: words[2] || 'raincoat', price: 'Heavy Downpour' },
-          { item: words[3] || 'storm', price: 'Thunder Forecast' }
+          { item: finalTangibleWords[0] || 'umbrella', price: 'High Storm Alert' },
+          { item: finalTangibleWords[1] || 'boots', price: 'Deep Puddle Warning' },
+          { item: finalTangibleWords[2] || 'raincoat', price: 'Heavy Downpour' },
+          { item: finalTangibleWords[3] || 'storm', price: 'Thunder Forecast' }
         ],
         vendorCue: 'Advise your partner on what gear to wear in the rain!'
       },
@@ -943,31 +971,121 @@ export function buildAoaLudicKit({
         { speaker: 'Artist', text: 'Thank you! My Panama painting is complete.' }
       ]
     };
+  } else if (rawText && /community\s+leader|acp\s+representative|environmental\s+group/i.test(rawText)) {
+    mission = {
+      title: `Communicative Action Mission: "Canal Expansion & Community Dialogue"`,
+      roleA: {
+        role: '🏛️ COMMUNITY LEADER CARD',
+        name: 'Student A (Community Leader)',
+        goal: 'Address community concerns: Balance trade investments with water security and local traffic.',
+        tokens: ['📢 Public Voice', '💧 Water Rights', '🌳 Ecosystem Care', '⚖️ Fair Agreement'],
+        budgetNote: 'State your community priority and negotiate a sustainable agreement!'
+      },
+      roleB: {
+        role: '🚢 ACP REPRESENTATIVE CARD',
+        name: 'Student B (Canal Authority Representative)',
+        standName: 'Panama Canal Authority (ACP) · Operations Dispatch',
+        prices: [
+          { item: 'infrastructure', price: 'Modern Lock Expansion' },
+          { item: 'efficiency', price: 'Reduced Transit Delays' },
+          { item: 'traffic', price: 'Scheduled Vessel Flow' },
+          { item: 'trade', price: 'Global Commerce Hub' }
+        ],
+        vendorCue: 'Present the Canal modernization plans clearly and address ecological concerns politely.'
+      },
+      dialogueBubbles: [
+        { speaker: 'Community Leader', text: 'How will the proposed Canal expansion ease traffic and protect our local water supply?' },
+        { speaker: 'ACP Representative', text: 'We are making significant investments in modern infrastructure to ease congestion and improve trade efficiency.' },
+        { speaker: 'Community Leader', text: 'What guarantees do our communities have against environmental damage and delays?' },
+        { speaker: 'ACP Representative', text: 'We coordinate with environmental groups to protect surrounding ecosystems and ensure water conservation.' },
+        { speaker: 'Community Leader', text: 'Thank you for the explanation. We support balanced economic and ecological progress.' }
+      ]
+    };
+  } else if (domain === 'canal') {
+    mission = {
+      title: `Communicative Action Mission: "Canal Transit & Global Trade Dispatch"`,
+      roleA: {
+        role: '🚢 SHIPPING LOGISTICS MANAGER',
+        name: 'Student A (Logistics Coordinator)',
+        goal: `Coordinate transit schedule for global trade: 1 ${finalTangibleWords[0] || 'ship'}, 1 priority slot for ${finalTangibleWords[1] || 'cargo'}.`,
+        tokens: ['📦 Cargo Manifest', '⏱️ Transit Slot', '💰 Tariff Paid', '✅ Clearance'],
+        budgetNote: 'Verify logistics documentation before booking the lock crossing!'
+      },
+      roleB: {
+        role: '🌊 CANAL OPERATIONS DISPATCH',
+        name: 'Student B (Transit Controller)',
+        standName: `Miraflores Operations Tower · Dispatch #${lessonNum || 1}`,
+        prices: [
+          { item: finalTangibleWords[0] || 'panama canal', price: 'Scheduled Route' },
+          { item: finalTangibleWords[1] || 'shipping', price: 'Container Priority' },
+          { item: finalTangibleWords[2] || 'traffic', price: 'Coordinated Flow' },
+          { item: finalTangibleWords[3] || 'efficiency', price: 'Lock Optimization' }
+        ],
+        vendorCue: 'Manage vessel transit traffic and confirm lock passage times.'
+      },
+      dialogueBubbles: [
+        { speaker: 'Logistics Manager', text: 'Good morning! Our shipping vessel needs to schedule transit through the locks.' },
+        { speaker: 'Canal Dispatch', text: 'Welcome! Operations are running smoothly to prevent traffic congestion.' },
+        { speaker: 'Logistics Manager', text: 'Can we confirm the morning schedule to avoid shipping delays?' },
+        { speaker: 'Canal Dispatch', text: 'Your transit slot is confirmed. Maintain efficient speed toward the locks.' },
+        { speaker: 'Logistics Manager', text: 'Thank you! Our global trade route is clear.' }
+      ]
+    };
+  } else if (domain === 'community') {
+    mission = {
+      title: `Communicative Action Mission: "The ${cleanThemeTitle} Town Assembly"`,
+      roleA: {
+        role: '🏙️ LOCAL CITIZEN CARD',
+        name: 'Student A (Community Member)',
+        goal: `Share civic feedback about neighborhood improvement: park care and community safety.`,
+        tokens: ['📢 Community Voice', '💡 Suggestion', '🤝 Volunteer', '⭐ Approved'],
+        budgetNote: 'Present your community idea politely to the town representative!'
+      },
+      roleB: {
+        role: '🏛️ TOWN COUNCIL REPRESENTATIVE',
+        name: 'Student B (Civic Officer)',
+        standName: `Town Hall Assembly · District #${lessonNum || 1}`,
+        prices: [
+          { item: finalTangibleWords[0] || 'community', price: 'Civic Project' },
+          { item: finalTangibleWords[1] || 'park', price: 'Public Renovation' },
+          { item: finalTangibleWords[2] || 'neighborhood', price: 'Citizen Initiative' },
+          { item: finalTangibleWords[3] || 'school', price: 'Youth Programs' }
+        ],
+        vendorCue: 'Listen to citizen feedback carefully and respond with civic solutions.'
+      },
+      dialogueBubbles: [
+        { speaker: 'Citizen', text: 'Good afternoon! I want to suggest improvements for our neighborhood.' },
+        { speaker: 'Council Officer', text: 'Welcome! The town council values community participation.' },
+        { speaker: 'Citizen', text: 'Can we allocate more resources to public parks and clean streets?' },
+        { speaker: 'Council Officer', text: 'Yes, that project has been approved to benefit all residents.' },
+        { speaker: 'Citizen', text: 'Thank you! Working together strengthens our community.' }
+      ]
+    };
   } else {
     mission = {
-      title: `Communicative Action Mission: "The ${cleanTheme} Inquiry!"`,
+      title: `Communicative Action Mission: "The ${cleanThemeTitle} Inquiry!"`,
       roleA: {
         role: '🔍 INQUIRER CARD',
         name: 'Student A (Investigator)',
-        goal: `Collect facts about ${words[0] || 'item 1'} and ${words[1] || 'item 2'}.`,
+        goal: `Collect facts about ${finalTangibleWords[0] || 'item 1'} and ${finalTangibleWords[1] || 'item 2'}.`,
         tokens: ['⭐ Fact 1', '⭐ Fact 2', '⭐ Verified'],
         budgetNote: 'Ask questions and record peer answers on your mission badge.'
       },
       roleB: {
         role: '📋 EXPERT DISPATCH CARD',
         name: 'Student B (Scenario Specialist)',
-        standName: `${cleanTheme} Field Base`,
+        standName: `${cleanThemeTitle} Field Base`,
         prices: [
-          { item: words[0] || 'item 1', price: 'Key Concept' },
-          { item: words[1] || 'item 2', price: 'Core Feature' },
-          { item: words[2] || 'item 3', price: 'Evidence Detail' },
-          { item: words[3] || 'item 4', price: 'Target Outcome' }
+          { item: finalTangibleWords[0] || 'item 1', price: 'Key Concept' },
+          { item: finalTangibleWords[1] || 'item 2', price: 'Core Feature' },
+          { item: finalTangibleWords[2] || 'item 3', price: 'Evidence Detail' },
+          { item: finalTangibleWords[3] || 'item 4', price: 'Target Outcome' }
         ],
         vendorCue: 'Explain target structures with clear pronunciation and gestures.'
       },
       dialogueBubbles: [
         { speaker: 'Investigator', text: `Can you explain the main idea of ${cleanTheme}?` },
-        { speaker: 'Specialist', text: `Yes! We observe ${words[0] || 'the target concept'} in our community.` },
+        { speaker: 'Specialist', text: `Yes! We observe ${finalTangibleWords[0] || 'the target concept'} in our community.` },
         { speaker: 'Investigator', text: `How do we use this in our daily action?` },
         { speaker: 'Specialist', text: `We practice together and complete our project.` },
         { speaker: 'Investigator', text: 'Excellent! Mission accomplished.' }
@@ -978,33 +1096,69 @@ export function buildAoaLudicKit({
   // 6. Stage 5: Observable Can-Do Mission Checklist (Assessment)
   let canDoStatements = [];
   if (normSkill === 'Speaking') {
-    canDoStatements = [
-      { icon: '🗣️', text: `I can ask target inquiry questions (e.g., 'How much is...?' or 'What is this?').` },
-      { icon: '🗣️', text: `I can state quantities and numbers accurately (e.g., 'three apples', 'two dollars').` },
-      { icon: '🗣️', text: `I can express needs and offers politely (e.g., 'I need..., please' / 'Here you are').` },
-      { icon: '🛒', text: `I can actively participate and complete the interactive pair mission.` }
-    ];
+    if (isHighGrade) {
+      canDoStatements = [
+        { icon: '🗣️', text: `I can present an analysis of current local or global issues clearly.` },
+        { icon: '🗣️', text: `I can ask and answer follow-up questions during interactive role-play debates.` },
+        { icon: '🗣️', text: `I can express agreements and disagreements politely using target modal verbs.` },
+        { icon: '🗣️', text: `I can pronounce target vocabulary with natural rhythm and intonation.` }
+      ];
+    } else {
+      canDoStatements = [
+        { icon: '🗣️', text: `I can ask target inquiry questions (e.g., 'How much is...?' or 'What is this?').` },
+        { icon: '🗣️', text: `I can state quantities and numbers accurately (e.g., 'three apples', 'two dollars').` },
+        { icon: '🗣️', text: `I can express needs and offers politely (e.g., 'I need..., please' / 'Here you are').` },
+        { icon: '🛒', text: `I can actively participate and complete the interactive pair mission.` }
+      ];
+    }
   } else if (normSkill === 'Listening') {
-    canDoStatements = [
-      { icon: '👂', text: `I can identify target keywords when spoken slowly and clearly.` },
-      { icon: '👂', text: `I can match oral descriptions to the correct realia photo without hesitation.` },
-      { icon: '👆', text: `I can perform physical actions (TPR) in response to verbal teacher prompts.` },
-      { icon: '🎧', text: `I can discriminate the key sounds and phonemes of today's lesson.` }
-    ];
+    if (isHighGrade) {
+      canDoStatements = [
+        { icon: '👂', text: `I can evaluate spoken information and identify main ideas in an authentic broadcast.` },
+        { icon: '👂', text: `I can distinguish key scenario vocabulary and arguments in context.` },
+        { icon: '👥', text: `I can engage in a role-play discussion to explore diverse perspectives and resolve disagreements.` },
+        { icon: '🎧', text: `I can recognize syllable stress and reduced vowels in multisyllabic vocabulary.` }
+      ];
+    } else {
+      canDoStatements = [
+        { icon: '👂', text: `I can identify target keywords when spoken slowly and clearly.` },
+        { icon: '👂', text: `I can match oral descriptions to the correct realia photo without hesitation.` },
+        { icon: '👆', text: `I can point to items and follow verbal teacher prompts.` },
+        { icon: '🎧', text: `I can discriminate the key sounds and phonemes of today's lesson.` }
+      ];
+    }
   } else if (normSkill === 'Reading') {
-    canDoStatements = [
-      { icon: '📖', text: `I can decode target words using letter-sound associations and phonemic awareness.` },
-      { icon: '🔍', text: `I can scan short authentic signs, receipts, or menus to find specific details.` },
-      { icon: '👍', text: `I can verify whether factual statements about the text are True or False.` },
-      { icon: '📑', text: `I can read and follow 2-step printed instructions for classroom tasks.` }
-    ];
+    if (isHighGrade) {
+      canDoStatements = [
+        { icon: '📖', text: `I can evaluate information and identify key arguments in authentic texts.` },
+        { icon: '🔍', text: `I can distinguish between factual evidence and potential bias.` },
+        { icon: '📊', text: `I can scan articles for specific statistics, dates, and trade data.` },
+        { icon: '📑', text: `I can summarize the author's main conclusions in my own words.` }
+      ];
+    } else {
+      canDoStatements = [
+        { icon: '📖', text: `I can decode target words using letter-sound associations and phonemic awareness.` },
+        { icon: '🔍', text: `I can scan short authentic signs, receipts, or menus to find specific details.` },
+        { icon: '👍', text: `I can verify whether factual statements about the text are True or False.` },
+        { icon: '📑', text: `I can read and follow 2-step printed instructions for classroom tasks.` }
+      ];
+    }
   } else if (normSkill === 'Writing') {
-    canDoStatements = [
-      { icon: '✍️', text: `I can spell the key scenario vocabulary words with legible orthography.` },
-      { icon: '✍️', text: `I can trace and write complete descriptive sentences following the language frame.` },
-      { icon: '📝', text: `I can complete an authentic receipt, report, or log accurately.` },
-      { icon: '✏️', text: `I can apply basic punctuation (capital letter and period) to my sentences.` }
-    ];
+    if (isHighGrade) {
+      canDoStatements = [
+        { icon: '✍️', text: `I can write a structured analytical paragraph using passive voice and conditionals.` },
+        { icon: '✍️', text: `I can express balanced arguments connecting economic and environmental perspectives.` },
+        { icon: '📝', text: `I can organize ideas clearly with appropriate transition words.` },
+        { icon: '✏️', text: `I can edit my work for accurate spelling and punctuation.` }
+      ];
+    } else {
+      canDoStatements = [
+        { icon: '✍️', text: `I can spell the key scenario vocabulary words with legible orthography.` },
+        { icon: '✍️', text: `I can trace and write complete descriptive sentences following the language frame.` },
+        { icon: '📝', text: `I can complete an authentic receipt, report, or log accurately.` },
+        { icon: '✏️', text: `I can apply basic punctuation (capital letter and period) to my sentences.` }
+      ];
+    }
   } else {
     // Mediation
     canDoStatements = [
@@ -1094,6 +1248,7 @@ export function buildAoaLudicKit({
   return {
     stage1Game: {
       name: stage1GameName,
+      gameName: stage1GameName,
       prompt: stage1Prompt,
       rules: stage1Rules,
       cards: items.slice(0, 4)
@@ -1144,30 +1299,45 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
 
   // 2. Title & Theme Resolution (Text has authoritative priority over stale metadata)
   let rawTheme = '';
-  const textThemeMatch = clean.match(/(?:Theme|Tema)\s*#?\s*[:#-]?\s*([^\n\t.]+?)(?:Date|\bSpecific|\bLesson|$)/i) ||
-    clean.match(/Theme\s*#\s*([^–—:\n\t]+?)(?:–|—|-|Lesson|$)/i) ||
-    clean.match(/(?:Title|Topic):\s*([^\n\t.]+)/i);
-  if (textThemeMatch && textThemeMatch[1].trim().length > 2 && !textThemeMatch[1].toLowerCase().includes('planner')) {
-    rawTheme = textThemeMatch[1].trim();
-  } else if (metadata.title || metadata.theme) {
-    rawTheme = metadata.title || metadata.theme;
+  const tableThemeMatch = rawText.match(/<b>\s*(?:Theme|Tema)\s*[:#-]?\s*<\/b>\s*([^<]+)/i) ||
+    clean.match(/(?:Theme|Tema)\s*:\s*([a-zA-Z][^\n\t<]+?)(?:Date|\bSpecific|\bLesson|\bGrade|$)/i);
+  if (tableThemeMatch && tableThemeMatch[1].trim().length > 3 && !tableThemeMatch[1].toLowerCase().includes('planner')) {
+    rawTheme = tableThemeMatch[1].trim();
+  } else {
+    const textThemeMatch = clean.match(/(?:Theme|Tema)\s*#?\s*[:#-]?\s*([^\n\t.]+?)(?:Date|\bSpecific|\bLesson|$)/i) ||
+      clean.match(/(?:Title|Topic):\s*([^\n\t.]+)/i);
+    if (textThemeMatch && textThemeMatch[1].trim().length > 2 && !textThemeMatch[1].toLowerCase().includes('planner') && !/^\d+\s*[-–—]?\s*$/.test(textThemeMatch[1].trim())) {
+      rawTheme = textThemeMatch[1].trim();
+    } else if (metadata.title || metadata.theme) {
+      rawTheme = metadata.title || metadata.theme;
+    }
   }
-  if (!rawTheme || rawTheme.includes('Lesson Planner') || rawTheme.includes('EduGen') || rawTheme.includes('Secuencia AOA')) {
+  if (!rawTheme || rawTheme.includes('Lesson Planner') || rawTheme.includes('EduGen') || rawTheme.includes('Secuencia AOA') || /^\d+$/.test(rawTheme.trim())) {
     const headingMatch = rawText.match(/<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/i);
-    if (headingMatch) rawTheme = headingMatch[1].replace(/<[^>]+>/g, '').trim();
+    if (headingMatch && !headingMatch[1].includes('Lesson Planner')) {
+      rawTheme = headingMatch[1].replace(/<[^>]+>/g, '').trim();
+    } else if (metadata.title || metadata.theme) {
+      rawTheme = metadata.title || metadata.theme;
+    }
   }
-  const cleanTheme = sanitizeThemeTitle(rawTheme || 'English AOA Lesson');
+  const cleanTheme = sanitizeThemeTitle(rawTheme || metadata.title || metadata.theme || 'English AOA Lesson');
 
   // 3. Scenario Resolution (Text has authoritative priority over stale metadata)
   let scenario = '';
-  const textScenarioMatch = clean.match(/(?:Scenario|Escenario)\s*[:#-]?\s*([^.\n\t]+?)(?:Skills?|Theme|Specific|Date|Learning|$)/i);
-  if (textScenarioMatch && textScenarioMatch[1].trim().length > 3 && !textScenarioMatch[1].toLowerCase().includes('planner')) {
-    scenario = textScenarioMatch[1].trim();
-  } else if (metadata.scenario && !metadata.scenario.toLowerCase().includes('planner')) {
-    scenario = metadata.scenario;
+  const tableScenarioMatch = rawText.match(/<b>\s*(?:Scenario|Escenario)\s*[:#-]?\s*([^<]+)<\/b>/i) ||
+                             rawText.match(/<b>\s*(?:Scenario|Escenario)\s*[:#-]?\s*<\/b>\s*([^<]+)/i);
+  if (tableScenarioMatch && tableScenarioMatch[1].trim().length > 3 && !tableScenarioMatch[1].toLowerCase().includes('planner')) {
+    scenario = tableScenarioMatch[1].trim();
+  } else {
+    const textScenarioMatch = clean.match(/(?:Scenario|Escenario)\s*[:#-]?\s*([^.\n\t]+?)(?:Skills?|Grade|Grado|Theme|Specific|Date|Learning|$)/i);
+    if (textScenarioMatch && textScenarioMatch[1].trim().length > 3 && !textScenarioMatch[1].toLowerCase().includes('planner')) {
+      scenario = textScenarioMatch[1].trim();
+    } else if (metadata.scenario && !metadata.scenario.toLowerCase().includes('planner')) {
+      scenario = metadata.scenario;
+    }
   }
   if (!scenario || scenario.includes('Planner') || scenario.length > 50) {
-    scenario = cleanTheme;
+    scenario = metadata.scenario || cleanTheme;
   }
 
   // 4. Authoritative Skill Resolution (generador de actividades.txt)
@@ -1216,6 +1386,20 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
       .map(w => w.trim().toLowerCase())
       .filter(w => isValidVocabWord(w));
     vocabWords = [...new Set(rawWords)].slice(0, 6);
+  }
+
+  // Extract from Modeling / Warm-up: "Words like 'congestion,' 'efficiency,' 'shipping,' 'trade' are written..."
+  if (vocabWords.length < 6) {
+    const wordsLikeMatches = [...clean.matchAll(/(?:words|vocabulary)\s+(?:like|such as)\s+([^.]+?)(?:are written|are introduced|written on the board|are modeled|\.)/gi)];
+    for (const m of wordsLikeMatches) {
+      const parsedWords = m[1]
+        .replace(/['"`]/g, ' ')
+        .replace(/and/gi, ',')
+        .split(/[,;\/]/)
+        .map(w => w.trim().toLowerCase())
+        .filter(w => isValidVocabWord(w));
+      vocabWords = [...new Set([...vocabWords, ...parsedWords])];
+    }
   }
 
   // Extract from narrative visuals/realia (e.g., "visuals (flashcards/realia) of raincoats, boots, and umbrellas")
@@ -1272,22 +1456,37 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
   vocabWords = vocabWords.map(normalizeNoun).filter(w => isValidVocabWord(w) && w.toLowerCase() !== 'number');
   vocabWords = [...new Set(vocabWords)];
 
-  // Priority: Fill remaining slots directly from the scenario's official curricular nouns (matching the poster)
-  if (officialScenarioNouns.length > 0 && vocabWords.length < 6) {
+  // Group terms with verified realia photos first so worksheets and cut-out cards have photos
+  const wordsWithPhotos = vocabWords.filter(w => getRealiaPhoto(w) !== null);
+  const wordsWithoutPhotos = vocabWords.filter(w => getRealiaPhoto(w) === null);
+
+  let prioritizedVocab = [...wordsWithPhotos];
+
+  // Fill up to at least 6 with confirmed photo nouns from official scenario nouns (matching the poster)
+  if (officialScenarioNouns.length > 0 && prioritizedVocab.length < 6) {
     for (const noun of officialScenarioNouns) {
-      if (vocabWords.length >= 6) break;
+      if (prioritizedVocab.length >= 6) break;
       const normalized = normalizeNoun(noun);
-      if (isValidVocabWord(normalized) && normalized !== 'number' && !vocabWords.includes(normalized)) {
-        vocabWords.push(normalized);
+      if (isValidVocabWord(normalized) && normalized !== 'number' && !prioritizedVocab.includes(normalized) && getRealiaPhoto(normalized) !== null) {
+        prioritizedVocab.push(normalized);
       }
     }
   }
 
-  // Fallback to rich authentic scenario vocabulary if fewer than 6 valid words found
-  if (vocabWords.length < 6) {
+  // Fallback to rich authentic scenario vocabulary with photos
+  if (prioritizedVocab.length < 6) {
     const topicDefaults = getTopicVocabFallback(`${cleanTheme} ${scenario} ${clean}`);
-    vocabWords = [...new Set([...vocabWords, ...topicDefaults.map(normalizeNoun)])].filter(w => isValidVocabWord(w) && w.toLowerCase() !== 'number').slice(0, 6);
+    for (const noun of topicDefaults) {
+      if (prioritizedVocab.length >= 6) break;
+      const normalized = normalizeNoun(noun);
+      if (isValidVocabWord(normalized) && normalized !== 'number' && !prioritizedVocab.includes(normalized) && getRealiaPhoto(normalized) !== null) {
+        prioritizedVocab.push(normalized);
+      }
+    }
   }
+
+  // Place terms with confirmed photos at the front, followed by any secondary abstract words
+  vocabWords = [...new Set([...prioritizedVocab, ...wordsWithoutPhotos])];
 
   const isKinderGrade = /(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b)/i.test(grade);
   const isKinderClassroomContext = isKinderGrade && /classroom|preposition|school|where\s*is\s*it/i.test(`${cleanTheme} ${scenario} ${clean}`);
@@ -1522,7 +1721,8 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     isMediation,
     isTheme2,
     languageFrame,
-    project21st
+    project21st,
+    rawText: clean
   });
 
   return {
