@@ -1,4 +1,4 @@
-import { parseAoaLessonPlan } from './lessonParser.js';
+import { parseAoaLessonPlan, getScenarioOfficialNouns, isValidVocabWord } from './lessonParser.js';
 import { getRealiaPhoto } from './realiaCatalog.js';
 import {
   buildLessonContract,
@@ -458,9 +458,12 @@ export async function generateActivityPack(source, signal) {
     lessonNum: source?.lessonNum,
     themeType: source?.themeType,
     project21st: source?.project21st,
+    scenarioData: source?.scenarioData || (typeof source === 'object' && source?.scenarioData) || null,
     rawText: srcText
   });
   const patterns = selectActivityPatterns(contract);
+  const officialNouns = getScenarioOfficialNouns(contract.scenarioData);
+  contract.officialNouns = officialNouns;
 
   // 2. Direct Extraction first:
   // If the lesson plan has AOA stages, warm-up, presentation, practice, production, or lesson metadata,
@@ -497,10 +500,15 @@ CONTRATO PEDAGÓGICO DE LA LECCIÓN (generador de actividades.txt):
 - Tema / Escenario: ${contract.scenario || contract.theme || 'Contexto Curricular'}
 - Patrón Actividad 1: ${patterns.activity1.pattern}
 - Patrón Actividad 2: ${patterns.activity2.pattern}
+- Sustantivos Curriculares Oficiales del Escenario (OBLIGATORIOS): ${officialNouns.length ? officialNouns.join(', ') : (contract.vocabulary || []).join(', ') || 'pineapple, cassava, potatoes, money, market, price, store, cost, cashier'}
 - Evidencia Primaria Requerida: ${contract.constraints.oral_evidence_required ? 'Producción e interacción oral en parejas' : contract.constraints.writing_as_primary_evidence ? 'Producción escrita y etiquetado' : contract.constraints.listening_comprehension_required ? 'Comprensión auditiva con guion de audio verbatim' : contract.constraints.reading_comprehension_required ? 'Decodificación visual y comprensión lectora' : 'Mediación interpersonal y proyecto del siglo XXI'}
 ${contract.project_21st ? `- Proyecto 21st Century Skills: ${contract.project_21st}` : ''}
 
 REGLAS PEDAGÓGICAS OBLIGATORIAS:
+0. COHERENCIA ESTRICTA DE VOCABULARIO (IDÉNTICO AL PÓSTER Y AL CURRÍCULO):
+   - Las palabras de vocabulario seleccionadas para Word Bank, Activity 1, Activity 2 y diálogos DEBEN pertenecer exclusivamente a la lista oficial de sustantivos del escenario: [${officialNouns.length ? officialNouns.join(', ') : 'pineapple, cassava, potatoes, money, market, price, store, cost, cashier'}].
+   - PROHIBICIÓN ABSOLUTA: JAMÁS utilices palabras abstractas o meta-conceptuales como 'number', 'numbers', 'digit', 'alphabet', 'grammar', 'stage', 'lesson' como si fueran sustantivos de vocabulario. Si el tema involucra números o precios (ej. compras en el mercado), los números se practican en las estructuras o precios (ej. "$2", "five apples"), PERO los sustantivos ilustrados son los productos y conceptos reales (ej. "pineapple", "cassava", "potatoes", "money", "price").
+
 1. ADAPTACIÓN EVOLUTIVA ESTRICTA:
    - Si el grado es Pre-K o Kinder (Pre-A1 Receptivo): CERO lectoescritura forzada ni oraciones complejas. Todo ocurre mediante escucha (Listening), movimientos físicos (TPR), discriminación auditiva y visual, recuadros de pulgar arriba/abajo (👍 / 👎), y encierre en círculos.
    - Si el grado es 1° o 2° (Pre-A1 / A1.1): Reconocimiento de palabras cotidianas, comandos de aula, trazos asistidos.
@@ -682,6 +690,42 @@ SCHEMA REQUIREMENT (Return strictly valid JSON):
 
   // Strict Alignment Validator & Self-Healing Repair
   if (pack) {
+    // Sanitize any meta-words like 'number' that might have leaked
+    const validReplacements = officialNouns.length ? officialNouns : ['pineapple', 'cassava', 'potatoes', 'money', 'price', 'market'];
+    let repIdx = 0;
+    if (pack.page1?.wordBank && Array.isArray(pack.page1.wordBank)) {
+      pack.page1.wordBank = pack.page1.wordBank.map(wb => {
+        const wStr = String(wb.word || '').trim().toLowerCase();
+        if (!isValidVocabWord(wStr) || wStr === 'number' || wStr === 'numbers') {
+          const replacement = validReplacements[repIdx % validReplacements.length];
+          repIdx++;
+          return {
+            ...wb,
+            word: replacement.charAt(0).toUpperCase() + replacement.slice(1),
+            icon: replacement.toLowerCase(),
+            photoUrl: getRealiaPhoto(replacement)
+          };
+        }
+        return wb;
+      });
+    }
+    if (pack.actionWorksheet?.part1?.items && Array.isArray(pack.actionWorksheet.part1.items)) {
+      pack.actionWorksheet.part1.items = pack.actionWorksheet.part1.items.map(it => {
+        const wStr = String(it.word || it.label || '').trim().toLowerCase();
+        if (!isValidVocabWord(wStr) || wStr === 'number' || wStr === 'numbers') {
+          const replacement = validReplacements[repIdx % validReplacements.length];
+          repIdx++;
+          return {
+            ...it,
+            word: replacement.toUpperCase(),
+            label: replacement.toUpperCase(),
+            photoUrl: getRealiaPhoto(replacement)
+          };
+        }
+        return it;
+      });
+    }
+
     const validation = validateActivityPack(pack, contract);
     if (!validation.pass) {
       pack = repairActivityPack(pack, validation.errors, contract);

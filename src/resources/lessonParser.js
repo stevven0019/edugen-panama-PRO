@@ -59,7 +59,7 @@ const cleanHtml = (html) => {
     .trim();
 };
 
-const INVALID_VOCAB_REGEX = /^(?:the\s+teacher|the\s+student|teacher|student|model|models|modeling|describing|asking|explaining|identifying|practicing|evaluating|speaking|writing|reading|listening|stage|warm|warm-up|presentation|practice|production|assessment|reflection|step|grade|minute|time|materials|procedure|differentiation|learning|outcome|objective|check|dialogue|instructions?|rubric|performance|task|essential|target|language|comprehension|accuracy|fluency|inquiry|strategy|concept|detail|focus|context|element|statement|question|answer|true|false|yes|no|what|who|where|when|why|how|which|whose|this|that|these|those|is|are|was|were|do|does|did|have|has|had|can|could|would|should|will|different|different\s+weather|weather|clima|item|words?|pronunciation|initial\s+sounds?|sound|sounds?)/i;
+const INVALID_VOCAB_REGEX = /^(?:the\s+teacher|the\s+student|teacher|student|model|models|modeling|describing|asking|explaining|identifying|practicing|evaluating|speaking|writing|reading|listening|stage|warm|warm-up|presentation|practice|production|assessment|reflection|step|grade|minute|time|materials|procedure|differentiation|learning|outcome|objective|check|dialogue|instructions?|rubric|performance|task|essential|target|language|comprehension|accuracy|fluency|inquiry|strategy|concept|detail|focus|context|element|statement|question|answer|true|false|yes|no|what|who|where|when|why|how|which|whose|this|that|these|those|is|are|was|were|do|does|did|have|has|had|can|could|would|should|will|different|different\s+weather|weather|clima|item|items|words?|pronunciation|initial\s+sounds?|sound|sounds?|number|numbers|numeral|numerals|digit|digits|count|counting|alphabet|letter|letters|phonics|phonemic|grammar|rule|rules|example|examples|frame|frames|pattern|patterns|structure|structures|verb|verbs|noun|nouns|adjective|adjectives|adverb|adverbs|pronoun|pronouns|vocabulary|vocab|syllable|syllables)/i;
 
 const PREPOSITIONS_SET = new Set([
   'in', 'on', 'under', 'next to', 'next_to', 'behind', 'in front of', 'between', 'near', 'over', 'above', 'below', 'at', 'by', 'to', 'from', 'with', 'into', 'onto'
@@ -78,6 +78,27 @@ export function isValidVocabWord(word) {
   return true;
 }
 
+export function getScenarioOfficialNouns(sc) {
+  if (!sc || typeof sc !== 'object') return [];
+  const vocabSource = sc.communicative_competences?.vocabulary?.linguistic_competences ||
+                      sc.communicativeCompetences?.vocabulary?.linguisticCompetences ||
+                      sc.communicativeCompetences?.linguistic?.vocabulary ||
+                      sc.communicative_competences?.linguistic?.vocabulary ||
+                      sc.recommended_vocabulary ||
+                      sc.communicative_competences?.linguistic_competences?.recommended_vocabulary ||
+                      sc.communicative_competences?.vocabulary ||
+                      sc.vocabulary || {};
+  let rawNouns = vocabSource.nouns || vocabSource.noun || sc.nouns || [];
+  if (typeof rawNouns === 'string') {
+    rawNouns = rawNouns.split(',').map(s => s.trim()).filter(Boolean);
+  } else if (!Array.isArray(rawNouns)) {
+    rawNouns = [];
+  }
+  return rawNouns
+    .map(w => typeof w === 'object' ? (w.word || '') : String(w).trim().toLowerCase())
+    .filter(w => isValidVocabWord(w));
+}
+
 const extractHtmlKeywords = (html) => {
   if (!html) return [];
   const words = [];
@@ -94,12 +115,12 @@ const extractHtmlKeywords = (html) => {
 export const CURRICULUM_TOPIC_VOCAB = {
   rain: ['puddle', 'umbrella', 'raincoat', 'boots', 'storm', 'cloud', 'sky', 'rain'],
   weather: ['puddle', 'umbrella', 'raincoat', 'boots', 'storm', 'cloud', 'sky', 'rain'],
-  market: ['pineapple', 'banana', 'orange', 'apple', 'watermelon', 'market', 'price', 'dollar'],
-  shopping: ['pineapple', 'banana', 'orange', 'shopping list', 'store', 'cashier', 'money', 'price'],
+  market: ['pineapple', 'cassava', 'potatoes', 'money', 'price', 'market', 'store', 'cashier', 'cost', 'shopping list', 'apple'],
+  shopping: ['pineapple', 'cassava', 'potatoes', 'money', 'price', 'market', 'store', 'cashier', 'cost', 'shopping list', 'apple'],
   fruit: ['pineapple', 'banana', 'orange', 'apple', 'watermelon', 'mango', 'papaya', 'lemon'],
   food: ['rice', 'chicken', 'fish', 'salad', 'water', 'fruit', 'vegetables', 'bread'],
   garden: ['tomato', 'plant', 'flower', 'seed', 'soil', 'water', 'sun', 'leaf'],
-  neighborhood: ['park', 'library', 'store', 'school', 'playground', 'street', 'house', 'tree'],
+  neighborhood: ['neighborhood', 'park', 'library', 'store', 'school', 'playground', 'street', 'house', 'tree'],
   canal: ['canal', 'ship', 'boat', 'ocean', 'bridge', 'vessel', 'locks', 'goods'],
   beach: ['beach', 'towel', 'sand', 'shell', 'wave', 'picnic', 'sun', 'umbrella'],
   mola: ['mola', 'fabric', 'color', 'turtle', 'butterfly', 'jaguar', 'art', 'pattern'],
@@ -119,15 +140,16 @@ export const CURRICULUM_TOPIC_VOCAB = {
 
 export function detectScenarioDomain(scenario = '', theme = '', textContext = '') {
   const combined = `${scenario} ${theme} ${textContext}`.toLowerCase();
-  if (/color|colores|red|blue|green|yellow|purple|orange|small|big|tama[ñn]o|palette|paint|draw|arte|craft/i.test(combined)) return 'colors';
+  if (/market|shopping|fruit|price|dollar|cost|supermercado|mercado|compra|pineapple|yuca|cassava|potato/i.test(combined)) return 'market';
   if (/rain|weather|puddle|umbrella|storm|cloud|lightning|thunder|clima|lluvia|temporal|estaci[oó]n\s+lluviosa/i.test(combined)) return 'weather';
   if (/garden|plant|seed|soil|flower|vegetable|watering|huerto|jard[ií]n/i.test(combined)) return 'garden';
-  if (/market|shopping|fruit|price|dollar|cost|supermercado|mercado|compra/i.test(combined)) return 'market';
   if (/canal|ship|boat|ocean|locks|vessel|puente de las am[eé]ricas/i.test(combined)) return 'canal';
   if (/animal|wildlife|bird|toucan|jaguar|sloth|monkey|fauna|selva/i.test(combined)) return 'animals';
-  if (/classroom|school|desk|pencil|backpack|book|sal[oó]n|escuela/i.test(combined)) return 'classroom';
+  if (/color|colores|palette|paint|arte|craft|red|blue|green|yellow|purple/i.test(combined)) return 'colors';
+  if (/classroom|preposition|desk|pencil|backpack|book|sal[oó]n|escuela/i.test(combined)) return 'classroom';
   if (/health|doctor|exercise|hygiene|salud/i.test(combined)) return 'health';
   if (/community|neighborhood|city|town|park|street|comunidad/i.test(combined)) return 'community';
+  if (/mola|fabric|traditional\s+clothing|pollera|costume/i.test(combined)) return 'mola';
   return 'general';
 }
 
@@ -1123,6 +1145,8 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
 
   // 5. Authentic Vocabulary Extraction (Filtered Strictly Against Procedural Sentences)
   let vocabWords = [];
+  const officialScenarioNouns = getScenarioOfficialNouns(metadata.scenarioData || metadata.scenario_data || metadata);
+
   const vocabMatch = clean.match(/(?:vocabulary\s+words?|target\s+vocabulary|key\s+vocabulary|vocabulary\s+items?|words?)[^:]*:\s*([^\n.]+)/i);
   if (vocabMatch) {
     const rawWords = vocabMatch[1]
@@ -1180,17 +1204,29 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     if (s === 'umbrella' || s === 'umbrellas') return 'umbrella';
     if (s === 'puddle' || s === 'puddles') return 'puddle';
     if (s === 'tomato' || s === 'tomatoes') return 'tomato';
-    if (s === 'potato' || s === 'potatoes') return 'potato';
+    if (s === 'potato' || s === 'potatoes' || s === 'potatoe') return 'potatoes';
+    if (s === 'yuca' || s === 'yucas' || s === 'cassavas') return 'cassava';
     return s;
   };
 
-  vocabWords = vocabWords.map(normalizeNoun).filter(w => isValidVocabWord(w));
+  vocabWords = vocabWords.map(normalizeNoun).filter(w => isValidVocabWord(w) && w.toLowerCase() !== 'number');
   vocabWords = [...new Set(vocabWords)];
+
+  // Priority: Fill remaining slots directly from the scenario's official curricular nouns (matching the poster)
+  if (officialScenarioNouns.length > 0 && vocabWords.length < 6) {
+    for (const noun of officialScenarioNouns) {
+      if (vocabWords.length >= 6) break;
+      const normalized = normalizeNoun(noun);
+      if (isValidVocabWord(normalized) && normalized !== 'number' && !vocabWords.includes(normalized)) {
+        vocabWords.push(normalized);
+      }
+    }
+  }
 
   // Fallback to rich authentic scenario vocabulary if fewer than 6 valid words found
   if (vocabWords.length < 6) {
     const topicDefaults = getTopicVocabFallback(`${cleanTheme} ${scenario} ${clean}`);
-    vocabWords = [...new Set([...vocabWords, ...topicDefaults.map(normalizeNoun)])].filter(w => isValidVocabWord(w)).slice(0, 6);
+    vocabWords = [...new Set([...vocabWords, ...topicDefaults.map(normalizeNoun)])].filter(w => isValidVocabWord(w) && w.toLowerCase() !== 'number').slice(0, 6);
   }
 
   const isKinderGrade = /(?:^|[^a-z])(?:pre-?k|kindergarten|kinder\b)/i.test(grade);

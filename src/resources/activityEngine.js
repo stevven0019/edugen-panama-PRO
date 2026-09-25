@@ -65,6 +65,7 @@ export function buildLessonContract({
   themeType = 'receptive',
   project21st = '',
   previousLessons = [],
+  scenarioData = null,
   rawText = ''
 }) {
   const cleanGrade = grade || lesson.grade || '4th Grade';
@@ -133,7 +134,8 @@ export function buildLessonContract({
       skill: resolvedSkill,
       scenario: cleanScenario,
       theme: cleanTheme
-    })
+    }),
+    scenarioData: scenarioData || lesson.scenarioData || null
   };
 }
 

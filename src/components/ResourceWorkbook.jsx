@@ -213,6 +213,7 @@ export default function ResourceWorkbook({
   const [exportStatus, setExportStatus] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+  const [compilationMode, setCompilationMode] = useState('auto'); // 'auto' | 'ai'
 
   // Cascade Dropdown States (14 Grados x 8 Escenarios x 5 Habilidades)
   const [matrixGrade, setMatrixGrade] = useState(() => {
@@ -292,7 +293,8 @@ export default function ResourceWorkbook({
     };
   }, [pack]);
 
-  const generate = async () => {
+  const generate = async (useAiParam) => {
+    const shouldUseAi = typeof useAiParam === 'boolean' ? useAiParam : (compilationMode === 'ai');
     if (!isPremium && credits <= 0) {
       setError('Necesitas tokens para generar recursos.');
       return;
@@ -329,7 +331,7 @@ export default function ResourceWorkbook({
           project21st,
           scenarioData: defaultScenario,
           isCurrent: true,
-          forceAi: false
+          forceAi: shouldUseAi
         };
       } else if (source === 'matrix') {
         const gradeItem = GRADES_CEFR_MAP.find(g => g.id === matrixGrade) || GRADES_CEFR_MAP[5];
@@ -349,7 +351,7 @@ export default function ResourceWorkbook({
 
         input = {
           isMatrix: true,
-          forceAi: true,
+          forceAi: shouldUseAi,
           grade: gradeItem.name,
           cefr: gradeItem.cefr,
           scenario: scenarioName,
@@ -370,7 +372,7 @@ Skill Focus: ${matrixSkill} (Lesson ${skillObj.number}: ${skillObj.label})
 Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
         };
       } else if (source === 'file') {
-        input = { ...(await readLesson(file)), isFile: true, forceAi: false };
+        input = { ...(await readLesson(file)), isFile: true, forceAi: shouldUseAi };
       } else {
         if (!lesson) throw new Error('No hay una lección guardada disponible en el historial.');
         input = {
@@ -378,7 +380,8 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
           grade: lesson.grade,
           title: lesson.title,
           scenario: lesson.lessonContext?.scenario || lesson.title,
-          forceAi: false
+          scenarioData: lesson.lessonContext?.scenarioData || null,
+          forceAi: shouldUseAi
         };
       }
 
@@ -727,19 +730,60 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
               </label>
             )}
 
-            <button
-              disabled={busy || (source === 'current' ? !currentLessonHtml : source === 'latest' ? loading || !lesson : source === 'file' ? !file : matrixLoading)}
-              onClick={generate}
-              className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold rounded-2xl px-8 py-3.5 disabled:opacity-40 transition shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2"
-            >
-              {busy ? (
-                <>
-                  <span className="animate-spin text-lg">⏳</span> Creando actividades pedagógicas e ilustraciones...
-                </>
-              ) : (
-                '✨ Generar Libro de Actividades & Rúbrica'
-              )}
-            </button>
+            <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-3 pt-2">
+              {/* Selector de Modo de Compilación: Automatizado vs IA */}
+              <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700">
+                <button
+                  type="button"
+                  onClick={() => setCompilationMode('auto')}
+                  className={`flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 ${
+                    compilationMode === 'auto'
+                      ? 'bg-white dark:bg-slate-700 text-indigo-700 dark:text-indigo-300 shadow-sm'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                  }`}
+                  title="Generación instantánea (0 Tokens) con alineación estricta a la matriz curricular y póster MEDUCA"
+                >
+                  <span className="text-amber-500 text-sm">⚡</span> Formato Automatizado (0 Tokens)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCompilationMode('ai')}
+                  className={`flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 ${
+                    compilationMode === 'ai'
+                      ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-sm'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                  }`}
+                  title="Compilación inteligente con IA (Gemini 2.5 Flash) para variaciones pedagógicas creativas"
+                >
+                  <span className="text-sm">🤖</span> Compilar con IA (Gemini)
+                </button>
+              </div>
+
+              {/* Botón Principal de Generación */}
+              <button
+                disabled={busy || (source === 'current' ? !currentLessonHtml : source === 'latest' ? loading || !lesson : source === 'file' ? !file : matrixLoading)}
+                onClick={() => generate(compilationMode === 'ai')}
+                className={`w-full sm:w-auto text-white font-bold rounded-2xl px-8 py-3.5 disabled:opacity-40 transition shadow-lg active:scale-95 flex items-center justify-center gap-2 ${
+                  compilationMode === 'ai'
+                    ? 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-purple-500/25'
+                    : 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-500/20'
+                }`}
+              >
+                {busy ? (
+                  <>
+                    <span className="animate-spin text-lg">⏳</span> {compilationMode === 'ai' ? 'Compilando actividades con IA (Gemini)...' : 'Generando actividades pedagógicas e ilustraciones...'}
+                  </>
+                ) : compilationMode === 'ai' ? (
+                  <>
+                    <span>🤖</span> Compilar con IA (Gemini)
+                  </>
+                ) : (
+                  <>
+                    <span>⚡</span> Generar Formato Automatizado
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         )}
 
@@ -752,7 +796,7 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
         {pack && (
           <div className="space-y-4 my-4">
             <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-50 dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <button
                   onClick={() => setViewMode('editorial')}
                   className={`px-3.5 py-2 rounded-xl text-xs font-bold transition ${viewMode === 'editorial' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200'}`}
@@ -764,6 +808,23 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
                   className={`px-3.5 py-2 rounded-xl text-xs font-bold transition ${viewMode === 'pdf' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200'}`}
                 >
                   📄 Visor PDF Clásico
+                </button>
+
+                {/* Badge y Recompilación Rápida */}
+                <span className={`px-2.5 py-1 rounded-lg text-[11px] font-black tracking-wide border flex items-center gap-1.5 ml-1 ${
+                  pack._usedAi
+                    ? 'bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800'
+                    : 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                }`}>
+                  {pack._usedAi ? '🤖 Compilado con IA' : '⚡ Formato Automatizado'}
+                </span>
+                <button
+                  disabled={busy}
+                  onClick={() => generate(!pack._usedAi)}
+                  className="px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-600 transition flex items-center gap-1 active:scale-95 disabled:opacity-50"
+                  title={pack._usedAi ? 'Recompilar en Formato Automatizado (Instantáneo / 0 Tokens)' : 'Recompilar enriqueciendo con IA (Gemini)'}
+                >
+                  {busy ? '⏳ Procesando...' : pack._usedAi ? '⚡ Cambiar a Automatizado' : '🤖 Recompilar con IA'}
                 </button>
               </div>
 
