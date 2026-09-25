@@ -614,6 +614,378 @@ export function buildPart2Items({
   ];
 }
 
+export function buildAoaLudicKit({
+  skill,
+  grade,
+  scenario,
+  cleanTheme,
+  vocabWords = [],
+  lessonNum = 1,
+  isMediation = false,
+  isTheme2 = false,
+  languageFrame = {},
+  project21st = ''
+}) {
+  const normSkill = normalizeSkill(skill || 'Listening');
+  const domain = detectScenarioDomain(scenario, cleanTheme);
+  const words = (vocabWords && vocabWords.length >= 4) ? vocabWords.slice(0, 6) : ['apple', 'pineapple', 'banana', 'potato'];
+
+  // 1. Tangible Concept Cards with Domain Attributes
+  const items = words.map((w, i) => {
+    let tag = '';
+    let price = '';
+    let sub = '';
+    if (domain === 'market') {
+      price = `$${(i % 4) + 1}`;
+      tag = price;
+      sub = 'Fresh Market Item';
+    } else if (domain === 'weather') {
+      tag = i % 2 === 0 ? '🌧️ Wet' : '⚡ Forecast';
+      sub = 'Rainy Season Gear';
+    } else if (domain === 'animals') {
+      tag = i % 2 === 0 ? '🐾 Forest' : '🌿 Native';
+      sub = 'Panama Wildlife';
+    } else if (domain === 'canal') {
+      tag = i % 2 === 0 ? '🚢 Transit' : '🌊 Locks';
+      sub = 'Canal Navigation';
+    } else if (domain === 'classroom') {
+      tag = i % 2 === 0 ? '🎒 Desk' : '✏️ Station';
+      sub = 'Classroom Tool';
+    } else if (domain === 'garden') {
+      tag = i % 2 === 0 ? '🌱 Garden' : '🍅 Fresh';
+      sub = 'School Garden Care';
+    } else {
+      tag = `🏷️ Item ${i + 1}`;
+      sub = cleanTheme;
+    }
+    return {
+      id: `card_${i + 1}`,
+      word: w.toUpperCase(),
+      name: w.charAt(0).toUpperCase() + w.slice(1),
+      photoUrl: getRealiaPhoto(w),
+      tag,
+      price,
+      sub
+    };
+  });
+
+  // 2. Stage 1: Detective Flash Game (SEE & SAY)
+  let stage1GameName = 'Mystery Flash!';
+  let stage1Prompt = `Teacher flashes photo card for 2 seconds: "What is this?" ──> Class responds: "A ${words[0]}!"`;
+  let stage1Rules = 'Raise the card quickly. Students must speak the correct target phrase before the card disappears into the mystery envelope!';
+  if (normSkill === 'Speaking' && domain === 'market') {
+    stage1GameName = 'Fast Market Detective!';
+    stage1Prompt = `Teacher shows 🍍 $2: "How much is the pineapple?" ──> Class shouts: "Two dollars!"`;
+  } else if (normSkill === 'Speaking' && domain === 'weather') {
+    stage1GameName = 'Weather Radar Flash!';
+    stage1Prompt = `Teacher shows ☔: "What do you need when it rains?" ──> Class shouts: "I need an umbrella!"`;
+  } else if (normSkill === 'Listening') {
+    stage1GameName = 'Acoustic Sound Detective!';
+    stage1Prompt = `Teacher gives oral cue: "Touch the ${words[0]}!" ──> Students point instantly!`;
+  } else if (normSkill === 'Reading') {
+    stage1GameName = 'Speed Signpost Decoder!';
+    stage1Prompt = `Teacher flashes word tag for 3 seconds: "Decode and read aloud!" ──> Class reads in unison.`;
+  } else if (normSkill === 'Writing') {
+    stage1GameName = 'Flash Spell & Letter Detective!';
+    stage1Prompt = `Teacher reveals missing letter card: "${words[0].slice(0, 2)}__" ──> Students spell aloud!`;
+  } else if (normSkill === 'Mediation') {
+    stage1GameName = 'Team Radar & Role Call!';
+    stage1Prompt = `Teacher flashes role badge: "Who is the team speaker?" ──> Designated student responds!`;
+  }
+
+  // 3. Stage 2: Listen, Point & Say (AUDITORY TO ORAL BRIDGE)
+  const listenPointItems = words.slice(0, 4).map((w, i) => {
+    let script = '';
+    let response = '';
+    if (domain === 'market') {
+      script = `Teacher prompt: "I need ${i + 1} ${w}."`;
+      response = `Student points and speaks: "Here are ${i + 1} ${w}s."`;
+    } else if (domain === 'weather') {
+      script = `Teacher prompt: "It is raining outside! Find the ${w}."`;
+      response = `Student points and speaks: "I have the ${w} ready!"`;
+    } else {
+      script = `Teacher prompt: "Listen for '${w}' and locate the real photo."`;
+      response = `Student points to ${w} and articulates: "This is the ${w}."`;
+    }
+    return {
+      num: i + 1,
+      targetWord: w,
+      photoUrl: getRealiaPhoto(w),
+      script,
+      response
+    };
+  });
+
+  // 4. Stage 3: Cut-Out Pair Card Game (PLAY)
+  const productCards = items.slice(0, 4);
+  const numberCards = [
+    { value: '1', label: 'ONE', icon: '1️⃣', cue: 'Single item' },
+    { value: '2', label: 'TWO', icon: '2️⃣', cue: 'Pair of items' },
+    { value: '3', label: 'THREE', icon: '3️⃣', cue: 'Small bundle' },
+    { value: '5', label: 'FIVE', icon: '5️⃣', cue: 'Family pack' }
+  ];
+
+  let cardGameRules = [];
+  if (domain === 'market') {
+    cardGameRules = [
+      { step: 1, title: 'Shuffle & Deal', text: 'Place Product Cards and Number Cards face down between Partner A and Partner B.' },
+      { step: 2, title: 'Draw & Ask', text: 'Partner A flips 1 Product (e.g. 🍎) + 1 Number (e.g. 3) and says: "I need three apples."' },
+      { step: 3, title: 'Inquire Price', text: 'Partner A asks: "How much is the apple?" ──> Partner B checks the card and answers: "It is two dollars."' },
+      { step: 4, title: 'Hand Over & Switch', text: 'Partner B delivers the card: "Here you are!" Switch roles for Round 2.' }
+    ];
+  } else if (domain === 'weather') {
+    cardGameRules = [
+      { step: 1, title: 'Shuffle & Deal', text: 'Place Weather Cards and Number Cards face down between partners.' },
+      { step: 2, title: 'Draw & Ask', text: 'Partner A flips 1 Weather Gear Card + 1 Number and says: "We have two umbrellas in the rain."' },
+      { step: 3, title: 'Inquire Condition', text: 'Partner A asks: "What do we wear for the storm?" ──> Partner B answers: "We wear our raincoats and boots."' },
+      { step: 4, title: 'Hand Over & Switch', text: 'Partner B awards the badge: "You are storm-ready!" Switch roles for Round 2.' }
+    ];
+  } else {
+    cardGameRules = [
+      { step: 1, title: 'Shuffle & Deal', text: 'Place Concept Cards and Number Cards face down in front of you.' },
+      { step: 2, title: 'Draw & Announce', text: `Partner A draws 1 Concept Card and says: "Can you identify the ${words[0]}?"` },
+      { step: 3, title: 'Verify & Explain', text: `Partner B checks the photo and answers: "Yes, this is the ${words[0]} for our lesson."` },
+      { step: 4, title: 'Switch Roles', text: 'Switch roles and play the next round with a new card combination!' }
+    ];
+  }
+
+  // 5. Stage 4: Communicative Role-Play Mission (INTERACT & PERFORM)
+  let mission = {};
+  if (domain === 'market') {
+    mission = {
+      title: 'Communicative Action Mission: "Build Your Market!"',
+      roleA: {
+        role: '🛒 SHOPPER CARD',
+        name: 'Student A (The Customer)',
+        goal: `Shopping List: 1 ${words[0] || 'pineapple'}, 2 ${words[1] || 'apples'}, 3 ${words[2] || 'bananas'}.`,
+        tokens: ['💵 $1', '💵 $2', '💵 $2', '💵 $5'],
+        budgetNote: 'Pretend budget: $10. Pay the vendor for each completed purchase!'
+      },
+      roleB: {
+        role: '🏪 VENDOR STAND CARD',
+        name: 'Student B (The Stall Owner)',
+        standName: `Panama Fresh Market · Stand #${lessonNum || 1}`,
+        prices: [
+          { item: words[0] || 'pineapple', price: '$2 each' },
+          { item: words[1] || 'apple', price: '$1 each' },
+          { item: words[2] || 'banana', price: '$1 each' },
+          { item: words[3] || 'potato', price: '$3 a bag' }
+        ],
+        vendorCue: 'Keep the stand organized. Check currency and say: "Here you are!"'
+      },
+      dialogueBubbles: [
+        { speaker: 'Shopper', text: 'Excuse me! How much is the pineapple?' },
+        { speaker: 'Vendor', text: 'It is two dollars.' },
+        { speaker: 'Shopper', text: 'I need one pineapple, please.' },
+        { speaker: 'Vendor', text: 'Here you are! That is two dollars.' },
+        { speaker: 'Shopper', text: 'Thank you! Goodbye.' }
+      ]
+    };
+  } else if (domain === 'weather') {
+    mission = {
+      title: 'Communicative Action Mission: "Rainy Season Forecast Station!"',
+      roleA: {
+        role: '🎒 STUDENT ON THE WAY CARD',
+        name: 'Student A (Traveler)',
+        goal: `Mission: Prepare gear for school in the storm: 1 ${words[0] || 'umbrella'}, 1 pair of ${words[1] || 'boots'}, 1 ${words[2] || 'raincoat'}.`,
+        tokens: ['⭐ Prepared', '⭐ Dry', '⭐ Safe'],
+        budgetNote: 'Check off each piece of gear before stepping outside!'
+      },
+      roleB: {
+        role: '🎙️ METEOROLOGIST FORECASTER CARD',
+        name: 'Student B (Weather Station)',
+        standName: `Panama Rain Watch · Station #${lessonNum || 1}`,
+        prices: [
+          { item: words[0] || 'umbrella', price: 'High Storm Alert' },
+          { item: words[1] || 'boots', price: 'Deep Puddle Warning' },
+          { item: words[2] || 'raincoat', price: 'Heavy Downpour' },
+          { item: words[3] || 'storm', price: 'Thunder Forecast' }
+        ],
+        vendorCue: 'Advise your partner on what gear to wear in the rain!'
+      },
+      dialogueBubbles: [
+        { speaker: 'Traveler', text: 'Good morning! What is the weather like today?' },
+        { speaker: 'Forecaster', text: 'It is raining heavily! Dark storm clouds are here.' },
+        { speaker: 'Traveler', text: 'What do I need for the puddle on the street?' },
+        { speaker: 'Forecaster', text: 'You need your boots and an umbrella.' },
+        { speaker: 'Traveler', text: 'Thank you! I am ready for the rain.' }
+      ]
+    };
+  } else {
+    mission = {
+      title: `Communicative Action Mission: "The ${cleanTheme} Inquiry!"`,
+      roleA: {
+        role: '🔍 INQUIRER CARD',
+        name: 'Student A (Investigator)',
+        goal: `Collect facts about ${words[0] || 'item 1'} and ${words[1] || 'item 2'}.`,
+        tokens: ['⭐ Fact 1', '⭐ Fact 2', '⭐ Verified'],
+        budgetNote: 'Ask questions and record peer answers on your mission badge.'
+      },
+      roleB: {
+        role: '📋 EXPERT DISPATCH CARD',
+        name: 'Student B (Scenario Specialist)',
+        standName: `${cleanTheme} Field Base`,
+        prices: [
+          { item: words[0] || 'item 1', price: 'Key Concept' },
+          { item: words[1] || 'item 2', price: 'Core Feature' },
+          { item: words[2] || 'item 3', price: 'Evidence Detail' },
+          { item: words[3] || 'item 4', price: 'Target Outcome' }
+        ],
+        vendorCue: 'Explain target structures with clear pronunciation and gestures.'
+      },
+      dialogueBubbles: [
+        { speaker: 'Investigator', text: `Can you explain the main idea of ${cleanTheme}?` },
+        { speaker: 'Specialist', text: `Yes! We observe ${words[0] || 'the target concept'} in our community.` },
+        { speaker: 'Investigator', text: `How do we use this in our daily action?` },
+        { speaker: 'Specialist', text: `We practice together and complete our project.` },
+        { speaker: 'Investigator', text: 'Excellent! Mission accomplished.' }
+      ]
+    };
+  }
+
+  // 6. Stage 5: Observable Can-Do Mission Checklist (Assessment)
+  let canDoStatements = [];
+  if (normSkill === 'Speaking') {
+    canDoStatements = [
+      { icon: '🗣️', text: `I can ask target inquiry questions (e.g., 'How much is...?' or 'What is this?').` },
+      { icon: '🗣️', text: `I can state quantities and numbers accurately (e.g., 'three apples', 'two dollars').` },
+      { icon: '🗣️', text: `I can express needs and offers politely (e.g., 'I need..., please' / 'Here you are').` },
+      { icon: '🛒', text: `I can actively participate and complete the interactive pair mission.` }
+    ];
+  } else if (normSkill === 'Listening') {
+    canDoStatements = [
+      { icon: '👂', text: `I can identify target keywords when spoken slowly and clearly.` },
+      { icon: '👂', text: `I can match oral descriptions to the correct realia photo without hesitation.` },
+      { icon: '👆', text: `I can perform physical actions (TPR) in response to verbal teacher prompts.` },
+      { icon: '🎧', text: `I can discriminate the key sounds and phonemes of today's lesson.` }
+    ];
+  } else if (normSkill === 'Reading') {
+    canDoStatements = [
+      { icon: '📖', text: `I can decode target words using letter-sound associations and phonemic awareness.` },
+      { icon: '🔍', text: `I can scan short authentic signs, receipts, or menus to find specific details.` },
+      { icon: '👍', text: `I can verify whether factual statements about the text are True or False.` },
+      { icon: '📑', text: `I can read and follow 2-step printed instructions for classroom tasks.` }
+    ];
+  } else if (normSkill === 'Writing') {
+    canDoStatements = [
+      { icon: '✍️', text: `I can spell the key scenario vocabulary words with legible orthography.` },
+      { icon: '✍️', text: `I can trace and write complete descriptive sentences following the language frame.` },
+      { icon: '📝', text: `I can complete an authentic receipt, report, or log accurately.` },
+      { icon: '✏️', text: `I can apply basic punctuation (capital letter and period) to my sentences.` }
+    ];
+  } else {
+    // Mediation
+    canDoStatements = [
+      { icon: '🤝', text: `I can explain key project concepts to peers using simple English and gestures.` },
+      { icon: '🤝', text: `I can actively fulfill my designated team role (Leader/Researcher/Designer/Speaker).` },
+      { icon: '🤝', text: `I can collaborate to build our tangible 21st century project deliverable.` },
+      { icon: '🌟', text: `I can present our group findings respectfully to another team.` }
+    ];
+  }
+
+  // 7. Stage 6: Exit Speak / Action
+  const exitSpeak = {
+    title: normSkill === 'Speaking' ? '🎤 EXIT SPEAK' : normSkill === 'Listening' ? '👂 EXIT LISTEN' : normSkill === 'Writing' ? '✍️ EXIT WRITE' : normSkill === 'Reading' ? '📖 EXIT READ' : '🤝 EXIT SHARE',
+    prompt: normSkill === 'Speaking'
+      ? `Pick 1 card from your deck. Say your phrase clearly to your teacher or peer before packing up:`
+      : `Complete the final 30-second check on your lesson badge:`,
+    sampleCardPrompts: [
+      { word: words[0], sentence: domain === 'market' ? `"How much is the ${words[0]}?"` : `I observe the ${words[0]}.` },
+      { word: words[1], sentence: domain === 'market' ? `"I need three ${words[1]}s."` : `We have a ${words[1]} ready.` },
+      { word: words[2], sentence: domain === 'market' ? `"It is two dollars."` : `The ${words[2]} is important today.` }
+    ],
+    emojis: [
+      { label: 'I can do it!', icon: '😀', sub: 'Strong & clear' },
+      { label: 'With a little help', icon: '😐', sub: 'Almost there' },
+      { label: 'Need more practice', icon: '😟', sub: 'Keep trying' }
+    ]
+  };
+
+  // 8. Detailed Teacher Facilitator Guide & Scripts
+  const teacherGuideSpecific = {
+    pacingPlan: [
+      { stage: 'Stage 1 · SEE & SAY', name: stage1GameName, time: '5 min', goal: 'Fast visual-auditory retrieval before paper work' },
+      { stage: 'Stage 2 · LISTEN & POINT', name: 'Listen, Point & Say', time: '7 min', goal: 'Auditory-to-oral bridging with desk tokens' },
+      { stage: 'Stage 3 · PLAY', name: 'Pair Card Game (Cut-Outs)', time: '12 min', goal: 'Gamified turn-taking practice with hands-on cards' },
+      { stage: 'Stage 4 · PERFORM', name: mission.title, time: '15 min', goal: 'Real role-play mission with currency & stands' },
+      { stage: 'Stage 5 & 6 · REFLECT', name: 'Can-Do Check & Exit Speak', time: '6 min', goal: 'Observable formative check & oral exit' }
+    ],
+    verbatimScripts: [
+      {
+        stage: 'Stage 1 Detective Script',
+        instruction: 'Hold flashcards face down. Show each card for exactly 2 seconds, then conceal it.',
+        teacherSpeech: `"Attention, detectives! Look at my card. (Flash 🍍 $2). What is this? ... How much is it? Speak before it disappears!"`,
+        expectedStudent: `"Pineapple! ... Two dollars!" (Encourage high energy choral and individual responses).`
+      },
+      {
+        stage: 'Stage 2 Listen & Point Script',
+        instruction: 'Students place index fingers on their desk tokens. Read each prompt slowly and clearly twice.',
+        teacherSpeech: `"Listen carefully. Touch and repeat: 'I need three fresh ${words[0]}s.' Ready, point and say!"`,
+        expectedStudent: `Students point to ${words[0]} token and say: "I need three fresh ${words[0]}s."`
+      },
+      {
+        stage: 'Stage 3 Card Game Facilitation',
+        instruction: 'Direct pairs to cut their cards along dotted lines. Distribute cards evenly.',
+        teacherSpeech: `"Pairs, shuffle your Product and Number cards! Player A draws and speaks; Player B checks the price and answers. Play 4 rounds!"`,
+        expectedStudent: `Student A: "How much is the ${words[1]}?" ──> Student B: "It is one dollar. Here you are!"`
+      },
+      {
+        stage: 'Stage 4 Mission Facilitation',
+        instruction: 'Hand out Shopper cards with $10 play money to Student A and Vendor stands to Student B.',
+        teacherSpeech: `"Market opens! Shoppers, take your $10 and complete your shopping lists. Vendors, greet politely and state exact prices!"`,
+        expectedStudent: `Full interactive role-play dialogues using target frames.`
+      }
+    ],
+    answerKeyDetailed: [
+      { component: 'Stage 1 Vocabulary Flash', key: words.map(w => w.toUpperCase()).join(' · ') },
+      { component: 'Stage 2 Point & Say Prompts', key: listenPointItems.map(l => `${l.num}. ${l.targetWord}`).join(' · ') },
+      { component: 'Stage 3 Number & Product Combos', key: '1 to 5 units matching target prices' },
+      { component: 'Stage 4 Mission Target Exchange', key: mission.dialogueBubbles.map(b => `${b.speaker}: "${b.text}"`).join(' | ') },
+      { component: 'Stage 6 Exit Speak Benchmarks', key: 'Student articulates 1 complete sentence with clear CEFR A1/A2 intonation.' }
+    ],
+    formativeRubric: [
+      {
+        level: '🌱 With Help',
+        criteria: 'Requires continuous teacher modeling, points with hesitation, and produces isolated words rather than complete sentence frames.'
+      },
+      {
+        level: '🌿 Almost Independently',
+        criteria: 'Asks and answers with 1 prompt, uses target prices/quantities correctly, and participates actively in the card game with minor pronunciation slips.'
+      },
+      {
+        level: '🌳 Independently',
+        criteria: 'Initiates inquiries fluently, handles play money and mission goals autonomously, and uses natural intonation and polite social conventions.'
+      }
+    ]
+  };
+
+  return {
+    stage1Game: {
+      name: stage1GameName,
+      prompt: stage1Prompt,
+      rules: stage1Rules,
+      cards: items.slice(0, 4)
+    },
+    stage2ListenPoint: {
+      name: 'Listen, Point & Say',
+      items: listenPointItems
+    },
+    stage3CardGame: {
+      name: 'Pair Card Game Station',
+      productCards: productCards,
+      numberCards: numberCards,
+      rules: cardGameRules
+    },
+    stage4Mission: mission,
+    stage5CanDo: {
+      statements: canDoStatements,
+      scale: ['🌱 With help', '🌿 Almost independently', '🌳 Independently']
+    },
+    stage6Exit: exitSpeak,
+    teacherGuideSpecific: teacherGuideSpecific
+  };
+}
+
 export function parseAoaLessonPlan(rawInput, metadata = {}) {
   let rawText = typeof rawInput === 'string' ? rawInput : (rawInput?.text || '');
   let clean = cleanHtml(rawText);
@@ -994,6 +1366,19 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     }
   ];
 
+  const ludicKit = buildAoaLudicKit({
+    skill: skillFocus,
+    grade,
+    scenario,
+    cleanTheme,
+    vocabWords,
+    lessonNum,
+    isMediation,
+    isTheme2,
+    languageFrame,
+    project21st
+  });
+
   return {
     title: cleanTheme,
     rawTitle: rawTheme,
@@ -1006,6 +1391,7 @@ export function parseAoaLessonPlan(rawInput, metadata = {}) {
     contract: contract,
     stages: blueprint.stages,
     actionWorksheet: actionWorksheet,
+    ludicKit: ludicKit,
 
     // ── PAGE 1: DISCOVERY & LINGUISTIC INPUT ──
     page1: {
