@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Listening Lab • 4th Grade • Shopping at the Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0D3B66;
+      --primary-dark: #072542;
+      --teal: #0081A7;
+      --teal-light: #E0F2FE;
+      --amber: #D97706;
+      --amber-light: #FEF3C7;
+      --emerald: #059669;
+      --emerald-light: #ECFDF5;
+      --card: #FFFFFF;
+      --bg: #F8FAFC;
+      --text: #1E293B;
+      --muted: #64748B;
+      --border: #E2E8F0;
+      --radius: 14px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    .header-card {
+      background: linear-gradient(135deg, var(--primary) 0%, #164e63 100%);
+      color: white;
+      padding: 28px 32px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .badge-grade {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .header-card h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .header-card p {
+      font-size: 0.95rem;
+      color: #E2E8F0;
+    }
+
+    /* STUDENT INFO BAR */
+    .student-bar {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .student-input {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .student-input input {
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .student-input input:focus {
+      border-color: var(--teal);
+    }
+
+    .score-badge {
+      background: var(--emerald-light);
+      color: var(--emerald);
+      border: 1px solid #A7F3D0;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    /* SECTION CARD */
+    .section-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      border-bottom: 2px solid #F1F5F9;
+      padding-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-audio {
+      background: var(--teal);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      box-shadow: 0 2px 4px rgba(0, 129, 167, 0.25);
+    }
+
+    .btn-audio:hover {
+      background: #006C8C;
+      transform: translateY(-1px);
+    }
+
+    .btn-audio:active {
+      transform: translateY(0);
+    }
+
+    .section-instruction {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* PART 1: GRID OF ITEMS */
+    .grid-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 16px;
+    }
+
+    .item-card {
+      background: #F8FAFC;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .item-card:hover {
+      border-color: #94A3B8;
+      transform: translateY(-2px);
+    }
+
+    .item-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+    }
+
+    .item-name {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    .options-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .option-btn {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 6px 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .option-btn:hover {
+      background: #F1F5F9;
+      border-color: var(--teal);
+    }
+
+    .option-btn.selected {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+      font-weight: 700;
+    }
+
+    /* PART 2: CART TABLE */
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .cart-table th {
+      background: #F1F5F9;
+      color: var(--primary);
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .cart-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+      vertical-align: middle;
+    }
+
+    .cart-item-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+    }
+
+    .cart-item-info img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .num-input {
+      width: 70px;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: inherit;
+      font-weight: 700;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* PART 3: DIALOGUE */
+    .dialogue-box {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .dialogue-turn {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .dialogue-turn:last-child {
+      border-bottom: none;
+    }
+
+    .turn-avatar img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .turn-content {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .turn-speaker {
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+
+    .blank-select {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1.5px solid var(--teal);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: white;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* PART 4: TRUE / FALSE */
+    .tf-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .tf-table th, .tf-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .tf-table th {
+      background: #F1F5F9;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .tf-btn {
+      padding: 4px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: white;
+      margin-right: 6px;
+    }
+
+    .tf-btn.active-true {
+      background: var(--emerald);
+      color: white;
+      border-color: var(--emerald);
+    }
+
+    .tf-btn.active-false {
+      background: #EF4444;
+      color: white;
+      border-color: #EF4444;
+    }
+
+    /* EXIT TICKET */
+    .exit-ticket {
+      background: var(--emerald-light);
+      border: 1.5px solid #A7F3D0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .exit-ticket h3 {
+      color: #065F46;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #064E3B;
+    }
+
+    /* ACTIONS BAR */
+    .actions-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-submit {
+      background: var(--emerald);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: #047857;
+    }
+
+    .btn-print {
+      background: white;
+      color: var(--primary);
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-print:hover {
+      background: #F1F5F9;
+    }
+
+    /* COLLAPSIBLE SCRIPT FOR TEACHER */
+    details.teacher-accordion {
+      background: #FEF3C7;
+      border: 1px solid #FCD34D;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-top: 24px;
+      font-size: 0.85rem;
+    }
+
+    details.teacher-accordion summary {
+      font-weight: 800;
+      color: #92400E;
+      cursor: pointer;
+    }
+
+    .script-content {
+      margin-top: 12px;
+      line-height: 1.6;
+      color: #78350F;
+    }
+
+    @media print {
+      body { padding: 0; background: white; }
+      .btn-audio, .actions-bar, details.teacher-accordion { display: none !important; }
+      .header-card { background: var(--primary) !important; color: white !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header-card">
+      <div class="badge-grade">Panamá MEDUCA • Enfoque Orientado a la Acción (AOA)</div>
+      <h1>🍍 Market Adventure: Listen & Shop!</h1>
+      <p><strong>4th Grade English (CEFR A1.2)</strong> • Scenario 3: Shopping at the Market • Theme 1: How Much Is the Pineapple?</p>
+    </div>
+
+    <!-- STUDENT INFO & SCORE -->
+    <div class="student-bar">
+      <div class="student-input">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" placeholder="Escribe tu nombre..." size="28">
+      </div>
+      <div class="student-input">
+        <label for="studentDate">Date:</label>
+        <input type="date" id="studentDate">
+      </div>
+      <div class="score-badge" id="scoreDisplay">
+        ⭐ Score: 0 / 20 pts
+      </div>
+    </div>
+
+    <!-- PART 1: PRICE DETECTIVE -->
+    <section class="section-card">
+      <div class="section-header">
+        <div class="section-title">
+          <span>🎧 Part 1: Price Detective — Listen & Choose the Price (5 pts)</span>
+        </div>
+        <button class="btn-audio" onclick="playAudio('track1')">
+          <span>🔊 Play Audio 1 (Vendor)</span>
+        </button>
+      </div>
+      <p class="section-instruction">
+        <strong>Instructions:</strong> Press the audio button to hear the fruit vendor announcing prices at the Central Market. Look at each picture and click on the correct price tag!
+      </p>
+
+      <div class="grid-items">
+        <!-- Item 1: Pineapple -->
+        <div class="item-card">
+          <img src="/assets/nouns/pineapple.png" alt="Pineapple">
+          <div class="item-name">1. Pineapple</div>
+          <div class="options-group" data-q="p1_1" data-ans="1">
+            <button class="option-btn" onclick="selectOption(this)">$1.00 each</button>
+            <button class="option-btn" onclick="selectOption(this)">$2.00 each</button>
+            <button class="option-btn" onclick="selectOption(this)">$5.00 each</button>
+          </div>
+        </div>
+
+        <!-- Item 2: Apples -->
+        <div class="item-card">
+          <img src="/assets/nouns/apple.png" alt="Apples">
+          <div class="item-name">2. Apples</div>
+          <div class="options-group" data-q="p1_2" data-ans="1">
+            <button class="option-btn" onclick="selectOption(this)">$0.50 each</button>
+            <button class="option-btn" onclick="selectOption(this)">$1.00 each</button>
+            <button class="option-btn" onclick="selectOption(this)">$3.00 each</button>
+          </div>
+        </div>
+
+        <!-- Item 3: Bananas -->
+        <div class="item-card">
+          <img src="/assets/nouns/banana.png" alt="Bananas">
+          <div class="item-name">3. Bananas</div>
+          <div class="options-group" data-q="p1_3" data-ans="2">
+            <button class="option-btn" onclick="selectOption(this)">$1.00 bunch</button>
+            <button class="option-btn" onclick="selectOption(this)">$2.00 bunch</button>
+            <button class="option-btn" onclick="selectOption(this)">$4.00 bunch</button>
+          </div>
+        </div>
+
+        <!-- Item 4: Cassava -->
+        <div class="item-card">
+          <img src="/assets/nouns/cassava.png" alt="Cassava">
+          <div class="item-name">4. Cassava (Yuca)</div>
+          <div class="options-group" data-q="p1_4" data-ans="3">
+            <button class="option-btn" onclick="selectOption(this)">$2.00 bag</button>
+            <button class="option-btn" onclick="selectOption(this)">$3.00 bag</button>
+            <button class="option-btn" onclick="selectOption(this)">$6.00 bag</button>
+          </div>
+        </div>
+
+        <!-- Item 5: Potatoes -->
+        <div class="item-card">
+          <img src="/assets/nouns/potatoes.png" alt="Potatoes">
+          <div class="item-name">5. Potatoes</div>
+          <div class="options-group" data-q="p1_5" data-ans="4">
+            <button class="option-btn" onclick="selectOption(this)">$1.00 bag</button>
+            <button class="option-btn" onclick="selectOption(this)">$3.00 bag</button>
+            <button class="option-btn" onclick="selectOption(this)">$4.00 bag</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART 2: SHOPPING CART COUNT -->
+    <section class="section-card">
+      <div class="section-header">
+        <div class="section-title">
+          <span>🛒 Part 2: Shopping Cart Count — Listen for Quantities (5 pts)</span>
+        </div>
+        <button class="btn-audio" onclick="playAudio('track2')">
+          <span>🔊 Play Audio 2 (List)</span>
+        </button>
+      </div>
+      <p class="section-instruction">
+        <strong>Instructions:</strong> Listen to Mrs. Gonzalez checking her shopping list. Type the exact number of items she needs in the box!
+      </p>
+
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Market Item</th>
+            <th>English Vocabulary</th>
+            <th>Quantity Heard</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="cart-item-info">
+                <img src="/assets/nouns/pineapple.png" alt="Pineapple">
+                <span>Pineapple</span>
+              </div>
+            </td>
+            <td><code>pineapple</code> (/p/ sound)</td>
+            <td>
+              <input type="number" class="num-input" id="q_pine" placeholder="0" min="0" max="20">
+            </td>
+            <td><input type="checkbox" id="chk_pine"> In Cart</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="cart-item-info">
+                <img src="/assets/nouns/apple.png" alt="Apples">
+                <span>Apples</span>
+              </div>
+            </td>
+            <td><code>apples</code></td>
+            <td>
+              <input type="number" class="num-input" id="q_apple" placeholder="0" min="0" max="20">
+            </td>
+            <td><input type="checkbox" id="chk_apple"> In Cart</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="cart-item-info">
+                <img src="/assets/nouns/banana.png" alt="Bananas">
+                <span>Bananas</span>
+              </div>
+            </td>
+            <td><code>bananas</code></td>
+            <td>
+              <input type="number" class="num-input" id="q_banana" placeholder="0" min="0" max="20">
+            </td>
+            <td><input type="checkbox" id="chk_banana"> In Cart</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="cart-item-info">
+                <img src="/assets/nouns/potatoes.png" alt="Potatoes">
+                <span>Potatoes</span>
+              </div>
+            </td>
+            <td><code>potatoes</code> (/p/ sound)</td>
+            <td>
+              <input type="number" class="num-input" id="q_potato" placeholder="0" min="0" max="20">
+            </td>
+            <td><input type="checkbox" id="chk_potato"> In Cart</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="cart-item-info">
+                <img src="/assets/nouns/cassava.png" alt="Cassava">
+                <span>Cassava (Yuca)</span>
+              </div>
+            </td>
+            <td><code>cassava</code></td>
+            <td>
+              <input type="number" class="num-input" id="q_cassava" placeholder="0" min="0" max="20">
+            </td>
+            <td><input type="checkbox" id="chk_cassava"> In Cart</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- PART 3: DIALOGUE AT CASHIER -->
+    <section class="section-card">
+      <div class="section-header">
+        <div class="section-title">
+          <span>🗣️ Part 3: At the Cashier — Complete the Dialogue (6 pts)</span>
+        </div>
+        <button class="btn-audio" onclick="playAudio('track3')">
+          <span>🔊 Play Audio 3 (Dialogue)</span>
+        </button>
+      </div>
+      <p class="section-instruction">
+        <strong>Instructions:</strong> Listen to the customer and cashier at the checkout stall. Select the correct missing words from the dropdown menus!
+      </p>
+
+      <div class="dialogue-box">
+        <div class="dialogue-turn">
+          <div class="turn-avatar"><img src="/assets/nouns/cashier.png" alt="Cashier"></div>
+          <div class="turn-content">
+            <div class="turn-speaker">Cashier:</div>
+            <div>"Hello! Good morning. Can I help you?"</div>
+          </div>
+        </div>
+
+        <div class="dialogue-turn">
+          <div class="turn-avatar"><img src="/assets/nouns/market.png" alt="Customer"></div>
+          <div class="turn-content">
+            <div class="turn-speaker">Customer:</div>
+            <div>
+              "Yes, please! Excuse me, how much is the
+              <select class="blank-select" id="blank1">
+                <option value="">[Select item]</option>
+                <option value="pineapple">pineapple</option>
+                <option value="potato">potato</option>
+                <option value="apple">apple</option>
+              </select>?"
+            </div>
+          </div>
+        </div>
+
+        <div class="dialogue-turn">
+          <div class="turn-avatar"><img src="/assets/nouns/cashier.png" alt="Cashier"></div>
+          <div class="turn-content">
+            <div class="turn-speaker">Cashier:</div>
+            <div>
+              "It is
+              <select class="blank-select" id="blank2">
+                <option value="">[Select price]</option>
+                <option value="one dollar">one dollar</option>
+                <option value="five dollars">five dollars</option>
+                <option value="ten dollars">ten dollars</option>
+              </select>."
+            </div>
+          </div>
+        </div>
+
+        <div class="dialogue-turn">
+          <div class="turn-avatar"><img src="/assets/nouns/market.png" alt="Customer"></div>
+          <div class="turn-content">
+            <div class="turn-speaker">Customer:</div>
+            <div>
+              "Great! And how many
+              <select class="blank-select" id="blank3">
+                <option value="">[Select item]</option>
+                <option value="apples">apples</option>
+                <option value="pineapples">pineapples</option>
+                <option value="cassavas">cassavas</option>
+              </select> do you have?"
+            </div>
+          </div>
+        </div>
+
+        <div class="dialogue-turn">
+          <div class="turn-avatar"><img src="/assets/nouns/cashier.png" alt="Cashier"></div>
+          <div class="turn-content">
+            <div class="turn-speaker">Cashier:</div>
+            <div>"We have fresh red apples. How many do you need?"</div>
+          </div>
+        </div>
+
+        <div class="dialogue-turn">
+          <div class="turn-avatar"><img src="/assets/nouns/market.png" alt="Customer"></div>
+          <div class="turn-content">
+            <div class="turn-speaker">Customer:</div>
+            <div>
+              "I need
+              <select class="blank-select" id="blank4">
+                <option value="">[Quantity]</option>
+                <option value="one">one</option>
+                <option value="three">three</option>
+                <option value="ten">ten</option>
+              </select> apples and one banana, please."
+            </div>
+          </div>
+        </div>
+
+        <div class="dialogue-turn">
+          <div class="turn-avatar"><img src="/assets/nouns/money.png" alt="Money"></div>
+          <div class="turn-content">
+            <div class="turn-speaker">Cashier:</div>
+            <div>
+              "Okay, one pineapple, three apples, and one banana. That is
+              <select class="blank-select" id="blank5">
+                <option value="">[Total bill]</option>
+                <option value="four dollars">four dollars</option>
+                <option value="eight dollars">eight dollars</option>
+                <option value="two dollars">two dollars</option>
+              </select> in total."
+            </div>
+          </div>
+        </div>
+
+        <div class="dialogue-turn">
+          <div class="turn-avatar"><img src="/assets/nouns/market.png" alt="Customer"></div>
+          <div class="turn-content">
+            <div class="turn-speaker">Customer:</div>
+            <div>
+              "Here is the money.
+              <select class="blank-select" id="blank6">
+                <option value="">[Polite word]</option>
+                <option value="Thank you">Thank you</option>
+                <option value="Goodbye">Goodbye</option>
+                <option value="Sorry">Sorry</option>
+              </select>!" &nbsp; • Cashier: "You are welcome! Have a nice day!"
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PART 4: TRUE / FALSE -->
+    <section class="section-card">
+      <div class="section-header">
+        <div class="section-title">
+          <span>🧠 Part 4: Critical Listening — Fact or False? (4 pts)</span>
+        </div>
+      </div>
+      <p class="section-instruction">
+        <strong>Instructions:</strong> Did you catch the meaning? Decide whether each statement is <b>TRUE</b> or <b>FALSE</b> based on Audio 3.
+      </p>
+
+      <table class="tf-table">
+        <thead>
+          <tr>
+            <th>Statement</th>
+            <th style="width: 160px; text-align:center;">Your Answer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. The pineapple costs ten dollars ($10.00).</td>
+            <td style="text-align:center;">
+              <button class="tf-btn" onclick="setTF(this, 'tf1', 'true')">TRUE</button>
+              <button class="tf-btn" onclick="setTF(this, 'tf1', 'false')">FALSE</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2. The customer buys three apples.</td>
+            <td style="text-align:center;">
+              <button class="tf-btn" onclick="setTF(this, 'tf2', 'true')">TRUE</button>
+              <button class="tf-btn" onclick="setTF(this, 'tf2', 'false')">FALSE</button>
+            </td>
+          </tr>
+          <tr>
+            <td>3. The customer uses polite words like <i>"Excuse me"</i> and <i>"Please"</i>.</td>
+            <td style="text-align:center;">
+              <button class="tf-btn" onclick="setTF(this, 'tf3', 'true')">TRUE</button>
+              <button class="tf-btn" onclick="setTF(this, 'tf3', 'false')">FALSE</button>
+            </td>
+          </tr>
+          <tr>
+            <td>4. The total bill for the shopping trip is four dollars ($4.00).</td>
+            <td style="text-align:center;">
+              <button class="tf-btn" onclick="setTF(this, 'tf4', 'true')">TRUE</button>
+              <button class="tf-btn" onclick="setTF(this, 'tf4', 'false')">FALSE</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- EXIT TICKET -->
+    <div class="exit-ticket">
+      <h3>⭐ My Learning Reflection (Self-Assessment & Exit Ticket)</h3>
+      <div class="radio-group">
+        <label><input type="radio" name="exit" value="3"> 😃 <strong>Super!</strong> I understood all market prices and numbers easily.</label>
+        <label><input type="radio" name="exit" value="2"> 🙂 <strong>Good!</strong> I understood most items, but numbers above 5 are a bit tricky.</label>
+        <label><input type="radio" name="exit" value="1"> 🤔 <strong>Need more practice:</strong> I want to listen to the dialogue one more time.</label>
+      </div>
+    </div>
+
+    <!-- ACTIONS BAR -->
+    <div class="actions-bar">
+      <button class="btn-print" onclick="window.print()">🖨️ Print Student Worksheet</button>
+      <button class="btn-submit" onclick="checkAnswers()">✅ Check My Answers & Score</button>
+    </div>
+
+    <!-- TEACHER SCRIPT (ACCORDION) -->
+    <details class="teacher-accordion">
+      <summary>👨‍🏫 Teacher's Audio Script & Pronunciation Guide (Click to expand)</summary>
+      <div class="script-content">
+        <p><strong>Audio 1 Script (Vendor Announcements):</strong><br>
+        <em>"Good morning, shoppers! Welcome to the Central Market. Here are today's fresh specials!<br>
+        Item 1: Sweet fresh pineapples are only <strong>one dollar</strong> each! Yes, one dollar for a big pineapple.<br>
+        Item 2: Crunchy red apples are <strong>one dollar</strong> each.<br>
+        Item 3: Delicious ripe bananas are <strong>two dollars</strong> for a whole bunch.<br>
+        Item 4: Fresh local cassava (yuca) is <strong>three dollars</strong> for a bag.<br>
+        Item 5: Big baking potatoes are <strong>four dollars</strong> for a five-pound sack!"</em></p>
+        <br>
+        <p><strong>Audio 2 Script (Mrs. Gonzalez's List):</strong><br>
+        <em>"Let me check my shopping list before I go to the stall. Today for our family soup, I need <strong>one pineapple</strong> for juice. I need <strong>five apples</strong> for the children's snack. I need <strong>three bananas</strong>. I need <strong>four potatoes</strong>, and I need <strong>two bags of cassava (yuca)</strong>. That's everything on my list!"</em></p>
+        <br>
+        <p><strong>Audio 3 Script (Dialogue):</strong><br>
+        <em><strong>Cashier:</strong> "Hello! Good morning. Can I help you?"<br>
+        <strong>Customer:</strong> "Yes, please! Excuse me, how much is the pineapple?"<br>
+        <strong>Cashier:</strong> "It is one dollar."<br>
+        <strong>Customer:</strong> "Great! And how many apples do you have?"<br>
+        <strong>Cashier:</strong> "We have fresh red apples. How many do you need?"<br>
+        <strong>Customer:</strong> "I need three apples and one banana, please."<br>
+        <strong>Cashier:</strong> "Okay, one pineapple, three apples, and one banana. That is four dollars in total."<br>
+        <strong>Customer:</strong> "Here is the money. Thank you!"<br>
+        <strong>Cashier:</strong> "You are welcome! Have a nice day!"</em></p>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    // Audio Player using Web Speech API
+    const audioScripts = {
+      track1: "Good morning, shoppers! Welcome to the Central Market. Here are today's fresh specials! Item 1: Sweet fresh pineapples are only one dollar each! Item 2: Crunchy red apples are one dollar each. Item 3: Delicious ripe bananas are two dollars for a whole bunch. Item 4: Fresh local cassava is three dollars for a bag. Item 5: Big baking potatoes are four dollars for a five-pound sack!",
+      track2: "Let me check my shopping list. Today, I need one pineapple for juice. I need five apples for the children's snack. I need three bananas. I need four potatoes, and I need two bags of cassava. That is everything on my list!",
+      track3: "Cashier says: Hello! Good morning. Can I help you? Customer answers: Yes, please! Excuse me, how much is the pineapple? Cashier: It is one dollar. Customer: Great! And how many apples do you have? Cashier: We have fresh red apples. How many do you need? Customer: I need three apples and one banana, please. Cashier: Okay, one pineapple, three apples, and one banana. That is four dollars in total. Customer: Here is the money. Thank you! Cashier: You are welcome! Have a nice day!"
+    };
+
+    function playAudio(trackKey) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const text = audioScripts[trackKey];
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.88; // Slightly slower, crystal clear for 4th graders
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert("Audio playback not supported in this browser. Please read the script in Teacher's guide.");
+      }
+    }
+
+    // Part 1 selections
+    const userAnswers = {
+      p1_1: null,
+      p1_2: null,
+      p1_3: null,
+      p1_4: null,
+      p1_5: null,
+      tf1: null,
+      tf2: null,
+      tf3: null,
+      tf4: null
+    };
+
+    function selectOption(btn) {
+      const parent = btn.parentElement;
+      const qKey = parent.dataset.q;
+      parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      // get price value
+      const txt = btn.innerText;
+      if (txt.includes('$1.00')) userAnswers[qKey] = 1;
+      else if (txt.includes('$2.00')) userAnswers[qKey] = 2;
+      else if (txt.includes('$3.00')) userAnswers[qKey] = 3;
+      else if (txt.includes('$4.00')) userAnswers[qKey] = 4;
+      else userAnswers[qKey] = 0;
+    }
+
+    function setTF(btn, qKey, val) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.tf-btn').forEach(b => {
+        b.classList.remove('active-true');
+        b.classList.remove('active-false');
+      });
+      if (val === 'true') btn.classList.add('active-true');
+      else btn.classList.add('active-false');
+      userAnswers[qKey] = val;
+    }
+
+    function checkAnswers() {
+      let score = 0;
+
+      // Part 1: (5 pts)
+      if (userAnswers.p1_1 === 1) score++;
+      if (userAnswers.p1_2 === 1) score++;
+      if (userAnswers.p1_3 === 2) score++;
+      if (userAnswers.p1_4 === 3) score++;
+      if (userAnswers.p1_5 === 4) score++;
+
+      // Part 2: (5 pts)
+      if (document.getElementById('q_pine').value == '1') score++;
+      if (document.getElementById('q_apple').value == '5') score++;
+      if (document.getElementById('q_banana').value == '3') score++;
+      if (document.getElementById('q_potato').value == '4') score++;
+      if (document.getElementById('q_cassava').value == '2') score++;
+
+      // Part 3: (6 pts)
+      if (document.getElementById('blank1').value === 'pineapple') score++;
+      if (document.getElementById('blank2').value === 'one dollar') score++;
+      if (document.getElementById('blank3').value === 'apples') score++;
+      if (document.getElementById('blank4').value === 'three') score++;
+      if (document.getElementById('blank5').value === 'four dollars') score++;
+      if (document.getElementById('blank6').value === 'Thank you') score++;
+
+      // Part 4: (4 pts)
+      if (userAnswers.tf1 === 'false') score++;
+      if (userAnswers.tf2 === 'true') score++;
+      if (userAnswers.tf3 === 'true') score++;
+      if (userAnswers.tf4 === 'true') score++;
+
+      const display = document.getElementById('scoreDisplay');
+      display.innerText = `⭐ Score: ${score} / 20 pts`;
+      if (score >= 16) {
+        display.style.background = '#ECFDF5';
+        display.style.color = '#059669';
+        alert(`🎉 Excellent work! You scored ${score} out of 20 points! You are a master market listener!`);
+      } else if (score >= 10) {
+        display.style.background = '#FEF3C7';
+        display.style.color = '#D97706';
+        alert(`👍 Good job! You scored ${score} out of 20 points. Listen once more to get 20/20!`);
+      } else {
+        display.style.background = '#FEE2E2';
+        display.style.color = '#DC2626';
+        alert(`You scored ${score} out of 20 points. Click the audio buttons and try again!`);
+      }
+    }
+  </script>
+</body>
+</html>

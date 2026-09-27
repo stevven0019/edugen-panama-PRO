@@ -743,14 +743,15 @@ export function getAoaCurricularBlueprint({ grade, skill, scenario = '', lessonN
   const bandKey = resolveCefrBand(grade);
   const bandMeta = CEFR_BANDS[bandKey] || CEFR_BANDS['a1'];
 
-  // Normalize skill key
+  // Normalize skill key: Lesson 1=Listening, 2=Reading, 3=Speaking, 4=Writing, 5=Mediation
   let sKey = 'listening';
   const sStr = String(skill || '').toLowerCase();
-  if (/read/i.test(sStr) || lessonNum === 2) sKey = 'reading';
-  else if (/writ/i.test(sStr) || lessonNum === 3) sKey = 'writing';
-  else if (/speak|oral/i.test(sStr) || lessonNum === 4) sKey = 'speaking';
-  else if (/mediat/i.test(sStr) || lessonNum === 5) sKey = 'mediation';
-  else sKey = 'listening';
+  if (/speak|oral/i.test(sStr) || (lessonNum === 3 && !/read|writ|listen|mediat/i.test(sStr))) sKey = 'speaking';
+  else if (/read/i.test(sStr) || (lessonNum === 2 && !/speak|writ|listen|mediat/i.test(sStr))) sKey = 'reading';
+  else if (/writ/i.test(sStr) || (lessonNum === 4 && !/read|speak|listen|mediat/i.test(sStr))) sKey = 'writing';
+  else if (/mediat/i.test(sStr) || (lessonNum === 5 && !/read|speak|writ|listen/i.test(sStr))) sKey = 'mediation';
+  else if (/listen/i.test(sStr) || (lessonNum === 1 && !/read|speak|writ|mediat/i.test(sStr))) sKey = 'listening';
+  else sKey = 'speaking';
 
   const skillCatalog = AOA_MASTER_CATALOG[sKey] || AOA_MASTER_CATALOG.listening;
 

@@ -678,28 +678,128 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
                   const scTitle = getScenarioTitle(scItem, matrixScenarioIndex);
                   const { theme1, theme2 } = getScenarioThemes(scItem);
                   const activeThemeTitle = matrixThemeNum === 2 ? theme2 : theme1;
-                  const isPreK = matrixGrade === 'prek' || matrixGrade === 'kinder';
+                  const isSpeaking = matrixSkill === 'Speaking' || sItem?.number === 3;
+                  const isListening = matrixSkill === 'Listening' || sItem?.number === 1;
+                  const isReading = matrixSkill === 'Reading' || sItem?.number === 2;
+                  const isWriting = matrixSkill === 'Writing' || sItem?.number === 4;
+                  const bandKey = resolveCefrBand(gItem?.name || matrixGrade);
+                  const cefrInfo = CEFR_BANDS[bandKey] || CEFR_BANDS['a1'];
+
+                  // Pedagogical badge by CEFR band for Speaking, Listening, Reading & Writing
+                  let skillBadge = '';
+                  let skillDetail = '';
+                  if (isSpeaking) {
+                    if (bandKey === 'pre-a1') {
+                      skillBadge = '🗣️ Pre-A1: Choral Chants, Echo Drill & Naming Realia';
+                      skillDetail = 'Juegos orales con títeres, gestos kinestésicos y repetición rítmica. Cero producción compleja forzada.';
+                    } else if (bandKey === 'a1.1') {
+                      skillBadge = '🗣️ A1.1: Flash Naming & Rapid Ball Toss Inquiry';
+                      skillDetail = 'Preguntas cerradas (What is this?), conteo 1-10 y fórmulas de cortesía cortas (please / thank you).';
+                    } else if (bandKey === 'a1') {
+                      skillBadge = '🗣️ A1: Supermarket Dash & Price Match Game';
+                      skillDetail = 'Juego de mesa con dados, tarjetas recortables de productos/precios, y mini role-play (How much is...? / I need...).';
+                    } else if (bandKey === 'a1+') {
+                      skillBadge = '🗣️ A1+: Two-Way Information Gap & Survey Race';
+                      skillDetail = 'Intercambio guiado en parejas con brecha de información, descripción de cantidades y cálculos en USD.';
+                    } else if (bandKey === 'a2') {
+                      skillBadge = '🗣️ A2: Authentic Simulation & Menu Negotiation';
+                      skillDetail = 'Simulación de compras reales en el mercado/fonda con presupuesto limitado ($15 USD) y negociación de alternativas.';
+                    } else if (bandKey === 'b1') {
+                      skillBadge = '🗣️ B1/B1+: Technical Interview & 60s Devil\'s Advocate Debate';
+                      skillDetail = 'Debates estructurados, argumentación con modales, acuerdos colaborativos y persuasión profesional.';
+                    }
+                  } else if (isListening) {
+                    if (bandKey === 'pre-a1') {
+                      skillBadge = '🎧 Pre-A1: Listen & Do (TPR) · Simon Says with Realia';
+                      skillDetail = 'Respuesta física total (TPR), señalamiento de objetos reales y gestos (thumbs up/down 👍👎). Cero lectoescritura forzada.';
+                    } else if (bandKey === 'a1.1') {
+                      skillBadge = '🎧 A1.1: Mystery Sound Box & Auditory Relay';
+                      skillDetail = 'Discriminación fonética de palabras aisladas, comandos motrices de aula de 1 paso y asociación con fotos.';
+                    } else if (bandKey === 'a1') {
+                      skillBadge = '🎧 A1: Listen & Circle / Price Matching & Shopping Dictation';
+                      skillDetail = 'Audición de diálogos sencillos, discriminación de precios en USD ($1-$5), matching y dibujo por dictado guiado.';
+                    } else if (bandKey === 'a1+') {
+                      skillBadge = '🎧 A1+: Multi-Step Directions & Quantity Audit';
+                      skillDetail = 'Instrucciones auditivas de 2 a 3 pasos, verificación de cantidades hasta 100 y discriminación de detalles en mercado.';
+                    } else if (bandKey === 'a2') {
+                      skillBadge = '🎧 A2: Audio Bingo Panameño & Megaphone Broadcasts';
+                      skillDetail = 'Audios situacionales auténticos (Terminal de Albrook, fondas, anuncios de transporte), extracción de datos y rutas.';
+                    } else if (bandKey === 'b1') {
+                      skillBadge = '🎧 B1/B1+: Authentic Safety Briefing & Radio Climate Alert';
+                      skillDetail = 'Briefings técnicos a velocidad natural (protocolos ACP, pronósticos del Canal), toma de notas y detección de discrepancias.';
+                    }
+                  } else if (isReading) {
+                    if (bandKey === 'pre-a1') {
+                      skillBadge = '📖 Pre-A1: Sign & Logo Scavenger Hunt · Big Book Shared Reading';
+                      skillDetail = 'Lectura emergente: Reconocimiento de logos, pictogramas de frutas y seguimiento de direccionalidad con el dedo.';
+                    } else if (bandKey === 'a1.1') {
+                      skillBadge = '📖 A1.1: Word-Photo Flash Match & Choral Decoding';
+                      skillDetail = 'Emparejamiento de rótulos en mayúscula con fotos reales y lectura coral con puntero en pizarra.';
+                    } else if (bandKey === 'a1') {
+                      skillBadge = '📖 A1: Market Price List Reading, Sentence Cloze & Clerk Role-Play';
+                      skillDetail = 'Lectura de listas de precios auténticas ($1.00-$2.00), completar oraciones con banco de palabras y rol de clerk.';
+                    } else if (bandKey === 'a1+') {
+                      skillBadge = '📖 A1+: Supermarket Receipt & Informational Notice Scanning';
+                      skillDetail = 'Búsqueda rápida de datos en recibos impresos, cálculos de subtotales y discriminación de True/False con evidencia.';
+                    } else if (bandKey === 'a2') {
+                      skillBadge = '📖 A2: Menu Skimming Race & Casco Antiguo Route Planning';
+                      skillDetail = 'Escaneo rápido de menús de fondas panameñas y folletos turísticos para planificar itinerarios de viaje.';
+                    } else if (bandKey === 'b1') {
+                      skillBadge = '📖 B1/B1+: ACP Job Screening & Environmental Contingency Jigsaw';
+                      skillDetail = 'Lectura crítica de manuales técnicos, análisis de perfiles laborales de la ACP y evaluación de requisitos.';
+                    }
+                  } else if (isWriting) {
+                    if (bandKey === 'pre-a1') {
+                      skillBadge = '✍️ Pre-A1: Air Tracing, Finger Gym & Icon Matching';
+                      skillDetail = 'Pre-escritura motriz: Trazado en el aire con puntero, modelado con plastilina y emparejamiento de íconos. Cero texto forzado.';
+                    } else if (bandKey === 'a1.1') {
+                      skillBadge = '✍️ A1.1: Alphabet Word Relay & Traced Labeling';
+                      skillDetail = 'Completado de letras mayúsculas iniciales, caligrafía guiada de números 1-10 y rotulado de frutas sobre líneas punteadas.';
+                    } else if (bandKey === 'a1') {
+                      skillBadge = '✍️ A1: Missing Letters, Sentence Scramble & "My Market Trip Report"';
+                      skillDetail = 'Completar letras faltantes (P_N_APPL_), ordenar oraciones de compra (I need three apples) y redactar reporte de compras en USD.';
+                    } else if (bandKey === 'a1+') {
+                      skillBadge = '✍️ A1+: Receipt Drafting & Form Fill-In Order Slips';
+                      skillDetail = 'Redacción guiada de órdenes de compra con subtotales en USD, corrección de borradores y descripciones con adjetivos.';
+                    } else if (bandKey === 'a2') {
+                      skillBadge = '✍️ A2: Authentic Comanda, Restaurant Orders & Market Logs';
+                      skillDetail = 'Redacción de pedidos detallados para proveedores, notas de compra auténticas y párrafos comparativos de precios locales en Panamá.';
+                    } else if (bandKey === 'b1') {
+                      skillBadge = '✍️ B1/B1+: Eco-Tourist Code of Conduct & Formal Incident Memo';
+                      skillDetail = 'Elaboración de manuales de 3 reglas ecológicas, reportes de inspección de mercado y redacción formal con conectores lógicos de causa-efecto.';
+                    }
+                  }
+
                   return (
-                    <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-200/80 dark:border-indigo-900 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-                      <div className="space-y-1">
+                    <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-indigo-200/90 dark:border-indigo-900 text-xs space-y-2 shadow-sm">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                         <div className="font-extrabold text-slate-900 dark:text-white flex flex-wrap items-center gap-2">
-                          <span>🎯 {scTitle}</span>
-                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-black border border-indigo-200">
-                            {gItem?.cefr}
+                          <span className="text-sm">🎯 {scTitle}</span>
+                          <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-black border border-indigo-200 dark:border-indigo-800">
+                            {gItem?.cefr} · {cefrInfo?.name}
                           </span>
-                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-black border border-emerald-200">
+                          <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 font-black border border-emerald-200 dark:border-emerald-800">
                             Tema {matrixThemeNum}: {activeThemeTitle}
                           </span>
                         </div>
-                        <p className="text-[11px] text-slate-600 dark:text-slate-400">
-                          <strong>{sItem?.label}</strong> · {sItem?.desc}
-                        </p>
+                        {isPreK && (
+                          <span className="text-[10px] font-extrabold bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 px-2.5 py-1 rounded-lg shrink-0">
+                            🌟 Preescolar: TPR Receptivo (Cero lectoescritura forzada)
+                          </span>
+                        )}
                       </div>
-                      {isPreK && (
-                        <span className="text-[10px] font-extrabold bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 px-2.5 py-1 rounded-lg shrink-0">
-                          🌟 Preescolar: TPR Receptivo (Cero lectoescritura forzada)
-                        </span>
-                      )}
+
+                      {/* Explicit Pedagogical Description & Progression Cue */}
+                      <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                        <div className="text-[11px] text-slate-700 dark:text-slate-300">
+                          <strong>{sItem?.label}</strong> &bull; {(isSpeaking || isListening || isReading || isWriting) ? skillDetail : sItem?.desc}
+                        </div>
+                        {(isSpeaking || isListening || isReading || isWriting) && (
+                          <span className="text-[10px] font-black text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800/80 px-2.5 py-1 rounded-lg shrink-0">
+                            {skillBadge}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   );
                 })()}

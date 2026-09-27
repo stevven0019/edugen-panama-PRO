@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matriz de Competencia Lingüística CEFR • EduGen Panamá</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0D3B66;
+      --primary-dark: #072542;
+      --teal: #0081A7;
+      --amber: #D97706;
+      --amber-light: #FEF3C7;
+      --sky: #0284C7;
+      --sky-light: #E0F2FE;
+      --emerald: #0D9488;
+      --emerald-light: #CCFBF1;
+      --indigo: #4338CA;
+      --indigo-light: #EDE9FE;
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, #174873 50%, var(--teal) 100%);
+      color: white;
+      padding: 32px 36px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 0.98rem;
+      color: #E2E8F0;
+      max-width: 950px;
+      line-height: 1.6;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      background: white;
+      padding: 16px 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-filter {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: #F1F5F9;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-filter:hover {
+      background: #E2E8F0;
+      color: var(--text);
+    }
+
+    .btn-filter.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 2px 4px rgba(13, 59, 102, 0.2);
+    }
+
+    .btn-filter.active[data-group="foundational"] { background: var(--amber); border-color: var(--amber); }
+    .btn-filter.active[data-group="beginner"] { background: var(--sky); border-color: var(--sky); }
+    .btn-filter.active[data-group="high_beginner"] { background: var(--emerald); border-color: var(--emerald); }
+    .btn-filter.active[data-group="pre_intermediate"] { background: var(--indigo); border-color: var(--indigo); }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-action {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-action:hover {
+      background: #F8FAFC;
+      border-color: var(--text-muted);
+    }
+
+    .btn-action.primary {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+    }
+
+    .btn-action.primary:hover {
+      background: #006C8C;
+    }
+
+    /* TABLE LAYOUT */
+    .table-responsive {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: white;
+      border: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+
+    table.matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      min-width: 1280px;
+    }
+
+    table.matrix-table th {
+      background: var(--primary);
+      color: white;
+      padding: 14px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    table.matrix-table td {
+      padding: 16px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    table.matrix-table tr:hover td {
+      background-color: #F8FAFC;
+    }
+
+    /* ROW GROUP STYLING */
+    .group-banner-row td {
+      padding: 10px 18px !important;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: white !important;
+      letter-spacing: 0.02em;
+    }
+
+    .banner-foundational { background: var(--amber) !important; }
+    .banner-beginner { background: var(--sky) !important; }
+    .banner-high-beginner { background: var(--emerald) !important; }
+    .banner-pre-intermediate { background: var(--indigo) !important; }
+
+    /* CELL CARD STYLES */
+    .ref-card {
+      min-width: 190px;
+      max-width: 220px;
+    }
+
+    .cefr-tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      margin-bottom: 8px;
+    }
+
+    .cefr-pre-a1 { background: var(--amber-light); color: #B45309; border: 1px solid #FCD34D; }
+    .cefr-a1 { background: var(--sky-light); color: #0369A1; border: 1px solid #BAE6FD; }
+    .cefr-a2 { background: var(--emerald-light); color: #0F766E; border: 1px solid #99F6E4; }
+    .cefr-b1 { background: var(--indigo-light); color: #4338CA; border: 1px solid #DDD6FE; }
+
+    .grade-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .focus-block {
+      margin-bottom: 8px;
+      font-size: 0.78rem;
+    }
+
+    .focus-block strong {
+      color: var(--primary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .activity-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 12px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .activity-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.06);
+      border-color: #CBD5E1;
+    }
+
+    .activity-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .activity-type-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #E2E8F0;
+      color: #475569;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .activity-desc {
+      font-size: 0.78rem;
+      color: #334155;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+
+    .activity-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      border-top: 1px dashed #CBD5E1;
+      padding-top: 6px;
+      margin-top: 4px;
+    }
+
+    .activity-meta strong {
+      color: #1E293B;
+    }
+
+    /* MEDIATION PROJECTS COLUMN */
+    .mediation-card {
+      min-width: 240px;
+      max-width: 280px;
+    }
+
+    .theme-project-box {
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      border-left: 4px solid var(--amber);
+      margin-bottom: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .theme-project-box.theme-2 {
+      border-left-color: var(--sky);
+      margin-bottom: 0;
+    }
+
+    .theme-header {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 3px;
+    }
+
+    .theme-header.th-1 { color: #B45309; }
+    .theme-header.th-2 { color: #0284C7; }
+
+    .project-name {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .project-desc {
+      font-size: 0.74rem;
+      color: #475569;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .project-skill-tag {
+      font-size: 0.68rem;
+      background: #F1F5F9;
+      color: #334155;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    .footer-notes {
+      background: white;
+      padding: 20px 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .footer-notes strong {
+      color: var(--primary);
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        padding: 0;
+        background: white;
+      }
+      .toolbar, .btn-action, .btn-filter {
+        display: none !important;
+      }
+      .header {
+        background: var(--primary) !important;
+        color: white !important;
+        padding: 16px;
+        margin-bottom: 12px;
+      }
+      .table-responsive {
+        box-shadow: none;
+        border: none;
+      }
+      table.matrix-table {
+        min-width: 100%;
+        font-size: 7pt;
+      }
+      table.matrix-table th {
+        background: var(--primary) !important;
+        color: white !important;
+        font-size: 7pt;
+        padding: 6px;
+      }
+      table.matrix-table td {
+        padding: 6px;
+        font-size: 6.8pt;
+      }
+      .activity-card {
+        padding: 6px;
+        box-shadow: none !important;
+      }
+      .page-break {
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="badge-pill">
+        <span>📘 MEDUCA Panamá • Enfoque Orientado a la Acción (AOA)</span>
+      </div>
+      <h1>Matriz de Competencia Lingüística y Actividades por Nivel CEFR</h1>
+      <p>
+        Tabla curricular de 4 macro-grupos y habilidades lingüísticas (Listening, Reading, Speaking, Writing) junto con la <strong>columna de Mediación</strong> dividida en <strong>Theme 1 (21st Century Project 1)</strong> y <strong>Theme 2 (21st Century Skill Project 2)</strong>, con actividades concretas y lúdicas aptas para cada grado.
+      </p>
+    </header>
+
+    <!-- TOOLBAR & FILTERS -->
+    <div class="toolbar">
+      <div class="filters">
+        <button class="btn-filter active" data-group="all" onclick="filterTable('all')">Todos los Grupos (4)</button>
+        <button class="btn-filter" data-group="foundational" onclick="filterTable('foundational')">🟡 Foundational Learner (Pre A1)</button>
+        <button class="btn-filter" data-group="beginner" onclick="filterTable('beginner')">🔵 Beginner (A1)</button>
+        <button class="btn-filter" data-group="high_beginner" onclick="filterTable('high_beginner')">🟢 High Beginner (A2)</button>
+        <button class="btn-filter" data-group="pre_intermediate" onclick="filterTable('pre_intermediate')">🟣 Pre-Intermediate (B1)</button>
+      </div>
+      <div class="actions">
+        <button class="btn-action primary" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+      </div>
+    </div>
+
+    <!-- MAIN MATRIX TABLE -->
+    <div class="table-responsive">
+      <table class="matrix-table" id="matrixTable">
+        <thead>
+          <tr>
+            <th style="width: 17%;">Nivel CEFR & Grados<br/><small style="font-weight:400; opacity:0.85;">Enfoque y Componentes</small></th>
+            <th style="width: 16%;">🎧 Listening<br/><small style="font-weight:400; opacity:0.85;">Lúdica & Concreta</small></th>
+            <th style="width: 16%;">📖 Reading<br/><small style="font-weight:400; opacity:0.85;">Lúdica & Concreta</small></th>
+            <th style="width: 16%;">🗣️ Speaking<br/><small style="font-weight:400; opacity:0.85;">Lúdica & Concreta</small></th>
+            <th style="width: 16%;">✍️ Writing<br/><small style="font-weight:400; opacity:0.85;">Lúdica & Concreta</small></th>
+            <th style="width: 19%;">🤝 Mediation (21st Century)<br/><small style="font-weight:400; opacity:0.85;">Theme 1 & Theme 2 Projects</small></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- GROUP 1: FOUNDATIONAL LEARNER -->
+          <tr class="group-banner-row banner-foundational group-foundational">
+            <td colspan="6">
+              🟡 GRUPO 1: FOUNDATIONAL LEARNER (CEFR Pre A1) • Aprendizaje Lúdico Sensorial, Discriminación Fonológica y Alfabetización Emergente
+            </td>
+          </tr>
+
+          <!-- Row 1A: Pre-K & Kinder -->
+          <tr class="row-data group-foundational">
+            <td class="ref-card">
+              <span class="cefr-tag cefr-pre-a1">Pre A1.1 – Pre A1.2</span>
+              <div class="grade-title">Pre-K & Kinder</div>
+              <div class="focus-block">
+                <strong>Enfoque Central:</strong>
+                Construcción de bases en sonidos del inglés, letras y vocabulario inicial.
+              </div>
+              <div class="focus-block">
+                <strong>Consideraciones Clave:</strong>
+                Juego guiado, estímulo sensorial, ayudas visuales, TPR, rotulado y modelado.
+              </div>
+              <div class="focus-block">
+                <strong>Componentes Lingüísticos:</strong>
+                Principalmente fonología (conciencia fonológica), inicio del reconocimiento de letras (ortografía) y vocabulario básico (semántica).
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">TPR & Realia</span>
+                  <div class="activity-title">Sound Detective & Musical Statues</div>
+                  <p class="activity-desc">
+                    El docente marca el compás con un pandero emitiendo fonemas clave (/s/ snake, /b/ bounce). Al detenerse la música, pide: <em>"Touch the yellow crayon!"</em> o <em>"Touch your chair!"</em>. Los niños imitan el sonido con movimientos kinestésicos y tocan el objeto real.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Respuesta física inmediata y no verbal que comprueba discriminación auditiva sin forzar producción oral prematura.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Multisensorial</span>
+                  <div class="activity-title">Sensory Sandpaper & Realia Match</div>
+                  <p class="activity-desc">
+                    Tarjetas de lija con letras (A, B, S, M). Los niños sienten el trazo con su dedo pronunciando el fonema (/b/) y colocan dentro de la bandeja el juguete real que inicia con ese sonido (ball, book, baby).
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Asociación táctil y visual del grafema inicial con su referente concreto de la vida real.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Títeres & Turnos</span>
+                  <div class="activity-title">Magic Box Puppet Echo & Turns</div>
+                  <p class="activity-desc">
+                    El títere ("Sammy the Sloth") saca un objeto misterioso de la caja mágica y pregunta con asombro: <em>"What is this?"</em>. Los niños hacen eco coral: <em>"A book!"</em> y practican turnos: <em>"Hello Sammy!", "Thank you!"</em>.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Emisión de palabras aisladas de alta frecuencia y uso espontáneo de fórmulas de cortesía lúdica.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Pre-Escritura</span>
+                  <div class="activity-title">Playdough Sculpt & Water Brushes</div>
+                  <p class="activity-desc">
+                    Amasan tiras de plastilina para formar las siluetas de las letras (I, L, T, O). Con pinceles humedecidos en agua sobre pizarras mágicas trazan patrones rectos y curvos asociados a objetos del aula.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Desarrollo de la pinza motriz fina y reproducción gráfica de trazos pre-alfabéticos básicos.
+                </div>
+              </div>
+            </td>
+            <td class="mediation-card">
+              <div class="theme-project-box">
+                <div class="theme-header th-1">Theme 1: Classroom Routine</div>
+                <div class="project-name">Project 1: Kindness & Routine Mural</div>
+                <p class="project-desc">En parejas, colocan tarjetas visuales con íconos ("Share toys", "Listen with big ears") con velcro en el mural del salón, guiándose con gestos y sonrisas.</p>
+                <span class="project-skill-tag">🤝 Mediación Social y Empatía</span>
+              </div>
+              <div class="theme-project-box theme-2">
+                <div class="theme-header th-2">Theme 2: Sensory World</div>
+                <div class="project-name">Project 2: Color & Texture Sort Quest</div>
+                <p class="project-desc">Tríos exploran cajas sensoriales para resolver un acertijo concreto: <em>"Help the teddy bear find 5 soft green items"</em>, ganando una insignia colaborativa.</p>
+                <span class="project-skill-tag">🧠 Resolución de Problemas Concretos</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Row 1B: Grade 1 & Grade 2 -->
+          <tr class="row-data group-foundational">
+            <td class="ref-card">
+              <span class="cefr-tag cefr-pre-a1">Pre A1.3 – Pre A1.4</span>
+              <div class="grade-title">Grade 1 & Grade 2</div>
+              <div class="focus-block">
+                <strong>Enfoque Central:</strong>
+                Ampliación de vocabulario, gramática básica y comunicación sencilla.
+              </div>
+              <div class="focus-block">
+                <strong>Consideraciones Clave:</strong>
+                Ayudas visuales, sentence frames, repetición y práctica, retroalimentación correctiva, trabajo colaborativo.
+              </div>
+              <div class="focus-block">
+                <strong>Componentes Lingüísticos:</strong>
+                Fonología, morfología (plurales regulares con -s), sintaxis (oraciones simples S-V-O), y semántica de vocabulario de rutina.
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Sintaxis Oral</span>
+                  <div class="activity-title">Color-Shape Plural Bingo Relay</div>
+                  <p class="activity-desc">
+                    El docente canta instrucciones con estructura morfosintáctica: <em>"The boy touches a red chair"</em> o <em>"Find two pencils"</em>. Los niños discriminan plurales (-s) y combinaciones adjetivo-sustantivo para sellar su cartón.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Identificación precisa de modificadores y morfemas de número mediante selección no verbal.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Decodificación Lúdica</span>
+                  <div class="activity-title">Phonics Hopscotch & Sentence Strips</div>
+                  <p class="activity-desc">
+                    Tapete de rayuela en el piso con palabras CVC (cat, desk, pen, bag, sun). El niño salta decodificando la palabra y la inserta en el atril de oraciones: <em>"[The pen] is [blue]."</em> leyéndola con aplausos rítmicos.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Decodificación fonética fluida de palabras monosilábicas y lectura de patrones oracionales simples.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Juego de Roles</span>
+                  <div class="activity-title">Market Basket Realia Role-Play</div>
+                  <p class="activity-desc">
+                    Puesto de mercadito escolar con frutas de utilería. En parejas usan sentence frames en atriles: <em>"Can I have the [red apple], please?" / "Here you are!" / "Thank you!"</em>, alternando roles de vendedor y comprador.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Interacción oral de 2 turnos con fórmulas corteses y entonación situacional correcta.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Bloques de Sintaxis</span>
+                  <div class="activity-title">Sentence Train Builder & Trace</div>
+                  <p class="activity-desc">
+                    Vagones de colores (Amarillo = Sujeto, Verde = Verbo, Azul = Objeto). Conectan los bloques físicos formando <em>"I see three books"</em> y copian en su libreta de doble línea cuidando los espacios interpalabra.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Estructuración sintáctica oracional (SVO) y legibilidad caligráfica con espaciado regular.
+                </div>
+              </div>
+            </td>
+            <td class="mediation-card">
+              <div class="theme-project-box">
+                <div class="theme-header th-1">Theme 1: Peer Support</div>
+                <div class="project-name">Project 1: Classroom Helper Buddy Passport</div>
+                <p class="project-desc">Guían a su compañero de pupitre mediante señas visuales para completar una rutina del salón; al lograrlo, firman y estampan el "Pasaporte de Ayudante".</p>
+                <span class="project-skill-tag">🤝 Mediación Instruccional entre Pares</span>
+              </div>
+              <div class="theme-project-box theme-2">
+                <div class="theme-header th-2">Theme 2: Daily Routines</div>
+                <div class="project-name">Project 2: 3-Step Storyboard & Voice Memo</div>
+                <p class="project-desc">Equipos ordenan cronológicamente 3 viñetas de su día (despertar, clases, jugar), graban una narración oral en tableta y la comparten en plenaria.</p>
+                <span class="project-skill-tag">📱 Narrativa Digital & Secuencia Lógica</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- GROUP 2: BEGINNER -->
+          <tr class="group-banner-row banner-beginner group-beginner">
+            <td colspan="6">
+              🔵 GRUPO 2: BEGINNER (CEFR A1) • Expansión Expresiva, Organizadores Gráficos, Oraciones Compuestas y Co-Evaluación
+            </td>
+          </tr>
+
+          <!-- Row 2: Grades 3, 4, 5 -->
+          <tr class="row-data group-beginner">
+            <td class="ref-card">
+              <span class="cefr-tag cefr-a1">A1.1, A1.2, A1.3</span>
+              <div class="grade-title">Grades 3, 4 & 5</div>
+              <div class="focus-block">
+                <strong>Enfoque Central:</strong>
+                Ampliación de la expresión y comprensión mediante vocabulario, gramática y comunicación interactiva.
+              </div>
+              <div class="focus-block">
+                <strong>Consideraciones Clave:</strong>
+                Ayudas visuales, organizadores gráficos, sentence frames, textos modelo, retroalimentación entre pares.
+              </div>
+              <div class="focus-block">
+                <strong>Componentes Lingüísticos:</strong>
+                Mayor énfasis en sintaxis (oraciones compuestas con <em>and, but, because</em>) y semántica (vocabulario matizado de lugares, emociones y naturaleza).
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Juego de Barrera</span>
+                  <div class="activity-title">Barrier Sketch & Setting Detective</div>
+                  <p class="activity-desc">
+                    Separados por una mampara, el Estudiante A escucha una descripción con nexos compuestos (<em>"The monkey is on the mango tree and it is eating two bananas, but the tiger is sleeping"</em>) y se la dicta a B para que dibuje la escena exacta.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Discriminación de preposiciones de lugar complejas y oraciones unidas por conjunciones coordinadas.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Diagrama de Venn</span>
+                  <div class="activity-title">Venn Diagram Scavenger Hunt</div>
+                  <p class="activity-desc">
+                    Leen en tríos dos fichas informativas ilustradas sobre fauna o provincias de Panamá (Boquete vs. Casco Viejo). Usan resaltadores amarillos para conectores (<em>and, but</em>) y rellenan un diagrama de Venn con similitudes y contrastes.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Extracción de detalles explícitos y comprensión de relaciones de contraste en textos modelados.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Juego de Tablero</span>
+                  <div class="activity-title">Town Game & Two Stars Feedback</div>
+                  <p class="activity-desc">
+                    Avanzan en un tablero de la ciudad. Al caer en una casilla ("Market", "Hospital"), formulan oraciones compuestas: <em>"I go to the park because I play soccer, but today it is raining"</em>. El compañero evalúa con fichas <em>"Two Stars & a Wish"</em>.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Fluidez oral con conectores causales/adversativos y co-evaluación formativa respetuosa.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Cómic & Postales</span>
+                  <div class="activity-title">Comic Strip Creator & Travel Postcard</div>
+                  <p class="activity-desc">
+                    Diseñan una tira cómica de 4 viñetas sobre una salida escolar redactando en los globos oraciones compuestas con conectores (<em>"We visited the canal and we saw a ship, but it was late"</em>), aplicando lista de cotejo para signos de puntuación.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Composición de párrafos breves y diálogos compuestos con coherencia textual y ortografía estándar.
+                </div>
+              </div>
+            </td>
+            <td class="mediation-card">
+              <div class="theme-project-box">
+                <div class="theme-header th-1">Theme 1: Community Places</div>
+                <div class="project-name">Project 1: Interactive Community Map & Tour</div>
+                <p class="project-desc">Diseñan un mapa interactivo de su corregimiento y actúan como guías bilingües traduciendo y explicando lugares clave a visitantes extranjeros ficticios.</p>
+                <span class="project-skill-tag">🗺️ Mediación Cultural & Geográfica</span>
+              </div>
+              <div class="theme-project-box theme-2">
+                <div class="theme-header th-2">Theme 2: Eco-Action</div>
+                <div class="project-name">Project 2: School Waste Reduction Campaign</div>
+                <p class="project-desc">Auditan la basura del recreo, elaboran un gráfico de barras visual y exponen una campaña con lemas persuasivos: <em>"Recycle plastic because oceans need turtles!"</em>.</p>
+                <span class="project-skill-tag">🌿 Pensamiento Crítico & Conciencia Ambiental</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- GROUP 3: HIGH BEGINNER -->
+          <tr class="group-banner-row banner-high-beginner group-high_beginner">
+            <td colspan="6">
+              🟢 GRUPO 3: HIGH BEGINNER (CEFR A2) • Competencia Comunicativa en Diversos Contextos, Textos Auténticos y Pragmática
+            </td>
+          </tr>
+
+          <!-- Row 3: Grades 6, 7, 8, 9 -->
+          <tr class="row-data group-high_beginner">
+            <td class="ref-card">
+              <span class="cefr-tag cefr-a2">A2.1, A2.2, A2.3, A2.4</span>
+              <div class="grade-title">Grades 6, 7, 8 & 9</div>
+              <div class="focus-block">
+                <strong>Enfoque Central:</strong>
+                Desarrollo de la competencia comunicativa en diversos contextos sociales y académicos.
+              </div>
+              <div class="focus-block">
+                <strong>Consideraciones Clave:</strong>
+                Materiales auténticos, textos diversos, debates y presentaciones, talleres de redacción, estrategias de comprensión.
+              </div>
+              <div class="focus-block">
+                <strong>Componentes Lingüísticos:</strong>
+                Refinamiento integral enfatizando la <strong>pragmática</strong> (uso y comprensión adecuada según el contexto formal/informal, comparativos, tiempo pasado narrativo).
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Análisis Pragmático</span>
+                  <div class="activity-title">Podcast Mystery & Tone Detective</div>
+                  <p class="activity-desc">
+                    Escuchan audios auténticos (noticieros radiales, avisos del Metro de Panamá, conversaciones de jóvenes). Completan una matriz detectando: intención del emisor, tono (formal vs. informal) y 3 datos cuantitativos (precios, horarios, fechas).
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Inferencia pragmática del propósito del hablante y registro de datos factuales precisos.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Jigsaw Auténtico</span>
+                  <div class="activity-title">Authentic Menu & Trail Guide Jigsaw</div>
+                  <p class="activity-desc">
+                    Técnica de rompecabezas con folletos reales del Parque Nacional Soberanía y cartas de restaurantes típicos. Cada miembro analiza una sección y juntos resuelven un reto: <em>"Plan a 1-day eco-tour with $20 budget following all safety rules"</em>.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Lectura selectiva (skimming/scanning) y procesamiento de textos funcionales no adaptados.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Asamblea Simulada</span>
+                  <div class="activity-title">Town Hall Simulation & Problem Circle</div>
+                  <p class="activity-desc">
+                    Simulan una reunión municipal escolar con roles asignados (Club Ecológico, Director, Junta Comunal) debatiendo el destino de una subvención. Usan comparativos: <em>"A recycling station is more sustainable than a new court because..."</em> y negocian acuerdos.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Argumentación estructurada, defensa de posturas y adecuación al registro de asamblea pública.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Taller de Registro</span>
+                  <div class="activity-title">Register Switch: Chat vs. Formal Email</div>
+                  <p class="activity-desc">
+                    Sobre un mismo escenario (solicitar permiso para un club escolar), redactan primero un mensaje informal de chat para entusiasmar a compañeros y luego un correo formal a la dirección, adaptando fórmulas de saludo, léxico y despedida.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Demostración de adecuación pragmática y versatilidad de registro en composiciones funcionales.
+                </div>
+              </div>
+            </td>
+            <td class="mediation-card">
+              <div class="theme-project-box">
+                <div class="theme-header th-1">Theme 1: Peer Inclusion</div>
+                <div class="project-name">Project 1: "Our New Classmates" Video Guide</div>
+                <p class="project-desc">Entrevistan a estudiantes nuevos, produciendo una cápsula de video de 2 minutos donde resumen normas del colegio, explican modismos y facilitan la integración social.</p>
+                <span class="project-skill-tag">🎥 Mediación Interpersonal & Audiovisual</span>
+              </div>
+              <div class="theme-project-box theme-2">
+                <div class="theme-header th-2">Theme 2: Canal Biodiversity</div>
+                <div class="project-name">Project 2: Panama Eco-App Prototype Pitch</div>
+                <p class="project-desc">Diseñan wireframes en papel o diapositivas de una app móvil para proteger la cuenca del Canal o fauna en peligro (Águila Arpía), presentando su pitch en inglés con diapositivas.</p>
+                <span class="project-skill-tag">💡 Prototipado STEAM & Pensamiento de Diseño</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- GROUP 4: PRE-INTERMEDIATE -->
+          <tr class="group-banner-row banner-pre-intermediate group-pre_intermediate">
+            <td colspan="6">
+              🟣 GRUPO 4: PRE-INTERMEDIATE (CEFR B1) • Uso Independiente de la Lengua, Registros Académicos, Investigación y Talleres Críticos
+            </td>
+          </tr>
+
+          <!-- Row 4: Grades 10, 11, 12 -->
+          <tr class="row-data group-pre_intermediate">
+            <td class="ref-card">
+              <span class="cefr-tag cefr-b1">B1.1, B1.2, B1.3</span>
+              <div class="grade-title">Grades 10, 11 & 12</div>
+              <div class="focus-block">
+                <strong>Enfoque Central:</strong>
+                Consolidación del uso independiente de la lengua y preparación para estudios superiores o mundo profesional.
+              </div>
+              <div class="focus-block">
+                <strong>Consideraciones Clave:</strong>
+                Vocabulario técnico y académico, registros formales e informales, gramática compleja, pensamiento crítico, materiales auténticos, investigación y talleres de escritura.
+              </div>
+              <div class="focus-block">
+                <strong>Componentes Lingüísticos:</strong>
+                Refinamiento e integración en contextos académicos y profesionales complejos (voz pasiva, modales de deducción, marcadores discursivos y argumentación sólida).
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Apuntes Cornell</span>
+                  <div class="activity-title">TED-Style Lecture & Cornell Matrix</div>
+                  <p class="activity-desc">
+                    Escuchan una mini-conferencia auténtica de 3-4 minutos (logística del Canal de Panamá o ética digital). Toman notas Cornell identificando tesis, evidencias estadísticas, contra-argumentos y formulan 2 preguntas críticas para el ponente.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Síntesis analítica de discursos orales extensos y extracción de evidencias para debate posterior.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Lectura Crítica</span>
+                  <div class="activity-title">Multi-Source Bias & Fact-Check Workshop</div>
+                  <p class="activity-desc">
+                    Comparan dos editoriales periodísticos con posturas contrapuestas sobre el desarrollo portuario y la conservación ambiental. Mapean hechos comprobables frente a juicios de valor sesgados y redactan una síntesis neutral de 100 palabras.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Detección de sesgo ideológico, evaluación de fuentes primarias y síntesis intertextual.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Debate Parlamentario</span>
+                  <div class="activity-title">Oxford Mini-Debate & Capstone Defense</div>
+                  <p class="activity-desc">
+                    Equipos de 3 debaten bajo formato Oxford una moción controvertida: <em>"This House would mandate community service for all high school graduates"</em>. Disponen de 2 minutos para intervenciones, puntos de información (POI) y réplicas formales.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Oratoria académica espontánea, manejo de tiempos y refutación basada en evidencia contrastada.
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="activity-card">
+                <div>
+                  <span class="activity-type-badge">Ensayo & Propuestas</span>
+                  <div class="activity-title">Academic Position Paper & Project Proposal</div>
+                  <p class="activity-desc">
+                    Taller de escritura en 4 fases (esquema, borrador, co-revisión con rúbrica, versión final). Redactan un documento de posición o propuesta de subvención de 350 palabras defendiendo una solución a una problemática nacional con voz pasiva y citas de fuentes.
+                  </p>
+                </div>
+                <div class="activity-meta">
+                  <strong>Evidencia:</strong> Composición multi-párrafo con cohesión discursiva avanzada, voz pasiva y registro profesional.
+                </div>
+              </div>
+            </td>
+            <td class="mediation-card">
+              <div class="theme-project-box">
+                <div class="theme-header th-1">Theme 1: Global Issues</div>
+                <div class="project-name">Project 1: Youth Climate Summit Simulation</div>
+                <p class="project-desc">Simulación tipo Modelo de Naciones Unidas (MUN). Delegados median entre sectores económicos e indígenas para redactar un tratado de consenso en lenguaje ciudadano accesible.</p>
+                <span class="project-skill-tag">🌐 Negociación Diplomática & Mediación Política</span>
+              </div>
+              <div class="theme-project-box theme-2">
+                <div class="theme-header th-2">Theme 2: Social Venture</div>
+                <div class="project-name">Project 2: Sustainable Business Capstone & Pitch</div>
+                <p class="project-desc">Elaboran el plan de negocio de una empresa social alineada a los ODS de la ONU en Panamá, construyendo un sitio web de proyecto y grabando un video-pitch para inversionistas.</p>
+                <span class="project-skill-tag">🚀 Emprendimiento Social & Comunicación Digital</span>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FOOTER GUIDANCE -->
+    <footer class="footer-notes">
+      <p>
+        <strong>Orientación Metodológica MEDUCA:</strong> Esta matriz operacionaliza la <em>Table 1. Linguistic Competence Across CEFR Levels</em> mediante el Enfoque Orientado a la Acción (Action-Oriented Approach - AOA). En los niveles <strong>Foundational Learner (Pre A1)</strong>, la evaluación de Listening y Reading prioriza respuestas kinestésicas (TPR), señalamiento de imágenes reales y trazado guiado, respetando el período de silencio natural. A medida que se transita por <strong>Beginner (A1)</strong>, <strong>High Beginner (A2)</strong> y <strong>Pre-Intermediate (B1)</strong>, las actividades evolucionan hacia tareas auténticas situacionales, adecuación pragmática del registro y proyectos de mediación comunitaria (21st Century Skills).
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    function filterTable(group) {
+      const buttons = document.querySelectorAll('.btn-filter');
+      buttons.forEach(btn => {
+        if (btn.dataset.group === group) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      const banners = document.querySelectorAll('.group-banner-row');
+      const rows = document.querySelectorAll('.row-data');
+
+      if (group === 'all') {
+        banners.forEach(b => b.style.display = '');
+        rows.forEach(r => r.style.display = '');
+      } else {
+        banners.forEach(b => {
+          if (b.classList.contains('group-' + group)) {
+            b.style.display = '';
+          } else {
+            b.style.display = 'none';
+          }
+        });
+
+        rows.forEach(r => {
+          if (r.classList.contains('group-' + group)) {
+            r.style.display = '';
+          } else {
+            r.style.display = 'none';
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>

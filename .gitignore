@@ -41,3 +41,13 @@ scratch/
 .venv/
 __pycache__/
 *.pyc
+
+# Root scratch previews
+review-*.png
+guide-review-*.png
+guide-contact.png
+final-*.png
+chart-*.png
+page-*.png
+overview.png
+planner-extract.txt

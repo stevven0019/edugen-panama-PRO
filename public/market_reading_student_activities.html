@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Day Reading Lab - 4th Grade AOA Interactive Experience</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0D3B66;
+      --primary-dark: #07223D;
+      --accent: #0081A7;
+      --accent-warm: #E07A5F;
+      --accent-green: #059669;
+      --accent-gold: #F59E0B;
+      --bg: #F0F4F8;
+      --card-bg: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --border: #CBD5E1;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      --font-fun: 'Fredoka', cursive, sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    /* Top Institutional Header */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(13, 59, 102, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: var(--font-fun);
+      font-size: 2.2rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .sub-header {
+      font-size: 1.05rem;
+      opacity: 0.95;
+      margin-top: 6px;
+    }
+
+    /* Stages Nav Bar */
+    .stages-nav {
+      max-width: 1100px;
+      margin: -25px auto 25px auto;
+      display: flex;
+      gap: 10px;
+      padding: 8px;
+      background: white;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+      justify-content: space-around;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stage-btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 12px 14px;
+      border: none;
+      background: transparent;
+      border-radius: 40px;
+      cursor: pointer;
+      font-family: var(--font-fun);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .stage-btn:hover {
+      background: #F1F5F9;
+      color: var(--primary);
+    }
+
+    .stage-btn.active {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 129, 167, 0.4);
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .stage-section {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .stage-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 25px;
+      border: 1px solid var(--border);
+    }
+
+    .card-title {
+      font-family: var(--font-fun);
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* Stage 1: Decoding Grid */
+    .flashcard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin: 20px 0;
+    }
+
+    .flashcard {
+      background: #F8FAFC;
+      border: 2px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .flashcard:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+    }
+
+    .flashcard img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+
+    .flashcard .word {
+      font-family: var(--font-fun);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .flashcard .phonetic {
+      font-size: 0.85rem;
+      color: var(--accent-green);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* CCQ Box */
+    .ccq-box {
+      background: #EFF6FF;
+      border-left: 6px solid #3B82F6;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 24px 0;
+    }
+
+    .ccq-question {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: #1E3A8A;
+    }
+
+    .ccq-options {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .option-btn {
+      padding: 10px 20px;
+      border: 2px solid #BFDBFE;
+      background: white;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .option-btn:hover { background: #DBEAFE; }
+    .option-btn.correct { background: #22C55E; color: white; border-color: #16A34A; }
+    .option-btn.wrong { background: #EF4444; color: white; border-color: #DC2626; }
+
+    /* Stage 2: Price Board */
+    .price-board-card {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      border: 3px solid #F59E0B;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+    }
+
+    .price-board-title {
+      font-family: var(--font-fun);
+      font-size: 1.5rem;
+      color: #92400E;
+      text-align: center;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .price-board-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .price-board-table th, .price-board-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid #E2E8F0;
+      text-align: left;
+    }
+
+    .price-board-table th {
+      background: #F8FAFC;
+      color: var(--primary);
+      font-family: var(--font-fun);
+      font-size: 1.1rem;
+    }
+
+    .price-badge {
+      font-family: var(--font-fun);
+      font-weight: 700;
+      color: var(--accent-green);
+      font-size: 1.2rem;
+    }
+
+    /* Stage 3: Sentence Completion Cloze */
+    .cloze-word-bank {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      background: #F1F5F9;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+
+    .word-pill {
+      background: white;
+      border: 2px solid var(--accent);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-family: var(--font-fun);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .cloze-sentence {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cloze-input {
+      border: none;
+      border-bottom: 2px solid var(--accent);
+      padding: 4px 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      outline: none;
+      width: 140px;
+      text-align: center;
+    }
+
+    /* Stage 4: Role Cards */
+    .role-cards-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .role-cards-container { grid-template-columns: 1fr; }
+    }
+
+    .role-card {
+      background: #F8FAFC;
+      border: 2px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+
+    .role-card.clerk { background: #FFFBEB; border-color: #FCD34D; }
+
+    .role-title {
+      font-family: var(--font-fun);
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .role-line {
+      background: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #E2E8F0;
+      font-size: 0.98rem;
+    }
+
+    .pdf-download-bar {
+      margin-top: 30px;
+      text-align: center;
+      background: #E0F2FE;
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid #BAE6FD;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-family: var(--font-fun);
+      font-size: 1.15rem;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(13, 59, 102, 0.35);
+      transition: all 0.2s;
+    }
+
+    .download-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-badge">English 4th Grade &bull; CEFR A1.2 &bull; Action-Oriented Approach</div>
+    <h1>The Supermarket Day &bull; Reading Lab</h1>
+    <p class="sub-header">Theme 1: <em>"How Much Is the Pineapple?"</em> (Lesson #2 - Reading Focus)</p>
+  </header>
+
+  <!-- Stages Nav -->
+  <nav class="stages-nav">
+    <button class="stage-btn active" onclick="switchStage('stage1')">1. Warm-Up</button>
+    <button class="stage-btn" onclick="switchStage('stage2')">2. Market Price List</button>
+    <button class="stage-btn" onclick="switchStage('stage3')">3. Reading Practice</button>
+    <button class="stage-btn" onclick="switchStage('stage4')">4. Shopping List Reading</button>
+    <button class="stage-btn" onclick="switchStage('stage5')">5. Today's Special (Quiz)</button>
+    <button class="stage-btn" onclick="switchStage('stage6')">6. Reflection</button>
+  </nav>
+
+  <div class="container">
+
+    <!-- STAGE 1: WARM-UP & DECODING MODEL -->
+    <section id="stage1" class="stage-section active">
+      <div class="content-card">
+        <h2 class="card-title">Stage 1: Fruit Decoding &amp; Phonics Model</h2>
+        <p class="card-subtitle">
+          Read each printed word aloud with your teacher. Notice the letter-sound correspondence and pronunciation of each market item:
+        </p>
+
+        <div class="flashcard-grid">
+          <div class="flashcard" onclick="speakText('Pineapple. Read: pineapple.')">
+            <img src="assets/nouns/pineapple.png" alt="Pineapple">
+            <div class="word">1. Pineapple</div>
+            <div class="phonetic">/paɪnæp.əl/</div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Apples. Read: apples.')">
+            <img src="assets/nouns/apple.png" alt="Apples">
+            <div class="word">2. Apples</div>
+            <div class="phonetic">/ˈæp.əlz/</div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Bananas. Read: bananas.')">
+            <img src="assets/nouns/banana.png" alt="Bananas">
+            <div class="word">3. Bananas</div>
+            <div class="phonetic">/bəˈnæn.əz/</div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Oranges. Read: oranges.')">
+            <img src="assets/nouns/orange.png" alt="Oranges">
+            <div class="word">4. Oranges</div>
+            <div class="phonetic">/ˈɒr.ɪndʒ.ɪz/</div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Mangoes. Read: mangoes.')">
+            <img src="assets/nouns/mango.png" alt="Mangoes">
+            <div class="word">5. Mangoes</div>
+            <div class="phonetic">/ˈmæŋ.ɡoʊz/</div>
+          </div>
+        </div>
+
+        <div class="ccq-box">
+          <div class="ccq-question">CCQ #1: (Points to pineapple card) "Is this an apple or a pineapple?"</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, true)">A pineapple! (Correct)</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">An apple</button>
+          </div>
+        </div>
+
+        <div class="ccq-box">
+          <div class="ccq-question">CCQ #2: (Teacher shows price tag $1.00) "What does '$1.00' mean?"</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, false)">The weight of the fruit</button>
+            <button class="option-btn" onclick="checkAnswer(this, true)">The price / one dollar! (Correct)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 2: PRESENTATION (AUTHENTIC MARKET PRICE LIST TEXT) -->
+    <section id="stage2" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 2: Official "Market Price List" Text</h2>
+        <p class="card-subtitle">
+          Read the authentic informational price list text from the local Panama fresh market:
+        </p>
+
+        <div class="price-board-card">
+          <h3 class="price-board-title">Panama Fresh Market &bull; Official Price List</h3>
+          <table class="price-board-table">
+            <thead>
+              <tr>
+                <th>Market Item</th>
+                <th>Quantity / Unit</th>
+                <th>Official Price (USD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Pineapple</strong></td>
+                <td>Each (1 unit)</td>
+                <td><span class="price-badge">$2.00</span></td>
+              </tr>
+              <tr>
+                <td><strong>Apples</strong></td>
+                <td>Per pound (1 lb)</td>
+                <td><span class="price-badge">$1.00</span></td>
+              </tr>
+              <tr>
+                <td><strong>Bananas</strong></td>
+                <td>Each (1 unit)</td>
+                <td><span class="price-badge">$0.50 (Fifty cents)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Oranges</strong></td>
+                <td>Each (1 unit)</td>
+                <td><span class="price-badge">$0.75 (Seventy-five cents)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Mangoes</strong></td>
+                <td>Each (1 unit)</td>
+                <td><span class="price-badge">$1.50</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ccq-box">
+          <div class="ccq-question">Gist Reading Check: What is the main purpose of this text?</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, false)">To describe an animal</button>
+            <button class="option-btn" onclick="checkAnswer(this, true)">To inform shoppers about fruit prices at the market (Correct!)</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">To tell a bedtime story</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 3: READING PRACTICE & SENTENCE COMPLETION -->
+    <section id="stage3" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 3: Sentence Completion &amp; Price Answering</h2>
+        <p class="card-subtitle">
+          Read the sentences and choose the missing words from the word bank based on the Price List:
+        </p>
+
+        <div class="cloze-word-bank">
+          <span class="word-pill">pineapple</span>
+          <span class="word-pill">dollar</span>
+          <span class="word-pill">cents</span>
+          <span class="word-pill">bananas</span>
+          <span class="word-pill">apples</span>
+        </div>
+
+        <div class="cloze-sentence">
+          <span>1. The</span>
+          <input type="text" class="cloze-input" value="pineapple" readonly>
+          <span>costs two dollars each ($2.00).</span>
+        </div>
+
+        <div class="cloze-sentence">
+          <span>2. Apples cost one</span>
+          <input type="text" class="cloze-input" value="dollar" readonly>
+          <span>per pound ($1.00).</span>
+        </div>
+
+        <div class="cloze-sentence">
+          <span>3. The price of one banana is fifty</span>
+          <input type="text" class="cloze-input" value="cents" readonly>
+          <span>($0.50).</span>
+        </div>
+
+        <div class="cloze-sentence">
+          <span>4. Four</span>
+          <input type="text" class="cloze-input" value="bananas" readonly>
+          <span>cost two dollars in total ($0.50 x 4 = $2.00).</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 4: ACTION TASK (MY SHOPPING LIST READING) -->
+    <section id="stage4" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 4: "My Shopping List Reading" (Pair Task)</h2>
+        <p class="card-subtitle">
+          Practice reading with a partner! Student A reads the shopping list, and Student B reads the matching prices from the price board:
+        </p>
+
+        <div class="role-cards-container">
+          <div class="role-card">
+            <h3 class="role-title">🛒 Customer Reading Card (Student A)</h3>
+            <div class="role-line">"Good morning! I need <strong>one pineapple</strong>, please."</div>
+            <div class="role-line">"I also need <strong>two pounds of apples</strong>."</div>
+            <div class="role-line">"And <strong>three bananas</strong>, please."</div>
+            <div class="role-line">"Thank you! What is my total price?"</div>
+          </div>
+
+          <div class="role-card clerk">
+            <h3 class="role-title">📋 Market Clerk Card (Student B)</h3>
+            <div class="role-line">"A pineapple is <strong>$2.00</strong>."</div>
+            <div class="role-line">"Apples are <strong>$1.00</strong> per pound ($2.00 for two pounds)."</div>
+            <div class="role-line">"Bananas are <strong>$0.50</strong> each ($1.50 for three)."</div>
+            <div class="role-line">"The total is <strong>$5.50</strong> ($2.00 + $2.00 + $1.50). Thank you!"</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 5: ASSESSMENT EXIT TICKET -->
+    <section id="stage5" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 5: Reading Exit Ticket &bull; "Today's Special"</h2>
+        <p class="card-subtitle">
+          Read the new market stand sign below and answer the questions:
+        </p>
+
+        <div style="background: #ECFDF5; border: 2px solid #059669; border-radius: var(--radius-md); padding: 18px; margin-bottom: 20px; text-align: center;">
+          <h4 style="color: #065F46; font-family: var(--font-fun); font-size: 1.25rem; margin-bottom: 6px;">TODAY'S SPECIAL STAND SIGN:</h4>
+          <p style="font-size: 1.1rem; font-weight: 700; color: #047857;">
+            &bull; Mangoes: $1.50 each &nbsp;&nbsp;&bull;&nbsp;&nbsp; Oranges: $0.75 each &nbsp;&nbsp;&bull;&nbsp;&nbsp; Fresh Pineapple: $2.00 each
+          </p>
+        </div>
+
+        <div class="ccq-box">
+          <div class="ccq-question">Question 1: How much is one mango according to "Today's Special"?</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, true)">$1.50 each (Correct!)</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">$0.75 each</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">$3.00 each</button>
+          </div>
+        </div>
+
+        <div class="ccq-box">
+          <div class="ccq-question">Question 2: "The fresh pineapple is three dollars ($3.00)." &rarr; True or False?</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, false)">TRUE</button>
+            <button class="option-btn" onclick="checkAnswer(this, true)">FALSE (It is $2.00!) (Correct)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 6: REFLECTION & HOMEWORK -->
+    <section id="stage6" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 6: Student Reflection &amp; Printable Workbook</h2>
+        <p class="card-subtitle">
+          Evaluate your reading progress today and access printable classroom sheets:
+        </p>
+
+        <div style="background: #F8FAFC; border: 2px solid #E2E8F0; border-radius: var(--radius-md); padding: 20px; margin-bottom: 20px;">
+          <h3 style="margin-bottom: 10px; color: var(--primary);">Student Self-Reflection</h3>
+          <p style="margin-bottom: 6px;">1. What new words about the market did you read today?</p>
+          <input type="text" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #CBD5E1; margin-bottom: 14px;" placeholder="e.g., price, per pound, cents, dollar, oranges...">
+
+          <p style="margin-bottom: 6px;">2. Was it easy or difficult to find the prices in the text? Why?</p>
+          <input type="text" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #CBD5E1;" placeholder="Type your reflection here...">
+        </div>
+
+        <div class="pdf-download-bar">
+          <h3>Need Printable Copies for the Classroom?</h3>
+          <p style="margin: 8px 0 16px 0; color: var(--text-muted);">
+            Download the official 3-page student workbook PDF for Lesson #2 (Reading) with fruit decoding cards, price list tables, cloze sentences, and exit tickets.
+          </p>
+          <a href="../Student_Reading_Lab_4thGrade_Shopping_Market.pdf" target="_blank" class="download-btn">
+            Download Reading Student Workbook (PDF)
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function switchStage(stageId) {
+      document.querySelectorAll('.stage-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.stage-btn').forEach(btn => btn.classList.remove('active'));
+
+      const activeSec = document.getElementById(stageId);
+      if (activeSec) activeSec.classList.add('active');
+
+      const activeBtn = Array.from(document.querySelectorAll('.stage-btn')).find(b => b.getAttribute('onclick').includes(stageId));
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert(text);
+      }
+    }
+
+    function checkAnswer(btn, isCorrect) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.option-btn').forEach(b => {
+        b.classList.remove('correct', 'wrong');
+      });
+      if (isCorrect) {
+        btn.classList.add('correct');
+        speakText('Correct reading comprehension! Well done!');
+      } else {
+        btn.classList.add('wrong');
+        speakText('Read the price list again carefully!');
+      }
+    }
+  </script>
+</body>
+</html>

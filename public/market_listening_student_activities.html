@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Day Listening Lab - 4th Grade AOA Interactive Experience</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0D3B66;
+      --primary-dark: #07223D;
+      --accent: #0081A7;
+      --accent-warm: #E07A5F;
+      --accent-green: #059669;
+      --accent-gold: #F59E0B;
+      --bg: #F0F4F8;
+      --card-bg: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --border: #CBD5E1;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      --font-fun: 'Fredoka', cursive, sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    /* Top Institutional Header */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(13, 59, 102, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: var(--font-fun);
+      font-size: 2.2rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .sub-header {
+      font-size: 1.05rem;
+      opacity: 0.95;
+      margin-top: 6px;
+    }
+
+    /* Stages Nav Bar */
+    .stages-nav {
+      max-width: 1100px;
+      margin: -25px auto 25px auto;
+      display: flex;
+      gap: 10px;
+      padding: 8px;
+      background: white;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+      justify-content: space-around;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stage-btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 12px 14px;
+      border: none;
+      background: transparent;
+      border-radius: 40px;
+      cursor: pointer;
+      font-family: var(--font-fun);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .stage-btn:hover {
+      background: #F1F5F9;
+      color: var(--primary);
+    }
+
+    .stage-btn.active {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 129, 167, 0.4);
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .stage-section {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .stage-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 25px;
+      border: 1px solid var(--border);
+    }
+
+    .card-title {
+      font-family: var(--font-fun);
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* Stage 1: Flashcards */
+    .flashcard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin: 20px 0;
+    }
+
+    .flashcard {
+      background: #F8FAFC;
+      border: 2px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .flashcard:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+    }
+
+    .flashcard img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+
+    .flashcard .word {
+      font-family: var(--font-fun);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .audio-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+
+    .audio-btn:hover { background: var(--accent-warm); }
+
+    /* CCQ Box */
+    .ccq-box {
+      background: #EFF6FF;
+      border-left: 6px solid #3B82F6;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 24px 0;
+    }
+
+    .ccq-question {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: #1E3A8A;
+    }
+
+    .ccq-options {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .option-btn {
+      padding: 10px 20px;
+      border: 2px solid #BFDBFE;
+      background: white;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .option-btn:hover { background: #DBEAFE; }
+    .option-btn.correct { background: #22C55E; color: white; border-color: #16A34A; }
+    .option-btn.wrong { background: #EF4444; color: white; border-color: #DC2626; }
+
+    /* Stage 2 Dialogue */
+    .dialogue-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .dialogue-bubble {
+      display: flex;
+      gap: 16px;
+      max-width: 80%;
+      align-items: flex-start;
+      cursor: pointer;
+    }
+
+    .dialogue-bubble.seller { align-self: flex-start; }
+    .dialogue-bubble.buyer { align-self: flex-end; flex-direction: row-reverse; }
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+    }
+
+    .avatar img { width: 38px; height: 38px; object-fit: contain; }
+
+    .bubble-text {
+      background: #F1F5F9;
+      padding: 14px 20px;
+      border-radius: 20px;
+      font-size: 1.05rem;
+      line-height: 1.4;
+    }
+
+    .seller .bubble-text { background: #E0F2FE; color: #0369A1; border-bottom-left-radius: 4px; }
+    .buyer .bubble-text { background: #FEF3C7; color: #92400E; border-bottom-right-radius: 4px; }
+
+    .bubble-text strong { display: block; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 4px; }
+
+    /* Stage 3 Practice & Matching */
+    .matching-arena {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 20px;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .match-col {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .match-item-card {
+      background: white;
+      border: 2px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .match-item-card:hover { border-color: var(--accent); background: #F8FAFC; }
+    .match-item-card.selected { border-color: #059669; background: #ECFDF5; }
+
+    .match-item-card img { width: 44px; height: 44px; object-fit: contain; }
+
+    /* Action Task Drawing Stall */
+    .stall-mission-box {
+      background: #FFFBEB;
+      border: 2px dashed #F59E0B;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    .dictation-control {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: white;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .play-btn {
+      background: var(--accent-green);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-family: var(--font-fun);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .play-btn:hover { background: #047857; }
+
+    .stall-slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .stall-slot {
+      background: white;
+      border: 2px solid #CBD5E1;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .pdf-download-bar {
+      margin-top: 30px;
+      text-align: center;
+      background: #E0F2FE;
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid #BAE6FD;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-family: var(--font-fun);
+      font-size: 1.15rem;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(13, 59, 102, 0.35);
+      transition: all 0.2s;
+    }
+
+    .download-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-badge">English 4th Grade &bull; CEFR A1.2 &bull; Action-Oriented Approach</div>
+    <h1>The Supermarket Day &bull; Listening Lab</h1>
+    <p class="sub-header">Theme 1: <em>"How Much Is the Pineapple?"</em> (Lesson #1 - Listening Focus)</p>
+  </header>
+
+  <!-- Stages Nav -->
+  <nav class="stages-nav">
+    <button class="stage-btn active" onclick="switchStage('stage1')">1. Warm-Up</button>
+    <button class="stage-btn" onclick="switchStage('stage2')">2. Audio Dialogue</button>
+    <button class="stage-btn" onclick="switchStage('stage3')">3. Listening Practice</button>
+    <button class="stage-btn" onclick="switchStage('stage4')">4. Shopping List Drawing</button>
+    <button class="stage-btn" onclick="switchStage('stage5')">5. Market Quiz</button>
+    <button class="stage-btn" onclick="switchStage('stage6')">6. Reflection</button>
+  </nav>
+
+  <div class="container">
+
+    <!-- STAGE 1: WARM-UP & MODELING -->
+    <section id="stage1" class="stage-section active">
+      <div class="content-card">
+        <h2 class="card-title">Stage 1: Flashcards &amp; Sound Modeling</h2>
+        <p class="card-subtitle">
+          Touch each fruit flashcard to hear the native pronunciation. Listen attentively to the names of the 5 market fruits:
+        </p>
+
+        <div class="flashcard-grid">
+          <div class="flashcard" onclick="speakText('Pineapple. The pineapple.')">
+            <img src="assets/nouns/pineapple.png" alt="Pineapple">
+            <div class="word">1. Pineapple</div>
+            <div><button class="audio-btn" aria-label="Listen">&#9658;</button></div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Apple. The apples.')">
+            <img src="assets/nouns/apple.png" alt="Apple">
+            <div class="word">2. Apples</div>
+            <div><button class="audio-btn" aria-label="Listen">&#9658;</button></div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Banana. One banana.')">
+            <img src="assets/nouns/banana.png" alt="Banana">
+            <div class="word">3. Banana</div>
+            <div><button class="audio-btn" aria-label="Listen">&#9658;</button></div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Mango. Fresh mango.')">
+            <img src="assets/nouns/mango.png" alt="Mango">
+            <div class="word">4. Mango</div>
+            <div><button class="audio-btn" aria-label="Listen">&#9658;</button></div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Watermelon. A big watermelon.')">
+            <img src="assets/nouns/watermelon.png" alt="Watermelon">
+            <div class="word">5. Watermelon</div>
+            <div><button class="audio-btn" aria-label="Listen">&#9658;</button></div>
+          </div>
+        </div>
+
+        <!-- CCQs from Lesson Plan -->
+        <div class="ccq-box">
+          <div class="ccq-question">CCQ #1: (Teacher shows apple) "Is this an apple or a banana?"</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, true)">An apple! (Correct)</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">A banana</button>
+          </div>
+        </div>
+
+        <div class="ccq-box">
+          <div class="ccq-question">CCQ #2: "Do we ask 'how much' for color or for price?"</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, false)">For color</button>
+            <button class="option-btn" onclick="checkAnswer(this, true)">For price! (Correct)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 2: AUDIO DIALOGUE PRESENTATION -->
+    <section id="stage2" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 2: Official Dialogue "At the Market"</h2>
+        <p class="card-subtitle">
+          Listen to the dialogue between the seller and the buyer. Click "Play Full Dialogue" or touch individual lines:
+        </p>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+          <button class="play-btn" style="margin: 0 auto;" onclick="playDialogue()">
+            <span>&#9658;</span> Play Full Audio Dialogue
+          </button>
+        </div>
+
+        <div class="dialogue-container">
+          <div class="dialogue-bubble seller" onclick="speakText('Hello! Welcome to the market!')">
+            <div class="avatar"><img src="assets/nouns/cashier.png" alt="Seller"></div>
+            <div class="bubble-text">
+              <strong>Seller</strong>
+              "Hello! Welcome to the <strong>market</strong>!"
+            </div>
+          </div>
+
+          <div class="dialogue-bubble buyer" onclick="speakText('Hello! How much is the pineapple?')">
+            <div class="avatar"><img src="assets/nouns/market.png" alt="Buyer"></div>
+            <div class="bubble-text">
+              <strong>Buyer</strong>
+              "Hello! <strong>How much</strong> is the <strong>pineapple</strong>?"
+            </div>
+          </div>
+
+          <div class="dialogue-bubble seller" onclick="speakText('It is three dollars.')">
+            <div class="avatar"><img src="assets/nouns/cashier.png" alt="Seller"></div>
+            <div class="bubble-text">
+              <strong>Seller</strong>
+              "It's three <strong>dollars</strong> ($3.00)."
+            </div>
+          </div>
+
+          <div class="dialogue-bubble buyer" onclick="speakText('Okay. And the apples?')">
+            <div class="avatar"><img src="assets/nouns/market.png" alt="Buyer"></div>
+            <div class="bubble-text">
+              <strong>Buyer</strong>
+              "Okay. And the <strong>apples</strong>?"
+            </div>
+          </div>
+
+          <div class="dialogue-bubble seller" onclick="speakText('They are one dollar each.')">
+            <div class="avatar"><img src="assets/nouns/cashier.png" alt="Seller"></div>
+            <div class="bubble-text">
+              <strong>Seller</strong>
+              "They are one <strong>dollar</strong> each ($1.00)."
+            </div>
+          </div>
+
+          <div class="dialogue-bubble buyer" onclick="speakText('Hmm. Can I have a banana, please?')">
+            <div class="avatar"><img src="assets/nouns/market.png" alt="Buyer"></div>
+            <div class="bubble-text">
+              <strong>Buyer</strong>
+              "Hmm. Can I have a <strong>banana</strong>, <strong>please</strong>?"
+            </div>
+          </div>
+
+          <div class="dialogue-bubble seller" onclick="speakText('Yes, here you go.')">
+            <div class="avatar"><img src="assets/nouns/cashier.png" alt="Seller"></div>
+            <div class="bubble-text">
+              <strong>Seller</strong>
+              "Yes, here you go."
+            </div>
+          </div>
+
+          <div class="dialogue-bubble buyer" onclick="speakText('Thank you!')">
+            <div class="avatar"><img src="assets/nouns/market.png" alt="Buyer"></div>
+            <div class="bubble-text">
+              <strong>Buyer</strong>
+              "<strong>Thank you!</strong>"
+            </div>
+          </div>
+        </div>
+
+        <div class="ccq-box">
+          <div class="ccq-question">Gist Check: What are the two people talking about?</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, false)">A soccer game</button>
+            <button class="option-btn" onclick="checkAnswer(this, true)">Buying fruits at the market (Correct!)</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">School homework</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 3: LISTENING PRACTICE -->
+    <section id="stage3" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 3: Auditory Discrimination &amp; Price Matching</h2>
+        <p class="card-subtitle">
+          Practice hearing specific dollar amounts and matching the fruits to the correct prices:
+        </p>
+
+        <div class="matching-arena">
+          <!-- Fruits Column -->
+          <div class="match-col">
+            <div class="match-item-card" onclick="speakText('The pineapple is three dollars.')">
+              <img src="assets/nouns/pineapple.png" alt="Pineapple">
+              <div>
+                <strong>Pineapple</strong>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Listen: "Pineapple is $3"</p>
+              </div>
+            </div>
+
+            <div class="match-item-card" onclick="speakText('The apples are one dollar each.')">
+              <img src="assets/nouns/apple.png" alt="Apple">
+              <div>
+                <strong>Apples</strong>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Listen: "Apples are $1 each"</p>
+              </div>
+            </div>
+
+            <div class="match-item-card" onclick="speakText('The mango is two dollars.')">
+              <img src="assets/nouns/mango.png" alt="Mango">
+              <div>
+                <strong>Mango</strong>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Listen: "Mango is $2"</p>
+              </div>
+            </div>
+
+            <div class="match-item-card" onclick="speakText('The watermelon is five dollars.')">
+              <img src="assets/nouns/watermelon.png" alt="Watermelon">
+              <div>
+                <strong>Watermelon</strong>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Listen: "Watermelon is $5"</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 1.5rem; color: var(--accent); font-weight: bold;">
+            &rarr;
+          </div>
+
+          <!-- Prices Column -->
+          <div class="match-col">
+            <div class="match-item-card" onclick="speakText('One dollar.')">
+              <img src="assets/nouns/money.png" alt="Dollar">
+              <div>
+                <strong style="color: var(--accent-green); font-size: 1.2rem;">$1.00</strong>
+                <p style="font-size: 0.85rem;">One Dollar</p>
+              </div>
+            </div>
+
+            <div class="match-item-card" onclick="speakText('Two dollars.')">
+              <img src="assets/nouns/money.png" alt="Dollar">
+              <div>
+                <strong style="color: var(--accent-green); font-size: 1.2rem;">$2.00</strong>
+                <p style="font-size: 0.85rem;">Two Dollars</p>
+              </div>
+            </div>
+
+            <div class="match-item-card" onclick="speakText('Three dollars.')">
+              <img src="assets/nouns/money.png" alt="Dollar">
+              <div>
+                <strong style="color: var(--accent-green); font-size: 1.2rem;">$3.00</strong>
+                <p style="font-size: 0.85rem;">Three Dollars</p>
+              </div>
+            </div>
+
+            <div class="match-item-card" onclick="speakText('Five dollars.')">
+              <img src="assets/nouns/money.png" alt="Dollar">
+              <div>
+                <strong style="color: var(--accent-green); font-size: 1.2rem;">$5.00</strong>
+                <p style="font-size: 0.85rem;">Five Dollars</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 4: ACTION TASK (SHOPPING LIST DRAWING) -->
+    <section id="stage4" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 4: "Shopping List Drawing" Mission</h2>
+        <p class="card-subtitle">
+          Listen to the friend dictating the shopping list. Fill the slots on your market stall with the items and prices heard:
+        </p>
+
+        <div class="stall-mission-box">
+          <div class="dictation-control">
+            <button class="play-btn" onclick="playDictation()">
+              <span>&#9658;</span> Play Dictation Script
+            </button>
+            <span style="font-size: 0.95rem; color: var(--text-muted);">
+              "At the market, please buy one pineapple for $3. Also two apples for $1 each..."
+            </span>
+          </div>
+
+          <div class="stall-slots">
+            <div class="stall-slot" id="slot-1">
+              <img src="assets/nouns/pineapple.png" style="width: 50px; height: 50px;" alt="Pineapple">
+              <strong>1. Pineapple</strong>
+              <span style="color: var(--accent-green); font-weight: 700;">Price: $3.00</span>
+            </div>
+
+            <div class="stall-slot" id="slot-2">
+              <img src="assets/nouns/apple.png" style="width: 50px; height: 50px;" alt="Apples">
+              <strong>2. Apples (x2)</strong>
+              <span style="color: var(--accent-green); font-weight: 700;">Price: $1.00 each</span>
+            </div>
+
+            <div class="stall-slot" id="slot-3">
+              <img src="assets/nouns/mango.png" style="width: 50px; height: 50px;" alt="Mango">
+              <strong>3. Mango</strong>
+              <span style="color: var(--accent-green); font-weight: 700;">Price: $2.00</span>
+            </div>
+
+            <div class="stall-slot" id="slot-4">
+              <img src="assets/nouns/banana.png" style="width: 50px; height: 50px;" alt="Banana">
+              <strong>4. Banana</strong>
+              <span style="color: var(--accent-green); font-weight: 700;">Price: $1.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 5: ASSESSMENT QUIZ -->
+    <section id="stage5" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 5: Formative Market Quiz</h2>
+        <p class="card-subtitle">
+          Test your listening comprehension with these quick questions from the lesson plan:
+        </p>
+
+        <div class="ccq-box">
+          <div class="ccq-question">Question A: Did the buyer ask for an apple or a mango?</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, true)">An apple (Correct!)</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">A mango</button>
+          </div>
+        </div>
+
+        <div class="ccq-box">
+          <div class="ccq-question">Question B: "The watermelon is five dollars." &rarr; Is this statement True or False?</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, true)">TRUE (Correct!)</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">FALSE</button>
+          </div>
+        </div>
+
+        <div class="ccq-box">
+          <div class="ccq-question">Question C: How much is the banana in the dialogue?</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, true)">$1.00 (Correct!)</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">$2.00</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">$3.00</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 6: REFLECTION & HOMEWORK -->
+    <section id="stage6" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 6: Reflection &amp; Printable Workbook</h2>
+        <p class="card-subtitle">
+          Self-reflection prompts and homework from the MEDUCA curriculum:
+        </p>
+
+        <div style="background: #F8FAFC; border: 2px solid #E2E8F0; border-radius: var(--radius-md); padding: 20px; margin-bottom: 20px;">
+          <h3 style="margin-bottom: 10px; color: var(--primary);">Student Self-Reflection</h3>
+          <p style="margin-bottom: 6px;">1. What new words about the market did you learn to listen to today?</p>
+          <input type="text" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #CBD5E1; margin-bottom: 14px;" placeholder="e.g., pineapple, dollar, market, watermelon...">
+
+          <p style="margin-bottom: 6px;">2. What was easy to listen to? (Fruit names, Prices/Dollars, or Polite words?)</p>
+          <input type="text" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #CBD5E1;" placeholder="Type your reflection here...">
+        </div>
+
+        <div class="pdf-download-bar">
+          <h3>Need Printable Copies for the Classroom?</h3>
+          <p style="margin: 8px 0 16px 0; color: var(--text-muted);">
+            Download the official 3-page student workbook PDF for Lesson #1 (Listening) with fruit cards, matching rows, and the drawing stall template.
+          </p>
+          <a href="../Student_Listening_Lab_4thGrade_Shopping_Market.pdf" target="_blank" class="download-btn">
+            Download Listening Student Workbook (PDF)
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function switchStage(stageId) {
+      document.querySelectorAll('.stage-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.stage-btn').forEach(btn => btn.classList.remove('active'));
+
+      const activeSec = document.getElementById(stageId);
+      if (activeSec) activeSec.classList.add('active');
+
+      const activeBtn = Array.from(document.querySelectorAll('.stage-btn')).find(b => b.getAttribute('onclick').includes(stageId));
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert(text);
+      }
+    }
+
+    function checkAnswer(btn, isCorrect) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.option-btn').forEach(b => {
+        b.classList.remove('correct', 'wrong');
+      });
+      if (isCorrect) {
+        btn.classList.add('correct');
+        speakText('Correct listening! Great job!');
+      } else {
+        btn.classList.add('wrong');
+        speakText('Listen carefully and try again!');
+      }
+    }
+
+    function playDialogue() {
+      const dialogueLines = [
+        "Seller: Hello! Welcome to the market!",
+        "Buyer: Hello! How much is the pineapple?",
+        "Seller: It is three dollars.",
+        "Buyer: Okay. And the apples?",
+        "Seller: They are one dollar each.",
+        "Buyer: Hmm. Can I have a banana, please?",
+        "Seller: Yes, here you go.",
+        "Buyer: Thank you!"
+      ];
+      let delay = 0;
+      dialogueLines.forEach((line) => {
+        setTimeout(() => {
+          speakText(line);
+        }, delay);
+        delay += 3200;
+      });
+    }
+
+    function playDictation() {
+      const dictationLines = [
+        "At the market, please buy one pineapple. It costs three dollars.",
+        "Also, buy two apples. They are one dollar each.",
+        "And one mango. It is two dollars.",
+        "Finally, a banana. Thank you!"
+      ];
+      let delay = 0;
+      dictationLines.forEach((line) => {
+        setTimeout(() => {
+          speakText(line);
+        }, delay);
+        delay += 3600;
+      });
+    }
+  </script>
+</body>
+</html>

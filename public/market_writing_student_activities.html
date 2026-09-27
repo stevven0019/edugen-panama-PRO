@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Day Writing Lab - 4th Grade AOA Interactive Experience</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0D3B66;
+      --primary-dark: #07223D;
+      --accent: #0081A7;
+      --accent-warm: #E07A5F;
+      --accent-green: #059669;
+      --accent-gold: #F59E0B;
+      --accent-purple: #7C3AED;
+      --bg: #F0F4F8;
+      --card-bg: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --border: #CBD5E1;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      --font-fun: 'Fredoka', cursive, sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --font-hand: 'Caveat', cursive;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    /* Top Institutional Header */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--accent-purple) 100%);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(13, 59, 102, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: var(--font-fun);
+      font-size: 2.2rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .sub-header {
+      font-size: 1.05rem;
+      opacity: 0.95;
+      margin-top: 6px;
+    }
+
+    /* Stages Nav Bar */
+    .stages-nav {
+      max-width: 1100px;
+      margin: -25px auto 25px auto;
+      display: flex;
+      gap: 8px;
+      padding: 8px;
+      background: white;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+      justify-content: space-around;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stage-btn {
+      flex: 1;
+      min-width: 130px;
+      padding: 10px 12px;
+      border: none;
+      background: transparent;
+      border-radius: 40px;
+      cursor: pointer;
+      font-family: var(--font-fun);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .stage-btn:hover {
+      background: #F1F5F9;
+      color: var(--primary);
+    }
+
+    .stage-btn.active {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 129, 167, 0.4);
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      border: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-family: var(--font-fun);
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    /* Stage 1: Warm-up & Modeling */
+    .model-box {
+      background: #EFF6FF;
+      border: 2px dashed #3B82F6;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .model-item {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .handwriting-sample {
+      font-family: var(--font-hand);
+      font-size: 2rem;
+      color: var(--primary);
+      background: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 6px;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    }
+
+    .rule-tag {
+      background: #DBEAFE;
+      color: #1E40AF;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    /* CCQ Interactive Grid */
+    .ccq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .ccq-card {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .ccq-question {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 0.92rem;
+    }
+
+    .ccq-options {
+      display: flex;
+      gap: 10px;
+    }
+
+    .ccq-opt-btn {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+
+    .ccq-opt-btn:hover { background: #F1F5F9; }
+    .ccq-opt-btn.correct { background: #DCFCE7; border-color: #22C55E; color: #15803D; }
+    .ccq-opt-btn.wrong { background: #FEE2E2; border-color: #EF4444; color: #B91C1C; }
+
+    /* Stage 2: Presentation Dialogue */
+    .dialogue-split {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .dialogue-split { grid-template-columns: 1fr; }
+    }
+
+    .shopping-list-paper {
+      background: #FEF3C7;
+      border: 2px solid #F59E0B;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 2px 4px 10px rgba(245, 158, 11, 0.2);
+    }
+
+    .shopping-list-title {
+      font-family: var(--font-fun);
+      color: #B45309;
+      font-size: 1.2rem;
+      border-bottom: 2px dashed #F59E0B;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px dotted #FDE68A;
+      font-weight: 600;
+    }
+
+    .dialogue-chat {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bubble {
+      padding: 12px 18px;
+      border-radius: 16px;
+      max-width: 80%;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .bubble.customer {
+      background: #E0F2FE;
+      color: #0369A1;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .bubble.vendor {
+      background: #DCFCE7;
+      color: #15803D;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .bubble-speaker {
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+      opacity: 0.8;
+    }
+
+    /* Comprehension Form */
+    .comp-box {
+      margin-top: 20px;
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+    }
+
+    .comp-q {
+      margin-bottom: 14px;
+    }
+
+    .comp-q label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.92rem;
+    }
+
+    .comp-q input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+    }
+
+    .comp-q input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 129, 167, 0.15);
+    }
+
+    /* Stage 3: Preparation Interactive Activities */
+    .missing-letters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .word-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .word-thumb {
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    .word-puzzle {
+      flex: 1;
+    }
+
+    .puzzle-letters {
+      font-family: var(--font-fun);
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .word-input {
+      width: 100%;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    /* Sentence Scramble Puzzle */
+    .scramble-box {
+      background: #FAF5FF;
+      border: 1px solid #E9D5FF;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .scramble-item {
+      margin-bottom: 18px;
+    }
+
+    .tiles-rack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .tile-btn {
+      background: white;
+      border: 2px solid #C084FC;
+      color: #6B21A8;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(107, 33, 168, 0.1);
+      transition: all 0.2s;
+    }
+
+    .tile-btn:hover {
+      background: #F3E8FF;
+      transform: translateY(-2px);
+    }
+
+    .scramble-input-field {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #D8B4FE;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background: white;
+    }
+
+    /* Guided Shopping List Voucher */
+    .voucher-table-wrap {
+      overflow-x: auto;
+    }
+
+    .voucher-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .voucher-table th {
+      background: var(--accent);
+      color: white;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .voucher-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      background: white;
+      font-size: 0.92rem;
+    }
+
+    .voucher-table tr:last-child td {
+      background: #FEF3C7;
+      font-weight: 700;
+    }
+
+    /* Stage 4: Production - My Market Trip Report Composer */
+    .composer-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    @media (max-width: 850px) {
+      .composer-wrap { grid-template-columns: 1fr; }
+    }
+
+    .composer-inputs {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+
+    .field-group {
+      margin-bottom: 14px;
+    }
+
+    .field-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .field-group select, .field-group input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+    }
+
+    .live-preview-card {
+      background: white;
+      border: 2px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(0, 129, 167, 0.15);
+      position: relative;
+    }
+
+    .preview-seal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--accent-gold);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .report-text {
+      font-family: var(--font-hand);
+      font-size: 1.55rem;
+      line-height: 1.8;
+      color: #0F172A;
+      margin-top: 15px;
+      white-space: pre-line;
+      min-height: 180px;
+    }
+
+    /* Stage 5: Rubric & Peer Review */
+    .rubric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .rubric-card {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      transition: all 0.2s;
+    }
+
+    .rubric-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .rubric-header {
+      font-family: var(--font-fun);
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .rubric-level-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 8px 10px;
+      margin-bottom: 6px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: white;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    .rubric-level-btn.selected {
+      background: #DCFCE7;
+      border-color: #22C55E;
+      color: #15803D;
+      font-weight: 700;
+    }
+
+    /* Actions Bar */
+    .action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 30px 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-family: var(--font-fun);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 14px rgba(0, 129, 167, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #006C8C;
+      transform: translateY(-2px);
+    }
+
+    .btn-success {
+      background: var(--accent-green);
+      color: white;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+    }
+
+    .btn-success:hover {
+      background: #047857;
+      transform: translateY(-2px);
+    }
+
+    .btn-dark {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* PDF Previews Gallery */
+    .preview-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .preview-modal.active { display: flex; }
+
+    .modal-content {
+      background: white;
+      padding: 25px;
+      border-radius: var(--radius-lg);
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .preview-pages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .preview-page-img {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Institutional Header -->
+  <header>
+    <div class="header-badge">Ministerio de Educación (MEDUCA) · República de Panamá</div>
+    <h1>AOA Interactive Writing Lab · 4th Grade</h1>
+    <p class="sub-header">Scenario 3: "Shopping at the Market" &bull; Theme 1: "How Much Is the Pineapple?" (CEFR A1.2)</p>
+  </header>
+
+  <!-- Stages Nav -->
+  <nav class="stages-nav">
+    <button class="stage-btn active" onclick="scrollToSection('stage1')"><span>✍️</span> Stage 1: Warm-up</button>
+    <button class="stage-btn" onclick="scrollToSection('stage2')"><span>🛒</span> Stage 2: Presentation</button>
+    <button class="stage-btn" onclick="scrollToSection('stage3')"><span>🧩</span> Stage 3: Practice</button>
+    <button class="stage-btn" onclick="scrollToSection('stage4')"><span>📝</span> Stage 4: Production</button>
+    <button class="stage-btn" onclick="scrollToSection('stage5')"><span>⭐</span> Stage 5: Rubric</button>
+    <button class="stage-btn" onclick="scrollToSection('stage6')"><span>💡</span> Stage 6: Reflection</button>
+  </nav>
+
+  <main>
+
+    <!-- Top Action Bar -->
+    <div class="action-bar">
+      <a href="/Student_Writing_Lab_4thGrade_Shopping_Market.pdf" target="_blank" class="btn btn-primary">
+        <span>📄</span> Descargar Cuaderno PDF (3 Páginas)
+      </a>
+      <button class="btn btn-success" onclick="openPreviewModal()">
+        <span>👁️</span> Ver Hojas Imprimibles (PNG)
+      </button>
+      <button class="btn btn-dark" onclick="window.print()">
+        <span>🖨️</span> Imprimir Actividades
+      </button>
+    </div>
+
+    <!-- STAGE 1: WARM-UP & MODELING -->
+    <section id="stage1" class="section-card">
+      <h2 class="section-title"><span>✍️</span> Stage 1: Warm-up & Teacher Handwriting Modeling</h2>
+      <p class="section-desc">
+        Observe how clear English sentences begin with a <b>Capital Letter</b>, leave finger spaces between words, spell vocabulary correctly, and end with a <b>Period (.)</b>.
+      </p>
+
+      <div class="model-box">
+        <div class="model-item">
+          <strong>1. Model for Expressing Needs & Quantities:</strong>
+          <span class="rule-tag">Capital Letter Start</span>
+          <span class="rule-tag">Plural -s</span>
+          <span class="rule-tag">Final Period</span>
+          <br/>
+          <div class="handwriting-sample">"I need two apples."</div>
+        </div>
+        <div class="model-item" style="margin-top: 15px;">
+          <strong>2. Model for Expressing Costs & Prices in USD:</strong>
+          <span class="rule-tag">Singular Verb (costs)</span>
+          <span class="rule-tag">Currency in USD</span>
+          <br/>
+          <div class="handwriting-sample">"The pineapple costs three dollars."</div>
+        </div>
+      </div>
+
+      <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--primary);">Concept-Checking Questions (CCQs) · Click the Correct Choice:</h3>
+      <div class="ccq-grid">
+        <div class="ccq-card">
+          <p class="ccq-question">1. Is the first letter of an English sentence big or small?</p>
+          <div class="ccq-options">
+            <button class="ccq-opt-btn" onclick="checkCCQ(this, true)">Big / Capital</button>
+            <button class="ccq-opt-btn" onclick="checkCCQ(this, false)">Small / Lowercase</button>
+          </div>
+        </div>
+        <div class="ccq-card">
+          <p class="ccq-question">2. Which spelling is correct for this fruit?</p>
+          <div class="ccq-options">
+            <button class="ccq-opt-btn" onclick="checkCCQ(this, true)">a-p-p-l-e</button>
+            <button class="ccq-opt-btn" onclick="checkCCQ(this, false)">a-p-p-l</button>
+          </div>
+        </div>
+        <div class="ccq-card">
+          <p class="ccq-question">3. For 3 items, how do you write it?</p>
+          <div class="ccq-options">
+            <button class="ccq-opt-btn" onclick="checkCCQ(this, false)">three apple</button>
+            <button class="ccq-opt-btn" onclick="checkCCQ(this, true)">three apples</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 2: PRESENTATION -->
+    <section id="stage2" class="section-card">
+      <h2 class="section-title"><span>🛒</span> Stage 2: Presentation · Authentic Shopping List & Dialogue</h2>
+      <p class="section-desc">
+        Read the authentic market list and customer-vendor dialogue. Notice how quantities, items, and dollar amounts are written clearly.
+      </p>
+
+      <div class="dialogue-split">
+        <div class="shopping-list-paper">
+          <div class="shopping-list-title">📝 Mercado Central List</div>
+          <div class="list-item"><span>1. Apples</span><span>Qty: 3</span></div>
+          <div class="list-item"><span>2. Pineapple</span><span>Qty: 1</span></div>
+          <div class="list-item"><span>3. Carrots</span><span>Qty: 2</span></div>
+          <p style="margin-top: 15px; font-size: 0.8rem; color: #92400E; text-align: center;">
+            <i>Golden Rule: Write quantity first, then the item!</i>
+          </p>
+        </div>
+
+        <div class="dialogue-chat">
+          <div class="bubble customer">
+            <div class="bubble-speaker">Customer</div>
+            Hello! I need three apples. How much are they?
+          </div>
+          <div class="bubble vendor">
+            <div class="bubble-speaker">Vendor</div>
+            They are two dollars ($2.00).
+          </div>
+          <div class="bubble customer">
+            <div class="bubble-speaker">Customer</div>
+            And one pineapple. How much is it?
+          </div>
+          <div class="bubble vendor">
+            <div class="bubble-speaker">Vendor</div>
+            It is three dollars ($3.00).
+          </div>
+        </div>
+      </div>
+
+      <div class="comp-box">
+        <h3 style="font-size: 1.05rem; margin-bottom: 12px; color: var(--primary);">Written Comprehension Check · Complete the Answers:</h3>
+        <div class="comp-q">
+          <label>Q1. How many apples does the customer need?</label>
+          <input type="text" placeholder="The customer needs three apples." onchange="validateComp(this, 'three')">
+        </div>
+        <div class="comp-q">
+          <label>Q2. What is the price of the pineapple?</label>
+          <input type="text" placeholder="The pineapple costs three dollars." onchange="validateComp(this, 'three dollars')">
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 3: PRACTICE -->
+    <section id="stage3" class="section-card">
+      <h2 class="section-title"><span>🧩</span> Stage 3: Preparation & Transactional Writing Practice</h2>
+      <p class="section-desc">
+        Complete the missing letters, unscramble the words to build grammatically correct sentences, and calculate the guided shopping list.
+      </p>
+
+      <!-- 3.1 Missing Letters -->
+      <h3 style="font-size: 1.15rem; margin-bottom: 12px; color: var(--accent);">Activity 3.1: Missing Letters Challenge</h3>
+      <div class="missing-letters-grid">
+        <div class="word-card">
+          <img src="/assets/nouns/pineapple.png" class="word-thumb" alt="Pineapple">
+          <div class="word-puzzle">
+            <div class="puzzle-letters">P _ N _ A P P L _</div>
+            <input type="text" class="word-input" placeholder="Type full word" oninput="checkSpelling(this, 'PINEAPPLE')">
+          </div>
+        </div>
+        <div class="word-card">
+          <img src="/assets/nouns/banana.png" class="word-thumb" alt="Banana">
+          <div class="word-puzzle">
+            <div class="puzzle-letters">B _ N A _ A</div>
+            <input type="text" class="word-input" placeholder="Type full word" oninput="checkSpelling(this, 'BANANA')">
+          </div>
+        </div>
+        <div class="word-card">
+          <img src="/assets/nouns/orange.png" class="word-thumb" alt="Orange">
+          <div class="word-puzzle">
+            <div class="puzzle-letters">O _ A N _ E</div>
+            <input type="text" class="word-input" placeholder="Type full word" oninput="checkSpelling(this, 'ORANGE')">
+          </div>
+        </div>
+        <div class="word-card">
+          <img src="/assets/nouns/carrot.png" class="word-thumb" alt="Carrot">
+          <div class="word-puzzle">
+            <div class="puzzle-letters">C _ R R _ T</div>
+            <input type="text" class="word-input" placeholder="Type full word" oninput="checkSpelling(this, 'CARROT')">
+          </div>
+        </div>
+      </div>
+
+      <!-- 3.2 Sentence Scramble -->
+      <h3 style="font-size: 1.15rem; margin-bottom: 12px; color: var(--accent-purple);">Activity 3.2: Sentence Scramble Interactive Puzzle</h3>
+      <div class="scramble-box">
+        <div class="scramble-item">
+          <p style="font-weight: 700; margin-bottom: 6px;">Set A: Click the words in the correct order:</p>
+          <div class="tiles-rack" id="rackA">
+            <button class="tile-btn" onclick="addWordToScramble('A', 'apples')">apples</button>
+            <button class="tile-btn" onclick="addWordToScramble('A', 'I')">I</button>
+            <button class="tile-btn" onclick="addWordToScramble('A', 'need')">need</button>
+            <button class="tile-btn" onclick="addWordToScramble('A', 'three.')">three.</button>
+            <button class="tile-btn" style="border-color:#CBD5E1; color:#64748B;" onclick="clearScramble('A')">Reset</button>
+          </div>
+          <input type="text" id="inputScrambleA" class="scramble-input-field" placeholder="Click tiles above to form: I need three apples.">
+        </div>
+
+        <div class="scramble-item">
+          <p style="font-weight: 700; margin-bottom: 6px;">Set B: Click the words in the correct order:</p>
+          <div class="tiles-rack" id="rackB">
+            <button class="tile-btn" onclick="addWordToScramble('B', 'pineapple')">pineapple</button>
+            <button class="tile-btn" onclick="addWordToScramble('B', 'The')">The</button>
+            <button class="tile-btn" onclick="addWordToScramble('B', 'costs')">costs</button>
+            <button class="tile-btn" onclick="addWordToScramble('B', 'three')">three</button>
+            <button class="tile-btn" onclick="addWordToScramble('B', 'dollars.')">dollars.</button>
+            <button class="tile-btn" style="border-color:#CBD5E1; color:#64748B;" onclick="clearScramble('B')">Reset</button>
+          </div>
+          <input type="text" id="inputScrambleB" class="scramble-input-field" placeholder="Click tiles above to form: The pineapple costs three dollars.">
+        </div>
+      </div>
+
+      <!-- 3.3 Guided Voucher -->
+      <h3 style="font-size: 1.15rem; margin-bottom: 12px; color: var(--accent-green);">Activity 3.3: Interactive Shopping List Voucher & Total Calculator</h3>
+      <div class="voucher-table-wrap">
+        <table class="voucher-table">
+          <thead>
+            <tr>
+              <th>Item #</th>
+              <th>Product</th>
+              <th>Item Name</th>
+              <th>Qty</th>
+              <th>Unit Price</th>
+              <th>Subtotal ($ USD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><img src="/assets/nouns/apple.png" width="30" alt="Apples"></td>
+              <td>Apples (Red)</td>
+              <td>3</td>
+              <td>$1.00 each</td>
+              <td>$ 3.00</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><img src="/assets/nouns/pineapple.png" width="30" alt="Pineapple"></td>
+              <td>Pineapple (Chorrera)</td>
+              <td>1</td>
+              <td>$3.00 each</td>
+              <td>$ 3.00</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><img src="/assets/nouns/banana.png" width="30" alt="Bananas"></td>
+              <td><input type="text" value="Bananas" style="padding:4px 8px; border:1px solid #CBD5E1; border-radius:4px;"></td>
+              <td><input type="number" id="qty3" value="2" min="1" max="10" style="width:50px; padding:4px;" onchange="updateVoucher()"></td>
+              <td>$1.00 pair</td>
+              <td id="sub3">$ 2.00</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><img src="/assets/nouns/carrot.png" width="30" alt="Carrots"></td>
+              <td><input type="text" value="Carrots" style="padding:4px 8px; border:1px solid #CBD5E1; border-radius:4px;"></td>
+              <td><input type="number" id="qty4" value="2" min="1" max="10" style="width:50px; padding:4px;" onchange="updateVoucher()"></td>
+              <td>$2.00 bunch</td>
+              <td id="sub4">$ 4.00</td>
+            </tr>
+            <tr>
+              <td colspan="4"><strong>CALCULATED TOTAL (Sum of all items):</strong></td>
+              <td><strong>TOTAL USD:</strong></td>
+              <td id="grandTotal" style="color:var(--accent-green); font-size:1.1rem;">$ 12.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- STAGE 4: PRODUCTION -->
+    <section id="stage4" class="section-card">
+      <h2 class="section-title"><span>📝</span> Stage 4: Performance · "My Market Trip Report"</h2>
+      <p class="section-desc">
+        Write your official market report. Choose your items, calculate your total in USD, and compose your paragraph in real-time.
+      </p>
+
+      <div class="composer-wrap">
+        <div class="composer-inputs">
+          <div class="field-group">
+            <label>Student Author Name:</label>
+            <input type="text" id="authorName" value="Sofia Chen" oninput="updateReport()">
+          </div>
+          <div class="field-group">
+            <label>Item #1 & Quantity:</label>
+            <select id="item1Select" onchange="updateReport()">
+              <option value="three apples">3 Apples ($3.00)</option>
+              <option value="two bananas">2 Bananas ($2.00)</option>
+              <option value="four oranges">4 Oranges ($4.00)</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>Item #2 & Quantity:</label>
+            <select id="item2Select" onchange="updateReport()">
+              <option value="one sweet pineapple">1 Pineapple ($3.00)</option>
+              <option value="two fresh carrots">2 Carrots ($2.00)</option>
+              <option value="three potatoes">3 Potatoes ($3.00)</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>Total USD Spent:</label>
+            <input type="text" id="totalSpent" value="six dollars ($6.00)" oninput="updateReport()">
+          </div>
+          <div class="field-group">
+            <label>Experience Feeling:</label>
+            <select id="feelingSelect" onchange="updateReport()">
+              <option value="fun and exciting">fun and exciting</option>
+              <option value="great and wonderful">great and wonderful</option>
+              <option value="delicious and healthy">delicious and healthy</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="live-preview-card">
+          <div class="preview-seal">Verified Report</div>
+          <h3 style="font-family:var(--font-fun); color:var(--primary); font-size:1.2rem;">Official Report Card</h3>
+          <div class="report-text" id="reportPreview">
+I went to the market today.
+I bought three apples. They cost three dollars.
+I also bought one sweet pineapple. It cost three dollars.
+My total was six dollars ($6.00). It was fun and exciting!
+          </div>
+          <div style="margin-top:15px; text-align:right;">
+            <button class="btn btn-success" style="padding:6px 16px; font-size:0.85rem;" onclick="alert('¡Reporte guardado con éxito! Listo para la presentación de Mediación en la Lección 5.')">
+              Guardar Reporte
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 5: RUBRIC -->
+    <section id="stage5" class="section-card">
+      <h2 class="section-title"><span>⭐</span> Stage 5: Peer Review & Formative Assessment Rubric</h2>
+      <p class="section-desc">
+        Official MEDUCA evaluation criteria for 4th Grade A1.2 Writing. Click your achieved levels to calculate your score:
+      </p>
+
+      <div class="rubric-grid">
+        <div class="rubric-card">
+          <div class="rubric-header">1. Target Vocabulary</div>
+          <button class="rubric-level-btn selected" onclick="selectRubric(this, 3)">3 · Spells 4+ items accurately</button>
+          <button class="rubric-level-btn" onclick="selectRubric(this, 2)">2 · Spells 2-3 items with minor slips</button>
+          <button class="rubric-level-btn" onclick="selectRubric(this, 1)">1 · Needs word bank support</button>
+        </div>
+        <div class="rubric-card">
+          <div class="rubric-header">2. Sentence Structure</div>
+          <button class="rubric-level-btn selected" onclick="selectRubric(this, 3)">3 · Complete frames (I bought...)</button>
+          <button class="rubric-level-btn" onclick="selectRubric(this, 2)">2 · Simple frames with minor slips</button>
+          <button class="rubric-level-btn" onclick="selectRubric(this, 1)">1 · Isolated words or fragments</button>
+        </div>
+        <div class="rubric-card">
+          <div class="rubric-header">3. Numerical Accuracy</div>
+          <button class="rubric-level-btn selected" onclick="selectRubric(this, 3)">3 · Prices & totals accurate</button>
+          <button class="rubric-level-btn" onclick="selectRubric(this, 2)">2 · Minor slip ($1 off)</button>
+          <button class="rubric-level-btn" onclick="selectRubric(this, 1)">1 · Prices or quantities omitted</button>
+        </div>
+        <div class="rubric-card">
+          <div class="rubric-header">4. Legibility & Punctuation</div>
+          <button class="rubric-level-btn selected" onclick="selectRubric(this, 3)">3 · Capital start, final period</button>
+          <button class="rubric-level-btn" onclick="selectRubric(this, 2)">2 · Minor punctuation misses</button>
+          <button class="rubric-level-btn" onclick="selectRubric(this, 1)">1 · Run-on words, no periods</button>
+        </div>
+      </div>
+
+      <div style="margin-top:20px; text-align:center; font-family:var(--font-fun); font-size:1.3rem; color:var(--accent-green);">
+        Calculated Formative Score: <span id="rubricScore">12 / 12 (Exemplary · Grade A)</span>
+      </div>
+    </section>
+
+    <!-- STAGE 6: REFLECTION -->
+    <section id="stage6" class="section-card">
+      <h2 class="section-title"><span>💡</span> Stage 6: Student Reflection & Lesson 5 Connection</h2>
+      <p class="section-desc">
+        Reflect on your writing progress today and see what is coming up next in our learning sequence.
+      </p>
+
+      <div style="background:#ECFDF5; border:1px solid #A7F3D0; border-radius:var(--radius-md); padding:20px;">
+        <h3 style="color:#065F46; font-size:1.15rem; margin-bottom:8px;">Next Lesson Preview: Lesson #5 · Mediation & Integration</h3>
+        <p style="color:#047857; line-height:1.5; font-size:0.95rem;">
+          In our next class, you will use your written <b>"My Market Trip Report"</b> to deliver a short oral presentation to the class! You will compare prices, calculate group savings, and complete your 21st-century market project.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Preview Modal for Rendered PNG Pages -->
+  <div id="previewModal" class="preview-modal" onclick="closePreviewModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+        <h3 style="font-family:var(--font-fun); font-size:1.4rem; color:var(--primary);">Hojas Imprimibles del Cuaderno de Escritura (3 Páginas)</h3>
+        <button style="border:none; background:none; font-size:1.5rem; cursor:pointer;" onclick="closePreviewModal()">&times;</button>
+      </div>
+      <div class="preview-pages-grid">
+        <div>
+          <h4 style="text-align:center; margin-bottom:6px; font-weight:700;">Página 1: Modelado y Presentación</h4>
+          <img src="/market_writing_page_1.png" class="preview-page-img" alt="Página 1">
+        </div>
+        <div>
+          <h4 style="text-align:center; margin-bottom:6px; font-weight:700;">Página 2: Práctica Guiada</h4>
+          <img src="/market_writing_page_2.png" class="preview-page-img" alt="Página 2">
+        </div>
+        <div>
+          <h4 style="text-align:center; margin-bottom:6px; font-weight:700;">Página 3: Producción y Rúbrica</h4>
+          <img src="/market_writing_page_3.png" class="preview-page-img" alt="Página 3">
+        </div>
+      </div>
+      <div style="margin-top:20px; text-align:center;">
+        <a href="/Student_Writing_Lab_4thGrade_Shopping_Market.pdf" target="_blank" class="btn btn-primary">
+          Descargar PDF Completo en Alta Resolución
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        window.scrollTo({ top: el.offsetTop - 120, behavior: 'smooth' });
+        document.querySelectorAll('.stage-btn').forEach(btn => btn.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+      }
+    }
+
+    function checkCCQ(btn, isCorrect) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.ccq-opt-btn').forEach(b => b.className = 'ccq-opt-btn');
+      if (isCorrect) {
+        btn.classList.add('correct');
+      } else {
+        btn.classList.add('wrong');
+      }
+    }
+
+    function validateComp(input, keyword) {
+      if (input.value.toLowerCase().includes(keyword.toLowerCase())) {
+        input.style.borderColor = '#22C55E';
+        input.style.backgroundColor = '#DCFCE7';
+      } else {
+        input.style.borderColor = '#EF4444';
+        input.style.backgroundColor = '#FEE2E2';
+      }
+    }
+
+    function checkSpelling(input, target) {
+      if (input.value.trim().toUpperCase() === target) {
+        input.style.borderColor = '#22C55E';
+        input.style.backgroundColor = '#DCFCE7';
+      } else {
+        input.style.borderColor = '#CBD5E1';
+        input.style.backgroundColor = 'white';
+      }
+    }
+
+    function addWordToScramble(set, word) {
+      const field = document.getElementById('inputScramble' + set);
+      if (field) {
+        const cur = field.value.trim();
+        field.value = cur ? cur + ' ' + word : word;
+      }
+    }
+
+    function clearScramble(set) {
+      const field = document.getElementById('inputScramble' + set);
+      if (field) field.value = '';
+    }
+
+    function updateVoucher() {
+      const q3 = parseInt(document.getElementById('qty3').value) || 0;
+      const q4 = parseInt(document.getElementById('qty4').value) || 0;
+      const sub3 = q3 * 1.0;
+      const sub4 = q4 * 2.0;
+      document.getElementById('sub3').innerText = '$ ' + sub3.toFixed(2);
+      document.getElementById('sub4').innerText = '$ ' + sub4.toFixed(2);
+
+      const total = 3.0 + 3.0 + sub3 + sub4;
+      document.getElementById('grandTotal').innerText = '$ ' + total.toFixed(2);
+    }
+
+    function updateReport() {
+      const author = document.getElementById('authorName').value || 'Student';
+      const item1 = document.getElementById('item1Select').value;
+      const item2 = document.getElementById('item2Select').value;
+      const total = document.getElementById('totalSpent').value;
+      const feeling = document.getElementById('feelingSelect').value;
+
+      const text = `I went to the market today.
+I bought ${item1}. They cost two dollars.
+I also bought ${item2}. It cost three dollars.
+My total was ${total}. It was ${feeling}!
+
+Reported by: ${author}`;
+
+      document.getElementById('reportPreview').innerText = text;
+    }
+
+    function selectRubric(btn, points) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.rubric-level-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      // Calculate total
+      let sum = 0;
+      document.querySelectorAll('.rubric-card').forEach(card => {
+        const sel = card.querySelector('.rubric-level-btn.selected');
+        if (sel) {
+          if (sel.innerText.startsWith('3')) sum += 3;
+          else if (sel.innerText.startsWith('2')) sum += 2;
+          else if (sel.innerText.startsWith('1')) sum += 1;
+        }
+      });
+
+      let grade = 'Grade A (Exemplary)';
+      if (sum < 8) grade = 'Grade C (In Progress)';
+      else if (sum < 11) grade = 'Grade B (Satisfactory)';
+
+      document.getElementById('rubricScore').innerText = `${sum} / 12 (${grade})`;
+    }
+
+    function openPreviewModal() {
+      document.getElementById('previewModal').classList.add('active');
+    }
+
+    function closePreviewModal() {
+      document.getElementById('previewModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>

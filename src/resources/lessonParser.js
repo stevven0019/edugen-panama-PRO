@@ -584,6 +584,34 @@ export function buildPart2Items({
         }
       ];
     }
+    if (domain === 'market') {
+      return [
+        {
+          concept: 'WRITING CHECK 1',
+          sentence: `Write the missing letters for the market items: P_N_APPL_, B_NA_A, O_AN_E.`,
+          subject: w0,
+          photoUrl: getRealiaPhoto(w0)
+        },
+        {
+          concept: 'WRITING CHECK 2',
+          sentence: `Unscramble the shopping sentence: "apples / I / need / three." ──> "I need three apples."`,
+          subject: w1,
+          photoUrl: getRealiaPhoto(w1)
+        },
+        {
+          concept: 'WRITING CHECK 3',
+          sentence: `Write a shopping list entry: "2 bananas ($1.00) and 1 pineapple ($3.00)."`,
+          subject: w2,
+          photoUrl: getRealiaPhoto(w2)
+        },
+        {
+          concept: 'WRITING CHECK 4',
+          sentence: `Write your Market Trip Report sentence: "I bought three apples. They cost three dollars."`,
+          subject: w3,
+          photoUrl: getRealiaPhoto(w3)
+        }
+      ];
+    }
     return [
       {
         concept: 'WRITING CHECK 1',
@@ -881,7 +909,97 @@ export function buildAoaLudicKit({
 
   // 5. Stage 4: Communicative Role-Play Mission (INTERACT & PERFORM)
   let mission = {};
-  if (domain === 'market') {
+  if (domain === 'market' && normSkill === 'Writing') {
+    mission = {
+      title: 'Action Task: "My Market Trip Report & Peer Shopping List Review"',
+      roleA: {
+        role: '✍️ WRITER CARD (MY MARKET TRIP REPORT)',
+        name: 'Student A (Market Reporter)',
+        goal: `Write your 4-sentence Market Trip Report using prompts: 1 ${finalTangibleWords[0] || 'pineapple'} ($3), 3 ${finalTangibleWords[1] || 'apples'} ($3 total), and total budget.`,
+        tokens: ['✍️ Report Written', '💰 Prices Added', '📝 Quantities Checked', '⭐ Peer Reviewed'],
+        budgetNote: 'Compose your report: "I went to the market today. I bought three apples. They cost three dollars."'
+      },
+      roleB: {
+        role: '🔍 PEER REVIEWER CARD (SHOPPING LIST AUDITOR)',
+        name: 'Student B (List Reviewer)',
+        standName: `Panama Market Editorial Hub · Station #${lessonNum || 4}`,
+        prices: [
+          { item: finalTangibleWords[0] || 'pineapple', price: '$3.00 each' },
+          { item: finalTangibleWords[1] || 'apple', price: '$1.00 each' },
+          { item: finalTangibleWords[2] || 'orange', price: '$1.00 each' },
+          { item: finalTangibleWords[3] || 'carrot', price: '$1.00 each' }
+        ],
+        vendorCue: 'Verify spelling, letter capitalization, and that item quantities match the picture cards provided.'
+      },
+      dialogueBubbles: [
+        { speaker: 'Reporter', text: 'I wrote my report! I bought three apples for three dollars.' },
+        { speaker: 'Reviewer', text: 'Let me review... The spelling of apples and dollars is correct!' },
+        { speaker: 'Reporter', text: 'I also wrote: The pineapple costs three dollars.' },
+        { speaker: 'Reviewer', text: 'Excellent! Your sentence begins with a capital letter and ends with a period.' },
+        { speaker: 'Reporter', text: 'Thank you for the peer review! Our market report is ready.' }
+      ]
+    };
+  } else if (domain === 'market' && normSkill === 'Reading') {
+    mission = {
+      title: 'Action Task: "My Shopping List Reading & Clerk Price Check"',
+      roleA: {
+        role: '🛒 CUSTOMER CARD (READING LIST)',
+        name: 'Student A (Customer Reading List)',
+        goal: `Read items from your Shopping List: 1 ${finalTangibleWords[0] || 'pineapple'}, 3 ${finalTangibleWords[1] || 'apples'}, 2 ${finalTangibleWords[2] || 'bananas'}.`,
+        tokens: ['📖 List Read', '🔍 Price Checked', '✍️ Verified', '🤝 Completed'],
+        budgetNote: 'Read your shopping list clearly item by item to the clerk: "I need one pineapple, please."'
+      },
+      roleB: {
+        role: '📋 MARKET CLERK CARD (PRICE LIST)',
+        name: 'Student B (Clerk Reading Price Board)',
+        standName: `Panama Market Stand · Price Board #${lessonNum || 2}`,
+        prices: [
+          { item: finalTangibleWords[0] || 'pineapple', price: '$2.00 each' },
+          { item: finalTangibleWords[1] || 'apples', price: '$1.00 per pound' },
+          { item: finalTangibleWords[2] || 'bananas', price: '$0.50 each' },
+          { item: finalTangibleWords[3] || 'oranges', price: '$0.75 each' }
+        ],
+        vendorCue: 'Scan your Market Price List, find the matching item and read the price aloud: "A pineapple is two dollars."'
+      },
+      dialogueBubbles: [
+        { speaker: 'Customer', text: 'Good morning! I need one pineapple.' },
+        { speaker: 'Clerk', text: 'Let me check the price list... A pineapple is two dollars.' },
+        { speaker: 'Customer', text: 'And three apples, please.' },
+        { speaker: 'Clerk', text: 'Apples are one dollar per pound.' },
+        { speaker: 'Customer', text: 'Thank you! The price list is very clear.' }
+      ]
+    };
+  } else if (domain === 'market' && normSkill === 'Listening') {
+    mission = {
+      title: 'Action Task: "Shopping List Dictation & Market Stall Drawing"',
+      roleA: {
+        role: '🎙️ SHOPPER DICTATOR CARD',
+        name: 'Student A (Shopper Giving Dictation)',
+        goal: `Dictate the market shopping list: 1 ${finalTangibleWords[0] || 'pineapple'} ($3), 2 ${finalTangibleWords[1] || 'apples'} ($1 ea), 1 ${finalTangibleWords[2] || 'mango'} ($2).`,
+        tokens: ['⭐ Fruit 1', '⭐ Fruit 2', '⭐ Fruit 3', '⭐ Price Checked'],
+        budgetNote: 'Speak clearly and pause between items so your partner can draw and note the price!'
+      },
+      roleB: {
+        role: '🎨 MARKET STALL ARTIST CARD',
+        name: 'Student B (Stall Keeper Drawing Items)',
+        standName: `Panama Fresh Market · Stand #${lessonNum || 1}`,
+        prices: [
+          { item: finalTangibleWords[0] || 'pineapple', price: '$3 each' },
+          { item: finalTangibleWords[1] || 'apple', price: '$1 each' },
+          { item: finalTangibleWords[2] || 'mango', price: '$2 each' },
+          { item: finalTangibleWords[3] || 'banana', price: '$1 each' }
+        ],
+        vendorCue: 'Listen carefully, draw the fruit in your stall, and write the exact price you heard.'
+      },
+      dialogueBubbles: [
+        { speaker: 'Dictator', text: 'At the market, please buy one pineapple. It costs three dollars.' },
+        { speaker: 'Artist', text: 'Got it! One pineapple for three dollars.' },
+        { speaker: 'Dictator', text: 'Also, buy two apples. They are one dollar each.' },
+        { speaker: 'Artist', text: 'Two apples for one dollar each. Done!' },
+        { speaker: 'Dictator', text: 'And a banana, please. Thank you!' }
+      ]
+    };
+  } else if (domain === 'market') {
     mission = {
       title: 'Communicative Action Mission: "Build Your Market!"',
       roleA: {

@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Market Day Lab - 4th Grade AOA Interactive Experience</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1A5276;
+      --primary-dark: #0f3248;
+      --accent: #FF9800;
+      --accent-green: #2E7D32;
+      --accent-red: #D32F2F;
+      --accent-yellow: #FFC107;
+      --bg: #F0F4F8;
+      --card-bg: #FFFFFF;
+      --text: #2C3E50;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+      --font-fun: 'Fredoka', cursive, sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    /* Top Banner Header */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, #2980B9 100%);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(26, 82, 118, 0.25);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: var(--font-fun);
+      font-size: 2.2rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .sub-header {
+      font-size: 1.05rem;
+      opacity: 0.95;
+      margin-top: 6px;
+    }
+
+    /* Navigation Bar of Stages */
+    .stages-nav {
+      max-width: 1100px;
+      margin: -25px auto 25px auto;
+      display: flex;
+      gap: 10px;
+      padding: 8px;
+      background: white;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+      justify-content: space-around;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stage-btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 12px 14px;
+      border: none;
+      background: transparent;
+      border-radius: 40px;
+      cursor: pointer;
+      font-family: var(--font-fun);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .stage-btn:hover {
+      background: #F1F5F9;
+      color: var(--primary);
+    }
+
+    .stage-btn.active {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 12px rgba(255, 152, 0, 0.35);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .stage-section {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .stage-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards */
+    .content-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 25px;
+      border: 1px solid var(--border);
+    }
+
+    .card-title {
+      font-family: var(--font-fun);
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* Stage 1: Flashcards & Sounds */
+    .flashcard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin: 20px 0;
+    }
+
+    .flashcard {
+      background: #F8FAFC;
+      border: 2px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .flashcard:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+    }
+
+    .flashcard img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      margin-bottom: 12px;
+    }
+
+    .flashcard .word {
+      font-family: var(--font-fun);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .flashcard .sound-tag {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #E0F2FE;
+      color: #0369A1;
+    }
+
+    .audio-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+
+    .audio-btn:hover { background: var(--accent); }
+
+    /* Interactive CCQs */
+    .ccq-box {
+      background: #EFF6FF;
+      border-left: 6px solid #3B82F6;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 24px 0;
+    }
+
+    .ccq-question {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: #1E3A8A;
+    }
+
+    .ccq-options {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .option-btn {
+      padding: 10px 20px;
+      border: 2px solid #BFDBFE;
+      background: white;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .option-btn:hover { background: #DBEAFE; }
+    .option-btn.correct { background: #22C55E; color: white; border-color: #16A34A; }
+    .option-btn.wrong { background: #EF4444; color: white; border-color: #DC2626; }
+
+    /* Stage 2: Dialogue Player */
+    .dialogue-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .dialogue-bubble {
+      display: flex;
+      gap: 16px;
+      max-width: 80%;
+      align-items: flex-start;
+    }
+
+    .dialogue-bubble.seller {
+      align-self: flex-start;
+    }
+
+    .dialogue-bubble.customer {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+    }
+
+    .avatar img { width: 40px; height: 40px; object-fit: contain; }
+
+    .bubble-text {
+      background: #F1F5F9;
+      padding: 14px 20px;
+      border-radius: 20px;
+      font-size: 1.05rem;
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .seller .bubble-text {
+      background: #E0F2FE;
+      color: #0369A1;
+      border-bottom-left-radius: 4px;
+    }
+
+    .customer .bubble-text {
+      background: #FEF3C7;
+      color: #92400E;
+      border-bottom-right-radius: 4px;
+    }
+
+    .bubble-text strong {
+      display: block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    /* STAGE 3: THE GAME (Supermarket Dash & Price Match) */
+    .game-arena {
+      background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 3px dashed #F59E0B;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin: 20px 0;
+    }
+
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .dice-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    .dice {
+      width: 54px;
+      height: 54px;
+      background: var(--accent);
+      color: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-fun);
+      font-size: 1.8rem;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .dice.rolling {
+      animation: rollAnimation 0.5s ease;
+    }
+
+    @keyframes rollAnimation {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.15); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    .roll-btn {
+      background: var(--accent-green);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-family: var(--font-fun);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+      transition: all 0.2s;
+    }
+
+    .roll-btn:hover {
+      background: #1B5E20;
+      transform: translateY(-2px);
+    }
+
+    .score-board {
+      font-family: var(--font-fun);
+      font-size: 1.3rem;
+      color: var(--primary);
+      background: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    .game-board {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .board-cell {
+      background: white;
+      border: 3px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .board-cell.highlight {
+      border-color: #F59E0B;
+      transform: scale(1.06);
+      background: #FEF9C3;
+      box-shadow: 0 8px 18px rgba(245, 158, 11, 0.3);
+    }
+
+    .board-cell img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+
+    .cell-num {
+      position: absolute;
+      top: 6px;
+      left: 8px;
+      font-family: var(--font-fun);
+      font-weight: 700;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .target-challenge {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .challenge-sentence {
+      font-family: var(--font-fun);
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin: 10px 0;
+    }
+
+    /* Stage 4: Role-Play Station */
+    .market-stall {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .market-stall { grid-template-columns: 1fr; }
+    }
+
+    .stall-side {
+      background: #F8FAFC;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      border: 2px solid #E2E8F0;
+    }
+
+    .stall-title {
+      font-family: var(--font-fun);
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .shopping-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #E2E8F0;
+    }
+
+    /* Stage 5 & 6: Assessment & Reflection */
+    .checklist-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .checklist-table th, .checklist-table td {
+      padding: 14px;
+      border-bottom: 1px solid #E2E8F0;
+      text-align: left;
+    }
+
+    .checklist-table th {
+      background: #F1F5F9;
+      color: var(--primary);
+      font-family: var(--font-fun);
+    }
+
+    .score-radio {
+      accent-color: var(--accent-green);
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .reflection-box {
+      background: #F8FAFC;
+      border: 2px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-top: 15px;
+    }
+
+    .reflection-box textarea {
+      width: 100%;
+      height: 80px;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      margin-top: 10px;
+      resize: vertical;
+    }
+
+    .pdf-download-bar {
+      margin-top: 30px;
+      text-align: center;
+      background: #E0F2FE;
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid #BAE6FD;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-family: var(--font-fun);
+      font-size: 1.15rem;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(26, 82, 118, 0.35);
+      transition: all 0.2s;
+    }
+
+    .download-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-badge">English 4th Grade &bull; CEFR A1.2 &bull; Action-Oriented Approach</div>
+    <h1>The Supermarket Day &bull; Learning Lab</h1>
+    <p class="sub-header">Theme 1: <em>"How Much Is the Pineapple?"</em> (Lesson #3 - Speaking Focus)</p>
+  </header>
+
+  <!-- Stages Nav -->
+  <nav class="stages-nav">
+    <button class="stage-btn active" onclick="switchStage('stage1')">1. Warm-Up</button>
+    <button class="stage-btn" onclick="switchStage('stage2')">2. Dialogue</button>
+    <button class="stage-btn" onclick="switchStage('stage3')">3. Game: Market Dash</button>
+    <button class="stage-btn" onclick="switchStage('stage4')">4. Market Role-Play</button>
+    <button class="stage-btn" onclick="switchStage('stage5')">5. Exit Ticket</button>
+    <button class="stage-btn" onclick="switchStage('stage6')">6. Reflection</button>
+  </nav>
+
+  <div class="container">
+
+    <!-- STAGE 1: Warm-up / Pre-task -->
+    <section id="stage1" class="stage-section active">
+      <div class="content-card">
+        <h2 class="card-title">Stage 1: Flashcards &amp; Sound Detectives (/p/ and /m/)</h2>
+        <p class="card-subtitle">
+          Touch the market flashcards to hear the native pronunciation. Listen closely to the <strong>/p/</strong> sound in <em>pineapple, potatoes</em> and <strong>/m/</strong> in <em>market, money</em>!
+        </p>
+
+        <div class="flashcard-grid">
+          <div class="flashcard" onclick="speakText('Pineapple. How much is the pineapple?')">
+            <img src="assets/nouns/pineapple.png" alt="Pineapple">
+            <div class="word">Pineapple</div>
+            <div class="sound-tag">Focus: /p/</div>
+            <div><button class="audio-btn" aria-label="Listen">&#9658;</button></div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Apples. Three apples, please.')">
+            <img src="assets/nouns/apple.png" alt="Apples">
+            <div class="word">Apples</div>
+            <div class="sound-tag">Focus: /p/</div>
+            <div><button class="audio-btn" aria-label="Listen">&#9658;</button></div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Banana. One banana, please.')">
+            <img src="assets/nouns/banana.png" alt="Banana">
+            <div class="word">Banana</div>
+            <div class="sound-tag">Focus: /b/</div>
+            <div><button class="audio-btn" aria-label="Listen">&#9658;</button></div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Potatoes. I need five potatoes.')">
+            <img src="assets/nouns/potatoes.png" alt="Potatoes">
+            <div class="word">Potatoes</div>
+            <div class="sound-tag">Focus: /p/</div>
+            <div><button class="audio-btn" aria-label="Listen">&#9658;</button></div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Cassava. How much is the cassava?')">
+            <img src="assets/nouns/cassava.png" alt="Cassava">
+            <div class="word">Cassava</div>
+            <div class="sound-tag">Local Market Item</div>
+            <div><button class="audio-btn" aria-label="Listen">&#9658;</button></div>
+          </div>
+
+          <div class="flashcard" onclick="speakText('Money. Here is the money.')">
+            <img src="assets/nouns/money.png" alt="Money">
+            <div class="word">Money / Dollar</div>
+            <div class="sound-tag">Focus: /m/</div>
+            <div><button class="audio-btn" aria-label="Listen">&#9658;</button></div>
+          </div>
+        </div>
+
+        <!-- Concept Checking Questions (CCQs) from Lesson Plan -->
+        <div class="ccq-box">
+          <div class="ccq-question">CCQ #1: When I ask "How much is the pineapple?", what am I asking for?</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, false)">Its name</button>
+            <button class="option-btn" onclick="checkAnswer(this, true)">Its price / cost (Correct!)</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">Its color</button>
+          </div>
+        </div>
+
+        <div class="ccq-box">
+          <div class="ccq-question">CCQ #2: If you want two bananas to take home, which sentence is correct?</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, false)">"I have two bananas."</button>
+            <button class="option-btn" onclick="checkAnswer(this, true)">"I need two bananas, please." (Correct!)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 2: Presentation Dialogue -->
+    <section id="stage2" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 2: Official Market Dialogue Presentation</h2>
+        <p class="card-subtitle">
+          Listen to the customer and the seller at the fruit market. Click the dialogue lines to practice active speaking!
+        </p>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+          <button class="roll-btn" onclick="playFullDialogue()">Play Full Dialogue (Audio)</button>
+        </div>
+
+        <div class="dialogue-container">
+          <div class="dialogue-bubble seller" onclick="speakText('Hello! Can I help you?')">
+            <div class="avatar"><img src="assets/nouns/cashier.png" alt="Seller"></div>
+            <div class="bubble-text">
+              <strong>Seller</strong>
+              "Hello! Can I help you?"
+            </div>
+          </div>
+
+          <div class="dialogue-bubble customer" onclick="speakText('Yes, please. Excuse me, how much is the pineapple?')">
+            <div class="avatar"><img src="assets/nouns/market.png" alt="Customer"></div>
+            <div class="bubble-text">
+              <strong>Customer</strong>
+              "Yes, please. <strong>Excuse me, how much is the pineapple?</strong>"
+            </div>
+          </div>
+
+          <div class="dialogue-bubble seller" onclick="speakText('It is one dollar.')">
+            <div class="avatar"><img src="assets/nouns/cashier.png" alt="Seller"></div>
+            <div class="bubble-text">
+              <strong>Seller</strong>
+              "It is one dollar ($1.00)."
+            </div>
+          </div>
+
+          <div class="dialogue-bubble customer" onclick="speakText('Okay. And how many apples do you need?')">
+            <div class="avatar"><img src="assets/nouns/market.png" alt="Customer"></div>
+            <div class="bubble-text">
+              <strong>Customer (or Seller)</strong>
+              "Okay. And <strong>how many apples do you need?</strong>"
+            </div>
+          </div>
+
+          <div class="dialogue-bubble customer" onclick="speakText('I need three apples and one banana, please.')">
+            <div class="avatar"><img src="assets/nouns/market.png" alt="Customer"></div>
+            <div class="bubble-text">
+              <strong>Customer</strong>
+              "<strong>I need three apples</strong> and one banana, please."
+            </div>
+          </div>
+
+          <div class="dialogue-bubble seller" onclick="speakText('Okay, three apples and one banana. That is four dollars.')">
+            <div class="avatar"><img src="assets/nouns/cashier.png" alt="Seller"></div>
+            <div class="bubble-text">
+              <strong>Seller</strong>
+              "Okay, three apples and one banana. <strong>That's four dollars ($4.00).</strong>"
+            </div>
+          </div>
+
+          <div class="dialogue-bubble customer" onclick="speakText('Here is the money.')">
+            <div class="avatar"><img src="assets/nouns/market.png" alt="Customer"></div>
+            <div class="bubble-text">
+              <strong>Customer</strong>
+              "Here is the money."
+            </div>
+          </div>
+
+          <div class="dialogue-bubble seller" onclick="speakText('Thank you! Have a great day!')">
+            <div class="avatar"><img src="assets/nouns/cashier.png" alt="Seller"></div>
+            <div class="bubble-text">
+              <strong>Seller</strong>
+              "Thank you!"
+            </div>
+          </div>
+        </div>
+
+        <!-- Dialogue Comprehension Check from Lesson Plan -->
+        <div class="ccq-box">
+          <div class="ccq-question">Comprehension Question: What does the customer buy in the dialogue?</div>
+          <div class="ccq-options">
+            <button class="option-btn" onclick="checkAnswer(this, false)">Only 1 apple</button>
+            <button class="option-btn" onclick="checkAnswer(this, true)">A pineapple, 3 apples, and 1 banana (Correct!)</button>
+            <button class="option-btn" onclick="checkAnswer(this, false)">5 potatoes</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 3: THE GAME (Supermarket Dash & Price Match) -->
+    <section id="stage3" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 3: Game &bull; "The Supermarket Dash &amp; Price Match"</h2>
+        <p class="card-subtitle">
+          Roll the dice! Move your shopping token to the item cell. State your sentence out loud using the substitution formula: <strong>"I need [Number] [Item]."</strong> or <strong>"How much is the [Item]?"</strong>
+        </p>
+
+        <div class="game-arena">
+          <div class="game-header">
+            <div class="dice-container">
+              <div class="dice" id="gameDice">1</div>
+              <button class="roll-btn" onclick="rollGameDice()">Roll Dice!</button>
+            </div>
+            <div class="score-board">
+              Cart Items: <strong id="cartCount" style="color: var(--accent);">0</strong> / 6
+            </div>
+          </div>
+
+          <div class="game-board">
+            <div class="board-cell highlight" id="cell-1">
+              <div class="cell-num">#1</div>
+              <img src="assets/nouns/pineapple.png" alt="Pineapple">
+              <div style="font-weight: 700; color: var(--primary);">Pineapple</div>
+              <div style="color: var(--accent-green); font-weight: 600;">$1.00</div>
+            </div>
+
+            <div class="board-cell" id="cell-2">
+              <div class="cell-num">#2</div>
+              <img src="assets/nouns/apple.png" alt="Apples">
+              <div style="font-weight: 700; color: var(--primary);">Apples</div>
+              <div style="color: var(--accent-green); font-weight: 600;">$1.00 ea</div>
+            </div>
+
+            <div class="board-cell" id="cell-3">
+              <div class="cell-num">#3</div>
+              <img src="assets/nouns/banana.png" alt="Bananas">
+              <div style="font-weight: 700; color: var(--primary);">Bananas</div>
+              <div style="color: var(--accent-green); font-weight: 600;">$1.00 ea</div>
+            </div>
+
+            <div class="board-cell" id="cell-4">
+              <div class="cell-num">#4</div>
+              <img src="assets/nouns/potatoes.png" alt="Potatoes">
+              <div style="font-weight: 700; color: var(--primary);">Potatoes</div>
+              <div style="color: var(--accent-green); font-weight: 600;">$2.00 lb</div>
+            </div>
+
+            <div class="board-cell" id="cell-5">
+              <div class="cell-num">#5</div>
+              <img src="assets/nouns/cassava.png" alt="Cassava">
+              <div style="font-weight: 700; color: var(--primary);">Cassava</div>
+              <div style="color: var(--accent-green); font-weight: 600;">$3.00 lb</div>
+            </div>
+
+            <div class="board-cell" id="cell-6">
+              <div class="cell-num">#6</div>
+              <img src="assets/nouns/market.png" alt="Super Bonus">
+              <div style="font-weight: 700; color: var(--primary);">Market Bonus</div>
+              <div style="color: var(--accent); font-weight: 600;">Free Choice!</div>
+            </div>
+          </div>
+
+          <div class="target-challenge">
+            <p style="font-weight: 600; color: var(--text-muted); text-transform: uppercase; font-size: 0.85rem;">Active Speaking Mission</p>
+            <div class="challenge-sentence" id="speakingChallenge">
+              "Excuse me, how much is the pineapple?" &rarr; "It is one dollar."
+            </div>
+            <button class="roll-btn" style="background: var(--primary); margin-top: 10px;" onclick="speakChallenge()">
+              Listen &amp; Repeat Challenge
+            </button>
+            <button class="roll-btn" style="background: var(--accent); margin-top: 10px;" onclick="addItemToCart()">
+              Buy &amp; Add to Cart (+1)
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 4: Role-Play Station -->
+    <section id="stage4" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 4: "Shopping at the Market" Role-Play Mission</h2>
+        <p class="card-subtitle">
+          Pair up! One student is the <strong>Customer</strong> with a shopping list; the other is the <strong>Seller / Cashier</strong> with prices.
+        </p>
+
+        <div class="market-stall">
+          <!-- Customer Shopping List -->
+          <div class="stall-side">
+            <h3 class="stall-title">Customer Shopping List Card (List A)</h3>
+            <div class="shopping-item-row">
+              <span><strong>2</strong> Pineapples</span>
+              <span style="color: var(--text-muted);">Ask: "How much is the pineapple?"</span>
+            </div>
+            <div class="shopping-item-row">
+              <span><strong>3</strong> Apples</span>
+              <span style="color: var(--text-muted);">Say: "I need three apples, please."</span>
+            </div>
+            <div class="shopping-item-row">
+              <span><strong>1</strong> Cassava</span>
+              <span style="color: var(--text-muted);">Say: "I need one cassava."</span>
+            </div>
+            <div class="shopping-item-row" style="background: #FEF3C7; font-weight: 700;">
+              <span>Total Budget: $10.00</span>
+              <span>Polite: "Here is the money."</span>
+            </div>
+          </div>
+
+          <!-- Seller Price Stand -->
+          <div class="stall-side">
+            <h3 class="stall-title">Seller Official Price Board</h3>
+            <div class="shopping-item-row">
+              <span>Pineapple</span>
+              <strong style="color: var(--accent-green);">$1.00 each</strong>
+            </div>
+            <div class="shopping-item-row">
+              <span>Apples</span>
+              <strong style="color: var(--accent-green);">$1.00 each</strong>
+            </div>
+            <div class="shopping-item-row">
+              <span>Cassava</span>
+              <strong style="color: var(--accent-green);">$3.00 each</strong>
+            </div>
+            <div class="shopping-item-row">
+              <span>Potatoes</span>
+              <strong style="color: var(--accent-green);">$2.00 each</strong>
+            </div>
+            <div class="shopping-item-row" style="background: #E0F2FE; font-weight: 700;">
+              <span>Calculation</span>
+              <span>2($1) + 3($1) + 1($3) = <strong>$8.00</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 5: Exit Ticket / Assessment -->
+    <section id="stage5" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 5: Formative Checklist &amp; Exit Ticket</h2>
+        <p class="card-subtitle">
+          Verify your oral speaking competencies according to the 4th Grade CEFR A1.2 curriculum!
+        </p>
+
+        <table class="checklist-table">
+          <thead>
+            <tr>
+              <th>Evaluation Criteria</th>
+              <th style="width: 120px; text-align: center;">Yes!</th>
+              <th style="width: 120px; text-align: center;">A Little</th>
+              <th style="width: 120px; text-align: center;">Need Practice</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Intelligible Pronunciation:</strong> Clear /p/ in <em>pineapple, potatoes</em> &amp; /m/ in <em>money, market</em>.</td>
+              <td align="center"><input type="radio" name="c1" class="score-radio" checked></td>
+              <td align="center"><input type="radio" name="c1" class="score-radio"></td>
+              <td align="center"><input type="radio" name="c1" class="score-radio"></td>
+            </tr>
+            <tr>
+              <td><strong>Target Vocabulary:</strong> Used words like <em>market, price, shopping list, item, cost, dollar</em>.</td>
+              <td align="center"><input type="radio" name="c2" class="score-radio" checked></td>
+              <td align="center"><input type="radio" name="c2" class="score-radio"></td>
+              <td align="center"><input type="radio" name="c2" class="score-radio"></td>
+            </tr>
+            <tr>
+              <td><strong>Target Grammar:</strong> Correctly asked <em>"How much is...?"</em> and stated <em>"I need five..."</em>.</td>
+              <td align="center"><input type="radio" name="c3" class="score-radio" checked></td>
+              <td align="center"><input type="radio" name="c3" class="score-radio"></td>
+              <td align="center"><input type="radio" name="c3" class="score-radio"></td>
+            </tr>
+            <tr>
+              <td><strong>Sociolinguistic Politeness:</strong> Used <em>"Excuse me", "please", "thank you"</em>.</td>
+              <td align="center"><input type="radio" name="c4" class="score-radio" checked></td>
+              <td align="center"><input type="radio" name="c4" class="score-radio"></td>
+              <td align="center"><input type="radio" name="c4" class="score-radio"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- STAGE 6: Reflection -->
+    <section id="stage6" class="stage-section">
+      <div class="content-card">
+        <h2 class="card-title">Stage 6: Student Self-Reflection</h2>
+        <p class="card-subtitle">
+          Think about your speaking performance today and write your answers below.
+        </p>
+
+        <div class="reflection-box">
+          <label><strong>Prompt 1: What part of talking about prices and items at the market was easy for you today?</strong></label>
+          <textarea placeholder="For example: Pronouncing 'pineapple' was easy, or asking 'How much is it?'..."></textarea>
+        </div>
+
+        <div class="reflection-box">
+          <label><strong>Prompt 2: What part was difficult, and what can you do to improve your speaking next time?</strong></label>
+          <textarea placeholder="For example: Remembering large numbers up to 100, or combining items with 'and'..."></textarea>
+        </div>
+
+        <div class="pdf-download-bar">
+          <h3>Need Printable Copies for the Classroom?</h3>
+          <p style="margin: 8px 0 16px 0; color: var(--text-muted);">
+            Download the official 3-page student workbook PDF with all cut-out fruit cards, dice boards, and grading sheets.
+          </p>
+          <a href="../Student_Activities_4thGrade_Shopping_Market.pdf" target="_blank" class="download-btn">
+            Download Student Workbook (PDF)
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function switchStage(stageId) {
+      document.querySelectorAll('.stage-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.stage-btn').forEach(btn => btn.classList.remove('active'));
+
+      const activeSec = document.getElementById(stageId);
+      if (activeSec) activeSec.classList.add('active');
+
+      const activeBtn = Array.from(document.querySelectorAll('.stage-btn')).find(b => b.getAttribute('onclick').includes(stageId));
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert(text);
+      }
+    }
+
+    function checkAnswer(btn, isCorrect) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.option-btn').forEach(b => {
+        b.classList.remove('correct', 'wrong');
+      });
+      if (isCorrect) {
+        btn.classList.add('correct');
+        speakText('Excellent! Correct answer!');
+      } else {
+        btn.classList.add('wrong');
+        speakText('Try again! Think about the cost.');
+      }
+    }
+
+    const gameChallenges = [
+      { num: 1, name: 'Pineapple', text: 'Excuse me, how much is the pineapple? It is one dollar.' },
+      { num: 2, name: 'Apples', text: 'I need three apples, please. That is three dollars.' },
+      { num: 3, name: 'Bananas', text: 'How much are the bananas? They are one dollar each.' },
+      { num: 4, name: 'Potatoes', text: 'I need five potatoes. It is two dollars a pound.' },
+      { num: 5, name: 'Cassava', text: 'How much is the cassava? It is three dollars.' },
+      { num: 6, name: 'Market Bonus', text: 'Can I help you? I need two pineapples and one banana, please!' }
+    ];
+
+    let currentRoll = 1;
+    let cartTotal = 0;
+
+    function rollGameDice() {
+      const dice = document.getElementById('gameDice');
+      dice.classList.add('rolling');
+      const roll = Math.floor(Math.random() * 6) + 1;
+      currentRoll = roll;
+
+      setTimeout(() => {
+        dice.textContent = roll;
+        dice.classList.remove('rolling');
+
+        // highlight cell
+        document.querySelectorAll('.board-cell').forEach(c => c.classList.remove('highlight'));
+        const cell = document.getElementById(`cell-${roll}`);
+        if (cell) cell.classList.add('highlight');
+
+        // update challenge text
+        const challenge = gameChallenges[roll - 1];
+        document.getElementById('speakingChallenge').textContent = `"${challenge.text}"`;
+        speakText(challenge.text);
+      }, 400);
+    }
+
+    function speakChallenge() {
+      const challenge = gameChallenges[currentRoll - 1];
+      speakText(challenge.text);
+    }
+
+    function addItemToCart() {
+      cartTotal++;
+      document.getElementById('cartCount').textContent = cartTotal;
+      speakText('Item added to your basket! Great speaking job!');
+    }
+
+    function playFullDialogue() {
+      const dialogueLines = [
+        "Seller: Hello! Can I help you?",
+        "Customer: Yes, please. Excuse me, how much is the pineapple?",
+        "Seller: It is one dollar.",
+        "Customer: Okay. And how many apples do you need?",
+        "Customer: I need three apples and one banana, please.",
+        "Seller: Okay, three apples and one banana. That's four dollars.",
+        "Customer: Here is the money.",
+        "Seller: Thank you!"
+      ];
+      let delay = 0;
+      dialogueLines.forEach((line) => {
+        setTimeout(() => {
+          speakText(line);
+        }, delay);
+        delay += 3500;
+      });
+    }
+  </script>
+</body>
+</html>
