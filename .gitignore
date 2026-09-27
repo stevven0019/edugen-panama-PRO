@@ -51,3 +51,6 @@ chart-*.png
 page-*.png
 overview.png
 planner-extract.txt
+
+# Generated mass PDFs (keep JSON manifest and HTML hub tracked)
+public/generated_activity_pdfs/**/*.pdf
