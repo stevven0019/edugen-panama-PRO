@@ -24,6 +24,7 @@ import AdBanner from './components/AdBanner';
 import AdminPayments from './pages/AdminPayments';
 import AdminPaymentNotices from './components/AdminPaymentNotices';
 import AIChatAssistant from './components/AIChatAssistant';
+import ResourceWorkbook from './components/ResourceWorkbook';
 
 // EduGen Pro Billing & Ads components
 import BillingModal from './components/BillingModal';
@@ -540,6 +541,19 @@ export default function App() {
               downloadsLeft={downloadsLeft}
               triggerInterstitialAd={triggerInterstitialAd}
               triggerRewardedAd={triggerRewardedAd}
+            />
+          )}
+          {activeTab === 'activities' && (
+            <ResourceWorkbook 
+              user={user} 
+              credits={credits} 
+              isPremium={isPremium}
+              downloadsLeft={downloadsLeft}
+              onTriggerAlert={triggerAlert}
+              onClose={() => setActiveTab('aoa')}
+              defaultGrade="4th Grade"
+              defaultSkill="Listening"
+              defaultLessonNum={1}
             />
           )}
           {activeTab === 'interdisciplinary' && (

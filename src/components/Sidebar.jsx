@@ -12,7 +12,8 @@ import {
   Sparkles,
   School,
   ShieldCheck,
-  FileCheck
+  FileCheck,
+  FileText
 } from 'lucide-react';
 
 export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, showPWAInstallBtn = false, onPWAInstall, isAdmin = false, pendingPaymentCount = 0 }) {
@@ -46,6 +47,7 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard className="w-5 h-5" /> },
     { id: 'aoa', label: 'Planificador AOA', icon: <BookOpen className="w-5 h-5" /> },
+    { id: 'activities', label: 'Cuaderno Actividades', icon: <FileText className="w-5 h-5" /> },
     { id: 'theme-planner', label: 'Theme Planner', icon: <Layers className="w-5 h-5" /> },
     { id: 'lesson-test', label: 'Lesson Test Studio', icon: <FileCheck className="w-5 h-5" /> },
     { id: 'interdisciplinary', label: 'Proy. Interdisciplinario', icon: <Sparkles className="w-5 h-5" /> },
@@ -56,6 +58,7 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
   const getActiveStyles = (itemId) => {
     if (activeTab === itemId) {
       if (itemId === 'aoa') return 'bg-blue-600 text-white dark:bg-blue-600 shadow-md shadow-blue-500/20';
+      if (itemId === 'activities') return 'bg-violet-600 text-white dark:bg-violet-600 shadow-md shadow-violet-500/20';
       if (itemId === 'theme-planner') return 'bg-emerald-600 text-white dark:bg-emerald-600 shadow-md shadow-emerald-500/20';
       if (itemId === 'lesson-test') return 'bg-blue-800 text-white dark:bg-blue-700 shadow-md shadow-blue-600/25';
       if (itemId === 'interdisciplinary') return 'bg-violet-600 text-white dark:bg-violet-600 shadow-md shadow-violet-500/20';
