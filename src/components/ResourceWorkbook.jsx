@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { databaseService } from '../services/firebase';
 import { generateActivityPack, latestAoa } from '../resources/activityPack';
 import { buildWorkbook, downloadWorkbook, downloadWorkbookDoc, downloadEditorialPdf, downloadEditorialHtml } from '../resources/workbookPdf';
@@ -205,7 +205,6 @@ export default function ResourceWorkbook({
   const [source, setSource] = useState(currentLessonHtml ? 'current' : 'matrix'); // 'current' | 'matrix' | 'latest' | 'file'
   const [file, setFile] = useState(null);
   const [pack, setPack] = useState(initialPack);
-  const [htmlUrl, setHtmlUrl] = useState('');
   const [pdfUrl, setPdfUrl] = useState('');
   const [viewMode, setViewMode] = useState('editorial'); // 'editorial' | 'pdf'
   const [busy, setBusy] = useState(false);
@@ -214,6 +213,17 @@ export default function ResourceWorkbook({
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [compilationMode, setCompilationMode] = useState('auto'); // 'auto' | 'ai'
+
+  // Compute HTML content synchronously so the iframe is NEVER blank on the first render
+  const htmlContent = useMemo(() => {
+    if (!pack) return '';
+    try {
+      return renderWorkbookHtml(pack);
+    } catch (err) {
+      console.error('Error rendering workbook HTML:', err);
+      return '';
+    }
+  }, [pack]);
 
   // Cascade Dropdown States (14 Grados x 8 Escenarios x 5 Habilidades)
   const [matrixGrade, setMatrixGrade] = useState(() => {
@@ -268,35 +278,30 @@ export default function ResourceWorkbook({
     };
   }, [user.uid]);
 
+  // Generate PDF in background for standard PDF view
   useEffect(() => {
     if (!pack) return;
     let active = true;
-    let nextHtmlUrl = '';
     let nextPdfUrl = '';
 
     try {
-      const htmlContent = renderWorkbookHtml(pack);
-      nextHtmlUrl = URL.createObjectURL(new Blob([htmlContent], { type: 'text/html' }));
-      if (active) setHtmlUrl(nextHtmlUrl);
-
       const pdfDoc = buildWorkbook(pack);
       nextPdfUrl = URL.createObjectURL(pdfDoc.output('blob'));
       if (active) setPdfUrl(nextPdfUrl);
     } catch (e) {
-      if (active) setError(e.message);
+      console.warn('PDF blob generation error:', e);
     }
 
     return () => {
       active = false;
-      if (nextHtmlUrl) URL.revokeObjectURL(nextHtmlUrl);
       if (nextPdfUrl) URL.revokeObjectURL(nextPdfUrl);
     };
   }, [pack]);
 
   const generate = async (useAiParam) => {
     const shouldUseAi = typeof useAiParam === 'boolean' ? useAiParam : (compilationMode === 'ai');
-    if (!isPremium && credits <= 0) {
-      setError('Necesitas tokens para generar recursos.');
+    if (shouldUseAi && !isPremium && credits <= 0) {
+      setError('Necesitas tokens para compilar con IA. Puedes usar el Formato Automatizado (0 Tokens) gratis.');
       return;
     }
     setBusy(true);
@@ -898,6 +903,14 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
             <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-50 dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-700">
               <div className="flex flex-wrap items-center gap-2">
                 <button
+                  type="button"
+                  onClick={() => { setPack(null); setError(''); }}
+                  className="px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-600 transition flex items-center gap-1.5 shadow-sm active:scale-95"
+                  title="Regresar para elegir otro grado, escenario o tema"
+                >
+                  <span>🔄</span> Elegir otro tema / grado
+                </button>
+                <button
                   onClick={() => setViewMode('editorial')}
                   className={`px-3.5 py-2 rounded-xl text-xs font-bold transition ${viewMode === 'editorial' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200'}`}
                 >
@@ -993,20 +1006,32 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
             </p>
 
             <div className="border border-slate-300 dark:border-slate-700 rounded-2xl overflow-hidden shadow-inner bg-slate-950">
-              <iframe
-                ref={iframeRef}
-                title="Vista previa del cuaderno educativo"
-                src={viewMode === 'editorial' ? htmlUrl : pdfUrl}
-                className="w-full h-[72vh] rounded-2xl bg-white"
-              />
+              {viewMode === 'editorial' ? (
+                <iframe
+                  key={`editorial-${pack.title || 'book'}-${pack.grade || 'grade'}-${pack.lessonNum || '1'}`}
+                  ref={iframeRef}
+                  title="Vista previa del cuaderno educativo"
+                  srcDoc={htmlContent}
+                  className="w-full h-[72vh] rounded-2xl bg-white"
+                />
+              ) : (
+                <iframe
+                  key={`pdf-${pack.title || 'book'}-${pack.grade || 'grade'}-${pack.lessonNum || '1'}`}
+                  ref={iframeRef}
+                  title="Vista previa del PDF"
+                  src={pdfUrl}
+                  className="w-full h-[72vh] rounded-2xl bg-white"
+                />
+              )}
             </div>
 
             {/* Hidden offscreen iframe ensuring editorial document is always fully rendered for PDF export and printing */}
-            {pack && htmlUrl && (
+            {pack && htmlContent && (
               <iframe
                 ref={editorialIframeRef}
+                key={`offscreen-${pack.title || 'book'}`}
                 title="Marco de renderizado editorial"
-                src={htmlUrl}
+                srcDoc={htmlContent}
                 style={{ position: 'fixed', top: 0, left: '-9999px', width: '210mm', height: '3500px', visibility: 'hidden' }}
               />
             )}
