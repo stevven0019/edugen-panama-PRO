@@ -5,6 +5,7 @@ import { buildWorkbook, downloadWorkbook, downloadWorkbookDoc, downloadEditorial
 import { renderWorkbookHtml } from '../resources/renderWorkbookHtml';
 import { downloadAoaSheetsCsv, getCefrByGrade } from '../resources/sheetExporter';
 import { sanitizeThemeTitle } from '../resources/lessonParser';
+import { resolveCefrBand, CEFR_BANDS } from '../resources/aoaMasterBank';
 
 export const GRADES_CEFR_MAP = [
   { id: 'prek', name: 'Pre-K', label: 'Pre-K (Pre-A1 Receptivo / TPR)', cefr: 'Pre-A1', file: 'English_Curriculum_Prekinder.json' },
@@ -268,15 +269,19 @@ export default function ResourceWorkbook({
 
   useEffect(() => {
     let active = true;
-    databaseService.getSavedPlans(user.uid)
-      .then(plans => { if (active) setLesson(latestAoa(plans)); })
-      .catch(() => { if (active) setError('No se pudo cargar la última lección.'); })
-      .finally(() => { if (active) setLoading(false); });
+    if (user?.uid) {
+      databaseService.getSavedPlans(user.uid)
+        .then(plans => { if (active) setLesson(latestAoa(plans)); })
+        .catch(() => { if (active) setError('No se pudo cargar la última lección.'); })
+        .finally(() => { if (active) setLoading(false); });
+    } else {
+      setLoading(false);
+    }
     return () => {
       active = false;
       controller.current?.abort();
     };
-  }, [user.uid]);
+  }, [user?.uid]);
 
   // Generate PDF in background for standard PDF view
   useEffect(() => {
@@ -689,6 +694,7 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
                   const isWriting = matrixSkill === 'Writing' || sItem?.number === 4;
                   const bandKey = resolveCefrBand(gItem?.name || matrixGrade);
                   const cefrInfo = CEFR_BANDS[bandKey] || CEFR_BANDS['a1'];
+                  const isPreK = /(?:pre-?k|kinder)/i.test(gItem?.name || matrixGrade);
 
                   // Pedagogical badge by CEFR band for Speaking, Listening, Reading & Writing
                   let skillBadge = '';
