@@ -451,6 +451,10 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
       <main className="lg:col-span-8 space-y-4">
         {activeGenType === 'listeningscript' ? (
           <ConversationalAudioStudio 
+            user={user}
+            credits={credits}
+            isPremium={isPremium}
+            onTriggerAlert={onTriggerAlert}
             currentLessonHtml={generatedHtml}
             lessonTitle={theme || (selectedScenario ? (selectedScenario.scenarioName || selectedScenario.title) : 'Conversación')}
             grade={grade}
