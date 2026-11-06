@@ -1,0 +1,8 @@
+# Robots.txt for EduGen Panama PRO
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://edugenpanama.com/sitemap.xml
+

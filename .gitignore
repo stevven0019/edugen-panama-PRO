@@ -57,3 +57,11 @@ public/generated_activity_pdfs/**/*.pdf
 *.zip
 release_zips/
 
+# Local high-res poster exports (keep in local storage, exceeds GitHub 100MB file / 2GB repo limits)
+postes/
+posters/
+test_smoke_pdfs/
+scratch_page_*.png
+output/
+
+

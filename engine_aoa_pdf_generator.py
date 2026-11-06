@@ -9,6 +9,8 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 
+from engine_aoa_activity_builder import build_activity_context
+
 # Register fonts
 font = "Helvetica"
 bold = "Helvetica-Bold"
@@ -126,8 +128,11 @@ def build_single_aoa_pdf(out_pdf, grade_name, cefr, sc_num, sc_name, theme_num, 
     skill_color = skill_info["color"]
     theme_type = "Receptive Focus · Weeks 1-2" if theme_num == 1 else "Productive Focus · Weeks 3-4"
     
-    nouns = extract_scenario_nouns(sc_data)
-    w0, w1, w2, w3 = nouns[0], nouns[1], nouns[2], nouns[3]
+    # Build CEFR-differentiated pedagogical context from real curriculum JSON
+    ctx = build_activity_context(sc_data, grade_name, cefr, lesson_num, theme_num, theme_name)
+    main_nouns = ctx["main_nouns"]
+    w0, w1, w2, w3 = main_nouns
+    skill_name_ctx = ctx["skill_name"]
 
     doc = SimpleDocTemplate(
         out_pdf,
@@ -180,8 +185,11 @@ def build_single_aoa_pdf(out_pdf, grade_name, cefr, sc_num, sc_name, theme_num, 
     story.append(t_info)
     story.append(Spacer(1, 4))
 
-    # STAGE 1: WARM-UP & MODELING
-    s1_banner = Table([[P(f"<b>STAGE 1: WARM-UP & TEACHER MODELING ({skill_name} Engagement & Clarification)</b>", "StageBanner")]], colWidths=[564])
+    s1 = ctx["stage1"]
+    s2 = ctx["stage2"]
+
+    # STAGE 1: Dynamic Warm-Up based on CEFR archetype
+    s1_banner = Table([[P(f"<b>STAGE 1: {s1['title'].upper()} ({skill_name} Engagement)</b>", "StageBanner")]], colWidths=[564])
     s1_banner.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,-1), c_navy),
         ('TOPPADDING', (0,0), (-1,-1), 3),
@@ -190,10 +198,10 @@ def build_single_aoa_pdf(out_pdf, grade_name, cefr, sc_num, sc_name, theme_num, 
     ]))
     story.append(s1_banner)
     story.append(Spacer(1, 3))
+    story.append(P(f"<b>Teacher:</b> {s1['instruction']}", "InstructionText"))
+    story.append(Spacer(1, 3))
 
-    story.append(P(f"<b>Teacher Think-Aloud & Communicative Model:</b> The teacher models target structures for <i>\"{theme_name}\"</i>. Focus on clarity, authentic pronunciation, and active participation.", "InstructionText"))
-
-    # Visual Realia Strip
+    # Visual Realia Strip (always shown — words from real curriculum vocabulary)
     realia_cells = [
         [get_realia_img(w0, 36, 36), get_realia_img(w1, 36, 36), get_realia_img(w2, 36, 36), get_realia_img(w3, 36, 36)],
         [P(f"<b>{w0.upper()}</b>", "CenterText"), P(f"<b>{w1.upper()}</b>", "CenterText"), P(f"<b>{w2.upper()}</b>", "CenterText"), P(f"<b>{w3.upper()}</b>", "CenterText")]
@@ -211,19 +219,25 @@ def build_single_aoa_pdf(out_pdf, grade_name, cefr, sc_num, sc_name, theme_num, 
     story.append(t_realia)
     story.append(Spacer(1, 3))
 
-    # Concept-Checking Questions (CCQs)
-    ccq_data = [
-        [
-            P(f"<b>Concept-Checking Questions (CCQs) · Circle your answer:</b><br/>"
-              f"1. Is the target topic about <i>\"{theme_name}\"</i>? &nbsp;&nbsp; <b>[ Yes, authentic ]</b> &nbsp;|&nbsp; <b>[ No ]</b><br/>"
-              f"2. How do we start our English interaction? &nbsp;&nbsp; <b>[ Clear greeting & focus ]</b> &nbsp;|&nbsp; <b>[ Silence ]</b><br/>"
-              f"3. For target items, do we pronounce plurals clearly? &nbsp;&nbsp; <b>[ Yes (-s / -es) ]</b> &nbsp;|&nbsp; <b>[ No ]</b>", "InstructionText"),
-            P("<b>Warm-Up Quick-Check:</b><br/>"
-              f"Look at the picture cards and note 2 keywords:<br/>"
-              f"1. ____________________________<br/>"
-              f"2. ____________________________", "InstructionText")
-        ]
-    ]
+    # Student task for Stage 1
+    s1_task_data = [[P(f"<b>Student Task:</b> {s1['student_task']}", "InstructionText")]]
+    t_s1_task = Table(s1_task_data, colWidths=[564])
+    t_s1_task.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,-1), c_card_bg),
+        ('BOX', (0,0), (-1,-1), 0.5, c_border),
+        ('TOPPADDING', (0,0), (-1,-1), 4),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+        ('LEFTPADDING', (0,0), (-1,-1), 6),
+        ('RIGHTPADDING', (0,0), (-1,-1), 6),
+    ]))
+    story.append(t_s1_task)
+    story.append(Spacer(1, 4))
+    # Comprehension check from Stage 2 ctx (differentiated by CEFR archetype)
+    s2_comp = s2.get('comprehension_check', '1. What is the central topic? _______________')
+    ccq_data = [[
+        P('<b>Stage 2 Comprehension Check:</b><br/>' + s2_comp.replace('\n', '<br/>'), 'InstructionText'),
+        P('<b>Warm-Up Quick-Check:</b><br/>Look at the picture cards and write 2 keywords:<br/>1. ____________________________<br/>2. ____________________________', 'InstructionText')
+    ]]
     t_ccq = Table(ccq_data, colWidths=[360, 204])
     t_ccq.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,-1), c_card_bg),
@@ -414,27 +428,50 @@ def build_single_aoa_pdf(out_pdf, grade_name, cefr, sc_num, sc_name, theme_num, 
     story.append(p3_head)
     story.append(Spacer(1, 3))
 
-    story.append(P(f"<b>Action-Oriented Mission:</b> Complete your personal or group performance deliverable for <i>\"{theme_name}\"</i>:", "InstructionText"))
+    # Stage 4 Mission — dynamic roles and dialogue from ctx
+    m = ctx["stage4_mission"]
+    story.append(P(f"<b>{m['mission_title']}</b>", "BoldText"))
+    story.append(Spacer(1, 2))
 
-    mission_data = [
-        [P(f"<b>OFFICIAL ACTION DELIVERABLE · {skill_name.upper()} MISSION PAD</b><br/>"
-           f"<b>Mission Focus:</b> Applying {skill_name.lower()} skills in an authentic scenario context.<br/><br/>"
-           f"1. Today we worked on ______________________________________________________________________________.<br/><br/>"
-           f"2. Our first key finding was that the {w0} ___________________________________________________________.<br/><br/>"
-           f"3. We also observed that the {w1} __________________________________________________________________.<br/><br/>"
-           f"4. Our final conclusion: _________________________________________________________________________!", "InstructionText")]
-    ]
-    t_mis = Table(mission_data, colWidths=[564])
-    t_mis.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,-1), c_purple_bg),
-        ('BOX', (0,0), (-1,-1), 0.75, c_purple_border),
-        ('TOPPADDING', (0,0), (-1,-1), 5),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 5),
-        ('LEFTPADDING', (0,0), (-1,-1), 8),
-        ('RIGHTPADDING', (0,0), (-1,-1), 8),
-    ]))
-    story.append(t_mis)
+    if m.get("role_a"):
+        role_a_text = m["role_a"]["task"].replace("\n", "<br/>")
+        if m.get("role_b"):
+            role_b_text = m["role_b"]["task"].replace("\n", "<br/>")
+            role_rows = [[
+                P(f"<b>{m['role_a']['role']}</b><br/>{role_a_text}", "InstructionText"),
+                P(f"<b>{m['role_b']['role']}</b><br/>{role_b_text}", "InstructionText")
+            ]]
+            t_roles = Table(role_rows, colWidths=[282, 282])
+            t_roles.setStyle(TableStyle([
+                ('BACKGROUND', (0,0), (0,0), c_blue_bg),
+                ('BACKGROUND', (1,0), (1,0), c_green_bg),
+                ('BOX', (0,0), (0,0), 0.75, c_blue_border),
+                ('BOX', (1,0), (1,0), 0.75, c_green),
+                ('VALIGN', (0,0), (-1,-1), 'TOP'),
+                ('TOPPADDING', (0,0), (-1,-1), 4),
+                ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+                ('LEFTPADDING', (0,0), (-1,-1), 5),
+                ('RIGHTPADDING', (0,0), (-1,-1), 5),
+            ]))
+        else:
+            role_rows = [[P(f"<b>{m['role_a']['role']}</b><br/>{role_a_text}", "InstructionText")]]
+            t_roles = Table(role_rows, colWidths=[564])
+            t_roles.setStyle(TableStyle([
+                ('BACKGROUND', (0,0), (-1,-1), c_card_bg),
+                ('BOX', (0,0), (-1,-1), 0.75, c_border),
+                ('TOPPADDING', (0,0), (-1,-1), 4),
+                ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+                ('LEFTPADDING', (0,0), (-1,-1), 5),
+                ('RIGHTPADDING', (0,0), (-1,-1), 5),
+            ]))
+        story.append(t_roles)
     story.append(Spacer(1, 3))
+
+    if m.get("dialogue"):
+        story.append(P("<b>Model Dialogue:</b>", "BoldText"))
+        for speaker, text in m["dialogue"]:
+            story.append(P(f"<b>{speaker}:</b> \"{text}\"", "DialogueLine"))
+        story.append(Spacer(1, 3))
 
     # STAGE 5: PEER REVIEW & FORMATIVE RUBRIC
     s5_banner = Table([[P("<b>STAGE 5: PEER REVIEW CHECK & OFFICIAL MEDUCA FORMATIVE RUBRIC</b>", "StageBanner")]], colWidths=[564])
@@ -462,13 +499,20 @@ def build_single_aoa_pdf(out_pdf, grade_name, cefr, sc_num, sc_name, theme_num, 
     story.append(t_peer)
     story.append(Spacer(1, 2))
 
-    # Formative rubric
+    # Formative rubric — differentiated by CEFR archetype from ctx
     rubric_cells = [
-        [P("<b>CRITERIA</b>", "CenterBold"), P("<b>3 · EXEMPLARY (A)</b>", "CenterBold"), P("<b>2 · SATISFACTORY (B)</b>", "CenterBold"), P("<b>1 · IN PROGRESS (C)</b>", "CenterBold")],
-        [P(f"<b>1. {skill_name} Competence</b>", "BoldText"), P(f"Demonstrates fluent {skill_name.lower()} ability with high accuracy.", "InstructionText"), P(f"Participates well with minor hesitation or phonological slips.", "InstructionText"), P(f"Requires constant teacher scaffolding to complete {skill_name.lower()} tasks.", "InstructionText")],
-        [P("<b>2. Target Vocabulary</b>", "BoldText"), P("Accurately applies all target keywords from the scenario.", "InstructionText"), P("Applies 2-3 keywords correctly with minor slips.", "InstructionText"), P("Struggles to recall or recognize core keywords.", "InstructionText")],
-        [P("<b>3. Task Completion</b>", "BoldText"), P("Completes all 3 pages thoroughly with neatness and attention to detail.", "InstructionText"), P("Completes core sections with acceptable quality.", "InstructionText"), P("Leaves significant sections incomplete or unclear.", "InstructionText")]
+        [P("<b>CRITERIA</b>", "CenterBold"),
+         P("<b>3 · EXEMPLARY (A)</b>", "CenterBold"),
+         P("<b>2 · SATISFACTORY (B)</b>", "CenterBold"),
+         P("<b>1 · IN PROGRESS (C)</b>", "CenterBold")]
     ]
+    for rb in ctx["stage5_rubric"]:
+        rubric_cells.append([
+            P(f"<b>{rb['criteria']}</b>", "BoldText"),
+            P(rb["3"], "InstructionText"),
+            P(rb["2"], "InstructionText"),
+            P(rb["1"], "InstructionText"),
+        ])
     t_rub = Table(rubric_cells, colWidths=[114, 150, 150, 150])
     t_rub.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), c_navy),
@@ -501,15 +545,17 @@ def build_single_aoa_pdf(out_pdf, grade_name, cefr, sc_num, sc_name, theme_num, 
         "In Lesson #5 Mediation, you integrate all skills to showcase your 21st-Century Collaborative Project to the class!"
     )
 
-    refl_cells = [
-        [
-            P("<b>Student Self-Reflection:</b><br/>"
-              f"1. What did you enjoy most about today's {skill_name.lower()} activities? ________________________________<br/>"
-              f"2. Which keyword was easiest to master? ___________________________________________________________<br/>"
-              f"3. How will you use what you learned in real life? _________________________________________________", "InstructionText"),
-            P("<b>NEXT STEP PREVIEW:</b><br/>" + next_preview, "CenterText")
-        ]
-    ]
+    s6 = ctx["stage6_reflection"]
+    s6_prompt = s6["prompt"].replace("\n", "<br/>")
+    s6_check  = s6["self_check"].replace("\n", "<br/>")
+    refl_cells = [[
+        P(
+            "<b>Student Self-Reflection:</b><br/>" + s6_prompt
+            + "<br/><br/><b>Self-Check:</b><br/>" + s6_check,
+            "InstructionText"
+        ),
+        P(f"<b>NEXT STEP PREVIEW:</b><br/>{s6['next_preview']}", "CenterText")
+    ]]
     t_refl = Table(refl_cells, colWidths=[384, 180])
     t_refl.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (0,0), colors.white),

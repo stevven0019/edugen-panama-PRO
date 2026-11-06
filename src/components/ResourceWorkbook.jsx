@@ -536,10 +536,81 @@ Curriculum Details: ${JSON.stringify(currentScenario).slice(0, 2500)}`
           </button>
         </div>
 
+        {/* Pre-A1 Foundational Learning Suite Quick-Access Showcase */}
+        <div className="my-5 p-5 rounded-3xl bg-gradient-to-br from-indigo-900 via-indigo-800 to-purple-900 text-white shadow-xl shadow-indigo-500/10 border border-indigo-700/50 relative overflow-hidden">
+          <div className="absolute -right-8 -top-8 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="space-y-1.5 max-w-2xl">
+              <div className="flex items-center gap-2">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-amber-400 text-amber-950 shadow-sm">
+                  ⭐ Suite Oficial Pre-A1 Completa
+                </span>
+                <span className="text-[11px] font-bold text-indigo-200">
+                  Pre-K · Kinder · 1° Grado · 2° Grado
+                </span>
+              </div>
+              <h3 className="text-lg md:text-xl font-black text-white">
+                320 Cuadernillos AOA Imprimibles & 4 Laboratorios Interactivos
+              </h3>
+              <p className="text-xs text-indigo-200 leading-relaxed">
+                Accede a los 8 escenarios oficiales, 16 temas y las 5 lecciones secuenciales (Listening, Reading, Speaking, Writing, Mediation) con ilustraciones reales, sentence frames y planes docentes listos.
+              </p>
+            </div>
+            <div className="flex flex-wrap md:flex-col items-stretch gap-2 w-full md:w-auto flex-shrink-0">
+              <a
+                href="/pre_a1_master_hub.html"
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2.5 rounded-xl bg-white text-indigo-950 font-black text-xs hover:bg-indigo-50 active:scale-95 transition text-center shadow-md flex items-center justify-center gap-2"
+              >
+                <span>🌟</span> Abrir Portal Master Pre-A1
+              </a>
+              <div className="grid grid-cols-4 gap-1.5 w-full">
+                <a
+                  href="/prek_interactive_adventure.html"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-2 py-1.5 rounded-lg bg-pink-500/30 hover:bg-pink-500/50 border border-pink-400/40 text-[10px] font-bold text-pink-100 text-center transition"
+                  title="Laboratorio Interactivo Pre-Kinder (Pre-A1.1)"
+                >
+                  🧸 Pre-K
+                </a>
+                <a
+                  href="/kinder_interactive_adventure.html"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-2 py-1.5 rounded-lg bg-cyan-500/30 hover:bg-cyan-500/50 border border-cyan-400/40 text-[10px] font-bold text-cyan-100 text-center transition"
+                  title="Laboratorio Interactivo Kinder (Pre-A1.2)"
+                >
+                  🎨 Kinder
+                </a>
+                <a
+                  href="/grade1_interactive_adventure.html"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-2 py-1.5 rounded-lg bg-emerald-500/30 hover:bg-emerald-500/50 border border-emerald-400/40 text-[10px] font-bold text-emerald-100 text-center transition"
+                  title="Laboratorio Interactivo 1° Grado (Pre-A1.3)"
+                >
+                  🎒 1° Grado
+                </a>
+                <a
+                  href="/grade2_interactive_adventure.html"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-2 py-1.5 rounded-lg bg-purple-500/30 hover:bg-purple-500/50 border border-purple-400/40 text-[10px] font-bold text-purple-100 text-center transition"
+                  title="Laboratorio Interactivo 2° Grado (Pre-A1.4)"
+                >
+                  🚀 2° Grado
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {!initialPack && !pack && (
           <div className="space-y-4 my-5">
             <p className="text-sm text-slate-600 dark:text-slate-300">
-              Genera un cuaderno de actividades auténtico con ilustraciones nítidas, diálogos, tablas, guías para el docente (scripts de audio) y rúbricas formativas según el enfoque AOA de Panamá.
+              O genera un cuaderno de actividades personalizado con ilustraciones nítidas, diálogos, tablas, guías para el docente (scripts de audio) y rúbricas formativas según el enfoque AOA de Panamá.
             </p>
 
             <label className="block">

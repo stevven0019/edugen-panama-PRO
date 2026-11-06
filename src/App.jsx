@@ -35,6 +35,11 @@ import PublicLanding from './pages/PublicLanding';
 import Blog from './pages/Blog';
 import LegalPages from './pages/LegalPages';
 import AcademicLibrary from './pages/AcademicLibrary';
+import NotFound from './pages/NotFound';
+
+// Peter Lead 20-Point Growth & Conversion Components
+import CookieConsentBanner from './components/CookieConsentBanner';
+import WhatsAppButton from './components/WhatsAppButton';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -337,6 +342,14 @@ export default function App() {
           />
         )}
 
+        {publicTab === 'not-found' && (
+          <NotFound onGoHome={() => setPublicTab('landing')} />
+        )}
+
+        {/* Global Floating Elements: Cookie Consent & WhatsApp Contact */}
+        <CookieConsentBanner onOpenPrivacy={() => setPublicTab('privacy')} />
+        <WhatsAppButton phoneNumber="50760000000" defaultMessage="¡Hola EduGen Panamá! Me gustaría consultar sobre la suscripción Pro y planificadores AOA." />
+
         {/* Dynamic Auth Modal Overlay */}
         {showAuthModal && (
           <div 
@@ -632,6 +645,9 @@ export default function App() {
               onLoginClick={() => {}}
             />
           )}
+          {activeTab === 'not-found' && (
+            <NotFound onGoHome={() => setActiveTab('dashboard')} />
+          )}
         </main>
         
         {/* Global Footer Ad banner */}
@@ -787,6 +803,9 @@ export default function App() {
         type={alertType} 
         onClose={() => setAlertOpen(false)} 
       />
+
+      {/* Floating WhatsApp Quick Support (Authenticated) */}
+      <WhatsAppButton phoneNumber="50760000000" defaultMessage="¡Hola EduGen Panamá! Soy docente y necesito asistencia con mi cuenta o planificadores AOA." />
 
       {/* Floating AI English Panama Chat Assistant (Accessible across all tabs & views) */}
       <AIChatAssistant />

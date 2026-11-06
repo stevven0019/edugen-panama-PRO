@@ -30,6 +30,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
   const [commSchool, setCommSchool] = useState('');
   const [commRegion, setCommRegion] = useState('');
   const [commText, setCommText] = useState('');
+  const [commHoneypot, setCommHoneypot] = useState(''); // Anti-spam honeypot
   const [submittingComment, setSubmittingComment] = useState(false);
 
   // Poll state
@@ -67,6 +68,14 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
+    // Anti-spam check: if honeypot is filled, discard silently
+    if (commHoneypot) {
+      setCommName('');
+      setCommSchool('');
+      setCommRegion('');
+      setCommText('');
+      return;
+    }
     if (!commName || !commSchool || !commRegion || !commText) {
       alert("Por favor completa todos los campos para enviar tu comentario.");
       return;
@@ -183,22 +192,16 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <button 
             onClick={onLoginClick}
-            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-2xl text-xs font-bold tracking-wide shadow-xl shadow-blue-500/25 active:scale-98 transition flex items-center justify-center gap-2"
+            className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-9 py-4 rounded-2xl text-sm font-extrabold tracking-wide shadow-xl shadow-blue-500/30 hover:scale-102 active:scale-98 transition-all flex items-center justify-center gap-2.5 cursor-pointer ring-4 ring-blue-500/10"
           >
-            <span>Comenzar Gratis</span>
+            <span>Comenzar a Planificar Gratis</span>
             <ArrowRight className="w-4 h-4" />
           </button>
           <button 
             onClick={() => setPublicTab('academic-library')}
-            className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3.5 rounded-2xl text-xs font-bold tracking-wide shadow-lg shadow-emerald-500/20 active:scale-98 transition flex items-center justify-center gap-2"
+            className="w-full sm:w-auto glass-panel hover:bg-slate-100/70 dark:hover:bg-slate-800/70 text-slate-700 dark:text-slate-200 px-7 py-3.5 rounded-2xl text-xs font-bold tracking-wide transition border border-slate-200 dark:border-slate-800 flex items-center justify-center gap-2 cursor-pointer"
           >
-            <span>📚 Biblioteca Académica (Pre-K a 12º)</span>
-          </button>
-          <button 
-            onClick={() => setPublicTab('blog')}
-            className="w-full sm:w-auto glass-panel hover:bg-slate-100/50 dark:hover:bg-slate-800/50 px-8 py-3.5 rounded-2xl text-xs font-bold tracking-wide transition border border-slate-200 dark:border-slate-800 flex items-center justify-center gap-2"
-          >
-            <span>Ver Blog Educativo</span>
+            <span>📚 Explorar 112 Posters MEDUCA</span>
           </button>
         </div>
 
@@ -726,6 +729,20 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
                     </select>
                   </div>
                 </div>
+              </div>
+
+              {/* Anti-spam hidden honeypot field */}
+              <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                <label htmlFor="website_hp">No llenar si eres humano:</label>
+                <input
+                  type="text"
+                  id="website_hp"
+                  name="website_hp"
+                  tabIndex="-1"
+                  autoComplete="off"
+                  value={commHoneypot}
+                  onChange={(e) => setCommHoneypot(e.target.value)}
+                />
               </div>
 
               <div className="space-y-1">
