@@ -20,8 +20,16 @@ import {
 } from 'lucide-react';
 import AdBanner from '../components/AdBanner';
 import { databaseService } from '../services/firebase';
+import { usePageSEO } from '../services/seo';
 
 export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedArticleId }) {
+  usePageSEO({
+    title: 'EduGen Panamá | Generador de Planificaciones Didácticas MEDUCA con IA',
+    description: 'Crea planificaciones didácticas oficiales MEDUCA en segundos con Inteligencia Artificial. Currículo de Pre-K a 12º grado, Enfoque AOA, secuencias didácticas y 112 afiches de aula.',
+    path: '/',
+    keywords: 'planificaciones meduca, meduca panama, secuencias didacticas, curriculo ingles panama, planificacion didactica docente'
+  });
+
   const [comments, setComments] = useState([]);
   const [loadingComments, setLoadingComments] = useState(true);
   
@@ -306,9 +314,9 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
               </div>
               <div className="p-4 flex-grow flex flex-col justify-between">
                 <div className="space-y-2">
-                  <h4 className="font-extrabold text-[11px] text-slate-800 dark:text-slate-100 leading-snug tracking-tight line-clamp-2 min-h-[2.5rem]">
+                  <h3 className="font-extrabold text-[11px] text-slate-800 dark:text-slate-100 leading-snug tracking-tight line-clamp-2 min-h-[2.5rem]">
                     {guide.title}
-                  </h4>
+                  </h3>
                   <p className="text-[10px] text-slate-500 dark:text-slate-450 leading-relaxed line-clamp-3">
                     {guide.desc}
                   </p>
@@ -390,7 +398,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
         </div>
         <div className="lg:col-span-5 px-6 pb-6 lg:pb-0 flex justify-center">
           <div className="glass-panel p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl max-w-sm w-full space-y-4">
-            <h4 className="font-extrabold text-sm text-slate-800 dark:text-slate-100 flex items-center gap-1.5"><GraduationCap className="w-5 h-5 text-blue-500" /> Niveles Curriculares</h4>
+            <h3 className="font-extrabold text-sm text-slate-800 dark:text-slate-100 flex items-center gap-1.5"><GraduationCap className="w-5 h-5 text-blue-500" /> Niveles Curriculares</h3>
             <div className="space-y-2.5 text-xs">
               <div className="flex justify-between items-center p-2 rounded-xl bg-slate-50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-800">
                 <span className="font-bold">Pre-K a 2do</span>
@@ -589,7 +597,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
                 </div>
               ) : (
                 <div className="space-y-4 animate-fade-in bg-white/40 dark:bg-slate-955/20 p-5 rounded-2xl border border-slate-200/60 dark:border-slate-850/40">
-                  <h4 className="text-xs font-black uppercase text-indigo-500 dark:text-indigo-400 tracking-wider">Resultados en tiempo real</h4>
+                  <p className="text-xs font-black uppercase text-indigo-500 dark:text-indigo-400 tracking-wider">Resultados en tiempo real</p>
                   
                   <div className="space-y-1.5 text-xs">
                     <div className="flex justify-between font-bold text-slate-700 dark:text-slate-300">
@@ -665,9 +673,9 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
 
             {/* Formulario de Comentarios */}
             <form onSubmit={handleCommentSubmit} className="glass-panel p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 space-y-4">
-              <h4 className="text-xs font-black uppercase text-blue-600 dark:text-blue-400 tracking-wider flex items-center gap-1.5 font-display">
+              <span className="text-xs font-black uppercase text-blue-600 dark:text-blue-400 tracking-wider flex items-center gap-1.5 font-display">
                 <Plus className="w-4 h-4" /> Dejar un comentario
-              </h4>
+              </span>
               
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="space-y-1">
@@ -801,9 +809,9 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
                         {comm.name ? comm.name.charAt(0) : 'D'}
                       </div>
                       <div>
-                        <h4 className="font-extrabold text-[11px] text-slate-800 dark:text-slate-100 leading-tight">
+                        <p className="font-extrabold text-[11px] text-slate-800 dark:text-slate-100 leading-tight">
                           {comm.name}
-                        </h4>
+                        </p>
                         <p className="text-[9px] text-slate-450 dark:text-slate-500 font-semibold mt-0.5 leading-snug">
                           {comm.school} • <span className="text-blue-550 dark:text-blue-400 font-bold">{comm.region}</span>
                         </p>
@@ -917,7 +925,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
           </div>
 
           <div className="space-y-3">
-            <h4 className="text-[10px] font-black uppercase text-slate-400 dark:text-slate-500 tracking-wider">Publicaciones y Guías</h4>
+            <span className="text-[10px] font-black uppercase text-slate-400 dark:text-slate-500 tracking-wider block">Publicaciones y Guías</span>
             <ul className="text-xs space-y-2 text-slate-600 dark:text-slate-400">
               <li><button onClick={() => setPublicTab('blog')} className="hover:text-blue-500 transition">Blog Educativo</button></li>
               <li><button onClick={() => setPublicTab('landing')} className="hover:text-blue-500 transition">Estándares del Currículo</button></li>
@@ -925,7 +933,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
           </div>
 
           <div className="space-y-3">
-            <h4 className="text-[10px] font-black uppercase text-slate-400 dark:text-slate-500 tracking-wider">Enlaces Legales</h4>
+            <span className="text-[10px] font-black uppercase text-slate-400 dark:text-slate-500 tracking-wider block">Enlaces Legales</span>
             <ul className="text-xs space-y-2 text-slate-600 dark:text-slate-400">
               <li><button onClick={() => setPublicTab('privacy')} className="hover:text-blue-500 transition">Política de Privacidad</button></li>
               <li><button onClick={() => setPublicTab('terms')} className="hover:text-blue-500 transition">Términos de Servicio</button></li>

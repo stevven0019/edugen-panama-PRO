@@ -63,6 +63,50 @@ export default function App() {
   const [selectedArticleId, setSelectedArticleId] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
 
+  // Sync Public Portal URL & History (SEO & Crawlability)
+  const navigatePublicTab = (tab) => {
+    setPublicTab(tab);
+    const routeMap = {
+      landing: '/',
+      blog: '/blog',
+      'academic-library': '/biblioteca',
+      privacy: '/privacidad',
+      terms: '/terminos',
+      about: '/contacto',
+      'not-found': '/404'
+    };
+    const targetUrl = routeMap[tab] || '/';
+    if (typeof window !== 'undefined' && window.location.pathname !== targetUrl) {
+      window.history.pushState({ tab }, '', targetUrl);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handleLocationChange = () => {
+      const path = window.location.pathname.toLowerCase();
+      if (path === '/biblioteca' || path === '/academic-library') {
+        setPublicTab('academic-library');
+      } else if (path === '/blog') {
+        setPublicTab('blog');
+      } else if (path === '/privacidad' || path === '/privacy') {
+        setPublicTab('privacy');
+      } else if (path === '/terminos' || path === '/terms') {
+        setPublicTab('terms');
+      } else if (path === '/about' || path === '/contacto') {
+        setPublicTab('about');
+      } else if (path === '/404') {
+        setPublicTab('not-found');
+      } else if (path === '/' || path === '') {
+        setPublicTab('landing');
+      }
+    };
+
+    handleLocationChange();
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
   // Global alert alert modal state
   const [alertOpen, setAlertOpen] = useState(false);
   const [alertMsg, setAlertMsg] = useState('');
@@ -313,7 +357,7 @@ export default function App() {
         {publicTab === 'landing' && (
           <PublicLanding 
             onLoginClick={() => setShowAuthModal(true)} 
-            setPublicTab={setPublicTab} 
+            setPublicTab={navigatePublicTab} 
             setSelectedArticleId={setSelectedArticleId} 
           />
         )}
@@ -322,14 +366,14 @@ export default function App() {
           <Blog 
             selectedArticleId={selectedArticleId} 
             setSelectedArticleId={setSelectedArticleId} 
-            setPublicTab={setPublicTab} 
+            setPublicTab={navigatePublicTab} 
             onLoginClick={() => setShowAuthModal(true)} 
           />
         )}
 
         {publicTab === 'academic-library' && (
           <AcademicLibrary 
-            setPublicTab={setPublicTab} 
+            setPublicTab={navigatePublicTab} 
             onLoginClick={() => setShowAuthModal(true)} 
           />
         )}
@@ -337,17 +381,17 @@ export default function App() {
         {(publicTab === 'privacy' || publicTab === 'terms' || publicTab === 'about') && (
           <LegalPages 
             defaultTab={publicTab} 
-            setPublicTab={setPublicTab} 
+            setPublicTab={navigatePublicTab} 
             onLoginClick={() => setShowAuthModal(true)} 
           />
         )}
 
         {publicTab === 'not-found' && (
-          <NotFound onGoHome={() => setPublicTab('landing')} />
+          <NotFound onGoHome={() => navigatePublicTab('landing')} />
         )}
 
         {/* Global Floating Elements: Cookie Consent & WhatsApp Contact */}
-        <CookieConsentBanner onOpenPrivacy={() => setPublicTab('privacy')} />
+        <CookieConsentBanner onOpenPrivacy={() => navigatePublicTab('privacy')} />
         <WhatsAppButton phoneNumber="50760000000" defaultMessage="¡Hola EduGen Panamá! Me gustaría consultar sobre la suscripción Pro y planificadores AOA." />
 
         {/* Dynamic Auth Modal Overlay */}

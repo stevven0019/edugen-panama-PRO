@@ -20,8 +20,16 @@ import {
 } from 'lucide-react';
 import { academicResources, academicCategories, academicGrades } from '../data/academicResources';
 import AdBanner from '../components/AdBanner';
+import { usePageSEO } from '../services/seo';
 
 export default function AcademicLibrary({ setPublicTab, onLoginClick, isEmbedded = false }) {
+  usePageSEO({
+    title: 'Biblioteca Curricular Oficial MEDUCA de Inglés (Pre-K a 12º)',
+    description: 'Descarga programas de estudio oficiales de inglés de Panamá (Pre-K a 12º grado), mallas curriculares MEDUCA, guías didácticas y recursos del marco CEFR.',
+    path: '/biblioteca',
+    keywords: 'programas ingles meduca, curriculo meduca panama, guias didacticas meduca, programas de estudio panama'
+  });
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todos los Recursos');
   const [selectedGrade, setSelectedGrade] = useState('Todos los Grados');
@@ -97,9 +105,9 @@ export default function AcademicLibrary({ setPublicTab, onLoginClick, isEmbedded
               <BookOpen className="w-3.5 h-3.5" />
               <span>CARPETA GOOGLE DRIVE MEDUCA 2026</span>
             </div>
-            <h3 className="text-xl font-extrabold font-display leading-tight">
+            <h2 className="text-xl font-extrabold font-display leading-tight">
               Carpeta Completa de Programas Curriculares (Pre-K a 12º)
-            </h3>
+            </h2>
             <p className="text-xs text-white/85 max-w-2xl leading-relaxed">
               Explora todos los expedientes, programas de estudio y guías didácticas oficiales guardados en la carpeta central de Google Drive.
             </p>
@@ -172,7 +180,7 @@ export default function AcademicLibrary({ setPublicTab, onLoginClick, isEmbedded
         {filteredResources.length === 0 ? (
           <div className="glass-panel p-12 rounded-3xl text-center border border-dashed border-slate-300 dark:border-slate-800 space-y-2">
             <BookOpen className="w-8 h-8 text-slate-400 mx-auto" />
-            <h4 className="font-bold text-sm text-slate-700 dark:text-slate-300">No se encontraron programas</h4>
+            <p className="font-bold text-sm text-slate-700 dark:text-slate-300">No se encontraron programas</p>
             <p className="text-xs text-slate-500">Intenta cambiando el filtro de grado o la palabra clave.</p>
           </div>
         ) : (

@@ -1,7 +1,13 @@
 import React from 'react';
 import { School, Home, ArrowLeft, Search, HelpCircle, FileQuestion } from 'lucide-react';
+import { usePageSEO } from '../services/seo';
 
 export default function NotFound({ onGoHome }) {
+  usePageSEO({
+    title: '404: Página no encontrada',
+    description: 'La página que estás buscando en EduGen Panamá no existe o ha sido movida.',
+    path: '/404'
+  });
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/10 via-slate-50 to-slate-100 dark:from-blue-950/20 dark:via-slate-950 dark:to-slate-950 text-slate-800 dark:text-slate-200 flex flex-col items-center justify-center p-4">
       <div className="max-w-md w-full text-center space-y-6">

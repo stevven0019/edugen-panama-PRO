@@ -118,9 +118,9 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
               className="w-12 h-12 rounded-2xl object-contain shadow-lg shadow-blue-500/25 border border-blue-400/20" 
             />
             <div>
-              <h1 className="font-extrabold font-display text-xl tracking-tight leading-none bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
+              <span className="font-extrabold font-display text-xl tracking-tight leading-none bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400 block">
                 EduGen Panama
-              </h1>
+              </span>
               <p className="text-[10px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider mt-1">
                 SaaS & PWA Edition v4.0
               </p>

@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { blogArticles } from '../data/blogArticles';
 import AdBanner from '../components/AdBanner';
+import { usePageSEO } from '../services/seo';
 
 // Custom lightweight Markdown/Text parser for zero-dependency rendering
 function renderContent(text) {
@@ -116,6 +117,15 @@ export default function Blog({ selectedArticleId, setSelectedArticleId, setPubli
   });
 
   const activeArticle = blogArticles.find(art => art.id === selectedArticleId);
+
+  usePageSEO({
+    title: activeArticle ? activeArticle.title : 'Blog Pedagógico MEDUCA & Enfoque AOA',
+    description: activeArticle 
+      ? activeArticle.summary 
+      : 'Guías didácticas, novedades curriculares MEDUCA, metodología AOA y recursos pedagógicos para la enseñanza de inglés en Panamá.',
+    path: activeArticle ? `/blog/${activeArticle.id}` : '/blog',
+    ogType: activeArticle ? 'article' : 'website'
+  });
   const relatedArticles = activeArticle 
     ? blogArticles.filter(art => art.category === activeArticle.category && art.id !== activeArticle.id).slice(0, 3)
     : [];

@@ -11,9 +11,28 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import AdBanner from '../components/AdBanner';
+import { usePageSEO } from '../services/seo';
 
 export default function LegalPages({ defaultTab = 'privacy', setPublicTab, onLoginClick }) {
   const [activeTab, setActiveTab] = useState(defaultTab);
+
+  const titles = {
+    privacy: 'Política de Privacidad',
+    terms: 'Términos de Servicio',
+    about: 'Quiénes Somos y Contacto Docente'
+  };
+
+  const descriptions = {
+    privacy: 'Conoce cómo protegemos tus datos, privacidad y el uso de cookies y tecnologías en EduGen Panamá.',
+    terms: 'Términos y condiciones de uso de la plataforma de planificación curricular EduGen Panamá.',
+    about: 'Conoce al equipo detrás de EduGen Panamá y ponte en contacto con nuestro equipo de soporte docente.'
+  };
+
+  usePageSEO({
+    title: titles[activeTab] || 'Información Legal',
+    description: descriptions[activeTab] || 'Información legal, términos y privacidad de EduGen Panamá.',
+    path: `/${activeTab}`
+  });
   
   // Contact Form states
   const [name, setName] = useState('');
@@ -128,10 +147,10 @@ export default function LegalPages({ defaultTab = 'privacy', setPublicTab, onLog
           
           {activeTab === 'privacy' && (
             <div className="space-y-6 text-xs text-slate-600 dark:text-slate-400 leading-relaxed text-justify">
-              <h2 className="text-xl font-extrabold text-slate-800 dark:text-slate-100 border-b border-slate-200/60 dark:border-slate-800/60 pb-3 flex items-center gap-2">
+              <h1 className="text-xl font-extrabold text-slate-800 dark:text-slate-100 border-b border-slate-200/60 dark:border-slate-800/60 pb-3 flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-blue-500" />
                 Política de Privacidad
-              </h2>
+              </h1>
               <p>Última actualización: 8 de Junio, 2026.</p>
               
               <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 mt-4">1. Recopilación de Información</h3>
@@ -161,10 +180,10 @@ export default function LegalPages({ defaultTab = 'privacy', setPublicTab, onLog
 
           {activeTab === 'terms' && (
             <div className="space-y-6 text-xs text-slate-600 dark:text-slate-400 leading-relaxed text-justify">
-              <h2 className="text-xl font-extrabold text-slate-800 dark:text-slate-100 border-b border-slate-200/60 dark:border-slate-800/60 pb-3 flex items-center gap-2">
+              <h1 className="text-xl font-extrabold text-slate-800 dark:text-slate-100 border-b border-slate-200/60 dark:border-slate-800/60 pb-3 flex items-center gap-2">
                 <FileText className="w-5 h-5 text-blue-500" />
                 Términos y Condiciones de Uso
-              </h2>
+              </h1>
               <p>Última actualización: 8 de Junio, 2026.</p>
 
               <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 mt-4">1. Aceptación de los Términos</h3>
@@ -195,10 +214,10 @@ export default function LegalPages({ defaultTab = 'privacy', setPublicTab, onLog
           {activeTab === 'about' && (
             <div className="space-y-8 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               <div className="space-y-4 text-justify">
-                <h2 className="text-xl font-extrabold text-slate-800 dark:text-slate-100 border-b border-slate-200/60 dark:border-slate-800/60 pb-3 flex items-center gap-2">
+                <h1 className="text-xl font-extrabold text-slate-800 dark:text-slate-100 border-b border-slate-200/60 dark:border-slate-800/60 pb-3 flex items-center gap-2">
                   <School className="w-5 h-5 text-blue-500" />
                   Quiénes Somos
-                </h2>
+                </h1>
                 <p>
                   **EduGen Panama** es un proyecto independiente impulsado por un equipo multidisciplinario de docentes de inglés panameños e ingenieros de software. Nuestro objetivo primordial es reducir la sobrecarga de papeleo administrativo que aqueja al magisterio docente, dotándoles de herramientas tecnológicas avanzadas adaptadas 100% a la realidad pedagógica y directrices de nuestro país.
                 </p>
@@ -218,7 +237,7 @@ export default function LegalPages({ defaultTab = 'privacy', setPublicTab, onLog
                     <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                       <div>
-                        <h4 className="font-extrabold text-xs">¡Mensaje Enviado con Éxito!</h4>
+                        <p className="font-extrabold text-xs">¡Mensaje Enviado con Éxito!</p>
                         <p className="text-[10px] mt-1 leading-snug">Gracias por escribirnos. Nuestro equipo de soporte responderá a tu correo electrónico en un lapso de 24 a 48 horas.</p>
                         <button onClick={() => setSent(false)} className="text-[10px] underline font-bold mt-2 hover:text-emerald-555">Enviar otro mensaje</button>
                       </div>
