@@ -21,8 +21,10 @@ export function usePageSEO({
       : 'EduGen Panamá | Generador de Planificaciones Didácticas MEDUCA con IA';
     document.title = fullTitle;
 
-    // 2. Canonical & Full URL
-    const baseDomain = 'https://edugenpanama.com';
+    // 2. Canonical & Full URL (Auto-syncs with actual hosting domain like vercel.app or custom domain)
+    const baseDomain = (typeof window !== 'undefined' && window.location.origin && !window.location.origin.includes('localhost'))
+      ? window.location.origin 
+      : 'https://edugen-panama-pro.vercel.app';
     const cleanPath = path ? (path.startsWith('/') ? path : `/${path}`) : '';
     const fullUrl = `${baseDomain}${cleanPath}`;
 
@@ -67,3 +69,4 @@ export function usePageSEO({
 
   }, [title, description, path, ogType, keywords]);
 }
+

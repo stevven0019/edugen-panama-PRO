@@ -16,7 +16,9 @@ import {
   MapPin,
   BarChart3,
   Plus,
-  HelpCircle
+  HelpCircle,
+  Sun,
+  Moon
 } from 'lucide-react';
 import AdBanner from '../components/AdBanner';
 import { databaseService } from '../services/firebase';
@@ -32,6 +34,26 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
 
   const [comments, setComments] = useState([]);
   const [loadingComments, setLoadingComments] = useState(true);
+
+  // Theme state for light / dark mode
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof document !== 'undefined') {
+      return document.documentElement.classList.contains('dark');
+    }
+    return false;
+  });
+
+  const toggleTheme = () => {
+    const nextDark = !isDark;
+    setIsDark(nextDark);
+    if (nextDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
   
   // Comment form state
   const [commName, setCommName] = useState('');
@@ -151,32 +173,44 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
   ];
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/10 via-slate-50 to-slate-100 dark:from-blue-950/20 dark:via-slate-950 dark:to-slate-950 text-slate-800 dark:text-slate-200 selection:bg-blue-500/20">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-600 selection:text-white">
       
       {/* Navigation Bar */}
-      <nav className="sticky top-0 z-40 w-full glass-panel border-b border-slate-200/60 dark:border-slate-800/40 bg-white/70 dark:bg-slate-950/70 backdrop-blur-md">
+      <nav className="sticky top-0 z-40 w-full border-b border-slate-200 dark:border-slate-800/80 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-2.5 cursor-pointer" onClick={() => setPublicTab('landing')}>
             <img src="/edugen-logo.png" alt="EduGen Panama" className="w-9 h-9 rounded-xl object-contain shadow-md shadow-blue-500/20" />
-            <span className="font-extrabold font-display text-sm tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
+            <span className="font-extrabold font-display text-base tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
               EduGen Panama
             </span>
           </div>
 
           <div className="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
-            <button onClick={() => setPublicTab('landing')} className="hover:text-blue-600 dark:hover:text-blue-400 transition">Inicio</button>
-            <button onClick={() => setPublicTab('academic-library')} className="hover:text-blue-600 dark:hover:text-blue-400 transition">Biblioteca Académica</button>
-            <button onClick={() => setPublicTab('blog')} className="hover:text-blue-600 dark:hover:text-blue-400 transition">Blog Educativo</button>
-            <button onClick={() => setPublicTab('about')} className="hover:text-blue-600 dark:hover:text-blue-400 transition">Quiénes Somos / Contacto</button>
+            <button onClick={() => setPublicTab('landing')} className="hover:text-blue-600 dark:hover:text-blue-400 transition cursor-pointer">Inicio</button>
+            <button onClick={() => setPublicTab('academic-library')} className="hover:text-blue-600 dark:hover:text-blue-400 transition cursor-pointer">Biblioteca Académica</button>
+            <button onClick={() => setPublicTab('blog')} className="hover:text-blue-600 dark:hover:text-blue-400 transition cursor-pointer">Blog Educativo</button>
+            <button onClick={() => setPublicTab('about')} className="hover:text-blue-600 dark:hover:text-blue-400 transition cursor-pointer">Quiénes Somos / Contacto</button>
           </div>
 
-          <button 
-            onClick={onLoginClick}
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold tracking-wide shadow-md hover:shadow-lg shadow-blue-500/20 active:scale-95 transition-all flex items-center gap-1.5"
-          >
-            <span>Ingresar al Portal</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          <div className="flex items-center space-x-3">
+            {/* Light / Dark Mode Toggle */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Cambiar tema de color"
+              title={isDark ? "Cambiar a modo día" : "Cambiar a modo noche"}
+              className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition active:scale-95 shadow-sm cursor-pointer"
+            >
+              {isDark ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4 text-indigo-600" />}
+            </button>
+
+            <button 
+              onClick={onLoginClick}
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold tracking-wide shadow-md hover:shadow-lg shadow-blue-500/20 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
+            >
+              <span>Ingresar al Portal</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -263,7 +297,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
             <BookOpen className="w-3.5 h-3.5" />
             <span>Guías Metodológicas Gratuitas para Docentes</span>
           </div>
-          <h2 className="text-3xl font-extrabold font-display tracking-tight text-slate-850 dark:text-slate-100">
+          <h2 className="text-3xl font-extrabold font-display tracking-tight text-slate-900 dark:text-white">
             Materiales Curriculares Destacados
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
@@ -428,7 +462,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
             <GraduationCap className="w-3.5 h-3.5" />
             <span>Guía Práctica del Docente</span>
           </div>
-          <h2 className="text-3xl font-extrabold font-display tracking-tight text-slate-850 dark:text-slate-100">
+          <h2 className="text-3xl font-extrabold font-display tracking-tight text-slate-900 dark:text-white">
             ¿Cómo usar nuestros Planificadores Inteligentes?
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
@@ -438,12 +472,12 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Tarjeta: Lesson Planner AOA */}
-          <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-5 flex flex-col justify-between hover:border-blue-500/30 transition-all duration-300">
+          <div className="glass-panel p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl space-y-5 flex flex-col justify-between hover:border-blue-500/40 transition-all duration-300">
             <div className="space-y-4">
               <div className="bg-blue-500/10 text-blue-500 p-3.5 rounded-2xl w-max">
                 <BookOpen className="w-6 h-6" />
               </div>
-              <h3 className="font-extrabold text-lg text-slate-850 dark:text-slate-100">
+              <h3 className="font-extrabold text-lg text-slate-900 dark:text-white">
                 Lesson Planner AOA (Diario)
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
@@ -470,12 +504,12 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
           </div>
 
           {/* Tarjeta: Theme Planner */}
-          <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-5 flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300">
+          <div className="glass-panel p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl space-y-5 flex flex-col justify-between hover:border-emerald-500/40 transition-all duration-300">
             <div className="space-y-4">
               <div className="bg-emerald-500/10 text-emerald-500 p-3.5 rounded-2xl w-max">
                 <Layers className="w-6 h-6" />
               </div>
-              <h3 className="font-extrabold text-lg text-slate-850 dark:text-slate-100">
+              <h3 className="font-extrabold text-lg text-slate-900 dark:text-white">
                 Theme Planner (Trimestral)
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
@@ -499,12 +533,12 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
           </div>
 
           {/* Tarjeta: Proyecto Interdisciplinario */}
-          <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-5 flex flex-col justify-between hover:border-purple-500/30 transition-all duration-300">
+          <div className="glass-panel p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl space-y-5 flex flex-col justify-between hover:border-purple-500/40 transition-all duration-300">
             <div className="space-y-4">
               <div className="bg-purple-500/10 text-purple-500 p-3.5 rounded-2xl w-max">
                 <Sparkles className="w-6 h-6" />
               </div>
-              <h3 className="font-extrabold text-lg text-slate-850 dark:text-slate-100">
+              <h3 className="font-extrabold text-lg text-slate-900 dark:text-white">
                 Proyecto Interdisciplinario
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
@@ -545,13 +579,13 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
           
           {/* LADO IZQUIERDO: Encuesta de Interés (5 columnas) */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="glass-panel p-6 sm:p-8 rounded-[2rem] bg-gradient-to-br from-blue-600/5 via-indigo-600/5 to-transparent border border-slate-250 dark:border-slate-800 shadow-xl space-y-6">
+            <div className="glass-panel p-6 sm:p-8 rounded-[2rem] bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-transparent border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
               <div className="space-y-2.5">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 text-[9px] font-black uppercase tracking-wider">
                   <BarChart3 className="w-3.5 h-3.5" />
                   Encuesta de la Comunidad
                 </span>
-                <h3 className="font-extrabold text-xl text-slate-850 dark:text-slate-100 leading-tight">
+                <h3 className="font-extrabold text-xl text-slate-900 dark:text-white leading-tight">
                   ¿Te interesaría adquirir una suscripción Premium en EduGen Panama PRO para planificar sin límites?
                 </h3>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
@@ -565,7 +599,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
                   <button 
                     onClick={() => handleVote('opt1')}
                     disabled={submittingVote}
-                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 hover:border-blue-500/35 dark:hover:border-blue-500/20 active:scale-[0.99] transition text-xs font-bold text-slate-700 dark:text-slate-350 cursor-pointer flex justify-between items-center"
+                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-blue-50/50 dark:hover:bg-slate-800/80 hover:border-blue-400 dark:hover:border-blue-500/40 active:scale-[0.99] transition text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm cursor-pointer flex justify-between items-center"
                   >
                     <span>Sí, definitivamente (Me ahorraría mucho tiempo)</span>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
@@ -573,7 +607,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
                   <button 
                     onClick={() => handleVote('opt2')}
                     disabled={submittingVote}
-                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 hover:border-blue-500/35 dark:hover:border-blue-500/20 active:scale-[0.99] transition text-xs font-bold text-slate-700 dark:text-slate-350 cursor-pointer flex justify-between items-center"
+                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-blue-50/50 dark:hover:bg-slate-800/80 hover:border-blue-400 dark:hover:border-blue-500/40 active:scale-[0.99] transition text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm cursor-pointer flex justify-between items-center"
                   >
                     <span>Sí, pero me gustaría ver más características</span>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
@@ -581,7 +615,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
                   <button 
                     onClick={() => handleVote('opt3')}
                     disabled={submittingVote}
-                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 hover:border-blue-500/35 dark:hover:border-blue-500/20 active:scale-[0.99] transition text-xs font-bold text-slate-700 dark:text-slate-350 cursor-pointer flex justify-between items-center"
+                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-blue-50/50 dark:hover:bg-slate-800/80 hover:border-blue-400 dark:hover:border-blue-500/40 active:scale-[0.99] transition text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm cursor-pointer flex justify-between items-center"
                   >
                     <span>Tal vez en el futuro</span>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
@@ -589,14 +623,14 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
                   <button 
                     onClick={() => handleVote('opt4')}
                     disabled={submittingVote}
-                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 hover:border-blue-500/35 dark:hover:border-blue-500/20 active:scale-[0.99] transition text-xs font-bold text-slate-700 dark:text-slate-350 cursor-pointer flex justify-between items-center"
+                    className="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-blue-50/50 dark:hover:bg-slate-800/80 hover:border-blue-400 dark:hover:border-blue-500/40 active:scale-[0.99] transition text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm cursor-pointer flex justify-between items-center"
                   >
                     <span>No por el momento</span>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
                   </button>
                 </div>
               ) : (
-                <div className="space-y-4 animate-fade-in bg-white/40 dark:bg-slate-955/20 p-5 rounded-2xl border border-slate-200/60 dark:border-slate-850/40">
+                <div className="space-y-4 animate-fade-in bg-white dark:bg-slate-900/80 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
                   <p className="text-xs font-black uppercase text-indigo-500 dark:text-indigo-400 tracking-wider">Resultados en tiempo real</p>
                   
                   <div className="space-y-1.5 text-xs">
@@ -662,7 +696,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
           {/* LADO DERECHO: Comentarios interactivos (7 columnas) */}
           <div className="lg:col-span-7 space-y-6">
             <div className="space-y-2">
-              <h2 className="text-2xl font-extrabold tracking-tight text-slate-850 dark:text-slate-100 flex items-center gap-2">
+              <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
                 <MessageSquare className="w-6 h-6 text-blue-600" />
                 Muro de Comentarios Docentes
               </h2>
@@ -833,7 +867,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Preguntas Frecuentes de la Comunidad</span>
           </div>
-          <h2 className="text-3xl font-extrabold font-display tracking-tight text-slate-850 dark:text-slate-100">
+          <h2 className="text-3xl font-extrabold font-display tracking-tight text-slate-900 dark:text-white">
             Resuelve tus dudas sobre la Planificación AOA y MEDUCA
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
@@ -844,7 +878,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           
           <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-3">
-            <h3 className="font-extrabold text-sm text-slate-850 dark:text-slate-100 flex items-center gap-2">
+            <h3 className="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
               <CheckCircle className="w-4 h-4 text-blue-500" />
               ¿Qué es el Enfoque Orientado a la Acción (AOA)?
             </h3>
@@ -854,7 +888,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
           </div>
 
           <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-3">
-            <h3 className="font-extrabold text-sm text-slate-850 dark:text-slate-100 flex items-center gap-2">
+            <h3 className="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
               <CheckCircle className="w-4 h-4 text-emerald-500" />
               ¿Los documentos de la Biblioteca Académica son oficiales?
             </h3>
@@ -864,7 +898,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
           </div>
 
           <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-3">
-            <h3 className="font-extrabold text-sm text-slate-850 dark:text-slate-100 flex items-center gap-2">
+            <h3 className="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
               <CheckCircle className="w-4 h-4 text-violet-500" />
               ¿Cómo se alinean los grados escolares con el MCER?
             </h3>
@@ -874,7 +908,7 @@ export default function PublicLanding({ onLoginClick, setPublicTab, setSelectedA
           </div>
 
           <div className="glass-panel p-6 rounded-3xl bg-white/50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 space-y-3">
-            <h3 className="font-extrabold text-sm text-slate-850 dark:text-slate-100 flex items-center gap-2">
+            <h3 className="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
               <CheckCircle className="w-4 h-4 text-amber-500" />
               ¿Cómo se financia y se muestran los anuncios?
             </h3>

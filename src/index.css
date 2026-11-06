@@ -5,46 +5,46 @@
 @tailwind utilities;
 
 :root {
-  /* Color Palette - Vibrant Indigo/Slate (Light Mode) */
+  /* Color Palette - Crisp Professional Educational SaaS (Light Mode) */
   --font-primary: 'Inter', sans-serif;
   --font-display: 'Outfit', sans-serif;
   
-  --bg-app: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  --bg-app: #f8fafc;
   --text-main: #0f172a;
-  --text-muted: #64748b;
+  --text-muted: #475569;
   
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(226, 232, 240, 0.8);
-  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+  --glass-bg: #ffffff;
+  --glass-border: #e2e8f0;
+  --glass-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.06);
   
-  --brand-primary: #3b82f6;
-  --brand-secondary: #8b5cf6;
+  --brand-primary: #2563eb;
+  --brand-secondary: #4f46e5;
   --accent-success: #10b981;
   --accent-pink: #ec4899;
 }
 
 .dark {
-  /* Color Palette - Cyberpunk Dark Slate */
-  --bg-app: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+  /* Color Palette - Modern Deep Slate (Dark Mode) */
+  --bg-app: #030712;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   
-  --glass-bg: rgba(15, 23, 42, 0.75);
-  --glass-border: rgba(51, 65, 85, 0.5);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-bg: rgba(15, 23, 42, 0.85);
+  --glass-border: rgba(51, 65, 85, 0.6);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
   
-  --brand-primary: #60a5fa;
-  --brand-secondary: #a78bfa;
+  --brand-primary: #3b82f6;
+  --brand-secondary: #818cf8;
   --accent-success: #34d399;
   --accent-pink: #f472b6;
 }
 
 body {
   font-family: var(--font-primary);
-  background: var(--bg-app);
+  background-color: var(--bg-app);
   color: var(--text-main);
   min-height: 100vh;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
   overflow-x: hidden;
 }
 
@@ -52,31 +52,43 @@ h1, h2, h3, h4, .font-display {
   font-family: var(--font-display);
 }
 
-/* Glassmorphism Styles */
+/* Glassmorphism Styles - Elevated & Clean */
 .glass-panel {
   background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-panel:hover {
-  border-color: rgba(96, 165, 250, 0.4);
+  border-color: rgba(37, 99, 235, 0.35);
 }
 
 .glass-input {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--glass-border);
-  color: var(--text-main);
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
   transition: all 0.2s ease;
 }
 
+.dark .glass-input {
+  background: rgba(15, 23, 42, 0.7);
+  border-color: rgba(51, 65, 85, 0.7);
+  color: #f8fafc;
+}
+
 .glass-input:focus {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: var(--brand-primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  background: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.dark .glass-input:focus {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
 }
 
 /* Active Skill Styles */

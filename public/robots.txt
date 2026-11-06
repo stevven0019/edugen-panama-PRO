@@ -1,8 +1,8 @@
-# Robots.txt for EduGen Panama PRO
 User-agent: *
 Allow: /
-Disallow: /admin
 Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
 
-Sitemap: https://edugenpanama.com/sitemap.xml
-
+# Sitemaps
+Sitemap: https://edugen-panama-pro.vercel.app/sitemap.xml
