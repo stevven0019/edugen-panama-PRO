@@ -6,7 +6,7 @@ import { composePoster, paperSize } from '../resources/posterLayout';
 import { classroomPosterHtml } from '../resources/classroomPoster';
 import { scenarioPoster } from '../resources/scenarioPoster';
 import { linguisticPosterStudioHtml } from '../resources/linguisticPosterStudioHtml';
-import { getGradeDriveUrl } from '../data/gradeDrivePosters';
+import { getGradeDriveUrl, getScenarioPosterLinks } from '../data/gradeDrivePosters';
 
 export default function ScenarioPoster({ grade, scenario, index, ready, user, credits, isPremium, cefr = '', allScenarios = [] }) {
   const [poster, setPoster] = useState(null);
@@ -228,15 +228,21 @@ export default function ScenarioPoster({ grade, scenario, index, ready, user, cr
               </div>
 
               <div className="flex items-center gap-2">
-                <a
-                  href={getGradeDriveUrl(grade)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Descargar póster en alta resolución y formatos de imprenta en Google Drive"
-                  className="bg-amber-500 hover:bg-amber-600 text-white text-xs font-extrabold px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm cursor-pointer"
-                >
-                  <span>📁</span> Ver en Drive
-                </a>
+                {(() => {
+                  const scLinks = getScenarioPosterLinks(grade, (index ?? 0) + 1);
+                  const targetUrl = scLinks?.pdf?.viewUrl || scLinks?.png?.viewUrl || getGradeDriveUrl(grade);
+                  return (
+                    <a
+                      href={targetUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={scLinks?.pdf ? `Abrir archivo exclusivo ${scLinks.pdf.filename} en Google Drive` : "Ver en Google Drive"}
+                      className="bg-amber-500 hover:bg-amber-600 text-white text-xs font-extrabold px-3 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm cursor-pointer"
+                    >
+                      <span>📁</span> {scLinks?.pdf ? 'Póster en Drive' : 'Ver en Drive'}
+                    </a>
+                  );
+                })()}
                 <button
                   onClick={handleOpenStudio}
                   title="Abrir estudio completo en pestaña independiente"

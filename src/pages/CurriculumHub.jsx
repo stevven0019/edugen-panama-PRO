@@ -26,7 +26,7 @@ import {
 import { classroomPosterHtml } from '../resources/classroomPoster';
 import { linguisticPosterStudioHtml } from '../resources/linguisticPosterStudioHtml';
 import { downloadThemePlannerDoc } from '../services/themePlannerGenerator';
-import { getGradeDriveUrl, MAIN_POSTERS_DRIVE_URL } from '../data/gradeDrivePosters';
+import { getGradeDriveUrl, getScenarioPosterLinks, MAIN_POSTERS_DRIVE_URL } from '../data/gradeDrivePosters';
 import AdBanner from '../components/AdBanner';
 
 const GRADES = [
@@ -525,6 +525,45 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                     </button>
                   </div>
 
+                  {/* Individual Exclusive Google Drive Poster Links */}
+                  {(() => {
+                    const scLinks = getScenarioPosterLinks(currentGradeConfig.id, sc.index + 1);
+                    if (!scLinks?.pdf && !scLinks?.png) return null;
+                    return (
+                      <div className="pt-1.5 pb-0.5 px-1 flex items-center justify-between gap-1 border-t border-slate-100 dark:border-slate-800 text-[9px]">
+                        <span className="font-extrabold text-slate-400 dark:text-slate-500">Póster en Drive:</span>
+                        <div className="flex items-center gap-1.5">
+                          {scLinks?.pdf && (
+                            <a
+                              href={scLinks.pdf.viewUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              title={`Abrir PDF exclusivo de ${sc.title} en Google Drive`}
+                              className="px-2 py-0.5 rounded-lg bg-red-50 dark:bg-red-950/40 hover:bg-red-100 text-red-600 dark:text-red-400 font-black flex items-center gap-1 transition cursor-pointer"
+                            >
+                              <span>PDF</span>
+                              <ExternalLink className="w-2.5 h-2.5 opacity-80" />
+                            </a>
+                          )}
+                          {scLinks?.png && (
+                            <a
+                              href={scLinks.png.viewUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              title={`Abrir imagen PNG 4K exclusiva de ${sc.title} en Google Drive`}
+                              className="px-2 py-0.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 hover:bg-amber-100 text-amber-600 dark:text-amber-400 font-black flex items-center gap-1 transition cursor-pointer"
+                            >
+                              <span>PNG</span>
+                              <ExternalLink className="w-2.5 h-2.5 opacity-80" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })()}
+
                   <button
                     onClick={() => {
                       setActiveScenario(sc);
@@ -810,17 +849,40 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <a
-                        href={getGradeDriveUrl(currentGradeConfig.id)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition"
-                        title="Abrir y descargar pósters originales en PDF y PNG de alta resolución en Google Drive"
-                      >
-                        <FolderOpen className="w-3.5 h-3.5" />
-                        <span>Descargar PDF / HD (Drive)</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
+                      {(() => {
+                        const scLinks = getScenarioPosterLinks(currentGradeConfig.id, activeScenario.index + 1);
+                        return (
+                          <>
+                            {scLinks?.pdf && (
+                              <a
+                                href={scLinks.pdf.viewUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition"
+                                title={`Abrir ${scLinks.pdf.filename} en Google Drive`}
+                              >
+                                <FileText className="w-3.5 h-3.5" />
+                                <span>PDF en Drive</span>
+                                <ExternalLink className="w-3 h-3 opacity-90" />
+                              </a>
+                            )}
+
+                            {scLinks?.png && (
+                              <a
+                                href={scLinks.png.viewUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition"
+                                title={`Abrir ${scLinks.png.filename} (PNG 4K) en Google Drive`}
+                              >
+                                <Palette className="w-3.5 h-3.5" />
+                                <span>PNG 4K</span>
+                                <ExternalLink className="w-3 h-3 opacity-90" />
+                              </a>
+                            )}
+                          </>
+                        );
+                      })()}
 
                       <button
                         onClick={handlePrintPoster}
@@ -839,6 +901,33 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                       </button>
                     </div>
                   </div>
+
+                  {/* Individual Poster Notification Bar */}
+                  {(() => {
+                    const scLinks = getScenarioPosterLinks(currentGradeConfig.id, activeScenario.index + 1);
+                    if (!scLinks) return null;
+                    return (
+                      <div className="flex items-center justify-between flex-wrap gap-2 px-3.5 py-2 bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-950/40 dark:to-emerald-950/40 rounded-xl border border-teal-500/20 text-xs">
+                        <div className="flex items-center gap-2">
+                          <span className="font-black text-teal-800 dark:text-teal-300">Archivo Exclusivo del Escenario {activeScenario.index + 1}:</span>
+                          <span className="font-semibold text-slate-700 dark:text-slate-300">"{scLinks.title}"</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          {scLinks.pdf && (
+                            <a
+                              href={scLinks.pdf.viewUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[11px] font-extrabold text-red-600 dark:text-red-400 hover:underline flex items-center gap-1"
+                            >
+                              <span>Ver {scLinks.pdf.filename}</span>
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })()}
 
                   {/* Embedded Poster Iframe */}
                   <div className="w-full h-[520px] rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-white shadow-inner">
@@ -867,6 +956,58 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                       Cada lección cuenta con su paquete estructurado de fichas pedagógicas divididas en: <b>Engage</b> (activación auditiva/visual), <b>Explore</b> (ejercitación guiada) y <b>Extend/Evaluate</b> (producción personal y autoevaluación).
                     </p>
                   </div>
+
+                  {/* Individual Scenario Exclusive Poster & Resources Card */}
+                  {(() => {
+                    const scLinks = getScenarioPosterLinks(currentGradeConfig.id, activeScenario.index + 1);
+                    if (!scLinks) return null;
+                    return (
+                      <div className="p-4 rounded-2xl bg-gradient-to-r from-teal-500/10 via-emerald-500/10 to-blue-500/10 border border-teal-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-teal-600 text-white font-extrabold flex items-center justify-center shadow-md shadow-teal-500/20 shrink-0">
+                            <Palette className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <div className="inline-flex items-center gap-1 text-[10px] font-black uppercase text-teal-700 dark:text-teal-400">
+                              <span>Póster Oficial Exclusivo · Escenario {activeScenario.index + 1}</span>
+                            </div>
+                            <h5 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
+                              {scLinks.title}
+                            </h5>
+                            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                              Archivos de imprenta individuales listos para proyectar o colocar en el aula
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
+                          {scLinks.pdf && (
+                            <a
+                              href={scLinks.pdf.viewUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-red-600 hover:bg-red-700 text-white px-3.5 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
+                            >
+                              <FileText className="w-3.5 h-3.5" />
+                              <span>Ver PDF en Drive</span>
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                          {scLinks.png && (
+                            <a
+                              href={scLinks.png.viewUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-amber-500 hover:bg-amber-600 text-white px-3.5 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
+                            >
+                              <span>PNG 4K</span>
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })()}
 
                   {/* Google Drive Posters & Workbooks Card */}
                   <div className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shadow-sm">

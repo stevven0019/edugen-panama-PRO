@@ -1,3 +1,5 @@
+import individualPosterLinks from './individualPosterLinks.json';
+
 // Official Google Drive links for posters and workbooks
 export const MAIN_POSTERS_DRIVE_URL = "https://drive.google.com/drive/folders/1lEZYaHlLbXUxfINxoffyJdlHg8BggDaM?usp=drive_link";
 
@@ -79,8 +81,37 @@ export const GRADE_POSTERS_DRIVE_URLS = {
   }
 };
 
-export const getGradeDriveUrl = (gradeKey) => {
-  if (!gradeKey) return MAIN_POSTERS_DRIVE_URL;
-  return GRADE_POSTERS_DRIVE_URLS[gradeKey]?.url || MAIN_POSTERS_DRIVE_URL;
+export const normalizeGradeKey = (gradeKey) => {
+  if (!gradeKey) return '4th Grade';
+  const clean = String(gradeKey).trim();
+  if (clean === 'Pre-K' || clean === 'Pre-Kinder' || clean.toLowerCase() === 'prekínder' || clean.toLowerCase() === 'prekinder') {
+    return 'Prekinder';
+  }
+  if (clean.toLowerCase() === 'kínder' || clean.toLowerCase() === 'kinder') {
+    return 'Kinder';
+  }
+  // If e.g. "4° Grado" -> convert to "4th Grade"
+  const m = clean.match(/^(\d+)/);
+  if (m) {
+    const num = parseInt(m[1], 10);
+    const suffixes = { 1: '1st', 2: '2nd', 3: '3rd' };
+    const suffix = suffixes[num] || `${num}th`;
+    return `${suffix} Grade`;
+  }
+  return clean;
 };
 
+export const getGradeDriveUrl = (gradeKey) => {
+  if (!gradeKey) return MAIN_POSTERS_DRIVE_URL;
+  const norm = normalizeGradeKey(gradeKey);
+  return GRADE_POSTERS_DRIVE_URLS[norm]?.url || GRADE_POSTERS_DRIVE_URLS[gradeKey]?.url || MAIN_POSTERS_DRIVE_URL;
+};
+
+export const getScenarioPosterLinks = (gradeKey, scenarioNumber) => {
+  const norm = normalizeGradeKey(gradeKey);
+  const gradeData = individualPosterLinks[norm];
+  if (!gradeData) return null;
+  return gradeData[String(scenarioNumber)] || null;
+};
+
+export { individualPosterLinks };
