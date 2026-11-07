@@ -1,0 +1,156 @@
+﻿<div style="background-color: #1a5276; padding: 20px; text-align: center;">
+    <h1 style="color: white; margin: 0;">Lesson Planner – Theme # <span style="font-size: 0.8em; font-weight: normal;">(Insert Theme Number)</span> – Lesson # 1</h1>
+    <p style="color: white; margin: 5px 0 0 0;"><i>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</i></p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333; padding: 8px;"><b>Lesson #:</b> 1</td>
+        <td style="border: 1px dashed #333; padding: 8px;"><b>Skills Focus:</b> Listening</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333; padding: 8px;"><b>Grade:</b> 12th Grade (CEFR: B1.3)</td>
+        <td style="border: 1px dashed #333; padding: 8px;"><b>Scenario:</b> Robots on Earth and in Space</td>
+        <td style="border: 1px dashed #333; padding: 8px;"><b>Theme:</b> How Robots Are Used in Panama</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333; padding: 8px;"><b>Date(s):</b> From ___ to ___</td>
+        <td style="border: 1px dashed #333; padding: 8px;" colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333; padding: 8px;" colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Listening: Receptive: Evaluate spoken advertisements for bias and intent. Interactive: Participate in discussions on future innovations.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Listening: Can evaluate spoken advertisements about robotics in Panama for persuasive language, identifying bias (e.g., "The ad from the robotics fair uses terms like 'cutting-edge' and 'essential' to highlight how Panama's agricultural industry is adopting robotic technology to automate processes.")<br>Can participate in discussions on future tech, noting opinions (e.g., "The speaker supports the use of robots in space but doesn't mention any risks, like technical failures or ethical concerns.")<br>Can ask questions about the intent behind tech innovations (e.g., "What does the ad suggest about AI's impact on daily life?" "The ad suggests that AI will make daily tasks more efficient and ignores risks such as job displacement or privacy concerns.")</p>
+        </td>
+    </tr>
+</table>
+
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead style="background-color: #f2f2f2;">
+        <tr style="border: 1px dashed #333;">
+            <th style="border: 1px dashed #333; padding: 8px; width: 30%;">Stage & Description</th>
+            <th style="border: 1px dashed #333; padding: 8px; width: 50%;">Activities & Teacher Actions</th>
+            <th style="border: 1px dashed #333; padding: 8px; width: 20%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 1 — Warm-up / Pre-task</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher begins by showing short video clips (1-2 minutes each) of robots being used in different sectors in Panama, such as automated systems in agricultural fields (e.g., for harvesting) and medical facilities (e.g., for surgical assistance). Students watch the clips and listen to the teacher's guiding questions like, "What types of robots did you see?" and "How do you think these robots help people in Panama?" The teacher then introduces 8-10 key vocabulary words visually (e.g., on flashcards or a slide) and audibly: <i>robot, technology, automation, industry, agriculture, medicine, factory, program, control, sensor</i>.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher models the pronunciation of the new vocabulary words, paying special attention to the /r/ sound in "robot" and "program," and the /s/ sound in "sensor" and "system". The teacher also models the pronunciation of -ed endings for future reference, using examples like "programmed" (/d/) and "operated" (/ɪd/). The teacher explains the meaning of each word using simple definitions, synonyms, or visuals. For instance, for "automation," the teacher might say, "Automation means machines do tasks automatically, without much human help, like an automated factory line."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding using Concept Checking Questions.
+                <ul style="list-style-type: disc; padding-left: 20px; margin-top: 0; margin-bottom: 0;">
+                    <li style="margin-bottom: 4px; text-align: justify;">"If a process is automated, does a person do all the work, or does a machine do most of it?" (Expected answer: A machine does most of it.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Can a robot have a 'program' to follow instructions, or does it think on its own?" (Expected answer: It follows a program.)</li>
+                </ul></p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(5-7 min)</p>
+            </td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 2 — Presentation</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to Scenario: "Robots on Earth and in Space"</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> An authentic audio advertisement (approx. 2 minutes) for a fictional "Panama Robotics & Space Exploration Fair," highlighting new robotic applications in agriculture, medicine, and space research. The ad features persuasive language and mentions future impacts. It will also subtly include examples of the future perfect ("By 2030, robots will have transformed our lives"), passive voice ("Data is collected by remote sensors"), and zero conditional ("If robots are programmed, they perform with precision").</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> The student can evaluate spoken advertisements for bias and intent, and identify persuasive language used to promote technology.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                <ul style="list-style-type: disc; padding-left: 20px; margin-top: 0; margin-bottom: 0;">
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>First listening (Gist):</b> Students listen to the advertisement and answer: "What is the main purpose of this advertisement?" and "What three main areas of robotics does it mention?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Second listening (True/False & Specific Information):</b> Students listen again and complete True/False statements based on the ad's claims (e.g., "The ad suggests robots will reduce all human jobs." True/False). They also identify specific vocabulary words from the list used in the ad (e.g., <i>technology, industry, agriculture, control</i>).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Third listening (Identifying bias/persuasion):</b> Students listen once more, focusing on phrases used to persuade listeners. They note down positive adjectives or promises and discuss questions like: "What words does the ad use to make robots sound exciting and essential?" (e.g., 'cutting-edge,' 'revolutionary,' 'indispensable'). "Does the ad mention any potential challenges or negative impacts of robots?" (Expected answer: No.)</li>
+                </ul>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(10-12 min)</p>
+            </td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 3 — Preparation / Practice</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy focus on Listening</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Listening for specific information, recognizing grammatical structures (future perfect, passive voice, zero conditional), and applying new vocabulary (<i>robot, technology, automation, industry, agriculture, medicine, factory, machine, program, control, sensor</i>).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul style="list-style-type: decimal; padding-left: 20px; margin-top: 0; margin-bottom: 0;">
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Controlled practice (Gap-fill listening):</b> The teacher plays 3-4 short audio sentences or snippets from the advertisement, each containing a gap where one of the target vocabulary words (e.g., <i>automation, industry, sensor</i>) or a target grammar structure (passive voice, future perfect) should fit. Students listen and write down the missing word(s) or phrase. For example: "By 2030, artificial intelligence _________ our daily lives." (will have transformed). "Data _________ by robots for analysis." (is collected). "If a machine _________, it will perform tasks efficiently." (is programmed).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Semi-controlled practice (Listen and identify):</b> The teacher plays several short statements (2-3 sentences each) about robotics in different fields, some using persuasive language, some factual. Students listen and identify whether the statement uses: a) a persuasive term, b) the future perfect, c) the passive voice, or d) the zero conditional. For example, "This new robotic arm will have revolutionized surgical precision by next year." (Student identifies: future perfect, persuasive term). Or, "If robots are programmed correctly, they work without errors." (Student identifies: zero conditional).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pair interaction (Peer check & discussion):</b> In pairs, students discuss the statements they heard and their identifications. They take turns reading sentences the teacher provides, then their partner listens and confirms the identified grammar or vocabulary, asking "Why did you choose 'passive voice' for that sentence?" This encourages respectful dialogue. They can also ask each other: "How can robots help in daily life and industries?" and "Why might some people worry about the rise of robotics?"</li>
+                </ul>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(12-15 min)</p>
+            </td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 4 — Performance / Production</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students USE the language in a realistic scenario: "Robots on Earth and in Space"</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task format:</b> Group Discussion & Opinion Exchange.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Students work in small groups (3-4 students). The teacher plays two contrasting short audio clips (1 minute each). The first clip presents an optimistic view of robotics in Panama (e.g., "Robots will solve all labor challenges in agriculture"). The second clip presents a more cautious perspective (e.g., "The widespread use of robots could lead to job displacement and ethical concerns").</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b></p>
+                <ul style="list-style-type: disc; padding-left: 20px; margin-top: 0; margin-bottom: 0;">
+                    <li style="margin-bottom: 4px; text-align: justify;">After listening to both clips, each group discusses the two viewpoints, identifying any persuasive language or bias in each.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">They must identify who the speaker supports (e.g., "The first speaker supports using robots in agriculture, but doesn't mention the initial cost or training required.").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students take turns asking questions about the intent behind the innovations mentioned: "What does the first speaker suggest about AI's impact on daily life?" or "Does the second speaker offer any solutions to the problems they raise, or just worries?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Finally, each group shares their collective opinion about how robots are used in Panama, ensuring all viewpoints are considered, and offering potential solutions or considerations for the future. They should use vocabulary like <i>automation, industry, control, safety</i>, and grammar such as the future perfect (e.g., "By 2040, robots will have been fully integrated into Panamanian factories") and passive voice (e.g., "Solutions are needed to address job displacement").</li>
+                </ul>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(10-12 min)</p>
+            </td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 5 — Assessment / Post-task</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment strategy</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students participate in a whole-class discussion, where each group presents a summary of their previous discussion, highlighting one biased statement they identified and one question they asked about intent. The teacher observes individual contributions and group interaction.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria (Teacher Observation Checklist):</b></p>
+                <ul style="list-style-type: disc; padding-left: 20px; margin-top: 0; margin-bottom: 0;">
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Listening Comprehension:</b> Identifies persuasive language/bias in spoken advertisements.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Vocabulary Use:</b> Incorporates target vocabulary (e.g., <i>automation, industry, sensor, control</i>) appropriately during discussions.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pronunciation:</b> Clear pronunciation of /r/, /s/, and -ed endings for target words.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pragmatic Competence:</b> Participates in discussions respectfully, asking questions about intent.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar:</b> Attempts to use future perfect, passive voice, or zero conditional structures when discussing impacts or facts.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete the following prompts on a small slip of paper:</p>
+                <ul style="list-style-type: disc; padding-left: 20px; margin-top: 0; margin-bottom: 0;">
+                    <li style="margin-bottom: 4px; text-align: justify;">"One new thing I learned about listening for bias in advertisements is..."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"I found it easy/difficult to understand opinions about future tech because..."</li>
+                </ul>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(5-7 min)</p>
+            </td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 6 — Reflection</h3>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b></p>
+                <ul style="list-style-type: disc; padding-left: 20px; margin-top: 0; margin-bottom: 0;">
+                    <li style="margin-bottom: 4px; text-align: justify;">"How did identifying persuasive words help me understand the message of the advertisements today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What part of listening to discussions about robotics was most challenging, and why?"</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b> What worked well in this lesson for students to achieve the listening objective? The use of authentic audio ads and varied listening tasks (gist, specific, bias) effectively engaged students. The group discussion provided a strong platform for interactive listening and opinion sharing. What adjustments or scaffolds are needed for next lesson? I noticed some students struggled to articulate their questions about intent; I will provide sentence starters for questioning intent in the next lesson. We also need more practice with the pronunciation of -ed endings.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson:</b> In Lesson 2, students will encounter a reading text that uses the same vocabulary introduced today (<i>robot, technology, automation, industry, agriculture, medicine, factory, machine, program, control, sensor</i>) and further explores how robots are used in Panama. This will reinforce their understanding of the words in a different context, building upon the foundational listening skills practiced today.</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(5 min)</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

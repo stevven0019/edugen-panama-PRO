@@ -1,0 +1,171 @@
+﻿<div style="width: 100%; padding: 20px; text-align: center; background-color: #e0f2f7; border-bottom: 2px solid #1a5276;">
+    <h1 style="color: #1a5276; margin: 0;">Lesson Planner – Theme # ___ – Lesson # 2</h1>
+    <p style="color: #1a5276; font-size: 1.1em; margin-top: 5px;">Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333; padding: 8px;"><b style="color: #1a5276;">Lesson #:</b> 2</td>
+        <td style="border: 1px dashed #333; padding: 8px;"><b style="color: #1a5276;">Skills Focus:</b> Reading</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333; padding: 8px;"><b style="color: #1a5276;">Grade:</b> 11th Grade (CEFR: B1.2)</td>
+        <td style="border: 1px dashed #333; padding: 8px;"><b style="color: #1a5276;">Scenario:</b> Intelligent Robots</td>
+        <td style="border: 1px dashed #333; padding: 8px;"><b style="color: #1a5276;">Theme:</b> What is Artificial Intelligence?</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333; padding: 8px;"><b style="color: #1a5276;">Date(s):</b> From ___ to ___</td>
+        <td style="border: 1px dashed #333; padding: 8px;" colspan="2"><b style="color: #1a5276;">Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333; padding: 8px;" colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b style="color: #1a5276;">Specific Objective:</b> Reading: Recognize the writer's point of view in various texts. Reading: Comprehend detailed technical instructions.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b style="color: #1a5276;">Learning Outcome:</b> Reading: Can recognize a writer's viewpoint on AI in articles, noting positive or cautious perspectives (e.g., "The author is optimistic about AI's contribution to financial automation, such as Panama's advancements in fintech, but warns about job displacement in customer service roles.") Can comprehend technical instructions for AI software, explaining steps to peers (e.g., "The manual instructs users to set up an algorithm and test it with data.") Can summarize technical details for classmates, ensuring understanding of AI concepts (e.g., "The software learns from data inputs to improve its predictions.")</p>
+        </td>
+    </tr>
+</table>
+
+<h2 style="color: #1a5276; text-align: center; margin-top: 20px;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr style="background-color: #f0f8ff;">
+            <th style="border: 1px dashed #333; padding: 8px; color: #1a5276; width: 35%;">Stage & Description</th>
+            <th style="border: 1px dashed #333; padding: 8px; color: #1a5276; width: 50%;">Activities & Teacher Actions</th>
+            <th style="border: 1px dashed #333; padding: 8px; color: #1a5276; width: 15%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 1 — Warm-up / Pre-task</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher starts by displaying images of different types of robots (e.g., industrial robots, humanoid robots, AI assistants). Students discuss in pairs for two minutes: "What kind of tasks do you think these intelligent robots can perform today, and how might they evolve in the future?" Encourage them to use vocabulary like <i>advance, create, enhance, predict</i>. The teacher introduces the pronunciation focus by drawing attention to words like 'robot', 'job', and 'start' from the previous lesson's vocabulary, highlighting the long vowel sound /ɑː/. </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher models the pronunciation of /ɑː/ words from the previous lesson's vocabulary and new words related to the upcoming reading, such as "data" and "algorithms." The teacher reads a short predictive sentence, for example: "If AI continues to evolve, it might change the job market significantly," emphasizing the conditional form and relevant vocabulary. The teacher also highlights the stress patterns and reduced vowels in multisyllabic words like "innovative" and "technological" as they come up in the discussion, modeling correct pronunciation.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b>
+                    <ul style="list-style-type: disc; margin-left: 20px; padding: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;">"If I say 'robot', what sound do you hear in the middle? /ɑː/ or /ɒ/?" (Targeting pronunciation of /ɑː/).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"When we talk about what 'might' happen, are we 100% sure?" (Checking understanding of conditional forms related to predictions).</li>
+                    </ul>
+                </p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p>
+            </td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 2 — Presentation</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to Scenario: "Intelligent Robots".</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> Students receive a printed text (or digital link) comprising two short excerpts: an opinion piece titled "The Societal Impact of AI: Opportunities and Challenges" and a set of "Technical Guidelines for Setting Up an AI-Powered Customer Service Chatbot." The genre is journalistic article excerpt and technical instructions; the register is semi-formal to formal. Both texts incorporate previously learned vocabulary (e.g., <i>artificial intelligence, robots, technology, society, opportunities, challenges, job markets, employment, algorithms, data, software, customer service</i>) and introduce new terms such as <i>functionality, updates, improvements</i>.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Reading Comprehension. Students will interpret and analyze written information on a technical and societal topic (AI).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b> Students first skim the two texts to identify their main topic and purpose.
+                    <ul style="list-style-type: disc; margin-left: 20px; padding: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Question:</b> "Which text discusses opinions about AI's impact on people, and which one tells you how to use AI software?" (Teacher writes this on the board).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Matching:</b> Students match bolded words from the texts (e.g., <i>algorithms, functionality, updates</i>) to their simple definitions provided in a short matching exercise.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> Students answer 3-4 True/False questions based on the general content of both texts, e.g., "The first text states that AI will only create positive opportunities." (Focus on overall understanding before diving into details).</li>
+                    </ul>
+                </p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">10-12 min</p>
+            </td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 3 — Preparation / Practice</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy focus on Reading.</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Reading: Recognizing writer's point of view and comprehending technical instructions. Target grammar includes Conditional forms (e.g., "If AI continues to evolve..."), Future simple ("AI will create..."), Passive voice ("AI systems are programmed..."). Vocabulary includes <i>advance, evolve, revolutionize, adapt, create, enhance, personalize, integrate, prepare, learn, apply, improve, program, control, update, predict, enable, develop, establish, shift</i> (verbs); <i>intelligent, artificial, responsible, complex, societal, drastic, significant, evolving, future, revolutionary, personalized, controlled, passive, functional, enhanced, innovative, technological</i> (adjectives).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                    <ul style="list-style-type: disc; margin-left: 20px; padding: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice (Identifying Point of View & Technical Details):</b> Students re-read the opinion piece. They underline sentences that express the writer's positive or cautious perspectives on AI's societal impact. Afterwards, they read the technical guidelines and identify three sentences written in the passive voice that describe how AI systems are programmed or controlled. They then discuss with a partner how these sentences demonstrate the writer's viewpoint or provide specific instructions.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice (Sentence Completion & Grammar Focus):</b> The teacher provides sentence stems related to the texts, which students complete using target vocabulary and grammar. For example: "If AI systems ________ (evolve/advance), they ________ (will revolutionize/might change) certain job markets like customer service." Or, "AI software ________ (is programmed / will be updated) to ________ (learn / improve) its predictions." Students focus on using future simple, conditionals, and passive voice accurately.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction (Explaining Instructions):</b> In pairs, students take turns explaining one specific technical instruction from the "Technical Guidelines for Setting Up an AI-Powered Customer Service Chatbot" to their partner, using their own words. For instance, "First, the system needs to be initialized. This means..." or "If you want the chatbot to improve, data inputs must be continually provided." They practice using vocabulary like <i>functionality, systems, updates, improvements</i> and conditional structures to explain consequences of actions.</li>
+                    </ul>
+                </p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">15-18 min</p>
+            </td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 4 — Performance / Production</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students USE the language in a realistic scenario: "Intelligent Robots".</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Collaborative Summary and Explanation. Students work in groups of three. Each group receives a new, slightly more complex article excerpt about AI's application in a specific field (e.g., "AI in Healthcare: Ethical Considerations" or "Implementing Smart Home AI Systems"). The text will also contain a short set of accompanying technical "best practices" or "troubleshooting steps."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b>
+                    <ul style="list-style-type: disc; margin-left: 20px; padding: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>1. Read and Analyze:</b> Groups read the article excerpt and the technical instructions. They identify the writer's overall point of view (optimistic, cautious, neutral) on the AI application discussed in the article. They also identify the main steps or warnings in the technical guidelines.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>2. Summarize & Explain:</b> Each group collaboratively prepares a short written summary (5-7 sentences) that:
+                            <ul style="list-style-type: circle; margin-left: 20px; padding: 0;">
+                                <li style="margin-bottom: 4px; text-align: justify;">a) States the writer's point of view using phrases like, "The author appears [optimistic/cautious] about AI's contribution to..." and provides evidence from the text. (Sociolinguistic: discussing AI's societal role sensitively).</li>
+                                <li style="margin-bottom: 4px; text-align: justify;">b) Summarizes the key technical instructions or guidelines, explaining steps to peers (e.g., "The manual instructs users to set up an algorithm and test it with data. If problems arise, the software will require updates.")</li>
+                            </ul>
+                        </li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>3. Share:</b> Groups briefly present their findings to another group or the whole class. (Pragmatic: Sharing predictions about technology and asking about AI's future impact during Q&A).</li>
+                    </ul>
+                </p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">10 min</p>
+            </td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 5 — Assessment / Post-task</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment strategy.</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist during group work and a quick peer-assessment of the written summaries. The teacher monitors for appropriate use of target vocabulary, grammar (conditionals, future simple, passive voice), and accuracy in identifying viewpoints and summarizing instructions.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students submit their group's written summary. Each group also provides feedback on another group's summary using a simple checklist:</p>
+                <ul style="list-style-type: disc; margin-left: 20px; padding: 0;">
+                    <li style="margin-bottom: 4px; text-align: justify;">"Did they clearly state the writer's point of view?" (Yes/No/Partially)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Are the technical instructions accurately summarized?" (Yes/No/Partially)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Did they use at least 3 target vocabulary words related to AI?" (Yes/No)</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                    <ul style="list-style-type: disc; margin-left: 20px; padding: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;">Accuracy in recognizing the writer's point of view (50%)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Clarity and accuracy in comprehending and summarizing technical instructions (30%)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Appropriate use of target vocabulary (<i>artificial intelligence, robots, technology, society, opportunities, challenges, algorithms, data, software, functionality, systems, updates, improvements</i>) and grammatical structures (conditionals, future simple, passive voice) (20%)</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete the following prompts individually:
+                    <ul style="list-style-type: disc; margin-left: 20px; padding: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;">"One new thing I learned about reading articles on AI was..."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"I found it easy/challenging to (recognize the writer's point of view / understand technical instructions) because..."</li>
+                    </ul>
+                </p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">5 min</p>
+            </td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 6 — Reflection</h3>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b>
+                    <ul style="list-style-type: disc; margin-left: 20px; padding: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;">"How did identifying the writer's point of view help me better understand the topic of AI?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"In what real-life situation might I need to comprehend detailed technical instructions for a new piece of technology?"</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b> The reading comprehension activities seemed effective in helping students distinguish writer's viewpoints and technical instructions. The use of conditional forms and passive voice was present, but some students struggled with consistent accuracy in their summaries. The pronunciation practice of /ɑː/ and reduced vowels was integrated effectively through reading aloud and discussion. I should prepare more targeted exercises for the next lesson to reinforce these grammatical points in speaking. The group summaries provided good insight into their understanding.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> This lesson built a strong foundation in understanding AI concepts through reading. In Lesson 3 (Speaking & Interaction), students will actively discuss and debate the different viewpoints on AI's societal impact and potential future, utilizing the vocabulary and grammatical structures encountered today, particularly focusing on sharing predictions and thoughtful questions about technology in Panama.</p>
+            </td>
+            <td style="border: 1px dashed #333; padding: 8px;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">5 min</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

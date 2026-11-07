@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta charset="UTF-8">
+  <title>Theme Planner - 4th Grade - Scenario 5 - Theme 1</title>
+  <!--[if gte mso 9]>
+  <xml>
+    <w:WordDocument>
+      <w:View>Print</w:View>
+      <w:Zoom>100</w:Zoom>
+      <w:DoNotOptimizeForBrowser/>
+    </w:WordDocument>
+  </xml>
+  <![endif]-->
+  <style>
+    @page Section1 {
+      size: 8.5in 11.0in;
+      margin: 0.4in 0.4in 0.4in 0.4in;
+      mso-header-margin: 0.2in;
+      mso-footer-margin: 0.2in;
+      mso-paper-source: 0;
+    }
+    div.Section1 {
+      page: Section1;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: #1e293b;
+      line-height: 1.35;
+      margin: 0;
+      padding: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 6px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      mso-table-layout-alt: fixed;
+    }
+    th, td {
+      border: 1px solid #333333;
+      padding: 4px 6px;
+      vertical-align: top;
+      font-size: 11px;
+    }
+    .section-title {
+      background: #1a3a5c !important;
+      color: #ffffff !important;
+      font-weight: bold;
+      border: 1px solid #333333;
+      padding: 5px 8px;
+    }
+    p {
+      margin: 2px 0;
+    }
+    ul {
+      margin: 2px 0;
+      padding-left: 18px;
+    }
+    li {
+      margin-bottom: 2px;
+    }
+    b, strong {
+      color: #0f172a;
+    }
+    .section-title strong {
+      color: #ffffff !important;
+    }
+  </style>
+</head>
+<body>
+<div class="Section1">
+  <table style="width:100%; border-collapse:collapse; font-family:Arial; font-size:11px;">
+    <tbody>
+      <tr>
+        <td colspan="4" style="border:1px solid #333; padding:6px 10px; text-align:center;">
+          <p style="font-size:12px; margin:1px 0;"><strong>MINISTRY OF EDUCATION</strong></p>
+          <p style="font-size:11px; margin:1px 0;"><strong>REGIONAL EDUCATION DIRECTORATE OF PANAMÁ</strong></p>
+          <p style="font-size:11px; margin:1px 0;"><strong>OFICIAL MEDUCA SCHOOL</strong></p>
+          <p style="font-size:12px; margin:2px 0; color:#1a3a5c;"><strong>Theme Planner #1 — Action-Oriented Approach (AOA)</strong></p>
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <!-- 1. GENERAL INFORMATION -->
+      <tr>
+        <td colspan="4" class="section-title">1. GENERAL INFORMATION</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333; width:25%;"><strong>Teacher:</strong> Docente de Inglés MEDUCA</td>
+        <td style="border:1px solid #333; width:25%;"><strong>Grade:</strong> 4th Grade</td>
+        <td style="border:1px solid #333; width:25%;"><strong>CEFR Level:</strong> A1.2</td>
+        <td style="border:1px solid #333; width:25%;"><strong>Trimester:</strong> 2nd</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333;"><strong>Weekly Hours:</strong> 5</td>
+        <td style="border:1px solid #333;"><strong>Weeks:</strong> 2</td>
+        <td style="border:1px solid #333;"><strong>Scenario:</strong> A Trip to the Beach</td>
+        <td style="border:1px solid #333;"><strong>Theme:</strong> Let&#39;s Pack for a Trip.</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333;"><strong>Focus Type:</strong> Receptive (Listening/Reading focus)</td>
+        <td colspan="3" style="border:1px solid #333;"><strong>Target Skills:</strong> Listening, Reading, Speaking, Mediation, Writing</td>
+      </tr>
+
+      <!-- 2. STANDARDS & LEARNING OUTCOMES -->
+      <tr>
+        <td colspan="4" class="section-title">2. STANDARDS &amp; LEARNING OUTCOMES</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="border:1px solid #333; background:#e2e8f0; font-weight:bold;">Focus Skills</td>
+        <td colspan="2" style="border:1px solid #333; background:#e2e8f0; font-weight:bold;">Specific Standards</td>
+      </tr>
+      
+    <tr>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px; width:25%; font-weight:bold; background:#f8fafc;">Listening</td>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px;">Follow simple instructions for using classroom technology.</td>
+    </tr>
+  
+    <tr>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px; width:25%; font-weight:bold; background:#f8fafc;">Reading</td>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px;">Can extract general and specific information from short texts when they are supported with pictures.</td>
+    </tr>
+  
+    <tr>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px; width:25%; font-weight:bold; background:#f8fafc;">Speaking</td>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px;">Can describe basic events, personal experiences, feelings and opinions.</td>
+    </tr>
+  
+    <tr>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px; width:25%; font-weight:bold; background:#f8fafc;">Writing</td>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px;">Can write short texts on familiar topics, such as messages, instructions, or summaries, with clear organization and basic detail.</td>
+    </tr>
+  
+    <tr>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px; width:25%; font-weight:bold; background:#f8fafc;">Mediation</td>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px;">Can facilitate the communication process for peers, such as turn-taking.</td>
+    </tr>
+  
+
+      <!-- 3. COMMUNICATIVE COMPETENCES (Exact 4 Columns) -->
+      <tr>
+        <td colspan="4" class="section-title">3. COMMUNICATIVE COMPETENCES</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333; width:25%; background:#e2e8f0; font-weight:bold; vertical-align:top;">GRAMMATICAL COMPETENCES</td>
+        <td style="border:1px solid #333; width:25%; background:#e2e8f0; font-weight:bold; vertical-align:top;">LEXICAL/SEMANTIC COMPETENCES</td>
+        <td style="border:1px solid #333; width:25%; background:#e2e8f0; font-weight:bold; vertical-align:top;">PRAGMATIC/DISCURSIVE COMPETENCES</td>
+        <td style="border:1px solid #333; width:25%; background:#e2e8f0; font-weight:bold; vertical-align:top;">21ST CENTURY PROJECT</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333; width:25%; vertical-align:top;">
+          
+    <ul>
+      <li>1. Present simple in affirmative and question forms (e.g., &#39;I like to run.&#39; &#39;Do you like to swim?&#39;)</li><li>2. Imperatives (e.g., &#39;Please, bring your swimsuit.&#39;)</li><li>3. Going to (e.g., &#39;I am going to the beach this weekend.&#39;)</li>
+    </ul>
+  
+        </td>
+        <td style="border:1px solid #333; width:25%; vertical-align:top;">
+          <p style="margin:2px 0;"><strong>nouns:</strong> beach, towel, sunscreen, sand, shell, wave, bucket, picnic, sun, umbrella, swimsuit, beachgoer, cooler, beach ball, flip-flops, sun hat, floaties</p><p style="margin:2px 0;"><strong>verbs:</strong> swim, relax, build, collect, sunbathe, run, plan, bring, pack, forget</p><p style="margin:2px 0;"><strong>adjectives:</strong> sunny, sandy, fun, warm, cool</p><p style="margin:2px 0;"><strong>adverbsOfFrequency:</strong> every day, sometimes, always</p><p style="margin:2px 0;"><strong>questionWords:</strong> what, where, when</p><p style="margin:4px 0 2px 0;"><strong>Pronunciation and Phonemic Awareness:</strong></p><ul><li><b>sounds:</b> /b/ in &#39;beach&#39; and /p/ in &#39;pack&#39;</li><li><b>phonemicAwareness:</b> Spelling one-syllable or two-syllable words using alphabet knowledge related to trip planning (e.g., &#39;beach,&#39; &#39;sandals,&#39; &#39;fun&#39;) and blending spoken simple onsets and rhymes to form one- or two-syllable words related to the scenario (e.g., /p/ /æk/ in &#39;pack,&#39; /s/ /ændi/ in &#39;sandy&#39;)</li></ul>
+        </td>
+        <td style="border:1px solid #333; width:25%; vertical-align:top;">
+          <p style="margin:2px 0;"><strong>Pragmatic Competences (Communicative Functions):</strong></p><ul><li>Describing trips: &#39;I always pack lunch for the trip.&#39;</li><li>Describing routines: &#39;We go to the beach every Saturday.&#39;</li></ul><p style="margin:4px 0 2px 0;"><strong>Sociolinguistic Competences:</strong></p><ul><li>Giving instructions politely: Communicating instructions politely when using imperative forms (e.g., &#39;Please pack a swimsuit and a pair of sandals.&#39;).</li></ul>
+        </td>
+        <td style="border:1px solid #333; width:25%; vertical-align:top;">
+          
+    <p style="margin:2px 0;"><strong>Project 1: Packing Checklist — Students create a checklist for a trip, using prepositions of movement (&#39;to the beach&#39;) and routines (&#39;I always...&#39;).</strong></p>
+    <p style="margin:2px 0; font-size:10.5px; color:#334155;">Project 1: Packing Checklist — Students create a checklist for a trip, using prepositions of movement (&#39;to the beach&#39;) and routines (&#39;I always...&#39;).</p>
+  
+        </td>
+      </tr>
+
+      <!-- 4. SPECIFIC OBJECTIVES (SMART) -->
+      <tr>
+        <td colspan="4" class="section-title">4. SPECIFIC OBJECTIVES (SMART)</td>
+      </tr>
+      <tr>
+        <td colspan="4" style="border:1px solid #333; padding:6px 8px;">
+          
+    <ul>
+      <li><strong>Listening:</strong> By the end of the lessons, students will be able to identify at least three key ideas, vocabulary items, and auditory cues in short spoken texts about "Let&#39;s Pack for a Trip." with 80% accuracy.</li>
+      <li><strong>Reading:</strong> By the end of the lessons, students will be able to read short, illustrated texts and match descriptive sentences about "A Trip to the Beach" with corresponding visual representations with 85% accuracy.</li>
+      <li><strong>Speaking:</strong> By the end of the lessons, students will be able to orally name target objects, state simple preferences, and answer guided questions about "Let&#39;s Pack for a Trip." during choral and pair drills.</li>
+      <li><strong>Writing:</strong> By the end of the lessons, students will be able to complete sentence starters, label diagrams, and write two to three simple sentences about "Let&#39;s Pack for a Trip." using a provided word bank.</li>
+      <li><strong>Mediation:</strong> By the end of the lessons, students will be able to convey key information about a visual poster or peer explanation to another student using simplified English or visual pointing.</li>
+    </ul>
+  
+        </td>
+      </tr>
+
+      <!-- 5. MATERIALS & DIFFERENTIATION -->
+      <tr>
+        <td colspan="4" class="section-title">5. MATERIALS &amp; DIFFERENTIATION</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="border:1px solid #333; width:50%; vertical-align:top;">
+          
+    <strong>Materials:</strong>
+    <ul>
+      <li>Official MEDUCA Classroom Anchor Poster for Scenario 5 ("A Trip to the Beach")</li>
+      <li>Flashcards and picture cards with target vocabulary</li>
+      <li>Audio recordings of contextual dialogues and songs</li>
+      <li>Interactive AOA student worksheets and graphic organizers</li>
+      <li>Real-world realia and classroom objects related to the theme</li>
+      <li>Sentence strips, word banks, and speaking prompt cards</li>
+      <li>Whiteboard, markers, colored pencils, and construction paper</li>
+      <li>Canva / AOA digital resources and presentation projector</li>
+    </ul>
+  
+        </td>
+        <td colspan="2" style="border:1px solid #333; width:50%; vertical-align:top;">
+          
+    <strong>Differentiation for Learning Needs (DLN):</strong>
+    <ul>
+      <li><strong>Visual Learners:</strong> Heavy reliance on the Scenario Anchor Poster, flashcards, color-coded sentence frames, and realia.</li>
+      <li><strong>Auditory Learners:</strong> Authentic audio models, choral pronunciation drills, rhythmic chants, and pair repetitions.</li>
+      <li><strong>Kinesthetic Learners:</strong> Total Physical Response (TPR), gesture matching, interactive roleplay movements, and hands-on poster crafting.</li>
+      <li><strong>Scaffolding for Emergent Learners:</strong> Guided sentence frames, word banks with icon cues, bilingual support when necessary, and peer buddy system.</li>
+      <li><strong>Extension for Advanced Learners:</strong> Open-ended conversational prompts, creating extended dialogues, and leading peer group discussions.</li>
+      <li><strong>Collaborative Grouping:</strong> Mixed-ability pairs and small teams ensuring active communicative participation.</li>
+    </ul>
+  
+        </td>
+      </tr>
+
+      <!-- 6. LEARNING SEQUENCE (AOA 5 Phases) -->
+      <tr>
+        <td colspan="4" class="section-title">6. LEARNING SEQUENCE</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333; width:20%; background:#e2e8f0; font-weight:bold; vertical-align:top;">Lesson Focus</td>
+        <td style="border:1px solid #333; width:20%; background:#e2e8f0; font-weight:bold; vertical-align:top;">Specific Objective(s)</td>
+        <td style="border:1px solid #333; width:42%; background:#e2e8f0; font-weight:bold; vertical-align:top;">Activities (AOA - Engage, Explore, Explain, Extend, Evaluate)</td>
+        <td style="border:1px solid #333; width:18%; background:#e2e8f0; font-weight:bold; vertical-align:top;">Resources &amp; Assessment</td>
+      </tr>
+      
+    <tr>
+      <td style="border:1px solid #333; padding:5px 8px; width:20%; vertical-align:top;"><strong>Lesson 1: Listening (Receptive Input)</strong></td>
+      <td style="border:1px solid #333; padding:5px 8px; width:20%; vertical-align:top;">Students identify core vocabulary, phonemes, and main ideas in short audio descriptions of "Let&#39;s Pack for a Trip.".</td>
+      <td style="border:1px solid #333; padding:5px 8px; width:42%; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Engage:</strong> Display the official MEDUCA Anchor Poster for "A Trip to the Beach". Teacher points to elements and asks "What do you see?" eliciting initial vocabulary.</p>
+        <p style="margin:2px 0;"><strong>Explore:</strong> Play short audio clips or read teacher models. Students point to corresponding images on the poster and repeat key words with clapping rhythms.</p>
+        <p style="margin:2px 0;"><strong>Explain:</strong> Clarify target words and model proper pronunciation of core phonemes (/b/ in &#39;beach&#39; and /p/ in &#39;pack&#39;). Check comprehension through thumbs up/down checks.</p>
+        <p style="margin:2px 0;"><strong>Extend:</strong> Students complete an auditory listen-and-circle worksheet, identifying items heard in the audio recordings.</p>
+        <p style="margin:2px 0;"><strong>Evaluate:</strong> Formative check: Teacher observes student matching accuracy during the listen-and-point exit task.</p>
+      </td>
+      <td style="border:1px solid #333; padding:5px 8px; width:18%; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Resources:</strong> Anchor Poster, audio recordings, flashcards, worksheets.</p>
+        <p style="margin:2px 0;"><strong>Assessment:</strong> Listening rubric / auditory identification checklist.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;"><strong>Lesson 2: Reading (Decoding & Comprehension)</strong></td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">Students decode written words and match short descriptive sentences with corresponding visual illustrations.</td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Engage:</strong> Quick word-matching warm-up: Flash written word cards and have students match them to Anchor Poster details.</p>
+        <p style="margin:2px 0;"><strong>Explore:</strong> Guided shared reading of 2-3 short descriptive sentences highlighting "Let&#39;s Pack for a Trip.". Students follow along with their fingers.</p>
+        <p style="margin:2px 0;"><strong>Explain:</strong> Deconstruct target sentence structures (1. Present simple in affirmative and question forms (e.g., &#39;I like to run.&#39; &#39;Do you like to swim?&#39;)). Guide students to use picture clues to deduce unknown words.</p>
+        <p style="margin:2px 0;"><strong>Extend:</strong> In pairs, students read matching cards and pair short sentence strips with the correct scenario illustrations.</p>
+        <p style="margin:2px 0;"><strong>Evaluate:</strong> Reading comprehension worksheet: match sentences to pictures and answer simple true/false questions.</p>
+      </td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Resources:</strong> Sentence strips, illustrated reading cards, reading worksheet.</p>
+        <p style="margin:2px 0;"><strong>Assessment:</strong> Written comprehension check (85% target accuracy).</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;"><strong>Lesson 3: Speaking (Oral Reinforcement)</strong></td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">Students accurately pronounce target words and express basic preferences using guided sentence frames.</td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Engage:</strong> Choral chant practicing pronunciation contrasts and target vocabulary with physical gestures (TPR).</p>
+        <p style="margin:2px 0;"><strong>Explore:</strong> Teacher models sentence frame: "This is my favorite because...". Students practice repeating in small choral groups.</p>
+        <p style="margin:2px 0;"><strong>Explain:</strong> Focus on sentence intonation and stress. Provide positive corrective feedback on vowel and consonant articulation.</p>
+        <p style="margin:2px 0;"><strong>Extend:</strong> Pair speaking activity: Student A asks "Which one is your favorite?", Student B points and answers using the frame.</p>
+        <p style="margin:2px 0;"><strong>Evaluate:</strong> Observational speaking rubric: teacher circulates and assesses fluency, pronunciation, and frame usage.</p>
+      </td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Resources:</strong> Speaking cue-cards, flashcards, sentence frame board.</p>
+        <p style="margin:2px 0;"><strong>Assessment:</strong> Oral fluency & pronunciation observational checklist.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;"><strong>Lesson 4: Writing (Guided Production)</strong></td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">Students write 2-3 structured sentences describing features of "Let&#39;s Pack for a Trip." using a supportive word bank.</td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Engage:</strong> Interactive board scramble: organize mixed-up word tiles into a grammatically correct sentence.</p>
+        <p style="margin:2px 0;"><strong>Explore:</strong> Graphic organizer: students brainstorm 3 vocabulary words and 1 adjective to describe their chosen scenario feature.</p>
+        <p style="margin:2px 0;"><strong>Explain:</strong> Review capital letters at the beginning and periods at the end of sentences. Emphasize connector words (and, because).</p>
+        <p style="margin:2px 0;"><strong>Extend:</strong> Individual writing task: complete sentence starters on the activity worksheet and draw a matching illustration.</p>
+        <p style="margin:2px 0;"><strong>Evaluate:</strong> Writing rubric: evaluate capital letters, word order, spelling accuracy, and punctuation.</p>
+      </td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Resources:</strong> Graphic organizers, writing sheets, word banks, crayons.</p>
+        <p style="margin:2px 0;"><strong>Assessment:</strong> Writing rubric: sentence mechanics and vocabulary use.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;"><strong>Lesson 5: Mediation &amp; 21st-Century Project</strong></td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">Students mediate visual/written information to peers and present the culminating project: "Project 1: Packing Checklist — Students create a checklist for a trip, using prepositions of movement (&#39;to the beach&#39;) and routines (&#39;I always...&#39;).".</td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Engage:</strong> Teacher demonstrates mediation: taking peer drawing and explaining its meaning to the rest of the class in simple words.</p>
+        <p style="margin:2px 0;"><strong>Explore:</strong> Pairs finalize their 21st-Century Project posters/displays, combining their written sentences from Lesson 4 with illustrations.</p>
+        <p style="margin:2px 0;"><strong>Explain:</strong> Review active listening rules for the audience and presentation tips (eye contact, clear voice).</p>
+        <p style="margin:2px 0;"><strong>Extend:</strong> Classroom Gallery Walk: half the students present their posters while the other half rotates, asking questions and learning.</p>
+        <p style="margin:2px 0;"><strong>Evaluate:</strong> Summative evaluation rubric assessing project completion, mediation ability, oral delivery, and peer collaboration.</p>
+      </td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Resources:</strong> Student project posters, exhibition space, evaluation rubrics.</p>
+        <p style="margin:2px 0;"><strong>Assessment:</strong> Culminating AOA 21st-Century Project & Mediation rubric.</p>
+      </td>
+    </tr>
+  
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

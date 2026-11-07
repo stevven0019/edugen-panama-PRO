@@ -1,0 +1,208 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 16px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    h2 {
+        color: #1a5276;
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="banner">
+    <h1>Lesson Planner – Theme # Shapes Around Us – Lesson # 3</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 50%;"><b>Lesson #:</b> 3</td>
+        <td style="width: 50%;"><b>Skills Focus:</b> Speaking</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 1st Grade (CEFR: Pre-A1.3)</td>
+        <td><b>Scenario:</b> Shapes Around Us</td>
+        <td><b>Theme:</b> That Is a Circle.</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <b>Specific Objective:</b>
+            <p style="text-align: justify; margin: 4px 0 8px 0;">Speaking: Productive: Name common classroom objects and familiar people.<br>Interactive: Engage with very simple classroom commands.</p>
+            <b>Learning Outcome:</b>
+            <p style="text-align: justify; margin: 4px 0 8px 0;">Speaking: Can identify and name common shapes and colors in daily classroom routines with teacher guidance (e.g., "This is a circle." "It is blue.").<br>Can use simple greetings and farewells in a storytelling activity involving shapes and colors (e.g., "Hello, red circle!" "Goodbye, blue square!").<br>Can point to and name familiar classroom shapes and colors during activities with teacher prompts.</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 40%; color: #1a5276;">Stage & Description</th>
+            <th style="width: 40%; color: #1a5276;">Activities & Teacher Actions</th>
+            <th style="width: 20%; color: #1a5276;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b><br>(Engagement, Modeling and Clarification)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher leads a "Shape Around Us" song or chant (e.g., "Look around, what do you see? Shapes, shapes for you and me! A circle, a square, a triangle..."). Students point to shapes in the classroom (e.g., clock for circle, window for square) as the teacher calls them out. This activates prior knowledge and gets students speaking basic shape names.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher holds up large shape flashcards one by one (e.g., a circle, then a square, then a rectangle). For each, the teacher clearly says: "This is a circle. It is round." then "This is a square. It is big." and "This is a rectangle. It is long." The teacher models the question "What shape is it?" and the answer "It is a [shape]." Emphasis is placed on the initial /s/ sound in "square" and /r/ in "rectangle."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher uses simple questions and gestures to check understanding.
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Holding a circle flashcard) "Is this a square?" (Expected answer: "No!")</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Pointing to a triangle flashcard) "What shape is it?" (Expected answer: "Triangle!")</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b><br>(Input of new language/content connected to Scenario)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Input of new language/content connected to Scenario:</b> The teacher presents a simple, illustrated "Shapes Story" using large picture cards. The story features familiar objects and identifies their shapes and colors, for example: "Look! This is a red circle. It is a big ball. That is a blue square. It is a small window." The story introduces the target vocabulary and grammar in context, focusing on demonstratives "this" and "that," and the structure "That is a [shape]."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> Large, colorful picture story cards or a simple storybook with clear illustrations of objects representing shapes (e.g., a round sun, a square gift box, a rectangular book, a triangular slice of pizza). The register is simple, narrative, and highly visual for young learners.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Identifying shapes and describing characteristics of objects around using the names of shapes and colors (Sociolinguistic) and recognizing/naming shapes like squares and circles (Pragmatic).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks (Speaking-focused):</b> After presenting each part of the story, the teacher asks very simple questions:
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Pointing to the picture of the ball) "What shape is the ball?" (Students say: "Circle!")</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Pointing to the window) "Is the window a circle?" (Students say: "No!") "What shape is it?" (Students say: "Square!")</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">The teacher encourages choral repetition of key phrases like "That is a circle."</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b><br>(Accuracy focus on Speaking)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Speaking: Naming common shapes (square, rectangle, circle, triangle, oval, diamond, star). Using demonstratives "this/that," verbs "is," "see," "look," and adjectives "round," "square," "big," "small," "long," "short." Grammar: "Shape + noun" (e.g., "a square table"), "WH-questions" ("What shape is it?"), "Present simple" ("That is a circle."). Pronunciation focus on /s/ in "square" and /r/ in "rectangle," and initial sounds of shape names.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice (Choral Repetition & Pointing):</b> The teacher displays various shape flashcards or draws shapes on the board. The teacher points to a shape and says "This is a [shape]." (e.g., "This is a circle."). Students repeat chorally. Then, the teacher says "Point to the square!" and students point to the correct shape, saying "Square!" Emphasis on clear pronunciation of shape names and initial sounds /s/ and /r/.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled (Question & Answer Drill):</b> The teacher holds up a classroom object or a shape flashcard (e.g., a square book). The teacher asks, "What shape is it?" Students respond individually or chorally: "It is a square book." The teacher changes objects/cards rapidly, encouraging quick responses. The teacher also uses "Is it a [shape]?" prompts (e.g., "Is it a triangle?"). Students respond "Yes, it is!" or "No, it isn't!" and then "It is a [correct shape]."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction (Shape Detective):</b> Students work in pairs. Each pair receives a small bag of cut-out shapes (circle, square, rectangle, triangle, star, oval). Student A picks a shape without showing it to Student B. Student B asks, "What shape is it?" Student A responds, "It is a [shape]." Student B then guesses the shape by pointing to it, saying "Is it a [shape]?" Student A confirms "Yes, it is!" or "No, it isn't!" They switch roles. Encourage adding adjectives like "It is a big circle." or "It is a small triangle."</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">15-18 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b><br>(Communicative task where students USE the language)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Description of Task:</b> "My Shape Friend" Storytelling. Students create a simple 'shape friend' using pre-cut paper shapes (or bring a small object from home). In small groups or pairs, students "introduce" their shape friend to others, using the target language. This task connects directly to the theme "That Is a Circle." and the scenario "Shapes Around Us," focusing on spontaneous oral production and interaction.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">1. Each student selects a pre-cut paper shape (e.g., a large blue circle, a small red square) or holds up a chosen classroom object (e.g., a round eraser, a rectangular book).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">2. In groups of 3-4, students take turns introducing their shape/object. Student A says, "Hello! Look! This is my shape friend. It is a [color] [shape]. It is [big/small]." (e.g., "Hello! Look! This is my shape friend. It is a blue circle. It is big.").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">3. Other students in the group listen and can ask "What shape is it?" or say "Wow! That is a nice [color] [shape]!" (e.g., "Wow! That is a nice blue circle!").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">4. Students practice simple greetings ("Hello, [shape name]!") and farewells ("Goodbye, [shape name]!") as they interact with each other's 'shape friends'.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">The teacher circulates, offering prompts and encouraging interaction, focusing on fluency and communication rather than strict accuracy.</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b><br>(Formative assessment and self-reflection)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher Observation Checklist. The teacher observes students during the "My Shape Friend" activity and during a final quick "Shape Name Pop-Up" game, marking fluency, pronunciation, and use of target vocabulary/grammar.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students participate in a "Shape Name Pop-Up" activity. The teacher shows a flashcard (or points to a real object) and quickly asks, "What shape is it?" Students must orally name the shape or respond with "It is a [shape]." The teacher also asks students to point to specific shapes in the classroom (e.g., "Show me a square!") and say its name.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">Intelligible pronunciation of at least 3-4 target shape names (e.g., circle, square, rectangle, triangle), including /s/ and /r/ sounds.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Use of target vocabulary (shape names, big/small, long/short).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Use of "This is a..." or "It is a..." structure when naming shapes.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Ability to respond to simple WH-questions ("What shape is it?").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Participation and collaborative interaction during group work.</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete a quick exit ticket by drawing a happy face if they can do it, or a neutral face if they need more help:
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Can I say the names of three shapes?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Can I say 'This is a circle'?"</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What new shapes did I learn to say today?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Can I describe one shape using 'big' or 'small'?"</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;">The "Shape Detective" pair activity and "My Shape Friend" storytelling worked well in promoting active speaking and interaction among the 1st graders. The TPR elements and visual aids were highly effective in engaging learners and supporting comprehension. I noticed students were confident with "circle" and "square" but needed more prompting for "rectangle" and "triangle." The pronunciation of /s/ and /r/ requires continued reinforcement through repetition and minimal pair activities. Some students still hesitated to form full sentences, often relying on single-word answers, so providing more sentence frames (e.g., "It is a _____. It is _____.") would be beneficial in future speaking activities. For the next lesson (Lesson 4: Writing), I will ensure to bridge this oral practice by having students label shapes and write simple sentences about them, building on their ability to name and describe orally.</p>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> This speaking lesson established the oral foundation for identifying and describing shapes. In Lesson 4 (Writing), students will transfer this oral knowledge to written form by drawing shapes, labeling them, and writing simple sentences like "That is a circle. It is red." or "This is a square table."</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">3-5 min</p></td>
+        </tr>
+    </tbody>
+</table>

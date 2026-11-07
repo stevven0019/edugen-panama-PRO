@@ -1,0 +1,204 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 14px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    h2 {
+        color: #1a5276;
+        font-family: Arial, sans-serif;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    b {
+        color: #1a5276;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 4</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<h2 style="color: #1a5276;">SECTION 2 — LESSON IDENTIFICATION TABLE</h2>
+<table>
+    <tbody>
+        <tr>
+            <td><b>Lesson #:</b> 4</td>
+            <td><b>Skills Focus:</b> Writing</td>
+        </tr>
+        <tr>
+            <td><b>Grade:</b> 3rd Grade (CEFR: A1.1)</td>
+            <td><b>Scenario:</b> This Beautiful Day</td>
+            <td><b>Theme:</b> It's Raining! I Need an Umbrella.</td>
+        </tr>
+        <tr>
+            <td><b>Date(s):</b> From ___ to ___</td>
+            <td><b>Learning Sequence Time:</b> 45–50 min</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p><b>Specific Objective:</b> Writing: Productive: Create descriptive captions for images with simple words. Interactive: Write short role plays to be acted out based on class content.</p>
+                <p><b>Learning Outcome:</b> Writing: Can create descriptive captions for weather images using simple words (e.g., "It's sunny."). Can write and perform short role plays on weather and school. (e.g., "It's sunny. Let's play!" "Yes, let's go!"). Can write and organize simple texts about weather and feelings (e.g., "I am sad on rainy days.").</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 style="color: #1a5276;">SECTION 3 — AOA STAGES TABLE</h2>
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Stage & Description</th>
+            <th>Activities & Teacher Actions</th>
+            <th>Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p>Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p><b>Warm-up:</b> The teacher greets students and displays large picture cards of different weather conditions (sunny, rainy, cloudy, windy) and corresponding feelings (happy, sad, excited, bored). Teacher asks "How's the weather?" and "How do you feel?". Students respond orally with single words or short phrases. Teacher then gives each student a small whiteboard or a piece of paper and asks them to draw one weather condition and write one feeling word next to it. For example, a drawing of rain and the word "sad".</p>
+                <p><b>Modeling:</b> The teacher shows a picture of a sunny day and models writing two simple sentences on the board: "It's sunny today. I'm happy." The teacher points to "It's" and "I'm" to highlight contractions. Then, the teacher shows a picture of a rainy day and models writing: "It's raining. I feel cold. I need an umbrella." The teacher explicitly demonstrates letter formation for key vocabulary and clear spacing between words, emphasizing the writing process.</p>
+                <p><b>Clarification (CCQs):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Is 'It's' for 'It is'?" (Yes/No)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What do we need when it's raining?" (An umbrella/A coat/Boots)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Do we write about the weather or about food?" (Weather)</li>
+                </ul>
+            </td>
+            <td>___ / ___ / ___<br>7 min</td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 2 — Presentation</b></p>
+                <p>Input of new language/content connected to Scenario: "This Beautiful Day"</p>
+            </td>
+            <td>
+                <p><b>Material:</b> A short, illustrated story or a series of picture prompts with simple written captions about "This Beautiful Day" and how weather affects activities and feelings. For example, "Look! It's sunny. I'm happy. I want to play." and "Oh no! It's raining. I'm bored. I need my coat." These written examples feature contractions (I'm, it's), present simple, and relevant vocabulary (sun, rain, umbrella, play, feel happy/sad/bored).</p>
+                <p><b>Communicative Competence:</b> Expressing and interpreting ideas and emotions in writing by creating simple descriptive sentences about weather and feelings.</p>
+                <p><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students read the short written captions or story. The teacher then asks students to match written sentences to the correct weather pictures. For example, a picture of rain and the written sentence "It's raining. I feel sad."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students read written simple WH-questions about the text (e.g., "How does the girl feel when it's sunny?"). Students then *write* one-word or short-phrase answers next to each question.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students identify and circle all the contractions (e.g., "It's", "I'm") and weather vocabulary words (e.g., "sunny", "rainy", "umbrella") in the provided text.</li>
+                </ul>
+            </td>
+            <td>___ / ___ / ___<br>10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 3 — Preparation / Practice</b></p>
+                <p>Accuracy focus on Writing</p>
+            </td>
+            <td>
+                <p><b>Communicative Skill & Content:</b> Writing sentences using contractions (I'm, it's), present simple (I feel, it is), WH-questions ("How do you feel?"), and vocabulary related to weather and feelings (sun, rain, cloud, windy, happy, sad, bored, umbrella, coat).</p>
+                <p><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 1: Sentence Completion (Controlled Practice).</b> The teacher provides a worksheet with sentences that have blanks, alongside weather images. Students look at the image and *write* the correct weather word and feeling. For example: "It's _______ (picture of sun). I'm _______ (happy face)." Students write "sunny" and "happy". This practices vocabulary and simple sentence structure.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 2: Sentence Scramble (Semi-controlled).</b> The teacher gives students scrambled words for sentences related to weather and feelings (e.g., "is / it / rainy", "sad / I'm"). Students *rewrite* the words in the correct order to form complete sentences. Then, they add their own simple feeling sentence. For example: "It is rainy. I'm sad." This reinforces syntax and contractions in writing.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 3: Describe-a-Picture Pair Writing.</b> In pairs, students receive a set of weather picture cards. Partner A picks a card and *writes* two simple sentences describing the weather and a feeling. Partner B reads the sentences and *writes* a short question, "How do you feel today?" and then *writes* their own descriptive sentence based on the picture. They then switch roles. This activity promotes interactive writing and peer checking for clarity and basic grammar.</li>
+                </ul>
+            </td>
+            <td>___ / ___ / ___<br>15 min</td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 4 — Performance / Production</b></p>
+                <p>Communicative task where students USE the language in a realistic scenario: "This Beautiful Day"</p>
+            </td>
+            <td>
+                <p><b>Task Format:</b> Collaborative writing of descriptive captions for weather images and short role plays.</p>
+                <p>Students work in small groups (3-4 students). Each group receives 3-4 different large weather pictures (e.g., very sunny, strong wind, heavy rain, cloudy sky). For each picture, the group must *write* two to three descriptive captions using the target vocabulary (sunny, rainy, cloudy, windy, happy, sad, bored, umbrella, coat) and grammar (It's, I'm, present simple). Examples: "It's sunny. I'm happy. Let's play!" or "It's raining. I'm sad. I need my umbrella and my coat."</p>
+                <p>After writing captions for all pictures, each group selects one picture and *writes* a very short role-play dialogue (2-3 lines per character, 2 characters) based on the situation and feelings described. For instance:</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Character A: "How's the weather? It's raining!"</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Character B: "Oh no! I'm sad. I need an umbrella, please."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Character A: "Here's my umbrella. Let's go!"</p>
+                <p>The teacher circulates, offering assistance with vocabulary, spelling, and sentence structure, reminding students to use contractions and polite phrases when expressing needs. The focus is on producing coherent written descriptions and dialogues.</p>
+            </td>
+            <td>___ / ___ / ___<br>10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p>Formative assessment strategy</p>
+            </td>
+            <td>
+                <p><b>Formative Assessment Strategy:</b> Teacher observation checklist focusing on written output.</p>
+                <p><b>Assessment Task:</b> Students hand in their group's written weather captions and short role-play dialogues. The teacher collects these written products for review.</p>
+                <p><b>Evaluation Criteria (Teacher Checklist):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Uses at least 3 target vocabulary words (e.g., sunny, rain, umbrella, happy, sad).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Includes contractions (e.g., It's, I'm).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Forms simple, intelligible sentences to describe weather and feelings.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Attempts to organize ideas in a simple text (captions for images, short dialogue).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Legible handwriting.</li>
+                </ul>
+                <p><b>Student Self-Assessment / Exit Ticket:</b> Students complete a short exit ticket by *writing* answers to the following prompts:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"One new word I used in my writing today is: _______."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"I feel _______ about my writing today because _______."</li>
+                </ul>
+            </td>
+            <td>___ / ___ / ___<br>5 min</td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p><b>Student self-reflection prompt:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What did you learn to *write* today about the weather and how you feel?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was easy or difficult for you when you were *writing* your sentences and role play?"</li>
+                </ul>
+                <p><b>Teacher reflection:</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">What worked well in this writing lesson? Students were engaged in writing captions and role plays, especially when working collaboratively. The visual prompts were effective for generating ideas.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">What adjustments or scaffolds are needed for the next lesson? Some students still struggle with basic spelling and sentence structure. More explicit modeling of sentence construction and possibly sentence frames or word banks could be beneficial. I need to ensure phonemic awareness practice (/s/, /r/ sounds and blending) also connects to writing words correctly.</p>
+                <p><b>Connection to next lesson in the theme sequence:</b> The written role plays and captions created today will be used in Lesson 5 (Mediation & Integration) as a basis for a class weather report or a small group performance, connecting writing to speaking and integrating the unit's learning into a final project.</p>
+            </td>
+            <td>___ / ___ / ___<br>3 min</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,229 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    .table-container {
+        margin-bottom: 20px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .aoa-title {
+        color: #1a5276;
+        font-size: 1.5em;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin-top: 5px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<div class="table-container">
+    <table>
+        <tr>
+            <td><b>Lesson #:</b> 1</td>
+            <td><b>Skills Focus:</b> Listening</td>
+        </tr>
+        <tr>
+            <td><b>Grade:</b> 7th Grade (CEFR: A2.2)</td>
+            <td><b>Scenario:</b> Famous Panamanians</td>
+            <td><b>Theme:</b> I Love These Entertainers.</td>
+        </tr>
+        <tr>
+            <td colspan="2"><b>Date(s):</b> From ___ to ___</td>
+            <td><b>Learning Sequence Time:</b> 45–50 min</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p><b>Specific Objective:</b> Listening: Receptive: Comprehend multi-step instructions for academic tasks. Interactive: Respond appropriately to spoken questions in familiar settings.</p>
+                <p><b>Learning Outcome:</b> Listening: Can comprehend multi-step instructions related to presentations about famous Panamanians (e.g., "First, research the achievements of a famous Panamanian. Next, create a slide with their most important accomplishment. Finally, rehearse your presentation.")</p>
+                <p style="text-align: justify; margin: 0 0 4px 0;">Can respond to spoken questions about famous Panamanians (e.g., "Who is the most famous athlete?")</p>
+                <p style="text-align: justify; margin: 0 0 4px 0;">Can summarize information from discussions on public figures and share key takeaways (e.g., "She has won many awards, including Athlete of the Year.")</p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 class="aoa-title">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th style="color: #1a5276;">Stage & Description</th>
+                <th style="color: #1a5276;">Activities & Teacher Actions</th>
+                <th style="color: #1a5276;">Estimated Date and Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <p><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                    <p><i>(Engagement, Modeling and Clarification)</i></p>
+                </td>
+                <td>
+                    <p><b>Warm-up:</b> The teacher greets students and asks them to close their eyes for a moment while the teacher describes a famous Panamanian person. Students listen to the description (e.g., "This person is a talented singer. He has won many awards. He is very popular, especially with young people. He performs in big concerts. His songs are famous.") and guess who it is. (Example: Sech).</p>
+                    <p><b>Modeling:</b> The teacher models the pronunciation of key vocabulary words from the theme by saying them clearly and slowly: "entertainer," "athlete," "achievement," "award," "singer," "actor," "win," "achieve," "inspire," "train," "perform," "compete," "famous," "popular," "talented," "skilled." The teacher also models sentences using -ing and -ed endings clearly, such as "She is training for a new tournament" and "He performed in a big competition last year." Students listen and repeat chorally and individually, focusing on pronunciation of inflectional endings.</p>
+                    <p><b>Clarification (CCQs):</b> The teacher checks understanding of new vocabulary. For example, after "athlete":</p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Is a doctor an athlete?" (No)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Is a person who plays sports an athlete?" (Yes)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">For "award": "Is an award something good or bad to win?" (Good)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">For "achieve": "Is it easy or hard to achieve a big goal?" (Hard, but satisfying)</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>[Date] </p>
+                    <p>5-7 min</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>STAGE 2 — Presentation</b></p>
+                    <p><i>(Input of new language/content connected to Scenario: "Famous Panamanians")</i></p>
+                </td>
+                <td>
+                    <p><b>Material:</b> The teacher plays a short audio recording (1.5-2 minutes) featuring several brief descriptions of famous Panamanian entertainers and athletes. The audio will be a narrative excerpt, describing their main achievements and popularity. Each description will explicitly use the target vocabulary (e.g., "Atheyna Bylon is an athlete. She won an award, a medal, in the Olympic Games. She is very famous and inspiring. She is training for a new competition. Roberto Durán is an iconic boxer, an amazing performer. He achieved many titles.") The audio also includes comparative and superlative structures (e.g., "Roberto Durán is better known than many other boxers.")</p>
+                    <p><b>Communicative Competence:</b> The student can comprehend short, simple spoken descriptions about public figures, understanding the main idea and key details.</p>
+                    <p><b>Comprehension tasks:</b></p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Gist question:</b> Students listen to the audio for the first time. The teacher asks, "What kind of people are we listening about?" (Famous Panamanians / Entertainers and athletes.)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>True/False statements:</b> Students listen a second time to answer True or False questions on a worksheet. (e.g., "Atheyna Bylon is an actor. T/F" "Roberto Durán is famous for singing. T/F" "Sech has won awards. T/F")</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Information matching:</b> Students listen a third time and match the famous person's name with their main achievement or category (e.g., Atheyna Bylon - boxer, Roberto Durán - awards, Sech - singer).</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>[Date] </p>
+                    <p>10-12 min</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>STAGE 3 — Preparation / Practice</b></p>
+                    <p><i>(Accuracy focus on Listening)</i></p>
+                </td>
+                <td>
+                    <p><b>Communicative Skill & Content:</b> Focusing on listening for specific grammar (present continuous for future, comparatives/superlatives, past simple for achievements) and vocabulary (entertainer, athlete, achievement, award, singer, actor, recognition, competition, performance, sports fan; win, achieve, inspire, train, perform, compete; famous, popular, talented, skilled, specialized; more, best).</p>
+                    <p><b>Detailed Procedure:</b></p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">1. <b>Controlled practice (Listening Cloze):</b> The teacher plays parts of the audio again. Students have a transcript with blanks for target vocabulary words (e.g., "She is a famous ______ [athlete]. She ______ [won] a medal."). Students listen and fill in the missing words. This also includes practice with -ing and -ed endings (e.g., "He is train____ for a new tournam___." / "She perform____ at the stadium.").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">2. <b>Semi-controlled practice (Listen and Choose):</b> The teacher plays sentences containing target grammar. Students listen and choose the correct option from a list on their worksheet. (e.g., "Mariano Rivera (won / wins) many awards." "Sech is (more popular / most popular) than other singers." "Atheyna Bylon (is training / trained) for a competition next month."). This helps students distinguish between tenses and comparatives/superlatives when heard.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">3. <b>Pair Interaction (Listen and Summarize):</b> In pairs, students listen as the teacher reads short new sentences about different Panamanian figures, using the target vocabulary and grammar. After each sentence, students orally summarize the key information for their partner, using their own words. For example, Teacher: "Mariano Rivera is considered one of the greatest baseball players in the world. He achieved many saves." Student A to Student B: "Mariano Rivera is a great athlete. He achieved a lot in baseball." This encourages active listening and immediate oral recall.</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>[Date] </p>
+                    <p>15-18 min</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>STAGE 4 — Performance / Production</b></p>
+                    <p><i>(Communicative task where students USE the language in a realistic scenario: "Famous Panamanians")</i></p>
+                </td>
+                <td>
+                    <p><b>Task Format:</b> Collaborative Listening and Information Gathering.</p>
+                    <p>Students work in small groups (3-4 students). The teacher provides each group with a set of "Famous Panamanian Fact Cards" (audio recordings or spoken descriptions from the teacher) about different individuals, focusing on their achievements, comparisons, and future plans. Each card has details about one famous Panamanian, using the target vocabulary and grammar (present continuous for future, comparatives/superlatives, past simple for achievements). For example, "Eileen Coparropa is a talented swimmer. She competed in three Olympic Games. She won many awards in her career, but she is more famous for her Olympic participation. She is currently inspiring young athletes."</p>
+                    <p><b>Procedure:</b></p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">1. The teacher explains: "You are going to listen to descriptions of three famous Panamanians. Your task is to listen carefully and complete a 'Who Am I?' chart for each person."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">2. The teacher plays the first audio description. Students listen and collaboratively fill in details on their chart (Name, Profession, Key Achievements, Why they are famous/popular, Future/Current Action). They must listen for specific achievements, comparisons (e.g., "She is more popular now than before"), and future events (e.g., "He is training for a new competition").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">3. The teacher plays the second and third descriptions, repeating the process.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">4. After listening to all three, each group collaboratively summarizes the information they gathered for one of the figures, sharing key takeaways with the class. (e.g., "She is Atheyna Bylon. She is a famous boxer and an Olympic medalist. She has won many awards. She is training for a new tournament.") This allows for sociolinguistic practice in describing public figures.</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>[Date] </p>
+                    <p>10-12 min</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>STAGE 5 — Assessment / Post-task</b></p>
+                    <p><i>(Formative assessment)</i></p>
+                </td>
+                <td>
+                    <p><b>Formative Assessment Strategy:</b> Teacher observation checklist and peer assessment of comprehension.</p>
+                    <p><b>Assessment Task:</b> Students will listen to a new, short audio clip (1 minute) about a less-known Panamanian figure. Individually, they will write down three key facts or achievements about the person, and answer one spoken question about the person's profession or future plans. For example, after listening: "What is this person training for?" (Listening: Can respond appropriately to spoken questions in familiar settings).</p>
+                    <p><b>Evaluation Criteria (Teacher Observation Checklist):</b></p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">Comprehends multi-step instructions for the task.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Identifies key facts/achievements (using past simple, e.g., "He won...").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Responds accurately to spoken questions (identifying present continuous for future, e.g., "She is training...").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Demonstrates understanding of target vocabulary (entertainer, athlete, award, etc.).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Listens actively during group activity.</li>
+                    </ul>
+                    <p><b>Student Self-Assessment / Exit Ticket:</b> Students complete the following on a slip of paper:</p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"I listened well today when..."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"One new word I learned to listen for is..."</li>
+                    </ul>
+                </td>
+                <td>
+                    <p>[Date] </p>
+                    <p>5-6 min</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>STAGE 6 — Reflection</b></p>
+                </td>
+                <td>
+                    <p><b>Student Self-Reflection:</b></p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What was easy or difficult about listening to descriptions of famous Panamanians today?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"How can listening carefully help me learn more about people?"</li>
+                    </ul>
+                    <p><b>Teacher Reflection:</b></p>
+                    <p>What worked well in this lesson? The visual prompts and varied listening tasks kept students engaged. The explicit modeling of pronunciation, especially for -ing and -ed endings, was helpful for awareness. The use of familiar Panamanian figures made the content relatable.</p>
+                    <p>What adjustments or scaffolds are needed for next time? Some students struggled with distinguishing between past simple and present continuous for future actions. More focused, short listening drills on these specific grammar points could be beneficial. I need to ensure the audio quality is consistently clear.</p>
+                    <p><b>Connection to Next Lesson:</b></p>
+                    <p>This lesson introduced core vocabulary and familiarized students with listening for details about famous Panamanians. The next lesson (Lesson 2: Reading Comprehension) will build on this vocabulary and theme by engaging students with short written texts about these same figures, allowing them to see the words in context and reinforce their understanding visually.</p>
+                </td>
+                <td>
+                    <p>[Date] </p>
+                    <p>3-5 min</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>

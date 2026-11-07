@@ -1,0 +1,168 @@
+﻿<div style="font-family: Arial, sans-serif; margin: 0 auto; max-width: 900px; padding: 20px;">
+
+    <div style="background-color: #1a5276; color: white; padding: 15px 20px; text-align: center; border-radius: 8px; margin-bottom: 20px;">
+        <h1 style="margin: 0; font-size: 2em;">Lesson Planner – Theme # ___ – Lesson # 1</h1>
+        <p style="margin: 5px 0 0 0; font-size: 1.1em;">Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+    </div>
+
+    <h2 style="color: #1a5276; border-bottom: 2px solid #1a5276; padding-bottom: 5px; margin-top: 30px;">SECTION 2 — LESSON IDENTIFICATION TABLE</h2>
+    <table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+        <tbody>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px; width: 50%;"><b>Lesson #:</b> 1</td>
+                <td style="border: 1px dashed #333; padding: 8px; width: 50%;"><b>Skills Focus:</b> Listening</td>
+            </tr>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;"><b>Grade:</b> 10th Grade (CEFR: B1.1)</td>
+                <td style="border: 1px dashed #333; padding: 8px;"><b>Scenario:</b> Study Habits for Success</td>
+                <td style="border: 1px dashed #333; padding: 8px;"><b>Theme:</b> How I Learned to Focus</td>
+            </tr>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;"><b>Date(s):</b> From ___ to ___</td>
+                <td style="border: 1px dashed #333; padding: 8px;" colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+            </tr>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;" colspan="3">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Listening: Receptive: Identify the main ideas of a complex dialogue in media, provided there is an opportunity for clarification and repetition. Interactive: Identify the main ideas of feedback provided to solve problems in group settings.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Listening: Can follow a complex dialogue in a podcast about time management strategies, identify key points, and evaluate their usefulness (e.g., "The speaker recommended avoiding distractions by studying in a quiet space. How effective is this for your environment?"). Can listen to a peer's summary of study habits and identify main ideas (e.g., "He said the best way is to break down big tasks into smaller, more manageable ones."). Can determine the key advice from feedback on study routines (e.g., "It's important to have a set routine, like studying at the same time each day.").</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 style="color: #1a5276; border-bottom: 2px solid #1a5276; padding-bottom: 5px; margin-top: 30px;">SECTION 3 — AOA STAGES TABLE</h2>
+    <table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+        <thead>
+            <tr>
+                <th style="border: 1px dashed #333; padding: 8px; background-color: #f2f2f2; width: 35%; color: #1a5276;">Stage & Description</th>
+                <th style="border: 1px dashed #333; padding: 8px; background-color: #f2f2f2; width: 50%; color: #1a5276;">Activities & Teacher Actions</th>
+                <th style="border: 1px dashed #333; padding: 8px; background-color: #f2f2f2; width: 15%; color: #1a5276;">Estimated Date and Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher begins by writing the word "FOCUS" on the board and asks students to quickly brainstorm related words or phrases in pairs for 1 minute. Students then share their ideas with the class. The teacher records relevant words on the board, like "concentration," "study," "distractions," and "goals." This activates prior knowledge about the theme.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher introduces key vocabulary for the lesson visually using flashcards or projected words: <i>habits, focus, procrastinate, strategies, manage, improve, achievements, consistent, effective, organize</i>. For each word, the teacher models its pronunciation clearly, emphasizing stress and any tricky sounds (e.g., /sk/ in 'skills', /st/ in 'study', /s/ in 'success', /t/ in 'type'). The teacher also models sentences using the target grammar: "I <b>used to procrastinate</b> a lot, but I <b>have developed</b> better study <b>habits</b>," and "What <b>strategies have you used</b> to <b>improve</b> your <b>focus</b>?"</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of the vocabulary.
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">CCQ 1 (for 'procrastinate'): "If you procrastinate, do you start tasks immediately or put them off until later?" (Expected answer: "Put them off.")</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">CCQ 2 (for 'effective'): "If a study strategy is effective, does it work well, or not well?" (Expected answer: "It works well.")</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">CCQ 3 (for 'consistent'): "If you study consistently, do you study every day or only sometimes?" (Expected answer: "Every day / Regularly.")</li>
+                        </ul>
+                    The teacher provides further examples if needed.</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">10 min</td>
+            </tr>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to Scenario.</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> An excerpt from a short podcast dialogue (approx. 2-3 minutes long) titled "Student Success Stories: From Procrastination to Productivity." The podcast features two students discussing how they transformed their study <b>habits</b> and <b>improved</b> their <b>focus</b>. The register is informal but clear, typical of an interview or friendly chat. (<i>Example content: "I <b>used to procrastinate</b> terribly, but I <b>have developed</b> new <b>strategies</b>. For instance, I learned to <b>manage</b> my <b>time</b> better. Now, I try to be more <b>consistent</b> with my study <b>routines</b>, which has been really <b>effective</b>."</i>)</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> The student identifies the main ideas of a complex dialogue in media, provided there is an opportunity for clarification and repetition.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>First listening (Gist):</b> Students listen to the podcast excerpt once. The teacher asks, "What is the main topic of this podcast episode?" and "What problem did the students used to have?" (Expected answers: "Study habits / improving focus," "They used to procrastinate.")</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Second listening (Detail - True/False):</b> Students receive a handout with 3-4 True/False statements related to the main ideas and specific details heard in the podcast, e.g.:
+                            <ol>
+                                <li style="margin-bottom: 4px; text-align: justify;">"One speaker said they always had good study habits." (False)</li>
+                                <li style="margin-bottom: 4px; text-align: justify;">"Both speakers mentioned improving their time management." (True)</li>
+                                <li style="margin-bottom: 4px; text-align: justify;">"The podcast suggests being consistent with routines is effective." (True)</li>
+                            </ol>
+                            Students listen again and mark T or F. The teacher pauses if necessary for clarification and allows peer checking.
+                        </li>
+                    </ul>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">12 min</td>
+            </tr>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy focus on Listening.</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Listening for specific vocabulary (<i>habits, focus, procrastinate, strategies, manage, improve, achievements, consistent, effective, organize</i>) and grammatical structures (Present Perfect for achievements, Past Simple for reflecting, WH-questions) within a dialogue.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice (Gap-fill Listening):</b> Students receive a short paragraph (3-4 sentences) based on the podcast excerpt with 5-6 blanks. The blanks correspond to the target vocabulary words. Students listen to the podcast excerpt one more time and fill in the missing words. Example: "I used to ________, but now I try to ________ my time better. This has led to great ________." (<i>procrastinate, manage, achievements</i>).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled (Sentence Completion):</b> The teacher provides sentence starters related to study habits, focusing on the target grammar. Students listen to the sentences or phrases from the podcast again and complete them using their own ideas, reflecting the structures heard.
+                            <ul>
+                                <li style="margin-bottom: 4px; text-align: justify;">"I used to..." (e.g., "I used to procrastinate on all my assignments.")</li>
+                                <li style="margin-bottom: 4px; text-align: justify;">"I have developed..." (e.g., "I have developed a consistent study routine.")</li>
+                                <li style="margin-bottom: 4px; text-align: justify;">"To improve my focus, I..." (e.g., "To improve my focus, I organize my workspace every day.")</li>
+                            </ul>
+                            Students write their completions individually and then briefly share with a partner.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction (Identifying Advice):</b> In pairs, students discuss one piece of advice or a strategy they heard from the podcast that they find particularly <b>effective</b>. They must use at least one target vocabulary word and one of the target grammar structures (Past Simple or Present Perfect). The teacher encourages them to phrase their ideas as "He/She said the best way is..." or "They suggested that I should...". For example, "He said the best way is to break down big tasks into smaller, more manageable ones," or "She suggested that we should create a consistent routine."</li>
+                    </ul>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">15 min</td>
+            </tr>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b></p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students USE the language in a realistic scenario.</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Group Discussion and Peer Feedback. Students work in small groups (3-4 students) to discuss personal study challenges and share potential solutions inspired by the podcast and their own experiences. The focus is on active listening to peers and providing constructive feedback.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Each student briefly describes one study challenge they have faced (e.g., "I <b>used to procrastinate</b> a lot," "I find it hard to maintain my <b>focus</b>," "I struggle to <b>organize</b> my notes").</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">After each student shares their challenge, the other group members listen carefully and provide feedback or suggestions using phrases like "You <b>should try</b> to...", "What <b>have you done</b> to...?", "I think an <b>effective strategy</b> is...", "It's important to have a set <b>routine</b>." They must incorporate at least two vocabulary words and one grammar structure (Present Perfect or Past Simple) from the lesson.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">The goal is for students to actively listen to understand their peers' problems and then provide meaningful advice, demonstrating their ability to identify key advice from feedback on study routines. The teacher monitors groups, ensuring they are using the target language and focusing on listening actively.</li>
+                        </ul>
+                    </p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">10 min</td>
+            </tr>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment strategy and student self-assessment.</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist during Stage 4. The teacher circulates and notes down instances of students actively listening, identifying main ideas from peer feedback, and using the target vocabulary and grammar structures accurately. A simple checklist (e.g., "Identifies main idea from peer feedback Y/N," "Uses 2+ target vocab Y/N," "Uses Past Simple/Present Perfect Y/N") helps track engagement and language use.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students will listen to their peers' summaries of study habits and feedback during the group discussion (Stage 4). The teacher will assess their ability to identify main ideas from the feedback provided by their group members.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Listening Comprehension:</b> Ability to accurately identify key advice from feedback on study routines.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Use of Target Vocabulary:</b> Incorporates at least 3-4 target vocabulary words (e.g., <i>habits, focus, strategies, effective</i>) when providing feedback or summarizing.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity and Cohesion:</b> Suggestions and summaries are clear and easy to follow.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Pragmatic Function:</b> Expresses advice clearly and respectfully.</li>
+                        </ul>
+                    </p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete an exit ticket with the following prompts:
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">1. One new study strategy I heard today that I might try is...</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">2. I feel confident (1-5 scale) identifying the main ideas in English about study habits because...</li>
+                        </ul>
+                    </p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">8 min</td>
+            </tr>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">1. What was the most challenging part of listening to the podcast or your classmates today, and how did you try to overcome it?</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">2. Which study habit or strategy discussed today do you think is most important for your own academic success, and why?</li>
+                        </ul>
+                    </p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b>
+                        <p style="text-align: justify; margin: 4px 0 8px 0;">The warm-up effectively activated prior knowledge, and the podcast proved engaging for 10th graders. The vocabulary introduction and CCQs helped establish a good foundation. Students were able to grasp the main ideas from the podcast, though some struggled with very specific details on the first listen, requiring careful pausing. The practice activities successfully moved from controlled to semi-controlled, allowing students to apply new vocabulary and grammar. In the production stage, students actively participated in discussions and provided relevant feedback, demonstrating progress in interactive listening. Some students still need more scaffolding to naturally integrate the Present Perfect tense into spontaneous speech. Pronunciation of '-ed' endings was varied, requiring continued practice. I need to ensure explicit instruction on linking sounds and sentence stress in future lessons.</p>
+                        <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Adjustments and scaffolds needed for next lesson:</b> Reinforce the pronunciation of -ed endings and sentence stress. Provide sentence frames for grammar integration to support less confident speakers. Consider a pre-listening activity for Lesson 2 that helps predict content from keywords to further support comprehension.</p>
+                    </p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson:</b> This lesson introduced key vocabulary and concepts about study habits through listening. In Lesson 2 (Reading Comprehension), students will read a text that builds upon these same vocabulary words and themes, providing a deeper understanding of the context and reinforcing their receptive skills.</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">5 min</td>
+            </tr>
+        </tbody>
+    </table>

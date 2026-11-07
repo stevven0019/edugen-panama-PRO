@@ -1,0 +1,200 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .subtitle {
+        font-size: 16px;
+        font-style: italic;
+        margin-top: 5px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .table-title {
+        color: #1a5276;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="header-banner">
+    Lesson Planner – Theme # 1 – Lesson # 2
+    <div class="subtitle">Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</div>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 50%;"><b>Lesson #:</b> 2</td>
+        <td style="width: 50%;"><b>Skills Focus:</b> Reading</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> Kinder (CEFR: A1.2)</td>
+        <td><b>Scenario:</b> What's that Sound?</td>
+        <td><b>Theme:</b> That's a Rooster!</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <b>Specific Objective:</b> 
+            <p style="text-align: justify; margin: 4px 0 8px 0;">Reading: reading_1: Recognize basic familiar words supported with illustrations or visual aids.<br>reading_2: Match spoken words to their written form as they are heard and supported with pictures.<br>phonemic_awareness: Recognize familiar letters.</p>
+            <b>Learning Outcome:</b>
+            <p style="text-align: justify; margin: 4px 0 8px 0;">Reading: Can recognize basic familiar words related to domestic animals, supported by illustrations or visual aids (e.g., saying 'rooster' when hearing the sound of a rooster and seeing the word 'rooster' with a picture).<br>Can match spoken words to their written form when supported by pictures (e.g., matching flashcards with pictures of domestic animals, such as a 'rooster,' to the corresponding written word).<br>Can identify letters at the beginning of familiar animal names (e.g., C for 'cat').</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<div class="table-title">The Six Action-Oriented Approach (AOA) Lesson Stages</div>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 30%;">Stage & Description</th>
+            <th style="width: 50%;">Activities & Teacher Actions</th>
+            <th style="width: 20%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <b>STAGE 1 — Warm-up / Pre-task</b><br>
+                Engagement, Modeling and Clarification
+            </td>
+            <td>
+                <b>Warm-up:</b>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">The teacher starts by playing various familiar animal sounds (e.g., 'meow', 'woof', 'quack', 'cock-a-doodle-doo'). For each sound, the teacher shows a large picture flashcard of the corresponding animal (e.g., cat, dog, duck, rooster). Students are encouraged to mimic the sound and shout out the animal name. This connects to the 'What's that Sound?' scenario and reviews vocabulary from Lesson 1.</p>
+                <b>Modeling:</b>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">The teacher then shows the picture flashcard and simultaneously displays the written word for each animal (e.g., picture of a cat with the word 'cat'). The teacher points to the word and says, "Look! This is a cat. C-A-T, cat. The cat says meow." The teacher models pointing to the word while saying it clearly and slowly, emphasizing the initial letter for 'C' in 'cat'. This models how to visually link the picture, sound, and written word.</p>
+                <b>Clarification (CCQs):</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Showing a picture of a dog and the word 'dog') "Is this a 'cat'?" (Expected answer: "No!")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Pointing to the word 'rooster' next to its picture) "What letter is this?" (Pointing to 'R'. Expected answer: "R!")</li>
+                </ul>
+            </td>
+            <td>5-7 min</td>
+        </tr>
+        <tr>
+            <td>
+                <b>STAGE 2 — Presentation</b><br>
+                Input of new language/content connected to Scenario: "What's that Sound?".
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A large, illustrated "Animal Sounds Story Book" or a set of sequential large flashcards depicting different domestic animals making their sounds, with the written animal name clearly visible next to each illustration. Genre: Simple narrative/descriptive text. Register: Child-friendly. Format: Visual storybook/flashcard sequence.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">The teacher presents the "Animal Sounds Story Book" to the class. Each page shows an animal (cat, dog, rooster, duck, cow, bird) with its sound and the written name. The teacher reads each page aloud, pointing to the picture, making the sound, and then tracing the written word with a finger while saying it. For example: "Look! What's that sound? 'Meow!' That's a *cat*! (pointing to the word 'cat'). The *cat* says meow. C-A-T, cat." This is repeated for each animal, emphasizing the initial letters and their sounds (/m/ in 'meow', /r/ in 'rooster').</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Recognizing sounds and describing animal sounds by identifying and describing different animals based on their sounds, and linking them to their written form.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher asks, "What sound is this?" (plays a sound, e.g., 'woof'). Students respond with the sound. Then the teacher shows the page/flashcard with the dog and its name. "Is this a dog?" (pointing to the word 'dog'). Students nod or say "Yes!"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher asks students to point to the word 'rooster' when they hear the rooster sound and see its picture.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"True or False: The duck says 'meow'." (Showing picture of duck and word 'duck'). Students show thumbs up/down.</li>
+                </ul>
+            </td>
+            <td>10-12 min</td>
+        </tr>
+        <tr>
+            <td>
+                <b>STAGE 3 — Preparation / Practice</b><br>
+                Accuracy focus on Reading.
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Reading: Recognize basic familiar words supported with illustrations or visual aids. Match spoken words to their written form as they are heard and supported with pictures. Grammar: WH-questions ('What sound is this?'), Present simple ('The cat says meow.'), Exclamations ('That's a rooster!'). Vocabulary: cat, dog, rooster, bird, cow, duck, sheep, horse, fish, pig, say, bark, meow, quack, woof. Phonemic awareness: Recognizing letters of the alphabet in animal names (C for 'cat', D for 'dog', R for 'rooster').</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 1: Picture-Word Matching (Controlled Practice)</b>
+                        <p style="text-align: justify; margin: 4px 0 8px 0;">The teacher distributes sets of small picture cards (cat, dog, rooster, duck, cow) and corresponding word cards (CAT, DOG, ROOSTER, DUCK, COW) to each student or small group. The teacher holds up a picture card and says the animal's name. Students must find the matching word card and hold it up. The teacher reinforces by saying, "Yes, that's 'cat'! C-A-T." Then, the teacher holds up a word card and students find the picture. This activity specifically targets 'reading_1' and 'reading_2'.</p>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 2: Listen, Point, and Letter Identify (Semi-controlled)</b>
+                        <p style="text-align: justify; margin: 4px 0 8px 0;">The teacher displays the word cards of all target animals (cat, dog, rooster, bird, cow, duck, pig, horse) on the board with their corresponding pictures. The teacher plays an animal sound (e.g., 'quack'). Students are instructed to point to the correct written word on the board. After they point, the teacher asks, "What letter does 'duck' start with?" (pointing to the 'D'). Students respond "D!" The teacher praises correct answers and models the initial letter sound. This reinforces phonemic awareness (P, Q, R, C, D) and matching spoken words to written form.</p>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 3: "Animal Word Hunt" (Pair Interaction)</b>
+                        <p style="text-align: justify; margin: 4px 0 8px 0;">Students work in pairs. Each pair receives a set of picture flashcards and corresponding word flashcards for 4-5 animals (e.g., cat, dog, rooster, pig). One student picks a picture card (e.g., 'rooster') and makes its sound, asking "What's that sound?" The partner says, "That's a rooster!" and then tries to find the word card 'ROOSTER' and show it. They then point to the letter 'R' and say "R for rooster!". They take turns. The teacher circulates, providing support and correcting pronunciation if needed.</p>
+                    </li>
+                </ul>
+            </td>
+            <td>15-18 min</td>
+        </tr>
+        <tr>
+            <td>
+                <b>STAGE 4 — Performance / Production</b><br>
+                Communicative task where students USE the language in a realistic scenario: "What's that Sound?".
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> "Our Animal Farm Reading Adventure" – a guided classroom movement activity where students interact with written animal names.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">The classroom is set up as a simple "Animal Farm" with large print word cards (e.g., ROOSTER, CAT, COW, DUCK, PIG) accompanied by their corresponding animal pictures, placed at different stations around the room. The teacher says, "Let's go to the Animal Farm! What animal wants to play?" The teacher plays an animal sound (e.g., 'cock-a-doodle-doo'). Students identify the sound ("That's a rooster!"). The teacher then says, "Find the word 'ROOSTER'!" Students walk to the station with the 'ROOSTER' word card and picture. When they arrive, they point to the word, say "ROOSTER!", and make the rooster sound. This activity is repeated for 4-5 different animals, ensuring active recognition of the written words in context. The focus is on linking the sound, the visual animal, and its written name, reinforcing the specific objective to recognize familiar words supported by visuals.</p>
+            </td>
+            <td>8-10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <b>STAGE 5 — Assessment / Post-task</b><br>
+                Formative assessment strategy.
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist during the "Our Animal Farm Reading Adventure" and a simple matching worksheet.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b>
+                Students receive a worksheet with 3-4 pictures of animals (e.g., rooster, cat, dog) and a jumbled list of their written names at the bottom. The task is to draw a line from each animal picture to its correct written name. Additionally, there will be one animal (e.g., 'rooster') with the word 'ROOSTER' below it, and students will be asked to circle the letter 'R'.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Accuracy in matching animal pictures to their written words. (Recognize basic familiar words, Match spoken words to written form).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Ability to identify and circle the target initial letter (e.g., 'R' for 'rooster'). (Recognize familiar letters).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Engagement and participation in the "Animal Farm Reading Adventure".</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students are shown two large cards: one with a happy face and "I can read animal words!" and one with a questioning face and "I need more help with animal words." Students point to the face that best describes how they feel about matching the animal words to pictures.</p>
+            </td>
+            <td>5-7 min</td>
+        </tr>
+        <tr>
+            <td>
+                <b>STAGE 6 — Reflection</b><br>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What animal word did you find today that you liked to read?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Was it easy or a little difficult to match the pictures to the words?</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">The students showed strong engagement with the multi-sensory approach. The "Animal Farm Reading Adventure" was particularly effective for reading word recognition, as the movement and sound elements kept the Kinder students highly motivated. Some students still need more practice differentiating similar-looking words or recognizing initial letters for less familiar animals (e.g., sheep, horse). Next time, I will ensure more explicit modeling of tracing the initial letter for each word. The use of large print and clear visuals was crucial for this age group. The matching worksheet provided a good snapshot of individual word recognition abilities.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">In Lesson 3 (Speaking & Interaction), students will use the recognized animal words and sounds to engage in simple dialogues and interactive games, describing animals and their sounds to their peers. This will build on their ability to recognize words by allowing them to verbally produce the vocabulary in communicative contexts.</p>
+            </td>
+            <td>5 min</td>
+        </tr>
+    </tbody>
+</table>

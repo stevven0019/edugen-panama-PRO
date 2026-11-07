@@ -1,0 +1,194 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .table-title {
+        color: #1a5276;
+        font-size: 1.3em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+    }
+    b {
+        color: #1a5276;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 1</td>
+        <td style="width: 25%;"><b>Skills Focus:</b> Listening</td>
+    </tr>
+    <tr>
+        <td style="width: 25%;"><b>Grade:</b> 1st Grade (CEFR: Pre-A1.3)</td>
+        <td style="width: 25%;"><b>Scenario:</b> Nice Weather Today!</td>
+        <td style="width: 25%;"><b>Theme:</b> It's Sunny!</td>
+    </tr>
+    <tr>
+        <td style="width: 25%;"><b>Date(s):</b> From ___ to ___</td>
+        <td style="width: 25%;"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Listening: Receptive: Follow very simple directions and instructions. Interactive: Respond to simple conversations on familiar topics by using gestures or by pointing.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Listening: Can follow basic instructions related to weather (e.g., "Look outside, it's sunny."). Can recognize weather-related words like "sunny" or "raining" in conversations. Can respond to questions about the weather (e.g., "What is the weather today?").</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<div class="table-title">The Six Action-Oriented Approach (AOA) Lesson Stages</div>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 33%;">Stage & Description</th>
+            <th style="width: 33%;">Activities & Teacher Actions</th>
+            <th style="width: 33%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher greets students, "Good morning, everyone!" and then directs attention to the window, saying "Look outside!" The teacher points outside and asks, "What is the weather today?" while showing a flashcard of a bright sun. The teacher then says, "It's sunny! Yes, it's sunny!" and makes a big circle with hands for the sun. The teacher then quickly shows a flashcard of rain and says, "Oh, is it raining?" and makes a 'falling rain' gesture. Students will point or nod.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher holds up a "sunny" flashcard and clearly says, "It's sunny!" several times, emphasizing the /s/ sound. The teacher then makes a "sun is shining" gesture. Next, the teacher holds up a "raining" flashcard and says, "It's raining!" clearly, emphasizing the /r/ sound, while making a 'falling rain' gesture. The teacher models the initial /w/ sound in "weather" by repeating "What is the weather?" slowly and clearly, and having students listen and repeat the sound. The teacher models with clear, slow pronunciation, using gestures and realia (weather pictures/flashcards).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher shows a "sunny" flashcard and a "cloudy" flashcard: "Is it sunny or cloudy?" (Students point to the sunny picture).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher shows a "raining" flashcard and makes a 'rain' gesture: "Can you hear the rain when it's raining?" (Students nod or shake head).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher points to the word 'weather' on a chart: "What sound does this word start with? /w/ /w/ weather." (Students listen and try to make the sound).</li>
+                </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to Scenario: "Nice Weather Today!".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A short audio story or a teacher-read dialogue about a day with different weather conditions. The story uses simple sentences like "It's sunny!", "It's raining now!", "Look, it's cloudy." and "What is the weather today?" accompanied by large, colorful flashcards (sunny, rainy, cloudy, windy).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Listening to and understanding simple descriptions of weather conditions and responding to simple questions about familiar topics (weather).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks (Listening focus):</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Listen and Point:</b> The teacher plays the audio (or reads the story slowly). For each weather condition mentioned, students listen and point to the corresponding weather flashcard held up by the teacher. (e.g., "It's sunny!" - students point to the sun flashcard).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Listen and Gesture:</b> The teacher plays the audio again. This time, when students hear "It's sunny!", they make a 'sun shining' gesture. When they hear "It's raining!", they make a 'rain falling' gesture. For "It's windy!", they make a 'blowing wind' gesture.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Question:</b> After the story, the teacher asks, "What is the weather in the story?" and holds up the "sunny" and "rainy" flashcards. Students point to the weather they heard the most or the last weather mentioned.</li>
+                </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy focus on Listening.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Receptive recognition of "It is sunny," "It is raining," "It is cloudy," "It is windy." Identification of initial sounds /s/, /r/, /w/ in target vocabulary. Understanding of "What is the weather today?"</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice – Listen and Circle:</b> Students receive a worksheet with 3-4 pictures of different weather conditions (sunny, rainy, cloudy, windy). The teacher says a weather word (e.g., "sunny"). Students listen and circle the correct picture on their worksheet. The teacher repeats each word twice. (Grammar: Subject + verb + adjective; Vocabulary: weather words; Pronunciation: /s/, /r/, /w/ in target words).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled – Listen and Respond (TPR):</b> The teacher calls out simple instructions related to the weather. Students listen and perform the action. Examples: "If it's sunny, touch your nose!" "If it's raining, pat your head!" "If it's windy, wave your hands!" The teacher repeats the commands, varying the weather words. This activity reinforces active listening and association with actions. (Grammar: Present continuous for instructions; Vocabulary: weather verbs; Pragmatic: Reacting to weather descriptions).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction – Listen and Show:</b> Students work in pairs, each with a set of small weather flashcards (sunny, rainy, cloudy, windy). The teacher calls out a weather word or a short sentence (e.g., "It's cloudy!"). Students listen and quickly show their partner the correct flashcard. Partners check each other. The teacher circulates, listening for correct identification. (Grammar: Subject + verb + adjective; Vocabulary: weather nouns/adjectives).</li>
+                </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">15-18 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students USE the language in a realistic scenario: "Nice Weather Today!".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> "Weather Reporter Says!" (a variation of "Simon Says"). The teacher acts as the weather reporter. Students stand up. The teacher gives instructions like "Weather Reporter says: 'It's sunny!'" and students must make the sunny gesture or point to a sunny picture on the board. If the teacher just says "'It's raining!'", students should not react. The activity emphasizes attentive listening.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to Theme and Scenario:</b> Students are actively listening to weather descriptions in a game format, simulating responding to a weather forecast. The focus is on understanding the spoken weather condition to perform the correct action.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher explains the rules clearly: "When I say 'Weather Reporter says...', do the action. If I just say the weather, don't move!"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher says: "Weather Reporter says: 'It's sunny!'" (Students make sun gesture or point to sun).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher says: "'It's raining!'" (Students should not move).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher says: "Weather Reporter says: 'It's windy!'" (Students make windy gesture).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher observes students' ability to listen carefully and follow the instructions correctly.</li>
+                </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">7-8 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment strategy.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist (e.g., uses a simple checklist to mark if students correctly identify "sunny," "raining," "cloudy" when spoken).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> "Listen and Point to the Weather." The teacher displays 4 large weather pictures (sunny, rainy, cloudy, windy) around the classroom. The teacher calls out a weather condition (e.g., "Point to 'It's sunny!'"). Students listen and walk to/point at the correct picture. The teacher repeats with different weather conditions. For a written option, a worksheet with 3 pictures, "Listen and Circle the rainy day."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Ability to follow very simple directions (e.g., "Point to the sunny picture").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Correct identification of target weather vocabulary (sunny, rainy, cloudy, windy) when heard.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Responsiveness (e.g., using gestures or pointing as requested).</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students are given a small paper with two weather pictures (sunny/raining). The teacher asks, "Can you hear 'sunny'?" and "Can you hear 'raining'?" Students draw a happy face next to the weather word they feel they understood well, or give a thumbs up for each. For very young learners, they simply point to the picture they understood.
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What new weather word did you hear today? Show me with your fingers!"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Can you show 'sunny' with a gesture?"</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b> What worked well in this lesson? (e.g., TPR activities were highly engaging, flashcards were effective for vocabulary introduction, students responded well to 'Listen and Point' tasks). What adjustments or scaffolds are needed for the next lesson? (e.g., Some students need more repetition of 'cloudy' and 'windy'. Consider a short warm-up song about weather to reinforce vocabulary next time. Ensure varied pacing to maintain attention for all students.)</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> "Great job listening today! Tomorrow, we will read a very short story about the weather using these same words and look at pictures. We will read about when it's sunny and when it's raining!"</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">3-5 min</p></td>
+        </tr>
+    </tbody>
+</table>

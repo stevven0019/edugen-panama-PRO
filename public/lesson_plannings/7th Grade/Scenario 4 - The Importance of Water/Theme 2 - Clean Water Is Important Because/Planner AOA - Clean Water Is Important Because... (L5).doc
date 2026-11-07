@@ -1,0 +1,202 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    .aoa-title {
+        color: #1a5276;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+    h2 {
+        color: #1a5276;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 5</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr style="height: 50px;">
+        <td style="width: 50%;"><b>Lesson #:</b> 5</td>
+        <td style="width: 50%;"><b>Skills Focus:</b> Mediation</td>
+    </tr>
+    <tr style="height: 50px;">
+        <td><b>Grade:</b> 7th Grade (CEFR: A2.2)</td>
+        <td><b>Scenario:</b> The Importance of Water</td>
+        <td><b>Theme:</b> Clean Water Is Important Because...</td>
+    </tr>
+    <tr style="height: 50px;">
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p><b>Specific Objective:</b> Mediation: Concept: Guide peers through setting up a classroom activity. Concept: Assist in explaining the rules of a classroom game.</p>
+            <p><b>Learning Outcome:</b> Mediation: Can guide peers through setting up a classroom activity about water conservation (e.g., "First, place the poster about saving water on the wall. Then, arrange the chairs for the group discussion.")<br>
+            Can assist in explaining the rules of a classroom game focused on water usage (e.g., "In this game, you have to match pictures of water-saving actions with their descriptions. The team with the most matches wins.")<br>
+            Can help classmates understand steps for a science experiment on water filtration (e.g., "First, pour the dirty water into the filter. Then, watch how the clean water comes out from the bottom.").</p>
+        </td>
+    </tr>
+</table>
+
+<h2 class="aoa-title">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 30%;">Stage & Description</th>
+            <th style="width: 50%;">Activities & Teacher Actions</th>
+            <th style="20%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b><br>(Engagement, Modeling and Clarification)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher starts by displaying images of different water-related actions (e.g., a leaking tap, someone drinking water, a person watering plants). Students quickly share one word or short phrase to describe each image. The teacher asks, "What are these people doing with water?" and "Why is saving water important?" (e.g., "We save water because it is a limited resource."). This activates prior knowledge on water usage and conservation.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher models how to explain a simple task step-by-step using clear, sequential language and target grammar. For example, the teacher explains how to set up a small "water-saving actions" poster display: "First, take the poster about saving water. Then, place it on the wall. After that, put the flashcards of water-saving actions next to it. We do this for learning how to conserve water wisely." The teacher emphasizes stress patterns in compound words like 'rainwater' and 'forecast' if naturally occurring, and clear syllabification.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of the modeled instructions and purpose.
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"If I say 'First, take the poster', what should you do with the poster?" (Expected: "Take it.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Why do we put the flashcards next to the poster?" (Expected: "For learning how to conserve water.")</li>
+                </ul>
+                </p>
+            </td>
+            <td><p>5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b><br>(Input of new language/content connected to Scenario)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Input of new language/content connected to Scenario:</b> The teacher presents a short, simplified description of the "Water Usage Tracker App" project, focusing on its purpose and basic functions. The input is designed to be easily mediated by students later. Example text: "This is our Water Usage Tracker App. It helps us see how much water we use daily. We use some water for cooking, a lot for taking showers, and some for cleaning. The app has different sections: 'Kitchen Water Use,' 'Bathroom Water Use,' and 'Outdoor Water Use.' If we track our water, we will become more careful consumers. We track it because water is an essential and limited resource."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A short, illustrated description or mock-up screenshots of the "Water Usage Tracker App" interface (genre: instructional description, register: informative, format: digital presentation/handout).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Interpreting and expressing information related to tracking water usage and its conservation. Students develop an awareness of how to simplify and convey information effectively.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist questions:</b> "What is the main purpose of this app?" (Expected: "To track water usage.") "Why do we track water?" (Expected: "Because water is a limited resource.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information matching:</b> Students match sections of the app (e.g., 'Kitchen Water Use') with common activities (e.g., 'washing dishes').</li>
+                </ul>
+                </p>
+            </td>
+            <td><p>8-10 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b><br>(Accuracy focus on Mediation)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Students practice mediating information by explaining steps, rules, and purposes using the first conditional, "for + verb + ing," and "because + cause." They integrate vocabulary such as 'save,' 'use,' 'waste,' 'collect,' 'potable,' 'limited,' 'important.' Focus on clear pronunciation of stress patterns in compound words (e.g., 'waterfall', 'rainwater').</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice – Sequencing Instructions:</b> The teacher provides jumbled sentences that describe how to prepare a simple water filter (e.g., "pour the dirty water," "put a cloth," "watch the clear water"). In pairs, students arrange them in the correct order, then read them aloud using sequence markers (First, Then, After that). Example: "First, put a cloth in the funnel. Then, pour the dirty water. After that, watch the clean water come out."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice – Explaining Purpose:</b> Students complete sentences orally or in writing, explaining the purpose of water actions using "for + verb + ing" and "because." The teacher provides sentence starters like: "We use water for ____." or "It's important to collect rainwater for ____ because ____." (e.g., "We use water for drinking, cooking, and cleaning." "It's important to collect rainwater for watering plants because it helps us save potable water.").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction – Explaining Game Rules:</b> The teacher briefly describes a simple "Water Conservation Charades" game where students act out water-saving actions. In pairs, one student ("explainer") explains the rules of the game to their partner ("new player"). The "explainer" must use phrases like "In this game, you have to...", "If you guess correctly, you will...", "We play this game because..." and target vocabulary. The partner checks for clarity.</li>
+                </ul>
+                </p>
+            </td>
+            <td><p>15-18 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b><br>(Communicative task where students USE the language)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative task: Guiding Peers through the Water Usage Tracker App.</b> Students work in small groups. Each group acts as "app developers" and has a mock-up or drawing of their "Water Usage Tracker App." They take turns mediating its features to another group, acting as "new users." One student from the "developer" group guides the "new users" through the app, explaining how to use it, why certain features exist, and the impact of tracking water usage. They must use quantifiers and the "for + verb + ing" structure to describe water usage (e.g., "Here, you can see we use a lot of water for showers, and some water for brushing teeth. If you reduce your shower time, you will save a lot of water."). They also explain *why* the app is important for water conservation (e.g., "We designed this app because clean water is a limited resource, and it's important to conserve it.").</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task format:</b> Group explanation and interactive demonstration.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connect directly to Theme:</b> "Clean Water Is Important Because..." is directly reinforced as students explain how their app promotes water conservation and why it is a critical action.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Focus:</b> Fluency in explaining, collaborative interaction between "developers" and "users," and comprehensive mediation of the app's concept and functions.</p>
+            </td>
+            <td><p>10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b><br>(Formative assessment strategy)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative assessment strategy:</b> Teacher observation checklist and peer assessment.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Each group presents a brief summary of their app's most important feature and mediates its function to the class. Another group (peers) provides feedback using a simple checklist based on clarity and use of target language. The teacher observes specific linguistic and mediation competencies.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Intelligible pronunciation, including stress patterns for compound words (e.g., 'rainwater', 'waterfall').</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Clear use of target vocabulary (e.g., 'save', 'waste', 'collect', 'limited', 'purify', 'resource').</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Appropriate use of "First conditional" (e.g., "If we use less water, we will save money.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Correct application of "for + verb + ing" to express purpose (e.g., "We use this for tracking our daily usage.").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Clear explanation and guidance (Mediation skill).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Collaboration and engagement in explaining the project.</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete two sentences:
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Today, I helped my peers understand _____ by explaining _____."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"One new way I can help explain something is to use phrases like _____."</li>
+                </ul>
+                </p>
+            </td>
+            <td><p>5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was challenging about explaining the Water Usage Tracker App to your classmates, and how did you overcome it?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"How can the strategies for explaining and guiding that we practiced today help you in other subjects or in your daily life?"</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b> What worked well in terms of students mediating the project information? Was the language clear and at the appropriate CEFR level? What adjustments are needed for supporting students in explaining complex ideas more effectively? Were the pronunciation and pragmatic elements effectively integrated? Did the 21st Century Skills Project successfully integrate mediation? Perhaps more scaffolded phrases for "explaining rules" could be provided next time.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> This lesson concludes the theme of "The Importance of Water." The next lesson will begin a new theme, possibly building on the idea of environmental responsibility, but with a new set of vocabulary and a different focus skill, beginning with Listening & Vocabulary Introduction for the new theme.</p>
+            </td>
+            <td><p>2-3 min</p></td>
+        </tr>
+    </tbody>
+</table>

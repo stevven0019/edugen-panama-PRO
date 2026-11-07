@@ -1,0 +1,220 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    .lesson-table, .aoa-table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+    }
+    .lesson-table th, .lesson-table td, .aoa-table th, .aoa-table td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .aoa-table th {
+        background-color: #f2f2f2;
+        color: #1a5276;
+    }
+    .aoa-stage-title {
+        color: #1a5276;
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+    b {
+        font-weight: bold;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # Colors in My Classroom – Lesson # 3</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<h2 style="color: #1a5276; font-family: Arial, sans-serif;">SECTION 2 — LESSON IDENTIFICATION TABLE</h2>
+<table class="lesson-table">
+    <tr>
+        <td><b>Lesson #:</b> 3</td>
+        <td><b>Skills Focus:</b> Speaking</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> Pre-K (CEFR: A1.1)</td>
+        <td><b>Scenario:</b> Colors in My Classroom</td>
+        <td><b>Theme:</b> Colors in My Classroom</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <b>Specific Objective:</b> Speaking: Productive: Name primary colors. Interactive: Participate in a conversation with one or two simple interactions.
+            <br><br>
+            <b>Learning Outcome:</b> Speaking: Can identify and name primary colors in classroom objects like "books" and "pencils" (e.g., "What color is this?" "Red").
+            Can participate in a simple "yes" or "no" interaction (e.g., "Is this a pencil?" "Yes").
+            Can answer questions about classroom items using a color and a noun (e.g., saying "blue chair" when shown a picture).
+        </td>
+    </tr>
+</table>
+
+<h2 style="color: #1a5276; font-family: Arial, sans-serif;">SECTION 3 — AOA STAGES TABLE</h2>
+<h3 class="aoa-stage-title">The Six Action-Oriented Approach (AOA) Lesson Stages</h3>
+<table class="aoa-table">
+    <thead>
+        <tr>
+            <th>Stage & Description</th>
+            <th>Activities & Teacher Actions</th>
+            <th>Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 1 — Warm-up / Pre-task (Engagement, Modeling and Clarification)</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">This stage focuses on engaging learners, activating prior knowledge, and introducing the lesson's main topic through teacher modeling and clarification of key concepts and language.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher starts with a "Color Song" (e.g., "BINGO" tune, but with colors) using large, colorful flashcards of primary colors (red, blue, yellow) and familiar classroom objects (book, pencil, chair). The teacher points to a flashcard and sings the color, encouraging students to repeat and point to similar objects in the classroom. This activates prior knowledge of colors and classroom vocabulary from previous lessons.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher holds up a real red book and says clearly, "Look! A red book. Red." The teacher then holds up a blue pencil and says, "A blue pencil. Blue." The teacher uses gestures, pointing to the object and the color. The teacher models the question "What color is this?" and the answer "Red." or "Blue." using realia and simple, clear pronunciation, focusing on /p/ in "pencil" and /b/ in "book".</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of colors and objects with simple questions and actions appropriate for Pre-K learners.</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher shows a yellow crayon: "Is this a red crayon?" (Students shake head or say "No.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher points to a blue chair: "What color is this?" (Students chorally respond "Blue!" or "Blue chair.")</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 2 — Presentation</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">This stage introduces new language and content in a meaningful context, connected to the scenario "Colors in My Classroom," allowing learners to grasp the overall meaning.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Input of new language/content connected to Scenario: "Colors in My Classroom":</b> The teacher uses a set of large, colorful flashcards or real classroom items (pencil, book, chair, desk, crayon, board) and two hand puppets (e.g., a "Red Robot" and a "Blue Bear"). The puppets engage in a simple dialogue, asking each other about the colors of classroom objects. For example:</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Red Robot: "Hello, Blue Bear! What is this?" (Shows a red book)<br>Blue Bear: "It's a book!"<br>Red Robot: "What color is this book?"<br>Blue Bear: "It's red!"<br>Blue Bear: "Is this a blue pencil?" (Shows a yellow pencil)<br>Red Robot: "No, it's a yellow pencil!"</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> Illustrated story/dialogue using large, laminated flashcards of classroom objects (pencil, book, chair, desk, crayon, board, table, bag) in primary colors, and two simple hand puppets for interactive dialogue. Focus on initial sounds /t/ in "table" and /f/ in "find" through teacher's natural speech.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Identifying classroom objects and colors: Responding to "What is this?" by naming familiar items (e.g., "pencil") and "What color is this?" by naming familiar colors (e.g., "red").</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist questions:</b> Teacher asks: "What are the puppets talking about?" (Students might point to objects or say "colors.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Point and identify:</b> Teacher says: "Point to the red book!" "Point to the blue chair!" Students follow directions, demonstrating understanding of color and object vocabulary.</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 3 — Preparation / Practice</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">This stage focuses on developing accuracy in speaking through controlled and semi-controlled activities, practicing the target grammar and vocabulary.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Speaking: Yes/No questions (e.g., "Is this your pencil?"), WH-questions (e.g., "What color is it?"), Prepositions (e.g., "The book is on the table."). Vocabulary: pencil, book, chair, desk, crayon, board, table, bag, red, blue, yellow, on, under, in, next to. Pronunciation: /p/, /b/, /t/, /f/.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 1: "Color Chain Say" (Controlled Practice)</b><br>The teacher holds up a flashcard of a red book and asks, "What color is this?" Students respond chorally: "Red!" Then, individually, the teacher asks a student, "What is this?" and the student says, "Book." This continues with other objects and colors (blue pencil, yellow crayon, etc.). The teacher ensures clear pronunciation of /p/ in "pencil" and /b/ in "book".</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 2: "Where is the Color?" (Semi-controlled Substitution Drill with Prepositions)</b><br>The teacher places classroom items (a book, a crayon) on, under, or next to a small table or chair. The teacher points to a blue book on the table and asks, "Where is the blue book?" Students are encouraged to say, "On the table!" Teacher then models, "The blue book is on the table." Students repeat chorally. The teacher then asks, "Is the crayon under the table?" Students respond, "No!" (The teacher explicitly shows it's *in* the bag). The teacher guides them to say, "The crayon is in the bag."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 3: "Ask Your Friend" (Guided Pair Interaction)</b><br>Students are paired. Each pair has 2-3 small classroom object flashcards (e.g., a red book, a blue pencil, a yellow chair). Student A picks a card and asks Student B: "What is this?" Student B answers, "It's a [pencil]." Then Student A asks, "What color is it?" Student B answers, "It's [blue]." Then roles switch. The teacher circulates, providing support and encouraging simple interactions and polite language ("Thank you" when receiving a card).</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 4 — Performance / Production</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">This stage involves students using the language fluently and collaboratively in a realistic scenario, focusing on communicative task completion rather than just accuracy.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative task where students USE the language in a realistic scenario: "Colors in My Classroom".</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Name: "Classroom Color Detective"</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Guided small group interaction/role-play.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connect directly to Theme: "Colors in My Classroom" and Scenario: "Colors in My Classroom".</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students are divided into small groups of 3-4. Each group receives a small "mystery bag" containing 3-4 real classroom objects or mini-flashcards (e.g., a red crayon, a blue book, a yellow pencil, a green bag).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">One student (the "Detective") picks an item from the bag without showing it to others.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The "Detective" then describes it using one or two words, or asks a question, to their group members. For example, they might say "Red!" or "Is this a book?" or "What color is it?" (if showing a hint of the color).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Group members take turns asking "Is this a [pencil]?" or "Is it [blue]?" until they guess the object and its color.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Once guessed, the "Detective" shows the item and says, "Yes, it's a [red book]! Thank you!" Another student becomes the "Detective."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher circulates, prompting questions ("What color is it?"), providing vocabulary support, and encouraging simple "Yes" or "No" responses and the use of "Thank you." The focus is on active participation and communicative exchange.</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 5 — Assessment / Post-task</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">This stage involves formative assessment of student learning and provides opportunities for student self-reflection.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative assessment strategy:</b> Teacher Observation Checklist.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> During the "Classroom Color Detective" activity, the teacher observes and checks off students' ability to name primary colors and classroom objects, ask simple questions ("What is this?", "What color is this?", "Is this a...?"), and participate in basic "Yes/No" interactions. The teacher might ask individual students to show an item and tell its color and name.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Intelligible pronunciation:</b> Clear pronunciation of target vocabulary (red, blue, yellow, pencil, book, chair).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target vocabulary:</b> Accurately names at least two primary colors and two classroom objects.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity and relevance:</b> Asks simple questions and provides appropriate answers related to color and object identification.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration/Interaction:</b> Participates in a simple interaction with a peer (e.g., asks a question, gives a "Yes/No" answer).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of politeness:</b> Says "thank you" when appropriate.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher asks: "Can you say 'red'?" (Students give a thumbs up or say "Yes!")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher asks: "Can you ask 'What is this?'" (Students give a thumbs up or try to say the question.)</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 6 — Reflection</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">This final stage encourages both student and teacher reflection on the lesson, identifying areas of success and opportunities for future improvement.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What new colors or words about our classroom did you learn to say today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was your favorite color game or activity?"</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What worked well in this lesson to promote speaking? (e.g., TPR, puppet dialogues, "Color Detective" game for interaction).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What challenges did students face in speaking or interacting? (e.g., forming complete sentences, remembering specific vocabulary, shy to speak).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What adjustments or scaffolds are needed for the next lesson (Lesson 4: Writing Composition) to further support their productive and interactive skills, especially leading into writing about these concepts? (e.g., more sentence frames, visual cues, repeated choral practice for sentence structure before writing).</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> The speaking practice today, focusing on naming objects and their colors and simple question-and-answer interactions, will directly support Lesson 4, which will involve writing short sentences about classroom objects and their colors (e.g., "This is a red book.").</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,226 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    h2 {
+        color: #1a5276;
+        font-family: Arial, sans-serif;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="banner">
+    <h1>Lesson Planner – Theme # One, Two, Three Bananas! – Lesson # 5</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 5</td>
+        <td style="width: 75%;"><b>Skills Focus:</b> Mediation</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 3rd Grade (CEFR: A1.1)</td>
+        <td><b>Scenario:</b> Let's Go Shopping!</td>
+        <td><b>Theme:</b> One, Two, Three Bananas!</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <b>Specific Objective:</b>
+            <p style="text-align: justify; margin: 4px 0 8px 0;">Mediation: Communication: Facilitate basic peer interactions in group activities. Concept: Relate concepts to everyday scenarios.</p>
+            <b>Learning Outcome:</b>
+            <p style="text-align: justify; margin: 4px 0 8px 0;">Mediation: Can facilitate peer interactions in shopping activities with simple prompts (e.g., holds up an item and says, "How many apples do you want?"). Can relate shopping words to everyday scenarios with gestures (e.g., points to an apple and says, "I buy this."). Can support peers in understanding items by using visuals (e.g., pointing to three apples and saying, "three apples").</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2>The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="color: #1a5276;">Stage & Description</th>
+            <th style="color: #1a5276;">Activities & Teacher Actions</th>
+            <th style="color: #1a5276;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> "Fruit Basket Count." The teacher shows flashcards of fruits (pineapple, apple, orange, banana) and numbers (one to ten). Students count aloud with the teacher. The teacher asks, "How many bananas do you see?" and students respond, "I see three bananas." This reviews vocabulary and introduces the concept of quantity.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher holds up a flashcard of three bananas. "This is three bananas. Can you say 'three bananas'?" (choral repetition). The teacher then holds up a pineapple. "This is a pineapple. Say /p/ in pineapple. /p/ pineapple." Then a banana. "Say /b/ in banana. /b/ banana." The teacher demonstrates blending of /s-ɪ-k-s/ for "six" and /ˈm-ʌ-n-i/ for "money" with simple gestures, repeating, "Six. Money." The teacher then models how to politely ask, "Can I have two bananas, please?"</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Showing two apples flashcard) "Is this one apple or two apples?" (Expected answer: "Two apples.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Holding up a banana) "Is this a pineapple or a banana?" (Expected answer: "A banana.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Teacher holds up a fruit and pretends to ask someone) "When I want fruit, what do I say?" (Expected answer: "Can I have... please?")</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to Scenario: "Let's Go Shopping!"</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A large, simple picture of a shopping list with various fruits (e.g., 3 apples, 5 oranges, 2 pineapples, 10 bananas) and a picture of a market stall with fruits. Also, flashcards for "money," "cart," "basket," "cashier," "price."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Expressing quantity using polite expressions while shopping (e.g., "I want three apples, please.") and requesting items (e.g., "Can I have two bananas, please?").</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher shows the "Shopping List" picture and says, "Today, we are going to make a Shopping List Game! We need to buy fruits at the market."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher points to items on the list, saying: "Look! Three apples. I want three apples. Five oranges. I want five oranges."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher then models a simple exchange: (Teacher points to "3 apples" on the list and asks a pretend shopkeeper) "Can I have three apples, please?" (Teacher pretends to be shopkeeper, gives "apples") "Here are three apples!"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher introduces "money" and "pay" using flashcards: "We need money to pay." (blending /ˈm-ʌ-n-i/ for "money").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher explains the "game idea": "One friend asks for fruit, another friend helps understand. We use pictures!" (Teacher gestures to help understand).</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What do I want from the list? Show me three apples!" (Students point to "3 apples" on the projected list).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Do we need toys or fruit for our shopping list game?" (Expected answer: "Fruit.")</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">8-10 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy focus on Mediation</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Grammar: Number + noun (e.g., "three bananas"), Present simple (e.g., "I want five pineapples."), Numbers (e.g., "one, two, three..."). Vocabulary: pineapple, apple, orange, banana, money, cart, market, store, basket, price, cashier, buy, sell, pay, choose, find, pick, carry, cost, need, ask, shop, fresh, cheap, expensive, delicious, sweet.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 1: "Picture Shopping List Match."</b> (Controlled practice) Students receive individual worksheets with pictures of fruits and a separate list of numbers (1-10). They draw lines to match a number to a fruit picture and write the number next to it. For example, next to a picture of two apples, they write "2 apples." The teacher circulates, checking for correct number-noun agreement and pronunciation (e.g., /b/ in "banana", /p/ in "pineapple").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 2: "Help Me Understand!"</b> (Semi-controlled mediation practice) Students work in pairs. Each pair receives a set of fruit flashcards and number cards. Teacher calls out an item: "I want four oranges." Student A picks up four orange flashcards. If Student B is unsure, Student A (the "mediator") points to the flashcards and says, "Look! Four oranges," or "These are four oranges." The teacher emphasizes using gestures and visuals to clarify.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 3: "Shopping Request Role-Play."</b> (Pair interaction/peer check) In pairs, students take turns being the "Shopper" and the "Market Vendor." The "Shopper" uses a simple sentence frame: "Can I have [number] [fruit], please?" (e.g., "Can I have five bananas, please?"). The "Vendor" responds: "Here are [number] [fruit]." If a student gets stuck, the teacher prompts another student to act as a "mediator" by pointing to a picture or repeating the phrase clearly: "He wants five bananas."</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">15-20 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students USE the language in a realistic scenario: "Let's Go Shopping!"</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Collaborative "Shopping List Game" in small groups (3-4 students). The activity involves creating a visual shopping list and then role-playing buying and selling, with a specific focus on peer mediation.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Part 1: Create the Shopping List (5 min).</b> Each group receives a large piece of paper and fruit cut-outs/stickers, plus number stickers. Students collaboratively create their "Shopping List" by sticking pictures of fruits and labeling quantities with numbers (e.g., "three bananas", "one pineapple"). The teacher circulates, asking questions like "How many oranges do you want?" and ensuring proper number-noun agreement.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Part 2: The Shopping Game (10-12 min).</b>
+                        <ul style="list-style-type: circle; padding-left: 20px;">
+                            <li style="margin-bottom: 4px; text-align: justify;">Each group sets up a mini "market stall" with their created shopping list and extra fruit flashcards (acting as items for sale).</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Students take turns playing roles: "Shopper," "Market Vendor," and "Mediator." Roles rotate.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Shopper:</b> Uses their group's shopping list to ask the vendor for items (e.g., "Can I have four apples, please?").</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Market Vendor:</b> Responds and provides the requested items (e.g., "Here are four apples.").</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Mediator:</b> If the Shopper or Vendor has difficulty understanding or responding, the Mediator steps in to help.
+                                <ul>
+                                    <li style="margin-bottom: 4px; text-align: justify;">Example 1 (Shopper confused): If the vendor says "Five oranges" and the shopper looks confused, the mediator points to five oranges on the list/flashcards and says, "He wants five oranges." or "Look! Five oranges."</li>
+                                    <li style="margin-bottom: 4px; text-align: justify;">Example 2 (Vendor confused): If the shopper says "Two pineapples" but the vendor only shows one, the mediator points to the list and says, "She wants *two* pineapples."</li>
+                                    <li style="margin-bottom: 4px; text-align: justify;">Mediators are encouraged to use gestures, point to visuals (list/flashcards), and use simple prompts like "Say 'please'," "How many?", "This is an apple."</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">The teacher monitors groups, providing support as needed, and encouraging students to use the target vocabulary and mediation strategies.</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">15-17 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist focusing on mediation skills and peer interaction during the "Shopping List Game."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students participate in the "Shopping List Game" project, with the teacher observing their ability to facilitate peer interactions and clarify information.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity of Mediation:</b> Can the student explain or clarify an item/quantity clearly for a peer? (e.g., "He wants three bananas.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of Visuals/Gestures:</b> Does the student use pointing or visual aids (flashcards, shopping list) to support understanding?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of Target Language:</b> Does the student use "Number + noun" (e.g., "three bananas"), "I want...", "Can I have... please?" appropriately when mediating or participating?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Politeness:</b> Does the student use polite expressions like "please" when requesting items or helping peers?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Engagement:</b> Does the student actively participate in supporting their peers in the group activity?</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete a quick exit ticket with the following prompts:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">1. "Did I help my friend understand what fruit to buy?" (Circle: Yes / A little / No)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">2. "I can say [number] [fruit] (e.g., 'three apples')." (Students write an example).</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">1. What was easy about helping your friends in the Shopping List Game?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">2. What was difficult about helping your friends understand? How can you help better next time?</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher Reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What specific mediation strategies did students use effectively (e.g., pointing, repeating, simple sentences)?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Which students struggled with mediation, and what additional scaffolds (e.g., sentence frames, more explicit modeling of gestures) might be needed in future lessons?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Was the "Shopping List Game" project effective in promoting mediation skills at A1.1? How can it be improved?</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> This lesson concludes the "Let's Go Shopping! / One, Two, Three Bananas!" theme and the "Shopping List Game" project. The next lesson will introduce a new theme and set of vocabulary, likely beginning with listening and vocabulary introduction for the new unit, building on the communicative skills developed here.</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">3-5 min</p></td>
+        </tr>
+    </tbody>
+</table>

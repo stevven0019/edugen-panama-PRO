@@ -25,6 +25,7 @@ import AdminPayments from './pages/AdminPayments';
 import AdminPaymentNotices from './components/AdminPaymentNotices';
 import AIChatAssistant from './components/AIChatAssistant';
 import ResourceWorkbook from './components/ResourceWorkbook';
+import CurriculumHub from './pages/CurriculumHub';
 
 // EduGen Pro Billing & Ads components
 import BillingModal from './components/BillingModal';
@@ -587,6 +588,15 @@ export default function App() {
               credits={credits} 
               setActiveTab={setActiveTab} 
               isPremium={isPremium}
+            />
+          )}
+          {activeTab === 'curriculum-hub' && (
+            <CurriculumHub
+              user={user}
+              credits={credits}
+              onTriggerAlert={triggerAlert}
+              isPremium={isPremium}
+              setActiveTab={setActiveTab}
             />
           )}
           {activeTab === 'aoa' && (

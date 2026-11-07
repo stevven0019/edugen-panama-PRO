@@ -1,0 +1,210 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .table-title {
+        color: #1a5276;
+        font-size: 1.4em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # 2 – Lesson # 2</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<div class="table-title">Lesson Identification</div>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 50%;"><b>Lesson #:</b> 2</td>
+        <td style="width: 50%;"><b>Skills Focus:</b> Reading</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 2nd Grade (CEFR: Pre-A1.4)</td>
+        <td><b>Scenario:</b> Fun Outdoors!</td>
+        <td><b>Theme:</b> I Like to Swim.</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Reading: Show comprehension of simple sentences. Reading: Create a title or caption for a paragraph or image. Phonemic Awareness: Identify a spoken word's initial and final phoneme if these words have been previously encountered and are attached to a picture.</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Reading: Can show comprehension of words about outdoor activities in simple texts. (e.g., "She likes soccer."). Can create captions for pictures about outdoor games (e.g., "He runs fast."). Can recognize the initial and final sounds and letters of familiar spoken words by matching pictures to the correct sound and letter (e.g., identifying the initial /g/ sound and letter in "game" and the final /m/ sound when shown a picture of a game).</p>
+        </td>
+    </tr>
+</table>
+
+<div class="table-title">The Six Action-Oriented Approach (AOA) Lesson Stages</div>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="color: #1a5276;">Stage & Description</th>
+            <th style="color: #1a5276;">Activities & Teacher Actions</th>
+            <th style="color: #1a5276;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Engagement, Modeling and Clarification)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher shows large, colorful flashcards of outdoor activities (e.g., a child running, a child swimming, a child playing soccer). The teacher points to each flashcard and says the action, encouraging students to repeat and do a simple TPR action. "Run!" (students run in place), "Swim!" (students make swimming motions), "Play soccer!" (students kick gently). This activates prior vocabulary and sets the theme for reading.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher models the pronunciation of key words for today's reading activity: "run" (/r/ sound), "swim" (/s/ sound), "fast," "slow." The teacher explicitly points to a picture of a child running and says, "He runs fast!" Then points to a child swimming slowly and says, "She swims slowly." The teacher reads a very simple sentence from the upcoming text, pointing to each word and picture, demonstrating how to follow the text with eyes/finger.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding using visuals and gestures.
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Showing a picture of someone swimming): "Is she jumping? No! Is she swimming? Yes!" (Teacher nods for 'yes', shakes head for 'no').</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Showing a picture of someone running fast): "Is he slow? No! Is he fast? Yes!"</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Input of new language/content connected to Scenario)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A short, illustrated paragraph (2-3 sentences) presented on a large chart, whiteboard, or individual worksheets. The text describes children engaged in outdoor activities using previously introduced vocabulary. For example:
+                    <br>
+                    "This is Mia. She likes to swim in the pool. Mia swims fast.
+                    This is Leo. He loves to play soccer in the park. Leo runs quickly."
+                    <br>
+                    Each sentence is accompanied by a clear, simple picture. The text incorporates Grammar: Subject + verb + adverb, Present simple, and Vocabulary: swim, fast, play, soccer, park, run, quickly, like, love, friend.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> The learner demonstrates comprehension of simple written instructions and short descriptive texts about familiar topics.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Gist questions:</b> The teacher reads the text aloud once, pointing to each word. Then asks, "What do Mia and Leo like to do?" (Students can point to pictures or say "Swim!" "Soccer!").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Matching:</b> The teacher provides sentences from the text on separate strips of paper. Students match each sentence strip to the correct picture from the text. For example, match "Mia likes to swim." to the picture of Mia swimming.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Circle the word:</b> Students are given the text again. The teacher reads a word (e.g., "swim") and students circle it in the text. Repeat with "fast", "play", "run". This reinforces visual recognition of words.</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Accuracy focus on Reading)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Reading comprehension of simple sentences about outdoor activities. Identifying initial and final sounds (phonemes) in familiar words. Grammar: Subject + verb + adverb (e.g., "I run fast."), Present simple. Vocabulary: run, jump, swim, play, fast, slow, game, ball.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Reading & Matching:</b> The teacher distributes worksheets with 3-4 simple sentences about outdoor activities on one side and corresponding pictures on the other. Students draw a line to match each sentence to the correct picture. E.g., "I like to play soccer." (picture of soccer ball), "She swims slowly." (picture of a child swimming slowly).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>2. Sentence Completion (Cloze):</b> Students receive worksheets with short sentences related to the theme, but with one word missing. They choose the correct word from a provided word bank (e.g., "swim", "fast", "park"). E.g., "He likes to ____ in the pool." (swim). "They play in the ____." (park). This activity targets reading words in context and recognizing their meaning.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>3. Phonemic Awareness - Sound and Letter Match:</b> The teacher displays pictures of "game," "run," "swim." For each picture, the teacher says the word clearly and exaggerates the initial and final sounds. Students are given letter cards (e.g., G, S, R, M).
+                            <ul>
+                                <li style="margin-bottom: 4px; text-align: justify;"><b>Initial Sound:</b> The teacher holds up the 'game' picture and says "/g/ame." Students then find and hold up the letter 'G'. The teacher shows 'run' and asks for 'R'.</li>
+                                <li style="margin-bottom: 4px; text-align: justify;"><b>Final Sound:</b> The teacher holds up the 'swim' picture and says "swi/m/." Students find and hold up the letter 'M'. (This identifies the initial /s/ and final /m/ phoneme and letter correspondence).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">12-15 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align="justify""><b>STAGE 4 — Performance / Production</b></p>
+                <p style="text-align="justify""> (Communicative task where students USE the language)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Creative Captioning Activity.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b> Students receive a set of new pictures depicting various outdoor activities (e.g., a girl jumping rope, a boy riding a bike, friends playing with a ball). Below each picture, there is a space for a short caption or title.
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>1. Read and Choose:</b> For the first two pictures, the teacher provides two very simple sentence captions to choose from. Students read both options and circle the best caption for the picture. E.g., Picture of a boy on a bike: A) "He likes to run." B) "He rides a bike."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>2. Create a Caption (Guided):</b> For the remaining pictures, students are encouraged to create their own 1-3 word caption or title. The teacher provides sentence starters or key vocabulary words on the board (e.g., "She likes to...", "He plays...", "Fun!"). Students can write a simple sentence (e.g., "She jumps high." or "Happy friends.") or just a word (e.g., "Game!", "Bike!"). This allows them to "create a title or caption for a paragraph or image."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>3. Peer Share:</b> Students briefly show their favorite captioned picture to a classmate and (if able) read their caption aloud or point to the words.</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Formative assessment and self-reflection)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist and review of student worksheets from the production stage.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students' completed captioning activity (Stage 4). The teacher collects the worksheets.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Comprehension:</b> Correctly matches sentences to pictures (Stage 3) and chooses appropriate captions (Stage 4).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Target Vocabulary:</b> Uses 1-2 target vocabulary words (e.g., "swim," "run," "play," "fast," "game") in captions or identification tasks.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity (Reading/Writing):</b> Attempts to write legible words or letters for captions.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Phonemic Awareness:</b> Accurately identifies initial/final sounds of targeted words by pointing to letters.</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What is one outdoor activity you like to read about today?" (Students can point to a picture or say a word).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Can you read 'swim'?" (Students give a thumbs up if yes, thumbs down if no).</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What new words did you see today that you liked?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Was it easy or a little hard to read the sentences about outdoor games?" (Thumbs up / thumbs down).</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b> What worked well in engaging students in reading the simple texts and identifying sounds? The use of visual aids and TPR for words like "run" and "swim" seemed effective. Students enjoyed matching pictures to sentences. What adjustments and scaffolds are needed for the next lesson? Some students struggled with independently writing captions; more sentence starters or word banks will be helpful. The phonemic awareness task needs continued reinforcement. For the next lesson (Speaking), I will ensure students have opportunities to orally express preferences for these activities using the sentences they read today.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> The vocabulary and sentence structures (e.g., "I like to swim," "He runs fast") practiced in reading will directly transfer to the next lesson, which focuses on speaking and interacting about preferences for outdoor activities.</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">3-5 min</p></td>
+        </tr>
+    </tbody>
+</table>

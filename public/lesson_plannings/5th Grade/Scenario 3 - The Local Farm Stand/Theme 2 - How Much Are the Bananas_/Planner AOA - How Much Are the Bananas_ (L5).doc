@@ -1,0 +1,240 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1em;
+    }
+    .aoa-stage-title {
+        color: #1a5276;
+        font-size: 1.5em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 5</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td><b>Lesson #:</b> 5</td>
+        <td colspan="2"><b>Skills Focus:</b> Mediation</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 5th Grade (CEFR: A1.3)</td>
+        <td><b>Scenario:</b> The Local Farm Stand</td>
+        <td><b>Theme:</b> How Much Are the Bananas?</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Mediation: Communication: Assist peers in following multi-step school procedures. Concept: Explain the steps to solve a problem using practical examples.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Mediation: Can assist peers in following multi-step school procedures by acting out steps (e.g., mimes "Next, pay for your fruit."). Can guide peers through solving simple problems by modeling steps, using clarifying questions, and providing feedback (e.g., "First, choose fruit." and points to a fruit picture, then asks, "Which fruit do you want?" and provides feedback, "That's a great choice. What's next?"). Can summarize instructions for peers, using visuals or simple keywords (e.g., points to each item on a checklist and says, "Step one, step two…").</p>
+        </td>
+    </tr>
+</table>
+
+<h2 class="aoa-stage-title">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th>Stage & Description</th>
+            <th>Activities & Teacher Actions</th>
+            <th>Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> "Farm Stand Action Chain"</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher starts by miming the first step of buying fruit at a farm stand (e.g., "choose fruit").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students take turns adding the next step by miming and saying a simple phrase (e.g., Student 1: "Choose fruit." Student 2: "Ask price." Student 3: "Pay money."). This reviews previous lessons and introduces the concept of explaining multi-step procedures.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher encourages the use of target vocabulary (e.g., <i>banana, mango, cost, buy</i>) and simple action verbs.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> "Explaining the Process"</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher models how to explain the steps to a friend using simple, clear language and gestures. Teacher holds up pictures of a fruit and a coin.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher says: "<b>First</b>, you <i>choose</i> your fruit." (Points to fruit). "<b>Then</b>, you <i>ask</i>, '<b>How much is this</b>, please?'" (Mimes asking). "<b>Next</b>, you <i>pay</i> the <i>cashier</i>." (Mimes paying). "<b>Finally</b>, you <i>get</i> your fruit." (Mimes receiving).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher models pronunciation of /p/ in "papaya" and /b/ in "banana," emphasizing clear articulation. Also, segments "banana" into "ba-na-na" (three syllables).</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Is it polite to say 'Give me mango'?" (Expected answer: No) "What can you say instead?" (Expected answer: "Can I have some mango, please?" or "I would like some mango.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"When I say 'First,' what does it mean?" (Expected answer: The beginning, the first step.)</li>
+                </ul>
+            </td>
+            <td>___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to Scenario: "The Local Farm Stand".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> Illustrated step-by-step instructions for creating a "Farm Stand Price List." (Displayed on whiteboard/poster or as handouts). Genre: Instructional text with visuals.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Summarizing and explaining multi-step procedures for the 21st Century Skills Project.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Input:</b> Teacher presents the "Farm Stand Price List" project. The instructions are broken down into simple steps, using keywords and visuals.</p>
+                <ul style="list-style-type: decimal;">
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Step 1: Choose Your Fruit & Vegetables!</b> (Picture of various farm stand items: <i>mango, pineapple, banana, tomato, lettuce</i>)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Step 2: Draw or Print Pictures.</b> (Picture of a student drawing or gluing pictures)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Step 3: Decide the Price.</b> (Example: "<i>Bananas</i>: $1.00 a lot" or "<i>Papaya</i>: $2.50 each")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Step 4: Write Your List Clearly.</b> (Example of a simple price list format)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Step 5: Practice Explaining Your List.</b> (Picture of students talking)</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What is the first step to make our price list?" (Expected: Choose fruit/vegetables.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What do we need to write for each fruit?" (Expected: The price.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Do we need <i>any</i> pictures?" (Expected: Yes, we need <i>some</i> pictures.)</li>
+                </ul>
+            </td>
+            <td>___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy focus on Mediation.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Explaining multi-step procedures, using polite requests ("Can you help me, please?"), WH-questions ("How much is...?"), and "some"/"any" with farm stand vocabulary (<i>mango, pineapple, banana, market, cashier, price</i>).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice: "Fill-in-the-Steps" (Individual/Pairs)</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Students receive a worksheet with incomplete sentences describing steps at a farm stand or for the price list project. They fill in the blanks using a word bank with sequence words (e.g., <i>first, next, then, finally</i>), polite request phrases (e.g., <i>Can you help me, please?</i>), and "some/any."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Example: "___, choose your fruit. We have ___ delicious <i>mangoes</i>." "___, ___ you have ___ <i>papaya</i>, please?"</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice: "Procedure Jumble" (Small Groups)</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Teacher provides sets of sentence strips describing the steps for creating the "Farm Stand Price List" (e.g., "Decide the price.", "Draw pictures of fruit.", "Practice explaining your list."). The strips are jumbled.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">In small groups, students arrange the strips in the correct order. Then, one student explains the correct sequence to the group, using "First, ... Next, ... Then, ... Finally..." The teacher circulates, checking pronunciation, especially for /p/ and /b/, and providing feedback on syllable segmentation (e.g., "banana").</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction: "Guided Shopping Dialogue" (Pairs)</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">One student is the "Farm Stand Helper" and the other is the "Customer." The Helper guides the Customer through the steps of buying an item from a simple, pre-made price list (which they might have started in previous lessons or is provided).</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Helper: "<b>First</b>, choose the fruit you <i>want</i>. We have <i>some</i> fresh <i>pineapples</i> and <i>papayas</i>." Customer: "I <i>want some bananas</i>. <b>How much are</b> the <i>bananas</i>?" Helper: "They <i>cost</i> $1.00. Do you <i>need any</i> other fruit?"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Pairs swap roles. Teacher encourages polite language and checking understanding.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+            <td>___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students USE the language in a realistic scenario: "The Local Farm Stand".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> "Farm Stand Price List Presentation & Peer Explanation"</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students, in small groups (3-4 students), finalize their "Farm Stand Price List" project. Each group creates a visual price list with pictures, names of items (<i>mango, pineapple, guava, tomato, pepper, lettuce, papaya, banana, fruit, egg, cheese, bread, vegetable, milk, sugar, salt, water</i>), quantities, and prices.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Each group then presents their price list to another small group. One or two students from the presenting group act as "explainers" (mediators), guiding the "customer" group through their price list.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The "explainers" must describe the process of buying from their stand, summarize the items available, and answer questions.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Example dialogue: "Welcome to our farm stand! <b>First</b>, look at our <i>fresh vegetables</i>. We have <i>some lettuce</i> and <i>tomatoes</i>. Do you <i>need any</i> <i>peppers</i>? Our <i>peppers</i> are very <i>cheap</i>! <b>How much are</b> the <i>tomatoes</i>? They <i>cost</i> $0.50 each. <b>Can you help me, please?</b> Which fruit would you like?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The "customer" group asks polite WH-questions (e.g., "<b>How much is</b> the <i>papaya</i>?" "Do you have <i>any eggs</i>?"), and the "explainers" respond, using "some/any" and polite transactional language.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Focus on fluency, collaborative interaction, and clear mediation of information. Teacher observes for the use of target grammar, vocabulary, and pronunciation.</li>
+                </ul>
+            </td>
+            <td>___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment strategy and student self-assessment.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> "Farm Stand Price List Explanation & Peer Feedback"</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Each student will individually or in pairs explain their group's "Farm Stand Price List" to a peer, summarizing the available products and prices, and guiding their peer through the steps to 'buy' an item.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The peer will act as a 'customer' and ask questions, requiring the presenting student to mediate the information.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Example: Student A (explaining): "This is our farm stand. We have <i>some bananas</i>, <i>mangoes</i>, and <i>guavas</i>. <b>First</b>, you choose. <b>How much is</b> the <i>mango</i>? It's $1.25. Do you <i>need any water</i>?" Student B (customer): "<b>Can I have some water, please?</b> Do you have <i>any bread</i>?" Student A: "No, we don't have <i>any bread</i> today, sorry."</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria (Teacher & Peer Observation):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Intelligible pronunciation:</b> Clear /p/ in "papaya" and /b/ in "banana"; correct syllable segmentation for words.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target vocabulary:</b> Employs nouns (e.g., <i>banana, market, cashier, price</i>), verbs (e.g., <i>buy, sell, cost</i>), adjectives (e.g., <i>fresh, cheap</i>).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity in explaining steps:</b> Uses sequence words (<i>first, next, then, finally</i>) to assist peers effectively.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar & Pragmatic Function:</b> Correctly uses "How much is/are...?", polite requests ("Can you help me, please?"), and "some/any."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration:</b> Actively listens and responds to peer questions, guides the conversation.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Can I explain how to 'buy' fruit politely to a friend?" (Yes/No/A little)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was easy/difficult about explaining our Farm Stand Price List?"</li>
+                </ul>
+            </td>
+            <td>___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What is one new word or phrase you learned today to help a friend understand something?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"How did using pictures help you explain the price list to your classmates?"</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What aspects of explaining procedures (Mediation) worked well today? Were students able to use sequence words and polite requests effectively?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Which grammar points (e.g., "some/any," "How much is...?") or vocabulary items need more reinforcement in future lessons or as a quick review?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Were students engaged with the "Farm Stand Price List" project? What adjustments or scaffolds could improve the clarity of instructions for similar projects?</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">This lesson concludes the "How Much Are the Bananas?" theme by consolidating all skills (listening, reading, speaking, writing, and mediation) into the "Farm Stand Price List" project. The next lesson will transition to a new theme, building upon the skills of giving and understanding instructions and polite transactional language in a different context.</li>
+                </ul>
+            </td>
+            <td>___ min</td>
+        </tr>
+    </tbody>
+</table>

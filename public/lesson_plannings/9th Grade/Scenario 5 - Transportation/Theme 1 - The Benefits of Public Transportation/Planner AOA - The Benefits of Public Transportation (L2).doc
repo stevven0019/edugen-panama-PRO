@@ -1,0 +1,213 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .table-title {
+        color: #1a5276;
+        font-size: 1.4em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+    b {
+        color: #1a5276;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="banner">
+    <h1>Lesson Planner – Theme # Transportation – Lesson # 2</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 50%;"><b>Lesson #:</b> 2</td>
+        <td style="width: 50%;"><b>Skills Focus:</b> Reading</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 9th Grade (CEFR: A2.4)</td>
+        <td><b>Scenario:</b> Transportation</td>
+        <td><b>Theme:</b> The Benefits of Public Transportation</td>
+    </tr>
+    <tr>
+        <td colspan="2"><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Reading: Interpret written instructions for daily activities. Reading: Evaluate text structures and elements.</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Reading: Can interpret written instructions on using the metro or metro bus in Panama City (e.g., "Explain steps for buying or recharging a Metrobus card at an Albrook station kiosk")<br>Can evaluate text structures in brochures about Panama's transit systems (e.g., "I can see sections like Routes, Ticket Prices, and Timetables. These headings help organize the information clearly.")<br>Can interpret directions for navigating a local transit map (e.g., "To find the bus stop, follow the red line on the map. The bus stop is near the library, right after the park.").</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 class="table-title">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 35%;">Stage & Description</th>
+            <th style="width: 55%;">Activities & Teacher Actions</th>
+            <th style="width: 10%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b><br>(Engagement, Modeling and Clarification)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher displays a large picture of the Panama Metro and a Metrobus. Students identify the types of public <i>transportation</i>. The teacher then writes "Benefits of Public Transportation" on the board and asks students to brainstorm orally any <i>benefits</i> they remember from the previous lesson or their own experience. Elicit words like <i>cheaper, avoid traffic, convenient</i>.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher shows a short paragraph about using the Metro, projected on the board. The teacher reads it aloud, explicitly modeling stress in words like "<i>transportation</i>," "<i>convenience</i>," and "<i>passenger</i>." The teacher points to headings and bullet points in the text, explaining that these are text structures that help us find information quickly. For example, "Look at this heading: 'How to <i>Tap In</i>.' This tells us what the section is about."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of key vocabulary and concepts.
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"If a text has headings like '<i>Routes</i>' and '<i>Fare</i> Prices,' what kind of information do you expect to <i>read</i> in each section?" (Expected answer: "Where the bus goes and how much it costs.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"If I say, 'You <i>should take</i> the <i>bus</i> to <i>avoid traffic</i>,' am I giving an order or a suggestion?" (Expected answer: "A suggestion.")</li>
+                </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b><br>(Input of new language/content)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> Students receive a printed brochure excerpt (or a digital version projected) titled "Navigating Panama City: Your Guide to Metro and Metrobus." The text includes sections like "How to Buy/Recharge Your Metrobus Card," "Metro Lines and Key <i>Routes</i>," and "<i>Rules</i> for a Safe <i>Journey</i>." It features bulleted lists for instructions and bold headings for text structures.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Reading: Evaluate text structures and elements; Reading: Interpret written instructions for daily activities.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b> Students first skim the text to answer gist questions.
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Question 1:</b> "What is the main purpose of this brochure?" (Expected answer: "To help people use the Metro and Metrobus.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Question 2:</b> "Based on the headings, what kind of information can you find about the Metrobus card?" (Expected answer: "How to buy or recharge it.")</li>
+                </ul>
+                Then, students complete a True/False activity based on specific instructions in the text.
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False 1:</b> "You <i>have to wear</i> a <i>seatbelt</i> on the Metrobus." (Students <i>read</i> the text to confirm.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False 2:</b> "The Metro is <i>faster</i> than the Metrobus for long <i>distance travel</i>." (Students <i>read</i> the text for comparative information.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False 3:</b> "To <i>recharge</i> your card, you <i>should go</i> to the kiosk inside any Metro station." (Students <i>read</i> instructions to verify.)</li>
+                </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b><br>(Accuracy focus)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Interpret written instructions; evaluate text structures; use modal verbs for advice/obligation (<i>should, have to</i>), comparatives/superlatives (<i>faster, cheapest</i>), and phrasal verbs (<i>get on, tap in</i>).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">1. <b>Controlled Practice (Cloze Reading):</b> Students receive a worksheet with a short text (an excerpt from the brochure's "<i>Rules</i> for a <i>Safe Journey</i>" section) containing blanks. They must fill in the blanks using modal verbs (<i>should, have to</i>) and phrasal verbs (<i>get on, get off, tap in</i>) provided in a word bank, ensuring the sentences make sense in context. Example: "Passengers ______ their card before they ____ the Metro." (<i>tap in, get on</i>). Focus on pronunciation of words like '<i>passenger</i>' and distinguishing /æ/ and /eɪ/ in '<i>tap</i>' vs '<i>tape</i>'.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">2. <b>Semi-controlled (Sentence Transformation):</b> Students work individually to read sentences about transportation and rewrite them using comparatives or superlatives. Example: "Taking the <i>bus</i> is <i>cheap</i>. Taking the Metro is <i>cheaper</i>." (Rewrite: "The Metro is <i>cheaper</i> than the <i>bus</i>.") Or "The *train* is *fast*." (Rewrite using a superlative: "The *plane* is the *fastest*.") This reinforces grammatical accuracy in a reading context.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">3. <b>Pair Interaction (Instruction Decoding):</b> In pairs, students receive two different short sets of instructions from the brochure, e.g., "How to Find Your <i>Route</i> on the Metro Map" and "Emergency <i>Protocol</i> on the Metrobus." They read their respective instructions carefully, identifying keywords and steps. Then, they explain the steps to their partner (e.g., "First, you <i>have to look</i> for the station entrance. Then you <i>should follow</i> the signs to your line."), who listens and compares the verbal explanation to the written text provided to them afterwards, correcting any misinterpretations. This requires interpreting written text accurately.</li>
+                </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">15 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b><br>(Fluency focus)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Students work in small groups (3-4 students). Each group receives a specific section of a public <i>transportation</i> brochure (e.g., "<i>Benefits</i> of Using Public <i>Transportation</i>," "Metro and Metrobus <i>Safety Rules</i>," or "<i>Schedules</i> and <i>Fares</i> Information").</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Collaborative Reading and Presentation.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b>
+                <ol>
+                    <li style="margin-bottom: 4px; text-align: justify;">Each group <i>reads</i> their assigned text, identifying the main purpose of their section, key instructions, <i>safety rules</i>, or <i>benefits</i>. They also identify the text structures used (e.g., headings, bullet points, bolded words) and discuss how these help them understand the information. They focus on using vocabulary like <i>convenience, efficiency, avoid traffic, protocol, wear seatbelts</i>.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Groups then prepare a short, informal presentation (2-3 minutes) to the class. They explain their section, detailing the most important information they <i>read</i>. They must explicitly mention how the text's structure helped them interpret the content. For example, "Our section is about <i>safety rules</i>. The bold headings and bullet points made it easy to see that we *have to* *wear seatbelts* and *follow protocols*." They also make suggestions for convenience or emphasize safety rules. For example, "The text suggests that public *transportation* is *more affordable* and *avoids traffic*." or "You *have to follow rules* like *wearing seatbelts* to stay *safe* on the *road*."</li>
+                </ol>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b><br>(Formative assessment)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist during group work and presentations.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students' ability to interpret their assigned text, identify text structures, and present key information/instructions to the class.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Interpretation of Instructions:</b> Clearly explains steps or rules from the text.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Evaluation of Text Structures:</b> Identifies and explains how headings, bullet points, etc., helped comprehension.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of Target Vocabulary:</b> Incorporates words like <i>benefits, safety, convenience, route, fare, schedule, tap in, get on, avoid traffic</i>.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of Target Grammar:</b> Uses modal verbs (<i>should, have to</i>) and comparatives/superlatives correctly.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity and Cohesion:</b> Presentation is easy to follow and logically structured.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pronunciation:</b> Demonstrates intelligible pronunciation, including stress on multisyllabic words like '<i>transportation</i>' and distinctions in minimal pairs like '<i>tap</i>' and '<i>tape</i>'.</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete two sentences on a small slip of paper:
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"One important instruction I can now <i>interpret</i> is..."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"The part of the text that helped me the most was (e.g., headings, bullet points) because..."</li>
+                </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was the most interesting <i>benefit</i> of public <i>transportation</i> you <i>read</i> about today, and why?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"How can <i>reading</i> instructions carefully for public <i>transportation</i> help you in real life?"</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b> What worked well in this <i>Reading</i> lesson, specifically regarding students' ability to <i>interpret instructions</i> and <i>evaluate text structures</i>? What adjustments might be needed for students who struggled with identifying key information or understanding modal verbs in context? How can I scaffold <i>reading</i> comprehension further (e.g., providing graphic organizers for text structures) for the next lesson?</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> The next lesson (Lesson 3: Speaking & Interaction) will involve students discussing and comparing public <i>transportation</i> options and making suggestions, building on the information and vocabulary learned from <i>reading</i> these texts. They will use the instructions and <i>rules</i> they interpreted today to participate in role-plays and dialogues.</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">3 min</p></td>
+        </tr>
+    </tbody>
+</table>

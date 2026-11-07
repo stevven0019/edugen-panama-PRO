@@ -1,0 +1,192 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    .aoa-table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .aoa-table th, .aoa-table td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+    }
+    .aoa-table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    .aoa-stage-title {
+        color: #1a5276;
+        font-weight: bold;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # One Step In, Two Steps Out! – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table class="aoa-table">
+    <tbody>
+        <tr>
+            <td><b>Lesson #:</b> 1</td>
+            <td><b>Skills Focus:</b> Listening</td>
+        </tr>
+        <tr>
+            <td><b>Grade:</b> Kinder (CEFR: A1.2)</td>
+            <td><b>Scenario:</b> Let's Dance!</td>
+            <td><b>Theme:</b> One Step In, Two Steps Out!</td>
+        </tr>
+        <tr>
+            <td><b>Date(s):</b> From ___ to ___</td>
+            <td><b>Learning Sequence Time:</b> 45–50 min</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p><b>Specific Objective:</b> Listening: Repeat simple rhymes and songs.</p>
+                <p><b>Learning Outcome:</b> Listening: Can show comprehension of simple movement instructions during songs (e.g., 'jump' or 'clap').<br>Can repeat simple rhymes and songs in group activities that involve listening for action words (e.g., jumps when the song says 'jump').<br>Can respond to oral instructions for basic dance movements (e.g., 'step forward, step back').</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table class="aoa-table">
+    <thead>
+        <tr>
+            <th style="width: 30%;">Stage & Description</th>
+            <th style="width: 55%;">Activities & Teacher Actions</th>
+            <th style="width: 15%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><p class="aoa-stage-title">STAGE 1 — Warm-up / Pre-task<br>(Engagement, Modeling and Clarification)</p></td>
+            <td>
+                <p><b>Warm-up:</b> The teacher greets students cheerfully, "Good morning, dancers!" and introduces the theme "One Step In, Two Steps Out!" by having students stand in a circle. The teacher then says and demonstrates simple commands: "Let's all stand up! Good job! Now, let's move a little." The teacher uses a simple fingerplay or hand movement game with key action words like "move" and "shake" to get students ready to listen and follow. For example, "Shake your hands up, shake your hands down!" (verbs: shake, move, prepositions: up).</p>
+                <p><b>Modeling:</b> The teacher models the pronunciation and action for core vocabulary words: 'step', 'jump', 'move', 'dance', 'in', 'out', 'one', 'two'. For example, the teacher says "One step forward!" while taking one step forward, then "Two steps back!" while taking two steps back, emphasizing the number and direction. The teacher clearly pronounces /t/ in 'two' and /d/ in 'dance' as they model the words and actions. The teacher highlights the 'J' sound in 'jump' by showing the letter 'J' flashcard and saying "J, J, Jump!".</p>
+                <p><b>Clarification (CCQs):</b> The teacher checks understanding by using visual cues and simple questions.
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher performs "jump" and asks, "Am I jumping?" (Students respond "Yes!" or "No!").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher points to a student taking a step and asks, "Is she stepping?" (Students respond "Yes!").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher asks, "When I say 'out', do we go in or out?" (Students point 'out').</li>
+                </ul>
+                </p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><p class="aoa-stage-title">STAGE 2 — Presentation<br>(Input of new language/content)</p></td>
+            <td>
+                <p><b>Material:</b> Audio track of a simple action song/rhyme titled "One Step In, Two Steps Out!" incorporating movement instructions, numbers (one to ten), and prepositions (in, out, around, up, next to). Example song: "One step in, one step out, one step in, and shake it all about! Two steps forward, two steps back, turn around and clap, clap, clap! Jump up high, jump down low, spin around and let's all go!"</p>
+                <p><b>Communicative Competence:</b> Students will listen to and comprehend global meaning and specific action words within a simple song, showing understanding through Total Physical Response (TPR).</p>
+                <p><b>Comprehension tasks:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Listening:</b> The teacher plays the song once. Then asks, "What are we doing? Are we sleeping or dancing?" (Students respond "Dancing!"). "What kind of movements did we hear?" (Students show some movements or say 'jump', 'step').</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Action Matching:</b> The teacher plays the song a second time. Students listen and try to perform the actions they hear (e.g., they jump when they hear "jump," step forward when they hear "step forward"). The teacher models and guides as needed, making sure to use phrases like "First, take one step..." and "Next, jump up!".</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Word Spotting:</b> The teacher asks students to raise their hand or jump each time they hear a specific word like "jump" or "step" in the song. The teacher explicitly draws attention to the /t/ sound in 'two' when the song mentions "two steps".</li>
+                </ul>
+                </p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><p class="aoa-stage-title">STAGE 3 — Preparation / Practice<br>(Accuracy focus on Listening)</p></td>
+            <td>
+                <p><b>Communicative Skill & Content:</b> Students practice listening for and responding to sequential commands with numbers (e.g., 'First, take one step to the side.' 'Next, take two steps to the side.'), simple directive phrases (e.g., 'Move to the front.' 'Step to the side.'), and positional commands with prepositions (e.g., 'Stand next to the chair.' 'Jump over the line.'). Vocabulary: step, jump, move, dance, spin, turn, in, out, around, up, next to, over, numbers one to ten.</p>
+                <p><b>Detailed Procedure:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Listen and Do (Controlled Practice):</b> The teacher stands in front of the class with flashcards showing numbers (1-10) and actions (step, jump, spin, turn). The teacher gives single commands, and students perform the action. "First, one step!" (Students take one step). "Next, jump!" (Students jump). The teacher emphasizes clear pronunciation of /d/ in 'dance' and /t/ in 'two'. The teacher also uses props like a 'line' on the floor and a 'chair' to practice positional commands: "Jump over the line!" "Stand next to the chair!"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Teacher Says, Student Does (Semi-controlled Drill):</b> The teacher gives a series of 2-3 commands. Students listen carefully and perform the sequence. "Listen! First, two steps forward. Next, one step back." "Listen! First, spin around. Next, jump up!" The teacher watches to ensure students are distinguishing the different actions and following the numerical cues. The teacher uses phrases like "Move to the front!" and "Step to the side!" (simple directive phrases).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Group Action Echo (Collaborative Listening):</b> Students stand in a circle. The teacher gives a command (e.g., "One step in!"). All students perform the action. Then, the teacher says another command (e.g., "Two steps out!"). This continues, building a short sequence. The teacher encourages students to look at their friends and mirror actions, promoting group participation and polite expressions like "after you" or "go ahead" if they need to arrange themselves (e.g., forming a new circle or line).</li>
+                </ul>
+                </p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><p class="aoa-stage-title">STAGE 4 — Performance / Production<br>(Fluency focus in a communicative task)</p></td>
+            <td>
+                <p><b>Task Format:</b> Group Dance Command Challenge.</p>
+                <p><b>Description:</b> Students will participate in a "Let's Dance!" activity where they listen to a series of instructions from the teacher or a pre-recorded audio track and perform a collaborative dance sequence. The activity focuses on following multi-step commands related to the theme "One Step In, Two Steps Out!".</p>
+                <p><b>Procedure:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher sets up a small "dance floor" area, perhaps with a "line" and a "chair" as props.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher gives a series of dance commands, incorporating all target grammar and vocabulary. Example sequence: "First, take one step forward! Next, spin around! Then, take two steps back! Now, jump over the line! Move to the front of the chair!" (Grammar: sequential commands with numbers, simple directive phrases, positional commands with prepositions. Vocabulary: step, spin, jump, move, line, chair, numbers, in, out, around, over).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students listen to the commands and perform the actions as a group, trying to synchronize their movements. The teacher encourages them to use polite expressions like "Go ahead!" if someone is blocking their path in the group.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The sequence can be repeated with slight variations (e.g., "dance fast," "dance slow," "big jumps," "small steps") or by introducing new commands from the vocabulary list (e.g., "twirl," "hop").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher observes how well students follow the instructions, demonstrating their listening comprehension of movement instructions and action words.</li>
+                </ul>
+                </p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><p class="aoa-stage-title">STAGE 5 — Assessment / Post-task<br>(Formative assessment and reflection)</p></td>
+            <td>
+                <p><b>Formative Assessment Strategy:</b> Teacher Observation Checklist. The teacher uses a simple checklist to note individual student participation and accuracy in following dance commands during the "Group Dance Command Challenge."</p>
+                <p><b>Assessment Task:</b> Students collectively perform a final short dance sequence, responding to oral commands from the teacher, demonstrating their ability to listen for and execute movement instructions (e.g., 'First, one step in. Next, two steps out. Then, jump up high!').</p>
+                <p><b>Evaluation Criteria:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Intelligible Pronunciation (when repeating/choral):</b> Repeats key words or phrases from the song/commands clearly.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of Target Vocabulary:</b> Responds appropriately with actions for 'step', 'jump', 'move', 'in', 'out', 'one', 'two', etc.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity of Action:</b> Performs the dance movements clearly in response to commands.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration:</b> Participates in group movements and waits for turns (sociolinguistic competence: group participation).</li>
+                </ul>
+                </p>
+                <p><b>Student Self-Assessment / Exit Ticket:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher asks, "Did you listen to the dance commands today? (Thumbs up / Thumbs down)"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher asks, "Did you dance and move your body? (Thumbs up / Thumbs down)"</li>
+                </ul>
+                </p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><p class="aoa-stage-title">STAGE 6 — Reflection<br>(Review and look ahead)</p></td>
+            <td>
+                <p><b>Student Self-Reflection:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was your favorite dance move today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What new dance word did you learn today?"</li>
+                </ul>
+                </p>
+                <p><b>Teacher Reflection:</b> Today's listening focus on action songs and commands worked well for Kinder students. TPR activities effectively engaged them. The clarity of modeling sequential commands with numbers was crucial. Some students found it challenging to differentiate 'in' and 'out' without strong visual cues; next time, I will use more pronounced physical boundaries or colored mats. I also need to reinforce the /t/ and /d/ sounds more explicitly in separate, focused mini-drills before applying them in the full song. The introduction of letters S, T, U, V was brief; I should plan a dedicated segment for phonemic awareness in future lessons if possible. The sociolinguistic expressions 'after you' and 'go ahead' were modeled, but students didn't actively produce them, which is expected at this level; continued modeling is necessary.</p>
+                <p><b>Connection to Next Lesson:</b> This lesson introduced core movement vocabulary and listening for commands. In Lesson 2 (Reading Comprehension), students will engage with simple visual texts (e.g., picture sequences) that use the same vocabulary words and movement concepts to develop their understanding in a visual context, connecting spoken actions to written representations. For example, they will "read" a sequence of pictures showing "one step in" and "two steps out."</p>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

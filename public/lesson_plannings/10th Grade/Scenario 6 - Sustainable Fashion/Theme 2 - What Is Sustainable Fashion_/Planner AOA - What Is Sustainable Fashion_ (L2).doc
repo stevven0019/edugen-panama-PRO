@@ -1,0 +1,199 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .aoa-stage-title {
+        background-color: #1a5276;
+        color: white;
+        padding: 8px;
+        text-align: center;
+        font-weight: bold;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 2</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 2</td>
+        <td style="width: 75%;"><b>Skills Focus:</b> Reading</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 10th Grade (CEFR: B1.1)</td>
+        <td><b>Scenario:</b> Sustainable Fashion</td>
+        <td><b>Theme:</b> What Is Sustainable Fashion?</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Reading: Reading: Derive the meaning of simple unknown words from short texts. Reading: Summarize narratives of significant events, recent or historical.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Reading: Can infer the meaning of unknown words in a fashion trend article by using context clues and comparing terms (e.g., "The word 'vintage' in this article refers to old-fashioned clothing styles that were popular in previous decades.") Can summarize main points in a text about past fashion trends (e.g., "Describe two major styles from a fashion trends article, such as shoulder pads and bold colors from the 1980s." "Identify key features of 1990s streetwear, like baggy jeans and graphic t-shirts.") Can determine the meaning of new terms in a piece about eco-friendly materials (e.g., "Tagua is an example of eco-friendly material. It is the seed of a tree that can be used to make jewelry.").</p>
+        </td>
+    </tr>
+</table>
+
+<h2 class="aoa-stage-title">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 33%;">Stage & Description</th>
+            <th style="width: 57%;">Activities & Teacher Actions</th>
+            <th style="width: 10%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">This stage aims to engage students, activate prior knowledge, and introduce the theme through modeling and clarification of key language.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher displays a series of images showing different fashion items or styles (e.g., a "vintage" dress from the 70s, a modern "eco-friendly" T-shirt, "trendy" streetwear, a "retro" jacket). Students work in pairs to discuss and identify which images represent "sustainable," "vintage," or "trendy" fashion, using vocabulary introduced in Lesson 1.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher explicitly models the pronunciation of key vocabulary from the previous lesson, focusing on contrastive sounds (e.g., /v/ in "vintage" and /w/ in "wear") and stress in multisyllabic words (e.g., "sustainable," "fashionable," "eco-friendly"). The teacher explains that today's reading will explore these terms in context.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of essential terms.
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">CCQ 1: "If something is 'vintage,' does it mean it's new or old?" (Expected answer: "Old.")</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">CCQ 2: "Is an 'eco-friendly' material good or bad for the environment?" (Expected answer: "Good.")</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">CCQ 3: "What does it mean for fashion to 'evolve'?" (Expected answer: "To change over time.")</li>
+                    </ul>
+                </p>
+            </td>
+            <td>___</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Introduction of new language/content connected to the scenario and theme through authentic input materials.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> Students receive a short informative article titled "The Evolution of Sustainable Fashion: From Past Trends to Future Predictions." The text describes how different fashion styles have "evolved" over time, introduces concepts of "sustainability" and "eco-friendly materials" like "tagua," and discusses how "brands" and the "industry" are changing. It incorporates target vocabulary and grammatical structures (Past continuous with present simple, Past perfect, Future simple). (Genre: Expository article; Register: Informative; Format: Short digital or printed text).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Reading: Derive the meaning of simple unknown words from short texts. Reading: Summarize narratives of significant events, recent or historical.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Reading:</b> Students read the article quickly (1-2 minutes) to get the main idea. The teacher asks: "What is the main topic of this article?" and "Does the article focus more on old fashion or new fashion?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False Statements:</b> Students read the article again to answer specific True/False questions related to the text content (e.g., "In the 1980s, people were wearing low-rise jeans." "Sustainable fashion 'brands' focus only on old 'designs'." "Fashion 'trends will' continue to 'evolve'.").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information Matching:</b> Students match key vocabulary words from the article (e.g., "vintage," "eco-friendly," "sustainability," "evolve," "prediction") to their definitions or examples provided in the text.</li>
+                </ul>
+            </td>
+            <td>___</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Activities focused on improving accuracy in reading comprehension, vocabulary, and grammar through controlled and semi-controlled practice.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Reading comprehension, identifying context clues, understanding grammatical structures (Past continuous with present simple to compare trends; Past perfect for completed actions; Future simple for predictions) and target vocabulary (fashion, trend, vintage, retro, collection, style, materials, sustainability, launch, show, industry, brands, designs, runway, environment, prediction, history, personality, future, evolve, predict, launch, adopt, reflect, discuss, shop, design, notice, gain, create, follow, introduce, showcase, wear, prefer, inspire, change, return, recycle, sustainable, fashionable, trendy, eco-friendly, vintage, retro, stylish, innovative, unique, recycled).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Vocabulary in Context (Controlled Practice):</b> The teacher provides a list of sentences extracted from the article, each containing an underlined target vocabulary word (e.g., "The word 'vintage' in this article refers to old-fashioned clothing styles..."). Students must choose the best synonym or definition for the underlined word from a multiple-choice list, based on the context. The teacher guides them to look for context clues.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Grammar Focus - Time Comparisons (Semi-controlled Practice):</b> Students complete sentences that compare past and present fashion trends using "Past Continuous with Present Simple" and "Past Perfect" based on the reading. For example: "In the 1980s, people _____ (wear) bright colors, but today, neutral tones ______ (gain) popularity." (Expected answer: *were wearing*, *are gaining*). Another example: "Before the focus on 'sustainability,' 'brands' ______ (adopt) faster production methods, leaving many waste issues behind." (Expected answer: *had adopted*).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Summarizing Key Information (Pair Check):</b> In pairs, students read specific paragraphs from the article and verbally summarize the main points, focusing on identifying different fashion "styles" or the historical "evolution" of "sustainable materials." They must also identify at least one "prediction" about the "future" of fashion. For example, "Describe two major 'styles' from the 1980s mentioned in the article, such as shoulder pads and bold colors." or "What 'eco-friendly material' is mentioned, and what can it be used for?"</li>
+                </ul>
+            </td>
+            <td>___</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Students use the target language in a realistic communicative task, demonstrating fluency and understanding.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Collaborative group summary and short presentation.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Activity: "Sustainable Fashion Trends Summary"</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students work in small groups (3-4 students). Their task is to create a concise written summary (5-7 sentences) of the article "The Evolution of Sustainable Fashion," focusing on two main aspects: how fashion "trends" have "evolved" historically and the importance of "sustainability" and "eco-friendly materials" today.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">They must incorporate at least five target vocabulary words (e.g., "vintage," "eco-friendly," "sustainability," "evolve," "prediction") and at least one sentence using a target grammatical structure (Past Continuous, Past Perfect, or Future Simple) to compare trends or make a "prediction." (e.g., "In the early 2000s, people were wearing low-rise jeans, but today, 'sustainable' alternatives are gaining popularity." or "Many experts 'predict' fashion 'brands will' increasingly 'adopt' recycled 'materials' in the 'future'.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Each group will then choose one member to briefly present their summary to the class (1-2 minutes), demonstrating their understanding of the text and ability to infer word meanings. The teacher encourages peers to ask questions about how language reflects different values and attitudes toward "sustainability."</li>
+                </ul>
+            </td>
+            <td>___</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment to check learning and student self-reflection.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist (for participation, use of target language, and comprehension) and peer feedback during presentations.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students' group summaries and individual presentations from Stage 4. The teacher pays attention to their ability to derive meaning from context and summarize main points.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Clarity and coherence of the summary (summarize main points of a narrative).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Accurate inference of unknown words' meanings demonstrated in the summary.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Appropriate use of at least five target vocabulary words (e.g., "vintage," "eco-friendly," "sustainability," "evolve," "prediction").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Correct application of at least one target grammatical structure (Past Continuous, Past Perfect, or Future Simple).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Intelligible pronunciation of key terms (e.g., "fashionable," "sustainability," "eco-friendly").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Collaboration and engagement within the group.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete a short exit ticket with the following prompts:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"List two new vocabulary words you learned or understood better today and explain what they mean."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"How did using context clues help you understand words like 'vintage' or 'tagua'?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was the most interesting fact you read about 'sustainable fashion' today?"</li>
+                </ul>
+            </td>
+            <td>___</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Review of the lesson's effectiveness and planning for future learning.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection:</b> The teacher asks students to reflect on their learning through a brief class discussion or journal entry:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What strategies did I use today to 'derive the meaning of simple unknown words' in the text, and were they effective?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"How confident do I feel in my ability to 'summarize' an article about fashion 'trends' and 'sustainability'?"</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What aspects of the reading lesson worked particularly well in helping students understand vocabulary in context and summarize main ideas?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Which grammar points (Past Continuous, Past Perfect, Future Simple) or vocabulary words might need more practice or a different approach in future lessons?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">How can I better scaffold the next lesson (Speaking & Interaction) to build on the comprehension gained from this reading activity, perhaps by integrating more direct questions about eco-friendly choices or past trends?</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson:</b> "In our next lesson, we will build on what we have read today about fashion 'trends' and 'sustainability.' We will engage in speaking activities to discuss our opinions and make 'predictions' about the 'future' of 'eco-friendly fashion,' using the vocabulary and grammatical structures we have practiced."</p>
+            </td>
+            <td>___</td>
+        </tr>
+    </tbody>
+</table>

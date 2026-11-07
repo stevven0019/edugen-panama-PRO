@@ -1,0 +1,197 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 16px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+    }
+    .full-width-cell {
+        grid-column: 1 / -1;
+    }
+    h2 {
+        color: #1a5276;
+        font-family: Arial, sans-serif;
+        margin-top: 20px;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 5</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<h2>Lesson Identification Table</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td><b>Lesson #:</b> 5</td>
+        <td><b>Skills Focus:</b> Mediation</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 12th Grade (CEFR: B1.3)</td>
+        <td><b>Scenario:</b> Robots on Earth and in Space</td>
+        <td><b>Theme:</b> How Robots Are Used in Panama</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3" class="full-width-cell">
+            <p><b>Specific Objective:</b> Mediation: Text: Simplify articles for easier understanding. Text: Paraphrase short passages in a simple fashion.</p>
+            <p><b>Learning Outcome:</b> Mediation: Can simplify articles on robotics, using diagrams to show main ideas (e.g., points to the diagram and says, "This robot is used in Panama's coffee farms to help sort coffee beans efficiently.")<br>Can paraphrase key points on space exploration, using visuals and gestures (e.g., uses gestures to show how a robot collects samples on Mars and says, "The robot uses its arm to pick up rocks.")<br>Can use both verbal and visual cues to clarify technical terms for peers (e.g., points to the image of a robot and explains, "Automation means a machine.")</p>
+        </td>
+    </tr>
+</table>
+
+<h2>The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="color: #1a5276;">Stage & Description</th>
+            <th style="color: #1a5276;">Activities & Teacher Actions</th>
+            <th style="color: #1a5276;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>STAGE 1 — Warm-up / Pre-task</b><br>Engagement, Modeling and Clarification</td>
+            <td>
+                <p><b>Warm-up:</b> The teacher displays images of various robots used in different industries in Panama (e.g., agriculture, medical, logistics). Students briefly discuss in pairs what they think each robot does. The teacher asks, "How do these robots help people in Panama?" encouraging initial ideas on their function and asking students to describe them using terms like 'efficient' or 'automated'.</p>
+                <p><b>Modeling:</b> The teacher presents a short, complex sentence about a robot's function, e.g., "The advanced robotic arm, equipped with sophisticated sensors, autonomously navigates complex environments to precisely collect environmental samples for subsequent laboratory analysis." The teacher then models how to simplify and paraphrase this for a non-expert, e.g., "This robot's arm has special sensors. It moves by itself to pick up samples for scientists to study later." The teacher explicitly models the pronunciation of /r/ in 'robot' and 'repair' and /s/ in 'sensors' and 'space', along with the -ed ending in 'equipped' (/t/).</p>
+                <p><b>Clarification (CCQs):</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"If I simplify a text, do I make it more complicated or easier to understand?" (Expected answer: Easier.)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"When I paraphrase, do I copy the exact words or explain it in my own words?" (Expected answer: Explain in my own words.)</li>
+                    </ul>
+                </p>
+            </td>
+            <td>___ / ___</td>
+        </tr>
+        <tr>
+            <td><b>STAGE 2 — Presentation</b><br>Input of new language/content connected to Scenario: "Robots on Earth and in Space"</td>
+            <td>
+                <p><b>Material:</b> A short, authentic online news article excerpt (approx. 150 words) from a Panamanian technology blog or local newspaper about a recent implementation of robotics in the agriculture or logistics industry (e.g., using drones for crop monitoring or automated systems in port operations). The text will include examples of the passive voice, target vocabulary (e.g., 'agriculture', 'industry', 'sensor', 'automated', 'efficient'), and potentially a future perfect statement about future impact. A visual (picture of the robot/system) accompanies the text.</p>
+                <p><b>Communicative Competence:</b> Students will understand the main ideas and specific details regarding the application of robotics in a Panamanian context, preparing them to mediate this information. They will be able to identify how robots are controlled and what tasks they perform. The teacher will also highlight pragmatic functions such as participating in discussions on the use of robotics.</p>
+                <p><b>Comprehension tasks:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Gist question:</b> "What is the main purpose of the robot described in the article?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Information Matching:</b> Students match key vocabulary from the text (e.g., 'automation', 'efficient', 'collect') with their simpler definitions or synonyms.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> Students answer T/F questions based on specific details (e.g., "The robot's data is collected by human operators for analysis." -> False, 'Data is collected by robots for analysis.')</li>
+                    </ul>
+                </p>
+            </td>
+            <td>___ / ___</td>
+        </tr>
+        <tr>
+            <td><b>STAGE 3 — Preparation / Practice</b><br>Accuracy focus on Mediation</td>
+            <td>
+                <p><b>Communicative Skill & Content:</b> Students practice simplifying and paraphrasing sentences and short passages. They will actively use the passive voice for scientific reporting (e.g., "Data is collected by robots for analysis"), future perfect (e.g., "By 2030, this technology will have transformed local industries"), zero conditional for cause-effect (e.g., "If robots are programmed, they perform with precision"), and target vocabulary (e.g., 'robot', 'technology', 'automation', 'industry', 'agriculture', 'control', 'collect'). Pronunciation of /r/, /s/, and -ed endings ('controlled' /d/, 'operated' /ɪd/) will be reinforced.</p>
+                <p><b>Detailed Procedure:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice – Sentence Simplification:</b> The teacher provides a worksheet with 5-6 complex sentences from scientific articles or technical descriptions related to robotics or space exploration. For each sentence, students choose the best simplified or paraphrased version from a set of options (multiple choice or matching).
+                            Example:
+                            Complex: "The Martian rover's sophisticated equipment meticulously analyzed the geological composition of the regolith, indicating the potential for subsurface water ice."
+                            Options: a) The rover studied rocks to find water. b) The rover explored Mars.
+                            (Focus on using passive voice and vocabulary like 'equipment', 'collect', 'explore'.)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice – Paraphrase Relay:</b> In small groups, students receive a short paragraph (3-4 sentences) describing a specific robot’s function or a space mission. Student A reads the first sentence and paraphrases it for Student B. Student B then paraphrases Student A's explanation for Student C, and so on. The teacher circulates, providing feedback on clarity, accuracy, and use of target grammar/vocabulary (e.g., "If robots are programmed, they perform with precision," "By 2040, humans will have explored more distant galaxies."). Emphasis on correct pronunciation of /r/ and /s/ sounds.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction – Explaining Technical Terms:</b> Students work in pairs. Each pair is given 3-4 technical terms related to robotics or space (e.g., 'automation', 'sensor', 'orbit', 'gravity', 'satellite', 'mission'). They must verbally explain each term to their partner in the simplest way possible, using visual cues or gestures if needed, as per the learning outcome. They then swap roles. The teacher encourages polite requests for clarification, practicing pragmatic skills ("Could you explain 'automation' again, please?").</li>
+                    </ul>
+                </p>
+            </td>
+            <td>___ / ___</td>
+        </tr>
+        <tr>
+            <td><b>STAGE 4 — Performance / Production</b><br>Communicative task where students USE the language in a realistic scenario: "Robots on Earth and in Space"</td>
+            <td>
+                <p><b>Task Format:</b> Collaborative group presentation and explanation of their "Robotics Infographic". Students will work in their assigned groups (from previous lessons) to finalize their infographic on "How Robots Are Used in Panama". The core mediation task is to verbally present and explain different sections of their infographic to another group of peers, simplifying complex information and paraphrasing key research findings. They must integrate grammar (passive voice, future perfect, zero conditional) and vocabulary from the unit.</p>
+                <p><b>Procedure:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">Students are divided into their project groups (3-4 students per group). They spend the first 10-15 minutes making final adjustments to their infographic, ensuring it covers various industries (e.g., agriculture, medicine, industry, factory) and includes relevant robots and technology.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Each group then pairs up with another group. Group A presents their infographic to Group B. The members of Group A take turns explaining different sections. For example, one student explains how 'Data is collected by robots for analysis' in agriculture, another explains 'By 2030, automation will have transformed industries', and another clarifies what 'sensors' do. They must actively simplify technical terms and paraphrase information to ensure clarity for Group B, using diagrams and pointing as visual cues.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Group B listens, asks clarifying questions, and takes brief notes. They should also encourage respectful dialogue about the impacts of robotics ("Why might some people worry about the rise of robotics?").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">After 5-7 minutes, Group B provides constructive feedback on the clarity and effectiveness of Group A's mediation. Then, the groups switch roles, with Group B presenting their infographic to Group A.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">The teacher circulates, observing interactions, listening for use of target language, and making notes for assessment. They facilitate discussions, ensuring all viewpoints are considered, and prompting students to offer solutions in discussions.</li>
+                    </ul>
+                </p>
+            </td>
+            <td>___ / ___</td>
+        </tr>
+        <tr>
+            <td><b>STAGE 5 — Assessment / Post-task</b><br>Formative assessment strategy</td>
+            <td>
+                <p><b>Formative Assessment Strategy:</b> Teacher observation checklist and a simplified peer assessment rubric focused on mediation skills.</p>
+                <p><b>Assessment Task:</b> Students, within their groups, present a specific section of their Robotics Infographic (e.g., "Robots in Panamanian Agriculture" or "Robots in Space Exploration") to another peer group or the teacher. They must simplify a complex concept related to the topic and paraphrase at least two key points from their research for clarity, demonstrating their learning outcome. Visuals and gestures should be used where appropriate. The presentation should last 2-3 minutes per group.</p>
+                <p><b>Evaluation Criteria:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity of Explanation (Mediation):</b> The information is simplified and paraphrased effectively for the audience. (Specific Objective)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Use of Target Vocabulary:</b> Appropriate use of words like 'robot', 'automation', 'industry', 'agriculture', 'control', 'collect', 'efficient'.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar Accuracy:</b> Correct application of passive voice, future perfect, and zero conditional.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Pronunciation:</b> Clear pronunciation of /r/, /s/, and -ed endings.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration & Pragmatics:</b> Active participation, respectful dialogue, and effective communication within the group and with the peer audience.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Visual Support:</b> Effective use of diagrams and gestures to aid explanation.</li>
+                    </ul>
+                </p>
+                <p><b>Student Self-Assessment / Exit Ticket:</b> Students complete a short reflection:
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What was one technical term from your infographic that you found challenging to simplify for your peers, and how did you try to explain it?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"How did using diagrams or gestures help you clarify your explanation of a robot's function?"</li>
+                    </ul>
+                </p>
+            </td>
+            <td>___ / ___</td>
+        </tr>
+        <tr>
+            <td><b>STAGE 6 — Reflection</b></td>
+            <td>
+                <p><b>Student Self-Reflection:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What did you learn about the importance of simplifying complex information when explaining robotics or space exploration to others?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"How can your ability to simplify and paraphrase information be useful in other academic subjects or future careers?"</li>
+                    </ul>
+                </p>
+                <p><b>Teacher Reflection:</b> The teacher reflects on the lesson:
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What specific mediation activities worked best to help students simplify articles and paraphrase passages? Were the grammar and vocabulary points adequately integrated?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What adjustments or additional scaffolds are needed for future lessons focusing on mediation, especially for clarifying technical terms or encouraging diverse perspectives in discussions?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Did students effectively utilize visuals and gestures to support their explanations? How can this be further developed?"</li>
+                    </ul>
+                </p>
+                <p><b>Connection to next lesson in the theme sequence:</b> This lesson concludes the unit on "How Robots Are Used in Panama" and the "Robotics Infographic" project, integrating all four skills through mediation. The next thematic unit will build upon students' ability to analyze and communicate complex information, applying these mediation skills to new contexts and topics, potentially involving more nuanced discussions about technology's ethical implications or global applications of research and exploration.</p>
+            </td>
+            <td>___ / ___</td>
+        </tr>
+    </tbody>
+</table>

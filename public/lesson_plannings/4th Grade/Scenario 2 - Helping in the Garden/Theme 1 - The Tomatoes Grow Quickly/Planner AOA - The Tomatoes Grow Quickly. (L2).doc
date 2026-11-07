@@ -1,0 +1,197 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    .table-container {
+        margin-bottom: 20px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .aoa-stage-title {
+        background-color: #1a5276;
+        color: white;
+        padding: 8px;
+        text-align: center;
+        font-weight: bold;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 2</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<div class="table-container">
+    <table>
+        <tr>
+            <td><b>Lesson #:</b> 2</td>
+            <td><b>Skills Focus:</b> Reading</td>
+        </tr>
+        <tr>
+            <td><b>Grade:</b> 4th Grade (CEFR: A1.2)</td>
+            <td><b>Scenario:</b> Helping in the Garden</td>
+            <td><b>Theme:</b> The Tomatoes Grow Quickly.</td>
+        </tr>
+        <tr>
+            <td colspan="2"><b>Date(s):</b> From ___ to ___</td>
+            <td><b>Learning Sequence Time:</b> 45–50 min</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p><b>Specific Objective:</b> Reading: reading1: Identify the main ideas and details in short narratives. reading2: Summarize simple stories or articles. phonemicAwareness: Read regularly spelled one-syllable or two-syllable words represented by single letters.</p>
+                <p><b>Learning Outcome:</b> Reading: Can identify main ideas about gardening in short texts (e.g., 'Tomatoes grow in the sun.'). Can summarize details on how plants grow in short narratives (e.g., using a chart or Venn diagram to highlight key ideas from a story). Can read and spell basic one-syllable and two-syllable words related to gardening (e.g., 'garden' or 'leaf').</p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 30%;"><div class="aoa-stage-title">Stage & Description</div></th>
+            <th style="width: 55%;"><div class="aoa-stage-title">Activities & Teacher Actions</div></th>
+            <th style="width: 15%;"><div class="aoa-stage-title">Estimated Date and Time</div></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p>(Engagement, Modeling and Clarification)</p>
+            </td>
+            <td>
+                <p><b>Warm-up:</b> The teacher displays flashcards or pictures of gardening items (watering can, tomato, seed, soil, plant, sunlight, flower) introduced in Lesson 1. The teacher asks students, "What do you see?" and "Do you like to water plants?" to activate prior knowledge and review vocabulary and simple questions. The teacher shows a picture of a garden and asks, "What do you see in the garden?"</p>
+                <p><b>Modeling:</b> The teacher holds up a picture of a tomato plant. "Look! This is a tomato plant. It is green and healthy. It grows in the garden." The teacher points to a picture of the sun. "It needs sunlight to grow." The teacher models the pronunciation of /t/ in 'tomatoes' and /g/ in 'grow' by saying the words clearly and having students repeat chorally and individually.</p>
+                <p><b>Clarification (CCQs):</b> The teacher checks understanding. "Is the plant small or tall?" (Expected answer: "Tall.") "Does the plant need water?" (Expected answer: "Yes, it needs water.") The teacher ensures students understand key vocabulary related to the theme before moving to the reading task.</p>
+            </td>
+            <td><p>5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 2 — Presentation</b></p>
+                <p>(Input of new language/content connected to Scenario: "Helping in the Garden")</p>
+            </td>
+            <td>
+                <p><b>Material:</b> The teacher presents a short, illustrated narrative text titled "My Garden." The text describes simple gardening steps and uses the target vocabulary (garden, plant, tomato, seed, soil, watering can, sunlight, grow, water, every day, first, second) and grammar (present simple + 's', demonstratives, question forms, discourse markers 'and', 'but').</p>
+                <p>Example Text:</p>
+                <p style="text-align: justify;">"This is my garden. First, I plant the small seeds in the soil. I water the plants every day with my watering can. The plants need sunlight. Look! These are my green tomatoes. They grow quickly! My friend likes watering the plants, but she doesn't like digging."</p>
+                <p>The teacher reads the text aloud clearly, pointing to the words and illustrations.</p>
+                <p><b>Communicative Competence:</b> Students demonstrate the ability to identify explicit information and main ideas from short, simple written texts about familiar topics.</p>
+                <p><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist question:</b> The teacher asks, "What is the story about? Is it about cooking or gardening?" (Expected answer: "Gardening.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> Students read sentences about the text and mark them True or False (e.g., "The seeds are big." "He waters the plants every day.").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information matching:</b> Students match pictures of words (e.g., 'sunlight', 'watering can') with the corresponding word from the text.</li>
+                </ul>
+            </td>
+            <td><p>10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 3 — Preparation / Practice</b></p>
+                <p>(Accuracy focus on Reading)</p>
+            </td>
+            <td>
+                <p><b>Communicative Skill & Content:</b> Reading comprehension, identifying main ideas and details, reading and spelling one- and two-syllable words. Focus on Present simple + 's', Demonstratives, Adverbs of frequency (every day), Sequence words (first, second), and Vocabulary: garden, plant, tomato, seed, soil, water, grow, sunlight.</p>
+                <p><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice - Gap-fill:</b> The teacher provides a handout with sentences from the "My Garden" text, but with key vocabulary words missing. Students read the sentences and fill in the blanks using a word bank (e.g., "First, I plant the small _____ in the soil." Word bank: <i>seeds, water, grow, sunlight</i>). This reinforces reading for details and specific vocabulary.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice - Sentence Order:</b> The teacher gives students strips of paper with jumbled sentences from the text (e.g., "every day / I / water / the plants"). In pairs, students read the words and reorder them to form correct sentences. This activity focuses on sentence structure and reading fluency. The teacher observes and provides support, especially with present simple + 's' (e.g., "The plant grows quickly.").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Phonemic Awareness & Spelling - Read and Match:</b> The teacher writes a few one- and two-syllable words related to gardening on the board (e.g., 'water', 'sun', 'soil', 'garden'). Students read the words aloud, paying attention to the sounds /t/ and /g/ in related words. Then, the teacher shows pictures of these words, and students read the word on the board and match it to the correct picture. Students also practice spelling these words by writing them down.</li>
+                </ul>
+            </td>
+            <td><p>15-18 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 4 — Performance / Production</b></p>
+                <p>(Communicative task where students USE the language in a realistic scenario: "Helping in the Garden")</p>
+            </td>
+            <td>
+                <p><b>Task: "Summarize Our Garden Steps"</b></p>
+                <p>Students work in pairs. The teacher provides a slightly new, short narrative text (2-3 sentences) about "How a flower grows" using similar vocabulary and structure. For example: "Maria puts small seeds in the brown soil. She waters them every morning. The little flowers grow tall and healthy. They need bright sunlight."</p>
+                <p>First, students individually read this new text and identify its main idea. Then, they work with their partner to re-read the original "My Garden" story about tomatoes. Together, they use a simple graphic organizer (e.g., a two-box flow chart or two bullet points) to summarize the main steps of growing tomatoes from the text, using sequence words (First, Second) and key vocabulary (plant, seeds, water, grow, sunlight). They must be able to read their summary aloud to another pair.</p>
+                <p>Example Summary Output: "First, I plant seeds in the soil. Second, I water the plants every day, and they grow quickly with sunlight."</p>
+                <p>The teacher circulates, offering assistance and encouraging collaboration and fluent reading of the original text and their summary.</p>
+            </td>
+            <td><p>10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p>(Formative assessment strategy)</p>
+            </td>
+            <td>
+                <p><b>Formative assessment strategy:</b> Teacher observation checklist and peer assessment.</p>
+                <p><b>Assessment Task:</b> Students read aloud their summary of the "My Garden" text to another pair. The teacher uses an observation checklist to note individual and pair performance on reading fluency, comprehension of the main idea, and correct use of target vocabulary. Peers provide feedback on clarity and completeness of the summary (e.g., "Did they mention the seeds and the water?").</p>
+                <p><b>Evaluation Criteria:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Accuracy of main idea:</b> Students accurately identify the main steps of growing tomatoes.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target vocabulary:</b> Students use at least 3-4 target vocabulary words (e.g., seed, soil, water, grow, sunlight) in their summary.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity and coherence:</b> The summary is easy to understand and follows a logical sequence using 'first' and 'second'.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Reading fluency:</b> Students read their summaries with a reasonable pace and pronunciation.</li>
+                </ul>
+                <p><b>Student Self-Assessment / Exit Ticket:</b> Students complete an exit ticket with the following prompts:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What is one new thing I learned about reading today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was easy or difficult for me when summarizing the story?"</li>
+                </ul>
+            </td>
+            <td><p>5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p><b>Student self-reflection prompt:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What part of reading about gardening did I understand best today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What words do I need to practice reading more often?"</li>
+                </ul>
+                <p><b>Teacher reflection:</b> Most students were able to identify main ideas and details in the text, and the gap-fill activity worked well for reinforcing vocabulary. Some students struggled with the sentence ordering activity, indicating a need for more practice with basic sentence structure and the present simple + 's'. The pair summaries were generally good, but some needed prompting to use the sequence words. I need to scaffold the summarizing task more explicitly next time, maybe with sentence starters. I will also incorporate more visual cues for one- and two-syllable words for phonemic awareness.</p>
+                <p><b>Connection to next lesson in the theme sequence:</b> In Lesson 3, students will use the same vocabulary and grammar to speak and interact with each other about gardening routines and preferences, building on the reading comprehension from today's lesson.</p>
+            </td>
+            <td><p>3-5 min</p></td>
+        </tr>
+    </tbody>
+</table>

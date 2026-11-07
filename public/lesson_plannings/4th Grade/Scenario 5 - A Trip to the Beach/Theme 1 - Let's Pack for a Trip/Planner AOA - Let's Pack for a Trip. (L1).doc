@@ -1,0 +1,210 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0 0;
+        font-size: 1.1em;
+    }
+    .lesson-table, .aoa-table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .lesson-table th, .lesson-table td, .aoa-table th, .aoa-table td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .lesson-table td {
+        vertical-align: top;
+    }
+    .aoa-table th {
+        background-color: #e0e0e0;
+        font-weight: bold;
+        color: #1a5276;
+    }
+    .aoa-stage-title {
+        color: #1a5276;
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table class="lesson-table">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 1</td>
+        <td style="width: 25%;"><b>Skills Focus:</b> Listening</td>
+        <td style="width: 50%;" colspan="2"></td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 4th Grade (CEFR: A1.2)</td>
+        <td><b>Scenario:</b> A Trip to the Beach</td>
+        <td><b>Theme:</b> Let's Pack for a Trip.</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+        <td colspan="1"></td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 0;"><b>Specific Objective:</b> Listening: Follow simple instructions for using classroom technology.</p>
+            <p style="text-align: justify; margin: 0;"><b>Learning Outcome:</b> Listening: Can follow simple instructions for using basic technology to prepare for the trip (e.g., 'Open a maps app and search for this place.').
+            Can respond to questions about school trips (e.g., 'What do we bring to the trip?' 'We bring lunch.').
+            Can participate in discussions about beach trips, sharing simple ideas in response to a prompt (e.g., 'What do you like to do at the beach?' 'I like to play in the sand.').</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table class="aoa-table">
+    <thead>
+        <tr>
+            <th style="width: 30%;">Stage & Description</th>
+            <th style="width: 50%;">Activities & Teacher Actions</th>
+            <th style="width: 20%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 1 — Warm-up / Pre-task</p>
+                <p style="text-align: justify;">(Engagement, Modeling and Clarification)</p>
+            </td>
+            <td>
+                <p><b>Warm-up:</b> The teacher greets students and shows a large picture of a beach. The teacher asks, "What do you see?" and encourages students to listen and point to items they recognize (e.g., 'sun,' 'sand'). Then, the teacher holds up realia (e.g., a small towel, sunglasses, a toy bucket) and asks, "Where do we use this?" eliciting "At the beach!" Students listen to the question and respond with gestures or single words.</p>
+                <p><b>Modeling:</b> The teacher holds up a 'swimsuit' and says, "This is a swimsuit. I pack a swimsuit for the beach." The teacher repeats, emphasizing the /s/ and /b/ sounds in 'swimsuit' and the /p/ sound in 'pack'. The teacher then holds up a 'sunscreen' bottle and models, "This is sunscreen. We put sunscreen on our skin. Please, bring your sunscreen." The teacher demonstrates the blending of /s/ /æn/ in 'sandy' by showing sand, and /p/ /æk/ in 'pack' by making a packing motion.</p>
+                <p><b>Clarification (CCQs):</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Showing a 'swimsuit') "Is a swimsuit for school? (No.) Is it for swimming? (Yes.)"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Showing 'sunscreen') "Do we put sunscreen on our clothes? (No.) Do we put it on our body? (Yes.)"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Pointing to the beach picture) "Is this a fun place? (Yes!)"</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p>___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 2 — Presentation</p>
+                <p style="text-align: justify;">(Input of new language/content connected to Scenario: "A Trip to the Beach")</p>
+            </td>
+            <td>
+                <p><b>Material:</b> Short audio recording (e.g., 60-90 seconds) of a child and a parent discussing what to pack for a beach trip. The audio is a simple dialogue with clear, slow pronunciation, incorporating target vocabulary (beach, towel, swimsuit, sunscreen, bucket, flip-flops, sun hat) and grammar (Imperatives: "Please pack the towel," Present simple: "I like to build sandcastles," Going to: "We are going to the beach tomorrow.")</p>
+                <p><b>Communicative Competence:</b> Understanding and interpreting simple spoken messages and instructions in a familiar context (preparing for a trip).</p>
+                <p><b>Comprehension tasks:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 1: Listen for Gist (First Listening):</b> The teacher tells students, "Listen to the conversation. What trip are they talking about? Circle the correct picture: A) A mountain trip, B) A beach trip, C) A city trip." (Students listen and circle the picture of the beach.)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 2: Listen for Specific Items (Second Listening):</b> The teacher distributes a worksheet with pictures of various items (some for the beach, some not). "Listen again. Circle the items you hear them pack for the beach." (Students listen and circle pictures of 'towel,' 'swimsuit,' 'sunscreen,' 'bucket,' 'flip-flops,' 'sun hat' as they hear them mentioned.)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 3: True/False (Third Listening):</b> The teacher presents simple True/False statements about the dialogue, asking students to listen and check 'True' or 'False'. For example: "True or False: They are going to the beach today." "True or False: The child likes to collect shells."</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p>___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 3 — Preparation / Practice</p>
+                <p style="text-align: justify;">(Accuracy focus on Listening)</p>
+            </td>
+            <td>
+                <p><b>Communicative Skill & Content:</b> Listening for specific details, following simple imperatives. Grammar: Imperatives (e.g., 'Please pack...'), Present Simple (e.g., 'I like to...'), 'Going to' (e.g., 'I am going to...'). Vocabulary: beach, towel, swimsuit, sunscreen, bucket, sand, sun hat, flip-flops, pack, bring, swim, build, collect. Pronunciation: /b/ in 'beach,' /p/ in 'pack,' blending /s/ /ændi/ in 'sandy.'</p>
+                <p><b>Detailed Procedure:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 1: Listening and Drawing (Controlled Practice):</b> The teacher projects or distributes a simple drawing of an empty beach bag. The teacher says a packing instruction using imperatives: "Please pack a swimsuit." Students listen and draw a swimsuit inside the bag. Repeat with 3-4 other items (e.g., "Please bring your sun hat." "Pack some sunscreen."). The teacher reinforces pronunciation of /b/ and /p/ as items are called out.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 2: Listen and Choose (Semi-controlled Practice):</b> The teacher says a sentence about beach activities, leaving a blank. Students listen and choose the correct word from two spoken options. Example: Teacher says, "At the beach, I like to ______." (Option A: "swim," Option B: "read a book."). Students listen and point to or circle the correct word on their worksheet (which has corresponding pictures). The teacher focuses on discriminating /b/ from other sounds for words like 'build' and 'beach'.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 3: Listen and Follow Instructions (Pair Interaction/Peer Check):</b> Students work in pairs with a set of picture cards for beach items (e.g., towel, swimsuit, bucket, flip-flops). Student A closes their eyes. Student B gives a simple imperative instruction: "Please, bring the towel and put it on the sand." Student A listens and arranges the cards as instructed. Then they switch roles. The teacher circulates, checking for clear listening and politeness in instructions.</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p>___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 4 — Performance / Production</p>
+                <p style="text-align: justify;">(Communicative task where students USE the language in a realistic scenario: "A Trip to the Beach")</p>
+            </td>
+            <td>
+                <p><b>Task Format: "Beach Trip Planner" (Listening-focused Role Play/Simulation)</b>
+                Students work in small groups of 3-4. Each group receives a large poster with a drawing of a beach scene and a list of items (words or small pictures) they *might* pack for a beach trip (including both relevant and irrelevant items). One student in the group is the "Trip Leader." The Trip Leader reads out simple instructions for packing their "virtual" beach bag (a drawn bag on the poster or a real bag in the classroom). The other students are "Packers." They *listen carefully* to the Trip Leader's instructions and attach/draw the correct items into the bag on the poster. The Trip Leader must use imperatives and can incorporate "going to" statements (e.g., "We are going to the beach. Please pack a towel. Don't forget the sunscreen."). The Packers must listen and choose the correct item from their given pool of items. After packing, the Trip Leader asks questions like, "What do we do at the beach?" and Packers respond by listening to the question and sharing simple ideas (e.g., "I like to swim," "I like to build sandcastles").</p>
+            </td>
+            <td><p>___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 5 — Assessment / Post-task</p>
+                <p style="text-align: justify;">(Formative assessment strategy)</p>
+            </td>
+            <td>
+                <p><b>Formative Assessment Strategy:</b> Teacher Observation Checklist and Student Self-Assessment.</p>
+                <p><b>Assessment Task:</b> During the "Beach Trip Planner" activity, the teacher uses an observation checklist to assess students' listening comprehension and ability to follow instructions. Students then complete a short self-assessment/exit ticket.</p>
+                <p><b>Evaluation Criteria (Teacher Checklist):</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">Listens attentively to instructions.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Follows simple, one-step instructions accurately.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Identifies target vocabulary items from spoken instructions.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Responds appropriately to simple questions about beach activities (e.g., 'What do you like to do at the beach?').</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Demonstrates awareness of /b/ and /p/ sounds when processing words (e.g., distinguishes 'beach' from 'peach' if presented with minimal pairs, or simply recognizes the sound in context).</li>
+                    </ul>
+                </p>
+                <p><b>Student Self-Assessment / Exit Ticket:</b> Students are given a small paper to complete before leaving.
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Today I listened well to instructions about packing for the beach. (Circle: Yes / A little / No)"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"I learned new words for the beach. (Write 1 or 2 new words: _______, _______)"</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p>___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 6 — Reflection</p>
+                <p style="text-align: justify;">(Student and Teacher reflection, and connection to next lesson)</p>
+            </td>
+            <td>
+                <p><b>Student Self-Reflection Prompt:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What was easy to listen to today?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What was difficult to understand when listening?"</li>
+                    </ul>
+                </p>
+                <p><b>Teacher Reflection:</b> The listening activities were effective for introducing vocabulary and grammar. Students responded well to TPR and visual aids, especially when following instructions for drawing or arranging cards. The pronunciation practice for /b/ and /p/ needs continued reinforcement. Some students still confused similar-sounding words; more focused minimal pair listening might be needed next time. The use of simple imperatives was well-received. For the next lesson, I need to ensure the reading text clearly incorporates these same vocabulary items and grammar structures, allowing students to see the words they heard today.</p>
+                <p><b>Connection to next lesson in the theme sequence:</b> This lesson introduced core beach vocabulary through listening. The next lesson (Lesson 2: Reading Comprehension) will revisit these same vocabulary words and grammatical structures in a short, illustrated reading text about preparing for or being at the beach. Students will apply their understanding of these words by reading to comprehend context.</p>
+            </td>
+            <td><p>___ min</p></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,223 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+    .stage-title {
+        color: #1a5276;
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # How I Am Successful – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 50%;"><b>Lesson #:</b> 1</td>
+        <td style="width: 50%;"><b>Skills Focus:</b> Listening</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 12th Grade (CEFR: B1.3)</td>
+        <td><b>Scenario:</b> My Personal Success Story</td>
+        <td><b>Theme:</b> How I Am Successful</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Listening: Receptive: Interpret dialogues from various social contexts. Interactive: Highlight positive and negative opinions related to an audio or video recording during discussions.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Listening: Can interpret dialogues about achieving personal goals, relating them to real-life examples (e.g., "The speaker shared how a scholarship from IFARHU helped him/her achieve his/her educational goals while saving money for other priorities.")
+            Can highlight diverse opinions in audio stories about saving money and planning toward future goals (e.g., "I've saved part of my allowance for a new laptop, but some of my friends find it hard to save because they spend their money on other things.")
+            Can ask questions to clarify ideas in success stories (e.g., "What strategies has the speaker used to overcome challenges?" "The speaker mentioned that he/she asked friends for support, which helped him/her stay motivated during tough times.")</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 style="color: #1a5276; font-family: Arial, sans-serif;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 30%;">Stage & Description</th>
+            <th style="width: 50%;">Activities & Teacher Actions</th>
+            <th style="width: 20%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div class="stage-title">STAGE 1 — Warm-up / Pre-task</div>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Engagement, Modeling and Clarification)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher displays a collage of images showing young Panamanian adults achieving various goals (e.g., receiving a scholarship, participating in community service, presenting a school project, managing a small business). Students listen as the teacher briefly describes each image, prompting them to guess the overall theme: "How are these people successful?" This activates prior knowledge and sets the stage for personal success stories.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher introduces 8-10 core vocabulary words related to the theme (e.g., <i>success, goals, achievements, strategies, finances, savings, invest, career, opportunities, future</i>) using visual flashcards or presenting them on the board. The teacher models the pronunciation, specifically focusing on stressing content words and reducing stress on auxiliary verbs, as students listen. For example, the teacher says: "I have <b>SAVED</b> some <b>MONEY</b> for my <b>COLLEGE</b> <b>STUDIES</b>." (emphasizing 'saved', 'money', 'college', 'studies', and reducing 'have'). Another example: "In <b>FIVE</b> <b>YEARS</b>, I will be <b>MANAGING</b> my <b>OWN</b> <b>COMPANY</b>." (emphasizing 'five', 'years', 'managing', 'own', 'company', reducing 'will').</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of the new vocabulary through concept-checking questions and examples.
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">For "savings": "If you have *savings*, do you spend that money immediately, or do you keep it for a future *goal*?" (Expected answer: "Keep it for a future goal.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">For "strategies": "Are *strategies* just one single action, or are they a carefully planned series of actions to achieve *success*?" (Expected answer: "A planned series of actions.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">For "achievements": "Are your *achievements* things you hope to do, or things you have already done successfully?" (Expected answer: "Things you have already done successfully.")</li>
+                </ul>
+                </p>
+            </td>
+            <td>10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="stage-title">STAGE 2 — Presentation</div>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Input of new language/content connected to Scenario: "My Personal Success Story")</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> Students listen to an authentic 3-4 minute podcast interview excerpt (audio recording) with a young Panamanian entrepreneur or student who shares their personal success story, discussing their *goals*, financial *strategies*, *achievements*, and *future* aspirations. The register is informal but professional, suitable for a B1.3 audience. The audio naturally integrates target grammar (present perfect, future continuous, first conditional) and vocabulary.
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Listening: Receptive: Interpret dialogues from various social contexts.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b> Students listen to the podcast excerpt twice.
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>First listening (Gist):</b> Students listen for the main idea. "What is the speaker's overall message about how to achieve personal *success*?" (e.g., "The speaker emphasizes that setting clear *goals* and consistently working on *strategies* has been essential for his *achievements*.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Second listening (Specific details):</b> Students complete two tasks based on what they hear:
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> Students answer True or False questions about the speaker's story. (e.g., "The speaker has *invested* in his education through scholarships." "In five years, he will be *managing* a large team." "If he continues to pursue his *career* *goals*, he will find more *opportunities*.")</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Matching:</b> Students match key *strategies* mentioned by the speaker (from a list provided by the teacher) to the *achievements* they helped facilitate. (e.g., "Setting a budget" matches "Accumulating *savings* for university," "Volunteering" matches "Building a professional *network*.")</li>
+                        </ul>
+                    </li>
+                </ul>
+                </p>
+            </td>
+            <td>10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="stage-title">STAGE 3 — Preparation / Practice</div>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Accuracy focus on Listening)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Focusing on listening accuracy, interpreting dialogues, and identifying positive/negative opinions while reinforcing target grammar (Present perfect, Future continuous, First conditional) and vocabulary (<i>success, goals, achievements, strategies, finances, savings, invest, career, opportunities, future, manage, build, pursue, support</i>). Pronunciation focus on content word stress and auxiliary reduction.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice (Fill-in-the-blanks with listening focus):</b> The teacher plays short, specific sentences or phrases from the podcast excerpt. Students listen carefully and fill in the blanks in a provided transcript, specifically targeting the new vocabulary words. (e.g., "One of my key _________ was to set clear _________ for my _________. I have also started my _________ by making small _________ each month.") After filling, students compare answers with a partner, listening again to verify accuracy.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice (Identifying Stressed Words and Opinions):</b> The teacher replays several key sentences from the audio that demonstrate the target grammar and vocabulary. Students listen and underline the stressed content words they hear (nouns, main verbs, adjectives) and circle any reduced auxiliary verbs ("həv", "wəl"). For example, playing: "I have <b>SAVED</b> some <b>MONEY</b> for my <b>COLLEGE</b> <b>STUDIES</b>." and "In <b>FIVE YEARS</b>, I will be <b>MANAGING</b> my <b>OWN</b> <b>COMPANY</b>." Then, the teacher asks, "What opinions (positive or negative) did the speaker express about these actions?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction (Clarifying Ideas):</b> Students work in pairs. The teacher plays specific sections of the audio again, focusing on parts where the speaker discusses overcoming challenges or receiving *support*. One student asks a clarifying question about what they heard (e.g., "What *strategies* has the speaker used to overcome challenges?"), and the partner listens to the audio segment again to formulate an answer using the target vocabulary (e.g., "The speaker mentioned that he/she asked friends for *support*, which helped him/her stay motivated during tough times."). This activity promotes respectful discussion of achievements and active listening for detail.</li>
+                </ul>
+            </td>
+            <td>15 min</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="stage-title">STAGE 4 — Performance / Production</div>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Communicative task where students USE the language in a realistic scenario: "My Personal Success Story")</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Small Group Discussion & Collaborative Summary (Listening-focused)</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Students are divided into small groups (3-4 students). The teacher plays a *new*, shorter audio clip (2-3 minutes) about a different high school student or young professional's *success* story, perhaps focusing on *community service* or *financial* *planning*. The audio might include both positive and negative opinions about certain *strategies* (e.g., "Some people think volunteering is a waste of time, but I think it has significant *impact*.").</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">In their groups, students listen carefully to this new audio. Their task is to:
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Summarize:</b> Collaboratively summarize the main *achievements* and *strategies* mentioned in the second audio.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Highlight Opinions:</b> Identify and discuss any positive or negative *opinions* expressed in the audio about *saving money*, *investing*, or pursuing *career* *goals*. Students should use phrases like, "The speaker shared a positive opinion about..." or "He mentioned a negative view some people have regarding..."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Formulate Questions:</b> Prepare 2-3 clarifying questions they would ask the speaker, similar to "How has volunteering helped you *grow*?" or "What *skills* would you like to develop for your *future* *goals*?" (Pragmatic competence).</li>
+                </ul>
+                After the discussion, each group shares their summary, highlighted opinions, and questions with the class, demonstrating their listening comprehension and ability to interpret opinions. The teacher facilitates a brief whole-class discussion, ensuring all voices are heard and respected (Sociolinguistic competence).</p>
+            </td>
+            <td>10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="stage-title">STAGE 5 — Assessment / Post-task</div>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Formative assessment strategy)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist and peer assessment during group discussion.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> The teacher plays 3-4 short, new audio statements (e.g., testimonials, short tips on *finances* or *career* *growth*) one by one. Students listen to each statement and, in pairs, identify: 1) the main idea (goal/achievement/strategy), and 2) if a positive or negative *opinion* is implied. They then briefly report their findings to their partner, using the target vocabulary. (e.g., "I heard that *investing* early is an *essential strategy* for *future success*, which is a positive *opinion*.")</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria (Teacher Observation Checklist):</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Interprets main ideas from dialogues (Listening comprehension).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Highlights positive/negative opinions accurately from audio.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Uses target vocabulary (<i>success, goals, achievements, strategies, finances, savings, invest, career, opportunities, future</i>) appropriately.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Asks clarifying questions to interpret ideas (e.g., "What *strategies* has the speaker used...?").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Collaborates respectfully in group discussions.</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete an exit ticket with the following prompts:
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was one new *strategy* for *success* I heard today that I found interesting?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"How well do I feel I can interpret different *opinions* when listening to a *success* story?" (Scale of 1-5)</li>
+                </ul>
+                </p>
+            </td>
+            <td>8 min</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="stage-title">STAGE 6 — Reflection</div>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Student and Teacher reflection)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was the most challenging part of listening for specific *achievements* or *strategies* in the audio today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"How can understanding stressed words and reduced auxiliaries (pronunciation) help me improve my listening comprehension in the *future*?"</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What worked well in this listening lesson? (e.g., "The podcast format engaged students and they were able to identify main *goals* and *strategies*.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What adjustments or additional scaffolds are needed for student *listening* comprehension, especially in interpreting opinions or specific details? (e.g., "Some students struggled with the pace of natural speech; providing a partial transcript next time might help. More practice on distinguishing between positive and negative opinion markers is needed.")</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson:</b> In Lesson 2, students will continue exploring the theme "How I Am Successful" by focusing on Reading Comprehension. They will read a text that uses the same core vocabulary and grammatical structures (Present perfect, Future continuous, First conditional) introduced in this listening lesson, allowing them to consolidate their understanding of the context and meaning of the new language.</p>
+            </td>
+            <td>7 min</td>
+        </tr>
+    </tbody>
+</table>

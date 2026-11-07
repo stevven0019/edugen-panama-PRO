@@ -1,0 +1,207 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .aoa-stage-title {
+        background-color: #1a5276;
+        color: white;
+        padding: 8px;
+        font-weight: bold;
+        text-align: center;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # A Vessel Is Crossing! – Lesson # 2</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333;"><b>Lesson #:</b> 2</td>
+        <td style="border: 1px dashed #333;" colspan="2"><b>Skills Focus:</b> Reading</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333;"><b>Grade:</b> 4th Grade (CEFR: A1.2)</td>
+        <td style="border: 1px dashed #333;"><b>Scenario:</b> Visiting the Panama Canal</td>
+        <td style="border: 1px dashed #333;"><b>Theme:</b> A Vessel Is Crossing!</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333;"><b>Date(s):</b> From ___ to ___</td>
+        <td style="border: 1px dashed #333;" colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333;" colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b><br>
+            Reading: reading1: Create lists from information read in texts.<br>
+            reading2: Identify the main ideas and details in short narratives.<br>
+            phonemicAwareness: Read regularly spelled one-syllable or two-syllable words represented by single letters.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b><br>
+            Reading: Can create lists based on information read in texts about the Panama Canal (e.g., 'List five facts about the Panama Canal. For example, it connects two oceans.').<br>
+            Can identify main ideas and supporting details in texts about the Panama Canal (e.g., 'Main idea: Vessels pass through the canal.' 'Detail: They transport goods and passengers.').<br>
+            Can read and spell one-syllable or two-syllable words related to familiar concepts (e.g., 'vessel' and 'wave').</p>
+        </td>
+    </tr>
+</table>
+
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr style="border: 1px dashed #333;">
+            <th style="border: 1px dashed #333; width: 33%;"><h3 style="color: #1a5276; margin: 0;">Stage & Description</h3></th>
+            <th style="border: 1px dashed #333; width: 34%;"><h3 style="color: #1a5276; margin: 0;">Activities & Teacher Actions</h3></th>
+            <th style="border: 1px dashed #333; width: 33%;"><h3 style="color: #1a5276; margin: 0;">Estimated Date and Time</h3></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333;"><p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b><br>(Engagement, Modeling and Clarification)</p></td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher displays a large picture of a vessel crossing the Panama Canal locks. Students review vocabulary from the previous lesson by pointing and naming items (e.g., "What is this? It's a vessel. Where is the canal?"). The teacher writes three familiar one-syllable or two-syllable words (e.g., 'canal,' 'boat,' 'ocean') on the board for students to read aloud, focusing on the /k/ sound in 'canal' and /b/ in 'boat'.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher points to a sentence written on the board related to the picture (e.g., "A big vessel is in the canal.") and reads it clearly, demonstrating fluent reading and proper pronunciation. The teacher highlights the words 'vessel' and 'canal' and models spelling them letter by letter, emphasizing the initial sounds. The teacher also shows two pictures, one of a big ship and one of a small yacht, saying "This vessel is bigger than the yacht," modeling the comparative structure.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Is the vessel small or big?" (Target: big)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What is the vessel doing? Is it flying?" (Target: No, it is in the canal.)</li>
+                </ul></p>
+            </td>
+            <td style="border: 1px dashed #333;">___ min</td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333;"><p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b><br>(Input of new language/content connected to Scenario)</p></td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A short narrative text (2-3 simple paragraphs) titled "A Day at the Miraflores Locks" presented on a handout or projected, accompanied by a picture of the locks and a vessel. The text includes present simple and continuous, comparatives, and key vocabulary (e.g., 'canal', 'vessel', 'ship', 'ocean', 'connect', 'observe', 'big', 'important', 'through', 'across', 'goods').</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Describing facts about the Panama Canal and current events happening there, while comparing things seen at the canal.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Text Example:</b><br>
+                "Today, many people are at the Miraflores Locks. They are watching a very big vessel. This vessel is crossing the Panama Canal. It travels from one ocean to another ocean. The Panama Canal connects the Atlantic and the Pacific Oceans. It is a very important and historic place. The vessel is transporting many goods. Look! Another ship is coming now. It is smaller than the first vessel. People observe both ships traveling through the locks."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Questions:</b> The teacher asks, "What is the text about?" and "Who is at the Miraflores Locks?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False Activity:</b> Students read sentences based on the text and mark them 'True' or 'False'.
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">"The vessel is flying." (False)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"The canal connects two oceans." (True)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"The second ship is bigger than the first vessel." (False)</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information Matching:</b> Students match words from the text (e.g., 'canal', 'vessel', 'goods') to simple definitions or pictures provided by the teacher.</li>
+                </ul></p>
+            </td>
+            <td style="border: 1px dashed #333;">___ min</td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333;"><p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b><br>(Accuracy focus on Reading)</p></td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Reading to identify main ideas and details, create lists, and recognize specific one-syllable or two-syllable words and their sounds (/k/, /b/). Grammar focus: Present simple/continuous for facts/current events, comparatives for describing observations.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                <ol>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Controlled Practice - Cloze Reading:</b> The teacher provides a version of the text with missing key vocabulary words (e.g., 'canal', 'vessel', 'ocean', 'connect', 'goods'). Students read the text silently and then fill in the blanks using a word bank. Example: "The Panama _______ two oceans. A big _______ is crossing."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Semi-controlled Practice - Main Idea/Detail Identification:</b> The teacher gives students a worksheet with sentences from the text. Students read each sentence and categorize it as a "Main Idea" or "Detail." Example:
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">"The Panama Canal connects two oceans." (Main Idea)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"It is a very important and historic place." (Detail supporting the main idea about the canal)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"The vessel is transporting many goods." (Detail about the vessel)</li>
+                        </ul>
+                        The teacher models the first two examples, explicitly stating 'Main idea: The text tells us about the canal connection. Detail: This gives more information about why it's important.'
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pair Reading & Phonemic Awareness Check:</b> Students work in pairs. Each pair receives a short list of target one-syllable or two-syllable words from the text (e.g., 'canal', 'boat', 'vessel', 'wave', 'bridge', 'locks', 'ocean'). Partner A reads a word, and Partner B spells it aloud. They then switch roles. The teacher circulates, listening for correct pronunciation of /k/ in 'canal' and /b/ in 'boat', and proper blending for words like /b/ /oʊt/ 'boat'. The teacher can also ask, "Can you find a word with the /k/ sound?" or "Can you find a word with the /b/ sound?" from the list.</li>
+                </ol></p>
+            </td>
+            <td style="border: 1px dashed #333;">___ min</td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333;"><p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b><br>(Communicative task where students USE the language in a realistic scenario)</p></td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Collaborative Reading and List Creation. Students work in small groups (3-4 students) to re-read the provided narrative text about the Panama Canal. They will collectively create two lists based on the information they read.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher gives each group a large piece of paper divided into two sections: "Facts About the Canal" and "Things Vessels Transport."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students read the text together, taking turns reading sentences or paragraphs. The teacher encourages polite exchanges: "I think this is a fact. What do you think, [student's name]?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">As they read, they identify information for each list. For example, under "Facts About the Canal," they might list: "It connects two oceans (Atlantic and Pacific)." Under "Things Vessels Transport," they might list: "goods."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students should also try to identify words with the /k/ sound (e.g., 'Canal', 'connects') and the /b/ sound (e.g., 'big', 'boat') from the text and write them down, practicing blending simple onsets and rhymes (e.g. 'boat' /b/ /oʊt/).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher circulates, guiding students to find specific details and main ideas, and prompting them to use the target grammar (e.g., "What are the vessels doing now?" "Which ship is bigger?") and vocabulary.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Each group presents one list item they found to the class, practicing respectful conversation and sharing opinions. Example: "We found that the Canal is important. Do you agree?"</li>
+                </ul></p>
+            </td>
+            <td style="border: 1px dashed #333;">___ min</td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333;"><p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b><br>(Formative assessment strategy)</p></td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist during group work and a short individual exit ticket.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students will individually complete an exit ticket based on the reading text.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Exit Ticket:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Write one main idea from the text about the Panama Canal.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">List two things the vessel is doing or carrying.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Spell one two-syllable word from the text (e.g., 'vessel').</li>
+                </ul></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria (Observation Checklist):</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Reading Comprehension:</b> Student can create lists based on information read in texts. (Specific Objective: reading1)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information Retrieval:</b> Student can identify main ideas and supporting details in short narratives. (Specific Objective: reading2)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Word Recognition:</b> Student can read regularly spelled one-syllable or two-syllable words. (Specific Objective: phonemicAwareness)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Vocabulary Use:</b> Student uses target vocabulary (e.g., 'vessel', 'canal', 'connects') appropriately.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity & Intelligibility:</b> Student's pronunciation of words like 'canal' and 'boat' is understandable.</li>
+                </ul></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"I can read about the Panama Canal and understand what the vessels are doing." (Yes/No/Sometimes)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"I can find important facts in the text." (Yes/No/Sometimes)</li>
+                </ul></p>
+            </td>
+            <td style="border: 1px dashed #333;">___ min</td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="border: 1px dashed #333;"><p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p></td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What new things did you learn about the Panama Canal today from reading the text?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was easy or difficult for you when reading the text and making the lists?"</li>
+                </ul></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What worked well in this reading lesson? (e.g., clarity of instructions, engagement with the text, successful list creation).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What adjustments or additional scaffolds are needed for students who struggled with identifying main ideas or creating lists? (e.g., provide sentence frames for main ideas, reduce text length, more explicit modeling of list-making).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Were students able to demonstrate reading and spelling of 1-2 syllable words? How can this be reinforced?</li>
+                </ul></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">This lesson focused on reading and understanding information about the Panama Canal and vessels. The next lesson (Lesson 3: Speaking & Interaction) will build on this understanding by having students actively speak and interact using the learned vocabulary and information to describe and compare vessels and actions at the Canal, preparing them for more active verbal communication.</p>
+            </td>
+            <td style="border: 1px dashed #333;">___ min</td>
+        </tr>
+    </tbody>
+</table>

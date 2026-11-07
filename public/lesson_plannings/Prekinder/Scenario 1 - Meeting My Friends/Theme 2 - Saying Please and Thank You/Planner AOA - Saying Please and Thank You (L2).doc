@@ -1,0 +1,197 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 16px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .table-title {
+        color: #1a5276;
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 2</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 2</td>
+        <td style="width: 75%;" colspan="2"><b>Skills Focus:</b> Reading</td>
+    </tr>
+    <tr>
+        <td style="width: 25%;"><b>Grade:</b> Pre-K (CEFR: A1.1)</td>
+        <td style="width: 37.5%;"><b>Scenario:</b> Meeting My Friends</td>
+        <td style="width: 37.5%;"><b>Theme:</b> Saying Please and Thank You</td>
+    </tr>
+    <tr>
+        <td style="width: 25%;"><b>Date(s):</b> From ___ to ___</td>
+        <td style="width: 75%;" colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Reading: Identify characters in a picture book. Phonemic Awareness: Identify environmental sounds and speech sounds.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Reading: Can recognize and name main characters in a story about meeting friends and being polite when prompted by the teacher (e.g., when the teacher asks, "Who is this?" the student says the character's name or points while attempting to say the name). Can select the correct picture of a character who says "please" or "thank you" in a familiar story when hearing the character's name (e.g., when the teacher says "Show me Lizzie," the student picks the correct picture from multiple options). Can identify the source of an environmental or speech sound related to classroom routines or stories when supported with pictures (e.g., pointing to a picture of a friend saying "hello" or a classroom bell after hearing the sound).</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<div class="table-title">The Six Action-Oriented Approach (AOA) Lesson Stages</div>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 33%;">Stage & Description</th>
+            <th style="width: 33%;">Activities & Teacher Actions</th>
+            <th style="width: 34%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b><br>(Engagement, Modeling and Clarification)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher greets students with a "Hello Song" using character flashcards (e.g., a "friend," a "teacher"). The teacher shows flashcards of main characters from the upcoming story (e.g., Lily, Tom, Max) and leads a choral repetition of "Hello, [character's name]!" and "Goodbye, [character's name]!" Students wave to the flashcards, reinforcing greetings and identifying familiar faces from previous lessons.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher models saying "hello," "goodbye," "please," and "thank you" using large picture cards depicting these actions and expressions. For example, the teacher holds up a card of a child waving and says, "Hello!" and then "Goodbye!" The teacher then shows a picture of a child handing something and says "Please," and a child receiving something and says "Thank you." The teacher exaggerates syllable stress in "friends" and "goodbye" while modeling.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of the characters and polite expressions.
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Pointing to a 'hello' flashcard): "Is this 'hello'?" (Students nod/shake head or say "Yes!").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Pointing to a character flashcard, e.g., Lily): "Who is this?" (Students point or attempt to say "Lily").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Showing a 'thank you' picture): "Does he say 'thank you'?" (Students nod/shake head or say "Yes!").</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b><br>(Input of new language/content connected to Scenario: "Meeting My Friends")</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A simple, brightly illustrated picture book titled "My Friends and Good Manners" featuring characters Lily, Tom, and Max meeting at school. The book explicitly shows them greeting each other, playing, and using "please" and "thank you."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Identify main characters in a story and recognize polite expressions ("hello," "goodbye," "please," "thank you") in context. Identify initial sounds /f/ and /g/ in specific words and environmental sounds relevant to the story.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Gist:</b> The teacher reads the picture book aloud, pointing to each character as their name appears. The teacher asks, "Who do we see?" encouraging students to point or gesture. The teacher emphasizes "hello" and "goodbye" with exaggerated pronunciation and syllable stress.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Character Identification:</b> After reading a page, the teacher asks, "Who is this friend?" pointing to a character. Students point to the named character on the page. The teacher also asks, "Who says 'please'?" or "Who says 'thank you'?" prompting students to identify the character performing the action.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Sound Matching:</b> The teacher plays short audio clips of environmental sounds (e.g., a child saying "hello," a school bell ringing, children playing) and asks students to point to the picture in the book that corresponds to that sound. For speech sounds, the teacher might say "friend" and ask students to show the picture of a "friend," emphasizing the initial /f/ sound.</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b><br>(Accuracy focus on Reading)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Reading character names, identifying polite expressions ("please," "thank you") and greetings ("hello," "goodbye") within familiar story illustrations. Grammar: Subject + Verb ("I am [name]."), WH-questions ("What is your name?"), Yes/No Questions ("Are you Mariana?"). Vocabulary: friend, teacher, name, class, say, is, play, wave, meet, nice, happy, please, hello, goodbye, thank you. Phonemic awareness: initial /f/ in "friend," /g/ in "goodbye," and environmental sounds.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>1. Character & Word Match (Controlled Practice):</b> The teacher prepares large flashcards of the story characters (Lily, Tom, Max) and separate word cards with their names and key polite expressions ("hello," "goodbye," "please," "thank you"). The teacher shows a character picture and says, "This is Lily." Students are then shown word cards and asked to point to "Lily." Similarly, the teacher shows a picture of a character saying "thank you" and asks students to point to the "thank you" word card. The teacher also emphasizes the initial /f/ sound when pointing to the "friend" picture and word.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>2. "Listen and Find" Story Scene (Semi-controlled):</b> The teacher displays several large, individual story scenes from the picture book. The teacher reads short sentences or phrases from the story, focusing on character actions and polite words (e.g., "Lily waves hello to her friend Max," "Tom says please"). Students listen and point to the corresponding scene or character in the picture. The teacher asks "Is Max happy?" (Yes/No).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>3. Sound Source Identification (Pair/Peer Check):</b> Students work in pairs with a set of pictures related to the story and classroom (e.g., Lily waving, a school bell, children playing, a dog barking). The teacher plays various environmental sounds and speech sounds (e.g., "hello," "goodbye," a child asking "What is your name?"). Students in pairs take turns pointing to the picture that matches the sound they hear. The teacher circulates, providing support and confirming responses (e.g., "Yes, that is the school bell!").</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b><br>(Communicative task where students USE the language in a realistic scenario: "Meeting My Friends")</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> "Who Says What?" Picture Sort and Tell.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Description:</b> Students work in small groups (3-4 children). Each group receives a set of large shuffled picture cards from the story, some depicting characters saying "hello/goodbye," some "please," and some "thank you." They also get a set of smaller cards with character names (pictures with names) and the words "hello," "goodbye," "please," "thank you."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">Students spread out the large story pictures.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">The teacher gives an instruction: "Find Max!" or "Show me a friend saying 'hello'." Students find the correct picture and point to it.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Then, the teacher asks, "Who is this?" or "What does this friend say?" (pointing to a picture of a character saying "thank you"). Students attempt to say the character's name or point to the corresponding small "thank you" word card.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">The teacher also plays environmental sounds from the story context (e.g., children playing, a door knocking). Students must point to the relevant picture from the story set (e.g., children playing together, a friend at the door).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">The focus is on students correctly identifying the pictures and making simple, connected responses (pointing, short utterances like "Lily" or "thank you") to demonstrate reading comprehension of the characters and polite interactions.</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b><br>(Formative assessment strategy)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist for individual student responses and participation.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> "Character and Politeness Check." The teacher presents individual large flashcards of key story characters (Lily, Tom, Max) and pictures depicting them saying "hello," "goodbye," "please," or "thank you."
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">The teacher holds up a character flashcard and asks, "Who is this?" Students point or attempt to say the name.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">The teacher holds up a picture of a character saying "please" or "thank you" and asks, "What does [character's name] say?" Students point to the action or attempt to say the word.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">The teacher plays an environmental sound (e.g., a child saying "goodbye," a door opening/closing) and asks, "What sound is this?" or "Where in the story did we hear this?" Students point to a relevant picture or mime the action.</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">Accuracy in identifying and pointing to main characters.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Ability to select the correct picture of a character using polite expressions when prompted.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Recognition of initial sounds /f/ and /g/ when prompted with words (e.g., pointing to "friend" when hearing /f/ sound).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Identification of environmental sounds related to the story/classroom routines.</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students are shown two large cards: one with a happy face, one with a sad face. The teacher asks: "Did you find all your friends in the story today?" (Students point to happy or sad face). "Did you hear 'thank you'?" (Students point to happy or sad face).</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What was your favorite part of the story?" (Students can point to a picture or character).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Can you show me a 'happy' friend?" (Students point to a happy character in the book).</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">What worked well in identifying characters and polite expressions in the story? The use of large, colorful visuals and repeated exposure seemed effective. The sound identification activity engaged most students.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">What adjustments or scaffolds are needed for the next lesson? Some students still struggle with distinguishing between "please" and "thank you" pictures without direct teacher prompts. I will need to provide more explicit TPR actions for these words and perhaps a sorting game in the next lesson. Reinforce initial phonemic sounds with more physical actions.</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson:</b> This lesson focused on reading and recognizing characters and polite expressions. For Lesson 3 (Speaking & Interaction), we will build on this recognition by practicing saying the characters' names and using "hello," "goodbye," "please," and "thank you" in simple, guided interactions with peers and the teacher, applying the grammar structures "I am [name]" and "What is your name?" from the curriculum.</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">___ min</p></td>
+        </tr>
+    </tbody>
+</table>

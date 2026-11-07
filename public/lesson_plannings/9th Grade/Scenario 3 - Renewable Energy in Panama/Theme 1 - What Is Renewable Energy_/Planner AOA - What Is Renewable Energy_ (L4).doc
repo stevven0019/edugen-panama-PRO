@@ -1,0 +1,209 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+    }
+    .section-title {
+        color: #1a5276;
+        font-size: 1.5em;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        font-family: Arial, sans-serif;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+    b {
+        font-weight: bold;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # What Is Renewable Energy? – Lesson # 4</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333; width: 50%;"><b>Lesson #:</b> 4</td>
+        <td style="border: 1px dashed #333; width: 50%;"><b>Skills Focus:</b> Writing</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333;"><b>Grade:</b> 9th Grade (CEFR: A2.4)</td>
+        <td style="border: 1px dashed #333;"><b>Scenario:</b> Renewable Energy in Panama</td>
+        <td style="border: 1px dashed #333;"><b>Theme:</b> What Is Renewable Energy?</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333;"><b>Date(s):</b> From ___ to ___</td>
+        <td style="border: 1px dashed #333;" colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="border: 1px dashed #333;" colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Writing: Productive: Write reflective pieces on short stories. Interactive: Comment on peers' writing in various formats, including on paper and online.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Writing: Can write a reflective paragraph explaining how Panama can benefit from renewable energy (e.g., "Panama can benefit from renewable energy because it can reduce pollution and save money." "Using wind farms as they do in Penonome can provide clean energy to rural areas and reduce the country's dependence on fossil fuels.")
+Can comment on a peer's description of renewable energy sources (e.g., "I agree with your point about solar power. Another benefit is that it's available everywhere, even in remote areas.")
+Can provide feedback on a group's project about energy-saving tips (e.g., "I like your ideas. Maybe you could also talk about using energy-efficient light bulbs to save more energy.").</p>
+        </td>
+    </tr>
+</table>
+
+<h2 class="section-title">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="border: 1px dashed #333; width: 33%;">Stage & Description</th>
+            <th style="border: 1px dashed #333; width: 33%;">Activities & Teacher Actions</th>
+            <th style="border: 1px dashed #333; width: 34%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification of key concepts and language for the writing task.</p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher displays a picture of solar panels on a Panamanian rooftop or a wind turbine from Penonomé. Students are asked to share what they know about these images. "What kind of energy do these produce? Where in Panama do we see this?" (5 minutes)</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher writes a simple sentence on the board: "Using wind farms is good because it generates clean electricity." The teacher models the pronunciation of "using," "generates," "electricity," focusing on stress in 'electricity' and the gerund form. The teacher then writes another sentence: "Panama is currently investing in more renewable energy projects." (5 minutes)</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Is 'using' an action or a description?" (Action)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Does 'because' tell us the reason or the result?" (The reason)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"When we say 'currently investing', is it happening now or in the past?" (Happening now)</li>
+                    </ul> (3 minutes)</p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Date: ___<br>Time: 13 minutes</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to the scenario, presented through an authentic text or model.</p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A short reflective paragraph from a Panamanian student about the benefits of renewable energy. For example:</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><i>"Panama can greatly benefit from renewable energy sources like solar and wind power. <b>Using</b> these clean alternatives is vital <b>because</b> it reduces our reliance on fossil fuels. Currently, the government <b>is implementing</b> more projects, like the wind farms in Penonomé. <b>Preserving</b> our natural resources and a clean environment is essential for future generations. <b>Generating</b> electricity sustainably also helps our economy."</i></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Explaining environmental benefits and justifying opinions in a written format.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b> Students read the paragraph and answer gist questions:
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">What kind of energy sources does the paragraph mention?</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Why is using these sources important for Panama?</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">What is happening with renewable energy projects in Panama right now?</li>
+                    </ul> (7 minutes)</p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Date: ___<br>Time: 7 minutes</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy-focused practice of target grammar, vocabulary, and writing structures.</p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Using gerunds (e.g., "Saving," "Generating"), the present continuous (e.g., "is implementing," "are installing"), and adverbial clauses for justification (e.g., "because it reduces," "since it protects") related to renewable energy vocabulary (e.g., solar, wind, generate, preserve, environment, sustainability).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                    <ol>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Controlled Practice - Sentence Completion:</b> Students complete sentences using the correct gerund form of verbs or appropriate adverbial clauses. (e.g., "____ (Harness) wind power helps the environment _____ it doesn't emit pollution." "We ___ (install) more solar panels ____ (current)." "____ (Preserve) resources is key for future ____ (sustain)." The teacher ensures stress in words like 'harnessing' and 'sustainability' is practiced orally before writing.) (5 minutes)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Semi-controlled Practice - Sentence Expansion:</b> Students expand short phrases into full sentences, incorporating target grammar and vocabulary. (e.g., Prompt: "Solar energy / clean source / environment." Student writes: "Solar energy is a clean source, and <b>using</b> it benefits the environment <b>because</b> it doesn't produce harmful gases.") (5 minutes)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Pair Interaction - Peer Check:</b> Students write two sentences each about an environmental action related to renewable energy. They exchange sentences with a partner. Partners check for correct use of gerunds, adverbial clauses, and present continuous, providing written feedback (e.g., "Good gerund! Maybe add 'because...' for justification."). (5 minutes)</li>
+                    </ol></p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Date: ___<br>Time: 15 minutes</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students use the language actively in a realistic scenario, focusing on fluency and task completion.</p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Individual paragraph writing and peer commenting.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Description:</b> Students will write a reflective paragraph (60-80 words) explaining how Panama can benefit from renewable energy. They must use at least two gerunds, one sentence in the present continuous, and one adverbial clause for justification. They should include vocabulary such as "sustainability," "environment," "generate," "preserve," or "efficiency." (e.g., "Panama is currently investing in clean energy. <b>Generating</b> power from solar panels helps us. <b>Reducing</b> our reliance on fossil fuels is important <b>because</b> it preserves our environment and promotes <b>sustainability</b>.")</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">After writing, students exchange paragraphs with a peer. Each student provides written feedback on their peer's paragraph, focusing on clarity, use of target language, and offering suggestions (e.g., "I agree with your point about solar power. Another benefit is that it's available everywhere, even in remote areas." or "I like your ideas. Maybe you could also talk about <b>using</b> energy-efficient light bulbs to save more energy."). This activity practices interactive writing as per the specific objective. (10 minutes for writing, 5 minutes for peer commenting).</p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Date: ___<br>Time: 15 minutes</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment of learning outcomes and student self-reflection.</p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation during writing and peer feedback, review of written paragraphs and peer comments.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students submit their written paragraph and the peer's comments. The teacher will quickly scan for evidence of the learning outcomes.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">Clarity of ideas explaining how Panama benefits from renewable energy.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Appropriate use of target vocabulary (nouns, verbs, adjectives).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Correct use of gerunds, present continuous, and adverbial clauses for justification.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Constructive and clear peer feedback using appropriate language.</li>
+                    </ul></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students answer two questions on a small slip of paper:
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What was the most challenging part of writing your paragraph about renewable energy?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What is one new thing you learned about giving feedback to a classmate?"</li>
+                    </ul> (5 minutes)</p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Date: ___<br>Time: 5 minutes</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Review of the lesson, student learning, and teacher self-evaluation for future planning.</p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Reflection Prompts (Oral or Written):</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"How confident do you feel now about writing a paragraph to justify the benefits of renewable energy?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What is one practical energy-saving tip you can share with your family after today's lesson?"</li>
+                    </ul></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher Reflection:</b> The explicit modeling and controlled practice on gerunds and adverbial clauses seemed effective. Students grasped the connection between these structures and justifying environmental actions. The peer feedback activity was successful in encouraging interactive writing, but some students needed prompting to give more specific comments. For the next lesson (Mediation & Integration), I will ensure students are prepared to summarize and present their ideas on renewable energy solutions, possibly by reviewing their paragraphs and peer comments as a starting point. I should also prepare a short text or video to summarize Panama's renewable energy efforts for the project integration.</p>
+            </td>
+            <td style="border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Date: ___<br>Time: 5 minutes</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,202 @@
+﻿<div style="font-family: Arial, sans-serif; color: #333;">
+
+    <h1 style="background-color: #1a5276; color: white; padding: 15px; text-align: center; border-radius: 8px;">
+        Lesson Planner – Theme # What's Your Favorite Food? – Lesson # 1
+    </h1>
+    <p style="text-align: center; font-style: italic; margin-top: 10px;">
+        Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).
+    </p>
+
+    <br>
+
+    <table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+        <tbody>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px; width: 50%;"><b>Lesson #:</b> 1</td>
+                <td style="border: 1px dashed #333; padding: 8px; width: 50%;"><b>Skills Focus:</b> Listening</td>
+            </tr>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;"><b>Grade:</b> 3rd Grade (CEFR: A1.1)</td>
+                <td style="border: 1px dashed #333; padding: 8px;"><b>Scenario:</b> It's Time to Eat.</td>
+            </tr>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;"><b>Theme:</b> What's Your Favorite Food?</td>
+                <td style="border: 1px dashed #333; padding: 8px;"><b>Date(s):</b> From ___ to ___</td>
+            </tr>
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;"><b>Learning Sequence Time:</b> 45–50 min</td>
+                <td style="border: 1px dashed #333; padding: 8px;"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Listening: Receptive: Demonstrate comprehension of phrases with names and dates in a short, simple recording delivered at a slow pace. Interactive: Present responses based on listened questions.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Listening: Can demonstrate understanding of familiar words and phrases with dates and numbers from recordings (e.g., "On Sunday, lunch is at 12."). Can recognize familiar phrases with food names or numbers from simple recordings (e.g., "Three apples, two bananas"). Can create and present responses to questions about food preferences (e.g., "What's his favorite food?" "He likes apples.").</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <h2 style="color: #1a5276; text-align: center; margin-bottom: 15px;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+
+    <table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+        <thead>
+            <tr>
+                <th style="border: 1px dashed #333; padding: 10px; background-color: #f2f2f2; text-align: left; width: 33%;">Stage & Description</th>
+                <th style="border: 1px dashed #333; padding: 10px; background-color: #f2f2f2; text-align: left; width: 33%;">Activities & Teacher Actions</th>
+                <th style="border: 1px dashed #333; padding: 10px; background-color: #f2f2f2; text-align: left; width: 33%;">Estimated Date and Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- STAGE 1 -->
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <h3 style="color: #1a5276; margin-top: 0; margin-bottom: 5px;">STAGE 1 — Warm-up / Pre-task</h3>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;">(Engagement, Modeling and Clarification)</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher greets students and displays large flashcards of various food items (e.g., apple, banana, sandwich, soup, juice, water, rice with chicken). The teacher points to each flashcard and asks, "What's this?" encouraging students to call out words they might know or guess. The teacher then plays a short, simple song about different foods and meal times, encouraging students to listen and point to corresponding flashcards.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher holds up flashcards one by one, clearly pronouncing the new vocabulary words: "apple," "banana," "sandwich," "soup," "juice," "water," "rice with chicken." The teacher models short sentences, e.g., "This is an apple. I like apples." and "This is a sandwich. I like sandwiches." The teacher explicitly models the pronunciation of /f/ in "favorite" and /s/ in "snack" by exaggerating the sounds. The teacher blends sounds for familiar words, e.g., saying /ˈæ-p.əl/ then "apple" and /ˈw-ɔːt-ər/ then "water" for phonemic awareness.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding using simple concept checking questions.
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">(Showing an apple flashcard) "Is this a banana?" (Expected: "No.") "What is this?" (Expected: "An apple.")</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">(Showing a juice flashcard) "Do we eat juice or drink juice?" (Expected: "Drink juice.")</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">(Pointing to mouth while modeling /f/ sound) "Is this /f/ sound for 'favorite'?" (Expected: "Yes.")</li>
+                        </ul>
+                    </p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">___ min</td>
+            </tr>
+
+            <!-- STAGE 2 -->
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <h3 style="color: #1a5276; margin-top: 0; margin-bottom: 5px;">STAGE 2 — Presentation</h3>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;">(Input of new language/content connected to Scenario: "It's Time to Eat.")</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A short, simple audio recording (e.g., 60-90 seconds) of two children, Alex and Sofia, talking about their favorite foods and what they eat for specific meals. The recording is delivered at a slow pace with clear pronunciation.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Example Audio Script (simplified):</b><br>
+                        <i>(Narrator): "Hello, everyone! It's time to eat!"</i><br>
+                        <i>(Alex): "Hi! My name is Alex. My favorite food is rice with chicken. I eat rice with chicken for lunch on Monday. I like bananas for a snack. I don't like soup."</i><br>
+                        <i>(Sofia): "Hi! I am Sofia. I like apples. I eat apples for breakfast sometimes. My favorite food is a sandwich. I eat a sandwich for dinner on Tuesday. I drink water every day."</i>
+                    </p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Asking for and giving information about preferences; expressing likes and dislikes about food.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks (Listening):</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Question:</b> The teacher plays the audio once. Then asks, "What is the audio about? Food or toys?" (Expected: "Food.")</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>True/False Questions:</b> The teacher plays the audio a second time. Students listen and show "True" (thumbs up) or "False" (thumbs down) for statements:
+                                <ul>
+                                    <li style="margin-bottom: 4px; text-align: justify;">"Alex likes rice with chicken."</li>
+                                    <li style="margin-bottom: 4px; text-align: justify;">"Sofia eats soup for dinner."</li>
+                                    <li style="margin-bottom: 4px; text-align: justify;">"Alex likes bananas for a snack."</li>
+                                </ul>
+                            </li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Information Matching (picture-based):</b> The teacher provides a worksheet with pictures of Alex and Sofia, and pictures of the food items mentioned. Students listen again and draw a line from each child to their favorite food or meal.</li>
+                        </ul>
+                    </p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">___ min</td>
+            </tr>
+
+            <!-- STAGE 3 -->
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <h3 style="color: #1a5276; margin-top: 0; margin-bottom: 5px;">STAGE 3 — Preparation / Practice</h3>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;">(Accuracy focus on Listening)</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar:</b> WH- and yes/no questions ("What's your favorite food?"), Present simple ("I like...", "He eats..."), Compound sentences with 'but' ("I like...but I don't...").</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Vocabulary:</b> apple, banana, sandwich, lunch, breakfast, dinner, food, snack, water, juice, rice with chicken, soup; eat, drink, like, don't like, favorite.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Pronunciation:</b> /f/ in "favorite", /s/ in "snack", blending of /ˈæ-p.əl/ and /ˈw-ɔːt-ər/.</li>
+                        </ul>
+                    </p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>1. Listen and Circle:</b> The teacher provides a worksheet with sentences that have a blank and two picture options (e.g., "I like ____." with a picture of an apple and a banana). The teacher plays short audio snippets (e.g., "I like bananas."). Students listen and circle the correct picture or word. This helps reinforce the individual words and their sounds.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>2. Listen and Point:</b> The teacher places flashcards of all target food items (apple, banana, sandwich, soup, juice, water, rice with chicken) on the board or desk. The teacher says a word or a short phrase (e.g., "rice with chicken," "I drink water," "a sweet apple") and students listen and point to the corresponding flashcard. The teacher repeats this with different items, focusing on clear pronunciation, especially /f/ and /s/.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>3. Listen and Draw/Color:</b> Students receive a worksheet with an empty plate or lunchbox drawing. The teacher provides simple audio instructions, e.g., "Draw two apples on the plate." "Color the banana yellow." "Put a sandwich in the lunchbox." Students listen and follow the instructions. This activity reinforces comprehension of quantity and basic descriptive adjectives through listening.</li>
+                        </ul>
+                    </p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">___ min</td>
+            </tr>
+
+            <!-- STAGE 4 -->
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <h3 style="color: #1a5276; margin-top: 0; margin-bottom: 5px;">STAGE 4 — Performance / Production</h3>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;">(Communicative task where students USE the language in a realistic scenario: "It's Time to Eat.")</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> "Listen to Your Friend's Meal" – a guided listening and reporting activity.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Students work in pairs. Each pair receives a simple drawing of two children (e.g., "Student A" and "Student B") and a list of food items as visuals (e.g., flashcards or pictures on a sheet).</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Teacher provides an audio recording featuring two short dialogues. Each dialogue describes what one child likes to eat for a specific meal, incorporating likes, dislikes, and meal times.
+                                <ul>
+                                    <li style="margin-bottom: 4px; text-align: justify;"><b>Audio Example 1:</b> "Hello, I'm María. For breakfast, I like an apple and juice. I don't like soup for breakfast."</li>
+                                    <li style="margin-bottom: 4px; text-align: justify;"><b>Audio Example 2:</b> "Hi, I'm Pedro. For dinner, I like rice with chicken. My favorite snack is a banana, but I don't like sandwiches."</li>
+                                </ul>
+                            </li>
+                            <li style="margin-bottom: 4px; text-align: justify;">After listening to each dialogue, students in pairs discuss and point to the correct food items for María and Pedro from their visual list. One student listens and points, the other confirms.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">After both dialogues, students listen again and then take turns orally reporting what they heard about each child. For instance, "María likes an apple and juice for breakfast." "Pedro likes rice with chicken for dinner, but he doesn't like sandwiches."</li>
+                        </ul>
+                    </p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Focus:</b> This task primarily focuses on students' receptive listening comprehension to extract specific information about food preferences and meal times. Their short oral reports demonstrate their understanding of the listened content and the use of target grammar (Present simple, 'but').</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">___ min</td>
+            </tr>
+
+            <!-- STAGE 5 -->
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <h3 style="color: #1a5276; margin-top: 0; margin-bottom: 5px;">STAGE 5 — Assessment / Post-task</h3>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;">(Formative assessment strategy)</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist for listening comprehension and a "Listen and Match" worksheet.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students receive a worksheet with three short dialogues (similar to Presentation stage but with different names/foods) played via audio. Next to each dialogue's number, there are three pictures of food items. Students listen to each dialogue and circle the picture that matches the food mentioned.
+                        <br><i>(Example Audio 1: "Hello, my name is Carlos. My favorite food is soup for lunch!")</i><br>
+                        <i>(Example Audio 2: "Hi! My name is Ana. I like bananas for breakfast.")</i><br>
+                        <i>(Example Audio 3: "My name is Luis. I eat a sandwich for dinner.")</i>
+                    </p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria (Listening):</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Demonstrates understanding of familiar words and phrases with food names from simple recordings (e.g., "soup," "banana," "sandwich").</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Can correctly identify specific food items mentioned in slow-paced, simple audio.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Recognizes basic meal times (lunch, breakfast, dinner) in context.</li>
+                        </ul>
+                    </p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete a quick exit ticket:
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">"I learned new food words today: (write 1-2 words)"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"Listening to English today was: (circle one) EASY / OK / DIFFICULT"</li>
+                        </ul>
+                    </p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">___ min</td>
+            </tr>
+
+            <!-- STAGE 6 -->
+            <tr>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <h3 style="color: #1a5276; margin-top: 0; margin-bottom: 5px;">STAGE 6 — Reflection</h3>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">"What was your favorite part of listening to the food stories today?"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"Which food word is easy for you to hear and understand?"</li>
+                        </ul>
+                    </p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b> The use of flashcards and simple audio recordings worked well for introducing new vocabulary and practicing listening comprehension. Students were engaged in the "Listen and Draw" activity. Some students struggled with differentiating between "juice" and "soup" due to similar sounds, requiring extra modeling and repetition of /s/ and /juː/ sounds. I need to ensure clear articulation for the next listening activities. The pairing for reporting worked, but some needed prompts to form complete sentences. For the next lesson, I will ensure the listening tasks are slightly varied to maintain engagement and introduce the same vocabulary in a written context.</p>
+                    <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> This lesson introduced the core vocabulary for food and meal times through listening. In Lesson 2 (Reading Comprehension), students will encounter these same vocabulary words in short, simple written texts (e.g., a short menu or a description of someone's lunchbox) to further solidify their recognition and understanding in a new modality.</p>
+                </td>
+                <td style="border: 1px dashed #333; padding: 8px;">___ min</td>
+            </tr>
+        </tbody>
+    </table>

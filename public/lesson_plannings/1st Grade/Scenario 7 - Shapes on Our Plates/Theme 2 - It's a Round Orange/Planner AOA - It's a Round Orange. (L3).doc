@@ -1,0 +1,202 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+        font-size: 0.9em;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    h2 {
+        color: #1a5276;
+        font-family: Arial, sans-serif;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+</style>
+
+<div class="banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 3</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td><b>Lesson #:</b> 3</td>
+        <td><b>Skills Focus:</b> Speaking</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 1st Grade (CEFR: Pre-A1.3)</td>
+        <td><b>Scenario:</b> Shapes on Our Plates</td>
+        <td><b>Theme:</b> It's a Round Orange.</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p><b>Specific Objective:</b> Speaking: Productive: Name primary and secondary colors. Interactive: Answer questions using simple words.</p>
+            <p><b>Learning Outcome:</b> Speaking: Can identify and name primary and secondary colors when describing the color and shape of food items (e.g., "This is a red apple." "The brown cracker is square."). Can answer simple questions about both colors and shapes using one or two words (e.g., "What shape is the orange?" "It's round."). Can use gestures to support responses about colors and shapes of food items (e.g., pointing to a round object when asked to find a shape).</p>
+        </td>
+    </tr>
+</table>
+
+<h2>The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="color: #1a5276;">Stage & Description</th>
+            <th style="color: #1a5276;">Activities & Teacher Actions</th>
+            <th style="color: #1a5276;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 1 — Warm-up / Pre-task</h3>
+                <p>Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p><b>Warm-up:</b> The teacher leads a "Color and Shape Clap" activity. The teacher holds up large flashcards of various food items (e.g., an apple, an orange, a cracker, a banana). The teacher first states the color, "Red apple!" and students clap once. Then, the teacher states the shape, "Round apple!" and students clap again. This engages students, activates prior knowledge of colors and shapes, and introduces the focus on describing food. Examples: "Yellow banana! Oval banana!", "Brown cracker! Square cracker!".</p>
+                <p><b>Modeling:</b> The teacher holds up a flashcard of an orange and clearly states, "This is an orange. It's orange. It's round." The teacher repeats with a cracker, "This is a cracker. It's brown. It's square." The teacher exaggerates the pronunciation of /r/ in "round" and /k/ in "cracker" while pointing to the mouth and then the food item. The teacher uses demonstratives "this" and "that" while pointing to objects near and far.</p>
+                <p><b>Clarification (CCQs):</b> The teacher checks understanding using simple questions and gestures for 1st graders:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Holding up a yellow lemon) "Is it round?" (Teacher makes a round gesture, waiting for "Yes!" or "No, it's oval!")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Holding up a red apple) "What color is it? Blue?" (Teacher shakes head, expecting "No, red!")</li>
+                </ul>
+            </td>
+            <td>5-7 min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 2 — Presentation</h3>
+                <p>Input of new language/content connected to Scenario: "Shapes on Our Plates".</p>
+            </td>
+            <td>
+                <p><b>Material:</b> A sequence of large, colorful flashcards depicting children holding and describing their "Snack Time" items. Each flashcard shows a child with a specific food item (e.g., "This is my pineapple. It's yellow. It's big." or "This is my juice box. It's white. It's square."). The input integrates nouns (pineapple, lemon, lime, mango, papaya, cracker, banana, food, juice box, snack, meal), verbs (eat, hold, see), adjectives (round, square, oval, big, small, healthy, tasty, orange, black, brown, white), and demonstratives (this, that).</p>
+                <p><b>Communicative Competence:</b> Identifying food shapes: Identifying and describing foods by shape (e.g., "The cracker is square."). Asking about shapes in food: Engaging in simple questions about food items (e.g., "What shape is the apple?"). Describing food: Using simple words to describe the colors and shapes of fruits and other foods.</p>
+                <p><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>"Point and Say":</b> The teacher shows the flashcards again. "Point to the round food." Students point to all round items. "What color is the lemon?" Students say "Yellow."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>"Yes/No Game":</b> The teacher shows a flashcard (e.g., a square cracker). "Is it round?" Students respond with "No." "Is it square?" Students respond with "Yes."</li>
+                </ul>
+            </td>
+            <td>8-10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 3 — Preparation / Practice</h3>
+                <p>Accuracy focus on Speaking.</p>
+            </td>
+            <td>
+                <p><b>Communicative Skill & Content:</b> Students practice using "Adjective + noun" (e.g., "round apple"), WH-questions ("What shape is it?"), Present simple ("Oranges are round."), and all target vocabulary (pineapple, lemon, lime, mango, papaya, cracker, banana, orange, black, brown, white, round, square, oval, big, small, healthy, tasty) for describing food items.</p>
+                <p><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. "Match and Speak":</b> Students receive a worksheet with pictures of different food items (apple, orange, cracker, banana, juice box) and a word bank of colors and shapes (e.g., red, yellow, brown, round, square, oval). In pairs, students match a color and a shape to each food item. Then, they take turns orally describing each food, for example, "This is a red apple. It's round." The teacher circulates, providing feedback on pronunciation, especially /r/ and /k/.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. "Question and Answer Chain":</b> The teacher starts by holding up a real or toy fruit (e.g., a mango). "What color is it?" A student answers, "Orange!" The teacher then asks, "What shape is it?" Another student answers, "Oval!" This continues, with the teacher asking "What color...?" and "What shape...?" about different food items, encouraging one-word or two-word answers from various students.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. "Guess My Food Bag":</b> The teacher prepares a bag with various realia or toy food items. One student reaches into the bag, feels an item, and describes it to a partner using color and shape adjectives, without showing it (e.g., "It's small. It's yellow. It's oval."). The partner guesses, "Is it a lemon?" The student confirms "Yes, it is!" or "No, it's a banana!". This is done in pairs or small groups.</li>
+                </ul>
+            </td>
+            <td>15-18 min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 4 — Performance / Production</h3>
+                <p>Communicative task where students USE the language in a realistic scenario: "Shapes on Our Plates".</p>
+            </td>
+            <td>
+                <p><b>Task Format:</b> "Our Healthy Snack Show and Tell." Students will present a drawing of their favorite healthy snack plate or bring a toy food item/picture. They will verbally describe the colors and shapes of the food items on their plate or the item they brought.</p>
+                <p><b>Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">1. The teacher models the activity: The teacher shows a drawing of a plate with a red apple and a brown cracker. "Hello everyone! This is my plate. This is a red apple. It's round. This is a brown cracker. It's square. I like healthy food!" (The teacher uses gestures to emphasize shapes and colors).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">2. Students are divided into small groups (3-4 students). Each student takes turns presenting their "healthy snack" drawing or item to their group members.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">3. Group members are encouraged to ask simple questions like, "What color is your mango?" or "What shape is your cracker?" and the presenter answers using simple words (e.g., "Orange!", "Square!"). The teacher circulates, facilitating interaction and providing support as needed, focusing on fluent communication rather than perfect accuracy.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">4. To conclude, a few volunteers share their "Show and Tell" with the whole class.</li>
+                </ul>
+            </td>
+            <td>10-12 min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 5 — Assessment / Post-task</h3>
+                <p>Formative assessment strategy</p>
+            </td>
+            <td>
+                <p><b>Formative Assessment Strategy:</b> Teacher observation checklist. The teacher will observe students during the "Our Healthy Snack Show and Tell" activity, noting their ability to name colors and shapes and answer simple questions.</p>
+                <p><b>Assessment Task:</b> Students present their "Healthy Snack Show and Tell" to the teacher or the class.</p>
+                <p><b>Evaluation Criteria:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Intelligible pronunciation:</b> Clearly pronounces /r/ in "round" and /k/ in "cracker" and other target words.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target vocabulary:</b> Uses at least 3-4 target color, shape, and food vocabulary words correctly (e.g., "red," "round," "apple").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity in description:</b> Describes a food item using "Adjective + noun" (e.g., "yellow lemon," "square cracker").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Interactive response:</b> Answers a simple "What color/shape...?" question with one or two words.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gestural support:</b> Uses gestures to support descriptions of colors and shapes.</li>
+                </ul>
+                <p><b>Student Self-Assessment / Exit Ticket:</b> Students complete a simple drawing or check-box activity before leaving the class:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"I can say the colors:" (Students draw or write the names of 2-3 colors they remember).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"I can say the shapes:" (Students draw or write the names of 2-3 shapes they remember).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"I can describe a food like: 'This is a (color) (shape) (food).'" (Students check a box: Yes / A little / No).</li>
+                </ul>
+            </td>
+            <td>7-8 min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 6 — Reflection</h3>
+            </td>
+            <td>
+                <p><b>Student self-reflection prompt:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What new colors did you learn to say today when talking about food?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was your favorite shape to talk about today?"</li>
+                </ul>
+                <p><b>Teacher reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What aspects of the "Our Healthy Snack Show and Tell" activity worked well? (e.g., student engagement, confidence in speaking, use of gestures, interaction among students).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What specific adjustments and scaffolds are needed for the next speaking lesson or for students who struggled? (e.g., more visual prompts, sentence frames for "Adjective + noun" or WH-questions, additional pronunciation practice for /r/ and /k/).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Did most students meet the specific objective and learning outcome for speaking? Which areas need more reinforcement?</li>
+                </ul>
+                <p><b>Connection to next lesson:</b> This speaking practice forms a strong foundation for the next lesson (Lesson 4: Writing Composition), where students will transition from oral descriptions to writing simple sentences about food items, colors, and shapes, reinforcing the same vocabulary and grammar structures in a written format.</p>
+            </td>
+            <td>5 min</td>
+        </tr>
+    </tbody>
+</table>

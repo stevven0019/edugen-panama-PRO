@@ -1,0 +1,255 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+        font-style: italic;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    .section-title {
+        color: #1a5276;
+        font-size: 1.5em;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # Our New Classmates – Lesson # 3</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<div class="section-title" style="color: #1a5276;">Lesson Identification Table</div>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 50%;"><b>Lesson #:</b> 3</td>
+        <td style="width: 50%;"><b>Skills Focus:</b> Speaking</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 7th Grade (CEFR: A2.2)</td>
+        <td><b>Scenario:</b> Our New Classmates</td>
+        <td><b>Theme:</b> Where are you from?</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <b>Specific Objective:</b> Speaking: Productive: Explain a useful skill. Interactive: Talk about preferences and familiar topics in a guided class discussion.
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <b>Learning Outcome:</b> Speaking: Can explain a useful skill learned at school or in the community (e.g., "I learned how to play the drum in music class." "Liam taught me how to solve math problems faster.").
+            Can talk about preferences when discussing school activities and routines (e.g., "I prefer morning classes because I have more energy." "I like math more than science because I enjoy solving problems.").
+            Can participate in guided discussions to compare school experiences with classmates (e.g., "In my previous school, we had longer breaks." "My new school has a bigger library than my old one.").
+        </td>
+    </tr>
+</table>
+
+<div class="section-title" style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</div>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="color: #1a5276;">Stage & Description</th>
+            <th style="color: #1a5276;">Activities & Teacher Actions</th>
+            <th style="color: #1a5276;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <b>STAGE 1 — Warm-up / Pre-task</b><br>
+                Engagement, Modeling and Clarification
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher greets students and starts a quick "Circle Share" activity. Students sit in a circle and each share one thing they like about their school or a school activity they prefer. For example: "I like recess because I can play with my friends." or "I prefer math class because I enjoy solving problems." The teacher encourages using `like`, `prefer`, and `because` to justify preferences.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher models questions and answers related to personal and school information. For instance, the teacher asks a student: "Where are you from, [Student's Name]?" and then models the answer "I'm from [Hometown]." The teacher also models "What was your previous school like?" and "It was [adjective] but had a [description]." This activates `question_words` like `where`, `what`, and `verbs` such as `come from`, `used to`. The teacher highlights clear pronunciation of words like `school`, `friends`, `classes`.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of key terms like "previous school" and "hometown".</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">CCQ 1: "If I say 'previous school', do I mean the school you are in now, or the school you went to before this one?" (Expected answer: "The school before this one.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">CCQ 2: "Is your 'hometown' the city where you were born or where you live now?" (Expected answer: "It can be both, or the place you feel is your home.")</li>
+                </ul>
+            </td>
+            <td>5-7 min</td>
+        </tr>
+        <tr>
+            <td>
+                <b>STAGE 2 — Presentation</b><br>
+                Input of new language/content connected to Scenario: "Our New Classmates".
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A short dialogue or audio recording between two new classmates, Carlos and Sofia, discussing their previous schools and hometowns. The dialogue will include `Present` and `Past Simple` for habits and descriptions, `comparatives` for comparing schools, and key vocabulary.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Example Dialogue Snippet:</b><br>
+                Carlos: "Hi Sofia! Where are you from?"<br>
+                Sofia: "I'm from Santiago. My previous school was a bit small, but it had a very friendly community. What about you?"<br>
+                Carlos: "I come from Chame. My old school used to have a big playground. This new school is bigger than my old one, and the library is more modern."<br>
+                Sofia: "That's interesting! I used to walk to school, but now I take the bus."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Responding to questions about classmates and schools (e.g., "Where are you from?" "I'm from Santiago." "What was your previous school like?" "It was small but had a big library.")</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist questions:</b> "Where does Sofia come from?" "What is one difference Carlos mentions about his new school?" (Students provide short oral answers.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False statements:</b> The teacher reads statements based on the dialogue (e.g., "Sofia's previous school was bigger than her new one. [False]"). Students say "True" or "False."</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">The teacher pays attention to the pronunciation of `verbs` like `comes`, `uses`, `walks`, `takes` and `plurals` like `schools`, `friends` to subtly introduce the /s/, /z/, /ɪz/ sounds.</p>
+            </td>
+            <td>7-10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <b>STAGE 3 — Preparation / Practice</b><br>
+                Accuracy focus on Speaking.
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar:</b> Present and Past Simple for habits and descriptions; Comparatives and superlatives; Future tense in affirmative and interrogative sentences (basic questions).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Vocabulary:</b> `classmate, school, community, subject, classroom, schedule, recess, cafeteria, playground, library, activity, used to, come from, new, friendly, big, small, interesting, boring, helpful, prefer, like more than, explain`.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pronunciation:</b> Practice the endings of plurals and third person singular verbs with /s/, /z/, and /ɪz/ sounds (e.g., "books" /s/, "friends" /z/, "watches" /ɪz/ - *teacher will provide examples focusing on target verbs/nouns*).</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ol>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Controlled Practice (Sentence Completion / Guided Questions):</b>
+                        The teacher displays sentence starters or questions on the board/projector. In pairs, students complete the sentences or answer the questions orally, focusing on correct grammar and vocabulary.
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">"In my previous school, we __________ (used to / has) have art class every Tuesday."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"This school is __________ (big / bigger) than my old one."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"What subject do you __________ (like / prefer) more?"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Teacher drills pronunciation of "used to," "prefers," and "classes," drawing attention to the final /d/ and /z/ sounds.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Semi-controlled Practice (Substitution Drill with Preference):</b>
+                        The teacher provides a sentence frame for expressing preferences, e.g., "I prefer [Subject/Activity 1] to [Subject/Activity 2] because I enjoy [Reason - gerund]." Students work in pairs, taking turns substituting different subjects and activities (e.g., `math`, `science`, `reading`, `playing sports`) and giving a reason.
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Example: "I prefer `morning classes` to `afternoon classes` because I have more `energy`."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Example: "I like `English` more than `History` because I enjoy `learning new words`."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">The teacher circulates, correcting pronunciation of `prefers` /z/ and `classes` /ɪz/.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pair Interaction (Skill Sharing):</b>
+                        Students work in pairs. Partner A asks, "What's a useful skill you learned at school or in your community?" Partner B answers and explains. Then they switch roles.
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Example: "I learned how to `play the drum` in `music class`." "Liam taught me how to `solve math problems faster`."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">The teacher reminds students to use appropriate `verbs` like `learn`, `explain`, `teach`.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </td>
+            <td>15-20 min</td>
+        </tr>
+        <tr>
+            <td>
+                <b>STAGE 4 — Performance / Production</b><br>
+                Communicative task where students USE the language in a realistic scenario: "Our New Classmates".
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> "New Classmate Interview and Share." Students work in new pairs. One student acts as an "interviewer" and the other as a "new classmate." They will use a provided "Interview Card" with guiding questions to have a conversation. After 5-7 minutes, they switch roles. Finally, each student introduces their "new classmate" to another pair or to the whole class, sharing 2-3 interesting facts they learned.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Interview Card Questions:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Where do you come from? What was your previous school like? (Was it `big`, `small`, `noisy`, `quiet`, `friendly`?)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What did you `used to` do after school in your hometown?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What is your favorite `subject` here and why? Do you `prefer` morning or afternoon `classes`?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What is one `useful skill` you `learned` at your `previous school` or in your `community`? Can you `explain` it?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">`Will` you `join` any new `activities` or `projects` this year? Which ones?</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher Actions:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Distributes Interview Cards and reviews questions.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Reminds students to use `Present` and `Past Simple`, `comparatives`, and `future tense` correctly, and to focus on clear pronunciation of third-person singular verbs and plurals.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Circulates to provide support, prompt students to elaborate, and gently correct major errors in a communicative way (e.g., "Can you rephrase that?").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Encourages `sociolinguistic competence` by prompting students to use polite language (e.g., "Could you tell me...?", "Thank you for sharing.") and to actively listen to their `classmate`s responses.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Facilitates the sharing phase, ensuring each student gets a chance to present information about their `new classmate` using descriptive `adjectives` and comparing `school experiences`.</li>
+                </ul>
+            </td>
+            <td>12-15 min</td>
+        </tr>
+        <tr>
+            <td>
+                <b>STAGE 5 — Assessment / Post-task</b><br>
+                Formative assessment strategy.
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist focusing on oral production and peer assessment during the sharing phase.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students participate in the "New Classmate Interview" and then orally present key information about their partner to another pair or the class. Their ability to respond to questions about their `previous school` and `preferences`, `explain` a `useful skill`, and `compare` aspects of `school life` will be assessed.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria (Teacher Observation Checklist):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Intelligible pronunciation:</b> Clear articulation, including the /s/, /z/, /ɪz/ sounds for plurals and third-person verbs (e.g., "He `likes`," "She `teaches`," "His `friends`").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target vocabulary:</b> (e.g., `classmate`, `community`, `subject`, `library`, `used to`, `prefer`, `explain`).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity and coherence:</b> Able to `explain` a skill and `compare` school experiences.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Collaborative interaction:</b> Participates actively in discussion, asks and answers questions.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar accuracy:</b> Appropriate use of `Present` and `Past Simple`, `comparatives`, and `future tense` questions.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket (Oral or written on a sticky note):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was one new thing you learned about a `classmate` today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was easy or difficult for you when talking about `previous schools` or `useful skills`?"</li>
+                </ul>
+            </td>
+            <td>5-7 min</td>
+        </tr>
+        <tr>
+            <td>
+                <b>STAGE 6 — Reflection</b><br>
+                Student self-reflection and Teacher reflection.
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection:</b> (Guiding questions for learners)</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Did I actively `participate` in the `discussions` and `interviews` today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Can I `explain` a `useful skill` and `compare` my `school` with an `old school` in English?"</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What worked well during the speaking activities? (e.g., "Students were enthusiastic about sharing personal information and using comparatives.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What adjustments or scaffolds are needed for the next lesson? (e.g., "Some students struggled with the future tense questions; I need to provide more structured practice. Also, I need to remind them more explicitly about the `s/z/ɪz` pronunciation in future lessons.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Did students meet the learning outcomes for speaking? How can I ensure more balanced participation?</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> This lesson focused on speaking about new classmates and school experiences. In Lesson 4 (Writing Composition), students will use the information and vocabulary practiced today to write a short paragraph describing a new classmate or comparing their current school to their previous one, incorporating target grammar and vocabulary.</p>
+            </td>
+            <td>3-5 min</td>
+        </tr>
+    </tbody>
+</table>

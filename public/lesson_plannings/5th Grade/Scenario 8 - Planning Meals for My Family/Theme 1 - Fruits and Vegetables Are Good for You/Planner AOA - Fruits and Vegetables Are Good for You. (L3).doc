@@ -1,0 +1,226 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+        font-size: 0.9em;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    h2 {
+        color: #1a5276;
+        font-family: Arial, sans-serif;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+</style>
+
+<div class="banner">
+    <h1>Lesson Planner – Theme # Fruits and Vegetables Are Good for You. – Lesson # 3</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 3</td>
+        <td style="width: 75%;"><b>Skills Focus:</b> Speaking</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 5th Grade (CEFR: A1.3)</td>
+        <td><b>Scenario:</b> Planning Meals for My Family</td>
+        <td><b>Theme:</b> Fruits and Vegetables Are Good for You.</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Speaking: Productive: Describe a family or school event they are looking forward to. Interactive: Exchange ideas about planning an event.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Speaking: Can describe a family event they are looking forward to (e.g., "I am happy to cook a healthy meal for my mom's birthday. I can prepare a salad, some rice, and meat."). Can exchange ideas about planning an event by collaborating with peers and making decisions together (e.g., "Let's plan a healthy meal for her birthday. What should we include?" "We can add rice and beans."). Can ask questions about details for planning (e.g., "What type of healthy Panamanian food can we use in our recipe?" "We need some rice and some beans.").</p>
+        </td>
+    </tr>
+</table>
+
+<h2>The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="color: #1a5276;">Stage & Description</th>
+            <th style="color: #1a5276;">Activities & Teacher Actions</th>
+            <th style="color: #1a5276;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher shows flashcards or pictures of various fruits and vegetables (e.g., mangos, watermelon, tomatoes, lettuce). Students call out the names of the food items they see. The teacher then asks, "What do you like to eat for a snack?" or "What is your favorite fruit?" encouraging simple oral responses like "I like mangos." or "Watermelon is sweet."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher models sentences about healthy meals and planning. For example, "I like to cook healthy meals. For lunch, I can eat some rice and some beans. I also like a fresh salad with tomatoes and lettuce." The teacher explicitly models the pronunciation of /v/ in "vegetables" and /f/ in "fruit," asking students to repeat. The teacher also models using "some" for uncountable nouns.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding by asking:
+                    <ul style="list-style-type: disc; margin-left: 20px; padding-left: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;">"Are apples vegetables or fruits?" (Expected answer: "Fruits.")</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Is pizza a healthy meal?" (Expected answer: "No, it isn't.")</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to Scenario: "Planning Meals for My Family".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A short dialogue between two friends, Carla and Pedro, planning a healthy birthday meal for their mom. The dialogue explicitly uses target vocabulary (e.g., breakfast, lunch, dinner, rice, beans, fruits, vegetables, cook, tasty, healthy) and grammar (Present simple, 'can', countable/uncountable nouns like "some rice," "many fruits").</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Dialogue Example:</b>
+                    <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Carla:</b> "Hey Pedro, Mom's birthday is next week! Let's plan a healthy dinner for her."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Pedro:</b> "That's a great idea! What do you like to cook?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Carla:</b> "I can cook some chicken. We also need some rice and some beans. They are very tasty!"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Pedro:</b> "Yes! And we can make a big, fresh salad with tomatoes and lettuce. Fruits are good too, like mangos and watermelon."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Carla:</b> "Perfect! First, we need to buy the vegetables. Next, we can cook everything."</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Students will learn to initiate and respond to simple verbal exchanges about planning and personal food preferences for an event.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks (oral):</b> The teacher reads the dialogue aloud twice, then asks students:
+                    <ul style="list-style-type: disc; margin-left: 20px; padding-left: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;">"What event are Carla and Pedro planning for?" (Gist question)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What healthy foods do they want to cook?" (Information matching, students can call out words like "chicken," "rice," "beans," "salad," "tomatoes," "lettuce," "mangos," "watermelon.")</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy focus on Speaking.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Students will practice using Present Simple, modal 'can', countable/uncountable nouns (some/many), and vocabulary related to meals and food (breakfast, lunch, dinner, snack, rice, beans, bread, water, juice, mangos, watermelon, tomatoes, lettuce, fruits, vegetables, cook, boil, bake, fry, steam, cut, slice, eat, enjoy, tasty, healthy, fresh, first, next) in spoken exchanges.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul style="list-style-type: disc; margin-left: 20px; padding-left: 0;">
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice (Oral Sentence Completion):</b> The teacher displays incomplete sentences on the board or screen with picture prompts, and students orally complete them.
+                        <ul style="list-style-type: circle; margin-left: 20px; padding-left: 0;">
+                            <li style="margin-bottom: 4px; text-align: justify;">(Picture of a banana) "For a _____, I can eat a banana. It's _____." (Expected: snack, healthy/sweet)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">(Picture of a pot of rice) "We need _____ rice for dinner." (Expected: some)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">(Picture of vegetables) "These _____ are fresh and _____." (Expected: vegetables, tasty)</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice (Chain Drill/Substitution):</b> Students sit in a circle. The teacher starts with a sentence like, "I like to eat some bread for breakfast." The next student repeats the sentence and substitutes one word, e.g., "I like to eat some mangos for breakfast." They continue around the circle, substituting meal types or food items while maintaining grammatical accuracy with 'some' and 'many'. The teacher guides them to use verbs like "cook," "boil," "fry," and adjectives like "tasty," "salty," "sour," "sweet," "fresh."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction (Question and Answer with Prompts):</b> Students work in pairs. The teacher provides cue cards with different healthy food items (e.g., "tomatoes," "chicken," "fish," "water") and meal times ("lunch," "dinner"). Students take turns asking and answering questions using the target language.
+                        <ul style="list-style-type: circle; margin-left: 20px; padding-left: 0;">
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Student A:</b> "What do you like to eat for lunch?"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Student B:</b> "I like to eat some rice and some beans. I can also eat some fresh salad."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Student A:</b> "What healthy vegetables can we use?"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Student B:</b> "We can use many tomatoes and lettuce."</li>
+                        </ul>
+                        The teacher circulates, offering support and correcting pronunciation, especially for /v/ and /f/.</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">15 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students USE the language in a realistic scenario: "Planning Meals for My Family".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Collaborative Meal Planning Role-Play.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Students work in pairs or small groups (3 students). They imagine they are planning a healthy meal for a special family event (e.g., their grandmother's birthday, a family picnic, a special dinner). They must discuss and decide on a menu using the learned vocabulary, grammar, and communicative functions (asking food preferences, sharing meal ideas, discussing quantities). They need to use sequencing adverbs like "first" and "next" to outline the cooking process. The goal is to come to an agreement and be ready to present their meal plan orally.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Example Interaction Prompts:</b>
+                    <ul style="list-style-type: disc; margin-left: 20px; padding-left: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;">"Let's plan a healthy birthday meal for Grandpa. What do you like to eat, Maria?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"I like to eat chicken. We can bake some chicken. What about you, Juan?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"I think we need some rice and some beans. We can cook them."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Yes! And a big fruit salad. We can cut mangos and watermelon. It's very sweet and fresh."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"First, we buy the ingredients. Next, we can start cooking."</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Each group prepares to present their healthy meal plan to another group or the whole class, describing the event and the food they will cook. The focus is on fluent communication and successful task completion.</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment strategy.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist during the planning and presentation (Production) stage. Peer assessment is also used as groups listen to each other's presentations.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Each pair/group orally presents their "Healthy Family Meal Plan" to the class, describing the event and the food choices. They should describe at least one meal (breakfast, lunch, or dinner) and include healthy fruits and vegetables.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                    <ul style="list-style-type: disc; margin-left: 20px; padding-left: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Intelligible pronunciation:</b> Clear pronunciation of words, including /v/ and /f/.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target vocabulary:</b> Includes at least 5-7 words from the lesson's vocabulary list (e.g., rice, beans, fruits, vegetables, cook, healthy, tasty, mangos, tomatoes, lunch, dinner).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target grammar:</b> Uses Present Simple, 'can', and quantifiers 'some' and 'many' correctly (e.g., "I can cook some rice," "We need many fruits.").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity and Fluency:</b> Communicates ideas clearly with minimal hesitation, expressing excitement about the event.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration:</b> Actively exchanges ideas with peers to plan the meal.</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students answer the following questions orally or by showing a thumbs up/down:
+                    <ul style="list-style-type: disc; margin-left: 20px; padding-left: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;">"What healthy food did you talk about today?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Was it easy to plan a meal with your partner?"</li>
+                    </ul>
+                </p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">8 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b>
+                    <ul style="list-style-type: disc; margin-left: 20px; padding-left: 0;">
+                        <li style="margin-bottom: 4px; text-align: justify;">"What did you enjoy most about planning a healthy meal with your friends?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What new English words about food or cooking did you use today?"</li>
+                    </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b> Most students were able to use the target vocabulary and grammar to plan a simple healthy meal. The pair work encouraged good interaction. Some students still need more practice with the pronunciation of /v/ and /f/, and consistent use of "some" with uncountable nouns. The "first, next" sequencing adverbs were introduced but will need more reinforcement. I need to prepare more varied picture prompts for next time to support those who are more visual learners and ensure they all contribute orally. I should also include sentence frames for asking questions about quantities (e.g., "How many ___ do we need?" "How much ___ do we need?") to reinforce countable/uncountable nouns in the next speaking activity.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson:</b> In Lesson 4 (Writing Composition), students will write about their healthy meal plan, using the vocabulary and grammar practiced today. They will describe the event and the foods they plan to prepare, integrating sequencing adverbs.</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">2 min</p></td>
+        </tr>
+    </tbody>
+</table>

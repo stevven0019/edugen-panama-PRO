@@ -16,7 +16,8 @@ import {
   School,
   Award,
   Rocket,
-  Bookmark
+  Bookmark,
+  Compass
 } from 'lucide-react';
 import { academicResources, academicCategories, academicGrades } from '../data/academicResources';
 import AdBanner from '../components/AdBanner';
@@ -121,6 +122,33 @@ export default function AcademicLibrary({ setPublicTab, onLoginClick, isEmbedded
             <span>Abrir Carpeta en Google Drive</span>
             <ExternalLink className="w-4 h-4" />
           </a>
+        </div>
+
+        {/* Interactive Hub Curricular Callout Banner */}
+        <div className="p-5 rounded-3xl bg-gradient-to-r from-teal-600/10 via-emerald-600/10 to-blue-600/10 border border-teal-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 text-white flex items-center justify-center shadow-md shadow-teal-500/20">
+              <Compass className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                <span>Hub Curricular por Grado AOA</span>
+                <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300">Nuevo</span>
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Accede a los 8 escenarios, Theme Planners (1 y 2), Lesson Planners 1–5 y Pósters de aula oficiales.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={() => {
+              if (setPublicTab) setPublicTab('curriculum-hub');
+            }}
+            className="bg-teal-600 hover:bg-teal-700 active:scale-95 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl transition shadow-md shadow-teal-600/20 flex items-center gap-1.5 shrink-0 cursor-pointer"
+          >
+            <span>Explorar Hub Curricular</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </button>
         </div>
 
         {/* Search and Filters Bar */}

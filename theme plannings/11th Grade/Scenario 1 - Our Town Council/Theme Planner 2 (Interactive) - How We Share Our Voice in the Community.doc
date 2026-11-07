@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta charset="UTF-8">
+  <title>Theme Planner - 11th Grade - Scenario 1 - Theme 2</title>
+  <!--[if gte mso 9]>
+  <xml>
+    <w:WordDocument>
+      <w:View>Print</w:View>
+      <w:Zoom>100</w:Zoom>
+      <w:DoNotOptimizeForBrowser/>
+    </w:WordDocument>
+  </xml>
+  <![endif]-->
+  <style>
+    @page Section1 {
+      size: 8.5in 11.0in;
+      margin: 0.4in 0.4in 0.4in 0.4in;
+      mso-header-margin: 0.2in;
+      mso-footer-margin: 0.2in;
+      mso-paper-source: 0;
+    }
+    div.Section1 {
+      page: Section1;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: #1e293b;
+      line-height: 1.35;
+      margin: 0;
+      padding: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 6px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      mso-table-layout-alt: fixed;
+    }
+    th, td {
+      border: 1px solid #333333;
+      padding: 4px 6px;
+      vertical-align: top;
+      font-size: 11px;
+    }
+    .section-title {
+      background: #1a3a5c !important;
+      color: #ffffff !important;
+      font-weight: bold;
+      border: 1px solid #333333;
+      padding: 5px 8px;
+    }
+    p {
+      margin: 2px 0;
+    }
+    ul {
+      margin: 2px 0;
+      padding-left: 18px;
+    }
+    li {
+      margin-bottom: 2px;
+    }
+    b, strong {
+      color: #0f172a;
+    }
+    .section-title strong {
+      color: #ffffff !important;
+    }
+  </style>
+</head>
+<body>
+<div class="Section1">
+  <table style="width:100%; border-collapse:collapse; font-family:Arial; font-size:11px;">
+    <tbody>
+      <tr>
+        <td colspan="4" style="border:1px solid #333; padding:6px 10px; text-align:center;">
+          <p style="font-size:12px; margin:1px 0;"><strong>MINISTRY OF EDUCATION</strong></p>
+          <p style="font-size:11px; margin:1px 0;"><strong>REGIONAL EDUCATION DIRECTORATE OF PANAMÁ</strong></p>
+          <p style="font-size:11px; margin:1px 0;"><strong>OFICIAL MEDUCA SCHOOL</strong></p>
+          <p style="font-size:12px; margin:2px 0; color:#1a3a5c;"><strong>Theme Planner #2 — Action-Oriented Approach (AOA)</strong></p>
+        </td>
+      </tr>
+    </tbody>
+    <tbody>
+      <!-- 1. GENERAL INFORMATION -->
+      <tr>
+        <td colspan="4" class="section-title">1. GENERAL INFORMATION</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333; width:25%;"><strong>Teacher:</strong> Docente de Inglés MEDUCA</td>
+        <td style="border:1px solid #333; width:25%;"><strong>Grade:</strong> 11th Grade</td>
+        <td style="border:1px solid #333; width:25%;"><strong>CEFR Level:</strong> B1.2</td>
+        <td style="border:1px solid #333; width:25%;"><strong>Trimester:</strong> 1st</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333;"><strong>Weekly Hours:</strong> 5</td>
+        <td style="border:1px solid #333;"><strong>Weeks:</strong> 2</td>
+        <td style="border:1px solid #333;"><strong>Scenario:</strong> Our Town Council</td>
+        <td style="border:1px solid #333;"><strong>Theme:</strong> How We Share Our Voice in the Community</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333;"><strong>Focus Type:</strong> Interactive (Speaking/Writing focus)</td>
+        <td colspan="3" style="border:1px solid #333;"><strong>Target Skills:</strong> Listening, Reading, Speaking, Mediation, Writing</td>
+      </tr>
+
+      <!-- 2. STANDARDS & LEARNING OUTCOMES -->
+      <tr>
+        <td colspan="4" class="section-title">2. STANDARDS &amp; LEARNING OUTCOMES</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="border:1px solid #333; background:#e2e8f0; font-weight:bold;">Focus Skills</td>
+        <td colspan="2" style="border:1px solid #333; background:#e2e8f0; font-weight:bold;">Specific Standards</td>
+      </tr>
+      
+    <tr>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px; width:25%; font-weight:bold; background:#f8fafc;">Listening</td>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px;">Can identify tone, intent, and basic implications from oral texts on both academic and familiar topics.</td>
+    </tr>
+  
+    <tr>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px; width:25%; font-weight:bold; background:#f8fafc;">Reading</td>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px;">Can evaluate information and arguments in academic and non-academic texts in a critical and concise manner.</td>
+    </tr>
+  
+    <tr>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px; width:25%; font-weight:bold; background:#f8fafc;">Speaking</td>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px;">Can participate in structured discussions and presentations on academic, general, or personal topics, involving clear expression of ideas and relevant details or taking the lead when necessary.</td>
+    </tr>
+  
+    <tr>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px; width:25%; font-weight:bold; background:#f8fafc;">Writing</td>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px;">Can compose short, clear, organized texts, such as essays, reviews, and articles, developing ideas fully and connecting them clearly across paragraphs.</td>
+    </tr>
+  
+    <tr>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px; width:25%; font-weight:bold; background:#f8fafc;">Mediation</td>
+      <td colspan="2" style="border:1px solid #333; padding:5px 8px;">Can mediate communication using diverse strategies, including resolving misunderstandings, simplifying ideas, and interpreting non-verbal cues.</td>
+    </tr>
+  
+
+      <!-- 3. COMMUNICATIVE COMPETENCES (Exact 4 Columns) -->
+      <tr>
+        <td colspan="4" class="section-title">3. COMMUNICATIVE COMPETENCES</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333; width:25%; background:#e2e8f0; font-weight:bold; vertical-align:top;">GRAMMATICAL COMPETENCES</td>
+        <td style="border:1px solid #333; width:25%; background:#e2e8f0; font-weight:bold; vertical-align:top;">LEXICAL/SEMANTIC COMPETENCES</td>
+        <td style="border:1px solid #333; width:25%; background:#e2e8f0; font-weight:bold; vertical-align:top;">PRAGMATIC/DISCURSIVE COMPETENCES</td>
+        <td style="border:1px solid #333; width:25%; background:#e2e8f0; font-weight:bold; vertical-align:top;">21ST CENTURY PROJECT</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333; width:25%; vertical-align:top;">
+          
+    <ul>
+      <li>Passive voice (e.g., &quot;Decisions are made based on community feedback.&quot;)</li><li>Reported speech (e.g., &quot;The mayor said that new policies would be implemented soon.&quot;)</li><li>Modals &quot;can,&quot; &quot;should,&quot; &quot;must,&quot; &quot;may,&quot; &quot;might&quot; (e.g., &quot;Citizens must vote to have a say in community decisions.&quot;)</li>
+    </ul>
+  
+        </td>
+        <td style="border:1px solid #333; width:25%; vertical-align:top;">
+          <p style="margin:2px 0;"><strong>nouns:</strong> town council, community, voice, feedback, decisions, council, public services, municipal government, surveys, elections, authorities, responsibilities, projects, sustainability, involvement, citizens, participation, voting, committee, civil duties, rights</p><p style="margin:2px 0;"><strong>verbs:</strong> operate, provide, participate, vote, report, attend, prioritize, contribute, collect, involve, share, decide, express, inform, recommend, serve, lead, engage, elect</p><p style="margin:2px 0;"><strong>adjectives:</strong> civic, responsible, sustainable, essential, community-based, informed, local, participatory, public, involved</p><p style="margin:4px 0 2px 0;"><strong>Pronunciation and Phonemic Awareness:</strong></p><ul><li><b>sounds:</b> Practice the pronunciation of the short vowel sound /ɪ/ in words spelled with &quot;i&quot; (e.g., public, civic) and &quot;y&quot; (e.g., pretty, community, sustainability) Practice the pronunciation of words with the /e/ sound followed by &quot;r&quot; (e.g., share, serve) Continue practicing word stress in multisyllabic words and compound terms, such as &quot;decision,&quot; &quot;participation,&quot; &quot;responsibility,&quot; &quot;authority,&quot; &quot;feedback,&quot; and &quot;public service&quot;</li></ul>
+        </td>
+        <td style="border:1px solid #333; width:25%; vertical-align:top;">
+          <p style="margin:2px 0;"><strong>Pragmatic Competences (Communicative Functions):</strong></p><ul><li>Asking for opinions on civic responsibilities (e.g., &quot;What do you think are important duties for citizens?&quot;)</li><li>Sharing viewpoints on community involvement (e.g., &quot;Citizens should vote to make their voices heard.&quot;)</li></ul><p style="margin:4px 0 2px 0;"><strong>Sociolinguistic Competences:</strong></p><ul><li>Using formal language in civic discussions (e.g., &quot;Thank you for sharing your thoughts on our community.&quot;). Showing respect in public dialogue (e.g., &quot;Could you tell us more about your ideas?&quot;).</li></ul>
+        </td>
+        <td style="border:1px solid #333; width:25%; vertical-align:top;">
+          
+    <p style="margin:2px 0;"><strong>Town Council Podcast</strong></p>
+    <p style="margin:2px 0; font-size:10.5px; color:#334155;">Students create a podcast explaining the town council&#39;s functions, using modals to express civic responsibilities (e.g., &quot;Council members should listen to citizen feedback.&quot;).</p>
+  
+        </td>
+      </tr>
+
+      <!-- 4. SPECIFIC OBJECTIVES (SMART) -->
+      <tr>
+        <td colspan="4" class="section-title">4. SPECIFIC OBJECTIVES (SMART)</td>
+      </tr>
+      <tr>
+        <td colspan="4" style="border:1px solid #333; padding:6px 8px;">
+          
+    <ul>
+      <li><strong>Listening:</strong> By the end of the lessons, students will be able to comprehend communicative exchanges, questions, and instructions in authentic dialogues related to "How We Share Our Voice in the Community" with 85% accuracy.</li>
+      <li><strong>Reading:</strong> By the end of the lessons, students will be able to interpret functional dialogues, roleplay scripts, and comic strips set in "Our Town Council" identifying questions, answers, and polite formulas.</li>
+      <li><strong>Speaking:</strong> By the end of the lessons, students will be able to participate in interactive pair roleplays, asking and answering questions to negotiate meaning and complete communicative tasks in "How We Share Our Voice in the Community".</li>
+      <li><strong>Writing:</strong> By the end of the lessons, students will be able to collaboratively write a 4-to-6-line functional dialogue, survey card, or short invitation message reflecting the interactive theme.</li>
+      <li><strong>Mediation:</strong> By the end of the lessons, students will be able to act as facilitators, summarizing peer statements, resolving differences in pair work, and co-presenting the culminating 21st-century project.</li>
+    </ul>
+  
+        </td>
+      </tr>
+
+      <!-- 5. MATERIALS & DIFFERENTIATION -->
+      <tr>
+        <td colspan="4" class="section-title">5. MATERIALS &amp; DIFFERENTIATION</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="border:1px solid #333; width:50%; vertical-align:top;">
+          
+    <strong>Materials:</strong>
+    <ul>
+      <li>Official MEDUCA Classroom Anchor Poster for Scenario 1 ("Our Town Council")</li>
+      <li>Flashcards and picture cards with target vocabulary</li>
+      <li>Audio recordings of contextual dialogues and songs</li>
+      <li>Interactive AOA student worksheets and graphic organizers</li>
+      <li>Real-world realia and classroom objects related to the theme</li>
+      <li>Sentence strips, word banks, and speaking prompt cards</li>
+      <li>Whiteboard, markers, colored pencils, and construction paper</li>
+      <li>Canva / AOA digital resources and presentation projector</li>
+    </ul>
+  
+        </td>
+        <td colspan="2" style="border:1px solid #333; width:50%; vertical-align:top;">
+          
+    <strong>Differentiation for Learning Needs (DLN):</strong>
+    <ul>
+      <li><strong>Visual Learners:</strong> Heavy reliance on the Scenario Anchor Poster, flashcards, color-coded sentence frames, and realia.</li>
+      <li><strong>Auditory Learners:</strong> Authentic audio models, choral pronunciation drills, rhythmic chants, and pair repetitions.</li>
+      <li><strong>Kinesthetic Learners:</strong> Total Physical Response (TPR), gesture matching, interactive roleplay movements, and hands-on poster crafting.</li>
+      <li><strong>Scaffolding for Emergent Learners:</strong> Guided sentence frames, word banks with icon cues, bilingual support when necessary, and peer buddy system.</li>
+      <li><strong>Extension for Advanced Learners:</strong> Open-ended conversational prompts, creating extended dialogues, and leading peer group discussions.</li>
+      <li><strong>Collaborative Grouping:</strong> Mixed-ability pairs and small teams ensuring active communicative participation.</li>
+    </ul>
+  
+        </td>
+      </tr>
+
+      <!-- 6. LEARNING SEQUENCE (AOA 5 Phases) -->
+      <tr>
+        <td colspan="4" class="section-title">6. LEARNING SEQUENCE</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #333; width:20%; background:#e2e8f0; font-weight:bold; vertical-align:top;">Lesson Focus</td>
+        <td style="border:1px solid #333; width:20%; background:#e2e8f0; font-weight:bold; vertical-align:top;">Specific Objective(s)</td>
+        <td style="border:1px solid #333; width:42%; background:#e2e8f0; font-weight:bold; vertical-align:top;">Activities (AOA - Engage, Explore, Explain, Extend, Evaluate)</td>
+        <td style="border:1px solid #333; width:18%; background:#e2e8f0; font-weight:bold; vertical-align:top;">Resources &amp; Assessment</td>
+      </tr>
+      
+    <tr>
+      <td style="border:1px solid #333; padding:5px 8px; width:20%; vertical-align:top;"><strong>Lesson 1: Listening (Conversational Immersion)</strong></td>
+      <td style="border:1px solid #333; padding:5px 8px; width:20%; vertical-align:top;">Students comprehend conversational dialogues and identify turn-taking cues and questions in "How We Share Our Voice in the Community".</td>
+      <td style="border:1px solid #333; padding:5px 8px; width:42%; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Engage:</strong> Teacher performs an authentic interactive greeting exchange with a puppet or student volunteer set in "Our Town Council".</p>
+        <p style="margin:2px 0;"><strong>Explore:</strong> Listen to a recorded dialogue. Students raise hands when they hear question words (What, How much, Do you, Where).</p>
+        <p style="margin:2px 0;"><strong>Explain:</strong> Deconstruct conversational markers and polite expressions (Using formal language in civic discussions (e.g., &quot;Thank you for sharing your thoughts on our community.&quot;). Showing respect in public dialogue (e.g., &quot;Could you tell us more about your ideas?&quot;).). Highlight rising intonation in questions.</p>
+        <p style="margin:2px 0;"><strong>Extend:</strong> Echo-drill: in split chorus, Group A speaks the question lines, Group B responds with the answer lines.</p>
+        <p style="margin:2px 0;"><strong>Evaluate:</strong> Quick auditory check: identify which character asked for help or initiated the exchange.</p>
+      </td>
+      <td style="border:1px solid #333; padding:5px 8px; width:18%; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Resources:</strong> Audio dialogue, dialogue transcripts, puppet/props.</p>
+        <p style="margin:2px 0;"><strong>Assessment:</strong> Interactive listening comprehension check.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;"><strong>Lesson 2: Reading (Dialogue & Discourse Analysis)</strong></td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">Students read and analyze functional comic strips and roleplay dialogues, recognizing communicative functions.</td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Engage:</strong> Display comic strip panels with empty speech bubbles. Students predict what the characters are talking about.</p>
+        <p style="margin:2px 0;"><strong>Explore:</strong> Guided reading of a 6-line roleplay script set in "Our Town Council". Students identify question-and-answer pairs.</p>
+        <p style="margin:2px 0;"><strong>Explain:</strong> Focus on grammar in interaction (Passive voice (e.g., &quot;Decisions are made based on community feedback.&quot;)). Highlight polite functional phrases.</p>
+        <p style="margin:2px 0;"><strong>Extend:</strong> Dialogue matching puzzle: in pairs, students re-order mixed-up dialogue strips into a logical conversation sequence.</p>
+        <p style="margin:2px 0;"><strong>Evaluate:</strong> Reading comprehension check: match question bubbles to the corresponding appropriate response.</p>
+      </td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Resources:</strong> Comic strips, cut-out dialogue strips, matching worksheet.</p>
+        <p style="margin:2px 0;"><strong>Assessment:</strong> Discourse structure & dialogue sequence accuracy check.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;"><strong>Lesson 3: Speaking (Interactive Roleplay)</strong></td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">Students participate in pair roleplays and information-gap tasks, negotiating meaning and exchanging information.</td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Engage:</strong> Roleplay speed-dating warmup: quick 30-second question-and-answer exchanges rotating with different partners.</p>
+        <p style="margin:2px 0;"><strong>Explore:</strong> Information-gap activity: Student A has partial information (e.g., items, times, preferences) and must ask Student B to complete their chart.</p>
+        <p style="margin:2px 0;"><strong>Explain:</strong> Teacher reviews clarification strategies: "Can you repeat, please?", "Excuse me", "How do you say...?".</p>
+        <p style="margin:2px 0;"><strong>Extend:</strong> Pairs perform their 4-line simulated roleplay using scenario props and authentic realia.</p>
+        <p style="margin:2px 0;"><strong>Evaluate:</strong> Interactive speaking rubric: evaluate turn-taking, responsiveness, polite forms, and accurate vocabulary usage.</p>
+      </td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Resources:</strong> Info-gap task cards, scenario roleplay props, cue cards.</p>
+        <p style="margin:2px 0;"><strong>Assessment:</strong> Interactive oral communication rubric (turn-taking & fluency).</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;"><strong>Lesson 4: Writing (Collaborative Scripting)</strong></td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">Students collaboratively draft an original 4-to-6-line roleplay script or questionnaire based on "How We Share Our Voice in the Community".</td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Engage:</strong> Teacher writes a collaborative script opening on the board with student suggestions for character names and scenario settings.</p>
+        <p style="margin:2px 0;"><strong>Explore:</strong> In pairs, students plan their interactive dialogue using a scripted template: Person A (Question), Person B (Answer + Follow-up).</p>
+        <p style="margin:2px 0;"><strong>Explain:</strong> Highlight dialogue punctuation (quotation marks, question marks, commas) and cohesive connectors.</p>
+        <p style="margin:2px 0;"><strong>Extend:</strong> Peer editing exchange: pairs swap drafts and check if all questions have clear answers using an editing checklist.</p>
+        <p style="margin:2px 0;"><strong>Evaluate:</strong> Written dialogue assessment rubric: evaluates communicative clarity, grammatical accuracy, and cooperative drafting.</p>
+      </td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Resources:</strong> Script templates, peer editing checklists, markers.</p>
+        <p style="margin:2px 0;"><strong>Assessment:</strong> Collaborative dialogue writing rubric.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;"><strong>Lesson 5: Mediation &amp; Culminating AOA Showcase</strong></td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">Students present their culminating interactive project: "Town Council Podcast", mediating meaning and answering audience questions.</td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Engage:</strong> Warm-up encouragement and role assignment: presenters, moderators, and active audience responders.</p>
+        <p style="margin:2px 0;"><strong>Explore:</strong> Pairs/teams present their live interactive showcase, acting out their written dialogues and demonstrating their project visual.</p>
+        <p style="margin:2px 0;"><strong>Explain:</strong> Students demonstrate mediation skills by rephrasing peer contributions and explaining their project decisions to the audience.</p>
+        <p style="margin:2px 0;"><strong>Extend:</strong> Audience interaction: classmates ask questions ("Why did you choose...?", "How does this work?") and presenters respond.</p>
+        <p style="margin:2px 0;"><strong>Evaluate:</strong> Comprehensive project assessment: oral interaction rubric, mediation checklist, self and peer evaluation reflections.</p>
+      </td>
+      <td style="border:1px solid #333; padding:5px 8px; vertical-align:top;">
+        <p style="margin:2px 0;"><strong>Resources:</strong> Project visuals, showcase stage/area, comprehensive rubrics.</p>
+        <p style="margin:2px 0;"><strong>Assessment:</strong> Culminating AOA Interactive Project & Mediation scoring rubric.</p>
+      </td>
+    </tr>
+  
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

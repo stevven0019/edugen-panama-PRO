@@ -1,0 +1,222 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: #ffffff;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+        font-size: 0.95em;
+    }
+    table th, table td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    h2 {
+        color: #1a5276;
+        font-family: Arial, sans-serif;
+        font-size: 1.5em;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # Volunteering in Our Community – Lesson # 4</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td><b>Lesson #:</b> 4</td>
+        <td><b>Skills Focus:</b> Writing</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 12th Grade (CEFR: B1.3)</td>
+        <td><b>Scenario:</b> Supporting Our Community</td>
+        <td><b>Theme:</b> Volunteering in Our Community</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Writing: Productive: Create instructions for everyday activities. Interactive: Write a group text on various topics, collaboratively, to be shared in a digital format.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Writing: Can create a pamphlet with clear instructions explaining how the government or local authorities support a community event (e.g., "The event begins at 8:30 a.m. You should arrive at the community center by 8:00 a.m. for the Panama Verde clean-up, which is supported by the local environmental agency. Then, check in at the registration booth.") Can collaboratively write a group text on community issues to share online (e.g., "The community clean-up event will be on Saturday at 10 a.m. Volunteers have been working hard to prepare for the event. Join us at the park!") Can review and revise group writing for clarity before digital publication (e.g., "I think the post should be checked for correct spelling and the message should be reviewed for clarity before it is shared online.")</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2>The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="color: #1a5276;">Stage & Description</th>
+            <th style="color: #1a5276;">Activities & Teacher Actions</th>
+            <th style="color: #1a5276;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher displays a picture of a local community clean-up or a volunteer brigade in action. Students are asked to brainstorm and quickly write down 3-5 words or short phrases related to "volunteering" and "community support" that they remember from previous lessons. They then share their words briefly in pairs. The teacher writes key vocabulary (e.g., <i>volunteers, projects, clean up, public services, support</i>) on the board.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher writes two example sentences on the board, demonstrating the target grammar for writing instructions and descriptions: "<i>The park clean-up is supported by the local government.</i>" (Passive Voice) and "<i>Volunteers should arrive by 8:00 a.m. for registration.</i>" (Modals for necessity). The teacher explicitly points out the grammatical structures and models their stress pattern: "Com-MU-ni-ty PRO-grams are FUN-ded by the GOV-ern-ment." Stressing content words like nouns (<i>park, government</i>) and main verbs (<i>supported, arrive</i>).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What is the main action in 'The park clean-up is supported by the local government'? Who performs the action?" (Expected answer: support, the local government)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"When I say 'Volunteers should arrive by 8:00 a.m.', am I giving an option or a necessary instruction?" (Expected answer: A necessary instruction/advice)</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to Scenario: "Supporting Our Community".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> The teacher presents a short excerpt from a digital pamphlet or a social media post announcing a "Panama Verde Clean-up Initiative," emphasizing clear instructions and information about governmental support. The text includes examples of passive voice ("The event is funded by the local municipality."), modals for necessity ("Participants should bring water bottles."), and present perfect continuous ("Our volunteers have been working hard to prepare the collection areas.").</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><i>Example text:</i></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Panama Verde Clean-up Initiative!</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Join our volunteer brigade this Saturday, May 18th, at Parque Natural Metropolitano.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">The event begins at 8:30 a.m. Participants should arrive at the main entrance by 8:00 a.m. for registration. Refreshments will be provided by local businesses. Safety vests are allocated by the environmental agency. Volunteers have been working to improve the park trails for weeks. Your involvement is crucial!</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Explore how different communities express and value support needs through language and communication, specifically through written instructions and informative texts.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students read the text and identify two sentences where the local government or authority is providing support, and how they are providing it (e.g., "Refreshments will be provided by local businesses," "Safety vests are allocated by the environmental agency").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students write down all the instructions or recommendations mentioned in the text (e.g., "Participants should arrive by 8:00 a.m.").</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">8-10 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy focus on Writing.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Students will practice writing sentences using passive voice to explain support structures, modals for necessity in instructions, and present perfect continuous for detailed descriptions, utilizing target vocabulary (<i>government, programs, resources, services, volunteers, support, fund, allocate, improve, promote, contribute, engage, provide, develop, essential, crucial, supportive</i>).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ol>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Controlled Practice - Sentence Transformation:</b> The teacher provides sentences in active voice or simple statements about community support and asks students to rewrite them using the passive voice or modals for necessity.
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;"><i>Example:</i> "The government funds many community programs." -> "Many community programs <i>are funded by the government.</i>"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><i>Example:</i> "It's important for individuals to contribute." -> "Individuals <i>should contribute to</i> community projects."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><i>Example:</i> "Our team has prepared the supplies for weeks." -> "Our team <i>has been preparing</i> the supplies for weeks."</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Semi-controlled Practice - Guided Instruction Writing:</b> In small groups (3-4 students), students are given a scenario for a new community event (e.g., "A 'Book Donation Drive' for an underserved local shelter" or "A 'Youth Development Workshop' at the community center"). They must collectively write 3-4 clear instructions for participants, ensuring they use at least one passive voice construction and one modal verb. They also include one sentence using the present perfect continuous to describe preparatory work.
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;"><i>Example Prompt:</i> Write instructions for a "Local Park Beautification Day."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><i>Student Output Example:</i> "Gloves and tools <i>will be provided by</i> the city council." "Volunteers <i>should wear</i> comfortable shoes." "The organizing committee <i>has been planning</i> this initiative for months."</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Peer Check and Feedback:</b> Groups exchange their written instructions. Each group reads the other's work and provides constructive feedback, specifically checking for: a) clarity of instructions, b) correct use of passive voice, modals, and present perfect continuous, and c) appropriate use of vocabulary. Students are encouraged to engage in discussions about civic responsibilities while reviewing: "How has the local government been encouraging more people to volunteer in our community?"</li>
+                </ol>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">15-18 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students USE the language in a realistic scenario: "Supporting Our Community".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Collaborative Group Text for Digital Sharing.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b> In their small groups, students will collaboratively write a short group text (e.g., a social media post or a section of an online community newsletter) to promote a *hypothetical* upcoming community project or event. The text must include:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Clear instructions for participants (using modals for necessity).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Information about how the event/project is supported (using passive voice).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">A description of ongoing efforts or preparations (using present perfect continuous).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">At least 5 vocabulary words from the list (e.g., <i>initiative, resources, impact, involve, promote, dedicate, responsible</i>).</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">The task encourages students to lead collaborative discussions about volunteer projects, offering diverse solutions for community involvement as they draft their messages. They should consider the question: "Why has community involvement been important for everyone?" The final draft will be prepared for sharing in a digital format (e.g., posted on a class forum or shared as a digital document).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><i>Example Output Focus:</i> A post encouraging involvement in a local food bank drive, explaining how food resources are collected, how the initiative is supported by local businesses, and how volunteers have been organizing for weeks.</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment strategy.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Peer Assessment with a Revision Checklist and Teacher Observation.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Each group submits their collaborative digital text. Before submission, groups exchange their finalized texts with another group for a final review and revision. They will use a checklist provided by the teacher to evaluate for clarity, grammar, vocabulary, and adherence to instructions.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria (Peer/Teacher Checklist):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Clarity and conciseness of instructions.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Correct and appropriate use of passive voice for support structures.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Correct and appropriate use of modals for necessity in instructions.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Correct and appropriate use of present perfect continuous for descriptions.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Effective integration of at least 5 target vocabulary words.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Overall coherence and cohesion of the text.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Evidence of collaborative writing and revision.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete the following prompts individually:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"One thing I learned about writing clear instructions today is..."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"When writing collaboratively, I found it most helpful to..."</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">7-8 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What challenges did our group face when trying to explain how the community project is supported, and how did we overcome them?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">How important is it for community communications to be clear and error-free before being shared online?</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher Reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What worked well in this lesson to enhance students' writing skills, particularly with grammar integration and collaborative work? (e.g., The structured practice activities led to good application in the production task.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What adjustments or scaffolds might be needed for students struggling with using the passive voice or present perfect continuous in their writing? (e.g., Provide more sentence starters or a quick grammar review sheet.)</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson:</b> In the next lesson (Mediation & Integration), students will summarize information about community support and volunteer initiatives from various sources and integrate their written instructions and posts into a larger, more comprehensive digital project (e.g., a community awareness campaign website), requiring them to adapt and consolidate the writing skills practiced today.</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5 min</p></td>
+        </tr>
+    </tbody>
+</table>

@@ -13,7 +13,8 @@ import {
   X,
   ChevronLeft,
   Maximize2,
-  FileCheck
+  FileCheck,
+  Compass
 } from 'lucide-react';
 import { databaseService } from '../services/firebase';
 
@@ -114,6 +115,14 @@ export default function Dashboard({ user, credits, setActiveTab, isPremium = fal
   }, [user]);
 
   const quickActions = [
+    { 
+      id: 'curriculum-hub', 
+      title: 'Hub Curricular por Grado', 
+      desc: 'Accede a los 8 escenarios, Theme Planners, Lecciones 1-5 y Pósters de aula.', 
+      color: 'from-teal-600 to-teal-700 shadow-teal-500/10',
+      textColor: 'text-teal-500',
+      icon: <Compass className="w-6 h-6" /> 
+    },
     { 
       id: 'aoa', 
       title: 'Planificador AOA', 

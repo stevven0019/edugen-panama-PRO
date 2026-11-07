@@ -1,0 +1,176 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin-top: 5px;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .stage-title {
+        background-color: #1a5276;
+        color: white;
+        padding: 8px;
+        font-weight: bold;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # Here Is a Map of the Town. – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 1</td>
+        <td style="width: 75%;"><b>Skills Focus:</b> Listening</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 7th Grade (CEFR: A2.2)</td>
+        <td><b>Scenario:</b> The Town Square</td>
+        <td><b>Theme:</b> Here Is a Map of the Town.</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p><b>Specific Objective:</b> Listening: Receptive: Identify specific information in descriptions and narratives. Interactive: Respond flexibly to changes in group discussions.</p>
+            <p><b>Learning Outcome:</b> Listening: Can distinguish between key facts and minor details in spoken narratives about the town (e.g., "The town square has a fountain.").<br>Can follow spoken directions to locate places on a map (e.g., "Where is the library?").<br>Can adapt to changes in group discussions about map directions by clarifying and confirming details with peers (e.g., "I thought the library was next to the school. Can you show me again on the map?").</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 30%;" class="stage-title">Stage & Description</th>
+            <th style="width: 50%;" class="stage-title">Activities & Teacher Actions</th>
+            <th style="width: 20%;" class="stage-title">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="stage-title">STAGE 1 — Warm-up / Pre-task<br>(Engagement, Modeling and Clarification)</td>
+            <td>
+                <p><b>Warm-up:</b> The teacher displays a simple, colorful map of a fictional "Happy Town" on the board or projector. The teacher asks students, "What do you see on this map?" and "Do you like to visit new places?" The teacher then points to a 'town square' on the map and asks, "What is this place called?" The aim is to introduce the concept of a map and some basic town features. (5 min)</p>
+                <p><b>Modeling:</b> The teacher points to different features on the map (e.g., "town square," "fountain," "street," "park," "library"). The teacher models the pronunciation of new vocabulary, focusing on consonant clusters beginning with /s/ like in "street" and "school," exaggerating the /s/ sound. The teacher also models simple location descriptions using "There is/are" and prepositions: "There is a statue in the town square." "The park is next to the library." "Walk straight on Main Street." (5 min)</p>
+                <p><b>Clarification (CCQs):</b> The teacher checks understanding using concept checking questions and examples. (3 min)</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Pointing to the park): "Is this a street or a park?" (Expected answer: "A park.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Pointing to a building next to the park): "Is the library in front of the park or next to the park?" (Expected answer: "Next to the park.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Pointing to a street sign): "How do you say this word: /s/treet or /es/treet?" (Emphasizing correct /s/ pronunciation.)</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="stage-title">STAGE 2 — Presentation<br>(Input of new language/content)</td>
+            <td>
+                <p><b>Input of new language/content connected to Scenario: "The Town Square".</b> The teacher distributes a simplified map of a town (handout or projected). Students will listen to an audio recording describing various locations and simple directions within "Brightville," focusing on the town square and its surroundings. The audio will incorporate the target grammar (There is/are, Imperatives, WH-questions) and vocabulary (town square, fountain, street, library, park, market, school, crosswalk, traffic light, historic, busy, next to, in front of, on the corner of). The audio will also highlight syllable stress in words like "monument" and "tradition" for phonemic awareness. (7 min)</p>
+                <p><b>Material:</b> Audio recording (approx. 1.5-2 minutes) of a descriptive narrative and simple directions to key places in a fictional town. The audio will be accompanied by a simple, labeled map (visual input) for students to follow along. The register is informal, descriptive, and instructional.</p>
+                <p><b>Communicative Competence:</b> Listening: Receptive: Identifying specific information in descriptions and narratives (e.g., "The town square has a fountain."). Interactive: Responding to requests for clarification (e.g., "Where is the library?").</p>
+                <p><b>Comprehension tasks:</b> (8 min)</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Questions (First listen):</b> Students listen to the audio and answer general questions orally. "What kind of place are we hearing about?" "What is special about the town square?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False (Second listen):</b> Students listen again and mark True or False for statements about the map. E.g., "The library is across from the school." "There is a busy market near the fountain."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information Matching (Third listen):</b> Students listen for specific details and match them to locations on the map. E.g., Match "historic building" to 'Town Hall', "spacious" to 'Park', "tall" to 'Monument'.</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="stage-title">STAGE 3 — Preparation / Practice<br>(Accuracy focus on Listening)</td>
+            <td>
+                <p><b>Accuracy focus on Listening.</b></p>
+                <p><b>Communicative Skill & Content:</b> Students will practice identifying locations using "There is/are," prepositions of place (near, between, across from, beside, next to, behind, in front of, on the corner of), and following directions with imperatives (walk, turn, cross, follow) and sequencing words (first, second, then, next). They will also focus on distinguishing consonant clusters with /s/ and syllable stress in target vocabulary (e.g., "monument," "tradition") within spoken contexts. (12 min)</p>
+                <p><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice – Dictation & Labeling:</b> The teacher dictates short sentences or phrases describing locations on a new, unlabeled map (or a blank version of the previous map). Students listen carefully and label the correct places on their map or draw simple symbols. For example, the teacher dictates: "There is a historic town hall. It is next to the library." or "First, walk straight. Then turn left at the traffic light. You will see a busy market on your right." Students write down the words or draw the routes.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-Controlled Practice – Point & Confirm:</b> Students work in pairs. Each pair has a copy of the town map. The teacher plays short audio clips (or reads descriptions) of specific locations or simple routes. After each clip, students must point to the correct location on their map. Then, one student in the pair asks, "Where is the [place]?" and the other confirms, "It is [preposition] the [other place]." This encourages listening for detail and using WH-questions and prepositions.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction / Peer Check – Listen & Draw:</b> In pairs, students receive a blank grid representing a simple town layout. Partner A listens as Partner B describes a few items to place on the grid, using "There is/are" and prepositions. For example, "There is a fountain in the middle. The library is next to the fountain." Partner A draws the items. Then, they switch roles. This is still primarily a listening exercise for the drawer, with speaking limited to simple instructions for the describer, and peer checking involves listening to the description again to confirm.</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="stage-title">STAGE 4 — Performance / Production<br>(Fluency focus on Listening)</td>
+            <td>
+                <p><b>Communicative task where students USE the language in a realistic scenario: "The Town Square".</b> Students will work in small groups (3-4 students). Each group receives a slightly different map of a town (e.g., same buildings, but arranged differently, or with minor details changed). The teacher provides a series of audio instructions for a "Town Square Scavenger Hunt." Each instruction is multi-step and requires group members to collaboratively listen, discuss, and mark specific items or routes on their unique maps. The task demands flexible responses to changes in group discussions. (10 min)</p>
+                <p><b>Task Format:</b> Collaborative Listening Scavenger Hunt. Students listen to spoken directions and narratives to locate places, identify specific details, and resolve ambiguities within their group. The output is a marked map and answers to specific questions based on the listening.</p>
+                <p><b>Connect directly to Theme: "Here Is a Map of the Town." and Scenario: "The Town Square".</b> The audio instructions will guide students to specific locations (e.g., "historic monument," "busy market," "spacious park") around the town square, describe features (e.g., "The fountain is traditional and tall"), and ask them to mark certain points or answer questions based on the details they hear. For example: "Listen carefully: First, find the starting point marked 'YOU ARE HERE.' Second, walk straight ahead to the crosswalk. Turn right at the traffic light. The building on your left is the library. Is it modern or historic? Mark your answer." Group members must listen, clarify with each other ("I thought the library was next to the school. Can you show me again on the map?"), and collaboratively complete the scavenger hunt by marking their map or answering questions based on the details in the audio. They practice asking "Where is...?" and describing locations within the group. (Sociolinguistic competence).</p>
+                <p><b>Focus on fluency, collaborative interaction, and communicative task completion.</b> The primary focus here is on the accuracy of their listening comprehension and their ability to work together to interpret complex instructions and detailed descriptions. The teacher circulates, listening to their discussions and offering minimal support if groups get stuck.</p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="stage-title">STAGE 5 — Assessment / Post-task<br>(Formative Assessment)</td>
+            <td>
+                <p><b>Formative assessment strategy:</b> Teacher Observation Checklist and Group Product Evaluation.</p>
+                <p><b>Assessment Task:</b> Students submit their collaboratively marked maps and written answers from the "Town Square Scavenger Hunt." The teacher observes groups during Stage 4 for their listening comprehension and collaborative problem-solving skills.</p>
+                <p><b>Evaluation Criteria:</b> (5 min)</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Accuracy of Locations:</b> Correctly locating places on the map based on spoken directions.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Detail Identification:</b> Identifying specific details about places (e.g., "historic," "busy," "spacious").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of Target Vocabulary/Grammar (receptively):</b> Demonstrating understanding of prepositions, imperatives, and "There is/are" through correct marking.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration and Clarification:</b> Evidencing flexible responses and effective communication within the group to clarify directions and details (observed by the teacher).</li>
+                </ul>
+                <p><b>Student Self-Assessment / Exit Ticket:</b> Students complete an individual exit ticket before leaving. (2 min)</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Name two places you heard about today in Brightville."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was one new word you learned related to maps or towns?"</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="stage-title">STAGE 6 — Reflection</td>
+            <td>
+                <p><b>Student self-reflection prompt:</b> (2 min)</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was the most challenging part of listening to the directions today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What strategy did your group use to make sure everyone understood the instructions?"</li>
+                </ul>
+                <p><b>Teacher reflection:</b> (3 min)</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What worked well in this lesson, especially regarding listening comprehension and the integration of new vocabulary? Did students actively listen and clarify with peers effectively?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What adjustments and scaffolds are needed for the next lesson? Perhaps more visual aids for specific prepositions or additional practice with distinguishing similar-sounding words in directions. Was the pace of the audio appropriate?</li>
+                </ul>
+                <p><b>Connection to next lesson in the theme sequence:</b> "Today we listened to descriptions and directions about Brightville. Next time, we will *read* a short text about Brightville's history and traditions, using many of the same vocabulary words we heard today. You will compare what you heard with what you read."</p>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

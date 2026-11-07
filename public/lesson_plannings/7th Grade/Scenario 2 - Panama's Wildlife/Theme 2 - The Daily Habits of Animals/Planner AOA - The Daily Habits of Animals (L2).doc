@@ -1,0 +1,202 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .aoa-stage-title {
+        background-color: #1a5276;
+        color: white;
+        padding: 8px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="banner">
+    <h1>Lesson Planner – Theme # The Daily Habits of Animals – Lesson # 2</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<h2 style="color: #1a5276;">LESSON IDENTIFICATION TABLE</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td><b>Lesson #:</b> 2</td>
+        <td><b>Skills Focus:</b> Reading</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 7th Grade (CEFR: A2.2)</td>
+        <td><b>Scenario:</b> Panama's Wildlife</td>
+        <td><b>Theme:</b> The Daily Habits of Animals</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Reading: Interpret charts, graphs, and diagrams. Reading: Respond to questions based on class readings. Phonemic Awareness: Demonstrate knowledge of phonemic awareness by applying knowledge of basic syllabification rules when decoding two-syllable or three-syllable or compound words.</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Reading: Can interpret a chart showing the habitats of local animals and describe key information (e.g., "This chart shows that jaguars live in Darién National Park and are considered endangered. They need large forested areas to survive."). Can respond to questions based on readings about wildlife (e.g., "What do sloths eat?"). Can recognize common compound words and segment them accurately into syllables (e.g., "wildlife" into "wild-life").</p>
+        </td>
+    </tr>
+</table>
+
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="background-color: #1a5276; color: white;">Stage & Description</th>
+            <th style="background-color: #1a5276; color: white;">Activities & Teacher Actions</th>
+            <th style="background-color: #1a5276; color: white;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 1 — Warm-up / Pre-task</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Engagement, Modeling and Clarification)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher displays a large picture of a sloth and a jaguar (animals known from Lesson 1) on the board. Students are asked "What animals are these? Where do they live?" to activate prior knowledge. The teacher then quickly draws a simple two-column chart on the board with headings "Animal" and "Habitat" and fills in "Sloth - Jungle" and "Jaguar - Forest" as examples, stating "This chart shows where animals live." This activity introduces the concept of interpreting a simple chart.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher points to the chart on the board and models how to read it: "The sloth lives in the jungle." "The jaguar lives in the forest." The teacher then explicitly models the pronunciation of key vocabulary like "habitat," "jungle," "forest," and practices long and short vowel sounds within these words (e.g., long /uː/ in "jungle," short /ɒ/ in "forest"). The teacher also demonstrates how to segment compound words like "wildlife" by saying "wild... life" and showing it on the board.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Does this chart tell us what animals eat? (No, it tells us where they live.)"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Is 'wildlife' one word or two parts? (Two parts: wild-life.)"</li>
+                </ul>
+                </p>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 2 — Presentation</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Input of new language/content connected to Scenario "Panama's Wildlife":</b> The teacher provides students with a handout featuring a simple infographic/chart titled "Panama's Amazing Animals." This chart includes images of a jaguar, sloth, and harpy eagle, alongside short descriptive texts for each animal. The descriptions will cover their habitat, daily habits (using present simple), and a key fact, integrating comparative/superlative adjectives, and target vocabulary (e.g., "The jaguar is a nocturnal predator. It hunts prey in the forest. It is faster than a sloth. There are many jaguars in Darién National Park, but they are endangered. Sloths live in the jungle canopy and move slowly. The harpy eagle is the largest and strongest bird of prey in the Panamanian jungle."). The text will also explicitly use 'there is/there are' to describe animal populations and habitats.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> An infographic/chart about Panamanian animals (jaguar, sloth, harpy eagle) with short descriptive texts, images, and simple icons. The register is informative and accessible for A2.2 learners.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Interpret charts, graphs, and diagrams related to Panama's wildlife. Extract specific information from short informational texts.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist question:</b> "What is the main information this chart gives us about these animals?" (Expected answer: "It tells us where they live and what they do.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> Students read statements and mark them as True or False based on the chart. E.g., "Sloths are nocturnal." (False) "The harpy eagle is the fastest bird." (False - it says strongest/largest).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information matching:</b> Match animal names to a phrase describing their main habitat or a key habit (e.g., "Jaguar" to "hunts at night," "Sloth" to "moves slowly").</li>
+                </ul>
+                </p>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 3 — Preparation / Practice</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Accuracy focus on Reading)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Reading comprehension of informational texts, interpreting charts, using comparative and superlative adjectives, 'there is/there are', present simple, and key vocabulary (habitat, wildlife, jaguar, forest, predator, prey, species, endangered, nocturnal). Phonemic awareness: syllable division in compound nouns.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                <ol>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Controlled Practice (Reading for details):</b> Students receive a worksheet with sentences that have blanks, requiring them to read the infographic/chart again and fill in the missing information. E.g., "The jaguar is a _______ predator." (nocturnal). "Sloths ______ in the jungle canopy." (live). "There are many ______ animals in Panama." (endangered).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Semi-controlled Practice (Reading for comparison and phonemic awareness):</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Students read pairs of sentences and complete them with the correct comparative or superlative adjective based on the chart. E.g., "The jaguar is _______ (fast) than the sloth." "The harpy eagle is the _______ (strong) bird."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;"><b>Phonemic Awareness:</b> The teacher writes compound words from the text (e.g., "wildlife," "rainforest," "canopy") on the board. Students work individually to divide them into syllables (e.g., wild-life, rain-for-est, ca-no-py). The teacher monitors and corrects, emphasizing the sounds.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pair Interaction (Peer reading check):</b> In pairs, students take turns reading questions related to the chart (e.g., "What does the sloth eat?" "Is the jaguar camouflaged in the forest?") and answer using full sentences, referencing the chart. They peer-check each other's answers and pronunciation, especially for key vocabulary and comparative structures. Sociolinguistic: Facilitate group discussions and follow instructions.</li>
+                </ol>
+                </p>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">15-18 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 4 — Performance / Production</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative task where students USE the language in a realistic scenario: "Panama's Wildlife."</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Collaborative Chart Interpretation and Reporting (Small Group Work).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b> Students work in small groups (3-4 students). Each group receives a new, slightly more complex chart or diagram about another Panamanian animal (e.g., "The Daily Life of the Tapir" or "The Coatimundi's Habitat"). This new chart will include information similar to the previous one (habitat, diet, habits, conservation status, simple comparisons). The task is to collaboratively read and interpret the chart, then answer 3-4 comprehension questions written on a separate sheet (e.g., "Where does the tapir live?" "What does it eat?" "Is it nocturnal or diurnal?" "How is its habitat different from a sloth's?"). Groups must discuss and agree on the answers based *solely* on the provided chart. Finally, one member from each group orally presents one key fact they interpreted from their chart to the class (e.g., "This chart shows that tapirs are mostly nocturnal and are found in tropical forests."). This focuses on reading comprehension and describing key information from the chart.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Focus:</b> Fluency in interpreting information from charts, collaborative interaction in deriving answers, and communicative task completion by accurately extracting and reporting information. Sociolinguistic: Follow instructions in collaborative activities.</p>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">10 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 5 — Assessment / Post-task</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative assessment strategy:</b> Teacher observation checklist during group work and a short individual written comprehension task.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students complete a short individual quiz. The quiz presents a new, concise chart or diagram about a Panamanian animal (e.g., the Blue Morpho butterfly's lifecycle or diet). Students must answer 3-4 multiple-choice or short-answer questions that require them to interpret key information from the chart (e.g., "Where do the caterpillars live?" "What do adult butterflies eat?"). One question will also ask to divide a compound word (e.g., "butter-fly") into syllables.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Accuracy in interpreting information from charts/diagrams (correct answers to questions).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Appropriate use of target vocabulary (habitat, wildlife, species, etc.) in answers.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Clarity of responses.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Correct syllable division for compound words.</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students answer two questions on a small slip of paper before leaving:
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What new fact did you *read* today about Panama's wildlife?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Was it easy or difficult to *understand the charts* today? Why?"</li>
+                </ul>
+                </p>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">7-8 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 6 — Reflection</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt (2 guiding questions for learners):</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What did I learn about *reading charts* to find information about animals today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"How can *reading charts* help me understand more about *wildlife*?"</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b> Most students successfully interpreted the basic charts and extracted key information. The compound word syllabification was a bit challenging for some, requiring more focused practice next time. The use of comparative adjectives in reading comprehension questions worked well to reinforce grammar. I need to ensure the reading materials continue to be visually engaging and introduce new charts with increasing complexity. What adjustments and scaffolds are needed for next lesson? I will integrate more explicit prompts for using comparative and superlative adjectives in spoken responses to prepare for the speaking focus in Lesson 3. I will also incorporate more visual cues to aid comprehension of new charts.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> This lesson focused on reading and interpreting information about animal habits from charts. The next lesson (Lesson 3: Speaking & Interaction) will build on this knowledge by having students *speak* about these animals, their habitats, and daily habits, using the vocabulary and grammar structures practiced today in interactive tasks.</p>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">3-5 min</p></td>
+        </tr>
+    </tbody>
+</table>

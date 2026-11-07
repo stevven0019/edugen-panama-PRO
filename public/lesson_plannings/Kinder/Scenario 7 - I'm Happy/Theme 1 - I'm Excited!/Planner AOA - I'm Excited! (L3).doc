@@ -1,0 +1,213 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    .aoa-title {
+        color: #1a5276;
+        font-size: 1.5em;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        font-family: Arial, sans-serif;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 10px;
+        text-align: left;
+    }
+    .header-cell {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="banner">
+    <h1>Lesson Planner – Theme # I'm Excited! – Lesson # 3</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 50%;"><b>Lesson #:</b> 3</td>
+        <td style="width: 50%;"><b>Skills Focus:</b> Speaking</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> Kinder (CEFR: A1.2)</td>
+        <td><b>Scenario:</b> I'm Happy.</td>
+        <td><b>Theme:</b> I'm Excited!</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <p><b>Specific Objective:</b></p>
+            <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
+                <li style="margin-bottom: 4px; text-align: justify;">Speaking: productive: Use simple words to express basic needs.</li>
+                <li style="margin-bottom: 4px; text-align: justify;">interactive: Express likes or dislikes using simple words and pointing.</li>
+            </ul>
+            <p><b>Learning Outcome:</b></p>
+            <ul style="list-style-type: none; margin-left: 0; padding-left: 0;">
+                <li style="margin-bottom: 4px; text-align: justify;">Speaking: Can express likes or dislikes about feelings and preferences using simple phrases and gestures (e.g., pointing and saying, 'I like being calm.' 'I don't like feeling tired.').</li>
+                <li style="margin-bottom: 4px; text-align: justify;">Can respond to questions about feelings and needs with simple 'I'm...' statements (e.g., 'How are you?' 'I'm excited.' 'I'm tired.').</li>
+                <li style="margin-bottom: 4px; text-align: justify;">Can use 'I'm...' phrases along with gestures to express emotions and basic needs (e.g., saying 'I'm hot.' while fanning themselves or 'I'm sad.' with a frown).</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 class="aoa-title">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="color: #1a5276;">Stage & Description</th>
+            <th style="color: #1a5276;">Activities & Teacher Actions</th>
+            <th style="color: #1a5276;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 1 — Warm-up / Pre-task</h3>
+                <p>Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p><b>Warm-up:</b></p>
+                <p style="text-align: justify;">The teacher starts with a "How Are You?" song using Total Physical Response (TPR). The teacher sings "How are you? How are you? I'm happy! I'm happy!" while performing actions for each feeling (e.g., smiling for happy, frowning for sad, stretching for tired, jumping for excited). Students mimic the actions and repeat the phrases.</p>
+                <p><b>Modeling:</b></p>
+                <p style="text-align: justify;">The teacher models expressing feelings using full sentences and gestures. The teacher points to a large flashcard of a happy face and says clearly, "I'm happy!" (emphasizing the /h/ sound). Then, points to an excited face and says, "I'm excited!" (emphasizing the /e/ sound). The teacher performs the action and choral repetition, "Everybody say, 'I'm happy!'" and "Everybody say, 'I'm excited!'".</p>
+                <p><b>Clarification (CCQs):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher shows a happy face flashcard and asks, "Am I sad?" (Students shake heads 'no'). "Am I happy?" (Students nod 'yes').</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher shows a tired face flashcard and asks, "Show me tired!" (Students mimic tired gestures, like rubbing eyes). "What do you say when you are tired?" (Students respond: "I'm tired!").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher points to the letter 'H' on the 'happy' flashcard: "This is 'H' for happy!" (phonemic awareness).</li>
+                </ul>
+            </td>
+            <td>5-7 min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 2 — Presentation</h3>
+                <p>Input of new language/content connected to Scenario: "I'm Happy."</p>
+            </td>
+            <td>
+                <p><b>Material:</b></p>
+                <p style="text-align: justify;">A large picture book or digital story displaying various characters (e.g., friends) experiencing and expressing different feelings and needs (happy, sad, excited, tired, hungry, thirsty, calm, sleepy). Each page features a clear illustration and a simple sentence like, "Lily is hungry. She says, 'I'm hungry! I need to eat!'" or "Tom wants to play. He's excited!"</p>
+                <p><b>Communicative Competence:</b></p>
+                <p style="text-align: justify;">Students will be able to express emotions and needs by saying, 'I'm happy.' or 'I'm tired.', and respond to questions about feelings by answering 'How are you?' with simple 'I'm...' statements.</p>
+                <p><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist question:</b> Teacher reads a page about a boy feeling thirsty. Teacher asks, "Is the boy happy or thirsty?" (Students point to thirsty or say 'thirsty').</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> Teacher reads, "The girl is excited! She wants to play." Teacher shows a picture of the girl frowning and asks, "True or False: The girl is excited?" (Students say 'False').</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information matching:</b> Teacher shows two flashcards: one of a child smiling and another of a child frowning. Teacher reads a sentence, "I'm sad." Students point to the matching flashcard.</li>
+                </ul>
+            </td>
+            <td>8-10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 3 — Preparation / Practice</h3>
+                <p>Accuracy focus on Speaking.</p>
+            </td>
+            <td>
+                <p><b>Communicative Skill & Content:</b></p>
+                <p style="text-align: justify;">Target grammar structures: Simple sentences ('I'm happy.'), WH-questions ('How are you?'), 'I'm + adjective' ('I'm excited.'). Target vocabulary: happy, sad, tired, hungry, thirsty, excited, feel, need, want, play, rest.</p>
+                <p><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled practice – "Mimic and Say":</b> The teacher holds up large flashcards depicting different feelings/needs (happy, sad, excited, tired, hungry, thirsty). The teacher says the sentence, "I'm [feeling/need]," and performs a corresponding gesture. Students choral repeat the sentence and mimic the gesture. (e.g., Teacher: "I'm hungry!" *rubs stomach*. Students: "I'm hungry!" *rub stomachs*). Focus on /h/ in happy and /e/ in excited.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled practice – "Feelings Dice Roll":</b> Students sit in a circle. The teacher uses a large soft dice with feeling emojis (happy, sad, excited, tired, hungry, thirsty) on each side. A student rolls the dice, and the class, or the student who rolled, states, "I'm [feeling]," matching the emoji. The teacher prompts, "What do you say?" to encourage active speech.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair interaction – "Ask a Friend":</b> Students stand in pairs. The teacher demonstrates the interaction: Teacher A asks, "How are you?" Teacher B responds, "I'm [feeling/need]," with a gesture (e.g., "I'm excited!" *jumps lightly*). Students then practice in pairs. The teacher circulates, providing support and encouraging use of simple pointing for likes/dislikes (e.g., Student A points to a drawing of a toy, "I like play!").</li>
+                </ul>
+            </td>
+            <td>12-15 min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 4 — Performance / Production</h3>
+                <p>Communicative task where students USE the language in a realistic scenario: "I'm Happy."</p>
+            </td>
+            <td>
+                <p><b>Task Format:</b> "My Feelings Charades and Chat" in small groups.</p>
+                <p style="text-align: justify;">Students work in groups of 3-4. Each group receives a set of picture cards with different feelings and needs (happy, sad, excited, tired, hungry, thirsty, calm, sleepy). One student secretly picks a card and acts out the feeling or need silently (charades). The other students in the group ask, "How are you?" or "What do you need?" using simple words and pointing. The acting student then responds with "I'm [feeling/need]!" and possibly adds a simple preference, like "I want to play!" (pointing to a toy in the classroom) or "I need to rest." (gesturing sleep). The goal is for the group to correctly guess the feeling/need and practice asking and responding using the target language. The teacher facilitates, ensures turns are taken, and provides sentence starters if needed.</p>
+            </td>
+            <td>10-12 min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 5 — Assessment / Post-task</h3>
+                <p>Formative assessment strategy</p>
+            </td>
+            <td>
+                <p><b>Formative assessment strategy:</b> Teacher Observation Checklist.</p>
+                <p><b>Assessment Task:</b> During the "My Feelings Charades and Chat" activity, the teacher observes individual students and small groups. The teacher uses a simple checklist to note students' ability to produce 'I'm...' statements, respond to 'How are you?', and use gestures to express needs or preferences.</p>
+                <p><b>Evaluation Criteria:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Intelligible pronunciation:</b> Student says 'happy' with a clear /h/ sound and 'excited' with a clear /e/ sound.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target vocabulary:</b> Student uses words like 'happy,' 'sad,' 'tired,' 'hungry,' 'excited.'</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity and Accuracy:</b> Student uses simple sentences (e.g., 'I'm happy.') and responds to 'How are you?' accurately.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration and Interaction:</b> Student participates in asking and answering in the group activity, using gestures.</li>
+                </ul>
+                <p><b>Student Self-Assessment / Exit Ticket:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher provides a simple drawing of a person and asks: "Draw how you feel right now. Then tell your friend: 'I'm _____!'"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Did I talk about my feelings today?" (Students give a thumbs up or thumbs down).</li>
+                </ul>
+            </td>
+            <td>5-7 min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="color: #1a5276;">STAGE 6 — Reflection</h3>
+            </td>
+            <td>
+                <p><b>Student self-reflection prompt:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What new feeling words did I say today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Was it easy or a little hard to ask 'How are you?' to a friend?"</li>
+                </ul>
+                <p><b>Teacher reflection:</b></p>
+                <p style="text-align: justify;">The "Feelings Charades and Chat" activity worked well for encouraging spontaneous speaking and interaction. Most students were able to use "I'm..." statements with appropriate gestures. Some students struggled with asking "How are you?" consistently and required more prompting. The pronunciation of /h/ in 'happy' and /e/ in 'excited' needs continued reinforcement. For the next lesson (Writing), I need to ensure clear visual and sentence frame support to help transition these spoken phrases into written form, possibly focusing on drawing and labeling feelings or completing simple sentences like "I'm ______."</p>
+                <p><b>Connection to next lesson in the theme sequence:</b></p>
+                <p style="text-align: justify;">This lesson focused on speaking about feelings and needs. The next lesson (Lesson 4: Writing Composition) will build on this by having students write simple sentences about how they feel and what they need, using the vocabulary and grammar structures practiced today. They will create a short "My Feelings Book" with drawings and single-word or simple sentence labels.</p>
+            </td>
+            <td>3-5 min</td>
+        </tr>
+    </tbody>
+</table>

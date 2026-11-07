@@ -1,0 +1,211 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .aoa-stage-title {
+        background-color: #1a5276;
+        color: white;
+        padding: 8px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        border-radius: 4px;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # Our Routines – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 1</td>
+        <td style="width: 75%;"><b>Skills Focus:</b> Listening</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> Kinder (CEFR: A1.2)</td>
+        <td><b>Scenario:</b> Our Routines</td>
+        <td><b>Theme:</b> Pick It Up!</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p><b>Specific Objective:</b> Listening: Respond to simple oral requests.</p>
+            <p><b>Learning Outcome:</b> Listening: Can show comprehension of keywords when hearing familiar basic commands (e.g., acting out the commands 'sit' and 'pick it up' as they are heard).
+            Can respond to daily classroom commands like 'sit down' and 'pick it up.'
+            Can respond to simple oral requests related to classroom routines when spoken slowly (e.g., 'Pick up the paper, please.').</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 40%; background-color: #f0f0f0;">Stage & Description</th>
+            <th style="width: 40%; background-color: #f0f0f0;">Activities & Teacher Actions</th>
+            <th style="width: 20%; background-color: #f0f0f0;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div class="aoa-stage-title">STAGE 1 — Warm-up / Pre-task</div>
+                <p>Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p><b>Warm-up:</b> The teacher greets students with a "Hello Song" incorporating actions like 'clap' and 'jump'. Then, the teacher leads a simple "Simon Says" game using familiar classroom commands and actions: "Simon says: 'Clap your hands!'", "Simon says: 'Jump up and down!'", "Simon says: 'Sit down!'". This activates listening skills and introduces the idea of following instructions.</p>
+                <p><b>Modeling:</b> The teacher holds up realia (e.g., a pen, a piece of paper) and a small bag. The teacher models the commands by acting them out clearly and slowly: "Pick up the pen." (Teacher picks up the pen). "Put the pen in the bag." (Teacher puts the pen in the bag). "Sit down." (Teacher sits on a chair). The teacher explicitly models the pronunciation of /p/ in 'pick' and /d/ in 'down' through repetition and exaggerated articulation. For phonemic awareness, the teacher points to the letter 'P' on a flashcard and says "/p/, /p/, pen." and 'D' for "/d/, /d/, desk."</p>
+                <p><b>Clarification (CCQs):</b> The teacher checks understanding by asking simple questions and requesting actions from students:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Teacher picks up a paper) "Am I picking up the paper? Yes or no?" (Students nod/shake head or say "Yes").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">(Teacher points to a chair) "Show me 'sit down'!" (Students demonstrate sitting).</li>
+                </ul>
+            </td>
+            <td>___ / ___ <br> (5-7 min)</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="aoa-stage-title">STAGE 2 — Presentation</div>
+                <p>Input of new language/content connected to Scenario: "Our Routines".</p>
+            </td>
+            <td>
+                <p><b>Material:</b> A simple visual story or sequence of flashcards depicting a basic classroom routine, accompanied by teacher narration.</p>
+                <p><b>Communicative Competence:</b> The student is able to understand and follow basic instructions and commands related to daily classroom routines.</p>
+                <p><b>Comprehension tasks:</b> The teacher presents a short, repetitive narrative about classroom routines using flashcards or a big book, emphasizing the target vocabulary and imperatives. For example, "First, we come to class and sit down (picture of children sitting). Then, we take out our pens and paper (picture of children with pens and paper). We draw! (picture of children drawing). After we finish, we pick up our papers (picture of children picking up papers). Please pick up the paper." The teacher repeats the key commands and vocabulary.</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist question:</b> "What did the children do first? Sit down or pick up?" (Students point to the correct picture or say "Sit down").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False (with actions):</b> The teacher says, "The boy picked up a chair." (showing a picture of him picking up a pen). Students show "thumbs up" for true or "thumbs down" for false.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information matching:</b> The teacher says a command, "Pick up the bag," and students point to the flashcard showing the action or object.</li>
+                </ul>
+            </td>
+            <td>___ / ___ <br> (10-12 min)</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="aoa-stage-title">STAGE 3 — Preparation / Practice</div>
+                <p>Accuracy focus on Listening.</p>
+            </td>
+            <td>
+                <p><b>Communicative Skill & Content:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar:</b> Imperatives (e.g., 'Pick it up.', 'Sit down.').</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Vocabulary:</b> chair, desk, bag, pen, paper, pick up, sit, take, put, please.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pronunciation:</b> /p/ in 'pick', /d/ in 'down'.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Phonemic Awareness:</b> Recognizing letter sounds (A, B, C, D, E) when relevant to objects.</li>
+                </ul></p>
+                <p><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice – "Listen and Act":</b> The teacher gives clear, slow commands (e.g., "Sit down!", "Pick up the pen!", "Put the paper on the desk!"). Students perform the actions. The teacher uses flashcards for new vocabulary (e.g., desk, chair, bag) and repeats them with actions. The teacher emphasizes "Please" by saying, "Please, pick up the paper."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice – "Teacher's Helper":</b> The teacher calls one student to be a "helper." The teacher gives a command involving two steps, e.g., "Please, pick up the pen and put it on the chair." The helper listens and performs the actions. Other students observe and confirm. This is repeated with several students, incorporating vocabulary like 'bag', 'desk', 'paper', 'eraser'. The teacher also reinforces /p/ and /d/ sounds during this activity.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Guided Pair Check – "Show Your Friend":</b> Students are in pairs. The teacher gives a command (e.g., "Sit down!"). All students perform the action. Then, the teacher prompts, "Now, show your friend that you are sitting down!" or "Show your friend you picked up the paper!" This encourages listening and visual confirmation of the action with a peer, fostering sociolinguistic interaction through shared routine.</li>
+                </ul>
+            </td>
+            <td>___ / ___ <br> (15-18 min)</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="aoa-stage-title">STAGE 4 — Performance / Production</div>
+                <p>Communicative task where students USE the language in a realistic scenario: "Our Routines".</p>
+            </td>
+            <td>
+                <p><b>Task Format:</b> A classroom "Clean-up Time" simulation.</p>
+                <p>The teacher scatters various classroom items (pens, papers, small bags, erasers) on desks or the floor. The teacher then gives a sequence of commands related to tidying up the classroom, and students collectively listen and follow these instructions, demonstrating their comprehension and participation in a classroom routine.</p>
+                <p><b>Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher announces, "It's clean-up time! Let's listen and work together."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher gives commands one by one, allowing time for students to respond with actions: "Please, pick up the paper." "Put the pens in the bag." "Pick up the eraser, please." "Put the bag on the desk." "Sit down, please."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher encourages polite language by consistently using "Please" in commands and prompting students to respond with actions. The teacher observes if students respond appropriately to the commands and if they use polite expressions when prompted (e.g., "Thank you" after receiving an item, if applicable, or simply following the "Please" command).</li>
+                </ul>
+                <p><b>Focus:</b> Fluency in responding to simple oral requests, collaboration in a routine task, and demonstrating comprehension of keywords and imperatives in the context of cleaning up.</p>
+            </td>
+            <td>___ / ___ <br> (8-10 min)</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="aoa-stage-title">STAGE 5 — Assessment / Post-task</div>
+                <p>Formative assessment strategy.</p>
+            </td>
+            <td>
+                <p><b>Formative Assessment Strategy:</b> Teacher observation checklist during "Clean-up Time" (Stage 4).</p>
+                <p><b>Assessment Task:</b> Students demonstrate comprehension of commands by performing the actions during the "Clean-up Time" activity.</p>
+                <p><b>Evaluation Criteria:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Listening Comprehension:</b> Student correctly performs the action for at least 3 out of 5 commands (e.g., 'sit down', 'pick up the paper', 'put the pen').</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Keyword Recognition:</b> Student shows understanding of target vocabulary (e.g., pen, paper, bag, sit, pick up) through actions.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Response Promptness:</b> Student responds to commands without excessive delay.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Following Instructions:</b> Student follows multi-step instructions (e.g., 'Pick up the pen AND put it on the desk').</li>
+                </ul>
+                <p><b>Student Self-Assessment / Exit Ticket:</b> Students show a "thumbs up" or "thumbs down" in response to these questions:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Can I pick up the pen when I hear 'pick up the pen'?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Can I sit down when I hear 'sit down'?"</li>
+                </ul>
+            </td>
+            <td>___ / ___ <br> (4-5 min)</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="aoa-stage-title">STAGE 6 — Reflection</div>
+            </td>
+            <td>
+                <p><b>Student Self-Reflection:</b> The teacher asks the following questions and encourages students to respond with actions, pointing, or single words:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What did you listen to today? (Commands like 'sit down', 'pick up')."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What did you pick up in class today?" (Students can point to or show a pen, paper, eraser).</li>
+                </ul>
+                <p><b>Teacher Reflection:</b></p>
+                <p style="text-align: justify;">
+                What worked well today? The TPR activities were very engaging and effective for Kinder students to grasp the commands. The use of realia helped contextualize the vocabulary. Students showed good comprehension of "sit down" and "pick up" with actions.
+                </p>
+                <p style="text-align: justify;">
+                What adjustments or scaffolds are needed for the next lesson? Some students needed more individual prompting during the "Clean-up Time." I will ensure clearer enunciation for /p/ and /d/ for a few students. For the next lesson, I will review these commands and vocabulary visually, preparing them for recognizing these words in print.
+                </p>
+                <p style="text-align: justify;">
+                <b>Connection to next lesson:</b> In Lesson 2 (Reading Comprehension), students will engage with a simple text (e.g., a short illustrated routine or labelled pictures) that uses the same vocabulary (pen, paper, desk, chair, bag, pick up, sit) to build on their listening comprehension by connecting spoken words to their written form.
+                </p>
+            </td>
+            <td>___ / ___ <br> (3-5 min)</td>
+        </tr>
+    </tbody>
+</table>

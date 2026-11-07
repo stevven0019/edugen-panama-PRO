@@ -1,0 +1,235 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .stage-title {
+        background-color: #e0f2f7;
+        color: #1a5276;
+        padding: 8px;
+        font-weight: bold;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # Keeping Our Communities Clean – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 1</td>
+        <td style="width: 75%;"><b>Skills Focus:</b> Listening</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 6th Grade (CEFR: A2.1)</td>
+        <td><b>Scenario:</b> Keeping Our Communities Clean</td>
+        <td><b>Theme:</b> We Should Clean the Classroom on Friday.</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p><b>Specific Objective:</b> Listening: Identify specific details in spoken announcements.</p>
+            <p><b>Learning Outcome:</b> Listening: Can identify specific details in spoken announcements about the school (e.g., 'The school will launch a cleaning campaign tomorrow.').<br>Can interpret key details from audio clips about the community (e.g., 'We need to clean the river.').<br>Can discuss main points about keeping communities clean (e.g., 'We should work together.').</p>
+        </td>
+    </tr>
+</table>
+
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 30%;">Stage & Description</th>
+            <th style="width: 50%;">Activities & Teacher Actions</th>
+            <th style="width: 20%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="stage-title" colspan="3">STAGE 1 — Warm-up / Pre-task (Engagement, Modeling and Clarification)</td>
+        </tr>
+        <tr>
+            <td>
+                <p>Students engage with the topic, activate prior knowledge, and are introduced to the lesson's language focus. The teacher models pronunciation and clarifies new vocabulary.</p>
+            </td>
+            <td>
+                <p><b>Warm-up:</b> The teacher shows pictures of a dirty classroom and a clean classroom. The teacher asks, "What do you see in the first picture? Is it clean or dirty?" and then "What about the second picture?" The teacher writes "clean" and "dirty" on the board and points to the pictures. The teacher asks, "Which classroom do you prefer?"</p>
+                <p><b>Modeling:</b> The teacher introduces 8 key vocabulary words: `clean`, `trash`, `bags`, `recycling`, `supplies`, `help`, `should`, `classroom`. The teacher writes them on the board and models their pronunciation clearly, focusing on word stress for `clean` and the short `/ɪ/` sound in `bring` and long `/iː/` sound in `clean` (though 'bring' is not in this core 8, the sounds are demonstrated with 'clean'). The teacher points to a real object or picture for each word (e.g., a small trash bag, cleaning supplies). The teacher models the imperative "Clean the classroom!" and the suggestion "We should clean the classroom."</p>
+                <p><b>Clarification (CCQs):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"If something is dirty, do we need to clean it or leave it?" (Clean it.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Is 'should' for something you *must* do or something that is a good idea to do?" (A good idea.)</li>
+                </ul>
+            </td>
+            <td>
+                <p>5-7 min</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="stage-title" colspan="3">STAGE 2 — Presentation</td>
+        </tr>
+        <tr>
+            <td>
+                <p>New language and content are presented, often through authentic input. Students practice initial comprehension tasks.</p>
+            </td>
+            <td>
+                <p><b>Input of new language/content connected to Scenario:</b> Students will listen to a short audio announcement about a school cleaning campaign.</p>
+                <p><b>Material:</b> Audio announcement about a school cleanup campaign and a simple graphic organizer (e.g., a table with 'What?', 'When?', 'Who?') on the board or handout.</p>
+                <p><b>Communicative Competence:</b> Describing plans and tasks: 'We will clean the classroom on Friday.' Making suggestions: 'We should clean the desks.'</p>
+                <p><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Question:</b> (Teacher plays the audio once.) "What is the announcement about? A party or a cleanup?" (Students raise hand for correct answer).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> (Teacher plays the audio a second time.) The teacher reads statements and students indicate True or False. "The cleanup is on Saturday. (T/F)" "We will clean the park. (T/F)"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information Matching:</b> (Teacher plays the audio a third time.) Students listen for specific details and match them to categories on the graphic organizer:
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">What: (e.g., school cleanup)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">When: (e.g., Friday)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Who: (e.g., all students)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <p>10-12 min</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="stage-title" colspan="3">STAGE 3 — Preparation / Practice</td>
+        </tr>
+        <tr>
+            <td>
+                <p>Students engage in controlled and semi-controlled activities to practice the target language with an accuracy focus, specifically for listening comprehension.</p>
+            </td>
+            <td>
+                <p><b>Accuracy focus on Listening.</b></p>
+                <p><b>Communicative Skill & Content:</b> Modal verbs (should, can, must), Future tense (will), Imperatives, and core vocabulary (`clean`, `trash`, `bags`, `recycling`, `supplies`, `help`, `should`, `classroom`). Pragmatic function: Asking for and giving information (`Who will bring the cleaning supplies?`).</p>
+                <p><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice (Listen and Circle):</b> The teacher distributes a worksheet with sentences from the announcement containing gaps and multiple-choice options for the target vocabulary. Students listen to the announcement again and circle the correct word.
+                        <br>Example: "We will _____ the classroom on Friday." (a) eat (b) clean (c) play
+                        <br>"Please bring _____ for the trash." (a) books (b) bags (c) toys</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice (Listen and Complete):</b> The teacher plays parts of the announcement again. Students listen and complete sentences with target grammar structures.
+                        <br>Example: "We _____ clean the classroom on Friday." (will)
+                        <br>"You _____ help by collecting the recycling." (can)
+                        <br>"Volunteers _____ wear gloves." (must)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction (Peer Check):</b> Students work in pairs to compare their answers from the previous activities. They listen to their partner's responses and discuss any differences. The teacher circulates, facilitating and providing support.
+                        <br>Example prompts: "What did you write for number 1?" "Did you hear 'bags' or 'books'?"</li>
+                </ul>
+            </td>
+            <td>
+                <p>12-15 min</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="stage-title" colspan="3">STAGE 4 — Performance / Production</td>
+        </tr>
+        <tr>
+            <td>
+                <p>Students use the target language in a realistic, communicative task, focusing on fluency and collaborative interaction to complete a task related to the scenario and theme.</p>
+            </td>
+            <td>
+                <p><b>Communicative task:</b> Listen and complete a 'Classroom Cleaning Plan'.</p>
+                <p><b>Task format:</b> Students will receive a simple template for a 'Classroom Cleaning Plan' with sections for different areas (e.g., desks, floor, windows) and who is responsible. The teacher will play an audio clip of a teacher giving detailed instructions and assigning tasks for the classroom cleanup, using modal verbs (should, can, must) and future tense (will).</p>
+                <p><b>Connect directly to Theme and Scenario:</b> The audio will detail the tasks for "We Should Clean the Classroom on Friday." and how students "can help by collecting the recycling," integrating vocabulary like `supplies`, `trash`, `recycling`, `organize`, `collect`, `sort`, `work`, `team`, `responsibility`.</p>
+                <p><b>Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher explains the task: "Listen to the teacher's instructions. Fill in the tasks for each group for Friday's cleanup. Who will do what?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students listen to the audio (e.g., "Good morning, everyone! For our classroom cleanup on Friday, Group A will clean the desks. Group B should sweep the floor. Group C can collect the trash and recycling. Remember, everyone must work together as a team.").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students complete their 'Classroom Cleaning Plan' templates by writing down the specific tasks assigned to each group based on the audio.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">After listening, students briefly share their completed plans with a partner, checking for agreement (Sociolinguistic: Participate in group discussions on community actions).</li>
+                </ul>
+            </td>
+            <td>
+                <p>10-12 min</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="stage-title" colspan="3">STAGE 5 — Assessment / Post-task</td>
+        </tr>
+        <tr>
+            <td>
+                <p>Students' learning is assessed formatively. Learners reflect on their understanding and performance.</p>
+            </td>
+            <td>
+                <p><b>Formative assessment strategy:</b> Teacher Observation Checklist and Student Self-Assessment.</p>
+                <p><b>Assessment Task:</b> Students submit their completed 'Classroom Cleaning Plan' from Stage 4. The teacher will check for accuracy in identifying specific details from the listening task.</p>
+                <p><b>Evaluation Criteria:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Accuracy in identifying specific details from the spoken instructions (e.g., correct tasks assigned to groups/areas).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Legibility of completed plan.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Implicit use of target vocabulary (by correctly completing the plan).</li>
+                </ul>
+                <p><b>Student Self-Assessment / Exit Ticket:</b> Students answer 1-2 reflective prompts on a small slip of paper.</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"I can identify specific details in spoken announcements about cleaning." (Yes/Almost/Not yet)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"I heard new words like 'recycling' and 'supplies' today." (Yes/No)</li>
+                </ul>
+            </td>
+            <td>
+                <p>5-7 min</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="stage-title" colspan="3">STAGE 6 — Reflection</td>
+        </tr>
+        <tr>
+            <td>
+                <p>Students reflect on their learning journey. The teacher reflects on the lesson's effectiveness and plans for future lessons.</p>
+            </td>
+            <td>
+                <p><b>Student self-reflection prompt:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was the easiest part of listening to the cleaning instructions today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What is one new word you learned about cleaning?"</li>
+                </ul>
+                <p><b>Teacher reflection:</b> The listening activities were effective in introducing new vocabulary and specific details. Students engaged well with the audio announcements and practice tasks. Some students still confused "should" and "must" in the semi-controlled practice, requiring more explicit modeling of their different uses. Adjustments for the next lesson could include more repetitive listening to differentiate between suggestions and obligations. The integration of phonemic awareness with /ɪ/ and /iː/ was successful for 'bring' and 'clean' during pronunciation modeling.</p>
+                <p><b>Connection to next lesson in the theme sequence:</b> In the next lesson (Lesson 2: Reading Comprehension), students will read a short text about a community cleaning project, using the same vocabulary words and ideas from today's listening activities to deepen their understanding of the context.</p>
+            </td>
+            <td>
+                <p>3-5 min</p>
+            </td>
+        </tr>
+    </tbody>
+</table>

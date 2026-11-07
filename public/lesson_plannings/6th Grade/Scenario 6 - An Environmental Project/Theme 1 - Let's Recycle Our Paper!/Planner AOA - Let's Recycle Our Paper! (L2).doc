@@ -1,0 +1,225 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    .table-container {
+        margin-bottom: 20px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+    }
+    .aoa-stage-title {
+        background-color: #1a5276;
+        color: white;
+        padding: 8px;
+        text-align: center;
+        font-weight: bold;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        padding-left: 20px;
+        margin-top: 0;
+        margin-bottom: 8px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # An Environmental Project – Lesson # 2</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<div class="table-container">
+    <table>
+        <tr>
+            <td style="width: 25%;"><b>Lesson #:</b> 2</td>
+            <td style="width: 75%;"><b>Skills Focus:</b> Reading</td>
+        </tr>
+        <tr>
+            <td><b>Grade:</b> 6th Grade (CEFR: A2.1)</td>
+            <td><b>Scenario:</b> An Environmental Project</td>
+            <td><b>Theme:</b> Let's Recycle Our Paper!</td>
+        </tr>
+        <tr>
+            <td><b>Date(s):</b> From ___ to ___</td>
+            <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p><b>Specific Objective:</b><br>
+                Reading: reading_1: Infer meaning from context clues in short texts.<br>
+                reading_2: Write responses to questions about informational texts.<br>
+                phonemic_awareness: Demonstrate knowledge of phonemic awareness by segmenting multisyllabic words into syllables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p><b>Learning Outcome:</b><br>
+                Reading: Can infer meanings of environmental vocabulary from context (e.g., 'Go green means protecting nature.').<br>
+                Can write reflections on environmental informative text by answering key questions and sharing their thoughts (e.g., 'What was the story about?' 'It was about saving water.').<br>
+                Can segment multisyllabic words into syllables, demonstrating knowledge of phonemic awareness (e.g., dividing 'presentation' into 'pre-sen-ta-tion').</p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 style="color: #1a5276; text-align: center;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 30%;"><h3 class="aoa-stage-title">Stage & Description</h3></th>
+                <th style="width: 50%;"><h3 class="aoa-stage-title">Activities & Teacher Actions</h3></th>
+                <th style="width: 20%;"><h3 class="aoa-stage-title">Estimated Date and Time</h3></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <p><b>STAGE 1 — Warm-up / Pre-task</b><br>(Engagement, Modeling and Clarification)</p>
+                </td>
+                <td>
+                    <p><b>Warm-up:</b> The teacher displays a large image of a blue recycling bin filled with various paper items (newspapers, cardboard, notebooks). The teacher asks students to identify the items. "What do you see in the blue bin?" "What are these things made of?" (Paper) "Why is it important to put paper in this bin?" This activates prior knowledge about recycling and connects to the theme "Let's Recycle Our Paper!".</p>
+                    <p><b>Modeling:</b> The teacher models how to quickly scan a short text for key words. The teacher says, "Today, we will read about recycling paper. Sometimes we find new words. I will show you how to guess what they mean." The teacher writes a simple sentence on the board, e.g., "We need to protect our <i>environment</i>. This means taking care of nature." The teacher underlines 'environment' and explains, "I see 'taking care of nature.' So, 'environment' means everything around us, like trees and air."</p>
+                    <p><b>Clarification (CCQs):</b> The teacher checks understanding of key vocabulary relevant to the upcoming reading task, using concept checking questions and examples.</p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Is 'project' something we do alone or with a group?" (With a group.) "Is it a short activity or something that takes time?" (Takes time.)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"If we 'care' for a plant, do we ignore it or water it?" (Water it.) "Do we want our plants to grow?" (Yes.)</li>
+                    </ul>
+                </td>
+                <td><p>5-7 min</p></td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>STAGE 2 — Presentation</b></p>
+                    <p>(Input of new language/content connected to Scenario: "An Environmental Project")</p>
+                </td>
+                <td>
+                    <p><b>Material:</b> The teacher provides students with a short informational text titled "Our Classroom Recycling Project!" (A2.1 level) printed on individual handouts. The text includes directives and descriptions related to recycling paper, incorporating the target grammar (imperatives for instructions, present simple for everyday events, future simple for plans) and vocabulary (e.g., <i>project, classroom, environment, plan, paper, clean, bring, collect, future, presentation day, participate, will plant</i>).</p>
+                    <p style="font-style: italic;">Example text snippet:<br>"Hello 6th Grade! Our classroom <b>project</b> is starting. We will help the <b>environment</b>! Every day, we <b>clean</b> our classroom. Now, we also <b>collect</b> paper. <b>Bring</b> all your old notebooks and paper to the blue bin. We usually <b>sort</b> the paper by type. Next month, we <b>will plant</b> new trees in the school <b>garden</b>. We need everyone to <b>participate</b>! Our <b>presentation day</b> will be on May 20th. Let's make our school <b>ready</b> for a greener <b>future</b>!"</p>
+                    <p><b>Communicative Competence:</b> The students will understand and extract information from a short, simple informational text about an environmental project. They will identify main ideas and specific details.</p>
+                    <p><b>Comprehension tasks:</b></p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Gist question:</b> The teacher asks, "What is the text mostly about?" (Students can answer orally: "It's about recycling paper in the classroom." or "It's about an environmental project.")</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> The teacher presents simple True/False statements based on the text for students to identify.
+                            <ul>
+                                <li style="margin-bottom: 4px; text-align: justify;">"The project is about collecting plastic." (False)</li>
+                                <li style="margin-bottom: 4px; text-align: justify;">"Students will plant new trees." (True)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+                <td><p>10-12 min</p></td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>STAGE 3 — Preparation / Practice</b></p>
+                    <p>(Accuracy focus on Reading)</p>
+                </td>
+                <td>
+                    <p><b>Communicative Skill & Content:</b> Reading for specific details, identifying imperative verbs, understanding present simple for routines, and future simple for plans. Inferring meaning from context and demonstrating phonemic awareness by segmenting multisyllabic words.</p>
+                    <p><b>Detailed Procedure:</b></p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice (Inferring Meaning & Vocabulary):</b> Students re-read the text. The teacher highlights 3-4 key vocabulary words from the list (e.g., <i>environment, participate, prepared</i>) that might be unfamiliar but have context clues. Students work individually to infer their meaning based on surrounding words. For example, for "We need everyone to <b>participate</b>! This means everyone helps," students identify that 'participate' means 'to help.' They write their inferred meanings.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice (Grammar & Phonemic Awareness):</b>
+                            <ul>
+                                <li style="margin-bottom: 4px; text-align: justify;"><b>Imperatives & Future Simple:</b> Students find and underline all imperative verbs (e.g., "Bring," "Put") and sentences using the future simple (e.g., "We <b>will plant</b> trees"). They then categorize them into two lists on their worksheet.</li>
+                                <li style="margin-bottom: 4px; text-align: justify;"><b>Phonemic Awareness:</b> The teacher points to words from the text like '<b>presentation</b>' or '<b>environment</b>'. The teacher models segmenting the words into syllables (e.g., "pre-sen-ta-tion," "en-vi-ron-ment"). Students then practice segmenting 2-3 other multisyllabic words from the text orally and by clapping the syllables.</li>
+                            </ul>
+                        </li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction (Reading for Detail):</b> Students work in pairs. Each pair receives a set of incomplete sentences or questions based on the text. They read the text again to find the missing information or answers. For example: "The classroom ______ day will be on May 20th." (Answer: presentation). "We ______ clean our classroom every day." (Answer: usually). They check their answers with another pair.</li>
+                    </ul>
+                </td>
+                <td><p>15-18 min</p></td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>STAGE 4 — Performance / Production</b></p>
+                    <p>(Communicative task where students USE the language in a realistic scenario: "An Environmental Project")</p>
+                </td>
+                <td>
+                    <p><b>Task: "Our Recycling Reflections"</b></p>
+                    <p>Students will individually read a short, new informational text (2-3 paragraphs) about a school's successful paper recycling initiative that includes similar vocabulary and grammatical structures. After reading, they will write responses to a series of comprehension questions about the text.</p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">The teacher distributes a new text titled "Green School Success Story: Paper Power!" and a worksheet with questions.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Students read the text silently, focusing on understanding the main ideas and identifying details.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">On their worksheets, students answer questions such as: "What was the story about?" "What did the students do to help the environment?" "What will the school do next year to improve recycling?" (using future simple). "Find two imperative sentences in the text."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">They also answer a reflective question: "What is one thing you learned from this text that your class can do for our recycling project?" (This encourages them to share their thoughts and connect to the scenario).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">During this stage, students are encouraged to infer meanings of any new words from the context, practicing the specific objective.</li>
+                    </ul>
+                </td>
+                <td><p>10-12 min</p></td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>STAGE 5 — Assessment / Post-task</b></p>
+                    <p>(Formative assessment strategy)</p>
+                </td>
+                <td>
+                    <p><b>Formative Assessment Strategy:</b> Teacher observation checklist and peer assessment of written responses.</p>
+                    <p><b>Assessment Task:</b> Students will submit their "Our Recycling Reflections" worksheets from the Production stage.</p>
+                    <p><b>Evaluation Criteria:</b></p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Reading Comprehension:</b> Accuracy of responses to questions about the informational text.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Inference:</b> Ability to infer meaning of 1-2 key vocabulary words (e.g., 'local', 'upcoming') from context, as evidenced in their answers or a specific question about these words.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar Usage:</b> Appropriate use of present simple, imperatives, and future simple in their written answers.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity:</b> Responses are clear and easy to understand.</li>
+                    </ul>
+                    <p><b>Student Self-Assessment / Exit Ticket:</b> Students complete an exit ticket with the following prompts:</p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"One new word I learned to guess the meaning of from the text was __________."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"I can now segment the word __________ into syllables."</li>
+                    </ul>
+                </td>
+                <td><p>5 min</p></td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>STAGE 6 — Reflection</b></p>
+                </td>
+                <td>
+                    <p><b>Student self-reflection prompt:</b></p>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What part of reading the texts was easiest for me today?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What was challenging, and what can I do next time to understand better?"</li>
+                    </ul>
+                    <p><b>Teacher reflection:</b></p>
+                    <p>What worked well today was the engagement with the environmental theme; students were excited to read about real-world actions. The explicit modeling of inferring meaning seemed helpful, and the pair work encouraged collaborative reading. Students demonstrated fair understanding of imperatives and present simple, but some struggled with the future simple when writing their own ideas about future plans, indicating a need for more practice.</p>
+                    <p>Adjustments needed: For the next reading lesson, I will provide more guided practice on identifying time markers for future tense and use simpler sentences for inferring meaning for some words. I will also ensure more visual support for new vocabulary that might be harder to infer.</p>
+                    <p><b>Connection to next lesson:</b> Today, we read about recycling and future plans. Next lesson (Lesson 3: Speaking & Interaction), we will discuss our own ideas for the "Let's Recycle Our Paper!" project and use the vocabulary and grammar we practiced today to talk about our plans and give suggestions to each other.</p>
+                </td>
+                <td><p>3 min</p></td>
+            </tr>
+        </tbody>
+    </table>

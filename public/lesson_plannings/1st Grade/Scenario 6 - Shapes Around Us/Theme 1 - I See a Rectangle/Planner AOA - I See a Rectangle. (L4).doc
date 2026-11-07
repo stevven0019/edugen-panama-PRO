@@ -1,0 +1,192 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .aoa-title {
+        color: #1a5276;
+        font-size: 1.5em;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    b {
+        font-weight: bold;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # Shapes Around Us – Lesson # 4</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 4</td>
+        <td style="width: 75%;"><b>Skills Focus:</b> Writing</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 1st Grade (CEFR: Pre-A1.3)</td>
+        <td><b>Scenario:</b> Shapes Around Us</td>
+        <td><b>Theme:</b> I See a Rectangle.</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p><b>Specific Objective:</b> Writing: Productive: Write numbers up to ten with guidance. Interactive: Write one-word answers to simple questions.</p>
+            <p><b>Learning Outcome:</b> Writing: Can write numbers and shape-related words with teacher guidance (e.g., counting the number of squares in a picture and writing the number and the shape's name below the picture). Can label pictures of shapes with simple words like "square" or "circle." Can write simple one-word answers to questions about shapes with support (e.g., writing the word "circle" in response to the question, "What shape is this?").</p>
+        </td>
+    </tr>
+</table>
+
+<h2 class="aoa-title">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 30%;">Stage & Description</th>
+            <th style="width: 50%;">Activities & Teacher Actions</th>
+            <th style="width: 20%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><b>STAGE 1 — Warm-up / Pre-task</b><br>(Engagement, Modeling and Clarification)</td>
+            <td>
+                <p><b>Warm-up:</b> The teacher starts by showing flashcards of different shapes (square, rectangle, circle, triangle). As each flashcard is shown, the teacher asks, "What shape is this?" and encourages students to shout out the name. Then, the teacher holds up a whiteboard and asks students to air-trace the shape as they say its name. Next, the teacher draws a simple shape on the board (e.g., a square) and asks students to come up and *trace* the shape with their finger and say its name. This activates prior knowledge of shape recognition and introduces the physical act of tracing in preparation for writing.</p>
+                <p><b>Modeling:</b> The teacher models how to *write* the word "square." The teacher holds up a flashcard of a square and says, "This is a square." The teacher then takes a marker and slowly writes "square" on the whiteboard, enunciating each sound and emphasizing the initial /s/ sound. The teacher points to each letter as it is written. Then, the teacher points to a real object in the classroom, like a window, and says, "I see a square window." and writes "square" on a sentence strip next to the window.</p>
+                <p><b>Clarification (CCQs):</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Is this a rectangle or a square?" (pointing to a written "square" word).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Do we write 'circle' with 'C' or 'S'?" (Teacher shows both options).</li>
+                </ul>
+                </p>
+            </td>
+            <td>5–7 min</td>
+        </tr>
+        <tr>
+            <td><b>STAGE 2 — Presentation</b><br>(Input of new language/content)</td>
+            <td>
+                <p><b>Material:</b> Short narrative excerpt with pictures of objects, labeled with their shapes. (e.g., "Look around! I see a square table. I see a round circle. I see a tall rectangle door.") The text will be displayed on a projector or large chart paper with clear, simple illustrations.</p>
+                <p><b>Communicative Competence:</b> Identifying shapes and describing shapes using simple phrases and shape names (e.g., "This is a rectangle.").</p>
+                <p><b>Comprehension tasks:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher reads the short narrative aloud, pointing to the pictures and the corresponding written shape words. Students listen and follow along.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> The teacher reads sentences from the narrative or similar ones, for example, "I see a triangle door." and students show a 'thumbs up' for True or 'thumbs down' for False. The teacher then writes the correct word on the board if it's false (e.g., "rectangle").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information Matching:</b> The teacher displays pictures of objects (e.g., a clock, a book, a pizza slice) and orally gives two written shape words (e.g., "circle", "rectangle"). Students point to the picture that matches the shape word pronounced.</li>
+                </ul>
+                </p>
+            </td>
+            <td>8–10 min</td>
+        </tr>
+        <tr>
+            <td><b>STAGE 3 — Preparation / Practice</b><br>(Accuracy focus on Writing)</td>
+            <td>
+                <p><b>Communicative Skill & Content:</b> Students will practice writing shape names (square, rectangle, circle, triangle, oval, diamond, star), numbers up to ten, and simple sentences like "This is a circle." and "What shape is it? It is a [shape]."</p>
+                <p><b>Detailed Procedure:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice – Tracing and Copying:</b> The teacher provides a worksheet with dotted outlines of shape words (e.g., "square", "circle", "rectangle") and numbers 1-10. Students trace the words and numbers three times. Below the tracing lines, there are blank lines for students to copy the words and numbers independently. The teacher walks around, monitoring grip and letter formation, giving individual feedback.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-Controlled Practice – Labeling and Completing:</b> The teacher distributes a worksheet with simple drawings of objects (e.g., a window, a ball, a slice of pizza). Next to each drawing, there is a blank space and a question "What shape is it?". Students write the one-word answer (e.g., "square", "circle", "triangle") in the blank. Additionally, there are pictures of groups of shapes (e.g., 3 squares, 5 circles). Students count the shapes and write the corresponding number below each group.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction – Peer Checking and Writing:</b> Students work in pairs. Each student receives a small whiteboard and a marker. Student A draws a simple shape (e.g., a circle) on their board and says, "Look, a circle!" Student B then writes the word "circle" on their own whiteboard. They show each other their boards to check if the word is correct. Then they switch roles. The teacher circulates, offering support and ensuring correct spelling and legibility.</li>
+                </ul>
+                </p>
+            </td>
+            <td>15 min</td>
+        </tr>
+        <tr>
+            <td><b>STAGE 4 — Performance / Production</b><br>(Fluency focus on Writing)</td>
+            <td>
+                <p>Students will engage in a collaborative writing task where they label and describe shapes in a classroom scenario. The activity directly relates to the theme "I See a Rectangle." and the scenario "Shapes Around Us."</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Task Format:</b> Collaborative labeling and sentence writing. Students receive a simple drawing of a classroom scene (or a simplified map of their actual classroom layout). The drawing includes various objects represented by basic shapes (e.g., a rectangle door, square window, circle clock, triangle roof on a toy house, a long rectangle table).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Procedure:</b>
+                        <ol>
+                            <li style="margin-bottom: 4px; text-align: justify;">In small groups (3-4 students), learners identify the shapes of the objects in the drawing.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">They work together to *write* the name of each shape next to the corresponding object (e.g., "rectangle" next to the door, "circle" next to the clock). The teacher provides a word bank with shape names on the board for support.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Next, each group *writes* one simple sentence about an object in the picture using the structure "I see a [adjective] [shape] [noun]." or "That is a [shape]." (e.g., "I see a big square window." or "That is a rectangle door."). The teacher guides them by providing sentence starters on the board.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Finally, each group counts how many rectangles they labeled and writes the number down (e.g., "3 rectangles").</li>
+                        </ol>
+                    </li>
+                </ul>
+            </td>
+            <td>10 min</td>
+        </tr>
+        <tr>
+            <td><b>STAGE 5 — Assessment / Post-task</b><br>(Formative Assessment)</td>
+            <td>
+                <p><b>Formative Assessment Strategy:</b> Teacher observation checklist and student work sample review.</p>
+                <p><b>Assessment Task:</b> Students submit their labeled classroom scene drawing and their written sentences/numbers from the Production stage.</p>
+                <p><b>Evaluation Criteria:</b> The teacher will assess:
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Legibility of handwriting for shape names and numbers.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Correct spelling of target vocabulary (square, rectangle, circle, etc.).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Ability to correctly label at least 3-4 shapes in the drawing.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Ability to write numbers up to ten correctly when counting shapes.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Attempt to write a simple sentence about a shape (e.g., "That is a circle.").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Collaboration and participation in group activity (observed during Stage 4).</li>
+                </ul>
+                </p>
+                <p><b>Student Self-Assessment / Exit Ticket:</b> Students are given a small slip of paper. They are asked to:
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Write one shape word you learned today."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Write the number of shapes you see here (teacher holds up a card with 5 dots)."</li>
+                </ul>
+                </p>
+            </td>
+            <td>7 min</td>
+        </tr>
+        <tr>
+            <td><b>STAGE 6 — Reflection</b></td>
+            <td>
+                <p><b>Student self-reflection prompt:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What shape word was easy for you to write today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What shape word was a little hard for you to write?"</li>
+                </ul>
+                </p>
+                <p><b>Teacher reflection:</b> What worked well in this writing lesson for 1st graders? The tracing and copying activities were very effective for building confidence. The visual support of shape pictures greatly aided the labeling task. The peer checking in Stage 3 helped reinforce correct spelling. What adjustments and scaffolds are needed for the next lesson? Some students still struggle with letter formation for certain letters (e.g., 'r' in rectangle). More specific letter formation practice may be needed. Providing larger writing spaces or guiding lines for independent writing could also be beneficial. For the next lesson, I will ensure a review of number writing and shape word spelling is integrated into the warm-up.</p>
+                <p><b>Connection to next lesson in the theme sequence:</b> This lesson focused on writing individual shape words, simple sentences, and numbers. The next lesson, Lesson 5 (Mediation & Integration), will build on this by having students consolidate their knowledge to create a simple "Shapes Everywhere" project. Students will apply their writing skills to label shapes in their project and verbally present their work, describing the shapes they used and integrating color vocabulary, requiring them to summarize and explain their creation.</p>
+            </td>
+            <td>5 min</td>
+        </tr>
+    </tbody>
+</table>

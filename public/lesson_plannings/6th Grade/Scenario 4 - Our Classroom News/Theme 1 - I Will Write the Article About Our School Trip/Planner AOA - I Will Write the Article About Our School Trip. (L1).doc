@@ -1,0 +1,211 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .table-title {
+        color: #1a5276;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        text-align: left;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+    b {
+        color: #1a5276;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 1 of 5</td>
+        <td style="width: 75%;"><b>Skills Focus:</b> Listening</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 6th Grade (CEFR: A2.1)</td>
+        <td><b>Scenario:</b> Our Classroom News</td>
+        <td><b>Theme:</b> I Will Write the Article About Our School Trip.</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Listening: Recognize the main ideas of longer conversational exchanges.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Listening: Can recognize main ideas in collaborative group discussions about a newsletter (e.g., 'A newsletter can include various types of information, such as announcements, projects, and current events.').
+Can follow and clarify spoken instructions for making a class newsletter (e.g., 'First, write; then, draw.').
+Can identify specific spoken instructions about a school trip (e.g., 'place to visit, date, activities').</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<div class="table-title">The Six Action-Oriented Approach (AOA) Lesson Stages</div>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 30%;">Stage & Description</th>
+            <th style="width: 50%;">Activities & Teacher Actions</th>
+            <th style="width: 20%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <b style="color: #1a5276;">STAGE 1 — Warm-up / Pre-task</b>
+                <p>Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p><b>Warm-up:</b> The teacher plays a short, upbeat audio clip featuring sounds of a school field trip (e.g., bus sounds, kids laughing, nature sounds) followed by a short jingle about "news." Students listen and raise their hands if they hear something familiar or exciting. The teacher then displays a large picture of a classroom newsletter and asks, "What do you see?" to connect to the theme. Key vocabulary like 'school trip', 'newsletter', 'pictures', 'event', 'article' are introduced visually and orally.</p>
+                <p><b>Modeling:</b> The teacher models the pronunciation of key vocabulary orally, emphasizing the words 'article', 'newsletter', 'pictures', 'event'. The teacher clearly states, "Today, we will listen to discussions about our classroom newsletter and our school trip." The teacher models listening for the main idea by saying, "I will listen for *who* is talking, and *what* they are talking about." The teacher also models emphasizing the main verb in future tense contractions (e.g., "I'll <b>go</b> on a school trip," "We'll <b>write</b> the article.") and identifies short vowel sounds like /ɑ/ in 'art' and long vowel sounds like /oʊ/ in 'show' using flashcards with corresponding words.</p>
+                <p><b>Clarification (CCQs):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Is a newsletter a book or a paper with news?" (Target: newsletter)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Do we write an 'article' about something important or about nothing?" (Target: article)</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <b style="color: #1a5276;">STAGE 2 — Presentation</b>
+                <p>Input of new language/content connected to Scenario: "Our Classroom News"</p>
+            </td>
+            <td>
+                <p><b>Material:</b> An authentic short audio dialogue (2-3 minutes) between a teacher and two students discussing plans for the next classroom newsletter. The dialogue includes deciding topics, roles, and a mention of the recent school trip. This serves as the primary listening input. (Example phrases: "What else do we need?", "We need pictures for the classroom newsletter," "I will write the article," "What will you do?", "Yesterday, we went on a field trip.")</p>
+                <p><b>Communicative Competence:</b> Listening: Comprehends key information and roles in collaborative planning discussions for a class project.</p>
+                <p><b>Comprehension tasks:</b> Students listen to the audio for the first time.</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Question 1:</b> "What is the main topic of this conversation?" (Students choose from options: a) school lunch, b) a class newsletter, c) a movie).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Question 2:</b> "Who are the people talking?" (Students identify from options: a) friends, b) teacher and students, c) parents).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Matching Task:</b> Students listen again and match the main idea of each speaker's turn to their name (e.g., Teacher: suggesting topics, Student A: volunteering for writing, Student B: asking about pictures).</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <b style="color: #1a5276;">STAGE 3 — Preparation / Practice</b>
+                <p>Accuracy focus on Listening</p>
+            </td>
+            <td>
+                <p><b>Communicative Skill & Content:</b> Listening for specific information (main ideas, instructions, details); Grammar: Present simple questions ('What else do we need?'), Future affirmative/interrogative ('I will write the article.', 'What will you do?'), Past simple ('Yesterday, we went on a field trip.'); Vocabulary: article, newsletter, pictures, event, write, discuss, organize, school trip, announcement, editor, layout. Pronunciation: emphasizing main verb in future tense contractions (e.g., 'I'll <b>take</b> photos'). Phonemic awareness: identifying /ɑ/ in 'art' and /oʊ/ in 'show'. Pragmatic: describing plans, requesting materials, narrating past events.</p>
+                <p><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice – Listen and Complete:</b> The teacher provides a cloze activity with sentences from the audio dialogue, focusing on target vocabulary and grammatical structures. Students listen to the audio a third time and fill in the blanks.
+                        Example: "We need _______ for the classroom _______. (pictures, newsletter)"
+                        Example: "I _______ _______ the _______ about our school trip. (will write, article)"
+                        Example: "_______, we _______ on a _______ trip. (Yesterday, went, field)"
+                        Teacher checks answers by playing sections of the audio again and pointing to the words, reinforcing pronunciation.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice – Listen and Identify:</b> The teacher plays short snippets from the dialogue. After each snippet, students listen and identify if the speaker is describing a **plan for the future** (using future tense), **asking for materials** (using present simple question), or **narrating a past event** (using past simple). Students hold up colored cards (e.g., Blue for Future, Green for Present, Red for Past).
+                        Example Snippet: "What will you do for the article?" (Students hold up Blue).
+                        Example Snippet: "We need a camera for good pictures." (Students hold up Green).
+                        Example Snippet: "When did this happen? Yesterday!" (Students hold up Red).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction / Peer Check – Listen and Clarify Instructions:</b> In pairs, students receive a short set of jumbled instructions for making a simple newsletter (e.g., "draw a picture," "write the headline," "add the date"). The teacher plays an audio recording of clear, sequential instructions (e.g., "First, write the headline. Then, draw a picture. After that, add the date."). Students listen and put the instruction cards in the correct order. They then verbally check with their partner, listening to confirm the sequence. This activates their listening for details and sequence.</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <b style="color: #1a5276;">STAGE 4 — Performance / Production</b>
+                <p>Communicative task where students USE the language in a realistic scenario: "Our Classroom News"</p>
+            </td>
+            <td>
+                <p><b>Task Format:</b> Collaborative Group Listening Task – "Our School Trip Article Plan."</p>
+                <p><b>Detailed Procedure:</b> Students work in small groups (3-4 students). The teacher plays a new audio recording of a 'meeting' where the teacher and other students are discussing the specific details for the article about the school trip for the class newsletter. The audio will include instructions and details about:
+                    1.  The specific 'place to visit' from the trip (e.g., Emberá Community).
+                    2.  The 'date' it happened.
+                    3.  Two main 'activities' they did.
+                    4.  Who 'will write' about each activity (roles, e.g., "I will describe the welcome ceremony," "Maria will explain the crafts.").
+                    5.  What 'pictures' are needed.
+                    Students listen to this recording multiple times if needed. As they listen, each group completes a simple graphic organizer or a table with columns for "Place," "Date," "Activities," "Writer," and "Pictures Needed." The focus is on listening collaboratively to extract the specific information to fulfill the task. This involves listening for main ideas about the article's content and specific instructions for its creation. They practice clarifying roles and responsibilities within their group based on the audio. (e.g., "Did you hear who will write about the crafts?").</p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <b style="color: #1a5276;">STAGE 5 — Assessment / Post-task</b>
+                <p>Formative assessment strategy</p>
+            </td>
+            <td>
+                <p><b>Formative Assessment Strategy:</b> Teacher Observation Checklist and Group Product Evaluation.</p>
+                <p><b>Assessment Task:</b> Students hand in their completed graphic organizer/table from the "Our School Trip Article Plan" activity. The teacher collects these to check for accuracy in identifying the main ideas and specific details heard in the audio. Additionally, the teacher observes group interactions during the task, noting students' ability to follow instructions and collaborate.</p>
+                <p><b>Evaluation Criteria (Listening Focus):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Identifies main ideas of conversational exchanges (e.g., main purpose of the meeting).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Identifies specific instructions (e.g., place to visit, date, activities, who writes what).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Recognizes target vocabulary (e.g., 'article', 'pictures', 'event', 'edit', 'organize') within the audio.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Collaborates effectively in the group to complete the listening task.</li>
+                </ul>
+                <p><b>Student Self-Assessment / Exit Ticket:</b> Students complete an exit ticket with the following prompts:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What new words about our classroom news did you hear today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was the most important thing you heard about our school trip article?"</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <b style="color: #1a5276;">STAGE 6 — Reflection</b>
+                <p>Student and Teacher Reflection</p>
+            </td>
+            <td>
+                <p><b>Student self-reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What part of listening to the news discussion was easy for you today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What part was difficult, and what can you do next time to listen better?"</li>
+                </ul>
+                <p><b>Teacher reflection:</b></p>
+                <p style="text-align: justify;">The listening activities worked well to introduce the core vocabulary and main ideas for our classroom newsletter. Students were able to grasp the gist of conversations and identify specific details about the school trip article, especially with repeated listening. The group activity fostered collaboration and active listening. Some students struggled with differentiating between 'will' and 'went' when identifying plans versus past events, indicating a need for more explicit practice on these tenses in future listening tasks. I need to scaffold future tasks with more visual aids during listening activities to support comprehension for all learners. The pronunciation focus on future tense contractions was useful but requires more reinforcement. The phonemic awareness activity also helped reinforce short/long vowel sounds.</p>
+                <p><b>Connection to next lesson in the theme sequence:</b></p>
+                <p style="text-align: justify;">For Lesson 2 (Reading Comprehension), students will read a draft of the "School Trip" article for the classroom newsletter, building on the vocabulary and main ideas they identified during this listening lesson. They will see the words they heard, allowing for stronger reinforcement and comprehension.</p>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

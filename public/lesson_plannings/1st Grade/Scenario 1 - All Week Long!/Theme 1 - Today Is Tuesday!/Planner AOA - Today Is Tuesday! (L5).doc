@@ -1,0 +1,198 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    h2 {
+        color: #1a5276;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # Today Is Tuesday! – Lesson # 5</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 50%;"><b>Lesson #:</b> 5</td>
+        <td style="width: 50%;"><b>Skills Focus:</b> Mediation</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 1st Grade (CEFR: Pre-A1.3)</td>
+        <td><b>Scenario:</b> All Week Long!</td>
+        <td><b>Theme:</b> Today Is Tuesday!</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p><b>Specific Objective:</b> Mediation: Text: Use pictures or objects to express ideas. Concept: Use facial expressions and simple gestures to help explain feelings or needs.</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p><b>Learning Outcome:</b> Mediation: Can use simple drawings or pictures to communicate days of the week to peers (e.g., drawing a picture of a calendar showing the days of the week). Can use gestures and facial expressions to express basic ideas about days of the week to others (e.g., pointing to a picture representing a specific day). Can clarify misunderstandings about days of the week using body language (e.g., pointing to the correct day on a calendar).</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2>The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 30%; color: #1a5276;">Stage & Description</th>
+            <th style="width: 55%; color: #1a5276;">Activities & Teacher Actions</th>
+            <th style="width: 15%; color: #1a5276;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p>Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p><b>Warm-up:</b> The teacher leads a "Days of the Week" chant and TPR activity. Students stand up and repeat each day of the week as the teacher shows a large flashcard for each day and performs a simple action (e.g., "Monday, Monday – school!" [miming writing], "Tuesday, Tuesday – play!" [miming throwing a ball]). The teacher emphasizes the pronunciation of /w/ in "weekend" and /d/ in "day".</p>
+                <p><b>Modeling:</b> The teacher holds up a flashcard for "Tuesday." The teacher then points to a large calendar on the board and points to the "Tuesday" space, saying clearly, "Today is Tuesday." The teacher models a facial expression for "busy" and gestures, "Tuesday is a busy day." Then, the teacher points to a flashcard for "Saturday," makes a relaxing facial expression, and gestures, "Saturday is relaxing. It is the weekend."</p>
+                <p><b>Clarification (CCQs):</b> The teacher uses visuals and gestures to check understanding.
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Pointing to a picture of Sunday, then to the "Monday" flashcard) "Is this Sunday?" (Students nod 'no' or shake head 'no').</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">(Showing a busy facial expression and gesture) "Does 'busy' mean quiet?" (Students shake head 'no').</li>
+                    </ul>
+                </p>
+            </td>
+            <td>10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 2 — Presentation</b></p>
+                <p>Input of new language/content connected to Scenario: "All Week Long!"</p>
+            </td>
+            <td>
+                <p><b>Material:</b> A sequence of large, colorful picture cards depicting typical activities for each day of the week (e.g., Monday: school, Tuesday: learning, Wednesday: playing, Thursday: reading, Friday: happy for weekend, Saturday: park, Sunday: family time). Simple phrases are written below each picture, e.g., "Monday: School day!" or "Saturday: Park day!".</p>
+                <p><b>Communicative Competence:</b> Using time-related vocabulary: Identifying words for days and weekends by using or pointing to them. Exchanging questions and answers about the current day using simple phrases like "Today is Monday."</p>
+                <p><b>Comprehension tasks:</b> The teacher displays the picture cards one by one.
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Gist questions:</b> The teacher holds up a picture card (e.g., a child playing in the park) and asks, "What day is this?" (Students point to the corresponding day on a smaller calendar replica on their desks, or use a day flashcard).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>True/False (gestural):</b> The teacher shows a picture (e.g., a child sleeping late) and says, "This is Tuesday." Students give a thumbs up for 'true' or thumbs down for 'false', or use a specific facial expression to indicate.</li>
+                    </ul>
+                </p>
+            </td>
+            <td>10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 3 — Preparation / Practice</b></p>
+                <p>Accuracy focus on Mediation</p>
+            </td>
+            <td>
+                <p><b>Communicative Skill & Content:</b> Using pictures, gestures, and facial expressions to communicate days of the week and associated feelings/activities. Grammar: Noun + verb + noun ("Today is Tuesday."), Present simple ("It is the weekend."). Vocabulary: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, weekend, day, week, busy, relaxing, exciting, quiet.</p>
+                <p><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled practice: "Day & Feeling Match."</b> The teacher provides students with small picture cards of days of the week and simple drawings of facial expressions (happy, sad, busy, relaxed). The teacher calls out a day, e.g., "Saturday is relaxing!" Students select the "Saturday" card and the "relaxed" face card and hold them up. Or the teacher shows a picture of an activity and asks "What day?" and students point to the correct day card.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled: "Gesture the Day's Activity."</b> The teacher names a day of the week (e.g., "Wednesday"). Students respond by using a simple gesture or facial expression that represents a common activity or feeling for that day (e.g., "Wednesday" - students mime reading a book or look thoughtful). The teacher might show a number card (e.g., "5") and ask "What day is after 5?", prompting students to use simple gestures.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair interaction: "Show Your Calendar Day."</b> Students work in pairs with their developing "Days of the Week Calendar" projects (simple drawings of each day with an activity). Student A points to a day on their calendar (e.g., a drawing for "Tuesday" showing school) and uses gestures/facial expressions to communicate the activity or feeling. Student B guesses the day and activity using gestures or a simple word (e.g., "Tuesday! School!"). They take turns.</li>
+                </ul>
+            </td>
+            <td>15 min</td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 4 — Performance / Production</b></p>
+                <p>Communicative task where students USE the language in a realistic scenario: "All Week Long!"</p>
+            </td>
+            <td>
+                <p><b>Task: "Present My Calendar Day!"</b> Students will present one or two days from their "Days of the Week Calendar" project to a small group or the class. The focus is on Mediation: using their drawings, pictures, gestures, and facial expressions to communicate the day and the associated activity or feeling. They will mediate the information visually and non-verbally.</p>
+                <p><b>Task Format:</b> Students hold up their "Days of the Week Calendar" to their small group or to the front of the class. They point to a specific day (e.g., Tuesday) and use clear gestures (e.g., miming holding a book for school, showing a happy face for playing) to explain what happens on that day. They might say simple phrases like "Today is Tuesday. School day!" or "It is Saturday. Relaxing." while pointing to their drawing.</p>
+                <p><b>Connection to Theme: "Today Is Tuesday!" and Scenario: "All Week Long!":</b> Students will demonstrate their understanding of the sequence of days and their associated activities. They will specifically practice communicating about "today" and other days of the week, including "weekend," using their visual aids and body language to ensure their peers understand.</p>
+                <p><b>Focus:</b> Fluency in communicating ideas about the calendar using mediation skills (gestures, pictures). Collaborative interaction as students try to understand each other's visual presentations and offer simple feedback (e.g., nodding, pointing to the same day).</p>
+            </td>
+            <td>10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p>Formative assessment strategy</p>
+            </td>
+            <td>
+                <p><b>Formative Assessment Strategy:</b> Teacher observation checklist during the "Present My Calendar Day!" task. The teacher circulates, making notes on students' ability to mediate information.</p>
+                <p><b>Assessment Task:</b> Each student, either individually or in a pair with minimal interaction, presents a chosen day (or two) from their completed "Days of the Week Calendar" project. They must clearly use their drawings/pictures, gestures, and facial expressions to explain what happens on that day. For example, they point to "Tuesday," show a 'writing' gesture, and a 'busy' face. They should also be able to respond to a teacher's prompt like "What day is today?" by pointing to the correct day on their calendar and making a relevant gesture.</p>
+                <p><b>Evaluation Criteria:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity of Mediation:</b> Student effectively uses drawings/pictures, gestures, and facial expressions to convey the specific day and its activity/feeling. (e.g., points accurately, gestures are clear).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Use of Target Vocabulary:</b> Student attempts to use key vocabulary (e.g., "Monday," "Tuesday," "weekend," "today") and simple phrases (e.g., "Today is Tuesday," "It is relaxing") intelligibly during the presentation.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Intelligible Pronunciation:</b> Student's pronunciation of day names and key vocabulary is understandable (e.g., clear /w/ in "weekend" and /d/ in "day").</li>
+                        <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration (if paired):</b> Student actively listens and attempts to interpret peers' mediated messages or clarifies misunderstandings using body language.</li>
+                    </ul>
+                </p>
+                <p><b>Student Self-Assessment / Exit Ticket:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"I can show my calendar and use my hands to tell about a day." (Students draw a happy face or a sad face next to this statement).</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"I can understand when my friend shows me a day on their calendar." (Students color a star for yes, or leave blank for not yet).</li>
+                    </ul>
+                </p>
+            </td>
+            <td>10 min</td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p><b>Student Self-Reflection:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What was easy to show with pictures and gestures today when we talked about the days of the week?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"What was difficult to explain with only pictures or gestures about the days?"</li>
+                    </ul>
+                </p>
+                <p><b>Teacher Reflection:</b>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">What aspects of the mediation tasks, especially using pictures, gestures, and facial expressions to communicate about the "Days of the Week Calendar," worked well for the 1st graders? Did they effectively clarify misunderstandings using body language?</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">What adjustments or additional scaffolds are needed for students who struggled to express or understand ideas about the days of the week through non-verbal means? (e.g., more direct modeling of specific gestures, providing more concrete visual aids, simpler tasks).</li>
+                    </ul>
+                </p>
+                <p><b>Connection to next lesson:</b> This lesson concludes the "Today Is Tuesday!" theme focusing on days of the week. The next lesson will transition to a new theme, possibly building on daily routines or activities, further integrating the concept of time and sequencing.</p>
+            </td>
+            <td>5 min</td>
+        </tr>
+    </tbody>
+</table>

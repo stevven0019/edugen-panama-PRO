@@ -1,0 +1,227 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 16px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .aoa-title {
+        color: #1a5276;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # Our Community Is Famous For... – Lesson # 4</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td><b>Lesson #:</b> 4</td>
+        <td><b>Skills Focus:</b> Writing</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 6th Grade (CEFR: A2.1)</td>
+        <td><b>Scenario:</b> Our Community News</td>
+        <td><b>Theme:</b> Our Community Is Famous For...</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p><b>Specific Objective:</b> Writing: Write a short descriptive text about personal plans for various activities.</p>
+            <p><b>Learning Outcome:</b> Writing: Can write personal journal entries describing recent community events they attended (e.g., 'Last weekend, I went to the Desfile de las Mil Polleras. I liked the colorful dresses and the music. It was really fun!').
+            Can write short descriptions of personal plans for upcoming community activities (e.g., 'Next month, I will visit Pedasi for Carnivals. I want to see the parade and the Carnival Queen's floats.').
+            Can create a simple community news report about a local event using descriptive adjectives (e.g., 'The school fair was last Friday. There were games, food stands, and music. Many students helped organize it, and everyone had fun.').</p>
+        </td>
+    </tr>
+</table>
+
+<div class="aoa-title">The Six Action-Oriented Approach (AOA) Lesson Stages</div>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th>Stage & Description</th>
+            <th>Activities & Teacher Actions</th>
+            <th>Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p>Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p><b>Warm-up:</b> The teacher shows pictures of different famous community events in Panama (e.g., Desfile de las Mil Polleras, Carnivals, local community fairs, Artisan markets). Students briefly brainstorm adjectives to describe them (e.g., *colorful*, *traditional*, *exciting*, *fun*). The teacher writes the adjectives on the board. Students quickly say one thing they *liked* or *saw* during a past event (e.g., "I liked the *colorful* dresses at the parade!").</p>
+                <p><b>Modeling:</b> The teacher writes two simple sentences on the board describing a past community event from their own experience, using past simple tense and descriptive adjectives. For example: "Last year, I visited the *colorful* Desfile de las Mil Polleras in Las Tablas. I saw many people wearing *beautiful* polleras." The teacher then writes a third sentence introducing a future plan related to it: "Next year, I want to participate in the parade." The teacher models pronunciation of past tense -ed endings in 'visited' and 'liked'.</p>
+                <p><b>Clarification (CCQs):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Did I visit the parade now or in the past?" (Expected answer: In the past.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What kind of polleras did I see?" (Expected answer: Colorful, beautiful.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What is my plan for next year?" (Expected answer: To participate.)</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 2 — Presentation</b></p>
+                <p>Input of new language/content connected to Scenario: "Our Community News"</p>
+            </td>
+            <td>
+                <p><b>Material:</b> A short community news report or a journal entry describing a local event using past simple, descriptive adjectives, and a mention of future plans. For example:</p>
+                <p style="text-align: justify;"><i>"Last Saturday, our neighborhood celebrated a wonderful Community Fair. Many families gathered in the park. There were exciting games and delicious food stands. Mrs. Clara, a *friendly* artisan, sold *colorful* *sombreros pintaos*. I loved the traditional music, but I didn't like the long line for the popcorn! Next year, I plan to help decorate the park for the fair."</i></p>
+                <p><b>Communicative Competence:</b> Sharing past experiences and preferences; Describing people and community members.</p>
+                <p><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist question:</b> "What was the main event in the news report?" (Expected answer: A Community Fair.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> Students read sentences and mark them T or F based on the text.</li>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">"The fair was last Sunday." (F)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"Mrs. Clara is an artisan." (T)</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">"The reporter liked the music and the popcorn line." (F)</li>
+                    </ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information matching:</b> Match adjectives from the text with the nouns they describe (e.g., *friendly* -> artisan, *colorful* -> *sombreros pintaos*).</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 3 — Preparation / Practice</b></p>
+                <p>Accuracy focus on Writing</p>
+            </td>
+            <td>
+                <p><b>Communicative Skill & Content:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar:</b> Past simple tense (regular and irregular verbs), compound sentences with 'but', adjectives for describing physical appearance and events (e.g., *colorful, traditional, friendly, excited, proud, tall, short, curly hair, black eyes*).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Vocabulary:</b> *community, neighborhood, reporter, news, mural, festival, carnival, parade, community fair, artisan, tradition, Pollera, sombrero Pintao, cultural event, Carnival float, Carnival Queen, market, banner, report, describe, interview, celebrate, participate, decorate, gather, prepare*.</li>
+                </ul>
+                <p><b>Detailed Procedure:</b></p>
+                <ol>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Controlled Practice - Sentence Completion:</b> The teacher provides sentences about community events with blanks. Students complete them using appropriate past simple verbs or descriptive adjectives from a word bank.
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Example: "Last month, I ______ (visit/celebrate) the *______* (friendly/exciting) *festival*."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Example: "The *______* (tall/chubby) *Carnival Queen* ______ (wore/saw) a *______* (soft/colorful) *Pollera*, but she ______ (didn't like/liked) the loud music."</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Semi-controlled Practice - Sentence Building:</b> The teacher provides prompts or pictures of community members and events. Students write two sentences for each, using past simple and at least one adjective, and optionally 'but' for a compound sentence.
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Example 1 (Picture of an artisan with curly hair): "The *artisan* had *curly hair*. He *prepared* a *traditional* *sombrero Pintao*."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Example 2 (Picture of a parade): "We *watched* the *parade*. It was *colorful*, but the *Carnival float* *moved* slowly."</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pair Writing & Peer Check:</b> In pairs, students choose one of the pictures or events from the previous activity and collaboratively write a short 3-4 sentence paragraph describing it, including what happened, a description of a person or thing, and one like/dislike using 'but'. They then exchange their paragraph with another pair to check for correct past tense verbs and adjective use.</li>
+                </ol>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 4 — Performance / Production</b></p>
+                <p>Communicative task where students USE the language in a realistic scenario: "Our Community News"</p>
+            </td>
+            <td>
+                <p>Students will act as "Community Reporters" and write a short news report for "Our Community News" newspaper. They will describe a recent community event they attended or observed, and include a personal plan for a future related activity.</p>
+                <p><b>Task Format:</b> Individual Written Report.</p>
+                <p><b>Instructions:</b></p>
+                <ol>
+                    <li style="margin-bottom: 4px; text-align: justify;">Think about a community event you remember (e.g., *festival, parade, community fair, market*) or an important community member.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Write a short descriptive text (5-7 sentences) about this event or person.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Include:
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">What happened or who is the person? (Use past simple tense for events or 'is'/'has' for descriptions).</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">At least three descriptive adjectives (e.g., *colorful, traditional, friendly, tall, excited, proud, curly hair, black eyes*).</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">One compound sentence using 'but' to express a preference or contrast (e.g., "I liked the music, but I didn't like the food.").</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">One sentence about a personal plan for a future related activity (e.g., "Next year, I will participate in the *parade*." or "I want to *describe* my *neighborhood* to a new *reporter*.").</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Give your news report a simple title (e.g., "My Community Fair," "Our Famous Artisan," "Carnival Plans").</li>
+                </ol>
+                <p>The teacher circulates, offering support, checking for use of target language, and prompting students to expand their ideas.</p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p>Formative assessment strategy</p>
+            </td>
+            <td>
+                <p><b>Assessment Task:</b> Students submit their written "Community News Report" from Stage 4.</p>
+                <p><b>Evaluation Criteria (Formative Rubric/Checklist):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of Past Simple Tense:</b> Correctly uses past simple verbs (e.g., *visited, celebrated, saw, liked, moved*).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Descriptive Adjectives:</b> Includes at least three relevant adjectives (e.g., *colorful, traditional, friendly, excited, tall, short, curly hair*).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Compound Sentences with 'but':</b> Correctly forms at least one compound sentence expressing preference/contrast.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Future Plans:</b> Clearly states one personal plan for a future activity.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity and Cohesion:</b> The text is easy to understand and organized.</li>
+                </ul>
+                <p><b>Student Self-Assessment / Exit Ticket:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was easy for me when writing my news report?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was difficult, and what grammar or vocabulary do I need to practice more?"</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p><b>Student self-reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"How did I use new words and grammar to describe my community events and plans?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What did I learn about writing a simple news report or journal entry in English?"</li>
+                </ul>
+                <p><b>Teacher reflection:</b> The use of structured sentence frames in practice activities greatly helped students form accurate sentences. Many students successfully integrated past tense and adjectives, but some struggled with forming compound sentences using 'but'. Next lesson, I will provide more explicit examples and a mini-recap on combining ideas with 'but', potentially using sentence starters for the upcoming integration project.</p>
+                <p><b>Connection to next lesson:</b> This lesson's focus on writing descriptive texts about community events and plans will directly feed into Lesson 5, where students will integrate their descriptions into a larger project, possibly a community banner or a short presentation, consolidating all the skills from the unit.</p>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

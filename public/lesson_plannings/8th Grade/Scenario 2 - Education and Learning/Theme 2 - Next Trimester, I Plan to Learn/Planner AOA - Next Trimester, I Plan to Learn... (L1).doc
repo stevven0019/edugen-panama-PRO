@@ -1,0 +1,214 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .section-title {
+        color: #1a5276;
+        font-size: 1.5em;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        font-family: Arial, sans-serif;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="banner">
+    <h1>Lesson Planner – Theme # Education and Learning – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tbody>
+        <tr>
+            <td style="width: 50%;"><b>Lesson #:</b> 1</td>
+            <td style="width: 50%;"><b>Skills Focus:</b> Listening</td>
+        </tr>
+        <tr>
+            <td><b>Grade:</b> 8th Grade (CEFR: A2.3)</td>
+            <td><b>Scenario:</b> Education and Learning</td>
+            <td><b>Theme:</b> Next Trimester, I Plan to Learn...</td>
+        </tr>
+        <tr>
+            <td><b>Date(s):</b> From ___ to ___</td>
+            <td><b>Learning Sequence Time:</b> 45–50 min</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p><b>Specific Objective:</b> Listening: Receptive: Infer implicit information when listening to current events. Interactive: Contribute to simple discussions on a variety of issues.</p>
+                <p><b>Learning Outcome:</b> Listening: Can infer simple implicit information from spoken narratives about educational-related activities by responding to guiding questions (e.g., "What topic is Ana learning about this trimester?" "She is learning about world history.").
+                Can follow and contribute to simple class discussions about education topics, showing comprehension of details (e.g., "What is Ana studying this trimester?" "She is learning computer science and English.").
+                Can listen for specific details in conversations about future studies (e.g., "What is Carlos planning to learn next trimester?" "History.").</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<div class="section-title">The Six Action-Oriented Approach (AOA) Lesson Stages</div>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 35%; color: #1a5276;">Stage & Description</th>
+            <th style="width: 50%; color: #1a5276;">Activities & Teacher Actions</th>
+            <th style="width: 15%; color: #1a5276;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Engagement, Modeling and Clarification)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher displays a collage of images on the board or projector, showing different school subjects (e.g., a math equation, a world map, a computer keyboard, a book about history, a person developing new skills). The teacher asks open-ended questions: "What do you see in these pictures?" "What subjects do you like to learn?" "What new skills would you like to develop?"</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher points to a picture (e.g., a world map) and says, "This is `history`. I am interested in `learning` `history` next `trimester`." The teacher writes the words `history`, `learn`, `trimester`, `skills`, `subject` on the board. The teacher models the pronunciation, focusing on stress in "I *am* learning" and "I *would* like," and highlighting the /ɪ/ sound in "skill" compared to /e/ in "head" (using `head` as a contrast for phonetic practice).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of the new vocabulary.
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Is `trimester` one month or three months?" (Expected answer: Three months.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Are `skills` things you already know, or things you want to `develop`?" (Expected answer: Things you want to develop.)</li>
+                </ul></p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Input of new language/content connected to Scenario: "Education and Learning")</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> An audio recording of a short dialogue (approx. 1.5-2 minutes) between two 8th-grade `classmates`, Ana and Carlos, discussing their `career goals` and what `subjects` or `courses` they plan to `study` next `trimester` at school. The dialogue includes phrases like "She is `learning` computer science and English," "He is interested in `learning` history," and "I `would like` to `study` math."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Infer implicit information when listening to current events; listen for specific details in conversations about future studies.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>First listening (Gist):</b> Students listen once. The teacher asks, "What are Ana and Carlos talking about? Are they talking about vacation or their school plans?" (Expected answer: School plans / what they will learn.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Second listening (Specific details):</b> Students listen again while completing a gap-fill exercise or True/False statements based on the dialogue. For example:
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Ana is `learning` about ______ `history`. (Fill in: world)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Carlos is interested in `learning` a new _______. (Fill in: language)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">True/False: Ana wants to `develop` her `skills` in computer science.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;">After the second listening, the teacher plays specific sentences again, drawing attention to the pronunciation of modals (e.g., "I *would* like") and continuous forms (e.g., "I *am* learning") and the minimal pairs like /ɪ/ in `skill` vs /iː/ in `skull` (if applicable in context) or /æ/ in "had" vs /e/ in "head" if they appear in the dialogue.</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Accuracy focus on Listening)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Listening for present continuous for ongoing actions, gerunds after prepositions, modals for ability and desires. Practicing vocabulary: `education`, `skills`, `knowledge`, `career goals`, `subject`, `course`, `trimester`, `history`, `classmate`, `learn`, `study`, `develop`, `grow`, `achieve`.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 1 (Controlled Listening & Gap-fill):</b> The teacher distributes a worksheet with sentences from the dialogue, but with target vocabulary words or parts of grammar structures removed. Students listen to the audio one more time and fill in the missing words. Example: "Ana is interested in ______ new `knowledge`." (Answer: acquiring). "Carlos is planning on ______ a `scholarship`." (Answer: applying for).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 2 (Semi-controlled Listening & Pronunciation Focus):</b> The teacher plays specific sentences from the dialogue, pausing after each one. Students listen and repeat chorally, then individually, focusing on the correct stress patterns in modals ("I *would* like") and continuous forms ("She *is* `learning`") and discriminating minimal pairs like `skill` vs. `skull` (if they occur). The teacher provides immediate feedback on pronunciation.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Activity 3 (Listening for Error Correction):</b> In pairs, students receive a short, slightly altered transcript of a part of the dialogue, containing 2-3 intentional errors related to vocabulary or grammar (e.g., a wrong `subject` mentioned, an incorrect gerund form). They listen to the original audio segment again and identify the errors in their transcript, discussing and correcting them together. This encourages active and critical listening for accuracy.</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">12-15 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Communicative task where students USE the language in a realistic scenario: "Education and Learning")</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Partner Interview / Role-play. Students work in pairs. Student A acts as an interviewer, asking Student B about their plans for the `next trimester`. Student B shares their `educational` `goals`, `subjects` they plan to `study`, `skills` they want to `develop`, and `career goals` they might have. Student A actively listens, takes notes, and asks follow-up questions, offering encouragement.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher provides sentence starters and questions on the board for both interviewer and interviewee.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Interview Questions (Student A): "What `subject` are you planning to `study` next `trimester`?" "What `skills` are you interested in `learning`?" "What `knowledge` do you want to `grow`?" "How are you doing in [current `subject`]?" "What `career goals` do you have?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Interviewee Responses (Student B): "I am `learning`..." "I would like to `study`..." "I am interested in `developing` my `skills` in..." "I want to improve my `math skills`." (incorporating `Present continuous`, `Gerunds after prepositions`, `Modals` from target grammar, and core vocabulary.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Student A should listen `actively` and take brief notes about Student B's responses. They should also practice `offering encouragement`: "You should keep practicing to get better."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">After 5 minutes, students switch roles. The teacher circulates, observing listening comprehension and use of target language.</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">(Formative assessment strategy)</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist and Peer Assessment.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Each student (Student A from the previous activity) briefly presents their partner's `learning` plans for the next `trimester` to the class (1-2 sentences). This demonstrates their listening comprehension and ability to recall specific details from the interview.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria (Teacher & Peer):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Intelligible pronunciation:</b> Clear stress patterns in modals and continuous forms; understandable `vowel` sounds (e.g., `skill`, `head`).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target vocabulary:</b> Correctly uses at least 5 new vocabulary words (e.g., `trimester`, `subject`, `learn`, `skills`, `develop`).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity of comprehension:</b> Accurately reports at least two specific details about their partner's plans.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration:</b> Actively listened and responded appropriately during the interview.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete a quick exit ticket:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"I can identify specific `subjects` and `skills` when listening to someone talk about future `education` plans. (Circle: Yes / Mostly / A little)"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"One new `knowledge` or `skill` I want to `develop` next `trimester` is..."</li>
+                </ul>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was easy or difficult for me when listening for specific details about `learning` `goals` today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"How can I `actively` improve my `listening skills` for the `next class` to understand more about `education` `topics`?"</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What aspects of the `listening activities` worked `well`? Were the audio materials appropriate for A2.3?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What adjustments or scaffolds are needed for students who struggled with inferring implicit information or identifying specific details? Perhaps providing more visual cues or simpler sentences for the initial listening tasks.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">How `well` did students integrate the new `vocabulary` (e.g., `trimester`, `skills`, `subject`) and grammar (present continuous, gerunds, modals) during the production stage?</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence:</b> The vocabulary and themes introduced in this listening lesson will be reinforced and expanded in the next lesson, which will focus on `Reading Comprehension` using a short text about students' `educational` `goals` and `career goals` for the `next trimester`.</p>
+            </td>
+            <td><p style="text-align: justify; margin: 4px 0 8px 0;">3-5 min</p></td>
+        </tr>
+    </tbody>
+</table>

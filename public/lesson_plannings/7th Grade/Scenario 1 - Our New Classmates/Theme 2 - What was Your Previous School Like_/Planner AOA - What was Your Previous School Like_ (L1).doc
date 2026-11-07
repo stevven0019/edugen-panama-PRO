@@ -1,0 +1,214 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+        font-style: italic;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+        font-size: 0.95em;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px 12px;
+        text-align: left;
+        vertical-align: top;
+    }
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    .full-width-cell {
+        grid-column: 1 / -1; /* Spans across all columns in a grid layout */
+    }
+    .aoa-stage-title {
+        color: #1a5276;
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # Our New Classmates – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td><b>Lesson #:</b> 1</td>
+        <td><b>Skills Focus:</b> Listening</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 7th Grade (CEFR: A2.2)</td>
+        <td><b>Scenario:</b> Our New Classmates</td>
+        <td><b>Theme:</b> What was Your Previous School Like?</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3" class="full-width-cell">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Listening: Receptive: Identify specific information in descriptions and narratives. Interactive: Respond appropriately to spoken questions in familiar settings.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Listening: Can identify specific details in conversations about classmates' backgrounds and school experiences (e.g., "I'm from Chiriqui, and my old school had a big garden." "In my previous school, classes started at 7 a.m.").
+            Can recognize key information in discussions about school schedules and community activities (e.g., "In my new school, I study in the afternoon, but before I had morning classes." "My new school organizes a book fair every September where students can buy and exchange books.").
+            Can respond to simple questions about classmates' previous schools and new routines (e.g., "Where did you go to school before?" "I studied in San Miguelito." "Do you like the afternoon schedule?" "Yes, because I have mornings free for doing homework.").</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h2 class="aoa-stage-title">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th>Stage & Description</th>
+            <th>Activities & Teacher Actions</th>
+            <th>Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 1 — Warm-up / Pre-task</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher displays pictures of two contrasting schools (e.g., one large and modern, one small and traditional, both with playgrounds and cafeterias). The teacher points to details and asks, "What do you see?" "Is it a big school or a small school?" "Does it have a playground?" "Is it an old school or a new school?" Students call out words they know. The teacher introduces the idea of new classmates joining the class and how they might come from different previous schools.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher says, "Hello everyone! I'm Mr./Ms. [Teacher's Name]. I used to study in a small school. My previous school was called 'El Porvenir'. It had a friendly atmosphere, but it didn't have a big library. Now, I work here at [Current School's Name], which is bigger and has a modern library." The teacher clearly models pronunciation of key vocabulary like 'previous school', 'new classmate', 'library', 'playground', 'cafeteria', 'schedule', and 'friendly', emphasizing the endings of plurals and third-person singular verbs (/s/, /z/, /ɪz/) as they arise (e.g., "schools" /z/, "classmates" /s/, "teaches" /ɪz/).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of key terms.
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Is your 'previous school' the school you are in now, or the school before this one?" (Expected answer: "The school before.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"If a school has a 'big library', can you read many books there?" (Expected answer: "Yes, many books.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"If a school is 'noisy', is it quiet or loud?" (Expected answer: "Loud.")</li>
+                </ul></p>
+            </td>
+            <td>___ / ___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 2 — Presentation</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to Scenario: "Our New Classmates".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> Audio recording of two new 7th-grade students (Sofia and Daniel) introducing themselves and briefly describing their previous schools and some differences with their new school. The dialogue uses Present Simple and Past Simple to describe habits and features, along with comparatives.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> The students will develop their listening comprehension skills to identify specific details about classmates' backgrounds and school experiences, and recognize key information in descriptions about school schedules and facilities.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>First listening (Gist):</b> The teacher tells students: "Listen carefully. Who are the people talking? What are they talking about?" Students raise their hands to answer (Sofia and Daniel, their old and new schools).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Second listening (Specific information - True/False):</b> Students listen again and decide if statements are True (T) or False (F).
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">"Sofia's previous school had a big library." (T)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"Daniel's old school was bigger than his new school." (F)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"Sofia's classes started at 7 a.m. in her old school." (T)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"The new school has a noisy cafeteria." (F)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"Daniel usually plays basketball during recess." (T)</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Third listening (Information matching):</b> The teacher provides a worksheet with two columns: "Sofia's Old School" and "Daniel's Old School". Below are features (e.g., "small", "big garden", "7 a.m. classes", "friendly teachers", "quiet library"). Students listen and match the features to the correct student's previous school.</li>
+                </ul></p>
+            </td>
+            <td>___ / ___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 3 — Preparation / Practice</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy focus on Listening.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Students will practice listening for specific grammatical structures (Present and Past Simple for descriptions, comparatives) and target vocabulary (classmate, school, community, schedule, recess, cafeteria, playground, library, previous, new, big, small, friendly, noisy, quiet). They will also focus on phonemic awareness by identifying /s/, /z/, /ɪz/ sounds in plurals and third-person singular verbs heard in the audio.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled practice – Gap-fill listening:</b> The teacher plays the audio again, pausing at key sentences. Students have a transcript with missing words related to school features, schedules, or descriptions. Example: "My previous school ________ (was/is) very ________ (small/big), but it had a ________ (big/small) ________ (library/playground)." Students listen and write the missing words. Focus on verbs 'used to', 'was', 'had', 'is', 'starts'.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled practice – Sentence identification:</b> The teacher reads aloud sentences based on the audio, some slightly altered. Students listen and raise a green card if the sentence is exactly what they heard or matches the information, and a red card if it's different. This focuses on careful listening for details. Example: "Sofia’s old school was smaller than her new one." (Red, it was bigger). "Daniel's new school has a very friendly community." (Green). The teacher also includes words with the target sounds for plurals/3rd person singular (e.g., "The school *has* many *books*." "He *plays* outside." "She *teaches* English.") and asks students to listen for these specific sounds.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair interaction – Peer checking and asking:</b> In pairs, students receive a short list of questions: "Where did Sofia go to school before?" "What was Daniel's previous school like?" "Does Sofia like her new schedule?" They listen to the audio one more time (or refer to their notes) and then take turns asking and answering the questions with their partner, practicing responding appropriately. The teacher circulates, listening for accurate information recall and appropriate responses, and providing feedback on pronunciation, especially the /s/, /z/, /ɪz/ endings.</li>
+                </ul></p>
+            </td>
+            <td>___ / ___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 4 — Performance / Production</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students USE the language in a realistic scenario: "Our New Classmates".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative task:</b> "Getting to Know Our New Classmates' Previous Schools". Students will listen to short audio clips of three *other* "new classmates" (fabricated characters) describing their previous schools and fill out an information grid/profile. This task focuses entirely on listening for specific details, comparing information, and recognizing preferences.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task format:</b> Each student receives a "New Classmate Profile" worksheet with sections for three different students (e.g., Ana, Carlos, Elena). For each student, there are fields to complete based on listening: "Name", "Previous School Location", "Previous School Description (e.g., big/small, library, playground)", "Favorite thing about previous school", "Least favorite thing", "New School comment". The teacher plays short (30-45 second) audio clips, one for each "new classmate". Students listen to each clip and fill in the corresponding section of their profile. The audio will incorporate Present and Past Simple, comparatives, and target vocabulary.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to Theme and Scenario:</b> This activity directly simulates learning about new classmates and their previous school experiences, requiring students to actively listen for and extract information to build a profile. It reinforces the theme "What was Your Previous School Like?" and the scenario "Our New Classmates."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Focus:</b> The primary focus is on listening comprehension for specific details and overall understanding of descriptions and narratives. Students are expected to demonstrate fluency in comprehending spoken English at an A2.2 level, identifying key features, preferences, and simple comparisons.</p>
+            </td>
+            <td>___ / ___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 5 — Assessment / Post-task</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment strategy.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist during the production task and review of completed "New Classmate Profile" worksheets.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students submit their completed "New Classmate Profile" worksheets (from Stage 4) for review. The teacher collects these to check for accuracy in identifying and recording specific information heard.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Accuracy of Information:</b> Student accurately identifies specific details about each "new classmate's" previous school (e.g., location, key features, preferences).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Identification of Key Vocabulary:</b> Student demonstrates understanding of target vocabulary by correctly identifying relevant words and phrases from the audio input (e.g., 'previous school', 'library', 'playground', 'noisy', 'friendly').</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Receptive Grammar:</b> Student correctly identifies instances of Past Simple and Present Simple descriptions, and comparatives from the audio.</li>
+                </ul></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete an exit ticket with the following prompts:
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"One new thing I learned about listening for details was..."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"I can identify specific details about a classmate's previous school (e.g., where they went, what it was like)." (Yes/Somewhat/No)</li>
+                </ul></p>
+            </td>
+            <td>___ / ___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <h3 class="aoa-stage-title">STAGE 6 — Reflection</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Student and Teacher Reflection.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Reflection:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was the easiest part about listening to the descriptions today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was the most challenging part, and what can I do to improve my listening next time?"</li>
+                </ul></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher Reflection:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>What worked well:</b> The warm-up effectively engaged students. The scaffolded listening tasks (gist, T/F, matching) helped build confidence before the production task. Students showed good engagement in identifying key vocabulary and simple past/present descriptions. The pronunciation practice of /s/, /z/, /ɪz/ sounds was well-received when integrated with specific words.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Adjustments and scaffolds needed for next lesson:</b> Some students struggled with distinguishing between 'used to' and simple past in rapid speech. More explicit instruction and practice on these grammatical points in listening exercises might be needed. For future lessons, I could include short visual aids alongside audio to support comprehension for struggling learners. The listening pace for the production task might need slight adjustment based on overall class performance.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Connection to next lesson (Lesson 2 – Reading Comprehension):</b> This lesson introduced core vocabulary and concepts related to describing previous schools and new routines through listening. In Lesson 2, students will encounter a written text (e.g., short articles or blog posts) that uses this same vocabulary and grammar, allowing them to consolidate their understanding through reading comprehension exercises.</li>
+                </ul></p>
+            </td>
+            <td>___ / ___ min</td>
+        </tr>
+    </tbody>
+</table>

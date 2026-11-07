@@ -1,0 +1,154 @@
+﻿<div style="background-color: #1a5276; color: white; padding: 15px; text-align: center; border-radius: 8px;">
+    <h1 style="margin: 0;">Lesson Planner – Theme # ___ – Lesson # 5</h1>
+    <p style="margin: 5px 0 0 0; font-size: 1.1em;">Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr style="border: 1px dashed #333;">
+        <td style="padding: 8px; border: 1px dashed #333; width: 50%;"><b>Lesson #:</b> 5</td>
+        <td style="padding: 8px; border: 1px dashed #333; width: 50%;"><b>Skills Focus:</b> Mediation</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="padding: 8px; border: 1px dashed #333;"><b>Grade:</b> 12th Grade (CEFR: B1.3)</td>
+        <td style="padding: 8px; border: 1px dashed #333;"><b>Scenario:</b> Checking in on Health</td>
+        <td style="padding: 8px; border: 1px dashed #333;"><b>Theme:</b> Using Health Technology to Form Good Habits</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="padding: 8px; border: 1px dashed #333;"><b>Date(s):</b> From ___ to ___</td>
+        <td style="padding: 8px; border: 1px dashed #333;" colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr style="border: 1px dashed #333;">
+        <td style="padding: 8px; border: 1px dashed #333;" colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Mediation: Communication: Resolve misunderstandings in team interactions. Communication: Assist in clear communication of plans and roles.</p>
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Mediation: Can resolve misunderstandings in team discussions about health and balance strategies, using clarifying questions and paraphrasing (e.g., "So, you're saying we should focus on stress management before discussing fitness goals?")
+            Can assist in clearly communicating roles and responsibilities during group projects on wellness topics involving health technology (e.g., "You'll handle the section on apps for tracking nutrition, and I will focus on exercise routines.")
+            Can use gestures, visuals, and simple language to help clarify complex health-related information in team settings (e.g., drawing a diagram of a balanced diet while explaining portion sizes).</p>
+        </td>
+    </tr>
+</table>
+
+<h2 style="color: #1a5276;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr style="border: 1px dashed #333;">
+            <th style="padding: 8px; border: 1px dashed #333; background-color: #f2f2f2; width: 33%;">Stage & Description</th>
+            <th style="padding: 8px; border: 1px dashed #333; background-color: #f2f2f2; width: 33%;">Activities & Teacher Actions</th>
+            <th style="padding: 8px; border: 1px dashed #333; background-color: #f2f2f2; width: 33%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border: 1px dashed #333;">
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 1 — Warm-up / Pre-task</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification</p>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> Students form their project groups for the "Health Technology App Review." The teacher asks each group to briefly share one feature of their chosen app that they anticipate might be complex or difficult for the audience to understand during their presentation. This activates their mediation mindset by focusing on potential communication gaps.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher models how to clarify a complex health-related concept using paraphrasing and modal verbs. For example, "Let's say your app has a 'biofeedback training' feature for *stress* *management*. Instead of just saying 'it uses biofeedback,' you *could* mediate by saying, 'This feature *monitors* your physical responses like heart rate, and *might suggest* *mindfulness* exercises to help you *relax*. So, it's essentially teaching you to *manage* your body's reaction to *stress* more effectively.' The teacher also models the voiced /b/ in 'balance' and 'boost' and voiceless /s/ in 'stress' and 'sleep' while explaining.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of mediation strategies.
+                <ul style="margin-top: 4px; padding-left: 20px;">
+                    <li style="margin-bottom: 4px; text-align: justify;">"What does 'paraphrasing' mean in your own words?" (Expected: Rephrasing something in simpler terms.)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"Why is it important to anticipate misunderstandings during a presentation?" (Expected: To ensure clear communication and engage the audience effectively.)</li>
+                </ul>
+                </p>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">10 min</td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 2 — Presentation</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to Scenario: "Checking in on Health"</p>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> The teacher presents a short audio recording or a written transcript of a team discussing their health technology app project. The dialogue includes instances where one team member struggles to explain a feature (e.g., *sleep pattern* analysis, *hydration reminders*, *activity level* tracking) and another team member steps in to clarify or resolve a misunderstanding using clarifying questions, paraphrasing, and possibly simple visuals (e.g., "So, you're saying we should focus on *stress management* before discussing *fitness goals*?"). The dialogue also includes examples of polite suggestions ("You *might* want to try meditation.") and empathetic responses ("That sounds tough. I hope you're resting.").</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Resolve misunderstandings in team interactions. Assist in clear communication of plans and roles.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b>
+                <ul style="margin-top: 4px; padding-left: 20px;">
+                    <li style="margin-bottom: 4px; text-align: justify;">Students listen/read and identify at least two instances where a misunderstanding occurred and how it was resolved.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students identify phrases used to ask for clarification (e.g., "So, are you saying...?", "Could you explain...?") and phrases for offering a clearer explanation (e.g., "In other words...", "What I mean is...").</li>
+                </ul>
+                </p>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">8 min</td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 3 — Preparation / Practice</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy focus on Mediation</p>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Students practice using the present perfect continuous for ongoing health efforts, second conditional for hypothetical improvements, and modals for suggestions. They use vocabulary related to health, well-being, *stress*, *hydration*, *mindfulness*, and health technology. Pronunciation focus on voiced /b/ and voiceless /s/, and sentence rhythm with present perfect continuous. Pragmatic use of polite suggestions and empathy. Sociolinguistic use of appropriate tone.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                <ul style="margin-top: 4px; padding-left: 20px;">
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice - Clarification Match:</b> Students receive a worksheet with two columns. Column A has short, slightly ambiguous statements about health technology features (e.g., "This *tracker* uses bioimpedance for *hydration* levels."). Column B has three possible clarifying questions or rephrased explanations, one of which correctly mediates the information using target grammar (e.g., "So, you're saying if I *had been drinking* more water, the app *would show* an immediate *improvement* in my *hydration* levels?"). Students match them, ensuring correct grammar and vocabulary use.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice - Role Reversal Scenarios:</b> In pairs, students are given cards with scenarios related to their app review project. One student explains a part of their app review (e.g., how the app helps *maintain* *consistent* *habits*), using a slightly complex or technical term. The other student pretends to misunderstand. The first student then has to mediate by rephrasing, using clarifying questions, and suggesting ("You *might* need to drink more water during the day."). They swap roles for another scenario. The teacher reminds them to pay attention to sentence rhythm for present perfect continuous ("I have *been exercising* daily").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Collaborative Role Assignment:</b> In their project groups, students explicitly assign mediation roles for their upcoming "Health Technology App Review" presentation. They collaboratively write down specific phrases or strategies they will use if a team member is unclear or if the audience misunderstands. E.g., "If someone asks about the app's *flexibility* with different diets, Juan will say: 'So, you're asking if the app can *support* both vegetarian and keto diets?'" or "Maria will draw a quick diagram if we explain *portion sizes* related to *nutrition*."</li>
+                </ul>
+                </p>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">15 min</td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 4 — Performance / Production</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students USE the language in a realistic scenario: "Checking in on Health"</p>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> Students conduct their "Health Technology App Review" presentations in groups. During their presentation and the subsequent Q&A session, they are explicitly tasked with applying mediation strategies to ensure clear communication of their findings about the app's usability, effectiveness, and relevance to promoting a *balanced lifestyle* and *good habits*.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                <ul style="margin-top: 4px; padding-left: 20px;">
+                    <li style="margin-bottom: 4px; text-align: justify;">Each group presents their chosen health-tracking app, explaining its key features (e.g., *fitness tracking*, *hydration reminders*, *mindfulness* exercises) and their evaluation.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Within each group, assigned 'mediators' (or all members taking turns) actively listen for potential misunderstandings from peers or the audience.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Mediators use clarifying questions ("So, you're asking about the app's *feedback* system?"), paraphrase complex information ("What we mean is, it helps you *monitor* your *sleep pattern* so you can *improve* your *energy* levels."), and use gestures or simple visuals (e.g., drawing a diagram of how *activity levels* are *tracked*) to ensure everyone understands. They also assist in clearly communicating specific roles and responsibilities within their group's presentation, e.g., "You'll handle the section on apps for *tracking nutrition*, and I will focus on *exercise routines*."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students should incorporate modals for recommendations ("You *could* try setting daily *reminders*.") and polite expressions for suggestions. They also use the present perfect continuous to describe ongoing app usage or health efforts ("We *have been using* this app for a month to *track* our *habits*.").</li>
+                </ul>
+                </p>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">12 min</td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 5 — Assessment / Post-task</h3>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment strategy</p>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Groups present their "Health Technology App Review," and the teacher (and peers) evaluate their ability to mediate communication effectively during the presentation and Q&A.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria (Teacher Observation & Peer Assessment Checklist):</b>
+                <ul style="margin-top: 4px; padding-left: 20px;">
+                    <li style="margin-bottom: 4px; text-align: justify;">Resolves misunderstandings using clarifying questions and paraphrasing (e.g., "So, you're saying...").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Assists in clear communication of plans and roles within the team.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Uses gestures, visuals, or simple language to clarify complex health-related information (e.g., a diagram of a *balanced diet*).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Accurately uses present perfect continuous (e.g., "I *have been exercising* daily").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Appropriately uses second conditional and modals for suggestions (e.g., "If I *had* more free time, I *would* join...", "You *might* need to...").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Pronunciation is intelligible (voiced /b/, voiceless /s/, sentence rhythm for PPC).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Maintains a polite, empathetic, and respectful tone.</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b>
+                <ul style="margin-top: 4px; padding-left: 20px;">
+                    <li style="margin-bottom: 4px; text-align: justify;">"Describe one specific instance where you or a teammate successfully mediated a misunderstanding or clarified information during the presentation. What strategy did you use?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What is one strategy you will commit to using in future group projects to ensure clear communication of roles and tasks?"</li>
+                </ul>
+                </p>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">7 min</td>
+        </tr>
+        <tr style="border: 1px dashed #333;">
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <h3 style="color: #1a5276; margin-top: 0;">STAGE 6 — Reflection</h3>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b>
+                <ul style="margin-top: 4px; padding-left: 20px;">
+                    <li style="margin-bottom: 4px; text-align: justify;">"Thinking about our 'Health Technology App Review' presentation, how effectively did our group use mediation strategies to ensure everyone understood our findings and recommendations for *good habits*? What could we improve for next time to *boost* clarity?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"In what other real-life situations (e.g., explaining a complex school policy, describing a movie to a friend, presenting a project in another subject) could I apply these mediation skills to foster better *well-being* and understanding?"</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b> "Did students successfully employ mediation strategies during their app review presentations? Were the target grammar structures (present perfect continuous, second conditional, modals for possibility) naturally integrated into their mediation efforts, demonstrating B1.3 level competence? What adjustments are needed, particularly for students struggling with spontaneous clarification, using a polite tone, or restructuring complex sentences at this level for future collaborative tasks? How effective were the visuals and gestures in clarifying abstract health concepts?"</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson:</b> This lesson concludes our theme on "Using Health Technology to Form Good Habits." The mediation skills practiced today are vital for all future collaborative projects and real-life interactions, promoting clear and empathetic communication. We will begin a new theme focusing on global environmental *trends* next class, where clear communication and understanding will continue to be *essential*.</p>
+            </td>
+            <td style="padding: 8px; border: 1px dashed #333;">8 min</td>
+        </tr>
+    </tbody>
+</table>

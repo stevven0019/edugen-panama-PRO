@@ -1,0 +1,294 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: #ffffff;
+        padding: 15px 20px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    .aoa-stage-title {
+        background-color: #1a5276;
+        color: #ffffff;
+        padding: 8px 12px;
+        text-align: left;
+        font-size: 1.1em;
+        font-weight: bold;
+        border: 1px dashed #333;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # ___ – Lesson # 4</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 25%;"><b>Lesson #:</b> 4</td>
+        <td style="width: 75%;" colspan="2"><b>Skills Focus:</b> Writing</td>
+    </tr>
+    <tr>
+        <td style="width: 25%;"><b>Grade:</b> 11th Grade (CEFR: B1.2)</td>
+        <td style="width: 25%;"><b>Scenario:</b> International English</td>
+        <td style="width: 50%;"><b>Theme:</b> How English Is Used in Workplaces Globally</td>
+    </tr>
+    <tr>
+        <td style="width: 25%;"><b>Date(s):</b> From ___ to ___</td>
+        <td style="width: 75%;" colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Writing: Productive: Create narratives based on hypothetical scenarios. Interactive: Engage in writing exchanges about future aspirations.</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Writing: Can create narratives imagining future careers, highlighting the importance of English in global settings (e.g., "As a diplomat, I'll use English to communicate with people worldwide.")
+Can participate in writing exchanges about future career goals, describing how English will be beneficial and including relevant workplace contexts and detailed examples (e.g., "Learning English will help me communicate in an international business career by allowing me to negotiate contracts, participate in meetings, and collaborate with international partners.")
+Can write letters to classmates describing aspirations, mentioning English as a key skill (e.g., "I want to become a doctor and use English to read medical research from around the world.")</p>
+        </td>
+    </tr>
+</table>
+
+<h2 style="color: #1a5276; font-family: Arial, sans-serif;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 30%;">Stage & Description</th>
+            <th style="width: 50%;">Activities & Teacher Actions</th>
+            <th style="width: 20%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="aoa-stage-title" colspan="3">STAGE 1 — Warm-up / Pre-task (Engagement, Modeling and Clarification)</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> This stage activates students' prior knowledge, connects to the theme, and prepares them for the lesson's writing focus.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher demonstrates the target language, models pronunciation, and clarifies meaning for the students.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification:</b> The teacher checks for understanding using Concept Checking Questions (CCQs) and examples.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> Future Career Brainstorm & English Link.</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher displays pictures of various international professions (e.g., diplomat, engineer, international business manager, doctor, IT specialist).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students are asked to quickly write down 1-2 careers that interest them and briefly brainstorm (in English) how English might be *relevant* or *necessary* in those *workplaces*.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students share their ideas briefly in pairs, focusing on the connection between their chosen career and the *global* use of English. Example: "As an international business manager, I *must* use English for *communication* with partners from different *backgrounds*."</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher models how to express a career aspiration and explain the role of English using target grammar and vocabulary.</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher says: "I want to be a journalist. English *has become* a *dominant* language in global news, so I *could* use it to access international *academic resources* and *communicate* with people *worldwide*. It's *vital* for *cross-cultural communication*."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Teacher emphasizes the pronunciation of the long /e/ sound in words like 'relevant', 'necessary', 'effective' and the reduced vowels in 'communication' /kəˌmjuː.nɪˈkeɪ.ʃən/.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"If you want to be a doctor, *can you explain* why English *could* be *important*?" (Checks understanding of English's role).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"When I say 'cross-cultural communication,' does it mean talking only to people from your own country?" (Checks understanding of key vocabulary).</li>
+                </ul>
+            </td>
+            <td>5-7 min</td>
+        </tr>
+        <tr>
+            <td class="aoa-stage-title" colspan="3">STAGE 2 — Presentation</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Input:</b> New language/content presented in an authentic context related to "International English."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> Description of the genre, register, and format.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Specific competence from MEDUCA.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b> Activities to check understanding of the input.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Input of new language/content connected to Scenario:</b> "International English."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> An excerpt from a LinkedIn profile or an international job description (e.g., for a Project Coordinator in a multinational company).</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher projects or hands out a short text describing a professional role that explicitly mentions the need for English.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Example Text Snippet: "Our company is seeking a highly *proficient* Project Coordinator to manage *global interactions*. The ideal candidate *must* possess *excellent communication skills* in English, as they *will engage* with teams from diverse *backgrounds* across different time zones. Fluency in English *has become* *necessary* for effective *cross-cultural communication* within our *workplaces*. You *should* be able to *explain* complex ideas clearly and use *formal* language in all written *contexts*."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">The teacher highlights target vocabulary (e.g., *proficient, global interactions, communication skills, backgrounds, cross-cultural communication, workplaces, formal, contexts*) and grammar (e.g., Present Perfect: "English *has become*...", Modals: "*must*, *should*").</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Interprets and analyzes information from professional texts (e.g., job descriptions, professional profiles) to understand the requirements of international workplaces.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist question:</b> "What is the main purpose of this text?" (Expected answer: To describe a job and its requirements).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> "True or False: The job requires only basic English skills." (False). "True or False: The candidate will only communicate with people from their own country." (False).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information matching:</b> Students match phrases from the text to the skill it describes (e.g., "manage global interactions" -> international project management; "excellent communication skills in English" -> English fluency).</li>
+                </ul>
+            </td>
+            <td>8-10 min</td>
+        </tr>
+        <tr>
+            <td class="aoa-stage-title" colspan="3">STAGE 3 — Preparation / Practice</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Accuracy focus:</b> Writing.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Target grammar structures, vocabulary, and pragmatic functions.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b> Three sequential classroom activities for controlled to semi-controlled practice.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Present perfect, Modals (must, could, should, can), Indirect questions. Vocabulary: *English, workplaces, communication, skills, fluency, resources, business, diplomacy, lingua franca, backgrounds, access, contexts, cross-cultural communication, global, interactions, relevant, necessary, important, formal, proficient, engage, explain, express*.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice – Sentence Completion:</b> Students complete sentences related to English in global *workplaces* using target vocabulary and grammar.</li>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">Teacher provides a worksheet with sentences like:
+                            <ol>
+                                <li style="margin-bottom: 4px; text-align: justify;">English _______ a global *lingua franca* for international *business*. (become - present perfect)</li>
+                                <li style="margin-bottom: 4px; text-align: justify;">As an engineer, you _______ *communicate* technical designs to international partners. (must/should)</li>
+                                <li style="margin-bottom: 4px; text-align: justify;">Developing *fluency* in English _______ enhance your *cross-cultural communication skills*. (can/could)</li>
+                                <li style="margin-bottom: 4px; text-align: justify;">Many *workplaces* now require *employees* to have *proficient* English _______ to *access* international *resources*. (skills)</li>
+                            </ol>
+                        </li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Students complete individually, then check answers with a partner.</li>
+                    </ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice – Future Career Statements:</b> Students write 3-4 sentences about a hypothetical future career, integrating specific grammatical structures and vocabulary.</li>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">Teacher provides prompts: "Imagine you are a [chosen profession] in a global *context*." "Describe how English *has become* *relevant*." "What specific English *skills* *must* you *employ*?" "What *could* you *explain* to others?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Example from teacher: "As a future diplomat, I *must* *use* English for effective *diplomacy* and *cross-cultural communication*. English *has become* *necessary* to *connect* with leaders from various *backgrounds*. I *could* *express* complex ideas and *engage* in *formal* *interactions*."</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Students write their statements, ensuring they use at least one present perfect, two modals, and three vocabulary words from the list.</li>
+                    </ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Writing Exchange – Indirect Questions & Responses:</b> Students write indirect questions to their partner about their future career aspirations and the role of English, then write responses.</li>
+                    <ul>
+                        <li style="margin-bottom: 4px; text-align: justify;">In pairs, Student A writes three indirect questions for Student B about their chosen career and English. Example: "*Can you explain* how English *could* be *beneficial* in your chosen *business* career?" "I *wonder* if you *could tell* me which *skills* are most *important* for *global interactions*?"</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Student B writes answers to Student A's questions, using target grammar and vocabulary. They focus on *expressing* their ideas clearly and using appropriate *formal* language.</li>
+                        <li style="margin-bottom: 4px; text-align: justify;">Then, Student B writes questions for Student A, and Student A responds.</li>
+                    </ul>
+                </ul>
+            </td>
+            <td>15-18 min</td>
+        </tr>
+        <tr>
+            <td class="aoa-stage-title" colspan="3">STAGE 4 — Performance / Production</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative task:</b> Students use the language in a realistic scenario.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task format:</b> Description of the final product.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to Theme/Scenario:</b> Direct link to "How English Is Used in Workplaces Globally" and "International English."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Focus:</b> Fluency, collaborative interaction, and communicative task completion.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative task:</b> "My Global Career Aspiration Letter."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task format:</b> Students will write a short, semi-formal letter (approx. 100-120 words) to a classmate (or a future 'mentor') describing their future career aspiration and explicitly highlighting the importance of English in that *global workplace context*. They *must* include at least two examples of how English *has become* *beneficial*, use at least three modals for necessity/possibility, and integrate a minimum of five specific vocabulary words from the unit.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to Theme/Scenario:</b> The letter directly addresses "How English Is Used in Workplaces Globally" by requiring students to articulate its role in their chosen "International English" career paths. Students will imagine themselves in a future professional role and explain the *relevance* of English.</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Procedure:</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Teacher reviews the prompt and provides a simple outline for the letter (e.g., Opening, introducing career, explaining English's role with specific examples, expressing aspirations, closing).</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Students individually write their letters. Teacher circulates, offering support and reminding students to focus on using the target grammar (Present Perfect, Modals, indirect questions where appropriate) and vocabulary to *explain* and *express* their ideas clearly.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Teacher reminds students to consider the *sociolinguistic* aspect by using appropriate *formal* or semi-formal language for a professional aspiration letter, recognizing that effective *communication* needs adaptation for different *contexts*.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Students should ensure their writing is clear and coherent, creating a narrative that *explores* their future *interactions* and how English will *enhance* their *skills*.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+            <td>12-15 min</td>
+        </tr>
+        <tr>
+            <td class="aoa-stage-title" colspan="3">STAGE 5 — Assessment / Post-task</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative assessment strategy:</b> Description of how student learning will be assessed.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> What students perform or produce.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b> Specific aspects to be evaluated.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Reflective prompts.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative assessment strategy:</b> Peer assessment and teacher observation using a simplified rubric for the written letter.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students exchange their "My Global Career Aspiration Letter" with a peer for review, then submit it to the teacher.</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Peer Assessment:</b> Students use a checklist to evaluate their partner's letter on:
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Inclusion of career aspiration and English's role.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Use of Present Perfect (at least one example).</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Use of Modals (at least three examples).</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Integration of target vocabulary (at least five words, correctly used).</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Clarity and coherence of ideas.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Peers provide constructive feedback in writing.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria (Teacher):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Task Achievement:</b> Does the letter clearly describe a future career and the role of English? (Fully addresses the prompt).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar Accuracy:</b> Correct use of Present Perfect, Modals, and formation of indirect questions where attempted (minor errors acceptable at B1.2).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Vocabulary Range and Accuracy:</b> Effective use of target vocabulary (e.g., *communication, fluency, global, cross-cultural, relevant*) in appropriate *contexts*.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Coherence and Cohesion:</b> Ideas are logically organized, and the narrative flows smoothly.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Sociolinguistic Awareness:</b> Appropriate use of semi-formal language for the context.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students answer the following questions on a slip of paper before leaving:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What was one new word or grammar point you successfully used in your writing today?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"What is one challenge you faced while writing about English in future *workplaces*, and how *could* you improve it?"</li>
+                </ul>
+            </td>
+            <td>5-7 min</td>
+        </tr>
+        <tr>
+            <td class="aoa-stage-title" colspan="3">STAGE 6 — Reflection</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b> Guiding questions for learners.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b> What worked, what adjustments are needed.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson:</b> How this lesson transitions to the next in the sequence.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection prompt:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"How has writing about future careers in English today made you think differently about your own *aspirations* and the *importance* of *English*?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"*Can you explain* how improving your writing *skills* in English *could* open up more *opportunities* in different *workplaces*?"</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">The writing task effectively engaged most students in imagining their future and applying target language. The use of peer assessment for initial feedback was beneficial for identifying common errors before teacher review.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Some students still struggled with consistent use of the present perfect and correctly forming indirect questions. More controlled practice on these structures, perhaps through sentence unscramble activities focusing on these patterns, *could* be *useful* next time. Clarification on the nuances of *formal* language in writing *contexts* also *should* be reinforced. Ensuring the pronunciation of multisyllabic words like "communication" and "accessible" was part of spoken feedback where appropriate.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson in the theme sequence (Lesson 5 - Mediation & Integration):</b> This lesson's focus on describing future aspirations and the role of English provides a strong foundation for the next lesson. In Lesson 5, students will *integrate* and *mediate* the information learned throughout the unit (listening, reading, speaking, writing) to summarize and present their understanding of "How English Is Used in Workplaces Globally" as part of their 21st Century Skills Project. They *could* use their written letters as a starting point for a short presentation or a collaborative project, requiring them to *explain* their insights to a wider audience.</p>
+            </td>
+            <td>5-7 min</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,235 @@
+﻿<style>
+    .banner-title {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .banner-subtitle {
+        background-color: #f0f0f0;
+        color: #333;
+        padding: 10px;
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+    }
+    .aoa-stage-title {
+        background-color: #1a5276;
+        color: white;
+        padding: 8px;
+        font-weight: bold;
+        text-align: center;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+## SECTION 1 — HEADER BANNER
+<div class="banner-title">
+    Lesson Planner – Theme # Turn Off the Lights, Please. – Lesson # 3
+</div>
+<div class="banner-subtitle">
+    Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).
+</div>
+
+## SECTION 2 — LESSON IDENTIFICATION TABLE
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 50%;"><b>Lesson #:</b> 3</td>
+        <td style="width: 50%;"><b>Skills Focus:</b> Speaking</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 5th Grade (CEFR: A1.3)</td>
+        <td><b>Scenario:</b> Conservation Morning, Noon, and Night!</td>
+    </tr>
+    <tr>
+        <td><b>Theme:</b> Turn Off the Lights, Please.</td>
+        <td><b>Date(s):</b> From ___ to ___</td>
+    </tr>
+    <tr>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Speaking: Productive: Describe preferences and experiences. Interactive: Express likes and dislikes in group discussions.</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Speaking: Can describe preferences, using simple language (e.g., "I prefer saving energy wherever possible because it is beneficial and better for the environment."). Can express experiences during group discussions (e.g., "Saving energy is the best choice for the planet."). Can ask others about their likes and dislikes (e.g., "What do you think is the easiest way to save energy at home?" "Which do you prefer: switching off lights when not in use or using natural light?").</p>
+        </td>
+    </tr>
+</table>
+
+## SECTION 3 — AOA STAGES TABLE
+<h3 style="color: #1a5276; text-align: center; margin-top: 20px;">The Six Action-Oriented Approach (AOA) Lesson Stages</h3>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="width: 30%;" class="aoa-stage-title">Stage & Description</th>
+            <th style="width: 50%;" class="aoa-stage-title">Activities & Teacher Actions</th>
+            <th style="width: 20%;" class="aoa-stage-title">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Engagement, Modeling and Clarification</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher shows two large pictures on the board: Picture A shows a room with many lights on during the day and nobody in it. Picture B shows a room with natural light coming in and no electric lights on. The teacher asks students, "What do you see in Picture A? What about Picture B?" and "Which room is saving energy?" Students respond with short phrases. Then the teacher asks, "Do you turn off lights at home?" prompting simple "yes/no" or "sometimes" answers.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher models target language by pointing to Picture B and saying, "I prefer natural light. It's better for the environment." Then, the teacher says, "Turn off the lights when you leave a room." The teacher models the pronunciation of /sh/ in "shade" by saying, "The shade from the trees helps keep the house cool," and /t/ in "turn off" by saying, "Turn off the TV, please." The teacher emphasizes these sounds and has students repeat chorally.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">If you "turn off" something, is it still working? (No)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">If I say, "I prefer apples," do I like apples a little or a lot? (A lot / More)</li>
+                </ul>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">5-7 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Input of new language/content connected to Scenario: "Conservation Morning, Noon, and Night!".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> The teacher presents a short, illustrated dialogue between two 5th-grade students, Ana and Luis, titled "Our Energy-Saving Day." The dialogue describes how they save energy at home during morning, noon, and night. The dialogue includes imperatives, preferences, and comparatives/superlatives.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Dialogue Example:</b><br>
+                <b>Ana:</b> "Good morning, Luis! What do you do to save energy?"<br>
+                <b>Luis:</b> "Good morning, Ana! In the morning, I always open the curtains for natural light. It's easier than using electricity right away. I prefer to turn off the lights when I leave a room, even for a short time."<br>
+                <b>Ana:</b> "That’s smart! At noon, I make sure we use the shade to keep our house cool, so we don’t need the fan too much. And at night, I switch off all electronics and make sure the bulbs are energy-saving. Saving water is also important; turn off the faucet when brushing your teeth."<br>
+                <b>Luis:</b> "Yes, conserving water and energy is the most important for the environment! I always tell my family, 'Let's save energy wherever possible!'"</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Expressing simple preferences, giving basic suggestions, and comparing actions related to environmental conservation using simple language.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist Question:</b> What are Ana and Luis talking about? (Saving energy / conservation)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Luis uses natural light in the morning. (True)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Ana prefers to keep the fan on all day. (False)</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">They think saving energy is important. (True)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">8-10 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Accuracy focus on Speaking.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Students practice speaking with imperatives (e.g., "Turn off the lights when not in use." "Let's save energy."), comparatives (e.g., "easier than"), and superlatives (e.g., "the most important"). They use vocabulary such as "shade," "light," "morning," "night," "energy," "environment," "turn off," "save," "conserve," "easy," "easier," "most." Pronunciation practice for /sh/ and /t/ and phonemic awareness of prefixes like -re in "recycle" and suffixes like -er in "safer".</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b></p>
+                <ol>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Controlled Practice (Sentence Completion - Oral):</b> The teacher provides incomplete sentences on the board or flashcards. Students complete them orally using the target vocabulary and grammar. For example: "In the morning, use _____ light." (natural) "_______ off the lights!" (Turn). "Saving energy is _____ for the planet." (meaningful/important). "Recycle your old papers. 'Re-' means to do it _____." (again). "This is _____ than that." (easier/safer).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Semi-controlled Practice (Substitution Drill - Pair Work):</b> Students work in pairs. The teacher writes a sentence frame: "I prefer [Action] because it's [Reason/Adjective]." Students take turns saying the sentence, substituting the bracketed words with different actions and reasons related to energy saving, using the target vocabulary. For example:
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Student A: "I prefer <i>using natural light</i> because it's <i>easier</i>."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Student B: "I prefer <i>to turn off the TV</i> because it <i>saves electricity</i>."</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Student A: "I prefer to <i>recycle paper</i> because it's <i>better for the environment</i>."</li>
+                        </ul>
+                        The teacher monitors for correct pronunciation of /sh/ and /t/ and for correct use of comparatives like 'easier'.
+                    </li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pair Interaction (Question & Answer):</b> Students remain in pairs. They ask and answer questions about preferences and experiences related to conservation. The teacher provides question prompts:
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">"What do you think is the easiest way to save energy at home?"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"Which do you prefer: switching off lights when not in use or using natural light?"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">"What is the most important thing you do to help the environment?"</li>
+                        </ul>
+                        Students are encouraged to use phrases like "I prefer..." and include comparatives/superlatives in their answers.</li>
+                </ol>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">15 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Communicative task where students USE the language in a realistic scenario: "Conservation Morning, Noon, and Night!".</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task Format:</b> "Conservation Club Discussion." Students work in small groups (3-4 students). They imagine they are members of a school's "Conservation Club" planning a campaign for "Conservation Morning, Noon, and Night!" Their task is to discuss and agree on the three most important actions for students to take at different times of the day to save energy and water, linked to the theme "Turn Off the Lights, Please."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">Each group discusses actions for morning, noon, and night.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">Students express their preferences and opinions using phrases like, "I prefer to...", "I think it's easier to...", "This is more important than that...", "Let's turn off...", "This is the most important action for morning/noon/night."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">They must try to use at least one imperative, one comparative, and one superlative in their discussion.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">After the discussion, each group shares their "top three" actions with the class, explaining their choices briefly.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher's Role:</b> Circulates, observes, provides support, and encourages interaction and the use of target language. Reminds students to pay attention to pronunciation of /sh/ and /t/ and to use prefixes/suffixes from previous lessons if applicable (e.g. recycle).</p>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">10-12 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Formative assessment strategy.</p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Formative Assessment Strategy:</b> Teacher observation checklist during the "Conservation Club Discussion." The teacher uses a simple rubric to note participation, use of target vocabulary, grammar (imperatives, comparatives, superlatives), and overall intelligibility.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task:</b> Students participate actively in their group's "Conservation Club Discussion" and orally present their top three conservation actions to the class.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Intelligible pronunciation:</b> Pronounces /sh/ and /t/ sounds clearly (e.g., "shade," "turn off").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target vocabulary:</b> Employs at least 3-4 specific words (e.g., "light," "energy," "turn off," "save," "environment").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target grammar:</b> Uses at least one imperative, one comparative, and one superlative correctly.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity of preferences/suggestions:</b> Clearly expresses likes/dislikes and suggests actions using simple sentences.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration:</b> Actively participates in group discussion and listens to others.</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students complete the following prompts orally or on a small piece of paper before leaving:</p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">One new way I learned to save energy today is...</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">I prefer to save energy by...</li>
+                </ul>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">7-8 min</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What was easy for me when speaking about saving energy today?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What was difficult for me in today's speaking activities? (e.g., remembering words, making sentences, pronunciation)</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What worked well in engaging students in speaking about conservation? (e.g., group discussion, specific prompts, use of visuals)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What adjustments or additional scaffolds are needed for next lesson, especially regarding grammar points or vocabulary usage in speaking? (e.g., more practice with comparatives, clearer instructions for group roles)</li>
+                </ul>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson:</b> This speaking lesson provided students with ideas and language for expressing conservation actions and preferences. In Lesson 4 (Writing), students will use these ideas and structures to write short paragraphs or instructions about how to save energy at home or school.</p>
+            </td>
+            <td><p style="text-align: center; margin: 4px 0 8px 0;">5 min</p></td>
+        </tr>
+    </tbody>
+</table>

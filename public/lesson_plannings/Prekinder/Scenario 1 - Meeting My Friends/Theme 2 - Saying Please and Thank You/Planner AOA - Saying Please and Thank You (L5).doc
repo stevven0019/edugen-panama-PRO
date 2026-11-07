@@ -1,0 +1,223 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: 'Arial Black', sans-serif;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .header-banner-subtitle {
+        font-size: 16px;
+        font-style: italic;
+        margin-top: 5px;
+    }
+    .lesson-table, .aoa-table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+    }
+    .lesson-table th, .lesson-table td, .aoa-table th, .aoa-table td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    .lesson-table td {
+        width: 33%; /* Distribute cells evenly for identification table */
+    }
+    .lesson-table tr:nth-child(4) td {
+        width: 100%; /* Full width for the last row */
+    }
+    .aoa-table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    .aoa-stage-title {
+        color: #1a5276;
+        font-weight: bold;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    Lesson Planner – Theme # ___ – Lesson # 5
+    <div class="header-banner-subtitle">Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</div>
+</div>
+
+<table class="lesson-table">
+    <tr>
+        <td><b>Lesson #:</b> 5</td>
+        <td colspan="2"><b>Skills Focus:</b> Mediation</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> Pre-K (CEFR: A1.1)</td>
+        <td><b>Scenario:</b> Meeting My Friends</td>
+        <td><b>Theme:</b> Saying Please and Thank You</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="2"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <p><b>Specific Objective:</b> Mediation: Text: Mimic simple actions shown in picture books.</p>
+            <p><b>Learning Outcome:</b> Mediation: Can mimic body language to convey polite expressions from picture books (e.g., nodding and smiling to say "thank you").</p>
+            <p>Can act out simple greetings shown in picture books (e.g., waving or saying "hello" to show meeting a new friend).</p>
+            <p>Can role-play basic greeting exchanges from picture books (e.g., greeting classmates with "hello").</p>
+        </td>
+    </tr>
+</table>
+
+<h2 style="color: #1a5276; font-family: Arial, sans-serif;">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table class="aoa-table">
+    <thead>
+        <tr>
+            <th>Stage & Description</th>
+            <th>Activities & Teacher Actions</th>
+            <th>Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 1 — Warm-up / Pre-task</p>
+                <p>(Engagement, Modeling and Clarification)</p>
+            </td>
+            <td>
+                <p><b>Warm-up:</b> The teacher starts with a "Hello Song" and a "Goodbye Song" using TPR (Total Physical Response) actions like waving. Students mimic the teacher's actions and sing along. The teacher then shows large flashcards of a child waving ("hello") and another child nodding and smiling ("thank you") to recap previously learned polite expressions. The teacher asks, "Who is a friend?" and encourages students to point to a classmate, practicing the initial /f/ sound in "friend."</p>
+                <p><b>Modeling:</b> The teacher models how to mimic an action from a picture book. The teacher holds up a large picture book showing a child waving to a friend. The teacher points to the child waving and says, "Look! The friend is saying 'hello'!" and then models waving and saying "hello" slowly and clearly. The teacher then shows a picture of a child receiving a toy and nodding, saying "The friend is saying 'thank you!'" and models nodding and smiling while saying "thank you." The teacher emphasizes syllable stress in "friends" and "goodbye" through repetition.</p>
+                <p><b>Clarification (CCQs):</b></p>
+                <ul>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">(Pointing to a picture of someone waving) "What is this friend doing? Waving or sleeping?" (Expected answer: Waving!)</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">(Pointing to a picture of someone nodding) "What do we do to say 'thank you'? Nod or jump?" (Expected answer: Nod!)</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 2 — Presentation</p>
+                <p>(Input of new language/content connected to Scenario: "Meeting My Friends")</p>
+            </td>
+            <td>
+                <p><b>Material:</b> A large, colorful picture storybook titled "Our Polite Friends" with simple illustrations depicting children meeting, greeting, and exchanging toys or food politely. The book contains explicit pictures of children waving "hello," asking "What is your name?", responding "I am [name]," saying "please" when asking for something, and saying "thank you" when receiving.</p>
+                <p><b>Communicative Competence:</b> Pragmatic: Using polite expressions: Saying "please" and "thank you" when interacting with others. Sociolinguistic: Politeness in greetings: Saying "hello," "goodbye," "please," "thank you."</p>
+                <p><b>Comprehension tasks:</b></p>
+                <ul>
+                    <li><li style="margin-bottom: 4px; text-align: justify;"><b>Gist Question:</b> The teacher reads the story aloud, pointing to the pictures. After each page showing an interaction, the teacher asks, "Are the friends happy?" or "Are they being nice?" (Students point to happy faces or give a thumbs up).</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;"><b>Mimicry Check:</b> After showing a picture of a child waving "hello," the teacher asks, "What action is this friend doing?" and prompts students to mimic the wave. Similarly, for "thank you," students mimic the nod and smile.</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;"><b>Identify the Word:</b> The teacher shows a picture of two children saying "hello." The teacher asks, "Are they saying 'hello' or 'goodbye'?" Students point to the word "hello" on a flashcard or repeat "hello."</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 3 — Preparation / Practice</p>
+                <p>(Accuracy focus on Mediation)</p>
+            </td>
+            <td>
+                <p><b>Communicative Skill & Content:</b> Focusing on mimicking actions for polite expressions and basic greetings. Grammar: Subject + Verb ("I am [name]."), WH-questions ("What is your name?"). Vocabulary: friend, name, say, wave, please, hello, thank you.</p>
+                <p><b>Detailed Procedure:</b></p>
+                <ul>
+                    <li><li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice: "Picture-Action Match"</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">The teacher shows a large flashcard depicting a polite action (e.g., a child waving). Students chorally say the corresponding polite word ("hello") and perform the action.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Next, the teacher shows a flashcard of a child receiving something with a nod. Students chorally say "thank you" and perform the nod and smile.</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">This is repeated for "please" (e.g., showing a child extending a hand to ask for a toy).</li>
+                        </ul>
+                    </li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice: "Teacher Says, You Show and Say"</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">The teacher gives a verbal prompt: "Show me 'hello'!" Students wave and say "hello!"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Teacher: "Show me 'thank you'!" Students nod, smile, and say "thank you!"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Teacher: "Show me 'please'!" Students extend a hand politely and say "please!" The teacher provides immediate feedback and corrects pronunciation, especially the initial /f/ in "friend" and /g/ in "goodbye" if they come up in spontaneous responses.</li>
+                        </ul>
+                    </li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction: "Greeting My Classmate"</b>
+                        <ul>
+                            <li style="margin-bottom: 4px; text-align: justify;">Students sit in a large circle. The teacher models with one student: "Hello, [student's name]!" and waves. The student waves back and says "Hello, teacher!"</li>
+                            <li style="margin-bottom: 4px; text-align: justify;">Then, students turn to a classmate next to them. The teacher guides them: "Wave and say 'hello'!" "Ask, 'What is your name?'" "Answer, 'I am [name].'" The teacher circulates, facilitating and prompting, ensuring all students get a chance to practice the simple exchange.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 4 — Performance / Production</p>
+                <p>(21st Century Skills Project Focus: Role-play Greetings)</p>
+            </td>
+            <td>
+                <p><b>Task Format:</b> Collaborative role-play in a "Greeting Station" circuit.</p>
+                <p><b>Description:</b> Students will participate in a "Friendly Circle" activity to practice their greetings and polite phrases. The teacher sets up different "stations" around the classroom, each with a large picture card prompting an interaction (e.g., "Meet a friend," "Say 'please' for a toy," "Say 'thank you' for a snack"). Students rotate from one station to another with a partner, acting out the scenarios. The teacher acts as a facilitator and participant.</p>
+                <ul>
+                    <li><li style="margin-bottom: 4px; text-align: justify;"><b>Station 1: Meeting Friends:</b> Students meet a classmate, wave and say "Hello!", ask "What is your name?", and answer "I am [name]." (Teacher models: "Hello, friend! What is your name? I am Miss [Teacher's Name].")</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;"><b>Station 2: Please and Thank You for a Toy:</b> Students pick up a pretend toy. One student asks, "Please, may I play?" (with an action). The other student gives the toy, and the first student says "Thank you!" (with a nod and smile).</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;"><b>Station 3: Goodbye:</b> Students say "Goodbye!" to their partner with a wave. The teacher specifically highlights the syllable stress in "goodbye."</li>
+                </ul>
+                <p>This activity encourages fluent use of target language in a realistic scenario, directly embodying the 21st Century Skills Project focus on "Role-play Greetings" by practicing greetings and polite phrases through action and simple speech.</p>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 5 — Assessment / Post-task</p>
+            </td>
+            <td>
+                <p><b>Formative Assessment Strategy:</b> Teacher Observation Checklist.</p>
+                <p><b>Assessment Task:</b> During the "Friendly Circle" role-play (Stage 4), the teacher observes individual students' ability to mimic actions and use polite expressions and greetings. The teacher will discreetly use a simple checklist to mark if students successfully perform the target actions and phrases.</p>
+                <p><b>Evaluation Criteria:</b></p>
+                <ul>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">Mimics waving when saying "hello."</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">Uses "hello" intelligibly.</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">Mimics nodding and smiling when saying "thank you."</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">Uses "thank you" intelligibly.</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">Responds with "I am [name]" when asked "What is your name?"</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">Demonstrates willingness to collaborate with classmates in role-play.</li>
+                </ul>
+                <p><b>Student Self-Assessment / Exit Ticket:</b> Students will hold up a "thumbs up" or "thumbs down" to answer the following questions:</p>
+                <ul>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">"Did I say 'hello' to my friend today?"</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">"Did I remember to say 'thank you'?"</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <p class="aoa-stage-title">STAGE 6 — Reflection</p>
+            </td>
+            <td>
+                <p><b>Student Self-Reflection:</b></p>
+                <ul>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">"What was fun about meeting new friends and playing politely?"</li>
+                    <li><li style="margin-bottom: 4px; text-align: justify;">"What polite actions or words did we use today?"</li>
+                </ul>
+                <p><b>Teacher Reflection:</b></p>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What aspects of the role-play were most effective for Pre-K learners in mediating meaning through actions? Did students successfully mimic body language for polite expressions?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What adjustments or scaffolds might be needed to further support students who struggled with the role-play or with using the polite phrases? Perhaps more individual modeling or visual cues.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">This lesson effectively consolidated the theme of "Saying Please and Thank You" through the "Role-play Greetings" project. For the next lesson sequence, I will introduce a new theme, possibly "My Family" or "My Favorite Toys," building on the established routines of greetings and politeness in everyday interactions.</li>
+                </ul>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

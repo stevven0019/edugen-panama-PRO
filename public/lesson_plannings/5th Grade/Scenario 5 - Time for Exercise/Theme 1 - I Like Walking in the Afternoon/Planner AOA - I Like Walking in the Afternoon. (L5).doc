@@ -1,0 +1,214 @@
+﻿<style>
+    .header-banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .header-banner h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+    .header-banner p {
+        margin: 5px 0 0;
+        font-size: 16px;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    h2 {
+        color: #1a5276;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    p {
+        text-align: justify; 
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 4px; 
+        text-align: justify;
+    }
+</style>
+
+<div class="header-banner">
+    <h1>Lesson Planner – Theme # 1 – Lesson # 5</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <tr>
+        <td style="width: 50%;"><b>Lesson #:</b> 5</td>
+        <td style="width: 50%;"><b>Skills Focus:</b> Mediation</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 5th Grade (CEFR: A1.3)</td>
+        <td><b>Scenario:</b> Time for Exercise</td>
+    </tr>
+    <tr>
+        <td colspan="2"><b>Theme:</b> I Like Walking in the Afternoon.</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Specific Objective:</b> Mediation: Communication: Facilitate discussions on classroom topics among peers. Concept: Connect historical events discussed in class to real-life examples.</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Learning Outcome:</b> Mediation: Can lead discussions about classroom topics by asking open-ended questions and prompting peers to elaborate (e.g., "What sports do you like and why?" and gestures to encourage more extended responses). Can link historical events to current events with simple examples (e.g., points to an old picture of a sportsman or sportswoman and says, "He could run very fast; we can too."). Can summarize class discussions, using gestures and visuals (e.g., points to a ball and says, "We all like baseball.").</p>
+        </td>
+    </tr>
+</table>
+
+<h2>The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table style="border: 1px dashed #333; border-collapse: collapse; width: 100%; margin: 10px 0;">
+    <thead>
+        <tr>
+            <th style="color: #1a5276; width: 30%;">Stage & Description</th>
+            <th style="color: #1a5276; width: 50%;">Activities & Teacher Actions</th>
+            <th style="color: #1a5276; width: 20%;">Estimated Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 1 — Warm-up / Pre-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><i>Engagement, Modeling and Clarification</i></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Warm-up:</b> The teacher leads a quick "Simon Says" game using verbs related to exercise and movement from previous lessons: "Simon says, 'run!'" "Simon says, 'jump!'" "Simon says, 'swim!'" "Simon says, 'walk!'" "Simon says, 'dance!'" The teacher encourages students to perform the actions. This activates prior knowledge of physical activities related to the theme "Time for Exercise."</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Modeling:</b> The teacher shows a picture of a famous historical sportsman/sportswoman (e.g., Jesse Owens) and points to it, saying: "Look at this old picture! This man was a very fast runner. He <b>could</b> run very fast." Then, the teacher points to the class and says: "We can run fast too! What sports <b>can</b> you do?" The teacher models answering: "I <b>can</b> ride my bike every day. I like cycling." The teacher models pronunciation of /k/ in "can" and /s/ in "swim" and segments "exciting" (ex-cit-ing).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Clarification (CCQs):</b> The teacher checks understanding of 'can' and 'cannot' with simple questions and gestures:
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">"If I say 'I can swim,' does it mean I know how to swim or I don't know?" (Expected answer: "You know how.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">"If I say 'I cannot fly,' is it possible for me?" (Expected answer: "No, it's not possible.")</li>
+                </ul>
+                </p>
+            </td>
+            <td>___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 2 — Presentation</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><i>Input of new language/content connected to Scenario: "Time for Exercise".</i></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Material:</b> A simple, illustrated "Fitness Routine Guide" poster or handout. The guide presents basic exercise routines, using "can/cannot" and "I like + -ing" structures. It includes images of people doing different sports (e.g., walking, swimming, cycling).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Competence:</b> Facilitate discussions on classroom topics among peers.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Comprehension tasks:</b> The teacher presents the sample "Fitness Routine Guide" and reads it aloud. Students listen and look at the pictures.
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Gist questions:</b> "What is this guide about?" (Expected: "Exercise," "Sports.") "Does this guide talk about healthy activities?" (Expected: "Yes.")</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>True/False:</b> "The guide says 'I can swim every day.' True or False?" (Students indicate T/F with thumbs up/down.) "The guide says 'I cannot play football.' True or False?"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Information matching:</b> The teacher asks, "What type of exercise does the guide say is fun?" (Students point to 'dancing' or 'cycling' if in the guide).</li>
+                </ul>
+                </p>
+            </td>
+            <td>___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 3 — Preparation / Practice</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><i>Accuracy focus on Mediation.</i></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Communicative Skill & Content:</b> Students practice using modal verbs (can, cannot), Present simple questions ("Do you like sports?"), and WH-questions ("What type of exercise do you like?") with vocabulary (walk, exercise, swimming, running, hiking, dancing, cycling, play, healthy, fun).</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Detailed Procedure:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Controlled Practice: "Can/Cannot Sentences":</b> Students receive a worksheet with simple sentences about sports and blanks. They look at pictures of people performing (or not performing) activities and complete sentences using "can" or "cannot." E.g., "He _____ run fast." (Picture of a runner) "She _____ ride a horse." (Picture of someone falling off a horse).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Semi-controlled Practice: "Preference Chains":</b> In small groups, students take turns asking and answering about preferences. Student A asks, "Do you like swimming?" Student B answers, "Yes, I do. I like swimming." or "No, I don't." Then Student B asks Student C a different question using "What type of exercise do you like?" Student C answers, "I like hiking." They continue the chain. The teacher guides with prompts on the board: "Do you like...?", "What type of exercise...?", "I like...".</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Pair Interaction / Peer Check: "My Partner's Sports":</b> Students work in pairs. Each student asks their partner three questions: "What sport do you like?" "Can you do it every day?" "What sport cannot you do?" After interviewing, they tell another pair (or the teacher) about their partner's preferences, acting as mediators: "My friend [Name] likes running. She can run every day. She cannot play football." The teacher encourages them to use gestures to emphasize points.</li>
+                </ul>
+                </p>
+            </td>
+            <td>___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 4 — Performance / Production</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><i>Communicative task where students USE the language in a realistic scenario: "Time for Exercise".</i></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Task: "Explain and Summarize Fitness Routine Guides" (21st Century Skills Project Focus)</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Students work in groups of three. Each student brings their "Fitness Routine Guide" (developed in previous lessons) to the group. The task is to present their own guide, facilitate a short discussion with peers, and then summarize a peer's guide.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Procedure:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>1. Presentation:</b> Student A holds up their "Fitness Routine Guide" and explains it to their group members: "Hello! This is my fitness guide. I like walking in the afternoon. I can walk every day. I like swimming too, but I cannot swim very fast."</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>2. Facilitated Discussion:</b> Student B asks Student A an open-ended question: "What type of exercise do you like and why?" Student C also asks: "Do you like dancing?" Student A answers and then prompts their peers: "Yes, dancing is exciting! What about you? What activities do *you* like?" (using gestures to encourage elaboration). They can also use encouraging language: "You can do it! Let's run together!"</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>3. Peer Summarization:</b> After all students have presented and discussed their guides, each student picks one peer's guide and verbally summarizes it for the group, using simple sentences, gestures, and pointing to parts of the guide if visual: "My friend, [Peer's Name], likes cycling. She can ride her bike every day. She cannot play football, but she thinks swimming is fun!" (The student points to a picture of a ball and says, "We all like baseball!" if it comes up in discussion, as per learning outcome). The teacher circulates, listening to the discussions and summarizations, providing support where needed.</li>
+                </ul>
+                </p>
+            </td>
+            <td>___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 5 — Assessment / Post-task</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><i>Formative assessment strategy.</i></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Assessment Task: "Group Fitness Routine Guide Showcase & Summary"</b></p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;">Students, in their groups, will briefly present their collective findings and summaries to the whole class. Each student takes a turn presenting their own "Fitness Routine Guide" and then summarizing one peer's guide from their group. The teacher uses an observation checklist to assess students' mediation skills.</p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Evaluation Criteria (Teacher Checklist):</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Facilitation:</b> Asks open-ended questions (e.g., "What sports do you like and why?").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Linguistic Connection:</b> Links present abilities to past examples (e.g., "He could run fast; we can too!").</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Summarization:</b> Clearly summarizes a peer's routine using target grammar.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar:</b> Uses modal verbs (can, cannot) correctly.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Grammar:</b> Uses Present simple questions and 'like + -ing' structure.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Vocabulary:</b> Uses target vocabulary (e.g., walk, exercise, swimming, healthy).</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Pronunciation:</b> Generally intelligible, clear /k/ and /s/ sounds.</li>
+                    <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration:</b> Encourages others with phrases like "You can do it!".</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student Self-Assessment / Exit Ticket:</b> Students answer on a small paper slip:
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">1. I can explain my fitness routine to a friend using "can" and "cannot." (Yes/No/A little)</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">2. I can tell the class about my friend's favorite sports and what they like to do. (Yes/No/A little)</li>
+                </ul>
+                </p>
+            </td>
+            <td>___ min</td>
+        </tr>
+        <tr>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>STAGE 6 — Reflection</b></p>
+            </td>
+            <td>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Student self-reflection:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">1. What was easy about explaining your fitness routine guide to your friends?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">2. What was challenging about summarizing your friend's fitness routine for the class? What could help you next time?</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Teacher reflection:</b>
+                <ul>
+                    <li style="margin-bottom: 4px; text-align: justify;">What worked well in promoting mediation skills during the "Fitness Routine Guide" presentation and summarization? Were students able to ask open-ended questions and encourage peers effectively?</li>
+                    <li style="margin-bottom: 4px; text-align: justify;">What adjustments or scaffolds are needed for the next time we work on explaining or summarizing information? Do students need more practice with question formation or specific vocabulary for linking ideas?</li>
+                </ul>
+                </p>
+                <p style="text-align: justify; margin: 4px 0 8px 0;"><b>Connection to next lesson:</b> This lesson concludes the theme "I Like Walking in the Afternoon." The next theme will build upon these foundational interaction and summarization skills by introducing new contexts for information exchange and communication.</p>
+            </td>
+            <td>___ min</td>
+        </tr>
+    </tbody>
+</table>

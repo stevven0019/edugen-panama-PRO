@@ -1,0 +1,226 @@
+﻿<style>
+    .banner {
+        background-color: #1a5276;
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+    .banner h1 {
+        margin: 0;
+        font-size: 2em;
+    }
+    .banner p {
+        margin: 5px 0 0;
+        font-size: 1.1em;
+    }
+    table {
+        border: 1px dashed #333;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+        font-family: Arial, sans-serif;
+    }
+    th, td {
+        border: 1px dashed #333;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .table-title {
+        color: #1a5276;
+        font-size: 1.4em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: Arial, sans-serif;
+    }
+    p {
+        text-align: justify;
+        margin: 4px 0 8px 0;
+    }
+    ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    li {
+        margin-bottom: 4px;
+        text-align: justify;
+    }
+</style>
+
+<div class="banner">
+    <h1>Lesson Planner – Theme # 1 – Lesson # 1</h1>
+    <p>Complete this planner five times per theme, once per lesson (Lesson 1 through Lesson 5).</p>
+</div>
+
+<h2 class="table-title">Lesson Identification Table</h2>
+<table>
+    <colgroup>
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+    </colgroup>
+    <tr>
+        <td><b>Lesson #:</b> 1</td>
+        <td colspan="3"><b>Skills Focus:</b> Listening</td>
+    </tr>
+    <tr>
+        <td><b>Grade:</b> 4th Grade (CEFR: A1.2)</td>
+        <td><b>Scenario:</b> A Trip to the Beach</td>
+        <td colspan="2"><b>Theme:</b> I Always Pack Lunch.</td>
+    </tr>
+    <tr>
+        <td><b>Date(s):</b> From ___ to ___</td>
+        <td colspan="3"><b>Learning Sequence Time:</b> 45–50 min</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <p style="text-align: justify; margin: 0;"><b>Specific Objective:</b> Listening: Respond to questions about familiar topics.</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <p style="text-align: justify; margin: 0;"><b>Learning Outcome:</b> Listening: Can follow simple instructions for using basic technology to prepare for the trip (e.g., 'Open a maps app and search for this place.').<br>Can respond to questions about school trips (e.g., 'What do we bring to the trip?' 'We bring lunch.').<br>Can participate in discussions about beach trips, sharing simple ideas in response to a prompt (e.g., 'What do you like to do at the beach?' 'I like to play in the sand.').</p>
+        </td>
+    </tr>
+</table>
+
+<h2 class="table-title">The Six Action-Oriented Approach (AOA) Lesson Stages</h2>
+<table>
+    <colgroup>
+        <col style="width: 33%;">
+        <col style="width: 33%;">
+        <col style="width: 34%;">
+    </colgroup>
+    <tr>
+        <th>Stage & Description</th>
+        <th>Activities & Teacher Actions</th>
+        <th>Estimated Date and Time</th>
+    </tr>
+    <tr>
+        <td>
+            <p style="text-align: justify;"><b>STAGE 1 — Warm-up / Pre-task (Engagement, Modeling and Clarification)</b></p>
+        </td>
+        <td>
+            <p style="text-align: justify;"><b>Warm-up:</b> The teacher starts by showing pictures of a sunny beach and playing sounds of ocean waves. The teacher asks, "What do you see?" and "Where are we going today?" Students listen and respond with single words or short phrases. The teacher introduces the theme by saying, "We are going to the beach! I always pack lunch for my trips."</p>
+            <p style="text-align: justify;"><b>Modeling:</b> The teacher points to a picture of a beach, clearly saying "beach" and modeling the /b/ sound. The teacher then mimes packing a bag, saying "I pack my bag," emphasizing the /p/ sound in "pack." The teacher also models "I like to swim" and "I am going to the beach." The teacher uses flashcards for key vocabulary: 'beach,' 'towel,' 'sunscreen,' 'swimsuit,' 'lunch,' 'cooler,' 'flip-flops.' The teacher pronounces each word clearly, showing the corresponding flashcard.</p>
+            <p style="text-align: justify;"><b>Clarification (CCQs):</b> The teacher uses concrete examples and questions to check understanding of the new vocabulary.</p>
+            <ul>
+                <li style="margin-bottom: 4px; text-align: justify;">(Showing a picture of mountains vs. a beach) "Is this a mountain or a beach?" (Expected answer: "Beach!")</li>
+                <li style="margin-bottom: 4px; text-align: justify;">(Showing a lunchbox vs. a schoolbook) "Do I pack a schoolbook or lunch for the beach trip?" (Expected answer: "Lunch!")</li>
+                <li style="margin-bottom: 4px; text-align: justify;">The teacher also asks "Do you like to swim?" and helps students respond "Yes, I like to swim" or "No, I don't."</li>
+            </ul>
+        </td>
+        <td><p style="text-align: justify;">___ / ___</p><p style="text-align: justify;">(5-7 min)</p></td>
+    </tr>
+    <tr>
+        <td>
+            <p style="text-align: justify;"><b>STAGE 2 — Presentation</b></p>
+            <p style="text-align: justify;">Input of new language/content connected to Scenario: "A Trip to the Beach".</p>
+        </td>
+        <td>
+            <p style="text-align: justify;"><b>Material:</b> A short audio dialogue between two friends, Marco and Sofia, planning a trip to the beach. The dialogue will use simple present tense, imperatives, and "going to."</p>
+            <p style="text-align: justify;"><b>Dialogue Script Excerpt:</b></p>
+            <p style="text-align: justify;">(Sound of happy music)</p>
+            <p style="text-align: justify;"><b>Sofia:</b> "Hi Marco! We are going to the beach this weekend!"</p>
+            <p style="text-align: justify;"><b>Marco:</b> "Wow! That's fun! What do we bring?"</p>
+            <p style="text-align: justify;"><b>Sofia:</b> "Please, bring your swimsuit and a towel. I always pack sunscreen."</p>
+            <p style="text-align: justify;"><b>Marco:</b> "Okay! Do you like to build sandcastles?"</p>
+            <p style="text-align: justify;"><b>Sofia:</b> "Yes, I like to build! We are going to play with a beach ball too!"</p>
+            <p style="text-align: justify;"><b>Communicative Competence:</b> Listening: Understand simple instructions and questions about familiar topics related to a beach trip.</p>
+            <p style="text-align: justify;"><b>Comprehension tasks (Listening):</b></p>
+            <ul>
+                <li style="margin-bottom: 4px; text-align: justify;"><b>Gist questions:</b> The teacher plays the audio once. Then asks, "Who is going to the beach?" (Marco and Sofia). "Are they going to the mountains or the beach?" (The beach).</li>
+                <li style="margin-bottom: 4px; text-align: justify;"><b>True/False (Listen and check):</b> The teacher plays the audio again. Students listen and raise a 'True' or 'False' card for statements like: "Marco is going to pack lunch." (False, Sofia always packs sunscreen). "They are going to play with a beach ball." (True).</li>
+                <li style="margin-bottom: 4px; text-align: justify;"><b>Information matching:</b> The teacher shows pictures of a swimsuit, towel, and sunscreen. Students listen to the dialogue and point to the item Sofia asks Marco to bring. (Swimsuit, towel).</li>
+            </ul>
+        </td>
+        <td><p style="text-align: justify;">___ / ___</p><p style="text-align: justify;">(10-12 min)</p></td>
+    </tr>
+    <tr>
+        <td>
+            <p style="text-align: justify;"><b>STAGE 3 — Preparation / Practice</b></p>
+            <p style="text-align: justify;">Accuracy focus on Listening.</p>
+        </td>
+        <td>
+            <p style="text-align: justify;"><b>Communicative Skill & Content:</b> Students will practice listening for specific vocabulary (beach, towel, sunscreen, swimsuit, pack, bring, always) and grammar structures (present simple questions/affirmative, imperatives) within the context of planning a beach trip. Pronunciation of /b/ and /p/ sounds will be reinforced.</p>
+            <p style="text-align: justify;"><b>Detailed Procedure:</b></p>
+            <ol>
+                <li style="margin-bottom: 4px; text-align: justify;"><b>Controlled Practice - Listen and Identify:</b> The teacher plays short audio clips of sentences. Students listen and circle the correct word or picture on their worksheet (e.g., "I always pack my <b>lunch/book</b> for the trip." Students circle 'lunch'). The teacher specifically includes sentences like "Please, <b>bring/forget</b> your sunscreen." and "Do you like to <b>swim/run</b> at the beach?"</li>
+                <li style="margin-bottom: 4px; text-align: justify;"><b>Semi-controlled Practice - Listen and Complete:</b> The teacher says a sentence with a missing word. Students listen and choose the correct word from two options provided orally by the teacher. Example: Teacher says, "I always ______ lunch." (Options: 'pack' or 'eat'). Students say 'pack.' The teacher reinforces the /p/ sound. Another example: "At the ______ we play in the sand." (Options: 'beach' or 'school'). Students say 'beach.' The teacher reinforces the /b/ sound.</li>
+                <li style="margin-bottom: 4px; text-align: justify;"><b>Pair Interaction - Listen and Check:</b> Students work in pairs. Each student receives a worksheet with pictures of beach items (e.g., swimsuit, towel, beach ball, cooler) and a simple packing list for a friend. Student A reads their list aloud, saying "Please, bring your swimsuit" or "Do you have sunscreen?" Student B listens carefully and checks off the items on their own worksheet as they hear them. Then they switch roles. The teacher circulates, checking for clear pronunciation and accurate listening comprehension.</li>
+            </ol>
+        </td>
+        <td><p style="text-align: justify;">___ / ___</p><p style="text-align: justify;">(15-18 min)</p></td>
+    </tr>
+    <tr>
+        <td>
+            <p style="text-align: justify;"><b>STAGE 4 — Performance / Production</b></p>
+            <p style="text-align: justify;">Communicative task where students USE the language in a realistic scenario: "A Trip to the Beach".</p>
+        </td>
+        <td>
+            <p style="text-align: justify;"><b>Task Format:</b> "Listen and Draw the Beach Bag!" - A guided listening and drawing activity.</p>
+            <p style="text-align: justify;"><b>Procedure:</b></p>
+            <ul>
+                <li style="margin-bottom: 4px; text-align: justify;">The teacher tells students, "Imagine you are packing for a beach trip with me! Listen carefully to what I am packing. You will draw each item I pack inside your beach bag on your paper."</li>
+                <li style="margin-bottom: 4px; text-align: justify;">The teacher gives clear instructions using target vocabulary and grammar: "Hello everyone! I am going to the beach! I always pack my <b>towel</b>. Please, draw a towel in your bag. I also bring my <b>swimsuit</b>. Draw a swimsuit. Oh, and I never forget my <b>sunscreen</b>! Draw some sunscreen. I am going to play with a <b>beach ball</b>. Draw a beach ball. What do I always pack for lunch? Yes, I always pack <b>lunch</b>!" (The teacher can vary the speed and repeat phrases as needed for A1.2 level).</li>
+                <li style="margin-bottom: 4px; text-align: justify;">Students listen to the teacher's instructions and draw the items mentioned into a pre-drawn outline of a beach bag on their worksheet.</li>
+                <li style="margin-bottom: 4px; text-align: justify;">After the listening task, students can share their drawings with a partner and orally confirm "I have a towel," "I have a swimsuit." This helps reinforce vocabulary and provides an immediate check on listening comprehension.</li>
+            </ul>
+        </td>
+        <td><p style="text-align: justify;">___ / ___</p><p style="text-align: justify;">(7-9 min)</p></td>
+    </tr>
+    <tr>
+        <td>
+            <p style="text-align: justify;"><b>STAGE 5 — Assessment / Post-task</b></p>
+            <p style="text-align: justify;">Formative assessment strategy.</p>
+        </td>
+        <td>
+            <p style="text-align: justify;"><b>Formative Assessment Strategy:</b> Teacher observation checklist during "Listen and Draw" and a quick "Listen and Circle" quiz.</p>
+            <p style="text-align: justify;"><b>Assessment Task:</b> Students will listen to a series of short questions and statements and respond by circling the correct image or 'yes/no' on a worksheet.</p>
+            <ul>
+                <li style="margin-bottom: 4px; text-align: justify;">The teacher says: "Listen and circle the correct picture." (e.g., "I like to swim at the beach." Students circle a picture of someone swimming).</li>
+                <li style="margin-bottom: 4px; text-align: justify;">The teacher says: "Listen and circle YES or NO." (e.g., "Please, bring your sunglasses for the trip." Students circle YES or NO based on the item in the picture).</li>
+                <li style="margin-bottom: 4px; text-align: justify;">The teacher asks aloud: "What do you like to do at the beach?" (Students listen and give a simple oral response like "I like to play in the sand" or "I like to collect shells.")</li>
+            </ul>
+            <p style="text-align: justify;"><b>Evaluation Criteria:</b></p>
+            <ul>
+                <li style="margin-bottom: 4px; text-align: justify;"><b>Intelligible pronunciation:</b> Students' oral responses (if any) are understandable.</li>
+                <li style="margin-bottom: 4px; text-align: justify;"><b>Use of target vocabulary:</b> Students identify beach-related vocabulary accurately.</li>
+                <li style="margin-bottom: 4px; text-align: justify;"><b>Clarity:</b> Students demonstrate clear comprehension of spoken instructions and questions by circling correct answers or drawing appropriate items.</li>
+                <li style="margin-bottom: 4px; text-align: justify;"><b>Collaboration:</b> Students demonstrate active listening and cooperation during pair work.</li>
+            </ul>
+            <p style="text-align: justify;"><b>Student Self-Assessment / Exit Ticket:</b> Students answer two simple questions by circling a happy face or a sad face, or by drawing a checkmark/X:</p>
+            <ul>
+                <li style="margin-bottom: 4px; text-align: justify;">"Did I understand what to pack for the beach trip today?" (Yes/No or Happy/Sad face)</li>
+                <li style="margin-bottom: 4px; text-align: justify;">"Can I say 3 things I like to do at the beach?" (Yes/No or Happy/Sad face)</li>
+            </ul>
+        </td>
+        <td><p style="text-align: justify;">___ / ___</p><p style="text-align: justify;">(5-7 min)</p></td>
+    </tr>
+    <tr>
+        <td>
+            <p style="text-align: justify;"><b>STAGE 6 — Reflection</b></p>
+        </td>
+        <td>
+            <p style="text-align: justify;"><b>Student self-reflection prompt:</b></p>
+            <ul>
+                <li style="margin-bottom: 4px; text-align: justify;">What new beach words did I hear and understand today?</li>
+                <li style="margin-bottom: 4px; text-align: justify;">What was easy and what was difficult about listening to the instructions?</li>
+            </ul>
+            <p style="text-align: justify;"><b>Teacher reflection:</b></p>
+            <ul>
+                <li style="margin-bottom: 4px; text-align: justify;">What worked well in this listening lesson? (e.g., The use of visuals and sounds effectively engaged students. Most students could follow the simple imperative instructions.)</li>
+                <li style="margin-bottom: 4px; text-align: justify;">What adjustments and scaffolds are needed for the next lesson? (e.g., Some students struggled with the pace of the audio dialogue; need to introduce more pre-listening activities for vocabulary in the next lesson. Perhaps a vocabulary review game before introducing the reading text.)</li>
+            </ul>
+            <p style="text-align: justify;"><b>Connection to next lesson in the theme sequence:</b> This lesson introduced core beach vocabulary and simple sentence structures through listening. The next lesson (Lesson 2: Reading Comprehension) will use this same vocabulary in a short, illustrated text about a beach trip, allowing students to reinforce their understanding by *reading* the words they have already heard and identified.</p>
+        </td>
+        <td><p style="text-align: justify;">___ / ___</p><p style="text-align: justify;">(3-5 min)</p></td>
+    </tr>
+</table>
