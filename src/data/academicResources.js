@@ -1,5 +1,6 @@
 export const academicCategories = [
   'Todos los Recursos',
+  'Pósters y Láminas de Aula (PreK - 12°)',
   'Programas Oficiales por Grado (PreK - 12°)',
   'Guías de Inglés AOA',
   'Estándares MCER / CEFR',
@@ -25,6 +26,54 @@ export const academicGrades = [
 ];
 
 export const academicResources = [
+  {
+    id: 'res-posters-collection',
+    title: 'Colección Oficial de Pósters de Aula & Canva AOA (Pre-K a 12°)',
+    grade: 'Todos los Grados',
+    levelCEFR: 'Pre-A1 a B1.3',
+    category: 'Pósters y Láminas de Aula (PreK - 12°)',
+    coverImage: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80',
+    coverStyle: 'from-amber-500 via-orange-600 to-rose-600',
+    description: 'Carpeta central en Google Drive con 257 archivos: pósters en PDF de imprenta, imágenes PNG en 4K y plantillas de diseño organizadas por los 8 escenarios de cada grado.',
+    downloadUrl: 'https://drive.google.com/drive/folders/1lEZYaHlLbXUxfINxoffyJdlHg8BggDaM?usp=drive_link',
+    isOfficial: true
+  },
+  {
+    id: 'res-posters-4th',
+    title: 'Pósters de Aula y Cuaderno Canva AOA — 4° Grado',
+    grade: '4° Grado',
+    levelCEFR: 'CEFR A1.2',
+    category: 'Pósters y Láminas de Aula (PreK - 12°)',
+    coverImage: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=80',
+    coverStyle: 'from-cyan-600 via-blue-600 to-indigo-700',
+    description: 'Paquete completo de pósters de los 8 escenarios de 4° Grado (PDF y PNG) listos para imprimir y usar en el aula según el enfoque AOA.',
+    downloadUrl: 'https://drive.google.com/drive/folders/1w_tw3b2oz_10WyEQ6X4zDNMKX-6zHFtq?usp=drive_link',
+    isOfficial: true
+  },
+  {
+    id: 'res-posters-5th',
+    title: 'Pósters de Aula y Cuaderno Canva AOA — 5° Grado',
+    grade: '5° Grado',
+    levelCEFR: 'CEFR A1.3',
+    category: 'Pósters y Láminas de Aula (PreK - 12°)',
+    coverImage: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80',
+    coverStyle: 'from-teal-600 via-emerald-600 to-teal-800',
+    description: 'Pósters de aula en alta resolución y cuaderno Canva por escenario para 5° Grado en Google Drive.',
+    downloadUrl: 'https://drive.google.com/drive/folders/1CQfjWoTZuHauoBi4yKMCnL_L9HPzr9-N?usp=drive_link',
+    isOfficial: true
+  },
+  {
+    id: 'res-posters-6th',
+    title: 'Pósters de Aula y Cuaderno Canva AOA — 6° Grado',
+    grade: '6° Grado',
+    levelCEFR: 'CEFR A2.1',
+    category: 'Pósters y Láminas de Aula (PreK - 12°)',
+    coverImage: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80',
+    coverStyle: 'from-blue-600 via-indigo-600 to-blue-800',
+    description: 'Pósters de aula y material visual ilustrado para los 8 escenarios de 6° Grado en Google Drive.',
+    downloadUrl: 'https://drive.google.com/drive/folders/1crQHrS4JWhhLhkXOkMd2MmUCZgkKu5am?usp=drive_link',
+    isOfficial: true
+  },
   {
     id: 'res-grade-6',
     title: 'English Curriculum Based on Competency Standards - Grade 6',

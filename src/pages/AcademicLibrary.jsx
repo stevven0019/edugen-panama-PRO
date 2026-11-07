@@ -17,7 +17,8 @@ import {
   Award,
   Rocket,
   Bookmark,
-  Compass
+  Compass,
+  Palette
 } from 'lucide-react';
 import { academicResources, academicCategories, academicGrades } from '../data/academicResources';
 import AdBanner from '../components/AdBanner';
@@ -120,6 +121,32 @@ export default function AcademicLibrary({ setPublicTab, onLoginClick, isEmbedded
             className="bg-white hover:bg-slate-100 text-blue-950 font-black px-6 py-3.5 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all flex-shrink-0 relative z-10 cursor-pointer"
           >
             <span>Abrir Carpeta en Google Drive</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </div>
+
+        {/* Direct Google Drive Posters Folder Banner */}
+        <div className="glass-panel p-6 rounded-3xl bg-gradient-to-r from-amber-600 via-orange-600 to-rose-700 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden my-4 group">
+          <div className="absolute -right-16 -bottom-16 w-56 h-56 bg-white/10 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
+          <div className="space-y-2 relative z-10">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white border border-white/30 text-[9px] font-black uppercase tracking-widest">
+              <Palette className="w-3.5 h-3.5" />
+              <span>COLECCIÓN OFICIAL DE PÓSTERS 2026</span>
+            </div>
+            <h2 className="text-xl font-extrabold font-display leading-tight">
+              Pósters de Aula y Cuadernos Canva AOA (Pre-K a 12º)
+            </h2>
+            <p className="text-xs text-white/85 max-w-2xl leading-relaxed">
+              Descarga los 257 archivos oficiales en alta resolución (PDF de imprenta, PNG y plantillas) organizados por los 8 escenarios de cada grado en Google Drive.
+            </p>
+          </div>
+          <a
+            href="https://drive.google.com/drive/folders/1lEZYaHlLbXUxfINxoffyJdlHg8BggDaM?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white hover:bg-slate-100 text-amber-950 font-black px-6 py-3.5 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all flex-shrink-0 relative z-10 cursor-pointer"
+          >
+            <span>Abrir Pósters en Drive</span>
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>

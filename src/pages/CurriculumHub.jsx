@@ -26,6 +26,7 @@ import {
 import { classroomPosterHtml } from '../resources/classroomPoster';
 import { linguisticPosterStudioHtml } from '../resources/linguisticPosterStudioHtml';
 import { downloadThemePlannerDoc } from '../services/themePlannerGenerator';
+import { getGradeDriveUrl, MAIN_POSTERS_DRIVE_URL } from '../data/gradeDrivePosters';
 import AdBanner from '../components/AdBanner';
 
 const GRADES = [
@@ -405,9 +406,17 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 font-bold border border-indigo-500/20">
             <BookOpen className="w-3.5 h-3.5" /> 80 Lesson Planners
           </span>
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 font-bold border border-amber-500/20">
-            <Palette className="w-3.5 h-3.5" /> Pósters y Canva AOA
-          </span>
+          <a
+            href={getGradeDriveUrl(currentGradeConfig.id)}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`Abrir carpeta de posters y recursos de ${currentGradeConfig.label} en Google Drive`}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs shadow-sm shadow-amber-500/20 transition cursor-pointer"
+          >
+            <Palette className="w-3.5 h-3.5" />
+            <span>Pósters en Google Drive</span>
+            <ExternalLink className="w-3 h-3 opacity-90" />
+          </a>
         </div>
 
         <div className="relative min-w-[240px]">
@@ -801,6 +810,18 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                     </div>
 
                     <div className="flex items-center gap-2">
+                      <a
+                        href={getGradeDriveUrl(currentGradeConfig.id)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition"
+                        title="Abrir y descargar pósters originales en PDF y PNG de alta resolución en Google Drive"
+                      >
+                        <FolderOpen className="w-3.5 h-3.5" />
+                        <span>Descargar PDF / HD (Drive)</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+
                       <button
                         onClick={handlePrintPoster}
                         className="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 text-slate-700 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 shadow-sm"
@@ -845,6 +866,33 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                     <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                       Cada lección cuenta con su paquete estructurado de fichas pedagógicas divididas en: <b>Engage</b> (activación auditiva/visual), <b>Explore</b> (ejercitación guiada) y <b>Extend/Evaluate</b> (producción personal y autoevaluación).
                     </p>
+                  </div>
+
+                  {/* Google Drive Posters & Workbooks Card */}
+                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shadow-sm">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white font-extrabold flex items-center justify-center shadow-md shadow-amber-500/20">
+                        <Palette className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h5 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
+                          Pósters y Fichas Canva en Google Drive — {currentGradeConfig.label}
+                        </h5>
+                        <p className="text-[11px] text-slate-400">
+                          Accede a los 8 escenarios: pósters en PDF de imprenta, imágenes PNG en 4K y plantillas
+                        </p>
+                      </div>
+                    </div>
+
+                    <a
+                      href={getGradeDriveUrl(currentGradeConfig.id)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-amber-500 hover:bg-amber-600 text-white px-3.5 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
+                    >
+                      <span>Abrir en Drive</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
                   </div>
 
                   {/* Sample Canva Workbooks when Grade 4 */}
