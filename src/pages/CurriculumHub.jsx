@@ -20,10 +20,12 @@ import {
   Palette,
   Loader2,
   FileCheck,
-  Check
+  Check,
+  Lock
 } from 'lucide-react';
 import { classroomPosterHtml } from '../resources/classroomPoster';
 import { linguisticPosterStudioHtml } from '../resources/linguisticPosterStudioHtml';
+import { downloadThemePlannerDoc } from '../services/themePlannerGenerator';
 import AdBanner from '../components/AdBanner';
 
 const GRADES = [
@@ -213,6 +215,108 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
     sc.theme2.toLowerCase().includes(searchQuery.toLowerCase()) ||
     `escenario ${sc.scenarioNum}`.includes(searchQuery.toLowerCase())
   );
+
+  const handleDownloadTheme = (themeNumber) => {
+    try {
+      const filename = downloadThemePlannerDoc(
+        activeScenario.raw,
+        currentGradeConfig.id,
+        currentGradeConfig.cefr,
+        currentGradeConfig.hours || 5,
+        activeScenario.trimester,
+        themeNumber
+      );
+      if (onTriggerAlert) onTriggerAlert(`¡${filename} generado y descargado con éxito!`, 'success');
+    } catch (err) {
+      console.error('Error generating Theme Planner:', err);
+      if (onTriggerAlert) onTriggerAlert('Error al generar el Theme Planner. Inténtalo de nuevo.', 'error');
+    }
+  };
+
+  const downloadLessonDoc = async (url, filename) => {
+    try {
+      if (onTriggerAlert) onTriggerAlert(`Preparando descarga de ${filename}...`, 'info');
+      const resp = await fetch(url);
+      const contentType = resp.headers.get('content-type') || '';
+      if (!resp.ok || contentType.includes('text/html')) {
+        // If static fetch returns HTML or 404, fallback to download
+        window.open(url, '_blank');
+        return;
+      }
+      const blob = await resp.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(blobUrl);
+      if (onTriggerAlert) onTriggerAlert(`¡${filename} descargado con éxito!`, 'success');
+    } catch (e) {
+      window.open(url, '_blank');
+    }
+  };
+
+  // Lock Screen for Non-Premium Members
+  if (!isPremium) {
+    return (
+      <div className="min-h-[75vh] flex items-center justify-center p-4 sm:p-6 animate-fade-in">
+        <div className="max-w-xl w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 text-center space-y-6 shadow-2xl relative overflow-hidden">
+          <div className="absolute -right-20 -top-20 w-60 h-60 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <div className="w-16 h-16 rounded-2xl bg-amber-500/10 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 flex items-center justify-center mx-auto shadow-lg shadow-amber-500/10">
+            <Lock className="w-8 h-8" />
+          </div>
+
+          <div className="space-y-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-500/30 text-[10px] font-black uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+              <span>Exclusivo para Miembros EduGen PRO</span>
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
+              Hub Curricular por Grado AOA
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
+              El Hub Curricular con acceso a los <b>224 Theme Planners oficiales</b>, <b>1,116 Lesson Planners diarios</b>, <b>Pósters de Aula</b> y <b>Cuadernos Canva</b> de Pre-K a 12° Grado está reservado para docentes con membresía PRO activa.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-850/60 border border-slate-200 dark:border-slate-800 text-left space-y-2.5 text-xs text-slate-700 dark:text-slate-300 font-medium">
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span><b>224 Theme Planners oficiales</b> en Word (.doc) con márgenes estrechos.</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span><b>1,116 Lesson Planners diarios</b> (Lecciones 1 al 5) por escenario y tema.</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span><b>Pósters didácticos de aula</b> interactivos listos para imprimir a color.</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span><b>Cuadernos de actividades Canva AOA</b> y exportación ilimitada.</span>
+            </div>
+          </div>
+
+          <div className="space-y-3 pt-2">
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('show-billing-modal'))}
+              className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black py-3.5 px-6 rounded-2xl text-xs sm:text-sm shadow-xl shadow-amber-500/20 active:scale-95 transition cursor-pointer flex items-center justify-center gap-2"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>DESBLOQUEAR ACCESO PRO ($19.99/año o $2.99/mes)</span>
+            </button>
+            <p className="text-[11px] text-slate-400">
+              Activación inmediata con tarjeta de crédito o Yappy / Transferencia Panamá
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 animate-fade-in pb-12">
@@ -547,14 +651,7 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
 
                       <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2">
                         <button
-                          onClick={() => {
-                            const info = getThemePlannerInfo(activeScenario.scenarioNum);
-                            const t1Info = info?.themes?.[0];
-                            const url = t1Info 
-                              ? `/${t1Info.relativePath}` 
-                              : `/theme_plannings/${encodeURIComponent(currentGradeConfig.folder)}/Scenario%20${activeScenario.scenarioNum}%20-%20${encodeURIComponent(activeScenario.scenarioTitle)}/Theme%20Planner%201%20(Receptive)%20-%20${encodeURIComponent(activeScenario.theme1)}.doc`;
-                            downloadFile(url, `Theme Planner 1 (Receptive) - ${activeScenario.theme1}.doc`);
-                          }}
+                          onClick={() => handleDownloadTheme(1)}
                           className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2.5 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition shadow-sm cursor-pointer"
                         >
                           <Download className="w-4 h-4" />
@@ -584,14 +681,7 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
 
                       <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2">
                         <button
-                          onClick={() => {
-                            const info = getThemePlannerInfo(activeScenario.scenarioNum);
-                            const t2Info = info?.themes?.[1];
-                            const url = t2Info 
-                              ? `/${t2Info.relativePath}` 
-                              : `/theme_plannings/${encodeURIComponent(currentGradeConfig.folder)}/Scenario%20${activeScenario.scenarioNum}%20-%20${encodeURIComponent(activeScenario.scenarioTitle)}/Theme%20Planner%202%20(Interactive)%20-%20${encodeURIComponent(activeScenario.theme2)}.doc`;
-                            downloadFile(url, `Theme Planner 2 (Interactive) - ${activeScenario.theme2}.doc`);
-                          }}
+                          onClick={() => handleDownloadTheme(2)}
                           className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition shadow-sm cursor-pointer"
                         >
                           <Download className="w-4 h-4" />
@@ -669,7 +759,7 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                           </div>
 
                           <button
-                            onClick={() => downloadFile(lesson.url, lesson.filename)}
+                            onClick={() => downloadLessonDoc(lesson.url, lesson.filename)}
                             className="bg-slate-100 dark:bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-700 dark:text-slate-300 p-2.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer shrink-0"
                           >
                             <Download className="w-3.5 h-3.5" />

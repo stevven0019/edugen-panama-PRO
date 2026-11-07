@@ -145,7 +145,12 @@ export default function Sidebar({ activeTab, setActiveTab, userEmail, onLogout, 
                 `}
               >
                 {item.icon}
-                <span>{item.label}</span>
+                <span className="flex-1 text-left">{item.label}</span>
+                {item.id === 'curriculum-hub' && (
+                  <span className="text-[9px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-600 dark:text-amber-400 px-1.5 py-0.5 rounded-md border border-amber-500/30">
+                    PRO
+                  </span>
+                )}
               </button>
             ))}
 

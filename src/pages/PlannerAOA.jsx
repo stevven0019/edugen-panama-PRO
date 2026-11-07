@@ -159,13 +159,13 @@ export default function PlannerAOA({ user, credits, onTriggerAlert, isPremium = 
       return;
     }
 
-    // Check 5-plan limit for free users
+    // Check 3-plan limit for free users
     if (!isPremium && credits <= 0) {
       // First check if they have plans in library
       const existingPlans = await databaseService.getSavedPlans(user.uid);
-      if (existingPlans.length >= 5) {
+      if (existingPlans.length >= 3) {
         window.dispatchEvent(new CustomEvent('show-billing-modal'));
-        onTriggerAlert("🎉 ¡Alcanzaste el límite de 5 planeaciones gratuitas! Consigue más tokens o activa PRO para seguir generando sin límites.", "info");
+        onTriggerAlert("🎉 ¡Has alcanzado el límite de 3 planeaciones gratuitas! Activa tu membresía PRO para seguir generando sin límites.", "info");
         return;
       }
 
