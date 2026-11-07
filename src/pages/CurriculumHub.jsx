@@ -26,7 +26,7 @@ import {
 import { classroomPosterHtml } from '../resources/classroomPoster';
 import { linguisticPosterStudioHtml } from '../resources/linguisticPosterStudioHtml';
 import { downloadThemePlannerDoc } from '../services/themePlannerGenerator';
-import { getGradeDriveUrl, getScenarioPosterLinks, MAIN_POSTERS_DRIVE_URL } from '../data/gradeDrivePosters';
+import { getScenarioPosterLinks } from '../data/gradeDrivePosters';
 import AdBanner from '../components/AdBanner';
 
 const GRADES = [
@@ -406,17 +406,9 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 font-bold border border-indigo-500/20">
             <BookOpen className="w-3.5 h-3.5" /> 80 Lesson Planners
           </span>
-          <a
-            href={getGradeDriveUrl(currentGradeConfig.id)}
-            target="_blank"
-            rel="noopener noreferrer"
-            title={`Abrir carpeta de posters y recursos de ${currentGradeConfig.label} en Google Drive`}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs shadow-sm shadow-amber-500/20 transition cursor-pointer"
-          >
-            <Palette className="w-3.5 h-3.5" />
-            <span>Pósters en Google Drive</span>
-            <ExternalLink className="w-3 h-3 opacity-90" />
-          </a>
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 font-bold border border-amber-500/20">
+            <Palette className="w-3.5 h-3.5" /> 8 Pósters & Fichas AOA
+          </span>
         </div>
 
         <div className="relative min-w-[240px]">
@@ -957,111 +949,107 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                     </p>
                   </div>
 
-                  {/* Individual Scenario Exclusive Poster & Resources Card */}
+                  {/* Individual Scenario Exclusive Poster & Canva Resources */}
                   {(() => {
                     const scLinks = getScenarioPosterLinks(currentGradeConfig.id, activeScenario.index + 1);
-                    if (!scLinks) return null;
                     return (
-                      <div className="p-4 rounded-2xl bg-gradient-to-r from-teal-500/10 via-emerald-500/10 to-blue-500/10 border border-teal-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl bg-teal-600 text-white font-extrabold flex items-center justify-center shadow-md shadow-teal-500/20 shrink-0">
-                            <Palette className="w-5 h-5" />
-                          </div>
-                          <div>
-                            <div className="inline-flex items-center gap-1 text-[10px] font-black uppercase text-teal-700 dark:text-teal-400">
-                              <span>Póster Oficial Exclusivo · Escenario {activeScenario.index + 1}</span>
+                      <div className="space-y-3">
+                        {/* 1. Exclusive PDF Poster */}
+                        {scLinks?.pdf && (
+                          <div className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shadow-sm hover:border-red-400/50 transition">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 font-extrabold flex items-center justify-center shrink-0">
+                                <FileText className="w-5 h-5" />
+                              </div>
+                              <div>
+                                <div className="text-[10px] font-black uppercase tracking-wider text-red-600 dark:text-red-400">
+                                  Póster Oficial en PDF · Escenario {activeScenario.index + 1}
+                                </div>
+                                <h5 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
+                                  {scLinks.pdf.filename}
+                                </h5>
+                                <p className="text-[11px] text-slate-400">
+                                  Formato vectorial de imprenta listo para imprimir o proyectar en pantalla
+                                </p>
+                              </div>
                             </div>
-                            <h5 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
-                              {scLinks.title}
-                            </h5>
-                            <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                              Archivos de imprenta individuales listos para proyectar o colocar en el aula
-                            </p>
-                          </div>
-                        </div>
 
-                        <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
-                          {scLinks.pdf && (
                             <a
                               href={scLinks.pdf.viewUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="bg-red-600 hover:bg-red-700 text-white px-3.5 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
+                              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
                             >
-                              <FileText className="w-3.5 h-3.5" />
-                              <span>Ver PDF en Drive</span>
-                              <ExternalLink className="w-3 h-3" />
+                              <span>Abrir PDF</span>
+                              <ExternalLink className="w-3.5 h-3.5" />
                             </a>
-                          )}
-                          {scLinks.png && (
+                          </div>
+                        )}
+
+                        {/* 2. Exclusive 4K PNG Graphic Poster */}
+                        {scLinks?.png && (
+                          <div className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shadow-sm hover:border-amber-400/50 transition">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 font-extrabold flex items-center justify-center shrink-0">
+                                <Palette className="w-5 h-5" />
+                              </div>
+                              <div>
+                                <div className="text-[10px] font-black uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                                  Lámina Gráfica 4K (PNG) · Escenario {activeScenario.index + 1}
+                                </div>
+                                <h5 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
+                                  {scLinks.png.filename}
+                                </h5>
+                                <p className="text-[11px] text-slate-400">
+                                  Imagen en ultra alta resolución con vocabulario clave, gramática y misiones
+                                </p>
+                              </div>
+                            </div>
+
                             <a
                               href={scLinks.png.viewUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="bg-amber-500 hover:bg-amber-600 text-white px-3.5 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
+                              className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
                             >
-                              <span>PNG 4K</span>
-                              <ExternalLink className="w-3 h-3" />
+                              <span>Ver PNG 4K</span>
+                              <ExternalLink className="w-3.5 h-3.5" />
                             </a>
-                          )}
-                        </div>
+                          </div>
+                        )}
+
+                        {/* 3. Sample Canva Workbooks when Grade 4 */}
+                        {currentGradeConfig.id === '4th Grade' && activeScenario.index === 0 && (
+                          <div className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shadow-sm hover:border-violet-400/50 transition">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 font-extrabold flex items-center justify-center shrink-0">
+                                <FileText className="w-5 h-5" />
+                              </div>
+                              <div>
+                                <div className="text-[10px] font-black uppercase tracking-wider text-violet-600 dark:text-violet-400">
+                                  Cuaderno Editorial Canva (7 Páginas)
+                                </div>
+                                <h5 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
+                                  Canva 7-Pages Cohesive Workbook — 4th Grade
+                                </h5>
+                                <p className="text-[11px] text-slate-400">
+                                  Fichas estructuradas de trabajo con diseño editorial para el Escenario 1
+                                </p>
+                              </div>
+                            </div>
+
+                            <button
+                              onClick={() => downloadFile('/Canva_7Pages_Cohesive_Workbook_Grade4.pdf', 'Canva_7Pages_Cohesive_Workbook_Grade4.pdf')}
+                              className="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
+                            >
+                              <Download className="w-3.5 h-3.5" />
+                              <span>Descargar PDF</span>
+                            </button>
+                          </div>
+                        )}
                       </div>
                     );
                   })()}
-
-                  {/* Google Drive Posters & Workbooks Card */}
-                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shadow-sm">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white font-extrabold flex items-center justify-center shadow-md shadow-amber-500/20">
-                        <Palette className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h5 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
-                          Pósters y Fichas Canva en Google Drive — {currentGradeConfig.label}
-                        </h5>
-                        <p className="text-[11px] text-slate-400">
-                          Accede a los 8 escenarios: pósters en PDF de imprenta, imágenes PNG en 4K y plantillas
-                        </p>
-                      </div>
-                    </div>
-
-                    <a
-                      href={getGradeDriveUrl(currentGradeConfig.id)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-amber-500 hover:bg-amber-600 text-white px-3.5 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
-                    >
-                      <span>Abrir en Drive</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
-
-                  {/* Sample Canva Workbooks when Grade 4 */}
-                  {currentGradeConfig.id === '4th Grade' && (
-                    <div className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shadow-sm">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 font-extrabold flex items-center justify-center">
-                          <FileText className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <h5 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
-                            Canva 7-Pages Cohesive Workbook — 4th Grade
-                          </h5>
-                          <p className="text-[11px] text-slate-400">
-                            Fichas de alta resolución listas para imprimir con formato editorial Canva
-                          </p>
-                        </div>
-                      </div>
-
-                      <button
-                        onClick={() => downloadFile('/Canva_7Pages_Cohesive_Workbook_Grade4.pdf', 'Canva_7Pages_Cohesive_Workbook_Grade4.pdf')}
-                        className="bg-violet-600 hover:bg-violet-700 text-white px-3.5 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        <span>Descargar PDF</span>
-                      </button>
-                    </div>
-                  )}
 
                   <div className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-850/60 border border-dashed border-slate-300 dark:border-slate-700 text-center space-y-3">
                     <Palette className="w-8 h-8 text-violet-600 mx-auto" />
