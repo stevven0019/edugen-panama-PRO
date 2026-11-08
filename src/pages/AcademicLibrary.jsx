@@ -141,7 +141,7 @@ export default function AcademicLibrary({ setPublicTab, onLoginClick, isEmbedded
             </p>
           </div>
           <a
-            href="https://drive.google.com/drive/folders/1lEZYaHlLbXUxfINxoffyJdlHg8BggDaM?usp=drive_link"
+            href="https://drive.google.com/drive/folders/1tTV0x41azAQFtfxVOWJNppI_xWN_O9--?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white hover:bg-slate-100 text-amber-950 font-black px-6 py-3.5 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg hover:scale-105 active:scale-95 transition-all flex-shrink-0 relative z-10 cursor-pointer"
