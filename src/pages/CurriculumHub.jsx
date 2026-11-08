@@ -26,7 +26,6 @@ import {
 import { classroomPosterHtml } from '../resources/classroomPoster';
 import { linguisticPosterStudioHtml } from '../resources/linguisticPosterStudioHtml';
 import { downloadThemePlannerDoc } from '../services/themePlannerGenerator';
-import { getScenarioPosterLinks } from '../data/gradeDrivePosters';
 import AdBanner from '../components/AdBanner';
 
 const GRADES = [
@@ -506,55 +505,14 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                     </button>
 
                     <button
-                      onClick={() => {
-                        setActiveScenario(sc);
-                        setActiveModalTab('canva');
-                      }}
-                      className="px-2.5 py-2 rounded-xl bg-violet-50 dark:bg-violet-950/40 hover:bg-violet-100 text-violet-700 dark:text-violet-300 text-[10px] font-black flex items-center justify-center gap-1 transition"
+                      disabled
+                      className="px-2.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/60 text-slate-400 dark:text-slate-500 text-[10px] font-bold flex items-center justify-center gap-1 cursor-not-allowed select-none opacity-80"
+                      title="Módulo de Cuaderno AOA y Canva en mantenimiento temporal"
                     >
-                      <Palette className="w-3.5 h-3.5" />
+                      <Lock className="w-3 h-3 text-slate-400" />
                       <span>Cuaderno AOA</span>
                     </button>
                   </div>
-
-                  {/* Individual Exclusive Google Drive Poster Links */}
-                  {(() => {
-                    const scLinks = getScenarioPosterLinks(currentGradeConfig.id, sc.index + 1);
-                    if (!scLinks?.pdf && !scLinks?.png) return null;
-                    return (
-                      <div className="pt-1.5 pb-0.5 px-1 flex items-center justify-between gap-1 border-t border-slate-100 dark:border-slate-800 text-[9px]">
-                        <span className="font-extrabold text-slate-400 dark:text-slate-500">Póster en Drive:</span>
-                        <div className="flex items-center gap-1.5">
-                          {scLinks?.pdf && (
-                            <a
-                              href={scLinks.pdf.viewUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              title={`Abrir PDF exclusivo de ${sc.title} en Google Drive`}
-                              className="px-2 py-0.5 rounded-lg bg-red-50 dark:bg-red-950/40 hover:bg-red-100 text-red-600 dark:text-red-400 font-black flex items-center gap-1 transition cursor-pointer"
-                            >
-                              <span>PDF</span>
-                              <ExternalLink className="w-2.5 h-2.5 opacity-80" />
-                            </a>
-                          )}
-                          {scLinks?.png && (
-                            <a
-                              href={scLinks.png.viewUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={(e) => e.stopPropagation()}
-                              title={`Abrir imagen PNG 4K exclusiva de ${sc.title} en Google Drive`}
-                              className="px-2 py-0.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 hover:bg-amber-100 text-amber-600 dark:text-amber-400 font-black flex items-center gap-1 transition cursor-pointer"
-                            >
-                              <span>PNG</span>
-                              <ExternalLink className="w-2.5 h-2.5 opacity-80" />
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })()}
 
                   <button
                     onClick={() => {
@@ -645,11 +603,11 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                 className={`py-3 px-4 font-extrabold text-xs border-b-2 flex items-center gap-2 transition ${
                   activeModalTab === 'canva'
                     ? 'border-violet-600 text-violet-600 dark:text-violet-400'
-                    : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300'
+                    : 'border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-600'
                 }`}
               >
-                <Palette className="w-4 h-4" />
-                <span>🎨 Cuaderno AOA & Canva</span>
+                <Lock className="w-3.5 h-3.5 text-amber-500" />
+                <span>🎨 Cuaderno AOA & Canva (En Mantenimiento)</span>
               </button>
             </div>
 
@@ -841,44 +799,9 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                     </div>
 
                     <div className="flex items-center gap-2">
-                      {(() => {
-                        const scLinks = getScenarioPosterLinks(currentGradeConfig.id, activeScenario.index + 1);
-                        return (
-                          <>
-                            {scLinks?.pdf && (
-                              <a
-                                href={scLinks.pdf.viewUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition"
-                                title={`Abrir ${scLinks.pdf.filename} en Google Drive`}
-                              >
-                                <FileText className="w-3.5 h-3.5" />
-                                <span>PDF en Drive</span>
-                                <ExternalLink className="w-3 h-3 opacity-90" />
-                              </a>
-                            )}
-
-                            {scLinks?.png && (
-                              <a
-                                href={scLinks.png.viewUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition"
-                                title={`Abrir ${scLinks.png.filename} (PNG 4K) en Google Drive`}
-                              >
-                                <Palette className="w-3.5 h-3.5" />
-                                <span>PNG 4K</span>
-                                <ExternalLink className="w-3 h-3 opacity-90" />
-                              </a>
-                            )}
-                          </>
-                        );
-                      })()}
-
                       <button
                         onClick={handlePrintPoster}
-                        className="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 text-slate-700 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 shadow-sm"
+                        className="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 text-slate-700 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 shadow-sm cursor-pointer"
                       >
                         <Printer className="w-3.5 h-3.5" />
                         <span>Imprimir</span>
@@ -886,40 +809,13 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
 
                       <button
                         onClick={() => handleOpenPosterInTab(getPosterHtml())}
-                        className="px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm"
+                        className="px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm cursor-pointer"
                       >
                         <ExternalLink className="w-3.5 h-3.5" />
                         <span>Pantalla Completa</span>
                       </button>
                     </div>
                   </div>
-
-                  {/* Individual Poster Notification Bar */}
-                  {(() => {
-                    const scLinks = getScenarioPosterLinks(currentGradeConfig.id, activeScenario.index + 1);
-                    if (!scLinks) return null;
-                    return (
-                      <div className="flex items-center justify-between flex-wrap gap-2 px-3.5 py-2 bg-gradient-to-r from-teal-50 to-emerald-50 dark:from-teal-950/40 dark:to-emerald-950/40 rounded-xl border border-teal-500/20 text-xs">
-                        <div className="flex items-center gap-2">
-                          <span className="font-black text-teal-800 dark:text-teal-300">Archivo Exclusivo del Escenario {activeScenario.index + 1}:</span>
-                          <span className="font-semibold text-slate-700 dark:text-slate-300">"{scLinks.title}"</span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          {scLinks.pdf && (
-                            <a
-                              href={scLinks.pdf.viewUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-[11px] font-extrabold text-red-600 dark:text-red-400 hover:underline flex items-center gap-1"
-                            >
-                              <span>Ver {scLinks.pdf.filename}</span>
-                              <ExternalLink className="w-3 h-3" />
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })()}
 
                   {/* Embedded Poster Iframe */}
                   <div className="w-full h-[520px] rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-white shadow-inner">
@@ -933,141 +829,43 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                 </div>
               )}
 
-              {/* TAB 4: CANVA & CUADERNO AOA */}
+              {/* TAB 4: CANVA & CUADERNO AOA (BLOQUEADO TEMPORALMENTE) */}
               {activeModalTab === 'canva' && (
-                <div className="space-y-6">
-                  <div className="p-5 rounded-2xl bg-gradient-to-r from-violet-600/10 via-purple-600/10 to-indigo-600/10 border border-violet-500/20 space-y-2">
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-violet-100 dark:bg-violet-950 text-violet-800 dark:text-violet-300 text-[10px] font-black uppercase">
-                      <Sparkles className="w-3 h-3 text-violet-600" />
-                      <span>Integración Canva & Cuadernos Pedagógicos AOA</span>
+                <div className="space-y-6 animate-fade-in">
+                  <div className="p-8 rounded-3xl bg-gradient-to-br from-amber-500/10 via-orange-500/10 to-violet-500/10 border-2 border-amber-500/30 text-center space-y-4">
+                    <div className="w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto shadow-inner">
+                      <Lock className="w-8 h-8" />
                     </div>
-                    <h4 className="font-extrabold text-base text-slate-900 dark:text-white">
-                      Cuaderno de Actividades por Fases AOA
+
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 text-xs font-black uppercase tracking-wider">
+                      <span>Módulo en Optimización y Migración Editorial</span>
+                    </div>
+
+                    <h4 className="font-extrabold text-xl text-slate-900 dark:text-white">
+                      Cuadernos Pedagógicos AOA & Canva
                     </h4>
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      Cada lección cuenta con su paquete estructurado de fichas pedagógicas divididas en: <b>Engage</b> (activación auditiva/visual), <b>Explore</b> (ejercitación guiada) y <b>Extend/Evaluate</b> (producción personal y autoevaluación).
+
+                    <p className="text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
+                      Este módulo se encuentra <b>temporalmente bloqueado</b> mientras culminamos la estandarización pedagógica y editorial para los <b>14 grados oficiales de Panamá (Pre-Kínder a 12° Grado)</b>.
                     </p>
-                  </div>
 
-                  {/* Individual Scenario Exclusive Poster & Canva Resources */}
-                  {(() => {
-                    const scLinks = getScenarioPosterLinks(currentGradeConfig.id, activeScenario.index + 1);
-                    return (
-                      <div className="space-y-3">
-                        {/* 1. Exclusive PDF Poster */}
-                        {scLinks?.pdf && (
-                          <div className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shadow-sm hover:border-red-400/50 transition">
-                            <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 font-extrabold flex items-center justify-center shrink-0">
-                                <FileText className="w-5 h-5" />
-                              </div>
-                              <div>
-                                <div className="text-[10px] font-black uppercase tracking-wider text-red-600 dark:text-red-400">
-                                  Póster Oficial en PDF · Escenario {activeScenario.index + 1}
-                                </div>
-                                <h5 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
-                                  {scLinks.pdf.filename}
-                                </h5>
-                                <p className="text-[11px] text-slate-400">
-                                  Formato vectorial de imprenta listo para imprimir o proyectar en pantalla
-                                </p>
-                              </div>
-                            </div>
-
-                            <a
-                              href={scLinks.pdf.viewUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
-                            >
-                              <span>Abrir PDF</span>
-                              <ExternalLink className="w-3.5 h-3.5" />
-                            </a>
-                          </div>
-                        )}
-
-                        {/* 2. Exclusive 4K PNG Graphic Poster */}
-                        {scLinks?.png && (
-                          <div className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shadow-sm hover:border-amber-400/50 transition">
-                            <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 font-extrabold flex items-center justify-center shrink-0">
-                                <Palette className="w-5 h-5" />
-                              </div>
-                              <div>
-                                <div className="text-[10px] font-black uppercase tracking-wider text-amber-600 dark:text-amber-400">
-                                  Lámina Gráfica 4K (PNG) · Escenario {activeScenario.index + 1}
-                                </div>
-                                <h5 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
-                                  {scLinks.png.filename}
-                                </h5>
-                                <p className="text-[11px] text-slate-400">
-                                  Imagen en ultra alta resolución con vocabulario clave, gramática y misiones
-                                </p>
-                              </div>
-                            </div>
-
-                            <a
-                              href={scLinks.png.viewUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
-                            >
-                              <span>Ver PNG 4K</span>
-                              <ExternalLink className="w-3.5 h-3.5" />
-                            </a>
-                          </div>
-                        )}
-
-                        {/* 3. Sample Canva Workbooks when Grade 4 */}
-                        {currentGradeConfig.id === '4th Grade' && activeScenario.index === 0 && (
-                          <div className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shadow-sm hover:border-violet-400/50 transition">
-                            <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300 font-extrabold flex items-center justify-center shrink-0">
-                                <FileText className="w-5 h-5" />
-                              </div>
-                              <div>
-                                <div className="text-[10px] font-black uppercase tracking-wider text-violet-600 dark:text-violet-400">
-                                  Cuaderno Editorial Canva (7 Páginas)
-                                </div>
-                                <h5 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">
-                                  Canva 7-Pages Cohesive Workbook — 4th Grade
-                                </h5>
-                                <p className="text-[11px] text-slate-400">
-                                  Fichas estructuradas de trabajo con diseño editorial para el Escenario 1
-                                </p>
-                              </div>
-                            </div>
-
-                            <button
-                              onClick={() => downloadFile('/Canva_7Pages_Cohesive_Workbook_Grade4.pdf', 'Canva_7Pages_Cohesive_Workbook_Grade4.pdf')}
-                              className="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition shrink-0 cursor-pointer shadow-sm"
-                            >
-                              <Download className="w-3.5 h-3.5" />
-                              <span>Descargar PDF</span>
-                            </button>
-                          </div>
-                        )}
+                    <div className="p-4 bg-white/80 dark:bg-slate-900/80 rounded-2xl border border-amber-200 dark:border-amber-900/50 max-w-lg mx-auto text-left text-xs space-y-2 text-slate-700 dark:text-slate-300 shadow-sm">
+                      <div className="font-bold text-slate-900 dark:text-white text-xs mb-1 flex items-center gap-1.5">
+                        <span>📌 Recursos 100% Disponibles en este Escenario:</span>
                       </div>
-                    );
-                  })()}
-
-                  <div className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-850/60 border border-dashed border-slate-300 dark:border-slate-700 text-center space-y-3">
-                    <Palette className="w-8 h-8 text-violet-600 mx-auto" />
-                    <h5 className="font-bold text-sm text-slate-900 dark:text-white">
-                      ¿Deseas personalizar las fichas con IA o generar nuevas hojas de trabajo?
-                    </h5>
-                    <p className="text-xs text-slate-500 max-w-md mx-auto">
-                      Puedes acceder al estudio completo del <b>Cuaderno de Actividades</b> para generar actividades fonéticas, sopas de letras o proyectos en parejas adaptados a este escenario.
-                    </p>
-                    <button
-                      onClick={() => {
-                        setActiveScenario(null);
-                        if (setActiveTab) setActiveTab('activities');
-                      }}
-                      className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl font-bold text-xs transition shadow-md cursor-pointer"
-                    >
-                      Ir a Cuaderno de Actividades AOA
-                    </button>
+                      <div className="flex items-center gap-2">
+                        <span className="text-emerald-500 font-bold">✓</span>
+                        <span><b>Theme Planners 1 y 2 (.doc)</b>: Planificaciones oficiales MEDUCA descargables.</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-emerald-500 font-bold">✓</span>
+                        <span><b>Lesson Planners 1 al 5 (.doc)</b>: Planes de clase AOA listos para editar.</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-emerald-500 font-bold">✓</span>
+                        <span><b>Póster de Aula (0 Tokens)</b>: Visualización interactiva, impresión y pantalla completa nativa sin enlaces externos.</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
