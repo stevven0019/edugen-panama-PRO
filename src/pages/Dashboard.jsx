@@ -14,7 +14,13 @@ import {
   ChevronLeft,
   Maximize2,
   FileCheck,
-  Compass
+  Compass,
+  ArrowUpRight,
+  Bookmark,
+  CheckCircle2,
+  TrendingUp,
+  Clock,
+  Sparkle
 } from 'lucide-react';
 import { databaseService } from '../services/firebase';
 
@@ -165,52 +171,65 @@ export default function Dashboard({ user, credits, setActiveTab, isPremium = fal
 
   return (
     <div className="space-y-8 animate-fade-in">
-      {/* Welcome Banner */}
-      <div className="relative glass-panel p-6 md:p-8 rounded-3xl bg-gradient-to-r from-blue-600/10 via-indigo-600/5 to-transparent border border-blue-500/10 flex flex-col md:flex-row justify-between items-center gap-6 overflow-hidden">
-        <div className="space-y-2 text-center md:text-left z-10">
-          <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-            ¡Hola de nuevo, <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">Profr!</span>
+      {/* Welcome Hero Banner (Glassmorphism V22) */}
+      <div className="relative glass-card-v22 p-6 md:p-8 rounded-3xl bg-gradient-to-r from-blue-600/10 via-indigo-600/5 to-cyan-500/10 border border-blue-500/20 flex flex-col md:flex-row justify-between items-center gap-6 overflow-hidden shadow-xl">
+        <div className="space-y-3 text-center md:text-left z-10 max-w-xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-wide">
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
+            EduGen Panama AI 2.0 • MEDUCA AOA Standard
+          </div>
+          <h3 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white font-display">
+            ¡Hola de nuevo, <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 bg-clip-text text-transparent dark:from-blue-400 dark:via-indigo-400 dark:to-cyan-300">Profesor!</span> 👋
           </h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-lg">
-            Bienvenido al portal oficial de EduGen Panama PRO. Todo listo para acelerar tu planeación didáctica con inteligencia artificial alineada a MEDUCA.
+          <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Tu centro integral de inteligencia didáctica: genera planes AOA, proyectos interdisciplinarios y descarga los cuadernos de trabajo oficiales de 7 páginas en segundos.
           </p>
         </div>
-        <div className="flex-shrink-0 bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-4 rounded-2xl flex items-center gap-3 shadow-md z-10">
-          <div className={`p-3 rounded-xl ${isPremium ? 'bg-amber-500/10 text-amber-500' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'}`}>
-            {isPremium ? <Sparkles className="w-6.5 h-6.5" /> : <GraduationCap className="w-7 h-7" />}
+
+        <div className="flex-shrink-0 glass-card-v22 p-5 rounded-2xl flex items-center gap-4 border border-white/20 dark:border-slate-800 shadow-lg z-10">
+          <div className={`p-3.5 rounded-2xl shadow-inner ${isPremium ? 'bg-gradient-to-br from-amber-400 to-yellow-600 text-slate-950 font-black' : 'bg-blue-500/10 text-blue-500 border border-blue-500/20'}`}>
+            {isPremium ? <Sparkles className="w-7 h-7" /> : <GraduationCap className="w-7 h-7" />}
           </div>
           <div>
-            <p className="text-[10px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider">Plan del Docente</p>
-            <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
-              {isPremium ? 'EduGen PRO Premium' : 'Plan Gratuito (Con Ads)'}
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] text-slate-400 dark:text-slate-400 font-extrabold uppercase tracking-wider">Membresía</span>
+              {isPremium && <span className="px-1.5 py-0.2 bg-amber-400/20 text-amber-500 text-[9px] font-black rounded">ACTIVO</span>}
+            </div>
+            <p className="text-sm font-black text-slate-900 dark:text-white">
+              {isPremium ? 'EduGen PRO Anual' : 'Plan Gratuito'}
             </p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Currículo Nacional Oficial</p>
           </div>
         </div>
         
         {/* Subtle Background Art */}
-        <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-blue-500/5 blur-3xl pointer-events-none"></div>
+        <div className="absolute -right-16 -top-16 w-56 h-56 rounded-full bg-blue-500/15 blur-3xl pointer-events-none"></div>
+        <div className="absolute -left-16 -bottom-16 w-48 h-48 rounded-full bg-indigo-500/10 blur-3xl pointer-events-none"></div>
       </div>
 
       {/* Video Tutorial Banner */}
       <div 
         onClick={() => window.dispatchEvent(new CustomEvent('show-tutorial-video'))}
-        className="relative glass-panel p-6 rounded-3xl bg-gradient-to-r from-blue-500/10 via-indigo-500/5 to-transparent border border-blue-500/20 cursor-pointer hover:border-blue-500/40 transition overflow-hidden group shadow-lg"
+        className="relative glass-card-v22 p-5 rounded-2xl bg-gradient-to-r from-blue-500/10 via-indigo-500/5 to-transparent border border-blue-500/20 cursor-pointer transition overflow-hidden group"
       >
-        <div className="absolute -right-10 -top-10 w-36 h-36 bg-blue-500/5 rounded-full blur-2xl group-hover:scale-125 transition-all"></div>
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10 text-center sm:text-left">
-          <div className="flex items-center gap-4.5 flex-col sm:flex-row">
-            <div className="bg-blue-500/10 p-3.5 rounded-2xl text-blue-500 animate-pulse">
-              <BookOpen className="w-6 h-6" />
+          <div className="flex items-center gap-4 flex-col sm:flex-row">
+            <div className="bg-blue-500/10 border border-blue-500/20 p-3 rounded-xl text-blue-500 group-hover:scale-110 transition-transform">
+              <BookOpen className="w-5 h-5" />
             </div>
-            <div className="space-y-1">
-              <h4 className="text-sm font-extrabold text-slate-850 dark:text-slate-100 uppercase tracking-tight">¿Nuevo en EduGen? ¡Aprende con nuestro Video Tutorial!</h4>
+            <div className="space-y-0.5">
+              <h4 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2 justify-center sm:justify-start">
+                <span>¿Nuevo en EduGen? Video Tutorial de Inducción Rápida</span>
+                <span className="pill-badge-v22">3 min</span>
+              </h4>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-normal max-w-xl">
-                Descubre cómo funciona el sistema de creación de Lesson Planners en solo unos minutos. Te mostraremos paso a paso cómo alinear tus clases con el currículo oficial MEDUCA AOA.
+                Aprende paso a paso cómo alinear tus clases con el currículo oficial MEDUCA AOA y descargar material en 1 clic.
               </p>
             </div>
           </div>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-black px-5 py-3 rounded-2xl text-xs tracking-wide shadow-md active:scale-95 transition-all w-full sm:w-auto flex-shrink-0 uppercase cursor-pointer">
-            Ver Tutorial 🎬
+          <button className="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs tracking-wide shadow-md active:scale-95 transition-all w-full sm:w-auto flex-shrink-0 cursor-pointer flex items-center justify-center gap-1.5">
+            <span>Ver Tutorial</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
@@ -219,54 +238,100 @@ export default function Dashboard({ user, credits, setActiveTab, isPremium = fal
       {!isPremium && (
         <div 
           onClick={() => window.dispatchEvent(new CustomEvent('show-billing-modal'))}
-          className="relative glass-panel p-6 rounded-3xl bg-gradient-to-r from-amber-500/10 via-yellow-500/5 to-transparent border border-amber-500/20 cursor-pointer hover:border-amber-500/40 transition overflow-hidden group shadow-lg"
+          className="relative glass-card-v22 p-5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-yellow-500/5 to-transparent border border-amber-500/30 cursor-pointer transition overflow-hidden group"
         >
-          {/* Decorative shapes */}
-          <div className="absolute -right-10 -top-10 w-36 h-36 bg-amber-500/5 rounded-full blur-2xl group-hover:scale-125 transition-all"></div>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10 text-center sm:text-left">
-            <div className="flex items-center gap-4.5 flex-col sm:flex-row">
-              <div className="bg-amber-500/10 p-3.5 rounded-2xl text-amber-500 animate-bounce">
-                <Sparkles className="w-6 h-6" />
+            <div className="flex items-center gap-4 flex-col sm:flex-row">
+              <div className="bg-amber-500/15 border border-amber-500/30 p-3 rounded-xl text-amber-500 group-hover:rotate-12 transition-transform">
+                <Sparkles className="w-5 h-5" />
               </div>
-              <div className="space-y-1">
-                <h4 className="text-sm font-extrabold text-slate-850 dark:text-slate-100 uppercase tracking-tight">¡Activa EduGen Pro hoy mismo!</h4>
+              <div className="space-y-0.5">
+                <h4 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider">
+                  ¡Activa EduGen Pro y Libera Descargas Ilimitadas!
+                </h4>
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-normal max-w-xl">
-                  Elimina por completo la publicidad, obtén prioridad máxima en servidores y un paquete inicial de 30 tokens Pro por solo $19.99 (pago único anual). Si necesitas más tokens, adquiérelos de forma individual. ¡Paga solo por lo que necesitas!
+                  Sin anuncios, prioridad instantánea en servidores y acceso completo a los 112 workbooks oficiales. Solo $19.99/año.
                 </p>
-
               </div>
             </div>
-            <button className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-5 py-3 rounded-2xl text-xs tracking-wide shadow-md active:scale-95 transition-all w-full sm:w-auto flex-shrink-0 uppercase">
-              Actualizar a PRO
+            <button className="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-slate-950 font-black px-4 py-2.5 rounded-xl text-xs tracking-wide shadow-lg active:scale-95 transition-all w-full sm:w-auto flex-shrink-0">
+              Actualizar a PRO ✨
             </button>
           </div>
         </div>
       )}
 
-      {/* Metrics Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Credits Metric Card */}
-        <div className="glass-panel p-6 rounded-3xl bg-white/60 dark:bg-slate-900/60 flex items-center justify-between">
+      {/* Metrics Grid V22 (Stats Cards with Glowing Accents) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Metric 1: Credits */}
+        <div className="glass-card-v22 p-5 rounded-2xl flex items-center justify-between">
           <div className="space-y-1">
-            <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest">CRÉDITOS DISPONIBLES</span>
-            <h4 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 flex items-baseline gap-1.5 font-display">
-              {credits} <span className="text-sm font-medium text-slate-500 dark:text-slate-400">Tokens</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest">TOKENS IA</span>
+              <span className="pill-badge-v22 text-[9px] py-0">Disponibles</span>
+            </div>
+            <h4 className="text-2xl font-black text-slate-900 dark:text-white font-display">
+              {credits} <span className="text-xs font-medium text-slate-400">Tokens</span>
             </h4>
-            <p className="text-xs text-slate-500 dark:text-slate-400">1 Token equivale a 1 planeación completa.</p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">Genera planeaciones completas</p>
           </div>
-          <div className="bg-blue-500/10 p-4 rounded-2xl text-blue-500"><Coins className="w-8 h-8" /></div>
+          <div className="bg-blue-500/10 border border-blue-500/20 p-3.5 rounded-2xl text-blue-500">
+            <Coins className="w-6 h-6" />
+          </div>
         </div>
 
-        {/* Plans Created Metric Card */}
-        <div className="glass-panel p-6 rounded-3xl bg-white/60 dark:bg-slate-900/60 flex items-center justify-between">
+        {/* Metric 2: Library count */}
+        <div className="glass-card-v22 p-5 rounded-2xl flex items-center justify-between">
           <div className="space-y-1">
-            <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest">MI BIBLIOTECA</span>
-            <h4 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 flex items-baseline gap-1.5 font-display">
-              {plansCount} <span className="text-sm font-medium text-slate-500 dark:text-slate-400">Documentos</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest">MI BIBLIOTECA</span>
+              <span className="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-indigo-500/10 text-indigo-500 border border-indigo-500/20">Docs</span>
+            </div>
+            <h4 className="text-2xl font-black text-slate-900 dark:text-white font-display">
+              {plansCount} <span className="text-xs font-medium text-slate-400">Archivos</span>
             </h4>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Documentos guardados listos para descargar.</p>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">Planes listos para descargar</p>
           </div>
-          <div className="bg-indigo-500/10 p-4 rounded-2xl text-indigo-500"><FileText className="w-8 h-8" /></div>
+          <div className="bg-indigo-500/10 border border-indigo-500/20 p-3.5 rounded-2xl text-indigo-500">
+            <FileText className="w-6 h-6" />
+          </div>
+        </div>
+
+        {/* Metric 3: Official Workbooks */}
+        <div 
+          onClick={() => setActiveTab('curriculum-hub')}
+          className="glass-card-v22 p-5 rounded-2xl flex items-center justify-between cursor-pointer group"
+        >
+          <div className="space-y-1">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest">WORKBOOKS CANVA</span>
+              <span className="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">7 Págs</span>
+            </div>
+            <h4 className="text-2xl font-black text-slate-900 dark:text-white font-display flex items-center gap-1">
+              112 <span className="text-xs font-medium text-emerald-500 group-hover:translate-x-0.5 transition-transform">Libros →</span>
+            </h4>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">Pre-K a 12° Grado con Key</p>
+          </div>
+          <div className="bg-emerald-500/10 border border-emerald-500/20 p-3.5 rounded-2xl text-emerald-500 group-hover:scale-110 transition-transform">
+            <Layers className="w-6 h-6" />
+          </div>
+        </div>
+
+        {/* Metric 4: Alignment Standard */}
+        <div className="glass-card-v22 p-5 rounded-2xl flex items-center justify-between">
+          <div className="space-y-1">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] font-black text-slate-400 dark:text-slate-400 uppercase tracking-widest">ESTÁNDAR</span>
+              <span className="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-teal-500/10 text-teal-500 border border-teal-500/20">AOA</span>
+            </div>
+            <h4 className="text-2xl font-black text-slate-900 dark:text-white font-display">
+              100% <span className="text-xs font-medium text-teal-500">MEDUCA</span>
+            </h4>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">CEFR Pre-A1 hasta B1.3</p>
+          </div>
+          <div className="bg-teal-500/10 border border-teal-500/20 p-3.5 rounded-2xl text-teal-500">
+            <CheckCircle2 className="w-6 h-6" />
+          </div>
         </div>
       </div>
 
@@ -275,60 +340,82 @@ export default function Dashboard({ user, credits, setActiveTab, isPremium = fal
         
         {/* Left Column: Quick Actions & Recent Plans */}
         <div className="lg:col-span-7 space-y-6">
-          <h3 className="font-extrabold font-display text-lg text-slate-800 dark:text-slate-200">¿Qué planearemos hoy?</h3>
-          <div className="grid grid-cols-1 gap-4">
+          <div className="flex items-center justify-between">
+            <h3 className="font-extrabold font-display text-lg text-slate-900 dark:text-white flex items-center gap-2">
+              <span className="w-2 h-5 rounded-full bg-blue-600"></span>
+              ¿Qué planearemos hoy?
+            </h3>
+            <span className="text-xs text-slate-400 font-medium">Accesos Rápidos</span>
+          </div>
+          <div className="grid grid-cols-1 gap-3.5">
             {quickActions.map(action => (
               <button
                 key={action.id}
                 onClick={() => setActiveTab(action.id)}
-                className="w-full text-left glass-panel p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 border border-slate-200 dark:border-slate-800 flex items-center justify-between group active:scale-[0.99] transition-all"
+                className="w-full text-left glass-card-v22 p-4.5 rounded-2xl flex items-center justify-between group active:scale-[0.99] transition-all cursor-pointer"
               >
                 <div className="flex items-center space-x-4">
-                  <div className={`p-3 rounded-xl bg-slate-100 dark:bg-slate-800 ${action.textColor} dark:${action.textColor}`}>
+                  <div className={`p-3 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/50 dark:border-slate-700/50 ${action.textColor} group-hover:scale-105 transition-transform`}>
                     {action.icon}
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-sm text-slate-800 dark:text-slate-100">{action.title}</h4>
+                    <h4 className="font-extrabold text-sm text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1.5">
+                      {action.title}
+                    </h4>
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-snug">{action.desc}</p>
                   </div>
                 </div>
-                <div className="p-2 rounded-full border border-slate-200 dark:border-slate-800 text-slate-400 group-hover:text-slate-700 dark:group-hover:text-white dark:group-hover:border-slate-700 group-hover:translate-x-1.5 transition-all">
-                  <ArrowRight className="w-4 h-4" />
+                <div className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:border-blue-500/30 group-hover:translate-x-1 transition-all">
+                  <ArrowUpRight className="w-4 h-4" />
                 </div>
               </button>
             ))}
           </div>
 
           {/* Recent Plans Card */}
-          <div className="glass-panel p-6 rounded-3xl bg-white/60 dark:bg-slate-900/60 space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-800/40 pb-3">
-              <h4 className="font-extrabold font-display text-sm text-slate-800 dark:text-slate-200">Planeaciones Recientes</h4>
+          <div className="glass-card-v22 p-6 rounded-3xl space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-800/60 pb-3">
+              <h4 className="font-extrabold font-display text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                <Clock className="w-4 h-4 text-blue-500" />
+                Planeaciones y Recursos Recientes
+              </h4>
               <button 
                 onClick={() => setActiveTab('library')}
-                className="text-xs text-blue-500 hover:text-blue-600 dark:text-blue-400 font-bold flex items-center gap-0.5"
+                className="text-xs text-blue-600 dark:text-blue-400 hover:underline font-bold flex items-center gap-0.5 cursor-pointer"
               >
-                <span>Ver biblioteca</span>
+                <span>Ver biblioteca completa</span>
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
             
             {recentPlans.length === 0 ? (
-              <p className="text-xs text-slate-400 dark:text-slate-500 text-center py-6">
-                Aún no has generado planeaciones en esta sesión. ¡Comienza haciendo una!
-              </p>
+              <div className="text-center py-8 space-y-2">
+                <div className="w-10 h-10 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center mx-auto">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                  Aún no has generado planeaciones en esta sesión.
+                </p>
+                <button 
+                  onClick={() => setActiveTab('aoa')}
+                  className="text-xs text-blue-600 dark:text-blue-400 font-bold hover:underline"
+                >
+                  ¡Crea tu primera planeación AOA aquí!
+                </button>
+              </div>
             ) : (
               <div className="space-y-2">
                 {recentPlans.map(plan => (
                   <div 
                     key={plan.id}
                     onClick={() => setActiveTab('library')}
-                    className="flex items-center justify-between p-3 rounded-xl border border-slate-100 dark:border-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-950/20 cursor-pointer transition text-xs"
+                    className="flex items-center justify-between p-3.5 rounded-xl border border-slate-200/60 dark:border-slate-800/60 hover:border-blue-500/30 hover:bg-blue-50/50 dark:hover:bg-slate-800/40 cursor-pointer transition text-xs group"
                   >
-                    <div className="flex items-center space-x-2.5 overflow-hidden">
-                      <div className="w-2.5 h-2.5 rounded-full bg-blue-500 flex-shrink-0 animate-pulse"></div>
-                      <span className="font-semibold text-slate-700 dark:text-slate-300 truncate">{plan.title}</span>
+                    <div className="flex items-center space-x-3 overflow-hidden">
+                      <div className="w-2.5 h-2.5 rounded-full bg-blue-500 flex-shrink-0 group-hover:scale-125 transition-transform"></div>
+                      <span className="font-bold text-slate-800 dark:text-slate-200 truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{plan.title}</span>
                     </div>
-                    <span className="text-[10px] text-slate-400 dark:text-slate-500 font-bold flex-shrink-0">
+                    <span className="text-[10px] text-slate-400 dark:text-slate-500 font-semibold flex-shrink-0 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">
                       {new Date(plan.createdAt).toLocaleDateString()}
                     </span>
                   </div>
@@ -338,17 +425,24 @@ export default function Dashboard({ user, credits, setActiveTab, isPremium = fal
           </div>
         </div>
 
-        {/* Right Column: Tips Center */}
+        {/* Right Column: Tips & Saved Resources (V22 Style) */}
         <div className="lg:col-span-5 space-y-6">
-          <h3 className="font-extrabold font-display text-lg text-slate-800 dark:text-slate-200">Guía de Metodología AOA</h3>
-          <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="font-extrabold font-display text-lg text-slate-900 dark:text-white flex items-center gap-2">
+              <span className="w-2 h-5 rounded-full bg-indigo-600"></span>
+              Metodología AOA & Claves
+            </h3>
+            <span className="text-xs text-slate-400 font-medium">MEDUCA</span>
+          </div>
+
+          <div className="space-y-3.5">
             {tips.map((tip, idx) => (
               <div 
                 key={idx} 
-                className="glass-panel p-5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border-l-4 border-l-indigo-500 border border-slate-200/60 dark:border-slate-800/80 space-y-2"
+                className="glass-card-v22 p-5 rounded-2xl border-l-4 border-l-indigo-500 space-y-2"
               >
-                <h4 className="font-extrabold text-sm text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
-                  <span className="bg-indigo-500/10 text-indigo-500 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black">{idx + 1}</span>
+                <h4 className="font-extrabold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                  <span className="bg-indigo-500/10 text-indigo-500 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black border border-indigo-500/20">{idx + 1}</span>
                   {tip.title}
                 </h4>
                 <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
@@ -356,6 +450,24 @@ export default function Dashboard({ user, credits, setActiveTab, isPremium = fal
                 </p>
               </div>
             ))}
+          </div>
+
+          {/* Quick Access to 7-Page Canva Workbooks */}
+          <div className="glass-card-v22 p-5 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-blue-500/5 to-transparent border border-indigo-500/20 space-y-3">
+            <div className="flex items-center gap-2">
+              <Bookmark className="w-4 h-4 text-indigo-500" />
+              <span className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-white">Cuadernos de 7 Páginas Oficiales</span>
+            </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-normal">
+              Diseño tipo Canva para imprimir o proyectar: incluye audio scripts, ejercicios guiados y Teacher Guide con Master Answer Key en la página 7.
+            </p>
+            <button
+              onClick={() => setActiveTab('curriculum-hub')}
+              className="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs tracking-wide shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <span>Explorar los 112 Cuadernos</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
