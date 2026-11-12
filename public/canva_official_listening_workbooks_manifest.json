@@ -1,10 +1,10 @@
 {
   "system": "EduGen Panama - Official Canva Action-Oriented Listening Workbooks (7 Pages)",
-  "updated_at": "2026-11-11T12:02:00-05:00",
+  "updated_at": "2026-11-12T08:53:09.341912Z",
   "canva_folder_id": "FAHY5F-B0vU",
   "canva_folder_url": "https://www.canva.com/folder/FAHY5F-B0vU",
   "total_workbooks_target": 112,
-  "current_checkpoint": "61 workbooks completed",
+  "current_checkpoint": "62 of 1120 official listening workbooks completed",
   "completed_workbooks": [
     {
       "grade": "Pre-K",
@@ -1471,6 +1471,34 @@
       "local_pdf_path": "public/workbooks_listening_7pages/Grade_5/MEDUCA_5th_Grade_Scenario_4_Listening_AOA_Workbook.pdf",
       "gdrive_synced": true,
       "gdrive_pdf_path": "H:\\Mi unidad\\workbooks_listening_7pages\\Grade_5\\MEDUCA_5th_Grade_Scenario_4_Listening_AOA_Workbook.pdf",
+      "folder_id": "FAHY5F-B0vU",
+      "status": "COMPLETED"
+    },
+    {
+      "grade": "5th Grade",
+      "grade_number": 5,
+      "cefr": "A1.3",
+      "scenario_number": 5,
+      "scenario_title": "Time for Exercise",
+      "theme_title": "Theme 1 - I Like Walking in the Afternoon.",
+      "format": "Flyer (Portrait) - 3:4 US Letter 8.5x11",
+      "pages": 7,
+      "stages": [
+        "Stage 1: Pre-Listening Schema Activation & Lexical Foundations",
+        "Stage 2: First Listening - Gist, Context & Topic Identification",
+        "Stage 3: Second Listening - Intensive Detail & Phonological Focus",
+        "Stage 4: Post-Listening - Critical Thinking & Formative Output",
+        "Stage 5: Integrative Real-World Action Task",
+        "Stage 6: Student Metacognitive Self-Assessment & Reflection",
+        "Stage 7: Teacher Pedagogical Guide, Auditory Scripts & Master Key"
+      ],
+      "canva_part1_id": "DAHasCktrLk",
+      "canva_part1_url": "https://canva.link/mpsqv7s4mo73sk1",
+      "canva_part2_id": "DAHasAp0noI",
+      "canva_part2_url": "https://canva.link/qfq4ebp0o7zegrr",
+      "local_pdf_path": "public/workbooks_listening_7pages/Grade_5/MEDUCA_5th_Grade_Scenario_5_Listening_AOA_Workbook.pdf",
+      "gdrive_synced": true,
+      "gdrive_pdf_path": "H:\\Mi unidad\\workbooks_listening_7pages\\Grade_5\\MEDUCA_5th_Grade_Scenario_5_Listening_AOA_Workbook.pdf",
       "folder_id": "FAHY5F-B0vU",
       "status": "COMPLETED"
     }
