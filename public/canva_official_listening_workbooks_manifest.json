@@ -4,7 +4,7 @@
   "canva_folder_id": "FAHY5F-B0vU",
   "canva_folder_url": "https://www.canva.com/folder/FAHY5F-B0vU",
   "total_workbooks_target": 112,
-  "current_checkpoint": "69 of 1120 official listening workbooks completed",
+  "current_checkpoint": "70 / 112 completed",
   "completed_workbooks": [
     {
       "grade": "Pre-K",
@@ -1695,6 +1695,34 @@
       "local_pdf_path": "public/workbooks_listening_7pages/Grade_4/MEDUCA_4th_Grade_Scenario_4_Listening_AOA_Workbook.pdf",
       "gdrive_synced": true,
       "gdrive_pdf_path": "H:\\Mi unidad\\workbooks_listening_7pages\\Grade_4\\MEDUCA_4th_Grade_Scenario_4_Listening_AOA_Workbook.pdf",
+      "folder_id": "FAHY5F-B0vU",
+      "status": "COMPLETED"
+    },
+    {
+      "grade": "4th Grade",
+      "grade_number": 4,
+      "cefr": "A1.2",
+      "scenario_number": 5,
+      "scenario_title": "A Trip to the Beach",
+      "theme_title": "Theme 1 - Let's Pack for a Trip.",
+      "format": "Flyer (Portrait) - 3:4 US Letter 8.5x11",
+      "pages": 7,
+      "stages": [
+        "Stage 1: Pre-Listening Schema Activation & Lexical Foundations",
+        "Stage 2: First Listening - Gist, Context & Topic Identification",
+        "Stage 3: Second Listening - Intensive Detail & Phonological Focus",
+        "Stage 4: Post-Listening - Critical Thinking & Formative Output",
+        "Stage 5: Integrative Real-World Action Task",
+        "Stage 6: Student Metacognitive Self-Assessment & Reflection",
+        "Stage 7: Teacher Pedagogical Guide, Auditory Scripts & Master Key"
+      ],
+      "canva_part1_id": "DAHaugT3J0A",
+      "canva_part1_url": "https://canva.link/vg9mwk292el018a",
+      "canva_part2_id": "DAHau_oVQrs",
+      "canva_part2_url": "https://canva.link/rq71u6933pp835o",
+      "local_pdf_path": "public/workbooks_listening_7pages/Grade_4/MEDUCA_4th_Grade_Scenario_5_Listening_AOA_Workbook.pdf",
+      "gdrive_synced": true,
+      "gdrive_pdf_path": "H:\\\\Mi unidad\\\\workbooks_listening_7pages\\\\Grade_4\\\\MEDUCA_4th_Grade_Scenario_5_Listening_AOA_Workbook.pdf",
       "folder_id": "FAHY5F-B0vU",
       "status": "COMPLETED"
     }
