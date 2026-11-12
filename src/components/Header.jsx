@@ -1,7 +1,15 @@
 import React from 'react';
-import { Coins, Sparkles, AlertCircle } from 'lucide-react';
+import { Coins, Sparkles, AlertCircle, LogOut } from 'lucide-react';
 
-export default function Header({ activeTab, credits, isDemoMode, onAddCredits, isPremium = false, onTogglePremium }) {
+export default function Header({ 
+  activeTab, 
+  credits, 
+  isDemoMode, 
+  onAddCredits, 
+  isPremium = false, 
+  onTogglePremium,
+  onLogout 
+}) {
   const titles = {
     dashboard: { main: 'Panel de Control', sub: 'Vista general de tus planeaciones, saldo y herramientas rápidas.' },
     aoa: { main: 'Planificador AOA', sub: 'Diseña planeaciones didácticas EFL estructuradas bajo el Action-Oriented Approach.' },
@@ -57,6 +65,18 @@ export default function Header({ activeTab, credits, isDemoMode, onAddCredits, i
           <Sparkles className="w-3.5 h-3.5" />
           <span>RECARGAR</span>
         </button>
+
+        {/* Cerrar Sesión Button */}
+        {onLogout && (
+          <button
+            onClick={onLogout}
+            className="bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-900/60 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800/60 px-3.5 py-2.5 rounded-2xl text-xs font-bold shadow-sm hover:scale-[1.02] active:scale-[0.98] transition flex items-center gap-1.5 cursor-pointer ml-1"
+            title="Cerrar sesión de EduGen"
+          >
+            <LogOut className="w-3.5 h-3.5" />
+            <span>Cerrar Sesión</span>
+          </button>
+        )}
       </div>
     </header>
   );

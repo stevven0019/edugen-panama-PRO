@@ -234,27 +234,8 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
   };
 
   const downloadLessonDoc = async (url, filename) => {
-    try {
-      if (onTriggerAlert) onTriggerAlert(`Preparando descarga de ${filename}...`, 'info');
-      const resp = await fetch(url);
-      const contentType = resp.headers.get('content-type') || '';
-      if (!resp.ok || contentType.includes('text/html')) {
-        // If static fetch returns HTML or 404, fallback to download
-        window.open(url, '_blank');
-        return;
-      }
-      const blob = await resp.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = blobUrl;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(blobUrl);
-      if (onTriggerAlert) onTriggerAlert(`¡${filename} descargado con éxito!`, 'success');
-    } catch (e) {
-      window.open(url, '_blank');
+    if (onTriggerAlert) {
+      onTriggerAlert('La descarga directa de Lesson Planners está temporalmente bloqueada en todos los grados. Por favor utiliza el Generador Manual AOA.', 'warning');
     }
   };
 
@@ -578,12 +559,12 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                 onClick={() => setActiveModalTab('lessons')}
                 className={`py-3 px-4 font-extrabold text-xs border-b-2 flex items-center gap-2 transition ${
                   activeModalTab === 'lessons'
-                    ? 'border-emerald-600 text-emerald-600 dark:text-emerald-400'
+                    ? 'border-amber-500 text-amber-600 dark:text-amber-400'
                     : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300'
                 }`}
               >
-                <BookOpen className="w-4 h-4" />
-                <span>📗 Lesson Planners (1 al 5)</span>
+                <Lock className="w-3.5 h-3.5 text-amber-500" />
+                <span>🔒 Lesson Planners (Solo Manual)</span>
               </button>
 
               <button
@@ -694,6 +675,29 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
               {/* TAB 2: LESSON PLANNERS (1 to 5) */}
               {activeModalTab === 'lessons' && (
                 <div className="space-y-6">
+                  {/* Maintenance and Manual Generation Banner */}
+                  <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs text-amber-900 dark:text-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+                    <div className="space-y-1">
+                      <p className="font-bold flex items-center gap-1.5">
+                        <Lock className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                        <span>Descarga directa en mantenimiento · Generación Manual Activa</span>
+                      </p>
+                      <p className="text-[11px] opacity-90 text-amber-800 dark:text-amber-300">
+                        La descarga directa de Lesson Planners (.doc) está bloqueada temporalmente en todos los grados. Utiliza el Generador Manual AOA para crear y personalizar tus lecciones paso a paso.
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setActiveScenario(null);
+                        if (setActiveTab) setActiveTab('aoa');
+                      }}
+                      className="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl flex items-center gap-2 shrink-0 transition shadow-sm cursor-pointer"
+                    >
+                      <Sparkles className="w-4 h-4" />
+                      <span>Ir al Generador Manual AOA</span>
+                    </button>
+                  </div>
+
                   {/* Theme Switcher for Lessons */}
                   <div className="flex items-center gap-3 p-1.5 bg-slate-100 dark:bg-slate-800 rounded-2xl">
                     <button
@@ -740,10 +744,10 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                       return (
                         <div
                           key={idx}
-                          className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-4 hover:border-emerald-500 transition shadow-sm"
+                          className="p-4 rounded-2xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-4 hover:border-amber-500 transition shadow-sm"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 rounded-xl bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 font-extrabold flex items-center justify-center text-xs">
+                            <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-extrabold flex items-center justify-center text-xs">
                               L{idx + 1}
                             </div>
                             <div>
@@ -757,11 +761,16 @@ export default function CurriculumHub({ user, credits, onTriggerAlert, isPremium
                           </div>
 
                           <button
-                            onClick={() => downloadLessonDoc(lesson.url, lesson.filename)}
-                            className="bg-slate-100 dark:bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-700 dark:text-slate-300 p-2.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer shrink-0"
+                            onClick={() => {
+                              if (onTriggerAlert) onTriggerAlert('Descarga directa bloqueada. Redirigiendo al Generador Manual AOA...', 'info');
+                              setActiveScenario(null);
+                              if (setActiveTab) setActiveTab('aoa');
+                            }}
+                            className="bg-slate-100 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-amber-950/40 hover:text-amber-600 dark:hover:text-amber-400 text-slate-500 dark:text-slate-400 p-2.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer shrink-0 border border-transparent hover:border-amber-300 dark:hover:border-amber-800"
+                            title="Descarga bloqueada. Clic para generar manualmente."
                           >
-                            <Download className="w-3.5 h-3.5" />
-                            <span className="hidden sm:inline">Descargar .doc</span>
+                            <Lock className="w-3.5 h-3.5 text-amber-500" />
+                            <span className="hidden sm:inline">Generar Manualmente</span>
                           </button>
                         </div>
                       );

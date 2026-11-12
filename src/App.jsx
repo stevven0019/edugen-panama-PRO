@@ -578,6 +578,7 @@ export default function App() {
           onAddCredits={handleAddCredits}
           isPremium={isPremium}
           onTogglePremium={handleTogglePremium}
+          onLogout={handleLogout}
         />
         
         {/* Dashboard / pages dispatcher router */}
