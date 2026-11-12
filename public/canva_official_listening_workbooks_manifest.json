@@ -1,10 +1,10 @@
 {
   "system": "EduGen Panama - Official Canva Action-Oriented Listening Workbooks (7 Pages)",
-  "updated_at": "2026-11-12T13:26:42.455978Z",
+  "updated_at": "2026-11-12T15:22:49.858807Z",
   "canva_folder_id": "FAHY5F-B0vU",
   "canva_folder_url": "https://www.canva.com/folder/FAHY5F-B0vU",
   "total_workbooks_target": 112,
-  "current_checkpoint": "67 of 1120 official listening workbooks completed",
+  "current_checkpoint": "68 of 1120 official listening workbooks completed",
   "completed_workbooks": [
     {
       "grade": "Pre-K",
@@ -1639,6 +1639,34 @@
       "local_pdf_path": "public/workbooks_listening_7pages/Grade_4/MEDUCA_4th_Grade_Scenario_2_Listening_AOA_Workbook.pdf",
       "gdrive_synced": true,
       "gdrive_pdf_path": "H:\\Mi unidad\\workbooks_listening_7pages\\Grade_4\\MEDUCA_4th_Grade_Scenario_2_Listening_AOA_Workbook.pdf",
+      "folder_id": "FAHY5F-B0vU",
+      "status": "COMPLETED"
+    },
+    {
+      "grade": "4th Grade",
+      "grade_number": 4,
+      "cefr": "A1.2",
+      "scenario_number": 3,
+      "scenario_title": "Shopping at the Market",
+      "theme_title": "Theme 1 - How Much Is the Pineapple?",
+      "format": "Flyer (Portrait) - 3:4 US Letter 8.5x11",
+      "pages": 7,
+      "stages": [
+        "Stage 1: Pre-Listening Schema Activation & Lexical Foundations",
+        "Stage 2: First Listening - Gist, Context & Topic Identification",
+        "Stage 3: Second Listening - Intensive Detail & Phonological Focus",
+        "Stage 4: Post-Listening - Critical Thinking & Formative Output",
+        "Stage 5: Integrative Real-World Action Task",
+        "Stage 6: Student Metacognitive Self-Assessment & Reflection",
+        "Stage 7: Teacher Pedagogical Guide, Auditory Scripts & Master Key"
+      ],
+      "canva_part1_id": "DAHatq9WLKc",
+      "canva_part1_url": "https://canva.link/8txsuu10oao28sp",
+      "canva_part2_id": "DAHat_WK6bw",
+      "canva_part2_url": "https://canva.link/fe1f2q562b1hvp3",
+      "local_pdf_path": "public/workbooks_listening_7pages/Grade_4/MEDUCA_4th_Grade_Scenario_3_Listening_AOA_Workbook.pdf",
+      "gdrive_synced": true,
+      "gdrive_pdf_path": "H:\\Mi unidad\\workbooks_listening_7pages\\Grade_4\\MEDUCA_4th_Grade_Scenario_3_Listening_AOA_Workbook.pdf",
       "folder_id": "FAHY5F-B0vU",
       "status": "COMPLETED"
     }
